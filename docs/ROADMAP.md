@@ -13,7 +13,7 @@
 6. Stateful animated gates, parent-child attachment metadata and navigation invalidation.
 7. Claude/Codex installer with preview and non-destructive integration, automated CI and end-to-end Godot samples.
 
-Reference: GameArts master v7.5 orthogonal square tiles. Store logical geometry as world coordinates; do not conflate camera projection and grid topology.
+Reference: GameArts master v7.7 orthogonal square tiles. Store logical geometry as world coordinates; do not conflate camera projection and grid topology.
 
 ## SDLC governance and current engineering debt (2026-10-21)
 
