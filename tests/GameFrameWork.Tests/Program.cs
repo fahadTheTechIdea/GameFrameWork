@@ -132,6 +132,23 @@ AssertThrows<ArgumentException>(() => new RoadCrossSection(3, 2, double.NaN, 2, 
     "Nonfinite sidewalk width rejected");
 
 
+
+// Parametric urban surface bands are derived from the same street profile.
+var bands = StreetSurfaceBuilder.Build(street);
+Assert(bands.Count == 5, "Road has carriageway, two curbs and two sidewalks");
+Assert(bands.All(b => b.Polygon.Count == 4), "Band polygons have four vertices");
+Assert(bands.All(b => Math.Abs(StreetSurfaceBuilder.SignedArea(b.Polygon)) > 1e-8),
+    "Generated surface bands have nonzero area");
+var lane = bands.Single(b => b.Kind == StreetSurfaceKind.Carriageway);
+Assert(Math.Abs(Math.Abs(StreetSurfaceBuilder.SignedArea(lane.Polygon)) - 70.0) < 1e-8,
+    "Two lane carriageway area is 7m by 10m");
+var walks = bands.Where(b => b.Kind is StreetSurfaceKind.LeftSidewalk or StreetSurfaceKind.RightSidewalk);
+Assert(walks.All(b => Math.Abs(Math.Abs(StreetSurfaceBuilder.SignedArea(b.Polygon)) - 20.0) < 1e-8),
+    "Each sidewalk is 2m by 10m");
+var curvedBands = StreetSurfaceBuilder.Build(new StreetCorridor("bent",
+    new WorldPolyline(new[] { new WorldPoint(0,0), new WorldPoint(10,0), new WorldPoint(10,10) }), crossSection));
+Assert(curvedBands.Count == 10, "Both road segments receive independent bands");
+
 // Continuous street intersection regression scenarios
 var crossing = PlanarIntersections.Intersect(new(0, 0), new(10, 0), new(5, -5), new(5, 5));
 Assert(crossing.Kind == IntersectionKind.Point && crossing.Point is { X: 5, Y: 0 }, "Orthogonal road intersection");
