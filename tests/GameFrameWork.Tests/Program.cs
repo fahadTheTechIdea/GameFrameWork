@@ -353,6 +353,30 @@ Assert(JsonSerializer.Serialize(integrated) ==
     JsonSerializer.Serialize(new SettlementDesignPipeline().Build(new WorldRequest(48,48,42,Biome.Desert,2))),
     "Integrated settlement deterministic");
 
+
+var integratedGate = new SettlementDesignGate();
+Assert(integratedGate.Validate(integrated).Count == 0, "Integrated design passes cross-discipline validation");
+Assert(integratedGate.Compile(integrated).Count == integrated.Design.Objects.Count,
+    "Validated integrated design compiles without inventing objects");
+var brokenPublicRealm = integrated with
+{
+    PublicRealm = integrated.PublicRealm with
+    {
+        Features = new[]
+        {
+            new PublicFeature("orphan-sign", PublicFeatureKind.StreetNameSign,
+                new WorldPoint(10, 10), "missing-road", "road naming", "signage-v1", 1)
+        }
+    }
+};
+Assert(integratedGate.Validate(brokenPublicRealm).Any(d => d.StartsWith("ORPHAN_PUBLIC_FEATURE")),
+    "Orphan street signs rejected");
+AssertThrows<InvalidOperationException>(() => integratedGate.Compile(brokenPublicRealm),
+    "Cannot compile a design containing orphan features");
+var incompleteIntegrated = integrated with { Diagnostics = new[] { "UNMET_DESIGN_REQUIREMENT" } };
+AssertThrows<InvalidOperationException>(() => integratedGate.Compile(incompleteIntegrated),
+    "Unresolved stage diagnostics block compilation");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
