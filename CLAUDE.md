@@ -14,3 +14,6 @@ Recognize ordinary requests such as **"Let's start building a game"**, "I want t
 
 When generating a game world, the selected GameArts style and approved mockup govern composition, appearance, object families, density, placement grammar and moving-part inventory. Every object requires a validated design-plan source/anchor and gameplay coherence; never scatter arbitrary or merely empty-space candidates. Photometric lighting, regulatory street signs or civil-engineering realism are optional user-selected simulation mechanics, not default objectives. Refer to the master plan's "Governing game-world rule" section.
 
+
+## Final generation responsibility
+The **C# engine owns actual world design algorithms and generation**, including deliberate positioning of every terrain, settlement, building, road, planting and accessory element. Claude/Codex orchestrates and GameArts supplies approved visual mockups/style/art and animation atlases. The engine uses the approved mockup's anchors **and compositional regions/design grammars** to calculate precise positions; explicit per-object anchors are not mandatory for repeated procedural details. No arbitrary scattering or vacant-cell fallback. Godot adapter compiles and runs the generated result. Detailed real-life infrastructure simulation is optional unless gameplay requires it.
