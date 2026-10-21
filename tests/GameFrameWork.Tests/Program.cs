@@ -232,6 +232,20 @@ Assert(Math.Abs(Math.Abs(western.SignedArea()) + Math.Abs(eastern.SignedArea()) 
 AssertThrows<ArgumentOutOfRangeException>(() => ConvexParcelGeometry.SplitVertical(irregular, 45),
     "Outside split rejected");
 
+
+// Building rules are explicit and must not force-fit infeasible structures.
+var parcel = parcels.Parcels[0];
+var houseRules = new BuildingEnvelopeRules("house", 4, 3, 2, 8, 10);
+var house = BuildingEnvelopePlanner.Plan(parcel, houseRules);
+Assert(house.IsFeasible && house.Footprint is not null, "Residential envelope feasible");
+Assert(house.Footprint!.SignedArea() > 0, "House buildable area positive");
+var tower = BuildingEnvelopePlanner.Plan(parcel,
+    new BuildingEnvelopeRules("tower", 8, 8, 5, 40, 40));
+Assert(!tower.IsFeasible && tower.Diagnostics.Contains("INSUFFICIENT_BUILDABLE_ENVELOPE"),
+    "Tower denied on undersized town parcel");
+AssertThrows<ArgumentException>(() => new BuildingEnvelopeRules("house", -1, 1, 1, 8, 8).Validate(),
+    "Negative setbacks rejected");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
