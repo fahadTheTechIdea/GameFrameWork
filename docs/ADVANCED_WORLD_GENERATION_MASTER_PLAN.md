@@ -60,6 +60,24 @@ Every `PlannedWorldObject` should ultimately store a **visual source reference**
 
 **Never treat geometric, ecological or real-world infrastructure plausibility as a replacement for game-art composition.** The user wants planned *game-world design*, not real-world city engineering. Update or replace existing fixed-spacing light/sign or arbitrary terrain/warehouse routines when implementing this contract; they remain prototypes.
 
+## Governing responsibility model — C# engine generates worlds (2026-10-21)
+
+**Authority:** The C#/.NET GameFrameWork engine is the actual world generator, not merely an importer or Godot compiler. Claude/Codex is the conversational orchestrator and invokes its world-building operations. GameArtsSkills owns approved mockups, visual style, sprite/animation production and measured atlases. Godot is the target adapter/runtime.
+
+The approved mockup provides visual composition, key landmarks, proportions, art style and regions, **not necessarily a point coordinate for every repeated prop**. GameArts extracts structured visual references; the engine generates precise layouts, terrain, settlements, roads, buildings, gardens, vegetation, signs, lights and all accessories using authored constraints, game-focused design grammars, suitable graph/geometry algorithms and validated spatial relationships.
+
+The engine **must** generate intentional detail within the approved visual blueprint; it must **not** scatter objects at random, select an arbitrary vacant coordinate, invent incompatible object categories, ignore key visual anchors or silently diverge from the approved game style. Every placement records purpose, parent region/feature, applicable grammar/rule, geometry and validation evidence. A missing explicit anchor does not universally forbid generation: repeated props may derive deterministically from an approved *region or design grammar*. If neither an approved source anchor nor suitable grammar exists, generation fails with diagnostics.
+
+**Responsibilities**
+- Claude/Codex: understand game intent, coordinate both setup wizards, obtain user approvals, select/execute C# generators and inspect diagnostic/visual results; no manual CLI requirements on the end user.
+- GameArts: manage mockup and production-art lifecycles, style profiles, sprite sheets, separated animated components, measured JSON atlases, visual references and provenance.
+- **C# Engine**: resolve world profiles and structured visual input, plan and generate all world content including geometry and placement algorithms, validate cross-system coherence, create engine-independent world data, compose animation component references, and invoke Godot export.
+- Godot adapter: compile real TileSets, TileMapLayers, scenes, navigation, collision, occlusion, lights, animations and runtime behavior from the generated world.
+
+**Algorithm policy:** Style/gameplay composition and approved visual layout are mandatory constraints; real-world photometric, transport, drainage or ecological simulation is optional unless selected as a game feature. Rules may use deterministic variety strictly within validated plan regions but never unconstrained random scattering or empty-space fallback.
+
+**Engineering correction:** Existing `VisualWorldPlanner` currently requires a per-object anchor; generalize it to support mockup regions plus approved procedural grammars for repeated features. Existing settlement, public-realm and terrain prototypes still need to be refactored into the mockup-guided C# generation pipeline. Do not treat their current simple algorithms as production-complete.
+
 ## 1. Product objective
 Generate complete, coherent and editable 2D worlds including cities, towns, villages, wilderness, forests, deserts, islands, coasts, mountains, industrial facilities and mixtures of these. All objects have justified positions; every rule is world/region/settlement/district/parcel/object scoped. Outputs include inspectable semantic world records, visual mockups (approved via GameArtsSkills), source graphics and measured companion atlases, static TileMapLayers and dynamic scenes, route/navigation/physics/height/occlusion/lighting and validation evidence. No random scattering, and no false game-ready claims.
 
