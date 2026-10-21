@@ -17,6 +17,7 @@ public sealed class SettlementPlanner
         int centerX = width / 2;
         var access = new HashSet<GridPoint>();
         var occupied = new HashSet<GridPoint>();
+        var constraints = new ParcelConstraintSet(new RoadFrontageConstraint());
         void AddRoad(RoadSegment segment)
         {
             roads.Add(segment);
@@ -39,9 +40,7 @@ public sealed class SettlementPlanner
                 {
                     var entrance = new GridPoint(centerX + side * offset, cy);
                     var site = new GridPoint(entrance.X, cy - 1);
-                    if (!new GridBounds(width, height).Contains(site) ||
-                        !new GridBounds(width, height).Contains(entrance) ||
-                        access.Contains(site) || occupied.Contains(site) || !access.Contains(entrance))
+                    if (constraints.Unsatisfied(site, entrance, access, occupied, new GridBounds(width, height)).Count != 0)
                         continue;
                     // A larger simulation would evaluate soil/foundation slope and zoning here.
                     occupied.Add(site);
@@ -56,6 +55,7 @@ public sealed class SettlementPlanner
                 diagnostics.Add(new("UNMET_BUILDING_CAPACITY",
                     $"Settlement {i} placed {placed}/4 required warehouses; no valid additional frontage."));
         }
+        diagnostics.AddRange(SpatialValidation.Validate(new GridBounds(width, height), roads, buildings));
         return new(roads, buildings, diagnostics);
     }
 }
