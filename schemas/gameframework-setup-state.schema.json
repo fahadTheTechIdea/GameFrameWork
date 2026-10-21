@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GameFrameWork coordinated setup state",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "gameArts",
+    "gameFrameWork"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "gameArts": {
+      "enum": [
+        "pending",
+        "in_progress",
+        "complete"
+      ]
+    },
+    "gameFrameWork": {
+      "enum": [
+        "pending",
+        "in_progress",
+        "complete"
+      ]
+    },
+    "integrationValidated": {
+      "type": "boolean"
+    },
+    "lastStep": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
