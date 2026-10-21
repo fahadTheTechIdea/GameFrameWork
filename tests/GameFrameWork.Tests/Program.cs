@@ -264,6 +264,25 @@ Assert(!townProgram.Needs.Any(n => n.DefinitionId == "factory"), "No unrelated c
 Assert(JsonSerializer.Serialize(programPlanner.Plan(new(SettlementClass.Village, SettlementRole.Agricultural, 200))) ==
     JsonSerializer.Serialize(villageProgram), "Building demand reproducible");
 
+
+// Public-realm features are anchored to actual streets, never uniformly scattered.
+var publicStreet = new StreetCorridor("public-main",
+    new WorldPolyline(new[] { new WorldPoint(0, 0), new WorldPoint(100, 0) }), crossSection);
+var publicRules = new PublicRealmRules(25, 1, 1.5);
+var publicPlan = new PublicRealmPlanner().Plan(new[] { publicStreet }, publicRules);
+Assert(publicPlan.Diagnostics.Count == 0, "Street accessories have legal clearances");
+Assert(publicPlan.Features.Count == 5, "Street endpoints and internal light positions derived from spacing");
+Assert(publicPlan.Features.Count(f => f.Kind == PublicFeatureKind.Streetlight) == 3,
+    "Internal illumination fixtures spaced along corridor");
+Assert(publicPlan.Features.All(f => f.ParentId == "public-main" && f.Position.Y > 0 &&
+    !string.IsNullOrWhiteSpace(f.Purpose)), "Public features anchored with purpose");
+var reserved = new SpatialReservationIndex();
+Assert(reserved.TryReserve(new WorldPoint(0, 0), 2), "First reservation succeeds");
+Assert(!reserved.TryReserve(new WorldPoint(1, 0), 2), "Overlapping accessory rejected");
+Assert(reserved.TryReserve(new WorldPoint(5, 0), 2), "Separated accessory allowed");
+Assert(JsonSerializer.Serialize(new PublicRealmPlanner().Plan(new[] { publicStreet }, publicRules)) ==
+    JsonSerializer.Serialize(publicPlan), "Public realm deterministic");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
