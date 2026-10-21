@@ -535,6 +535,34 @@ try
 }
 finally { Directory.Delete(bundleRoot, recursive: true); }
 
+
+var atlasTestDir = Path.Combine(Path.GetTempPath(), "gamearts-atlas-" + Guid.NewGuid().ToString("N"));
+Directory.CreateDirectory(atlasTestDir);
+try
+{
+    var pngFile = Path.Combine(atlasTestDir, "sprite.png");
+    var atlasFile = Path.Combine(atlasTestDir, "sprite.atlas.json");
+    await File.WriteAllBytesAsync(pngFile, Convert.FromBase64String(
+        "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/3ioAAAAASUVORK5CYII="));
+    var validAtlas = """
+    {"schema_version":"1.0","image":"sprite.png","image_size":[1,1],
+     "mask_color":"#FF00FF","background_alpha":255,
+     "frames":[{"rect":[0,0,1,1],"pivot":[0,0],"anchors":{"mount":[0,0]}}]}
+    """;
+    await File.WriteAllTextAsync(atlasFile, validAtlas);
+    Assert((await new GameArtsAtlasValidator().ValidateAsync(atlasFile, pngFile)).Count == 0,
+        "Real PNG and measured atlas geometry accepted");
+    await File.WriteAllTextAsync(atlasFile, validAtlas.Replace("[0,0,1,1]", "[0,0,2,1]"));
+    Assert((await new GameArtsAtlasValidator().ValidateAsync(atlasFile, pngFile))
+        .Any(e => e.StartsWith("FRAME_OUT_OF_BOUNDS")),
+        "Atlas rectangles must fit actual sheet");
+    await File.WriteAllTextAsync(atlasFile, validAtlas.Replace("\"pivot\":[0,0]", "\"pivot\":[2,0]"));
+    Assert((await new GameArtsAtlasValidator().ValidateAsync(atlasFile, pngFile))
+        .Any(e => e.StartsWith("PIVOT_OUT_OF_BOUNDS")),
+        "Atlas pivot must be cell-local and in bounds");
+}
+finally { Directory.Delete(atlasTestDir, true); }
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
