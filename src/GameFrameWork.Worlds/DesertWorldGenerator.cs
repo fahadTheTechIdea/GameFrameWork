@@ -1,4 +1,5 @@
 using GameFrameWork.Core;
+using GameFrameWork.Core.Planning;
 namespace GameFrameWork.Worlds;
 /// <summary>Deterministic grid projection of the first purpose-driven settlement plan.
 /// Height/rock are spatially correlated analytical terrain prototypes, not mature hydrology.
@@ -32,14 +33,13 @@ public sealed class DesertWorldGenerator : IWorldGenerator
         foreach (var road in plan.Roads)
             foreach (var position in road.Cells())
                 kinds[position.Y * request.Width + position.X] = CellKind.Road;
-        var objects = new List<WorldObject>();
+        var plans = new List<PlannedWorldObject>();
         foreach (var building in plan.Buildings)
         {
             kinds[building.Site.Y * request.Width + building.Site.X] = CellKind.Structure;
-            objects.Add(new(building.Id, building.Kind, building.Site.X, building.Site.Y, "idle"));
+            plans.Add(new(building.Id, building.Kind, building.Site, building.Purpose, building.ConstraintId, "desert-v1"));
             // Gate is mounted on the building frontage, not independently scattered on a road.
-            objects.Add(new(building.Id + "-gate", "gate", building.Site.X, building.Site.Y,
-                "closed", "gate-open-close"));
+            plans.Add(new(building.Id + "-gate", "gate", building.Site, "warehouse entry", "gate-attachment-v1", "desert-v1", building.Id, "closed", "gate-open-close"));
         }
         var cells = new WorldCell[count];
         for (int y = 0; y < request.Height; y++)
@@ -52,6 +52,7 @@ public sealed class DesertWorldGenerator : IWorldGenerator
                 blocked ? int.MaxValue : kind == CellKind.Road ? 1 : 3,
                 kind == CellKind.Structure ? 2 : 0);
         }
+        var objects = new WorldPlanCompiler().Compile(new WorldDesignPlan("desert-v1", new GridBounds(request.Width, request.Height), plans));
         return Task.FromResult(new WorldDocument(1, request, cells, objects));
     }
 }
