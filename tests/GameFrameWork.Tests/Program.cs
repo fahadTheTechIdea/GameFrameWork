@@ -377,6 +377,30 @@ var incompleteIntegrated = integrated with { Diagnostics = new[] { "UNMET_DESIGN
 AssertThrows<InvalidOperationException>(() => integratedGate.Compile(incompleteIntegrated),
     "Unresolved stage diagnostics block compilation");
 
+
+var visual = new ApprovedVisualWorldBlueprint(1, "town-mockup", "approved-r1", "pixel-cozy",
+    new[] { new VisualRegion("square", new WorldPolygon(new[]
+    {
+        new WorldPoint(0,0), new WorldPoint(64,0), new WorldPoint(64,64), new WorldPoint(0,64)
+    }), "town-square") },
+    new[] { new VisualAnchor("shop-entry", "square", new WorldPoint(24,32), "shop") });
+var visualDecisions = new[] { new VisualObjectDecision("shop", "building", "shop-entry",
+    "anchor the storefront in the approved square", "mockup-shop-v1") };
+var visualPlan = new VisualWorldPlanner().Plan(visual, visualDecisions,
+    "approved-town-design", new GridBounds(16,16), 4);
+Assert(visualPlan.IsValid && visualPlan.Design!.Objects[0].Site == new GridPoint(6,8),
+    "Approved mockup anchor compiles into planned game location");
+Assert(new WorldPlanCompiler().Compile(visualPlan.Design!).Count == 1,
+    "Approved visual world plan compiles");
+var absentAnchor = new VisualWorldPlanner().Plan(visual,
+    new[] { visualDecisions[0] with { AnchorId = "missing" } },
+    "approved-town-design", new GridBounds(16,16), 4);
+Assert(!absentAnchor.IsValid && absentAnchor.Issues.Any(i => i.Code == "VISUAL_ANCHOR_MISSING"),
+    "No guessing placement for missing visual anchors");
+var unapprovedMockup = new VisualWorldPlanner().Plan(visual with { ApprovedRevision = "" },
+    visualDecisions, "approved-town-design", new GridBounds(16,16), 4);
+Assert(!unapprovedMockup.IsValid, "No world build without approved mockup revision");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
