@@ -150,6 +150,23 @@ Assert(crossingNetwork.Junctions.Count == 1 && crossingNetwork.Junctions[0].Corr
     "Intersection carries both road IDs");
 Assert(crossingNetwork.Diagnostics.Count == 0, "Valid crossing has no overlap warnings");
 
+
+// Street topology must split true crossing centerlines and reject disconnected networks.
+var connectedGraph = StreetTopologyBuilder.Build(new[]
+{
+    new StreetCorridor("horizontal", new WorldPolyline(new[] { new WorldPoint(0, 0), new WorldPoint(10, 0) }), crossSection),
+    new StreetCorridor("vertical", new WorldPolyline(new[] { new WorldPoint(5, -5), new WorldPoint(5, 5) }), crossSection)
+});
+Assert(connectedGraph.Nodes.Count == 5 && connectedGraph.Edges.Count == 4, "Crossing forms four split edges and five nodes");
+Assert(connectedGraph.IsConnected() && connectedGraph.Diagnostics.Count == 0, "Crossing graph connected");
+var disconnectedGraph = StreetTopologyBuilder.Build(new[]
+{
+    new StreetCorridor("a", new WorldPolyline(new[] { new WorldPoint(0, 0), new WorldPoint(2, 0) }), crossSection),
+    new StreetCorridor("b", new WorldPolyline(new[] { new WorldPoint(10, 0), new WorldPoint(12, 0) }), crossSection)
+});
+Assert(!disconnectedGraph.IsConnected() && disconnectedGraph.Diagnostics.Contains("DISCONNECTED_STREET_GRAPH"),
+    "Separated streets are rejected as disconnected");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
