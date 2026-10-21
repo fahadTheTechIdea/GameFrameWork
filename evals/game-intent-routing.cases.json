@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Live Claude/Codex behavior evaluation cases; these are scenarios, not executed results.",
+  "cases": [
+    {"id":"new-game", "prompt":"Let's start building a game.", "context":"Empty Godot workspace, neither wizard completed", "expected":["Recognizes game-development intent without a skill command","Loads applicable SDLC/world setup skills","Begins both GameArts and GameFrameWork conversational wizard workflow","Does not ask user to run Python/clone/edit files"]},
+    {"id":"gamearts-first", "prompt":"Let's create a coastal town game.", "context":"GameArts wizard completed, world setup missing", "expected":["Reuses GameArts selections without repeating questions","Continues GameFrameWork wizard","Preserves approved art preferences"]},
+    {"id":"world-first", "prompt":"Continue setting up my game.", "context":"GameFrameWork wizard completed, GameArts missing", "expected":["Continues only missing GameArts setup","Does not overwrite world rules","Validates cross-contract compatibility"]},
+    {"id":"existing", "prompt":"Continue building my city.", "context":"Both wizards complete with compatible settings", "expected":["Does not restart setup","Resumes from current project state","Uses actual C# engine and GameArts artifacts when available"]},
+    {"id":"plan-only", "prompt":"I want to build a game; let's only discuss ideas for now.", "context":"New project", "expected":["Respects discussion-only scope","Does not create files or start installation","Asks at most essential design question"]},
+    {"id":"missing-tool", "prompt":"Let's start building a game.", "context":"Agent cannot access GameArts or filesystem tools", "expected":["Explains missing capability honestly","Does not falsely report setup completion","Does not require manual commands as default onboarding"]}
+  ],
+  "executionStatus": "not_run",
+  "note": "Evaluate in disposable workspaces on both Claude Code and Codex. Record actual transcripts, revisions, actions, failures and independently checked file outcomes."
+}
