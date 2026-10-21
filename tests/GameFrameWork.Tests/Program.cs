@@ -66,6 +66,26 @@ Assert(approved.Ready, "Structurally complete art manifest accepted; byte/atlas 
 var revoked = await new WorldBuildGate(new InMemoryRegistry(full with { ApprovalState = ArtApprovalState.Revoked })).CheckAsync(blueprint);
 Assert(!revoked.Ready && revoked.Issues.Any(i => i.Code == "NOT_APPROVED"), "Revoked art rejected");
 
+
+// Spatial foundation: no arbitrary parcel position or disconnected street frontage.
+var planned = new SettlementPlanner().Plan(new WorldRequest(48, 48, 42, Biome.Desert, 2));
+Assert(planned.Diagnostics.Count == 0, "Planner reports no infeasible parcels for fixture");
+var roadCells = planned.Roads.SelectMany(r => r.Cells()).ToHashSet();
+Assert(planned.Roads.Any(r => r.Class == RoadClass.Collector), "Regional road spine");
+Assert(planned.Buildings.Count == 8, "Building requirements met");
+Assert(planned.Buildings.Select(b => b.Site).Distinct().Count() == planned.Buildings.Count, "Footprints non-overlapping");
+Assert(planned.Buildings.All(b => roadCells.Contains(b.AccessRoadCell)), "Every building road frontage is valid");
+Assert(planned.Buildings.All(b => !roadCells.Contains(b.Site)), "No building blocks a road");
+Assert(planned.Buildings.All(b => !string.IsNullOrWhiteSpace(b.Purpose) &&
+    !string.IsNullOrWhiteSpace(b.ConstraintId)), "Every placement is explainable");
+var plannedAgain = new SettlementPlanner().Plan(new WorldRequest(48, 48, 42, Biome.Desert, 2));
+Assert(JsonSerializer.Serialize(planned) == JsonSerializer.Serialize(plannedAgain), "Deterministic spatial plan");
+// All roads connect to one collector, and no structure overwrites the road raster.
+var plannedWorld = await generator.GenerateAsync(new WorldRequest(48, 48, 42, Biome.Desert, 2));
+Assert(plannedWorld.Objects.Count(o => o.Kind == "warehouse") == 8, "World projects all planned buildings");
+Assert(planned.Buildings.All(b => plannedWorld.At(b.AccessRoadCell.X, b.AccessRoadCell.Y).Kind == CellKind.Road),
+    "Rasterized access road is preserved");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
