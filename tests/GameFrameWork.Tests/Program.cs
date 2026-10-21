@@ -528,6 +528,9 @@ try
     var nativeResult = await new GameArtsBundleReader().ReadAsync(bundlePath);
     Assert(nativeResult.IsValid && nativeResult.Bundle!.Components.Count == 2,
         "Native GameArts component bundle parsed");
+    var bundleFiles = await new GameArtsBundleFileValidator().ValidateAsync(bundlePath);
+    Assert(bundleFiles.Any(e => e.StartsWith("ATLAS_MISSING")),
+        "Bundle rejects missing atlas files instead of treating references as verified");
     await File.WriteAllTextAsync(bundlePath, nativeJson.Replace("\"E\":\"door_e.atlas.json\"", "\"bad\":\"door_e.atlas.json\""));
     var missingDirection = await new GameArtsBundleReader().ReadAsync(bundlePath);
     Assert(!missingDirection.IsValid && missingDirection.Errors.Any(e => e.StartsWith("INCOMPLETE_COMPONENT_DIRECTIONS")),
