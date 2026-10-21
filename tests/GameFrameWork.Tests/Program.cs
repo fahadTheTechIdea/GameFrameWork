@@ -507,6 +507,34 @@ try
 }
 finally { Directory.Delete(artDir, recursive: true); }
 
+
+var bundleRoot = Path.Combine(Path.GetTempPath(), "gamearts-native-" + Guid.NewGuid().ToString("N"));
+Directory.CreateDirectory(bundleRoot);
+try
+{
+    var bundlePath = Path.Combine(bundleRoot, "sample.bundle.json");
+    var nativeJson = """
+    {
+      "schema_version":"1.0","asset_id":"gate-asset","directions":["S","E"],
+      "components":[
+        {"id":"base","parent":null,"mount":null,
+         "atlases":{"S":"base_s.atlas.json","E":"base_e.atlas.json"}},
+        {"id":"door","parent":"base","mount":"hinge",
+         "atlases":{"S":"door_s.atlas.json","E":"door_e.atlas.json"}}
+      ]
+    }
+    """;
+    await File.WriteAllTextAsync(bundlePath, nativeJson);
+    var nativeResult = await new GameArtsBundleReader().ReadAsync(bundlePath);
+    Assert(nativeResult.IsValid && nativeResult.Bundle!.Components.Count == 2,
+        "Native GameArts component bundle parsed");
+    await File.WriteAllTextAsync(bundlePath, nativeJson.Replace("\"E\":\"door_e.atlas.json\"", "\"bad\":\"door_e.atlas.json\""));
+    var missingDirection = await new GameArtsBundleReader().ReadAsync(bundlePath);
+    Assert(!missingDirection.IsValid && missingDirection.Errors.Any(e => e.StartsWith("INCOMPLETE_COMPONENT_DIRECTIONS")),
+        "Native bundle missing component direction rejected");
+}
+finally { Directory.Delete(bundleRoot, recursive: true); }
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
