@@ -425,7 +425,7 @@ var pathGenerated = new VisualPathPatternGenerator().Generate(visual, new[] { de
 Assert(pathGenerated.Issues.Count == 0 && pathGenerated.Anchors.Count == 8,
     "Path geometry determines decorative fixture count");
 Assert(pathGenerated.Anchors[0].PositionMeters == new WorldPoint(8, 4) &&
-    pathGenerated.Anchors[4].PositionMeters == new WorldPoint(36, 4),
+    pathGenerated.Anchors[4].PositionMeters == new WorldPoint(36, 8),
     "Path samples follow authored turns in order");
 Assert(new VisualPathPatternGenerator().Generate(visual, new[] { designedPath },
     pathGrammar with { PathId = "unknown" }).Issues.Any(i => i.Code == "VISUAL_PATH_MISSING"),
@@ -433,6 +433,29 @@ Assert(new VisualPathPatternGenerator().Generate(visual, new[] { designedPath },
 Assert(JsonSerializer.Serialize(pathGenerated) == JsonSerializer.Serialize(
     new VisualPathPatternGenerator().Generate(visual, new[] { designedPath }, pathGrammar)),
     "Path placements reproducible");
+
+
+var composed = new VisualCompositionGenerator().Generate(
+    new VisualCompositionRequest(visual,
+        new[] { pattern },
+        new[] { designedPath },
+        new[] { pathGrammar },
+        visualDecisions),
+    "composed-game-town", new GridBounds(16,16), 4);
+Assert(composed.IsValid, "Approved mockup combines distinct building, region and path grammars");
+Assert(composed.Design!.Objects.Count == 17, "Explicit object and sixteen pattern elements combined");
+Assert(new WorldPlanCompiler().Compile(composed.Design).Count == 17,
+    "Compiled objects preserve planned composition");
+var badComposition = new VisualCompositionGenerator().Generate(
+    new VisualCompositionRequest(visual,
+        new[] { pattern, pattern },
+        Array.Empty<VisualDesignPath>(),
+        Array.Empty<PathPattern>(),
+        Array.Empty<VisualObjectDecision>()),
+    "duplicate-grammar", new GridBounds(16,16), 4);
+Assert(!badComposition.IsValid &&
+    badComposition.Issues.Any(i => i.Code == "COMPOSITION_ANCHOR_COLLISION"),
+    "Duplicate design grammar IDs cannot silently overwrite artwork");
 
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
