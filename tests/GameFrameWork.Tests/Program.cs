@@ -1,5 +1,6 @@
 using System.Text.Json;
 using GameFrameWork.Core;
+using GameFrameWork.Core.Operations;
 using GameFrameWork.Worlds;
 using GameFrameWork.Godot;
 var generator = new DesertWorldGenerator();
@@ -64,6 +65,29 @@ var approved = await new WorldBuildGate(new InMemoryRegistry(full)).CheckAsync(b
 Assert(approved.Ready, "Structurally complete art manifest accepted; byte/atlas verification remains separate");
 var revoked = await new WorldBuildGate(new InMemoryRegistry(full with { ApprovalState = ArtApprovalState.Revoked })).CheckAsync(blueprint);
 Assert(!revoked.Ready && revoked.Issues.Any(i => i.Code == "NOT_APPROVED"), "Revoked art rejected");
+
+// Durable operational service contract test: log, audit and user-facing notification are separate sinks.
+var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
+try
+{
+    var logPath = Path.Combine(operationsDir, "log.jsonl");
+    var auditPath = Path.Combine(operationsDir, "audit.jsonl");
+    var notificationPath = Path.Combine(operationsDir, "notifications.jsonl");
+    var reporter = new WorldOperationReporter(new JsonLineOperationStore(logPath),
+        new JsonLineOperationStore(auditPath),
+        new ConsoleAndFileNotificationService(new JsonLineOperationStore(notificationPath)));
+    var evt = new OperationEvent("world.validation.failed", DateTimeOffset.UtcNow,
+        OperationSeverity.Warning, "tests", "world.validate", "correlation-test",
+        "Invalid placement rejected.", "test-world", "test-runner", "failed");
+    await reporter.ReportAsync(evt, notify: true);
+    foreach (var output in new[] { logPath, auditPath, notificationPath })
+    {
+        Assert(File.Exists(output), "Operation sink file created");
+        var stored = File.ReadAllText(output);
+        Assert(stored.Contains("world.validation.failed") && stored.Contains("correlation-test"), "Correlated operation persisted");
+    }
+}
+finally { if (Directory.Exists(operationsDir)) Directory.Delete(operationsDir, true); }
 Console.WriteLine("PASS: world model and art contract structural tests (not PNG/atlas/Godot runtime verification).");
 static void Assert(bool pass, string message)
 {
