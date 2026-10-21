@@ -87,6 +87,62 @@ Approval: mockup approval != production asset approval. Do not silently generate
 GameFrameWork.Core; .Geometry; .Graphs; .Rules; .Generation; .Terrain; .Hydrology; .Climate; .Biomes; .Ecology; .Settlements; .Roads; .Parcels; .Buildings; .Infrastructure; .Assets; .Animation; .Navigation; .Physics; .Godot; .CLI; .AgentTools; integration & property-based tests. Create modules incrementally, avoid premature dozens of empty projects.
 Canonical WorldDocument with spatial entity stream, graph stores, raster grids, asset registry and simulation events; versioned serialization and semantic validation. Godot dependency ONLY in adapter.
 
+## P4A. Complete public realm, landscape and accessories plan (mandatory before declaring settlements planned)
+
+**Scope:** A city/town/village/industrial area is not complete merely because buildings, roads and parcels exist. Before generating renderable assets, the engine must produce a **PublicRealmPlan** covering every applicable constructed and natural component: signs, street names, regulatory/wayfinding posts, signals, lamps, power/utility poles, crossings, pavement markings, curbs, gutters, drainage, sidewalks, bus stops, benches, bins, bollards, barriers, fences, walls, gates, railings, hydrants, bicycle stands, planters, flowerbeds, lawns/grass, shrubs, hedges, trees, gardens, parks, play areas (when profile permits), plazas, hardscape, water features, irrigation, parking/loading spaces and locale-specific accessories. The catalog is **open/extensible**; no hardcoded fixed set is the complete inventory.
+
+### Planning hierarchy and generation order
+1. Resolve region biome/climate, culture/era, settlement size/function, district use, road class, land ownership and maintenance/irrigation budgets.
+2. Generate continuous **right-of-way corridor geometry**, road lanes, intersections, sidewalks and separate frontage, pedestrian-through, furnishing and curb/buffer zones. Reserve collision-free accessibility corridors and clear intersection visibility.
+3. Derive **required functional objects**: intersection controls and crossings; roadway and pedestrian lighting coverage; street-name signs and directional posts; hydrants or equivalent emergency infrastructure where applicable; bus stops where transit exists; drainage structures at actual low points and catchments; utility poles/cabinets where the network design calls for them.
+4. Derive **managed landscape zones** on actual parcel setbacks, gardens, parks, medians, verges, courtyards and roadside furnishing bands. Choose canopy, shrubs, hedges, flowers, grass/turf/ground cover and hardscape by climate, soil, shade, slope, salinity, seasonal palette, biodiversity intent, use and maintenance. Preserve natural vegetation separately.
+5. Derive **optional amenities** from functional demand and space availability: benches near pedestrian activity and shade; bins near destinations and stops; bollards at pedestrian/vehicle conflicts; bicycle stands near access; planters where soil access is limited. Score comfort, access, safety and contextual style.
+6. Generate art requirements for every approved component, static or animated, using GameArts lifecycle: flowering/seasonal changes, swaying tree/shrub parts, traffic signals, illuminated lamps, moving barriers and opening gates all retain semantic state plus separate animated component art where appropriate.
+7. Run integrated geometry, ecological and accessibility validation; output unresolved-demand diagnostics rather than arbitrary placement or hidden omission.
+
+### Specific placement contracts
+
+| Feature family | Source of demand and placement anchor | Hard constraints | Outputs |
+| --- | --- | --- | --- |
+| Regulatory signs / street posts | Road approaches, junction rules, street naming, land use | Direction, visibility, approach orientation, clearance, local signage profile | Facing, message ID, mounting/attachment, collision |
+| Traffic lights / crossing signals | Controlled intersections and crossings | Conflict-free timing, sightlines, approach/crosswalk relationship | Signal controller, lamp states, animations, navigability |
+| Streetlights / pedestrian lamps | Required photometric or simplified coverage along roads, walks, plazas | Mounting space, tree-crown occlusion, utility access, clearance, light pollution profile | Light entity, illumination radius/cone, on/off/failure states |
+| Trees | Biome/urban vegetation community, street/park/garden shade objective | Mature crown/root spacing, soil volume, species viability, utilities, sightlines and clear pedestrian zone | Species, age/size, 2D height/occlusion, seasonal/wind animations |
+| Bushes, hedges, shrubs | Native habitat, buffers, parcel borders, garden design | Soil, water, sun/shade, maintainability, visibility, route clearance | Planting areas, species mixes, growth and pruning states |
+| Flowers / flowerbeds | Managed landscape palette, park/garden/median plan | Sun/shade, climate/season, irrigation, bedding footprint, paths | Beds/clusters with borders, blooming/season states, asset variants |
+| Grass, lawns, ground cover | Surface-use and land-cover classification | No placement on built pavement; water budget, shade, pedestrian wear, slope/erosion | Coverage polygon, material variation, mowing/drying states |
+| Gardens, parks, plazas | Parcel ownership, population catchment, amenities / cultural preference | Access, path network, hydrology, safety and usage zones | Paths, lawns/beds, seating, lighting, fences, irrigation |
+| Benches, bins, bike racks, kiosks | Footfall, stops, destinations, entrances | Furnishing zone, accessibility, sightlines, service clearances | Capacity, mount/orientation, service operations |
+| Drainage and utilities | Low points, runoff, service demand, network edges | Grade, runoff path, maintainable access, utility exclusions | Connected inlets, covers, poles, cabinets, valves |
+| Fences, walls, gates, barriers | Property boundaries, access control, hazards | Entrances, vehicle swept paths, emergency access and collision/nav states | Segment grammar, posts, animated component attachments |
+| Road markings and crossings | Lanes, turns, intersection movements, pedestrian graph | Legal geometry, connected crosswalk ends and orientation | Surface decals/tiles, guidance and navigation links |
+
+A city core, suburban district, town, village, historic neighborhood, desert industrial town and forest reserve use **different rule profiles and catalogs**, not only density multipliers. Missing objects must be explainable: e.g. no bench where no public access or room exists, no grass without viable ground or irrigation, no traffic signal at an uncontrolled rural junction. Defaults are illustrative, configured per game locale/era and not a claim of universal legal road standards.
+
+### C# deliverables
+- `PublicRealmProfile`, `StreetFurnitureCatalog`, `LandscapeCommunityProfile`, `SignRules`, `LightingPlan`, `GreenSpacePlan`, `PlantingBed`, `GroundCoverPolygon`, `UtilityPlacementPlan`.
+- `PublicRealmPlanner` consumes semantic street topology/corridors, intersection movements, parcels/buildings, land use, elevation/soil/moisture/sunlight, utility graphs and settlement profile; it **does not** sample map coordinates as final placement decisions.
+- `FeaturePlacement` records ID, parent, role, anchor, position/orientation, dimensional footprint, clearance envelope, objective and rule/version provenance, interactions, required GameArts asset/component IDs and engine adapter layer.
+- `SpatialReservationIndex` prevents cross-family conflicts (lamp vs mature tree, sign vs shrub, bench vs pedestrian route, gate vs driveway); staged planning must support backtracking/replanning with explicit unsatisfied requirements.
+- Godot exporter maps suitable static surfaces and ground-cover materials to TileMapLayers/TileSet atlases, and dynamic/multi-part props to component-based scenes, while preserving real collision, lights, occlusion, nav and measured atlas metadata.
+
+### Acceptance / golden fixtures
+1. Dense city block: legal street signs at proper approaches; safe accessible sidewalks; lamps provide prescribed coverage; tree pits/benches/bins do not collide or block entrances.
+2. Town residential road: consistent curb transitions, signs, lamps, yards, hedges, flowers, grass and gardens; footprints remain inside legal parcel zones.
+3. Desert village: xeric planting only where soil/water supports it; irrigated gardens only with irrigation source, no arbitrary lawns.
+4. Industrial district: signs, barriers, illumination and drainage respect truck access, hazard buffers and utilities; no decorative tree inside operating safety zones.
+5. Forest trail: native understory community, grasses/flowers in viable openings, wayfinding and safety furniture only at actual trail nodes.
+6. Automated edit: widening a road invalidates and replans affected sidewalks, signs, street furniture, planting pits, drainage and access; unaffected areas keep stable IDs.
+7. Every generated item has a placement rationale and passes inter-family spatial-conflict checks; otherwise reports a reasoned unmet requirement.
+
+### Research sources
+- [NACTO Sidewalk Zones](https://nacto.org/publication/urban-street-design-guide/street-design-elements/sidewalks/sidewalk-zones/): distinct frontage, through, furniture and buffer zones.
+- [NACTO Sidewalk Design](https://nacto.org/publication/urban-street-design-guide/street-design-elements/sidewalks/sidewalk-design/): width, clear zone, tree and street furniture interactions.
+- [NACTO Street Design Elements](https://nacto.org/publication/urban-street-design-guide/street-design-elements/): curb extensions, stops, stormwater and road surface treatments.
+- [Godot 4.6 TileSet](https://docs.godotengine.org/en/4.6/classes/class_tileset.html): atlas/scene sources and physics/navigation/occlusion/custom data layers.
+
+**Status:** planning contract only. None of these public-realm planners or integration tests have yet been implemented or run.
+
 ## 9. Delivery stages & exit gates
 P0 — Foundation hardening: compile existing code, inspect baseline and GameArts schemas, build solution, unit tests, CI, profile version pin, fix prototype arbitrary placement and annotate limitations. **Gate:** clean reproducible build, tests and architecture ADR.
 P1 — Geometry/rules/DAG: continuous meter geometry, immutable typed features, graph abstraction, policy resolver with priorities, constraint solver, diagnostics, stable object IDs/stage RNG/invalidation. **Gate:** invalid placements rejected with explainable diagnostics, deterministic fixtures.
