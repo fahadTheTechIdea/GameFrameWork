@@ -313,6 +313,33 @@ var overlapping = requiredDesign with { Objects = new[]
 Assert(new WorldDesignValidator().Validate(overlapping).Issues.Any(i => i.Code == "ROOT_FOOTPRINT_CONFLICT"),
     "Two independent objects cannot occupy identical root position");
 
+
+var coordinator = new WorldPlanCoordinator();
+var disciplines = new[]
+{
+    new DesignDiscipline("objects", new[] { "parcels", "transport" }),
+    new DesignDiscipline("transport", new[] { "terrain" }),
+    new DesignDiscipline("parcels", new[] { "transport" }),
+    new DesignDiscipline("terrain", Array.Empty<string>())
+};
+var coordinated = coordinator.Coordinate(disciplines);
+Assert(coordinated.IsValid &&
+    string.Join(",", coordinated.ExecutionOrder) == "terrain,transport,parcels,objects",
+    "Design dependencies control execution order");
+var missingDesign = coordinator.Coordinate(new[]
+{
+    new DesignDiscipline("lighting", new[] { "street-plan" })
+});
+Assert(!missingDesign.IsValid && missingDesign.Issues.Any(i => i.Code == "DESIGN_DEPENDENCY_MISSING"),
+    "Missing street design blocks lighting");
+var circularDesign = coordinator.Coordinate(new[]
+{
+    new DesignDiscipline("terrain", new[] { "roads" }),
+    new DesignDiscipline("roads", new[] { "terrain" })
+});
+Assert(!circularDesign.IsValid && circularDesign.Issues.Any(i => i.Code == "DESIGN_DEPENDENCY_CYCLE"),
+    "Circular design dependencies rejected");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
