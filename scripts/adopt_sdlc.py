@@ -10,7 +10,6 @@ Does not overwrite AGENTS.md, CLAUDE.md or existing world/GameArts skills.
 import argparse
 from pathlib import Path
 import shutil
-import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -64,8 +63,13 @@ def main():
         if args.write:
             for src, dest in paths:
                 dest.parent.mkdir(parents=True, exist_ok=True)
-                with src.open("rb") as inp, dest.open("xb") as out:
-                    shutil.copyfileobj(inp, out)
+                with dest.open("xb") as out:
+                    if dest.relative_to(ROOT).parts[0] in HOSTS and dest.relative_to(ROOT).parts[1] == "skills":
+                        body = src.read_text(encoding="utf-8").replace("Read `skills/", "Read `.agentic-framework/skills/").replace("The framework root is `.`.", "The framework root is `.agentic-framework/`.")
+                        out.write(body.encode("utf-8"))
+                    else:
+                        with src.open("rb") as inp:
+                            shutil.copyfileobj(inp, out)
             print("Installed. Review .agentic-framework and update project routing instructions.")
         return 0
     except (ValueError, OSError) as e:
