@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GameFrameWork project settings",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "world",
+    "godot"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "world": {
+      "type": "object",
+      "required": [
+        "types"
+      ],
+      "properties": {
+        "types": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "settlementProfiles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "seed": {
+          "type": "integer"
+        },
+        "regionMeters": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "streaming": {
+          "type": "boolean"
+        },
+        "environmentRules": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    },
+    "godot": {
+      "type": "object",
+      "properties": {
+        "projectPath": {
+          "type": "string"
+        },
+        "targetVersion": {
+          "type": "string"
+        },
+        "navigationAgents": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "generateCollisions": {
+          "type": "boolean"
+        },
+        "generateHeight": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "gameArts": {
+      "type": "object",
+      "properties": {
+        "settingsPath": {
+          "const": ".gamearts/project.json"
+        },
+        "standardVersion": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
