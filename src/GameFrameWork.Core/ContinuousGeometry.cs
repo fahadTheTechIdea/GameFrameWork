@@ -3,7 +3,7 @@ namespace GameFrameWork.Core.Geometry;
 /// <summary>Planar coordinates in world meters, independent of rendered sprite scale.</summary>
 public readonly record struct WorldPoint(double X, double Y)
 {
-    public double DistanceTo(WorldPoint other) => Math.Hypot(X - other.X, Y - other.Y);
+    public double DistanceTo(WorldPoint other) => Math.Sqrt((X - other.X) * (X - other.X) + (Y - other.Y) * (Y - other.Y));
     public WorldPoint Offset(double dx, double dy) => new(X + dx, Y + dy);
 }
 public sealed record WorldPolyline(IReadOnlyList<WorldPoint> Points)
@@ -71,7 +71,7 @@ public sealed record StreetCorridor(string Id, WorldPolyline Centerline, RoadCro
             var b = Centerline.Points[i];
             var dx = b.X - a.X;
             var dy = b.Y - a.Y;
-            var len = Math.Hypot(dx, dy);
+            var len = Math.Sqrt(dx * dx + dy * dy);
             var nx = -dy / len * half;
             var ny = dx / len * half;
             edges.Add((a.Offset(nx, ny), b.Offset(nx, ny),
