@@ -184,6 +184,24 @@ var disconnectedGraph = StreetTopologyBuilder.Build(new[]
 Assert(!disconnectedGraph.IsConnected() && disconnectedGraph.Diagnostics.Contains("DISCONNECTED_STREET_GRAPH"),
     "Separated streets are rejected as disconnected");
 
+
+// Buildable block extraction from four orthogonal road corridors.
+StreetCorridor RectRoad(string id, double ax, double ay, double bx, double by) =>
+    new(id, new WorldPolyline(new[] { new WorldPoint(ax, ay), new WorldPoint(bx, by) }), crossSection);
+var enclosed = UrbanBlockExtractor.Extract(new[]
+{
+    RectRoad("north", 0, 0, 100, 0), RectRoad("south", 0, 80, 100, 80),
+    RectRoad("west", 0, 0, 0, 80), RectRoad("east", 100, 0, 100, 80)
+});
+Assert(enclosed.Blocks.Count == 1 && enclosed.Diagnostics.Count == 0, "Enclosed road rectangle yields one block");
+Assert(Math.Abs(enclosed.Blocks[0].AreaSquareMeters - (100 - 11.3) * (80 - 11.3)) < 1e-7,
+    "Block interior accounts for road corridor width");
+Assert(UrbanBlockExtractor.Extract(new[]
+{
+    RectRoad("north", 0, 0, 100, 0), RectRoad("south", 0, 80, 100, 80),
+    RectRoad("west", 0, 0, 0, 80)
+}).Blocks.Count == 0, "Missing road edge cannot form a closed block");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
