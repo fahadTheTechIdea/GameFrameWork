@@ -11,6 +11,17 @@ This repository's C#/.NET code, Claude/Codex skills, Godot adapters, tests, and 
 
 Use that framework's adoption installer in preview mode before incorporating its full skill package into this repository. Preserve any existing AGENTS.md, CLAUDE.md, GameArts skills, and project changes. This file is a project-specific routing rule, not a substitute for the canonical SDLC policies.
 
+## Automatic conversational game-intent routing
+
+When a user says something like **"Let's start building a game"**, "I want to make a game", "Create a 2D city builder", "Build a Godot game", or "Continue my game", treat it as game-development intent even if no skill name is mentioned. This routing is semantic, NOT a keyword-only exact match.
+
+1. Inspect the active project and existing `.gamearts/project.json`, `.gameframework/project.json`, and `.gameframework/setup-state.json` if present. Identify whether the user is starting, continuing, modifying, or discussing a game.
+2. Follow the canonical SDLC orchestrator for risk-appropriate engineering; route world creation to `.agents/skills/world-generator/SKILL.md` and first-run setup to `.agents/skills/gameframework-project-setup/SKILL.md`. Invoke the canonical GameArts project-setup skill where installed. Do not duplicate its wizard.
+3. For a **new game or incomplete setup**, guide the user through both GameArts and GameFrameWork wizards, in either order; reuse saved answers and cross-validate. Ask small conversational questions only when truly needed.
+4. For an **existing configured game**, load configuration and continue the requested work without restarting either wizard. If the request is just conceptual discussion or plan-only, respect that scope rather than creating files.
+5. Agents perform authorized installation, code execution and file management themselves; do not instruct users to run shell commands, clone repos, edit JSON or invoke specific skills as the normal onboarding path.
+6. Do not silently install software outside an authorized workspace or claim access to missing agent tools. Report precise limitations and maintain honest completion status. Actual agent behavior requires live Claude/Codex evaluation.
+
 ## Workflow and authorization
 1. Inspect repository state, existing code, tests, active docs and SDK versions first.
 2. Record measurable acceptance criteria, material assumptions and risk-proportionate design decisions before implementation.
