@@ -131,6 +131,25 @@ AssertThrows<ArgumentOutOfRangeException>(() => new RoadCrossSection(-1, 2, 2, 2
 AssertThrows<ArgumentException>(() => new RoadCrossSection(3, 2, double.NaN, 2, 0, 0).Validate(),
     "Nonfinite sidewalk width rejected");
 
+
+// Continuous street intersection regression scenarios
+var crossing = PlanarIntersections.Intersect(new(0, 0), new(10, 0), new(5, -5), new(5, 5));
+Assert(crossing.Kind == IntersectionKind.Point && crossing.Point is { X: 5, Y: 0 }, "Orthogonal road intersection");
+Assert(PlanarIntersections.Intersect(new(0, 0), new(10, 0), new(0, 2), new(10, 2)).Kind == IntersectionKind.None,
+    "Parallel roads do not intersect");
+Assert(PlanarIntersections.Intersect(new(0, 0), new(10, 0), new(5, 0), new(15, 0)).Kind ==
+    IntersectionKind.CollinearOverlap, "Overlapping road centerlines detected");
+Assert(PlanarIntersections.Intersect(new(0, 0), new(5, 0), new(5, 0), new(5, 5)).Kind ==
+    IntersectionKind.Point, "Endpoint joins are intersections");
+var crossingNetwork = StreetNetworkAnalyzer.Analyze(new[]
+{
+    new StreetCorridor("east-west", new WorldPolyline(new[] { new WorldPoint(0, 0), new WorldPoint(10, 0) }), crossSection),
+    new StreetCorridor("north-south", new WorldPolyline(new[] { new WorldPoint(5, -5), new WorldPoint(5, 5) }), crossSection)
+});
+Assert(crossingNetwork.Junctions.Count == 1 && crossingNetwork.Junctions[0].Corridors.Count == 2,
+    "Intersection carries both road IDs");
+Assert(crossingNetwork.Diagnostics.Count == 0, "Valid crossing has no overlap warnings");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
