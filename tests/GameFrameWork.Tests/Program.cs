@@ -283,6 +283,36 @@ Assert(reserved.TryReserve(new WorldPoint(5, 0), 2), "Separated accessory allowe
 Assert(JsonSerializer.Serialize(new PublicRealmPlanner().Plan(new[] { publicStreet }, publicRules)) ==
     JsonSerializer.Serialize(publicPlan), "Public realm deterministic");
 
+
+var requiredDesign = new WorldDesignPlan("planned-world", new GridBounds(16, 16), new[]
+{
+    new PlannedWorldObject("depot", "warehouse", new GridPoint(3, 4),
+        "service goods transport", "industrial-program-v1", "planned-world"),
+    new PlannedWorldObject("depot-door", "door", new GridPoint(3, 4),
+        "accessible depot entry", "door-component-v1", "planned-world", "depot", "closed", "door-open")
+});
+var constructed = new WorldPlanCompiler().Compile(requiredDesign);
+Assert(constructed.Count == 2, "Valid design compiles parent and component");
+var missingPurpose = requiredDesign with { Objects = new[]
+{
+    requiredDesign.Objects[0] with { Purpose = "" }
+}};
+AssertThrows<WorldPlanException>(() => new WorldPlanCompiler().Compile(missingPurpose),
+    "Missing design purpose blocks construction");
+var missingParent = requiredDesign with { Objects = new[]
+{
+    requiredDesign.Objects[1] with { ParentObjectId = "unknown" }
+}};
+Assert(new WorldDesignValidator().Validate(missingParent).Issues.Any(i => i.Code == "PARENT_NOT_FOUND"),
+    "Orphan component rejected");
+var overlapping = requiredDesign with { Objects = new[]
+{
+    requiredDesign.Objects[0],
+    requiredDesign.Objects[0] with { Id = "unrelated" }
+}};
+Assert(new WorldDesignValidator().Validate(overlapping).Issues.Any(i => i.Code == "ROOT_FOOTPRINT_CONFLICT"),
+    "Two independent objects cannot occupy identical root position");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
