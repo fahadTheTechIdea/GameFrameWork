@@ -43,3 +43,10 @@ Rules are world/biome/settlement/district/parcel/object scoped; every placement 
 
 ## Current baseline caution
 The initial generator contains simplified pseudo-random terrain and settlement positions, and Godot exporter only creates a scene skeleton. They are research/prototype artifacts, not compliance with final world-placement, art or functional Godot acceptance criteria.
+
+## Primary world-generation invariant: game mockup fidelity plus intentional design
+
+The approved GameArts mockup and saved game art profile are the **primary visual design source of truth** for world creation. Every object (terrain feature, structure, door/window, road, streetlight, sign, vegetation, grass, flower, vehicle, decorative detail, etc.) must be derived from a traceable scene/region/feature anchor or a coherent style-compatible design grammar. A planner must produce explicit purpose, parent/region, constraints, position/footprint and visual source provenance *before* a compiler places anything. Do not search for empty positions or scatter objects randomly, including seeded random placement. Resolve clashes by revising the game-world design, not by placing objects arbitrarily. Test style and composition fidelity against the approved mockup, and preserve playable movement/collision and animation.
+
+This is a **game** framework: prioritize intended art style, composition, game readability and interactions. Real-world traffic engineering, photometric illumination coverage, physical drainage and other realism optimization are opt-in simulation requirements only, never default acceptance gates. Existing distance-based streetlight, urban buildings and similar routines remain prototypes until refactored to use the visual design plan.
+
