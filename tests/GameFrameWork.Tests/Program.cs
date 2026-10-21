@@ -401,6 +401,18 @@ var unapprovedMockup = new VisualWorldPlanner().Plan(visual with { ApprovedRevis
     visualDecisions, "approved-town-design", new GridBounds(16,16), 4);
 Assert(!unapprovedMockup.IsValid, "No world build without approved mockup revision");
 
+
+var pattern = new RegionPattern("garden-hedge", "square", "hedge", "define garden boundary", 8, 4, "approved-garden-row-v1");
+var repeated = new VisualRegionPatternGenerator().Generate(visual, pattern);
+Assert(repeated.Issues.Count == 0 && repeated.Decisions.Count == 8,
+    "Approved visual region produces repeated planned hedge elements");
+var mergedVisual = visual with { Anchors = visual.Anchors.Concat(repeated.GeneratedAnchors).ToArray() };
+var repeatedWorld = new VisualWorldPlanner().Plan(mergedVisual, repeated.Decisions,
+    "hedge-plan", new GridBounds(16,16), 4);
+Assert(repeatedWorld.IsValid, "Generated grammar anchors compile through visual world planning");
+Assert(new VisualRegionPatternGenerator().Generate(visual, pattern with { RegionId = "unknown" })
+    .Issues.Any(i => i.Code == "REGION_MISSING"), "Unknown region blocks pattern");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
