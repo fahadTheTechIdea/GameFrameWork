@@ -1,6 +1,7 @@
 using System.Text.Json;
 using GameFrameWork.Core;
 using GameFrameWork.Core.Operations;
+using GameFrameWork.Core.Geometry;
 using GameFrameWork.Worlds;
 using GameFrameWork.Godot;
 var generator = new DesertWorldGenerator();
@@ -111,6 +112,25 @@ Assert(!frontageRule.IsSatisfied(new GridPoint(3, 3), new GridPoint(1, 1),
 Assert(SpatialValidation.Validate(new GridBounds(48, 48), planned.Roads,
     planned.Buildings).Count == 0, "Planned roads and lots validate");
 
+
+// Continuous world-meter geometry checks
+var crossSection = new RoadCrossSection(3.5, 2, 2.0, 2.0, .15, .15);
+var street = new StreetCorridor("main-street",
+    new WorldPolyline(new[] { new WorldPoint(0, 0), new WorldPoint(10, 0) }), crossSection);
+Assert(Math.Abs(crossSection.TotalWidthMeters - 11.3) < 1e-9, "Street cross-section width");
+Assert(Math.Abs(street.Centerline.LengthMeters() - 10) < 1e-9, "World-meter centerline length");
+var streetEdges = street.SegmentEdges();
+Assert(streetEdges.Count == 1, "Road segment edges generated");
+Assert(Math.Abs(streetEdges[0].LeftStart.Y - 5.65) < 1e-9, "Left road offset");
+Assert(Math.Abs(streetEdges[0].RightEnd.Y + 5.65) < 1e-9, "Right road offset");
+Assert(street.Bounds().Min.X < 0 && street.Bounds().Max.X > 10, "Road bounds include full cross-section");
+AssertThrows<ArgumentException>(() => new WorldPolyline(new[] { new WorldPoint(1,1), new WorldPoint(1,1) }).Validate(),
+    "Duplicate centerline points rejected");
+AssertThrows<ArgumentOutOfRangeException>(() => new RoadCrossSection(-1, 2, 2, 2, 0, 0).Validate(),
+    "Negative lane width rejected");
+AssertThrows<ArgumentException>(() => new RoadCrossSection(3, 2, double.NaN, 2, 0, 0).Validate(),
+    "Nonfinite sidewalk width rejected");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
@@ -134,6 +154,11 @@ try
 }
 finally { if (Directory.Exists(operationsDir)) Directory.Delete(operationsDir, true); }
 Console.WriteLine("PASS: world model and art contract structural tests (not PNG/atlas/Godot runtime verification).");
+static void AssertThrows<T>(Action action, string message) where T : Exception
+{
+    try { action(); } catch (T) { return; }
+    throw new Exception("Failed: " + message);
+}
 static void Assert(bool pass, string message)
 {
     if (!pass) throw new Exception("Failed: " + message);
