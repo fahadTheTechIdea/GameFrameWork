@@ -50,3 +50,6 @@ The approved GameArts mockup and saved game art profile are the **primary visual
 
 This is a **game** framework: prioritize intended art style, composition, game readability and interactions. Real-world traffic engineering, photometric illumination coverage, physical drainage and other realism optimization are opt-in simulation requirements only, never default acceptance gates. Existing distance-based streetlight, urban buildings and similar routines remain prototypes until refactored to use the visual design plan.
 
+
+## Final generation responsibility
+The **C# engine owns actual world design algorithms and generation**, including deliberate positioning of every terrain, settlement, building, road, planting and accessory element. Claude/Codex orchestrates and GameArts supplies approved visual mockups/style/art and animation atlases. The engine uses the approved mockup's anchors **and compositional regions/design grammars** to calculate precise positions; explicit per-object anchors are not mandatory for repeated procedural details. No arbitrary scattering or vacant-cell fallback. Godot adapter compiles and runs the generated result. Detailed real-life infrastructure simulation is optional unless gameplay requires it.
