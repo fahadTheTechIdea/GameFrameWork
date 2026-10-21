@@ -12,8 +12,8 @@ Scope: foundational C# world data, approved art manifest contracts, CLI, Godot s
 | GitHub Actions build and smoke checks | .github/workflows/dotnet-ci.yml | CI on main, Windows and Linux | CONFIGURED, NOT VERIFIED | Confirm workflow runs and inspect build log before PASS |
 | Art manifest structure | Core art types + tests | Negative tests for missing/revoked/incomplete sheets | TESTS AUTHORED, NOT RUN | Does not inspect actual images or verify hashes |
 | Godot TileMapLayer rendering | Godot exporter | Godot headless import plus in-engine inspection | NOT RUN | No tile atlas or painted cells yet |
-| Shared logging/audit/notifications | C# engine host and CLI | Operational service coverage and observable failure cases | NOT IMPLEMENTED | Do not claim SDLC application compliance |
-| Full SDLC adoption installation | agentic-sdlc-framework/scripts/adopt.py | Preview collision free then install pinned snapshot | NOT RUN | Existing agent skills and instructions must be preserved; current source is linked by policies |
+| Shared logging/audit/notifications | Core/OperationalServices.cs + CLI | JSONL sink smoke test authored | IMPLEMENTED IN CLI; TESTS NOT RUN | Single-process file sinks; no long-running multi-process coordination, retention/redaction policies or service-wide coverage |
+| Full SDLC adoption installation | scripts/adopt_sdlc.py | Run from independent canonical checkout: preview, review, then --write | HELPER COMMITTED; INSTALL NOT RUN | Network checkout unavailable; installer has not been tested or executed; source pin/commit must be recorded |
 | Live Claude and Codex skill evaluations | .agents and .claude | Host-integration behavior tests | NOT RUN | Must evaluate live workflows separately |
 
 ## Architecture and quality observations
@@ -24,7 +24,7 @@ Scope: foundational C# world data, approved art manifest contracts, CLI, Godot s
 
 ## Next engineering tasks
 1. Inspect actual GitHub CI run evidence and repair any build/test failures on main.
-2. Add shared log, audit and notification contracts/implementations at operational boundaries, with safe structured events and testable failure behavior.
+2. Finish shared operational services with robust redaction, retention, multiple-process concurrency and wider event coverage; then run the authored tests.
 3. Adopt SDLC skills through a collision-aware reviewed installer, without overwriting GameArts/world skills.
 4. Implement real GameArts approved-art adapter, hash checks and atlas validation; then replace prototype placement with constraint-driven geometry.
 
