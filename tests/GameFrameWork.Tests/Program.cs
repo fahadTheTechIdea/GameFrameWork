@@ -202,6 +202,21 @@ Assert(UrbanBlockExtractor.Extract(new[]
     RectRoad("west", 0, 0, 0, 80)
 }).Blocks.Count == 0, "Missing road edge cannot form a closed block");
 
+
+// Polygon validity and minimum-frontage parcel subdivision
+var parcels = FrontageParcelPlanner.Subdivide(enclosed.Blocks[0], 20, 8);
+Assert(parcels.Diagnostics.Count == 0 && parcels.Parcels.Count == 4,
+    "Block subdivides into four purpose-defined frontages");
+Assert(parcels.Parcels.All(p => p.Boundary.SignedArea() > 0), "Parcel geometry valid");
+Assert(Math.Abs(parcels.Parcels.Sum(p => p.Boundary.SignedArea()) -
+    enclosed.Blocks[0].AreaSquareMeters) < 1e-7, "Parcel coverage conserves buildable area");
+Assert(parcels.Parcels.All(p => p.StreetAccess.Y == enclosed.Blocks[0].Boundary[0].Y),
+    "Every parcel has a street-facing anchor");
+AssertThrows<ArgumentException>(() => new WorldPolygon(new[]
+{
+    new WorldPoint(0,0), new WorldPoint(10,10), new WorldPoint(0,10), new WorldPoint(10,0)
+}).Validate(), "Bow-tie polygon rejected");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
