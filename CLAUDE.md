@@ -8,3 +8,9 @@ For world-specific work, read `.claude/skills/world-generator/SKILL.md` and the 
 
 Recognize ordinary requests such as **"Let's start building a game"**, "I want to make a city-building game", and "Continue my game" without requiring `/sdlc-orch`, `/world-generator`, or an exact trigger phrase. Follow the routing rules in `AGENTS.md` and the canonical SDLC orchestrator. For a new or partly configured game, coordinate the **canonical GameArts wizard** and **GameFrameWork wizard** in either order, resuming existing settings; for an existing game, do not restart setup. The agent performs authorized technical setup internally, not the user. Respect discussion-only or plan-only requests.
 
+
+
+## Game visual-design source of truth
+
+When generating a game world, the selected GameArts style and approved mockup govern composition, appearance, object families, density, placement grammar and moving-part inventory. Every object requires a validated design-plan source/anchor and gameplay coherence; never scatter arbitrary or merely empty-space candidates. Photometric lighting, regulatory street signs or civil-engineering realism are optional user-selected simulation mechanics, not default objectives. Refer to the master plan's "Governing game-world rule" section.
+
