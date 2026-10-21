@@ -2,6 +2,7 @@ using System.Text.Json;
 using GameFrameWork.Core;
 using GameFrameWork.Core.Operations;
 using GameFrameWork.Core.Geometry;
+using GameFrameWork.Core.Planning;
 using GameFrameWork.Worlds;
 using GameFrameWork.Godot;
 var generator = new DesertWorldGenerator();
@@ -245,6 +246,23 @@ Assert(!tower.IsFeasible && tower.Diagnostics.Contains("INSUFFICIENT_BUILDABLE_E
     "Tower denied on undersized town parcel");
 AssertThrows<ArgumentException>(() => new BuildingEnvelopeRules("house", -1, 1, 1, 8, 8).Validate(),
     "Negative setbacks rejected");
+
+
+// Settlement identity selects functional building programs, not arbitrary sprites.
+var programPlanner = new BuildingProgramPlanner(ExampleBuildingCatalog.Create());
+var villageProgram = programPlanner.Plan(new(SettlementClass.Village, SettlementRole.Agricultural, 200));
+var townProgram = programPlanner.Plan(new(SettlementClass.Town, SettlementRole.Commercial, 200));
+var cityProgram = programPlanner.Plan(new(SettlementClass.City, SettlementRole.Industrial, 200));
+Assert(villageProgram.Diagnostics.Count == 0 && townProgram.Diagnostics.Count == 0 &&
+    cityProgram.Diagnostics.Count == 0, "Baseline settlement profiles have housing");
+Assert(villageProgram.Needs.Any(n => n.DefinitionId == "village-house"), "Village houses present");
+Assert(!villageProgram.Needs.Any(n => n.DefinitionId == "apartment"), "No city apartments in village");
+Assert(townProgram.Needs.Any(n => n.DefinitionId == "townhouse"), "Town housing selected");
+Assert(cityProgram.Needs.Any(n => n.DefinitionId == "apartment") &&
+    cityProgram.Needs.Any(n => n.DefinitionId == "factory"), "Industrial city program selected");
+Assert(!townProgram.Needs.Any(n => n.DefinitionId == "factory"), "No unrelated city factory in commercial town");
+Assert(JsonSerializer.Serialize(programPlanner.Plan(new(SettlementClass.Village, SettlementRole.Agricultural, 200))) ==
+    JsonSerializer.Serialize(villageProgram), "Building demand reproducible");
 
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
