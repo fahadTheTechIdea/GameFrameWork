@@ -340,6 +340,19 @@ var circularDesign = coordinator.Coordinate(new[]
 Assert(!circularDesign.IsValid && circularDesign.Issues.Any(i => i.Code == "DESIGN_DEPENDENCY_CYCLE"),
     "Circular design dependencies rejected");
 
+
+var integrated = new SettlementDesignPipeline().Build(new WorldRequest(48, 48, 42, Biome.Desert, 2));
+Assert(integrated.Settlement.Buildings.Count == 8, "Integrated settlement has planned building demand");
+Assert(integrated.Streets.Count == integrated.Settlement.Roads.Count, "Street geometry follows transport plan");
+Assert(integrated.PublicRealm.Features.All(f => integrated.Streets.Any(s => s.Id == f.ParentId)),
+    "Public realm features reference planned streets");
+Assert(new WorldDesignValidator().Validate(integrated.Design).IsValid, "Integrated object plan validates");
+Assert(new WorldPlanCompiler().Compile(integrated.Design).Count == 16,
+    "Integrated world compiles buildings with attached gates");
+Assert(JsonSerializer.Serialize(integrated) ==
+    JsonSerializer.Serialize(new SettlementDesignPipeline().Build(new WorldRequest(48,48,42,Biome.Desert,2))),
+    "Integrated settlement deterministic");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
