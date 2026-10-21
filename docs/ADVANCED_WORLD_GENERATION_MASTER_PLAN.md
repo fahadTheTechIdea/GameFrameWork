@@ -35,6 +35,31 @@ For **all** applicable building, structure, vehicle and other visual assets: det
 - Track separate versions of WorldFrameWork/engine, skill pack, GameArtsSkills standard, Godot target and asset profile. Detect incompatibilities before writes.
 - Avoid circular dependency: GameArtsSkills owns artwork generation standards, GameFrameWork owns world semantics, placement and compilation, SDLC framework owns engineering process.
 
+## Governing game-world rule: mockup fidelity AND planned placement (2026-10-21)
+
+Both requirements are mandatory and complementary:
+
+1. **Approved visual blueprint**: GameArts' approved world/scene mockup plus saved art profile define camera/projection, style, palette, spatial composition, density, focal hierarchy, geometry silhouettes, props, terrain treatment and animation candidates.
+2. **Purposeful layout blueprint**: a game-oriented world design plan maps each visible object to an explicit composition role, parent feature, attachment, region or design grammar; positions are computed from authored mockup anchors and coherent algorithms. **No random scattering, no searching for any empty tile and placing props there.**
+3. **Game-playable compiler**: construction instantiates the approved plans without inventing or relocating positions; navigation, collision, layer/occlusion and animation contracts are validated. Unrealistic but stylistically intentional game layouts are allowed when coherent and playable.
+4. **Optional simulation**: real-world photometric light coverage, traffic law, drainage engineering and detailed ecological simulation must be selected as gameplay/simulation features, not applied as universal defaults.
+
+### Placement examples
+- **Streetlights/signposts**: derive from the approved scene's road-decoration rhythm, road junction composition, and signage/signlight archetype in the visual style profile; plan coherent repeated offsets and visual rhythm, avoid overlaps and obstructed paths. No photometric optimization unless requested.
+- **Buildings**: derive from settlement/village/city role and game-story visual grammar, district silhouettes, approved building archetypes and footprints, then anchor to designed blocks and entrances. Do not scatter houses or force arbitrary building counts.
+- **Trees, bushes, flowers and grass**: derive from mockup's groves, clusters, garden beds, hedgerows, lawn polygons, forest stands, negative-space composition, and world biome profile. Within those planned regions, use coherent design algorithms (clusters/rows/edge-following/coverage masks), not uniform random point distributions.
+- **Fences/gates/doors/windows**: derive from building or plot design, named anchors, openings and repeated architectural module patterns; separate moving parts and atlases under GameArts rules.
+- **Benches, bins and other accessories**: derive from plazas, designed paths, destinations and stylistic set-dressing grammar with clear parent ownership and gameplay clearance.
+- **Terrain, water, roads and islands**: derive from world/scene layout design, generation grammars, and terrain shape constraints, while respecting the authored silhouette and focal composition.
+- **Vehicles/machinery**: derive from facility purpose, designed service roads/parking/interaction positions and animated component attachment points.
+
+### Mandatory enforceable pipeline
+User intent + both setup wizards -> approved GameArts mockup -> mockup analysis extracts `VisualWorldBlueprint` -> plan each feature from visual anchor/region/grammar and explicit purpose -> cross-discipline coherence and overlap checks -> validated, immutable object placement manifest -> approved source assets / separate animated component sheets + measured atlases -> Godot assembly -> screenshot/scene comparison and gameplay tests.
+
+Every `PlannedWorldObject` should ultimately store a **visual source reference** (mockup ID/revision + feature/region/anchor), a planning algorithm/rule ID, parent relationship, purposeful role, final position/footprint and validation evidence. If the approved mockup is abstract or ambiguous, the planner may extrapolate through a documented style-consistent grammar and flag differences; never claim direct mockup fidelity from guessed anchors.
+
+**Never treat geometric, ecological or real-world infrastructure plausibility as a replacement for game-art composition.** The user wants planned *game-world design*, not real-world city engineering. Update or replace existing fixed-spacing light/sign or arbitrary terrain/warehouse routines when implementing this contract; they remain prototypes.
+
 ## 1. Product objective
 Generate complete, coherent and editable 2D worlds including cities, towns, villages, wilderness, forests, deserts, islands, coasts, mountains, industrial facilities and mixtures of these. All objects have justified positions; every rule is world/region/settlement/district/parcel/object scoped. Outputs include inspectable semantic world records, visual mockups (approved via GameArtsSkills), source graphics and measured companion atlases, static TileMapLayers and dynamic scenes, route/navigation/physics/height/occlusion/lighting and validation evidence. No random scattering, and no false game-ready claims.
 
