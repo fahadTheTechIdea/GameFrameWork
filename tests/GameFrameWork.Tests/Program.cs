@@ -413,6 +413,27 @@ Assert(repeatedWorld.IsValid, "Generated grammar anchors compile through visual 
 Assert(new VisualRegionPatternGenerator().Generate(visual, pattern with { RegionId = "unknown" })
     .Issues.Any(i => i.Code == "REGION_MISSING"), "Unknown region blocks pattern");
 
+
+var designedPath = new VisualDesignPath("garden-border", "square",
+    new WorldPolyline(new[]
+    {
+        new WorldPoint(4, 4), new WorldPoint(36, 4), new WorldPoint(36, 36)
+    }), "garden-edge");
+var pathGrammar = new PathPattern("garden-lamps", "garden-border",
+    "decorative-lamp", "mark the authored garden route", "mockup-path-v1", 8, 4, 4);
+var pathGenerated = new VisualPathPatternGenerator().Generate(visual, new[] { designedPath }, pathGrammar);
+Assert(pathGenerated.Issues.Count == 0 && pathGenerated.Anchors.Count == 8,
+    "Path geometry determines decorative fixture count");
+Assert(pathGenerated.Anchors[0].PositionMeters == new WorldPoint(8, 4) &&
+    pathGenerated.Anchors[4].PositionMeters == new WorldPoint(36, 4),
+    "Path samples follow authored turns in order");
+Assert(new VisualPathPatternGenerator().Generate(visual, new[] { designedPath },
+    pathGrammar with { PathId = "unknown" }).Issues.Any(i => i.Code == "VISUAL_PATH_MISSING"),
+    "Missing visual path cannot trigger arbitrary placements");
+Assert(JsonSerializer.Serialize(pathGenerated) == JsonSerializer.Serialize(
+    new VisualPathPatternGenerator().Generate(visual, new[] { designedPath }, pathGrammar)),
+    "Path placements reproducible");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
