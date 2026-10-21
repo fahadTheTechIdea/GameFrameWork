@@ -3,6 +3,38 @@ Date: 2026-10-21 | Status: research-backed implementation plan, NOT completed im
 Target: GameFrameWork in C#/.NET, engine-independent core, Godot 4.6 adapter.
 Git rule: work directly on `main`; do not create extra branches or PRs. Maintain a master progress tracker with evidence.
 
+## 0. TWO-PART PRODUCT AND MANDATORY GAMEARTS INTEGRATION (supersedes optional-adapter language below)
+
+GameFrameWork is **one coordinated product with two deliverables**:
+1. **World Generation Agent Framework:** Claude Code and Codex installable orchestrator, specialist skills, configuration, research, world planning, approved mockup/production-art lifecycle, controlled execution, reviews, quality gates and Godot deployment skills.
+2. **World Generation Engine:** working C#/.NET libraries, domain rules and planners, asset manifest contracts, generators, CLI, validators, Godot 4 adapters, sample worlds and tests.
+
+Neither part may be merely documentation for the other. The agent framework drives the real C# engine through typed CLI/API calls and reads machine-verifiable output; the engine works without an agent when invoked directly. Both share one canonical world specification, versioned schemas, asset IDs, progress states and diagnostics.
+
+**GameArtsSkills is a first-class, mandatory production dependency**, not an optional post-generation integration. Preserve GameArtsSkills as the authoritative source of artwork policies, mockup workflow, animation rules, masked originals and measured sheet atlases; GameFrameWork must integrate it end-to-end without copying divergent versions of its standards. Use a pinned, version-reported provider/manifest contract and a supported local install/sync adapter, with clear compatibility errors when unavailable.
+
+### Required end-to-end generation transaction
+User specification -> agent derives validated WorldBlueprint and plans semantic terrain/streets/buildings/objects -> generates/locates scene mockup -> **explicit mockup approval** -> decomposes artwork into static and animated component requirements -> finds approved reusable assets or requests GameArts production -> **explicit production bundle approval** -> validates each PNG/atlas, anchors, scales and directional/component coverage -> resolves all required asset IDs -> deterministic C# spatial generation and rendering compilation -> Godot TileMapLayers/PackedScenes/navigation/physics/lighting -> headless import, in-engine state checks and visual review -> publish validated output. Planning/provisional layout can proceed while art is pending, but a map requiring missing production artwork cannot be labeled visually complete or game-ready. Missing capabilities and rejected/awaiting approvals are explicit typed states, never silently bypassed.
+
+### Shared contracts and ownership
+- `WorldBlueprint`: geographic and settlement constraints, semantic layouts, visual style, version/seed, rules, required asset IDs, approval requirements.
+- `AssetRequirement`: semantic type, intended placement/function, dimensions (meters), terrain/asset perspective, directions, moving component inventory and action coverage.
+- `ApprovedArtManifest`: immutable GameArts origin/revision, approval proof/status, hash, files, mask policy, measured atlases, world-space scale and licence/provenance.
+- `ComponentAssembly`: static master, typed child IDs, parent/child named attachment anchors, per-direction/frame local pivots, rest/animated transforms, occlusion and collision/nav state.
+- `WorldBuildManifest`: generation dependencies, source hashes, validation reports, Godot artifacts, incremental rebuild mapping.
+- Shared stable versioned schema definitions define the engine/agent boundary. Skills cannot invent asset geometry or claim artifacts exist without verifying actual outputs.
+
+### Modular animation rule
+For **all** applicable building, structure, vehicle and other visual assets: detect moving/interactive/state-changing parts and default to separate static master plus independently reusable or asset-specific animated components. A door, window shutter, gate, fan, vehicle tire/wheel, warning lamp etc. should have separate sprite sheet plus measured JSON atlas **when frame-based motion is the appropriate fidelity method**; support transformed/static art, shader and procedural alternatives only with documented choice and validated matching appearance. Do not bake whole buildings/vehicles into each moving-part frame. Wheels must use physically sized reusable families and compatible mount geometry: diameter, width, rim/tread, attachment position, facing, steering and suspension; do not stretch one tire sheet for incompatible vehicles. Preserve current GameArts master rules for opaque chroma-mask source PNGs, approved revision lifecycle, directional coverage and nested attachment motion. Every emitted runtime scene must preserve animated-component separation and respond to semantic state changes (e.g. opening a door changes collision/traversal when configured).
+
+### Packaging, install and readiness
+- One clear user-facing world-generation installer for Claude or Codex, preview/diff first, preserve existing AGENTS.md/CLAUDE.md and installed GameArts/SDLC integrations.
+- Agent skill orchestration defaults to lazy skill loading; world generation invokes GameArts only when an art requirement/approval is involved, but art compliance is always mandatory.
+- C# engine exposes pure/testable APIs, deterministic CLI, structured diagnostics and well-defined Godot export; no mandatory Claude/Codex runtime for consumers of compiled libraries.
+- Integration/e2e tests MUST exercise an agent-produced spec, a real approved GameArts fixture, a C# world build, art+atlas validation, Godot import and component animation. Simulated/synthetic fixtures are labeled as such.
+- Track separate versions of WorldFrameWork/engine, skill pack, GameArtsSkills standard, Godot target and asset profile. Detect incompatibilities before writes.
+- Avoid circular dependency: GameArtsSkills owns artwork generation standards, GameFrameWork owns world semantics, placement and compilation, SDLC framework owns engineering process.
+
 ## 1. Product objective
 Generate complete, coherent and editable 2D worlds including cities, towns, villages, wilderness, forests, deserts, islands, coasts, mountains, industrial facilities and mixtures of these. All objects have justified positions; every rule is world/region/settlement/district/parcel/object scoped. Outputs include inspectable semantic world records, visual mockups (approved via GameArtsSkills), source graphics and measured companion atlases, static TileMapLayers and dynamic scenes, route/navigation/physics/height/occlusion/lighting and validation evidence. No random scattering, and no false game-ready claims.
 
