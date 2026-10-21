@@ -217,6 +217,21 @@ AssertThrows<ArgumentException>(() => new WorldPolygon(new[]
     new WorldPoint(0,0), new WorldPoint(10,10), new WorldPoint(0,10), new WorldPoint(10,0)
 }).Validate(), "Bow-tie polygon rejected");
 
+
+// Convex irregular parcels can be split without losing area.
+var irregular = new WorldPolygon(new[]
+{
+    new WorldPoint(0, 0), new WorldPoint(30, 0),
+    new WorldPoint(25, 20), new WorldPoint(5, 20)
+});
+Assert(ConvexParcelGeometry.IsConvex(irregular), "Trapezoidal parcel is convex");
+var (western, eastern) = ConvexParcelGeometry.SplitVertical(irregular, 15);
+western.Validate(); eastern.Validate();
+Assert(Math.Abs(Math.Abs(western.SignedArea()) + Math.Abs(eastern.SignedArea()) -
+    Math.Abs(irregular.SignedArea())) < 1e-7, "Irregular parcel split conserves area");
+AssertThrows<ArgumentOutOfRangeException>(() => ConvexParcelGeometry.SplitVertical(irregular, 45),
+    "Outside split rejected");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
