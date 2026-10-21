@@ -14,3 +14,22 @@
 7. Claude/Codex installer with preview and non-destructive integration, automated CI and end-to-end Godot samples.
 
 Reference: GameArts master v7.5 orthogonal square tiles. Store logical geometry as world coordinates; do not conflate camera projection and grid topology.
+
+## SDLC governance and current engineering debt (2026-10-21)
+
+**Mandatory authority:** [agentic-sdlc-framework](https://github.com/fahadTheTechIdea/agentic-sdlc-framework) canonical `master`; repository routing in `AGENTS.md` and `CLAUDE.md`. GameArtsSkills remains the art lifecycle authority. Work directly on `main` only.
+
+| Requirement | Status | Exit evidence |
+| --- | --- | --- |
+| Inspect canonical SDLC constitution, engineering, quality, evidence and operational policies | Reviewed | GitHub canonical source read 2026-10-21 |
+| Project instruction routing for Codex/Claude | Committed | `AGENTS.md`, `CLAUDE.md` |
+| Adopt the canonical SDLC installer and skills non-destructively | Not done | Preview and reviewed install diff; no overwrites |
+| Reproducible .NET solution build/test and CI | Not verified | Recorded SDK, command, logs, commit SHA |
+| Shared log, audit and notification services for executable operations | Not implemented | Working services, coverage matrix and failure cases |
+| SDLC task/decision traceability and architecture review | Partial | Acceptance criteria/ADR/verification evidence linked to changes |
+| Constraints replacing random-looking prototype placement | Not implemented | Validity/provenance and deterministic graph tests |
+| GameArts approval + real PNG/atlas checksum validation | Structural gate only | Hashes and measured files checked and asset lifecycle integration |
+| Godot rendered/navigation/collision/runtime validation | Not implemented | Actual Godot engine test logs and visual review |
+| Claude/Codex live evaluations | Not run | Host-specific outcome evidence |
+
+Never mark a gate complete on source inspection alone. Scope service/assurance controls proportionately; reuse what is already available.
