@@ -473,6 +473,40 @@ var missingArtBinding = await new WorldArtAssembler(new InMemoryRegistry(full)).
 Assert(!missingArtBinding.IsValid && missingArtBinding.Issues.Count(i => i.Code == "ART_BINDING_MISSING") == 2,
     "No constructed visual objects without explicit asset bindings");
 
+
+var artDir = Path.Combine(Path.GetTempPath(), "gameframework-art-" + Guid.NewGuid().ToString("N"));
+Directory.CreateDirectory(artDir);
+try
+{
+    // Tiny valid 1x1 opaque PNG fixture and structured atlas file with actual measured bytes.
+    var pngBytes = Convert.FromBase64String(
+        "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/3ioAAAAASUVORK5CYII=");
+    var pngPath = Path.Combine(artDir, "fixture.png");
+    var atlasPath = Path.Combine(artDir, "fixture.json");
+    await File.WriteAllBytesAsync(pngPath, pngBytes);
+    await File.WriteAllTextAsync(atlasPath, "{\"frames\":[]}");
+    static string Sha256Hex(byte[] bytes) =>
+        Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(bytes));
+    var fileSheet = new SpriteSheetManifest("fixture", "fixture.png", "fixture.json",
+        Sha256Hex(pngBytes), Sha256Hex(await File.ReadAllBytesAsync(atlasPath)), "door", new[] { "S" });
+    var fileManifest = full with { Sheets = new[] { fileSheet } };
+    var verifier = new GameArtsFileVerifier(artDir);
+    var goodFiles = await verifier.VerifyAsync(fileManifest);
+    Assert(goodFiles.IsValid, "Approved asset files match real PNG and atlas hashes");
+    await File.WriteAllTextAsync(atlasPath, "{\"frames\":[1]}");
+    var mismatched = await verifier.VerifyAsync(fileManifest);
+    Assert(mismatched.Issues.Any(i => i.Code == "ASSET_HASH_MISMATCH"),
+        "Modified atlas fails hash validation");
+    var traversal = fileManifest with
+    {
+        Sheets = new[] { fileSheet with { ImagePath = "../outside.png" } }
+    };
+    var denied = await verifier.VerifyAsync(traversal);
+    Assert(denied.Issues.Any(i => i.Code == "ASSET_PATH_INVALID"),
+        "Traversal path rejected");
+}
+finally { Directory.Delete(artDir, recursive: true); }
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
