@@ -457,6 +457,22 @@ Assert(!badComposition.IsValid &&
     badComposition.Issues.Any(i => i.Code == "COMPOSITION_ANCHOR_COLLISION"),
     "Duplicate design grammar IDs cannot silently overwrite artwork");
 
+
+var artBound = await new WorldArtAssembler(new InMemoryRegistry(full)).AssembleAsync(
+    requiredDesign with { Objects = new[] { requiredDesign.Objects[0] } },
+    new[] { new WorldArtBinding("depot", "warehouse", "door", "S", 2) });
+Assert(artBound.IsValid && artBound.Objects.Count == 1 &&
+    artBound.Objects[0].Art.RenderLayer == 2, "Approved art binding preserves planned object and render layer");
+var wrongFacing = await new WorldArtAssembler(new InMemoryRegistry(full)).AssembleAsync(
+    requiredDesign with { Objects = new[] { requiredDesign.Objects[0] } },
+    new[] { new WorldArtBinding("depot", "warehouse", "door", "E", 2) });
+Assert(!wrongFacing.IsValid && wrongFacing.Issues.Any(i => i.Code == "ART_DIRECTION_UNAVAILABLE"),
+    "Unapproved facing cannot be substituted");
+var missingArtBinding = await new WorldArtAssembler(new InMemoryRegistry(full)).AssembleAsync(
+    requiredDesign, Array.Empty<WorldArtBinding>());
+Assert(!missingArtBinding.IsValid && missingArtBinding.Issues.Count(i => i.Code == "ART_BINDING_MISSING") == 2,
+    "No constructed visual objects without explicit asset bindings");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
