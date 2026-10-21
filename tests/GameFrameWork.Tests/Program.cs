@@ -86,6 +86,31 @@ Assert(plannedWorld.Objects.Count(o => o.Kind == "warehouse") == 8, "World proje
 Assert(planned.Buildings.All(b => plannedWorld.At(b.AccessRoadCell.X, b.AccessRoadCell.Y).Kind == CellKind.Road),
     "Rasterized access road is preserved");
 
+
+// Deliberately invalid plans must fail structural validation, not silently export.
+var isolatedRoads = new[]
+{
+    new RoadSegment("west", new GridPoint(1, 1), new GridPoint(3, 1), RoadClass.Local),
+    new RoadSegment("east", new GridPoint(10, 10), new GridPoint(12, 10), RoadClass.Local)
+};
+var invalidRoad = SpatialValidation.Validate(new GridBounds(16, 16), isolatedRoads,
+    Array.Empty<PlacementDecision>());
+Assert(invalidRoad.Any(d => d.Code == "DISCONNECTED_ROAD_NETWORK"), "Isolated roads rejected");
+var invalidFrontage = new[]
+{
+    new PlacementDecision("test-building", "warehouse", new GridPoint(3, 3),
+        "workshop capacity", "settlement-0", "road-frontage-v1", new GridPoint(1, 1))
+};
+var invalidParcels = SpatialValidation.Validate(new GridBounds(16, 16),
+    new[] { isolatedRoads[0] }, invalidFrontage);
+Assert(invalidParcels.Any(d => d.Code == "FRONTAGE_NOT_ADJACENT"), "Non-adjacent frontage rejected");
+var frontageRule = new RoadFrontageConstraint();
+Assert(!frontageRule.IsSatisfied(new GridPoint(3, 3), new GridPoint(1, 1),
+    new HashSet<GridPoint> { new(1, 1) }, new HashSet<GridPoint>(),
+    new GridBounds(16, 16)), "Constraint rejects bad frontage");
+Assert(SpatialValidation.Validate(new GridBounds(48, 48), planned.Roads,
+    planned.Buildings).Count == 0, "Planned roads and lots validate");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
