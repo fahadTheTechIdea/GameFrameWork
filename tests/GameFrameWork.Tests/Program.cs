@@ -1461,6 +1461,32 @@ var unknownCrossing = new SettlementCrossingPlanner().Plan(
 Assert(!unknownCrossing.Valid && unknownCrossing.Crossings.Count == 0,
     "Settlement planner does not invent missing pedestrian paths");
 
+
+var villageRoad = villageDocument.SemanticWorld.Paths.Single(p => p.Id == "main-road");
+var alignedSettlement = integrated with {
+    Streets = new[] { new StreetCorridor("main-road", villageRoad.Geometry,
+        villageDocument.RoadProfiles![0].Section) },
+    Diagnostics = Array.Empty<string>()
+};
+var settlementIntegrator = new SettlementCrossingIntegration();
+var authoredSettlementCrossing = settlementIntegrator.Build(
+    villageDocument.SemanticWorld, alignedSettlement, new[] {
+        new SettlementCrossingIntent("settlement-zebra", "crosswalk", "main-road",
+            new WorldPoint(32, 28), true, true, 0, 0)
+    });
+Assert(authoredSettlementCrossing.Valid && authoredSettlementCrossing.Crossings.Count == 1,
+    "Settlement street corridors feed approved crossing geometry");
+var mismatchedSettlement = settlementIntegrator.Build(villageDocument.SemanticWorld,
+    alignedSettlement with {
+        Streets = new[] { new StreetCorridor("main-road",
+            new WorldPolyline(new[] { new WorldPoint(30, 0), new WorldPoint(30, 48) }),
+            villageDocument.RoadProfiles![0].Section) }
+    }, new[] { new SettlementCrossingIntent("settlement-zebra", "crosswalk", "main-road",
+        new WorldPoint(32, 28), true, true, 0, 0) });
+Assert(!mismatchedSettlement.Valid && mismatchedSettlement.Issues.Contains(
+    "STREET_SEMANTIC_GEOMETRY_MISMATCH:main-road"),
+    "Settlement crossing integration refuses mismatched road geometry");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
