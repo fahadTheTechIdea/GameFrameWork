@@ -734,6 +734,25 @@ Assert(JsonSerializer.Serialize(pieces) ==
     JsonSerializer.Serialize(LandscapePolygonTriangulator.Triangulate(concaveGarden)),
     "Concave garden triangulation deterministic");
 
+
+var concaveVisual = visual with { Regions = new[] {
+    new VisualRegion("forest-edge", concaveGarden, "woodland-clearing")
+}};
+var terrainStyles = new Dictionary<string, TerrainCompositionStyle> {
+    ["forest-edge"] = new("cozy-woodland", "forest-ground", "approved-woodland-fill-v1")
+};
+var styledTerrain = new StyledTerrainComposer().Compose(concaveVisual,terrainStyles);
+Assert(styledTerrain.Diagnostics.Count == 0 && styledTerrain.Pieces.Count == 4,
+    "Approved concave region creates four exact terrain fill pieces");
+Assert(Math.Abs(styledTerrain.Pieces.Sum(p => Math.Abs(p.Geometry.SignedArea())) -
+    Math.Abs(concaveGarden.SignedArea())) < 1e-8,
+    "Styled terrain preserves authored region area");
+Assert(styledTerrain.Pieces.All(p => p.SourceRegionId == "forest-edge" &&
+    p.MaterialId == "forest-ground"), "Terrain keeps material and region provenance");
+Assert(new StyledTerrainComposer().Compose(concaveVisual,
+    new Dictionary<string, TerrainCompositionStyle>()).Diagnostics
+    .Contains("REGION_STYLE_MISSING:forest-edge"), "Missing style cannot trigger arbitrary terrain");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
