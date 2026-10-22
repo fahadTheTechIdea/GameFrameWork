@@ -1208,6 +1208,32 @@ var unplantedQuality = worldQuality.Analyze(villageDocument with {
 Assert(unplantedQuality.Issues.Contains("PLANTING_DENSITY_INSUFFICIENT"),
     "Quality audit detects missing planned vegetation");
 
+
+var repeatedFill = villageDocument with {
+    TerrainMaterials = villageDocument.TerrainMaterials.Concat(
+        new[] { villageDocument.TerrainMaterials[0] with { Id = "duplicate-ground-fill" } })
+        .ToArray()
+};
+var overlapQuality = worldQuality.Analyze(repeatedFill, qualityRules);
+Assert(!overlapQuality.MeetsRules &&
+    overlapQuality.Issues.Any(i => i.StartsWith("TERRAIN_FILL_OVERLAP:")) &&
+    overlapQuality.NominalTerrainCoverageRatio == 0,
+    "Repeated terrain geometry cannot falsely satisfy ground coverage");
+var spillFill = villageDocument with {
+    TerrainMaterials = villageDocument.TerrainMaterials.Concat(new[] {
+        villageDocument.TerrainMaterials[0] with {
+            Id = "out-of-ground",
+            Geometry = new WorldPolygon(new[] {
+                new WorldPoint(63, 46), new WorldPoint(67, 46),
+                new WorldPoint(67, 50), new WorldPoint(63, 50)
+            })
+        }
+    }).ToArray()
+};
+Assert(worldQuality.Analyze(spillFill, qualityRules).Issues.Any(i =>
+    i == "TERRAIN_FILL_OUTSIDE_GROUND:out-of-ground"),
+    "Ground coverage rejects terrain spills beyond the approved map boundary");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
