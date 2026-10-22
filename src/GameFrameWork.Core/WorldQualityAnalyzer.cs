@@ -86,6 +86,8 @@ public sealed class WorldQualityAnalyzer
         }
         issues.AddRange(new PedestrianRoadCrossingValidator().Validate(document,
             document.RoadCrossings ?? []));
+        issues.AddRange(new PedestrianCrossingSpanValidator().Validate(document,
+            document.CrossingSpans ?? []));
         if (document.Vegetation.Count < rules.MinimumVegetationCount)
             issues.Add("PLANTING_DENSITY_INSUFFICIENT");
         return new(ratio, components, document.Buildings.Count,
