@@ -772,6 +772,24 @@ Assert(!unboundTerrain.IsValid &&
     unboundTerrain.Issues.Any(issue => issue.StartsWith("TERRAIN_MATERIAL_UNBOUND")),
     "Engine does not choose arbitrary terrain textures");
 
+
+var landscapeWorldPlan = new LandscapeWorldPlanner().Generate(semantic.Package!,
+    new[] { new LandscapeDesignGrammar("garden", "cozy-rows", "pink-flowers", 1, 1, 1) });
+Assert(landscapeWorldPlan.IsValid && landscapeWorldPlan.Features.Count == 3,
+    "Semantic world generates planned garden rows rather than scattered plants");
+Assert(landscapeWorldPlan.Features.All(x => x.ZoneId == "garden" &&
+    x.VisualRegionId == "square" && x.MaterialId == "pink-flowers"),
+    "Garden detail retains approved visual region and material");
+Assert(JsonSerializer.Serialize(landscapeWorldPlan) ==
+    JsonSerializer.Serialize(new LandscapeWorldPlanner().Generate(semantic.Package!,
+        new[] { new LandscapeDesignGrammar("garden", "cozy-rows", "pink-flowers", 1, 1, 1) })),
+    "Landscape generation deterministic");
+var missingGardenRules = new LandscapeWorldPlanner().Generate(semantic.Package!,
+    Array.Empty<LandscapeDesignGrammar>());
+Assert(!missingGardenRules.IsValid &&
+    missingGardenRules.Diagnostics.Contains("GARDEN_GRAMMAR_MISSING:garden"),
+    "Missing garden design refuses arbitrary placement");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
