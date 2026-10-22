@@ -1605,7 +1605,7 @@ try
         "Complete settlement cannot claim production approval with unverified houses and terrain");
     var drifted = await coordinatedProduction.ExportAsync(
         new CoordinatedProductionRequest(composedSettlement, testProductionInputs with {
-            SemanticWorld = villageFixture
+            SemanticWorld = villageFixture with { Base = villageFixture.Base with { MockupRevision = "drifted" } }
         }), coordinatedExportPath);
     Assert(!drifted.Produced && drifted.Issues.Contains(
         "PRODUCTION_SEMANTIC_WORLD_MISMATCH"),
