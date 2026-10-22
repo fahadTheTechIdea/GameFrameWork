@@ -1487,6 +1487,27 @@ Assert(!mismatchedSettlement.Valid && mismatchedSettlement.Issues.Contains(
     "STREET_SEMANTIC_GEOMETRY_MISMATCH:main-road"),
     "Settlement crossing integration refuses mismatched road geometry");
 
+
+var roadCoordinator = new SettlementTransportCrossingCoordinator();
+var policyIntent = new SettlementCrossingIntent("policy-zebra", "crosswalk", "main-road",
+    new WorldPoint(32,28), true, true, 0, 0);
+var allowPolicy = new SettlementRoadPolicy("main-road", SettlementRoadClass.Collector,
+    true, true);
+var policyAccepted = roadCoordinator.Build(villageDocument.SemanticWorld, alignedSettlement,
+    new[] { policyIntent }, new[] { allowPolicy });
+Assert(policyAccepted.Valid && policyAccepted.Plan!.Crossings.Count == 1,
+    "Authored crossing passes classified settlement road policy");
+var policyDenied = roadCoordinator.Build(villageDocument.SemanticWorld, alignedSettlement,
+    new[] { policyIntent }, new[] { allowPolicy with { PedestrianCrossingsAllowed = false } });
+Assert(!policyDenied.Valid && policyDenied.Issues.Contains(
+    "ROAD_CROSSING_PROHIBITED_BY_POLICY:policy-zebra"),
+    "Protected road classification can forbid pedestrian crossing");
+var uncontrolled = roadCoordinator.Build(villageDocument.SemanticWorld, alignedSettlement,
+    new[] { policyIntent with { Accessible = false } }, new[] { allowPolicy });
+Assert(!uncontrolled.Valid && uncontrolled.Issues.Contains(
+    "ROAD_CONTROLLED_CROSSING_NOT_READY:policy-zebra"),
+    "Controlled crossings require explicit permission and accessibility");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
