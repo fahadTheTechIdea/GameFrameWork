@@ -1259,6 +1259,18 @@ var missingEntrance = entranceValidator.Validate(villageDocument,
 Assert(missingEntrance.Issues.Contains("ENTRANCE_MISSING:house-east"),
     "Each building needs a declared entrance rather than center-point proximity");
 
+
+Assert(villageDocument.Entrances is { Count: 2 } &&
+    worldQuality.Analyze(villageDocument, qualityRules).MeetsRules,
+    "Exported village entrances satisfy integrated world quality");
+var brokenAccessWorld = villageDocument with {
+    Entrances = villageDocument.Entrances!.Select(e => e.BuildingId == "house-west"
+        ? e with { TargetPathId = "missing-path" } : e).ToArray()
+};
+Assert(worldQuality.Analyze(brokenAccessWorld, qualityRules).Issues
+    .Contains("ENTRANCE_PATH_NOT_CONNECTED:house-west"),
+    "Integrated quality report rejects a disconnected authored entrance");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
