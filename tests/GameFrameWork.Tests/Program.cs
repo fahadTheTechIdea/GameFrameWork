@@ -1175,6 +1175,39 @@ try
 }
 finally { if (File.Exists(exportedVillagePath)) File.Delete(exportedVillagePath); }
 
+
+var worldQuality = new WorldQualityAnalyzer();
+var qualityRules = new WorldQualityRules(0.99, 21, 1);
+var goodQuality = worldQuality.Analyze(villageDocument, qualityRules);
+Assert(goodQuality.MeetsRules &&
+    Math.Abs(goodQuality.NominalTerrainCoverageRatio - 1) < 1e-8 &&
+    goodQuality.ConnectedPathComponents == 1,
+    "Dummy village preserves ground fill and connected crossing network");
+var disconnectedVillage = villageDocument with {
+    SemanticWorld = villageDocument.SemanticWorld with {
+        Paths = new[] {
+            villageDocument.SemanticWorld.Paths[0],
+            villageDocument.SemanticWorld.Paths[1] with {
+                Geometry = new WorldPolyline(new[] {
+                    new WorldPoint(2, 2), new WorldPoint(5, 2) })
+            }
+        }
+    }
+};
+Assert(worldQuality.Analyze(disconnectedVillage, qualityRules).Issues
+    .Contains("PATH_NETWORK_DISCONNECTED"),
+    "Quality audit detects a disconnected designed crossing");
+var inaccessibleQuality = worldQuality.Analyze(villageDocument,
+    qualityRules with { MaximumBuildingPathDistanceMeters = 1 });
+Assert(inaccessibleQuality.Issues.Any(x =>
+    x.StartsWith("BUILDING_PATH_ACCESS_TOO_FAR:")),
+    "Quality audit detects insufficient building route access");
+var unplantedQuality = worldQuality.Analyze(villageDocument with {
+    Vegetation = Array.Empty<PlannedVegetation>()
+}, qualityRules);
+Assert(unplantedQuality.Issues.Contains("PLANTING_DENSITY_INSUFFICIENT"),
+    "Quality audit detects missing planned vegetation");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
