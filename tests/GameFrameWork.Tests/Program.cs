@@ -641,6 +641,28 @@ try
 }
 finally { if (Directory.Exists(villageDir)) Directory.Delete(villageDir, true); }
 
+
+var packageBuilder = new WorldAssemblyPackageBuilder();
+var (portable, portableReport) = packageBuilder.Build(visual,
+    requiredDesign with { Objects = new[] { requiredDesign.Objects[0] } },
+    new[] { new WorldArtBinding("depot", "warehouse", "door", "S", 2) });
+Assert(portableReport.Valid && portable is not null && portable.Objects.Count == 1,
+    "Approved visual design creates portable engine-independent package");
+var (unboundPackage, unboundReport) = packageBuilder.Build(visual,
+    requiredDesign, Array.Empty<WorldArtBinding>());
+Assert(unboundPackage is null && unboundReport.Errors.Any(e => e.StartsWith("ART_REFERENCE_MISSING")),
+    "World package rejects missing visual art bindings");
+var portableDir = Path.Combine(Path.GetTempPath(), "world-package-" + Guid.NewGuid().ToString("N"));
+try
+{
+    var packagePath = Path.Combine(portableDir, "world.json");
+    await packageBuilder.WriteAsync(portable!, packagePath);
+    using var json = JsonDocument.Parse(await File.ReadAllTextAsync(packagePath));
+    Assert(json.RootElement.GetProperty("MockupId").GetString() == "town-mockup",
+        "World assembly retains approved mockup identity");
+}
+finally { if (Directory.Exists(portableDir)) Directory.Delete(portableDir, true); }
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
