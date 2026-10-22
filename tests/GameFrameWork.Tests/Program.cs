@@ -1182,7 +1182,7 @@ var goodQuality = worldQuality.Analyze(villageDocument, qualityRules);
 Assert(goodQuality.MeetsRules &&
     Math.Abs(goodQuality.NominalTerrainCoverageRatio - 1) < 1e-8 &&
     goodQuality.ConnectedPathComponents == 1,
-    "Dummy village preserves ground fill and connected crossing network");
+    "Dummy village preserves ground fill and connected crossing network: " + string.Join(",", goodQuality.Issues) + " ratio=" + goodQuality.NominalTerrainCoverageRatio + " components=" + goodQuality.ConnectedPathComponents);
 var disconnectedVillage = villageDocument with {
     SemanticWorld = villageDocument.SemanticWorld with {
         Paths = new[] {
