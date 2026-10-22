@@ -1581,6 +1581,11 @@ Assert(!badCoordinated.Valid && badCoordinated.Issues.Contains(
     "Coordinated assembly fails when the visual revision is no longer approved");
 
 
+var nonVegetationIds = WorldArtDependencyInventory.Collect(composedSettlement.World!);
+Assert(nonVegetationIds.Contains("fixture-home") &&
+    nonVegetationIds.Contains("fixture-grass") &&
+    nonVegetationIds.Contains("fixture-flowers"),
+    "Inventory includes building, terrain and landscape GameArts dependencies");
 var coordinatedProduction = new CoordinatedProductionWorldExporter(
     new InMemoryRegistry(full), new TestApprovalAuthority(true));
 var composedWorld = composedSettlement.World!;
@@ -1600,7 +1605,7 @@ try
         new CoordinatedProductionRequest(composedSettlement, testProductionInputs),
         coordinatedExportPath);
     Assert(!refused.Produced && refused.Issues.Contains(
-        "PRODUCTION_NONVEGETATION_ART_VERIFICATION_REQUIRED") &&
+        "NONVEGETATION_BUNDLE_MISSING:fixture-grass") &&
         !File.Exists(coordinatedExportPath),
         "Complete settlement cannot claim production approval with unverified houses and terrain");
     var drifted = await coordinatedProduction.ExportAsync(
