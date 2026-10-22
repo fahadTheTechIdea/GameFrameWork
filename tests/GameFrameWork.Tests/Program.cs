@@ -528,6 +528,18 @@ try
     var nativeResult = await new GameArtsBundleReader().ReadAsync(bundlePath);
     Assert(nativeResult.IsValid && nativeResult.Bundle!.Components.Count == 2,
         "Native GameArts component bundle parsed");
+    // Parent atlas exists, but must provide the child's named hinge on every direction.
+    var parentAtlas = """
+    {"schema_version":"1.0","image":"base.png","image_size":[1,1],
+     "mask_color":"#FF00FF","background_alpha":255,
+     "frames":[{"rect":[0,0,1,1],"pivot":[0,0],"anchors":{}}]}
+    """;
+    await File.WriteAllTextAsync(Path.Combine(bundleRoot, "base_s.atlas.json"), parentAtlas);
+    await File.WriteAllTextAsync(Path.Combine(bundleRoot, "base_e.atlas.json"), parentAtlas);
+    var mountErrors = await new GameArtsBundleFileValidator().ValidateAsync(bundlePath);
+    Assert(mountErrors.Any(e => e == "PARENT_MOUNT_MISSING:door:S:0") &&
+        mountErrors.Any(e => e == "PARENT_MOUNT_MISSING:door:E:0"),
+        "Every parent direction/frame must provide the child mount");
     var bundleFiles = await new GameArtsBundleFileValidator().ValidateAsync(bundlePath);
     Assert(bundleFiles.Any(e => e.StartsWith("ATLAS_MISSING")),
         "Bundle rejects missing atlas files instead of treating references as verified");
