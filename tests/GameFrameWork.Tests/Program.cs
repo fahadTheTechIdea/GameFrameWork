@@ -1342,6 +1342,23 @@ Assert(crossingControl.Validate(controlledWorld,
     .Contains("PEDESTRIAN_ENTRANCES_DISCONNECTED"),
     "Blocked junction cannot connect independent pedestrian networks");
 
+
+var permissionQuality = worldQuality.Analyze(controlledWorld with {
+    Junctions = Array.Empty<PedestrianJunction>()
+}, qualityRules);
+Assert(permissionQuality.Issues.Contains("PEDESTRIAN_ENTRANCES_DISCONNECTED"),
+    "Quality audit rejects graph crossing without explicit permission");
+var authorizedQuality = worldQuality.Analyze(controlledWorld with {
+    Junctions = new[] { approvedCrossing }
+}, qualityRules);
+Assert(!authorizedQuality.Issues.Contains("PEDESTRIAN_ENTRANCES_DISCONNECTED"),
+    "Quality audit accepts authorized pedestrian junction");
+var blockedQuality = worldQuality.Analyze(controlledWorld with {
+    Junctions = new[] { approvedCrossing with { Traversable = false } }
+}, qualityRules);
+Assert(blockedQuality.Issues.Contains("PEDESTRIAN_ENTRANCES_DISCONNECTED"),
+    "Quality audit honors explicit blocked crossing");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
