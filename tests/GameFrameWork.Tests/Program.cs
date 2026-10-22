@@ -1054,6 +1054,36 @@ try
 }
 finally { Directory.Delete(verifiedArtDir, recursive: true); }
 
+
+var productionOutput = Path.Combine(Path.GetTempPath(),
+    "gfw-production-" + Guid.NewGuid().ToString("N") + ".json");
+try
+{
+    var productionRequest = new ProductionWorldRequest(semantic.Package!,
+        new VegetationComposition(new[] {
+            designedOrchard.Plants[0] with { SpeciesAssetId = "warehouse" }
+        }, Array.Empty<string>()),
+        emptyPathPlants, approvedBuildings,
+        Array.Empty<VegetationClearanceRoute>(),
+        Array.Empty<VegetationClearanceAnchor>(),
+        new[] { new GameArtsVegetationFootprint("warehouse", full.GameArtsRevision, 0.5) },
+        Path.GetTempPath(), Array.Empty<GameArtsWorldBundleReference>());
+    var productionBuilder = new ProductionWorldBuilder(
+        new InMemoryRegistry(full), new TestApprovalAuthority(true));
+    var rejectedExport = await productionBuilder.BuildAsync(productionRequest, productionOutput);
+    Assert(!rejectedExport.Produced && rejectedExport.OutputPath is null &&
+        !File.Exists(productionOutput),
+        "Standard production workflow never exports when GameArts files are missing");
+    var blockedExport = await productionBuilder.BuildAsync(productionRequest with {
+        ZoneVegetation = new VegetationComposition(Array.Empty<PlannedVegetation>(),
+            new[] { "UPSTREAM_COMPOSITION_FAILED" })
+    }, productionOutput);
+    Assert(!blockedExport.Produced && blockedExport.Issues.Contains(
+        "UPSTREAM_COMPOSITION_FAILED") && !File.Exists(productionOutput),
+        "Production workflow refuses unresolved composition diagnostics");
+}
+finally { if (File.Exists(productionOutput)) File.Delete(productionOutput); }
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
