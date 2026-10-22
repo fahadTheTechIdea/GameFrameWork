@@ -21,8 +21,8 @@ public sealed record WorldQualityRules(
 /// <summary>
 /// Checks a known base-ground rectangle against styled fill geometry, path graph
 /// connectivity via exact segment intersections, building access and vegetation counts.
-/// Coverage is nominal (sum of fill areas), not polygon-union coverage; overlaps
-/// require a distinct topology validator before production quality certification.
+/// Coverage is exact for nonoverlapping convex pieces within the convex base ground;
+/// overlapping or out-of-bounds fills are rejected rather than reporting inflated coverage.
 /// </summary>
 public sealed class WorldQualityAnalyzer
 {
@@ -43,7 +43,14 @@ public sealed class WorldQualityAnalyzer
         double styledArea = document.TerrainMaterials
             .Where(p => p.SourceRegionId == ground?.SourceVisualRegionId)
             .Sum(p => Math.Abs(p.Geometry.SignedArea()));
-        double ratio = groundArea > 0 ? styledArea / groundArea : 0;
+        var groundPieces = document.TerrainMaterials
+            .Where(p => p.SourceRegionId == ground?.SourceVisualRegionId).ToArray();
+        var topologyIssues = ground is null
+            ? Array.Empty<string>()
+            : TerrainCoverageTopology.Validate(ground.Boundary, groundPieces).ToArray();
+        issues.AddRange(topologyIssues);
+        double ratio = groundArea > 0 && topologyIssues.Length == 0
+            ? Math.Min(1, styledArea / groundArea) : 0;
         if (ratio + 1e-9 < rules.MinimumTerrainCoverageRatio)
             issues.Add("GROUND_COVERAGE_INSUFFICIENT");
 
