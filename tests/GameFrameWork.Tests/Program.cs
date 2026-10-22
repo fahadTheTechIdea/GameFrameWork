@@ -753,6 +753,25 @@ Assert(new StyledTerrainComposer().Compose(concaveVisual,
     new Dictionary<string, TerrainCompositionStyle>()).Diagnostics
     .Contains("REGION_STYLE_MISSING:forest-edge"), "Missing style cannot trigger arbitrary terrain");
 
+
+var terrainBindings = new[] { new TerrainMaterialBinding("forest-ground","warehouse","door","S") };
+var boundTerrain = await new TerrainArtAssembler(new InMemoryRegistry(full))
+    .AssembleAsync(styledTerrain, terrainBindings);
+Assert(boundTerrain.IsValid && boundTerrain.Pieces.Count == styledTerrain.Pieces.Count,
+    "Approved terrain material preserves every styled polygon");
+Assert(boundTerrain.Pieces.All(piece => piece.Material.MaterialId == "forest-ground"),
+    "Terrain assembly retains original design material");
+var unavailableTerrain = await new TerrainArtAssembler(new InMemoryRegistry(null))
+    .AssembleAsync(styledTerrain, terrainBindings);
+Assert(!unavailableTerrain.IsValid &&
+    unavailableTerrain.Issues.Any(issue => issue.StartsWith("TERRAIN_ART_NOT_APPROVED")),
+    "Missing GameArts terrain material fails without substitute");
+var unboundTerrain = await new TerrainArtAssembler(new InMemoryRegistry(full))
+    .AssembleAsync(styledTerrain, Array.Empty<TerrainMaterialBinding>());
+Assert(!unboundTerrain.IsValid &&
+    unboundTerrain.Issues.Any(issue => issue.StartsWith("TERRAIN_MATERIAL_UNBOUND")),
+    "Engine does not choose arbitrary terrain textures");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
