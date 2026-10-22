@@ -948,6 +948,24 @@ Assert(speciesSafe.Accepted &&
     speciesSafe.World!.Vegetation.Count == designedOrchard.Plants.Count,
     "Species-aware gate accepts clear deliberate vegetation arrangement");
 
+
+var footprintResolver = new GameArtsVegetationProfileResolver(new InMemoryRegistry(full));
+var resolvedFootprints = await footprintResolver.ResolveAsync(new[] { "warehouse" },
+    new[] { new GameArtsVegetationFootprint("warehouse", full.GameArtsRevision, 0.75) });
+Assert(resolvedFootprints.Valid && resolvedFootprints.Profiles.Single().RadiusMeters == 0.75,
+    "Approved GameArts revision resolves explicit meter-scale vegetation clearance");
+var obsoleteFootprints = await footprintResolver.ResolveAsync(new[] { "warehouse" },
+    new[] { new GameArtsVegetationFootprint("warehouse", "obsolete-revision", 0.75) });
+Assert(!obsoleteFootprints.Valid && obsoleteFootprints.Issues.Contains(
+    "GAMEARTS_FOOTPRINT_STALE:warehouse"),
+    "Outdated GameArts physical footprint is rejected");
+var unapprovedFootprints = await new GameArtsVegetationProfileResolver(
+    new InMemoryRegistry(null)).ResolveAsync(new[] { "warehouse" },
+    new[] { new GameArtsVegetationFootprint("warehouse", full.GameArtsRevision, 0.75) });
+Assert(!unapprovedFootprints.Valid && unapprovedFootprints.Issues.Contains(
+    "GAMEARTS_ASSET_NOT_APPROVED:warehouse"),
+    "Unapproved art cannot supply vegetation footprint sizes");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
