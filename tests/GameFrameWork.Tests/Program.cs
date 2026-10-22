@@ -1580,6 +1580,39 @@ Assert(!badCoordinated.Valid && badCoordinated.Issues.Contains(
     "COORDINATED_MOCKUP_REVISION_MISMATCH"),
     "Coordinated assembly fails when the visual revision is no longer approved");
 
+
+var coordinatedProduction = new CoordinatedProductionWorldExporter(
+    new InMemoryRegistry(full), new TestApprovalAuthority(true));
+var composedWorld = composedSettlement.World!;
+var testProductionInputs = new ProductionWorldRequest(composedWorld.SemanticWorld,
+    new VegetationComposition(composedWorld.Vegetation, Array.Empty<string>()),
+    new PathVegetationResult(Array.Empty<PlannedVegetation>(), Array.Empty<string>()),
+    approvedBuildings, Array.Empty<VegetationClearanceRoute>(),
+    Array.Empty<VegetationClearanceAnchor>(),
+    new[] { new GameArtsVegetationFootprint("fixture-flower", full.GameArtsRevision, 0.3),
+        new GameArtsVegetationFootprint("fixture-tree", full.GameArtsRevision, 1.5) },
+    Path.GetTempPath(), Array.Empty<GameArtsWorldBundleReference>());
+var coordinatedExportPath = Path.Combine(Path.GetTempPath(),
+    "coordinated-production-" + Guid.NewGuid().ToString("N") + ".json");
+try
+{
+    var refused = await coordinatedProduction.ExportAsync(
+        new CoordinatedProductionRequest(composedSettlement, testProductionInputs),
+        coordinatedExportPath);
+    Assert(!refused.Produced && refused.Issues.Contains(
+        "PRODUCTION_NONVEGETATION_ART_VERIFICATION_REQUIRED") &&
+        !File.Exists(coordinatedExportPath),
+        "Complete settlement cannot claim production approval with unverified houses and terrain");
+    var drifted = await coordinatedProduction.ExportAsync(
+        new CoordinatedProductionRequest(composedSettlement, testProductionInputs with {
+            SemanticWorld = villageFixture
+        }), coordinatedExportPath);
+    Assert(!drifted.Produced && drifted.Issues.Contains(
+        "PRODUCTION_SEMANTIC_WORLD_MISMATCH"),
+        "Production export detects world model drift from coordinated composition");
+}
+finally { if (File.Exists(coordinatedExportPath)) File.Delete(coordinatedExportPath); }
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
