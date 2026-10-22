@@ -45,9 +45,17 @@ public sealed class CoordinatedProductionWorldExporter(
                 art.VegetationFootprints, art.TrustedAssetRoot, art.ProductionBundles, token);
         if (!accepted.Accepted) return new(null, accepted.Issues);
 
+        var allAssets = WorldArtDependencyInventory.Collect(document)
+            .Concat(document.Vegetation.Select(v => v.SpeciesAssetId));
+        var evidence = await new WorldAssetDependencyManifestBuilder(registry)
+            .BuildAsync(allAssets, token);
+        if (!evidence.Valid) return new(null, evidence.Issues);
+
         var full = Path.GetFullPath(outputPath);
         Directory.CreateDirectory(Path.GetDirectoryName(full)!);
-        var json = JsonSerializer.Serialize(document with { ProductionApproved = true },
+        var json = JsonSerializer.Serialize(document with {
+            ProductionApproved = true, AssetDependencies = evidence.Dependencies
+        },
             new JsonSerializerOptions { WriteIndented = true });
         var temporary = full + "." + Guid.NewGuid().ToString("N") + ".tmp";
         try
