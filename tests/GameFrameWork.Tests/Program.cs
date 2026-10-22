@@ -1115,6 +1115,25 @@ try
 }
 finally { if (File.Exists(productionOutput)) File.Delete(productionOutput); }
 
+
+var villageFixture = DummyVillageWorldFixture.Create();
+Assert(villageFixture.Base.Objects.Count == 3 && villageFixture.Terrain.Count == 3 &&
+    villageFixture.Paths.Count == 2 && villageFixture.Landscape.Count == 2,
+    "Reusable C# village has houses, sign, planned ground, paths and garden zones");
+Assert(villageFixture.Base.MockupId == "fixture-village-mockup" &&
+    villageFixture.Base.ArtStyleId == "cozy-pixel-village",
+    "Village design preserves its simulated visual mockup and art style");
+Assert(JsonSerializer.Serialize(villageFixture) ==
+    JsonSerializer.Serialize(DummyVillageWorldFixture.Create()),
+    "Village world specification is byte-identical across repeated builds");
+var villageGarden = new LandscapeWorldPlanner().Generate(villageFixture, new[] {
+    new LandscapeDesignGrammar("western-garden", "rows", "fixture-flowers", 1, 2, 1),
+    new LandscapeDesignGrammar("eastern-garden", "rows", "fixture-orchard-ground", 1, 2, 1)
+});
+Assert(villageGarden.IsValid && villageGarden.Features.Count > 0 &&
+    villageGarden.Features.All(x => x.VisualRegionId is "west-garden" or "east-garden"),
+    "Garden geometries are derived from approved fixture regions");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
