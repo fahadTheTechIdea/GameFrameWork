@@ -1436,6 +1436,31 @@ Assert(worldQuality.Analyze(detachedSidewalkVillage, qualityRules).Issues.Contai
     "CROSSING_SIDEWALK_ENDPOINT_MISMATCH:village-zebra"),
     "Quality gate detects a sidewalk connection that does not meet the crossing");
 
+
+var settlementCrossings = new SettlementCrossingPlanner().Plan(
+    villageDocument.SemanticWorld, villageDocument.RoadProfiles!,
+    new[] { new SettlementCrossingIntent("generated-zebra", "crosswalk", "main-road",
+        new WorldPoint(32,28), true, true, 0, 0) });
+Assert(settlementCrossings.Valid && settlementCrossings.Crossings.Count == 1 &&
+    Math.Abs(settlementCrossings.Crossings[0].Span.RoadWidthMeters - 4) < 1e-8,
+    "Settlement planner derives full curb span from a named road profile");
+var plannedCrossingWorld = villageDocument with {
+    RoadCrossings = settlementCrossings.Crossings.Select(x => x.Crossing).ToArray(),
+    CrossingSpans = settlementCrossings.Crossings.Select(x => x.Span).ToArray(),
+    CrossingApproaches = settlementCrossings.Crossings.Select(x => x.Approaches).ToArray()
+};
+Assert(new PedestrianCrossingSpanValidator().Validate(
+    plannedCrossingWorld, plannedCrossingWorld.CrossingSpans!).Count == 0 &&
+    new CrossingApproachValidator().Validate(
+        plannedCrossingWorld, plannedCrossingWorld.CrossingApproaches!, 0.02).Count == 0,
+    "Generated road crossing passes existing span and curb validators");
+var unknownCrossing = new SettlementCrossingPlanner().Plan(
+    villageDocument.SemanticWorld, villageDocument.RoadProfiles!,
+    new[] { new SettlementCrossingIntent("missing", "unknown-footpath", "main-road",
+        new WorldPoint(32,28), true, true, 0, 0) });
+Assert(!unknownCrossing.Valid && unknownCrossing.Crossings.Count == 0,
+    "Settlement planner does not invent missing pedestrian paths");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
