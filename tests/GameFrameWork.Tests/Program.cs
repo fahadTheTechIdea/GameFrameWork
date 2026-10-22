@@ -815,6 +815,26 @@ Assert(vegetationPlanner.Generate(semantic.Package!, new[]
 }).Diagnostics.Contains("VEGETATION_ZONE_MISSING:absent"),
     "Unknown zones fail without random placement");
 
+
+var hedgeGrammar = new PathVegetationGrammar("village-hedge", "walkway",
+    new[] { "approved-shrub", "approved-flowering-shrub" }, 5, 0, 0,
+    "alternating planted pedestrian-edge hedge");
+var pathPlants = new PathVegetationComposer().Generate(semantic.Package!, new[] { hedgeGrammar });
+Assert(pathPlants.IsValid && pathPlants.Plants.Count == 5,
+    "Authored 20-meter walkway generates five deliberately spaced plants");
+Assert(pathPlants.Plants[0].SpeciesAssetId == "approved-shrub" &&
+    pathPlants.Plants[1].SpeciesAssetId == "approved-flowering-shrub" &&
+    Math.Abs(pathPlants.Plants[^1].PositionMeters.X - 24) < 1e-8,
+    "Path plants follow approved alternating species and reach intended endpoint");
+Assert(JsonSerializer.Serialize(pathPlants) == JsonSerializer.Serialize(
+    new PathVegetationComposer().Generate(semantic.Package!, new[] { hedgeGrammar })),
+    "Mixed vegetation along paths is deterministic");
+var missingHedge = new PathVegetationComposer().Generate(semantic.Package!, new[] {
+    hedgeGrammar with { PathId = "unapproved-path" } });
+Assert(!missingHedge.IsValid &&
+    missingHedge.Diagnostics.Contains("PATH_VEGETATION_SOURCE_MISSING:village-hedge"),
+    "Vegetation cannot be scattered onto unknown paths");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
