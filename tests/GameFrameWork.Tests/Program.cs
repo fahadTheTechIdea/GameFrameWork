@@ -1271,6 +1271,27 @@ Assert(worldQuality.Analyze(brokenAccessWorld, qualityRules).Issues
     .Contains("ENTRANCE_PATH_NOT_CONNECTED:house-west"),
     "Integrated quality report rejects a disconnected authored entrance");
 
+
+var crossingBuilding = villageDocument with {
+    Entrances = new[] {
+        villageEntrances[0] with {
+            AccessWalkway = new WorldPolyline(new[] {
+                new WorldPoint(17,20), new WorldPoint(48,15), new WorldPoint(24,28)
+            })
+        }, villageEntrances[1]
+    }
+};
+Assert(new PedestrianAccessNetworkValidator().Validate(crossingBuilding).Any(x =>
+    x.StartsWith("ENTRANCE_WALKWAY_CROSSES_BUILDING:house-west:house-east")),
+    "Deliberate pedestrian link cannot cross another building");
+var roadOnlyEntrance = villageDocument with {
+    Entrances = new[] { villageEntrances[0] with { TargetPathId = "main-road" },
+        villageEntrances[1] }
+};
+Assert(new PedestrianAccessNetworkValidator().Validate(roadOnlyEntrance)
+    .Contains("ENTRANCE_TARGET_NOT_PEDESTRIAN:house-west"),
+    "Pedestrian entrance cannot treat a driving road as a footpath");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
