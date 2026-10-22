@@ -1377,6 +1377,23 @@ Assert(worldQuality.Analyze(blockedCrossing, qualityRules).Issues.Any(i =>
     i.StartsWith("ROAD_CROSSING_INACCESSIBLE:")),
     "World quality rejects inaccessible road crossings");
 
+
+var spanValidator = new PedestrianCrossingSpanValidator();
+Assert(spanValidator.Validate(villageDocument, villageDocument.CrossingSpans!).Count == 0,
+    "Designed village crosswalk spans its four-meter road perpendicularly");
+var narrowCrossing = villageDocument with {
+    CrossingSpans = new[] { villageDocument.CrossingSpans![0] with { RoadWidthMeters = 5 } }
+};
+Assert(worldQuality.Analyze(narrowCrossing, qualityRules).Issues.Contains(
+    "CROSSING_CURB_SPAN_MISMATCH:village-zebra"),
+    "Quality report rejects inconsistent crosswalk width");
+var gradeSeparatedCrossing = villageDocument with {
+    CrossingSpans = new[] { villageDocument.CrossingSpans![0] with { GradeSeparated = true } }
+};
+Assert(worldQuality.Analyze(gradeSeparatedCrossing, qualityRules).Issues.Contains(
+    "CROSSING_GRADE_SEPARATED:village-zebra"),
+    "Grade-separated routes cannot silently act as pedestrian crossings");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
