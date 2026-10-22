@@ -1359,6 +1359,24 @@ var blockedQuality = worldQuality.Analyze(controlledWorld with {
 Assert(blockedQuality.Issues.Contains("PEDESTRIAN_ENTRANCES_DISCONNECTED"),
     "Quality audit honors explicit blocked crossing");
 
+
+var crossingValidator = new PedestrianRoadCrossingValidator();
+Assert(crossingValidator.Validate(villageDocument, villageDocument.RoadCrossings!).Count == 0,
+    "Village road crossing is explicitly permitted and accessible");
+var noCrossing = villageDocument with {
+    RoadCrossings = Array.Empty<PedestrianRoadCrossing>()
+};
+Assert(worldQuality.Analyze(noCrossing, qualityRules).Issues
+    .Contains("ROAD_CROSSING_AUTHORIZATION_MISSING:crosswalk:main-road"),
+    "World quality rejects pedestrian crossing without authorization");
+var blockedCrossing = villageDocument with {
+    RoadCrossings = villageDocument.RoadCrossings!.Select(c =>
+        c with { Accessible = false }).ToArray()
+};
+Assert(worldQuality.Analyze(blockedCrossing, qualityRules).Issues.Any(i =>
+    i.StartsWith("ROAD_CROSSING_INACCESSIBLE:")),
+    "World quality rejects inaccessible road crossings");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
