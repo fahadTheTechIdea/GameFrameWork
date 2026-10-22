@@ -25,8 +25,7 @@ public static class DummyVillageWorldExporter
     public static DummyVillageWorldDocument Assemble()
     {
         var inspection = DummyVillageAssemblyFixture.Create();
-        var houses = inspection.World.Base.Objects.Where(o => o.Kind == "home")
-            .OrderBy(o => o.Id, StringComparer.Ordinal).ToArray();
+        var houses = inspection.World.Base.Objects.Where(o => o.Kind == "home").ToArray();
         if (houses.Length != inspection.BuildingFootprints.Count)
             throw new InvalidOperationException("FIXTURE_BUILDING_FOOTPRINT_COUNT_MISMATCH");
         var footprints = houses.Zip(inspection.BuildingFootprints,
