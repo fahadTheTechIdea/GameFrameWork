@@ -36,7 +36,7 @@ public sealed class SettlementTransportDesignBuilder
             issues.Add("SETTLEMENT_TRANSPORT_RULES_MISSING");
         if (issues.Count != 0) return new(null, issues);
         var result = new SettlementTransportCrossingCoordinator().Build(
-            world, settlement, specification.CrossingIntents, specification.RoadPolicies);
+            world, settlement, specification.CrossingIntents!, specification.RoadPolicies!);
         return result.Valid
             ? new(result.Plan, [])
             : new(null, result.Issues);
