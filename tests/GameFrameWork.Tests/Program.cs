@@ -1134,6 +1134,20 @@ Assert(villageGarden.IsValid && villageGarden.Features.Count > 0 &&
     villageGarden.Features.All(x => x.VisualRegionId is "west-garden" or "east-garden"),
     "Garden geometries are derived from approved fixture regions");
 
+
+var completeVillage = DummyVillageAssemblyFixture.Create();
+Assert(completeVillage.Vegetation.Count > 0 &&
+    completeVillage.BuildingFootprints.Count == 2 &&
+    completeVillage.GroundMaterials.Pieces.Count > 0 &&
+    completeVillage.GardenBeds.Features.Count > 0,
+    "Inspectable village assembly includes placed vegetation, buildings and styled terrain");
+Assert(completeVillage.Vegetation.All(p =>
+    p.SpeciesAssetId is "fixture-flower" or "fixture-tree"),
+    "Every planned plant carries a declared art identity");
+Assert(JsonSerializer.Serialize(completeVillage) ==
+    JsonSerializer.Serialize(DummyVillageAssemblyFixture.Create()),
+    "Complete semantic world assembly reproducible from fixed design");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
