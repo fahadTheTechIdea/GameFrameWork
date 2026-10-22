@@ -1003,6 +1003,39 @@ Assert(!pipelineBlocked.Accepted && pipelineBlocked.Issues.Any(x =>
     x.StartsWith("VEGETATION_FOOTPRINT_CONFLICT:")),
     "End-to-end acceptance rejects building conflicts despite approved art");
 
+
+var verifiedArtDir = Path.Combine(Path.GetTempPath(), "gfw-verified-" + Guid.NewGuid().ToString("N"));
+Directory.CreateDirectory(verifiedArtDir);
+try
+{
+    byte[] png = Convert.FromBase64String("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScL/nwAAAABJRU5ErkJggg==");
+    var verifiedPng = Path.Combine(verifiedArtDir, "test.png");
+    var verifiedAtlas = Path.Combine(verifiedArtDir, "test.json");
+    await File.WriteAllBytesAsync(verifiedPng, png);
+    await File.WriteAllTextAsync(verifiedAtlas, "{\"frames\":[]}");
+    string VerifiedHash(byte[] data) => Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(data));
+    var verifiedSheet = new SpriteSheetManifest("verified", "test.png", "test.json",
+        VerifiedHash(png), VerifiedHash(await File.ReadAllBytesAsync(verifiedAtlas)),
+        "plant", new[] { "S" });
+    var verifiedManifest = full with { Sheets = new[] { verifiedSheet } };
+    var verifiedPipeline = new GameArtsSemanticWorldPipeline(new InMemoryRegistry(verifiedManifest));
+    var singleSpecies = new VegetationComposition(new[] {
+        designedOrchard.Plants[0] with { SpeciesAssetId = "warehouse" }
+    }, Array.Empty<string>());
+    var measured = new[] { new GameArtsVegetationFootprint("warehouse", full.GameArtsRevision, 0.5) };
+    var ready = await verifiedPipeline.AcceptVerifiedAsync(semantic.Package!, singleSpecies,
+        emptyPathPlants, approvedBuildings, Array.Empty<VegetationClearanceRoute>(),
+        Array.Empty<VegetationClearanceAnchor>(), measured, verifiedArtDir);
+    Assert(ready.Accepted, "Verified production PNG and atlas hashes accept intended world");
+    await File.WriteAllTextAsync(verifiedAtlas, "{\"frames\":[0]}");
+    var tampered = await verifiedPipeline.AcceptVerifiedAsync(semantic.Package!, singleSpecies,
+        emptyPathPlants, approvedBuildings, Array.Empty<VegetationClearanceRoute>(),
+        Array.Empty<VegetationClearanceAnchor>(), measured, verifiedArtDir);
+    Assert(!tampered.Accepted && tampered.Issues.Any(x => x.StartsWith("GAMEARTS_FILE_ASSET_HASH_MISMATCH:")),
+        "Tampered production atlas rejects previously accepted world");
+}
+finally { Directory.Delete(verifiedArtDir, recursive: true); }
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
