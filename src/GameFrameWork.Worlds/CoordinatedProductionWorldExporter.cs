@@ -34,12 +34,10 @@ public sealed class CoordinatedProductionWorldExporter(
             art.PathVegetation.Plants.Count != 0)
             return new(null, ["PRODUCTION_VEGETATION_MISMATCH"]);
 
-        // ProductionWorldBuilder currently validates only vegetation assets. We cannot
-        // truthfully mark building sprites or surface materials production-approved.
-        if (document.SemanticWorld.Base.ArtBindings.Count != 0 ||
-            document.TerrainMaterials.Count != 0 ||
-            document.GardenBeds.Count != 0)
-            return new(null, ["PRODUCTION_NONVEGETATION_ART_VERIFICATION_REQUIRED"]);
+        var otherArtIssues = await new GameArtsNonVegetationGate(registry, approvals)
+            .VerifyAsync(document, art.TrustedAssetRoot, art.ProductionBundles, token);
+        if (otherArtIssues.Count != 0)
+            return new(null, otherArtIssues);
 
         var accepted = await new GameArtsProductionWorldGate(registry, approvals)
             .AcceptAsync(art.SemanticWorld, art.ZoneVegetation, art.PathVegetation,
