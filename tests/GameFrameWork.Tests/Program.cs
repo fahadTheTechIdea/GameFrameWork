@@ -700,6 +700,24 @@ Assert(new LandscapeBandComposer().Compose(gardenZone,
     .Contains("LANDSCAPE_BORDER_EXCEEDS_ZONE:garden"),
     "Insufficient garden space reports failure instead of placing elsewhere");
 
+
+var irregularGarden = new LandscapeZone("angled-garden", "flowerbed",
+    new WorldPolygon(new[]
+    {
+        new WorldPoint(0,0), new WorldPoint(30,0),
+        new WorldPoint(25,20), new WorldPoint(5,20)
+    }), "square", "approved-angled-garden-v1");
+var insetStyle = new LandscapeInsetStyle("cozy-border", "flowers", 2);
+var angledInset = new ConvexLandscapeInsetComposer().Compose(irregularGarden, insetStyle);
+Assert(angledInset.Diagnostics.Count == 0 && angledInset.Interior is not null,
+    "Convex irregular garden supports designed interior inset");
+Assert(Math.Abs(angledInset.Interior!.SignedArea()) < Math.Abs(irregularGarden.Boundary.SignedArea()),
+    "Inset garden interior remains smaller than parent region");
+var excessiveInset = new ConvexLandscapeInsetComposer().Compose(irregularGarden,
+    insetStyle with { InsetMeters = 100 });
+Assert(excessiveInset.Interior is null && excessiveInset.Diagnostics.Count != 0,
+    "Oversized landscape inset fails without fallback placement");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
