@@ -718,6 +718,22 @@ var excessiveInset = new ConvexLandscapeInsetComposer().Compose(irregularGarden,
 Assert(excessiveInset.Interior is null && excessiveInset.Diagnostics.Count != 0,
     "Oversized landscape inset fails without fallback placement");
 
+
+var concaveGarden = new WorldPolygon(new[]
+{
+    new WorldPoint(0,0), new WorldPoint(6,0), new WorldPoint(6,2),
+    new WorldPoint(2,2), new WorldPoint(2,6), new WorldPoint(0,6)
+});
+var pieces = LandscapePolygonTriangulator.Triangulate(concaveGarden);
+Assert(pieces.Count == 4, "Six-vertex concave garden decomposes into four triangles");
+Assert(pieces.All(p => p.Vertices.Count == 3 && p.SignedArea() > 0),
+    "Triangulated areas retain original winding and remain non-degenerate");
+Assert(Math.Abs(pieces.Sum(p => p.SignedArea()) - concaveGarden.SignedArea()) < 1e-8,
+    "Concave garden triangulation conserves authored area");
+Assert(JsonSerializer.Serialize(pieces) ==
+    JsonSerializer.Serialize(LandscapePolygonTriangulator.Triangulate(concaveGarden)),
+    "Concave garden triangulation deterministic");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
