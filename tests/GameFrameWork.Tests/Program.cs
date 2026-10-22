@@ -683,6 +683,23 @@ var badSemantic = semanticBuilder.Build(portable!, visual,
 Assert(!badSemantic.Valid && badSemantic.Errors.Any(e => e.StartsWith("UNKNOWN_VISUAL_REGION")),
     "Semantic terrain cannot originate from an unknown visual region");
 
+
+var gardenZone = semantic.Package!.Landscape.Single();
+var gardenStyle = new LandscapeBandStyle("cozy-flower-rows", "pink-flowers", 1, 1, 1);
+var gardenComposition = new LandscapeBandComposer().Compose(gardenZone, gardenStyle);
+Assert(gardenComposition.Diagnostics.Count == 0 && gardenComposition.Bands.Count == 3,
+    "Approved garden region yields three intentional planted rows");
+Assert(gardenComposition.Bands.All(b => b.ParentZoneId == "garden" &&
+    b.MaterialId == "pink-flowers" && b.Shape.SignedArea() > 0),
+    "Garden bands preserve style and source zone");
+Assert(JsonSerializer.Serialize(gardenComposition) ==
+    JsonSerializer.Serialize(new LandscapeBandComposer().Compose(gardenZone, gardenStyle)),
+    "Landscape composition is deterministic");
+Assert(new LandscapeBandComposer().Compose(gardenZone,
+    new LandscapeBandStyle("huge", "flowers", 10, 1, 1)).Diagnostics
+    .Contains("LANDSCAPE_BORDER_EXCEEDS_ZONE:garden"),
+    "Insufficient garden space reports failure instead of placing elsewhere");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
