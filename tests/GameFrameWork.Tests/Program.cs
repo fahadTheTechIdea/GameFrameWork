@@ -1544,6 +1544,42 @@ Assert(rejectedTransportWorld is null && rejectedTransportIssues.Contains(
     "SETTLEMENT_TRANSPORT_PROVENANCE_MISMATCH"),
     "Unapproved transport changes cannot be assembled into portable world");
 
+
+var coordinatedSpec = new CoordinatedSettlementSpecification(
+    villageDocument.SemanticWorld.Base.MockupId,
+    villageDocument.SemanticWorld.Base.MockupRevision,
+    villageDocument.SemanticWorld.Terrain.ToDictionary(
+        t => t.SourceVisualRegionId,
+        t => new TerrainCompositionStyle("cozy-" + t.Kind,
+            "fixture-" + t.Kind, t.DesignRuleId), StringComparer.Ordinal),
+    new[] {
+        new LandscapeDesignGrammar("western-garden", "flower-rows", "fixture-flowers", 1, 2, 1),
+        new LandscapeDesignGrammar("eastern-garden", "orchard-rows", "fixture-orchard-soil", 1, 2, 1)
+    },
+    new[] {
+        new VegetationGrammar("western-flowers", "western-garden", "fixture-flower",
+            VegetationPattern.OrchardGrid, 4, 2, "ordered flowers"),
+        new VegetationGrammar("eastern-trees", "eastern-garden", "fixture-tree",
+            VegetationPattern.OrchardGrid, 7, 3, "fruit orchard")
+    }, transportSpec);
+var coordinatedBuilder = new CoordinatedSettlementWorldBuilder();
+var composedSettlement = coordinatedBuilder.Build(villageDocument,
+    alignedSettlement, coordinatedSpec, qualityRules);
+Assert(composedSettlement.Valid && composedSettlement.World!.TerrainMaterials.Count > 0 &&
+    composedSettlement.World.GardenBeds.Count > 0 &&
+    composedSettlement.World.Vegetation.Count > 0 &&
+    composedSettlement.World.RoadCrossings!.Count == 1,
+    "One coordinated settlement workflow builds terrain gardens vegetation and crossing");
+Assert(JsonSerializer.Serialize(composedSettlement) ==
+    JsonSerializer.Serialize(coordinatedBuilder.Build(villageDocument,
+        alignedSettlement, coordinatedSpec, qualityRules)),
+    "Coordinated world generation remains deterministic");
+var badCoordinated = coordinatedBuilder.Build(villageDocument,
+    alignedSettlement, coordinatedSpec with { MockupRevision = "stale" }, qualityRules);
+Assert(!badCoordinated.Valid && badCoordinated.Issues.Contains(
+    "COORDINATED_MOCKUP_REVISION_MISMATCH"),
+    "Coordinated assembly fails when the visual revision is no longer approved");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
