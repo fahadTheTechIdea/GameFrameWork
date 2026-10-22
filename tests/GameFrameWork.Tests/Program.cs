@@ -919,6 +919,35 @@ Assert(!invalidBuildingComposition.Accepted &&
     invalidBuildingComposition.Issues.Contains("BUILDING_ENVELOPE_NOT_READY:unfinished"),
     "Unbuilt building envelope prevents world acceptance");
 
+
+var speciesGate = new SpeciesAwareSemanticWorldGate();
+var speciesProfiles = new[] { new VegetationAssetClearance("approved-shrub", 0.3),
+    new VegetationAssetClearance("approved-flowering-shrub", 0.8) };
+var speciesPlants = new VegetationComposition(new[] {
+    designedOrchard.Plants[0],
+    designedOrchard.Plants[0] with { Id = "neighbor", SpeciesAssetId = "approved-flowering-shrub",
+        PositionMeters = designedOrchard.Plants[0].PositionMeters.Offset(1, 0) }
+}, Array.Empty<string>());
+var speciesResult = speciesGate.Accept(semantic.Package!, speciesPlants, emptyPathPlants,
+    approvedBuildings, Array.Empty<VegetationClearanceRoute>(),
+    Array.Empty<VegetationClearanceAnchor>(), speciesProfiles);
+Assert(!speciesResult.Accepted && speciesResult.Issues.Any(x =>
+    x.StartsWith("VEGETATION_PAIR_CONFLICT:")),
+    "Species-aware gate detects overlapping unequal vegetation radii");
+var missingSpecies = speciesGate.Accept(semantic.Package!, speciesPlants, emptyPathPlants,
+    approvedBuildings, Array.Empty<VegetationClearanceRoute>(),
+    Array.Empty<VegetationClearanceAnchor>(),
+    new[] { new VegetationAssetClearance("approved-shrub", 0.3) });
+Assert(!missingSpecies.Accepted && missingSpecies.Issues.Contains(
+    "VEGETATION_ASSET_DIMENSIONS_MISSING:neighbor"),
+    "Unknown species dimensions reject world without guessing physical size");
+var speciesSafe = speciesGate.Accept(semantic.Package!, designedOrchard, emptyPathPlants,
+    approvedBuildings, Array.Empty<VegetationClearanceRoute>(),
+    Array.Empty<VegetationClearanceAnchor>(), speciesProfiles);
+Assert(speciesSafe.Accepted &&
+    speciesSafe.World!.Vegetation.Count == designedOrchard.Plants.Count,
+    "Species-aware gate accepts clear deliberate vegetation arrangement");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
