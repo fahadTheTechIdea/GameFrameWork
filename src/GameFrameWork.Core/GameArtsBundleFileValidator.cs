@@ -54,6 +54,38 @@ public sealed class GameArtsBundleFileValidator
                 errors.Add($"ATLAS_INVALID:{component.Id}:{direction}:{ex.GetType().Name}");
             }
         }
+        // Every child's named mounting point must exist on every parent directional frame.
+        var parts = parsed.Bundle.Components.ToDictionary(c => c.Id, StringComparer.Ordinal);
+        foreach (var child in parsed.Bundle.Components.Where(c => c.Parent is not null))
+        {
+            if (!parts.TryGetValue(child.Parent!, out var parent)) continue;
+            foreach (var direction in parsed.Bundle.Directions)
+            {
+                var atlasPath = Path.Combine(root, parent.Atlases[direction]);
+                if (!File.Exists(atlasPath)) continue;
+                try
+                {
+                    using var json = System.Text.Json.JsonDocument.Parse(
+                        await File.ReadAllTextAsync(atlasPath, token));
+                    var frames = json.RootElement.GetProperty("frames");
+                    int frameIndex = 0;
+                    foreach (var frame in frames.EnumerateArray())
+                    {
+                        if (!frame.TryGetProperty("anchors", out var anchors) ||
+                            anchors.ValueKind != System.Text.Json.JsonValueKind.Object ||
+                            !anchors.TryGetProperty(child.Mount!, out var _))
+                            errors.Add($"PARENT_MOUNT_MISSING:{child.Id}:{direction}:{frameIndex}");
+                        frameIndex++;
+                    }
+                    if (frameIndex == 0) errors.Add($"PARENT_FRAMES_EMPTY:{child.Id}:{direction}");
+                }
+                catch (Exception ex) when (ex is System.Text.Json.JsonException or
+                    KeyNotFoundException or InvalidOperationException or IOException)
+                {
+                    errors.Add($"PARENT_ATLAS_INVALID:{child.Id}:{direction}");
+                }
+            }
+        }
         return errors;
     }
 }
