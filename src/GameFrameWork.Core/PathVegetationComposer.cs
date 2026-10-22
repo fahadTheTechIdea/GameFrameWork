@@ -43,7 +43,7 @@ public sealed class PathVegetationComposer
                 issues.Add("PATH_VEGETATION_SOURCE_MISSING:" + grammar.Id);
                 continue;
             }
-            var vertices = path.Geometry.Vertices;
+            var vertices = path.Geometry.Points;
             if (vertices.Count < 2)
             {
                 issues.Add("PATH_VEGETATION_INVALID_GEOMETRY:" + grammar.Id);
