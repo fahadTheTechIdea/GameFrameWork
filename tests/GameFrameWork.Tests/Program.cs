@@ -835,6 +835,27 @@ Assert(!missingHedge.IsValid &&
     missingHedge.Diagnostics.Contains("PATH_VEGETATION_SOURCE_MISSING:village-hedge"),
     "Vegetation cannot be scattered onto unknown paths");
 
+
+var clearance = new VegetationClearanceValidator();
+var routeConflict = clearance.Validate(pathPlants.Plants,
+    Array.Empty<VegetationClearanceAnchor>(),
+    new[] { new VegetationClearanceRoute("walkway-reserved",
+        new WorldPolyline(new[] { new WorldPoint(4, 4), new WorldPoint(24, 4) }), 2) }, 0.5);
+Assert(!routeConflict.IsValid &&
+    routeConflict.Conflicts.Any(c => c.StartsWith("VEGETATION_ROUTE_CONFLICT:")),
+    "Plants on a protected walkway are rejected without relocation");
+var landmarkConflict = clearance.Validate(new[] { designedOrchard.Plants[0] },
+    new[] { new VegetationClearanceAnchor("reserved-tree-spot",
+        designedOrchard.Plants[0].PositionMeters, 1) },
+    Array.Empty<VegetationClearanceRoute>(), 0.5);
+Assert(!landmarkConflict.IsValid &&
+    landmarkConflict.Conflicts.Single().Contains("reserved-tree-spot"),
+    "Planned vegetation cannot overlap reserved landmarks");
+var safePlants = clearance.Validate(designedOrchard.Plants,
+    new[] { new VegetationClearanceAnchor("outside", new WorldPoint(100, 100), 1) },
+    Array.Empty<VegetationClearanceRoute>(), 0.5);
+Assert(safePlants.IsValid, "Planned vegetation clear of reservations remains valid");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
