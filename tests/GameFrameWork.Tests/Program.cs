@@ -1012,7 +1012,7 @@ try
     var verifiedPng = Path.Combine(verifiedArtDir, "test.png");
     var verifiedAtlas = Path.Combine(verifiedArtDir, "test.json");
     await File.WriteAllBytesAsync(verifiedPng, png);
-    await File.WriteAllTextAsync(verifiedAtlas, "{\"frames\":[]}");
+    await File.WriteAllTextAsync(verifiedAtlas, "{\"schema_version\":\"1.0\",\"image\":\"test.png\",\"mask_color\":\"#FF00FF\",\"background_alpha\":255,\"image_size\":[1,1],\"frames\":[{\"rect\":[0,0,1,1],\"pivot\":[0,0],\"anchors\":{}}]}");
     string VerifiedHash(byte[] data) => Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(data));
     var verifiedSheet = new SpriteSheetManifest("verified", "test.png", "test.json",
         VerifiedHash(png), VerifiedHash(await File.ReadAllBytesAsync(verifiedAtlas)),
@@ -1027,6 +1027,37 @@ try
         emptyPathPlants, approvedBuildings, Array.Empty<VegetationClearanceRoute>(),
         Array.Empty<VegetationClearanceAnchor>(), measured, verifiedArtDir);
     Assert(ready.Accepted, "Verified production PNG and atlas hashes accept intended world");
+
+    var nativeFixtureBundle = Path.Combine(verifiedArtDir, "warehouse.bundle.json");
+    await File.WriteAllTextAsync(nativeFixtureBundle, """
+    {
+      "schema_version":"1.0", "asset_id":"warehouse", "directions":["S"],
+      "components":[{"id":"plant","parent":null,"atlases":{"S":"test.json"}}],
+      "sampled_poses":[{"direction":"S","normalized_time":0,
+        "nodes":{"plant":{"frame_index":0,"world_matrix_2d":[[1,0,0],[0,1,0],[0,0,1]]}}}]
+    }
+    """);
+    var completeFixture = new ProductionWorldRequest(semantic.Package!, singleSpecies,
+        emptyPathPlants, approvedBuildings,
+        Array.Empty<VegetationClearanceRoute>(),
+        Array.Empty<VegetationClearanceAnchor>(), measured, verifiedArtDir,
+        new[] { new GameArtsWorldBundleReference("warehouse",
+            "warehouse.bundle.json", full.GameArtsRevision) });
+    var fixtureExportPath = Path.Combine(verifiedArtDir, "assembled-world.json");
+    var fixtureBuilder = new ProductionWorldBuilder(
+        new InMemoryRegistry(verifiedManifest), new TestApprovalAuthority(true));
+    var fixtureOutput = await fixtureBuilder.BuildAsync(completeFixture, fixtureExportPath);
+    Assert(fixtureOutput.Produced && File.Exists(fixtureExportPath),
+        "Complete simulated-approved GameArts fixture exports semantic world");
+    using (var exportedFixture = JsonDocument.Parse(await File.ReadAllTextAsync(fixtureExportPath)))
+    {
+        Assert(exportedFixture.RootElement.GetProperty("Vegetation").GetArrayLength() == 1,
+            "Production JSON contains the approved planted object");
+        Assert(exportedFixture.RootElement.GetProperty("World").GetProperty("Base")
+            .GetProperty("MockupId").GetString() == "town-mockup",
+            "Production JSON preserves approved mockup provenance");
+    }
+
 
     var productionGate = new GameArtsProductionWorldGate(
         new InMemoryRegistry(verifiedManifest), new TestApprovalAuthority(true));
