@@ -19,7 +19,14 @@ OperationEvent Entry(string eventId, OperationSeverity severity, string message,
     new(eventId, DateTimeOffset.UtcNow, severity, "GameFrameWork.Cli", operation, id, message, args.Length > 1 ? Path.GetFileName(args[1]) : null, "local-cli", outcome);
 try
 {
-    if (args[0] != "desert") throw new ArgumentException("Only desert is supported in the first slice.");
+    if (args[0] == "dummy-village")
+    {
+        var destination = args.Length > 1 ? args[1] : "generated/dummy-village";
+        await new DummyVillageAssembler().ExportAsync(destination);
+        Console.WriteLine($"Generated test Godot village at {Path.GetFullPath(destination)}");
+        return;
+    }
+    if (args[0] != "desert") throw new ArgumentException("Supported: desert or dummy-village.");
     var output = args.Length > 1 ? args[1] : "generated/desert";
     if (args.Length > 3) throw new ArgumentException("Expected at most three arguments.");
     var seed = args.Length > 2 ? int.Parse(args[2]) : 42;
