@@ -1415,6 +1415,27 @@ Assert(worldQuality.Analyze(noSidewalk, qualityRules).Issues.Contains(
     "CROSSING_SIDEWALK_CONNECTION_MISSING:village-zebra"),
     "Crossings require sidewalk approaches on both sides");
 
+
+var curbValidator = new CrossingApproachValidator();
+Assert(curbValidator.Validate(villageDocument, villageDocument.CrossingApproaches!, 0.02).Count == 0,
+    "Village crossing has continuous sidewalk approaches and accessible curb transitions");
+var raisedCurbVillage = villageDocument with {
+    CrossingApproaches = new[] { villageDocument.CrossingApproaches![0] with {
+        LeftCurbRiseMeters = 0.15
+    } }
+};
+Assert(worldQuality.Analyze(raisedCurbVillage, qualityRules).Issues.Contains(
+    "CROSSING_CURB_TRANSITION_INACCESSIBLE:village-zebra"),
+    "Quality gate rejects curb transitions exceeding the configured clearance");
+var detachedSidewalkVillage = villageDocument with {
+    CrossingApproaches = new[] { villageDocument.CrossingApproaches![0] with {
+        RightSidewalkPoint = new WorldPoint(50, 28)
+    } }
+};
+Assert(worldQuality.Analyze(detachedSidewalkVillage, qualityRules).Issues.Contains(
+    "CROSSING_SIDEWALK_ENDPOINT_MISMATCH:village-zebra"),
+    "Quality gate detects a sidewalk connection that does not meet the crossing");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
