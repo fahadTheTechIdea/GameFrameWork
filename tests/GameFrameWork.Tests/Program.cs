@@ -578,6 +578,31 @@ try
 }
 finally { Directory.Delete(atlasTestDir, true); }
 
+
+var motionFolder = Path.Combine(Path.GetTempPath(), "gamearts-motion-" + Guid.NewGuid().ToString("N"));
+Directory.CreateDirectory(motionFolder);
+try
+{
+    var file = Path.Combine(motionFolder, "sample.bundle.json");
+    var motionJson = """
+    {"schema_version":"1.0","asset_id":"gate","directions":["S"],
+     "component_order":["base"],
+     "components":[{"id":"base","parent":null,"atlases":{"S":"base_s.atlas.json"}}],
+     "sampled_poses":[{"direction":"S","normalized_time":0.5,
+       "nodes":{"base":{"frame_index":0,"world_matrix_2d":[[1,0,0],[0,1,0],[0,0,1]]}}}]}
+    """;
+    await File.WriteAllTextAsync(file, motionJson);
+    Assert((await new GameArtsMotionValidator().ValidateAsync(file)).Count == 0,
+        "Finite sampled component pose accepted");
+    await File.WriteAllTextAsync(file, motionJson.Replace("\"normalized_time\":0.5", "\"normalized_time\":1.5"));
+    Assert((await new GameArtsMotionValidator().ValidateAsync(file))
+        .Contains("POSE_DIRECTION_OR_TIME_INVALID"), "Out-of-range normalized pose time rejected");
+    await File.WriteAllTextAsync(file, motionJson.Replace("\"frame_index\":0", "\"frame_index\":-1"));
+    Assert((await new GameArtsMotionValidator().ValidateAsync(file))
+        .Contains("POSE_FRAME_INDEX_INVALID:base"), "Negative animation frame rejected");
+}
+finally { Directory.Delete(motionFolder, true); }
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
