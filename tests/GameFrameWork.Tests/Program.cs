@@ -603,6 +603,28 @@ try
 }
 finally { Directory.Delete(motionFolder, true); }
 
+
+var approvalRoot = Path.Combine(Path.GetTempPath(), "gamearts-gate-" + Guid.NewGuid().ToString("N"));
+Directory.CreateDirectory(approvalRoot);
+try
+{
+    var bundlePath = Path.Combine(approvalRoot, "empty.bundle.json");
+    await File.WriteAllTextAsync(bundlePath, """
+    {"schema_version":"1.0","asset_id":"sample","directions":["S"],
+     "components":[{"id":"base","parent":null,"atlases":{"S":"missing.atlas.json"}}],
+     "sampled_poses":[{"direction":"S","normalized_time":0,
+     "nodes":{"base":{"frame_index":0,"world_matrix_2d":[[1,0,0],[0,1,0],[0,0,1]]}}}]}
+    """);
+    var gate = new GameArtsProductionGate(new TestApprovalAuthority(true));
+    var result = await gate.CheckAsync(bundlePath, "r1");
+    Assert(!result.Ready && result.Approved && result.Issues.Any(i => i.StartsWith("ATLAS_MISSING")),
+        "Approved but incomplete bundles cannot pass readiness");
+    var unapproved = await new GameArtsProductionGate(new TestApprovalAuthority(false))
+        .CheckAsync(bundlePath, "r1");
+    Assert(!unapproved.Ready && unapproved.Issues.Contains("LIFECYCLE_APPROVAL_NOT_VERIFIED"),
+        "Technical checks cannot bypass approval authority");
+}
+finally { Directory.Delete(approvalRoot, true); }
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
@@ -634,6 +656,11 @@ static void AssertThrows<T>(Action action, string message) where T : Exception
 static void Assert(bool pass, string message)
 {
     if (!pass) throw new Exception("Failed: " + message);
+}
+sealed class TestApprovalAuthority(bool approved) : IGameArtsApprovalAuthority
+{
+    public Task<bool> IsApprovedAsync(string assetId, string revision,
+        CancellationToken token = default) => Task.FromResult(approved);
 }
 sealed class InMemoryRegistry(ApprovedArtManifest? manifest) : IApprovedArtRegistry
 {
