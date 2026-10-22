@@ -1696,9 +1696,32 @@ try
         manifestEvidence.Dependencies.Select(x => x.AssetId)
             .SequenceEqual(assetIds),
         "Asset dependency evidence deterministic regardless of input ordering");
+    var packageVerifier = new PortableWorldPackageVerifier(multiRegistry);
+    var verifiedPackage = await packageVerifier.VerifyAsync(multiOutput, multiAssetRoot);
+    Assert(verifiedPackage.Valid,
+        "Previously exported coordinated world passes independent dependency audit");
+    using (var originalDoc = JsonDocument.Parse(await File.ReadAllTextAsync(multiOutput)))
+    {
+        var tamperedDocument = JsonSerializer.Deserialize<DummyVillageWorldDocument>(
+            originalDoc.RootElement.GetRawText())!;
+        var missingDependency = tamperedDocument with {
+            AssetDependencies = tamperedDocument.AssetDependencies!
+                .Where(x => x.AssetId != "fixture-home").ToArray()
+        };
+        var alteredPackage = Path.Combine(multiAssetRoot, "missing-dependency.json");
+        await File.WriteAllTextAsync(alteredPackage, JsonSerializer.Serialize(missingDependency));
+        var rejectedPackage = await packageVerifier.VerifyAsync(alteredPackage, multiAssetRoot);
+        Assert(!rejectedPackage.Valid &&
+            rejectedPackage.Issues.Contains("WORLD_DEPENDENCY_MISSING:fixture-home"),
+            "Independent package verifier rejects omitted production asset evidence");
+    }
     var tamperedAsset = assetIds.First(id => id == "fixture-home");
     await File.WriteAllTextAsync(Path.Combine(multiAssetRoot, tamperedAsset + ".atlas.json"),
         "{\"frames\":[]}");
+    var changedPackage = await packageVerifier.VerifyAsync(multiOutput, multiAssetRoot);
+    Assert(!changedPackage.Valid && changedPackage.Issues.Any(x =>
+        x.StartsWith("WORLD_DEPENDENCY_FILE_ASSET_HASH_MISMATCH:fixture-home:")),
+        "Independent package verifier detects modified GameArts files after export");
     var rejected = await multiBuilder.ExportAsync(
         new CoordinatedProductionRequest(composedSettlement, multiInputs), multiOutput);
     Assert(!rejected.Produced && rejected.Issues.Any(x =>
