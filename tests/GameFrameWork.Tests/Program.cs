@@ -966,6 +966,43 @@ Assert(!unapprovedFootprints.Valid && unapprovedFootprints.Issues.Contains(
     "GAMEARTS_ASSET_NOT_APPROVED:warehouse"),
     "Unapproved art cannot supply vegetation footprint sizes");
 
+
+var endToEnd = new GameArtsSemanticWorldPipeline(new InMemoryRegistry(full));
+var worldWithArt = await endToEnd.AcceptAsync(semantic.Package!,
+    new VegetationComposition(new[] {
+        designedOrchard.Plants[0] with { SpeciesAssetId = "warehouse" }
+    }, Array.Empty<string>()), emptyPathPlants, approvedBuildings,
+    Array.Empty<VegetationClearanceRoute>(),
+    Array.Empty<VegetationClearanceAnchor>(),
+    new[] { new GameArtsVegetationFootprint("warehouse", full.GameArtsRevision, 0.5) });
+Assert(worldWithArt.Accepted && worldWithArt.World!.Vegetation.Count == 1,
+    "GameArts pipeline accepts approved footprint with safe semantic placement");
+var pipelineStale = await endToEnd.AcceptAsync(semantic.Package!,
+    new VegetationComposition(new[] {
+        designedOrchard.Plants[0] with { SpeciesAssetId = "warehouse" }
+    }, Array.Empty<string>()), emptyPathPlants, approvedBuildings,
+    Array.Empty<VegetationClearanceRoute>(),
+    Array.Empty<VegetationClearanceAnchor>(),
+    new[] { new GameArtsVegetationFootprint("warehouse", "outdated", 0.5) });
+Assert(!pipelineStale.Accepted && pipelineStale.Issues.Contains(
+    "GAMEARTS_FOOTPRINT_STALE:warehouse"),
+    "End-to-end acceptance rejects mismatched GameArts footprint revision");
+var pipelineBlocked = await endToEnd.AcceptAsync(semantic.Package!,
+    new VegetationComposition(new[] {
+        designedOrchard.Plants[0] with { SpeciesAssetId = "warehouse" }
+    }, Array.Empty<string>()), emptyPathPlants,
+    new Dictionary<string, BuildingEnvelopeResult> {
+        ["occupied"] = new BuildingEnvelopeResult(new WorldPolygon(new[] {
+            new WorldPoint(8,8), new WorldPoint(11,8),
+            new WorldPoint(11,11), new WorldPoint(8,11)
+        }), Array.Empty<string>())
+    }, Array.Empty<VegetationClearanceRoute>(),
+    Array.Empty<VegetationClearanceAnchor>(),
+    new[] { new GameArtsVegetationFootprint("warehouse", full.GameArtsRevision, 0.5) });
+Assert(!pipelineBlocked.Accepted && pipelineBlocked.Issues.Any(x =>
+    x.StartsWith("VEGETATION_FOOTPRINT_CONFLICT:")),
+    "End-to-end acceptance rejects building conflicts despite approved art");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
