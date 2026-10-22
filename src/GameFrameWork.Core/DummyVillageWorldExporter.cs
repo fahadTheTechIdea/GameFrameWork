@@ -22,7 +22,8 @@ public sealed record DummyVillageWorldDocument(
     IReadOnlyList<PedestrianJunction>? Junctions = null,
     IReadOnlyList<PedestrianRoadCrossing>? RoadCrossings = null,
     IReadOnlyList<PedestrianCrossingSpan>? CrossingSpans = null,
-    IReadOnlyList<NamedRoadProfile>? RoadProfiles = null);
+    IReadOnlyList<NamedRoadProfile>? RoadProfiles = null,
+    IReadOnlyList<CrossingApproach>? CrossingApproaches = null);
 
 public static class DummyVillageWorldExporter
 {
@@ -49,7 +50,8 @@ public static class DummyVillageWorldExporter
             ], [], [new("village-zebra", "crosswalk", "main-road",
                 new WorldPoint(32, 28), true, true)],
                 [new("village-zebra", new(30,28), new(34,28), 4, false)],
-                [new("main-road", new RoadCrossSection(1.8, 2, 0.8, 0.8, 0.2, 0.2))]);
+                [new("main-road", new RoadCrossSection(1.8, 2, 0.8, 0.8, 0.2, 0.2))],
+                [new("village-zebra", new(29.2,28), new(34.8,28), 0, 0, true, true)]);
     }
 
     public static async Task<string> ExportAsync(string outputPath,
