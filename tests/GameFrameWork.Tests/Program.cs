@@ -1292,6 +1292,27 @@ Assert(new PedestrianAccessNetworkValidator().Validate(roadOnlyEntrance)
     .Contains("ENTRANCE_TARGET_NOT_PEDESTRIAN:house-west"),
     "Pedestrian entrance cannot treat a driving road as a footpath");
 
+
+var splitPedestrianWorld = villageDocument with {
+    SemanticWorld = villageDocument.SemanticWorld with {
+        Paths = villageDocument.SemanticWorld.Paths.Concat(new[] {
+            new PlannedWorldPath("isolated-walk", "footpath",
+                new WorldPolyline(new[] { new WorldPoint(40, 44), new WorldPoint(58, 44) }),
+                "fixture-isolated-route", "fixture-reachability")
+        }).ToArray()
+    },
+    Entrances = villageDocument.Entrances!.Select(e => e.BuildingId == "house-east"
+        ? e with { TargetPathId = "isolated-walk",
+            AccessWalkway = new WorldPolyline(new[] {
+                new WorldPoint(43, 20), new WorldPoint(43, 44) }) }
+        : e).ToArray()
+};
+Assert(new PedestrianReachabilityValidator().Validate(splitPedestrianWorld)
+    .Contains("PEDESTRIAN_ENTRANCES_DISCONNECTED"),
+    "Doors attached to separate pedestrian networks cannot reach each other");
+Assert(new PedestrianReachabilityValidator().Validate(villageDocument).Count == 0,
+    "Fixture village entrances share one connected pedestrian network");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
