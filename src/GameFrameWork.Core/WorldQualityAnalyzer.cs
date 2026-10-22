@@ -81,6 +81,7 @@ public sealed class WorldQualityAnalyzer
             var access = new BuildingEntranceAccessValidator().Validate(document, entrances);
             issues.AddRange(access.Issues);
             issues.AddRange(new PedestrianAccessNetworkValidator().Validate(document));
+            issues.AddRange(new PedestrianReachabilityValidator().Validate(document));
         }
         if (document.Vegetation.Count < rules.MinimumVegetationCount)
             issues.Add("PLANTING_DENSITY_INSUFFICIENT");
