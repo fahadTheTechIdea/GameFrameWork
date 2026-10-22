@@ -880,6 +880,45 @@ var safeWorld = vegetationGate.Accept(designedOrchard, new PathVegetationResult(
 Assert(safeWorld.Accepted && safeWorld.Plants.Count == designedOrchard.Plants.Count,
     "Clear plant composition passes world acceptance without changing positions");
 
+
+var semanticAcceptance = new SemanticWorldAcceptanceGate();
+var emptyPathPlants = new PathVegetationResult(
+    Array.Empty<PlannedVegetation>(), Array.Empty<string>());
+var approvedBuildings = new Dictionary<string, BuildingEnvelopeResult> {
+    ["warehouse"] = new BuildingEnvelopeResult(new WorldPolygon(new[] {
+        new WorldPoint(40,40), new WorldPoint(43,40),
+        new WorldPoint(43,43), new WorldPoint(40,43)
+    }), Array.Empty<string>())
+};
+var acceptedComposition = semanticAcceptance.Accept(semantic.Package!,
+    designedOrchard, emptyPathPlants, approvedBuildings,
+    Array.Empty<VegetationClearanceRoute>(),
+    Array.Empty<VegetationClearanceAnchor>(), 0.4);
+Assert(acceptedComposition.Accepted &&
+    acceptedComposition.World!.Vegetation.Count == designedOrchard.Plants.Count,
+    "Semantic world acceptance retains clear planted layout");
+var overlappingPlants = new VegetationComposition(new[] {
+    designedOrchard.Plants[0],
+    designedOrchard.Plants[0] with { Id = "overlapping-plant" }
+}, Array.Empty<string>());
+var rejectedComposition = semanticAcceptance.Accept(semantic.Package!,
+    overlappingPlants, emptyPathPlants, approvedBuildings,
+    Array.Empty<VegetationClearanceRoute>(),
+    Array.Empty<VegetationClearanceAnchor>(), 0.4);
+Assert(!rejectedComposition.Accepted && rejectedComposition.World is null &&
+    rejectedComposition.Issues.Any(e => e.StartsWith("VEGETATION_PAIR_CONFLICT:")),
+    "Semantic world rejects vegetation-to-vegetation collisions");
+var invalidBuildingComposition = semanticAcceptance.Accept(semantic.Package!,
+    designedOrchard, emptyPathPlants,
+    new Dictionary<string, BuildingEnvelopeResult> {
+        ["unfinished"] = new BuildingEnvelopeResult(null, new[] { "NO_ENVELOPE" })
+    },
+    Array.Empty<VegetationClearanceRoute>(),
+    Array.Empty<VegetationClearanceAnchor>(), 0.4);
+Assert(!invalidBuildingComposition.Accepted &&
+    invalidBuildingComposition.Issues.Contains("BUILDING_ENVELOPE_NOT_READY:unfinished"),
+    "Unbuilt building envelope prevents world acceptance");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
