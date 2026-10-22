@@ -23,7 +23,8 @@ public sealed record DummyVillageWorldDocument(
     IReadOnlyList<PedestrianRoadCrossing>? RoadCrossings = null,
     IReadOnlyList<PedestrianCrossingSpan>? CrossingSpans = null,
     IReadOnlyList<NamedRoadProfile>? RoadProfiles = null,
-    IReadOnlyList<CrossingApproach>? CrossingApproaches = null);
+    IReadOnlyList<CrossingApproach>? CrossingApproaches = null,
+    IReadOnlyList<WorldAssetDependency>? AssetDependencies = null);
 
 public static class DummyVillageWorldExporter
 {
