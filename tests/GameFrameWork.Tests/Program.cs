@@ -1221,7 +1221,7 @@ Assert(!overlapQuality.MeetsRules &&
     "Repeated terrain geometry cannot falsely satisfy ground coverage");
 var spillFill = villageDocument with {
     TerrainMaterials = villageDocument.TerrainMaterials.Concat(new[] {
-        villageDocument.TerrainMaterials[0] with {
+        villageDocument.TerrainMaterials.First(p => p.SourceRegionId == "ground") with {
             Id = "out-of-ground",
             Geometry = new WorldPolygon(new[] {
                 new WorldPoint(63, 46), new WorldPoint(67, 46),
