@@ -663,6 +663,26 @@ try
 }
 finally { if (Directory.Exists(portableDir)) Directory.Delete(portableDir, true); }
 
+
+var semanticBuilder = new SemanticWorldBuilder();
+var squareShape = visual.Regions[0].Outline;
+var semantic = semanticBuilder.Build(portable!, visual,
+    new[] { new TerrainRegion("ground-square","grass",squareShape,"square","approved-terrain-v1") },
+    new[] { new PlannedWorldPath("walkway","pedestrian",
+        new WorldPolyline(new[] { new WorldPoint(4,4),new WorldPoint(24,4) }),
+        "mockup-main-walkway","approved-path-v1") },
+    new[] { new LandscapeZone("garden","flowerbed",new WorldPolygon(new[]
+    { new WorldPoint(8,8),new WorldPoint(16,8),new WorldPoint(16,16),new WorldPoint(8,16) }),
+        "square","approved-garden-v1") });
+Assert(semantic.Valid && semantic.Package!.Terrain.Count == 1 &&
+    semantic.Package.Paths.Count == 1 && semantic.Package.Landscape.Count == 1,
+    "Semantic world includes terrain pathways and landscaping");
+var badSemantic = semanticBuilder.Build(portable!, visual,
+    new[] { new TerrainRegion("ground-square","grass",squareShape,"not-approved","approved-terrain-v1") },
+    Array.Empty<PlannedWorldPath>(),Array.Empty<LandscapeZone>());
+Assert(!badSemantic.Valid && badSemantic.Errors.Any(e => e.StartsWith("UNKNOWN_VISUAL_REGION")),
+    "Semantic terrain cannot originate from an unknown visual region");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
