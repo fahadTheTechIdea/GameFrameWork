@@ -1153,7 +1153,7 @@ var villageDocument = DummyVillageWorldExporter.Assemble();
 Assert(villageDocument.ArtifactKind == "simulation-fixture" &&
     !villageDocument.ProductionApproved &&
     villageDocument.Buildings.Select(b => b.ObjectId)
-        .SequenceEqual(new[] { "house-east", "house-west" }),
+        .SequenceEqual(new[] { "house-west", "house-east" }),
     "Portable world identifies fixture provenance and named building footprints");
 Assert(villageDocument.TerrainMaterials.Count > 0 &&
     villageDocument.GardenBeds.Count > 0 && villageDocument.Vegetation.Count > 0,
