@@ -46,16 +46,16 @@ public sealed class CrossingApproachValidator
             double dy = span.SecondCurb.Y - span.FirstCurb.Y;
             double length = Math.Sqrt(dx*dx + dy*dy);
             if (!double.IsFinite(length) || length <= Epsilon ||
-                !double.IsFinite(profile.SidewalkLeftMeters) ||
-                !double.IsFinite(profile.SidewalkRightMeters))
+                !double.IsFinite(profile.Section.SidewalkLeftMeters) ||
+                !double.IsFinite(profile.Section.SidewalkRightMeters))
             {
                 issues.Add("CROSSING_APPROACH_GEOMETRY_INVALID:" + approach.CrossingId);
                 continue;
             }
             var expectedLeft = span.FirstCurb.Offset(
-                -dx/length*profile.SidewalkLeftMeters, -dy/length*profile.SidewalkLeftMeters);
+                -dx/length*profile.Section.SidewalkLeftMeters, -dy/length*profile.Section.SidewalkLeftMeters);
             var expectedRight = span.SecondCurb.Offset(
-                dx/length*profile.SidewalkRightMeters, dy/length*profile.SidewalkRightMeters);
+                dx/length*profile.Section.SidewalkRightMeters, dy/length*profile.Section.SidewalkRightMeters);
             if (!double.IsFinite(approach.LeftSidewalkPoint.X) ||
                 !double.IsFinite(approach.LeftSidewalkPoint.Y) ||
                 !double.IsFinite(approach.RightSidewalkPoint.X) ||
