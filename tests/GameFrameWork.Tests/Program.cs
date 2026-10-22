@@ -856,6 +856,30 @@ var safePlants = clearance.Validate(designedOrchard.Plants,
     Array.Empty<VegetationClearanceRoute>(), 0.5);
 Assert(safePlants.IsValid, "Planned vegetation clear of reservations remains valid");
 
+
+var vegetationGate = new VegetationWorldAcceptanceGate();
+var reservedBuilding = new VegetationProtectedFootprint("west-house",
+    new WorldPolygon(new[] {
+        new WorldPoint(8,8), new WorldPoint(11,8),
+        new WorldPoint(11,11), new WorldPoint(8,11)
+    }));
+var blockedWorld = vegetationGate.Accept(designedOrchard, new PathVegetationResult(
+    Array.Empty<PlannedVegetation>(), Array.Empty<string>()),
+    new[] { reservedBuilding }, Array.Empty<VegetationClearanceAnchor>(),
+    Array.Empty<VegetationClearanceRoute>(), 0.5);
+Assert(!blockedWorld.Accepted && blockedWorld.Plants.Count == 0 &&
+    blockedWorld.Conflicts.Any(c => c.StartsWith("VEGETATION_FOOTPRINT_CONFLICT:")),
+    "World acceptance refuses planted vegetation in building footprint");
+var safeWorld = vegetationGate.Accept(designedOrchard, new PathVegetationResult(
+    Array.Empty<PlannedVegetation>(), Array.Empty<string>()),
+    new[] { new VegetationProtectedFootprint("distant-house",
+        new WorldPolygon(new[] { new WorldPoint(40,40), new WorldPoint(44,40),
+            new WorldPoint(44,44), new WorldPoint(40,44) })) },
+    Array.Empty<VegetationClearanceAnchor>(),
+    Array.Empty<VegetationClearanceRoute>(), 0.5);
+Assert(safeWorld.Accepted && safeWorld.Plants.Count == designedOrchard.Plants.Count,
+    "Clear plant composition passes world acceptance without changing positions");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
