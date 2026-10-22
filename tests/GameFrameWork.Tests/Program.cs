@@ -1618,6 +1618,88 @@ try
 }
 finally { if (File.Exists(coordinatedExportPath)) File.Delete(coordinatedExportPath); }
 
+
+var multiAssetRoot = Path.Combine(Path.GetTempPath(), "gfw-multiart-" + Guid.NewGuid().ToString("N"));
+Directory.CreateDirectory(multiAssetRoot);
+try
+{
+    const string simulatedRevision = "simulated-fixture-r1";
+    var assetIds = WorldArtDependencyInventory.Collect(composedWorld)
+        .Concat(composedWorld.Vegetation.Select(p => p.SpeciesAssetId))
+        .Distinct(StringComparer.Ordinal).OrderBy(x => x, StringComparer.Ordinal).ToArray();
+    var manifests = new Dictionary<string, ApprovedArtManifest>(StringComparer.Ordinal);
+    var bundles = new List<GameArtsWorldBundleReference>();
+    byte[] icon = Convert.FromBase64String(
+        "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScL/nwAAAABJRU5ErkJggg==");
+    static string ArtHash(byte[] bytes) =>
+        Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(bytes));
+    foreach (var assetId in assetIds)
+    {
+        var imageName = assetId + ".png";
+        var atlasName = assetId + ".atlas.json";
+        var bundleName = assetId + ".bundle.json";
+        await File.WriteAllBytesAsync(Path.Combine(multiAssetRoot, imageName), icon);
+        var atlasText = JsonSerializer.Serialize(new {
+            schema_version = "1.0", image = imageName, mask_color = "#FF00FF",
+            background_alpha = 255, image_size = new[] { 1, 1 },
+            frames = new[] { new { rect = new[] { 0, 0, 1, 1 },
+                pivot = new[] { 0, 0 }, anchors = new Dictionary<string,int[]>() } }
+        });
+        await File.WriteAllTextAsync(Path.Combine(multiAssetRoot, atlasName), atlasText);
+        var bundleText = JsonSerializer.Serialize(new {
+            schema_version = "1.0", asset_id = assetId, directions = new[] { "S" },
+            components = new[] { new { id = "base", parent = (string?)null,
+                atlases = new Dictionary<string,string> { ["S"] = atlasName } } },
+            sampled_poses = new[] { new { direction = "S", normalized_time = 0,
+                nodes = new Dictionary<string,object> { ["base"] = new {
+                    frame_index = 0, world_matrix_2d = new[] {
+                        new[] { 1, 0, 0 }, new[] { 0, 1, 0 }, new[] { 0, 0, 1 } }
+                } } } }
+        });
+        await File.WriteAllTextAsync(Path.Combine(multiAssetRoot, bundleName), bundleText);
+        manifests.Add(assetId, new ApprovedArtManifest(1, assetId, simulatedRevision,
+            "fixture-test", ArtApprovalState.Approved,
+            new[] { new SpriteSheetManifest(assetId, imageName, atlasName,
+                ArtHash(icon), ArtHash(System.Text.Encoding.UTF8.GetBytes(atlasText)),
+                "base", new[] { "S" }) }, Array.Empty<ComponentAttachment>()));
+        bundles.Add(new GameArtsWorldBundleReference(assetId, bundleName, simulatedRevision));
+    }
+    var multiRegistry = new MappedRegistry(manifests);
+    var multiBuilder = new CoordinatedProductionWorldExporter(
+        multiRegistry, new TestApprovalAuthority(true));
+    var footprintProfiles = new[] {
+        new GameArtsVegetationFootprint("fixture-flower", simulatedRevision, 0.3),
+        new GameArtsVegetationFootprint("fixture-tree", simulatedRevision, 1.5)
+    };
+    var actualEnvelopes = composedWorld.Buildings.ToDictionary(
+        x => x.ObjectId, x => new BuildingEnvelopeResult(x.Boundary, Array.Empty<string>()),
+        StringComparer.Ordinal);
+    var multiInputs = new ProductionWorldRequest(composedWorld.SemanticWorld,
+        new VegetationComposition(composedWorld.Vegetation, []),
+        new PathVegetationResult([], []), actualEnvelopes,
+        Array.Empty<VegetationClearanceRoute>(),
+        Array.Empty<VegetationClearanceAnchor>(),
+        footprintProfiles, multiAssetRoot, bundles);
+    var multiOutput = Path.Combine(multiAssetRoot, "production-world.json");
+    var passed = await multiBuilder.ExportAsync(
+        new CoordinatedProductionRequest(composedSettlement, multiInputs), multiOutput);
+    Assert(passed.Produced && File.Exists(multiOutput),
+        "Complete multi-asset simulated approval produces coordinated portable production world");
+    using (var written = JsonDocument.Parse(await File.ReadAllTextAsync(multiOutput)))
+        Assert(written.RootElement.GetProperty("ProductionApproved").GetBoolean() &&
+            written.RootElement.GetProperty("Buildings").GetArrayLength() == 2,
+            "Production test export retains complete building data");
+    var tamperedAsset = assetIds.First(id => id == "fixture-home");
+    await File.WriteAllTextAsync(Path.Combine(multiAssetRoot, tamperedAsset + ".atlas.json"),
+        "{\"frames\":[]}");
+    var rejected = await multiBuilder.ExportAsync(
+        new CoordinatedProductionRequest(composedSettlement, multiInputs), multiOutput);
+    Assert(!rejected.Produced && rejected.Issues.Any(x =>
+        x.StartsWith("NONVEGETATION_FILE_fixture-home:ASSET_HASH_MISMATCH")),
+        "Tampered building atlas rejects full production world");
+}
+finally { Directory.Delete(multiAssetRoot, recursive: true); }
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
@@ -1659,4 +1741,11 @@ sealed class InMemoryRegistry(ApprovedArtManifest? manifest) : IApprovedArtRegis
 {
     public Task<ApprovedArtManifest?> ResolveAsync(string assetId, CancellationToken cancellationToken = default)
         => Task.FromResult(manifest);
+}
+
+sealed class MappedRegistry(IReadOnlyDictionary<string, ApprovedArtManifest> manifests) : IApprovedArtRegistry
+{
+    public Task<ApprovedArtManifest?> ResolveAsync(string assetId,
+        CancellationToken cancellationToken = default) =>
+        Task.FromResult(manifests.TryGetValue(assetId, out var manifest) ? manifest : null);
 }
