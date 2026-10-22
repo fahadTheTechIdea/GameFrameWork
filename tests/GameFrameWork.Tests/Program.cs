@@ -1234,6 +1234,31 @@ Assert(worldQuality.Analyze(spillFill, qualityRules).Issues.Any(i =>
     i == "TERRAIN_FILL_OUTSIDE_GROUND:out-of-ground"),
     "Ground coverage rejects terrain spills beyond the approved map boundary");
 
+
+var entranceValidator = new BuildingEntranceAccessValidator();
+var villageEntrances = new[] {
+    new BuildingEntranceLink("house-west", new WorldPoint(17, 20),
+        new WorldPolyline(new[] { new WorldPoint(17,20), new WorldPoint(17,28),
+            new WorldPoint(24,28) }), "crosswalk"),
+    new BuildingEntranceLink("house-east", new WorldPoint(43, 20),
+        new WorldPolyline(new[] { new WorldPoint(43,20), new WorldPoint(43,28),
+            new WorldPoint(40,28) }), "crosswalk")
+};
+Assert(entranceValidator.Validate(villageDocument, villageEntrances).Accessible,
+    "Authored village entrances connect by planned paths to pedestrian crossing");
+var detachedEntrance = villageEntrances[0] with {
+    AccessWalkway = new WorldPolyline(new[] { new WorldPoint(18,20),
+        new WorldPoint(24,28) })
+};
+Assert(entranceValidator.Validate(villageDocument,
+    new[] { detachedEntrance, villageEntrances[1] }).Issues
+        .Contains("ENTRANCE_WALKWAY_NOT_ATTACHED:house-west"),
+    "Entrance access rejects detached pedestrian connector");
+var missingEntrance = entranceValidator.Validate(villageDocument,
+    new[] { villageEntrances[0] });
+Assert(missingEntrance.Issues.Contains("ENTRANCE_MISSING:house-east"),
+    "Each building needs a declared entrance rather than center-point proximity");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
