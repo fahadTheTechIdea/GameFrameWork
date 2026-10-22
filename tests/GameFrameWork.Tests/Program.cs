@@ -1508,6 +1508,28 @@ Assert(!uncontrolled.Valid && uncontrolled.Issues.Contains(
     "ROAD_CONTROLLED_CROSSING_NOT_READY:policy-zebra"),
     "Controlled crossings require explicit permission and accessibility");
 
+
+var transportSpec = new SettlementTransportSpecification("village-transport-v1",
+    villageDocument.SemanticWorld.Base.MockupId,
+    villageDocument.SemanticWorld.Base.MockupRevision,
+    new[] { allowPolicy }, new[] { policyIntent });
+var transportBuilder = new SettlementTransportDesignBuilder();
+var transportBuilt = transportBuilder.Build(villageDocument.SemanticWorld,
+    alignedSettlement, transportSpec);
+Assert(transportBuilt.Valid && transportBuilt.Crossings!.Crossings.Count == 1,
+    "Approved settlement transport specification generates planned crossing");
+var staleTransport = transportBuilder.Build(villageDocument.SemanticWorld,
+    alignedSettlement, transportSpec with { VisualRevision = "obsolete" });
+Assert(!staleTransport.Valid && staleTransport.Issues.Contains(
+    "SETTLEMENT_TRANSPORT_PROVENANCE_MISMATCH"),
+    "Transport decisions cannot drift from approved visual mockup revision");
+var forbiddenTransport = transportBuilder.Build(villageDocument.SemanticWorld,
+    alignedSettlement, transportSpec with { RoadPolicies =
+        new[] { allowPolicy with { PedestrianCrossingsAllowed = false } } });
+Assert(!forbiddenTransport.Valid && forbiddenTransport.Issues.Contains(
+    "ROAD_CROSSING_PROHIBITED_BY_POLICY:policy-zebra"),
+    "Settlement transport specification enforces road policy before assembly");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
