@@ -1530,6 +1530,20 @@ Assert(!forbiddenTransport.Valid && forbiddenTransport.Issues.Contains(
     "ROAD_CROSSING_PROHIBITED_BY_POLICY:policy-zebra"),
     "Settlement transport specification enforces road policy before assembly");
 
+
+var transportWorldAssembler = new SettlementTransportWorldAssembler();
+var (assembledTransportWorld, assembledTransportIssues) = transportWorldAssembler.Assemble(
+    villageDocument, alignedSettlement, transportSpec, qualityRules);
+Assert(assembledTransportWorld is not null && assembledTransportIssues.Count == 0 &&
+    assembledTransportWorld.RoadCrossings!.Single().Id == "policy-zebra",
+    "Approved settlement transport design integrates into quality-gated portable village");
+var (rejectedTransportWorld, rejectedTransportIssues) = transportWorldAssembler.Assemble(
+    villageDocument, alignedSettlement,
+    transportSpec with { VisualRevision = "not-approved" }, qualityRules);
+Assert(rejectedTransportWorld is null && rejectedTransportIssues.Contains(
+    "SETTLEMENT_TRANSPORT_PROVENANCE_MISMATCH"),
+    "Unapproved transport changes cannot be assembled into portable world");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
