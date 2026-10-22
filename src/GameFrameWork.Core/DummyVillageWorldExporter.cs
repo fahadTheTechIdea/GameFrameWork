@@ -18,7 +18,8 @@ public sealed record DummyVillageWorldDocument(
     IReadOnlyList<LandscapeWorldFeature> GardenBeds,
     IReadOnlyList<NamedBuildingFootprint> Buildings,
     IReadOnlyList<PlannedVegetation> Vegetation,
-    IReadOnlyList<BuildingEntranceLink>? Entrances = null);
+    IReadOnlyList<BuildingEntranceLink>? Entrances = null,
+    IReadOnlyList<PedestrianJunction>? Junctions = null);
 
 public static class DummyVillageWorldExporter
 {
@@ -42,7 +43,7 @@ public static class DummyVillageWorldExporter
                     new WorldPolyline([new(17, 20), new(17, 28), new(24, 28)]), "crosswalk"),
                 new("house-east", new WorldPoint(43, 20),
                     new WorldPolyline([new(43, 20), new(43, 28), new(40, 28)]), "crosswalk")
-            ]);
+            ], []);
     }
 
     public static async Task<string> ExportAsync(string outputPath,
