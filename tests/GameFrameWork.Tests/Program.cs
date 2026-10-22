@@ -1148,6 +1148,33 @@ Assert(JsonSerializer.Serialize(completeVillage) ==
     JsonSerializer.Serialize(DummyVillageAssemblyFixture.Create()),
     "Complete semantic world assembly reproducible from fixed design");
 
+
+var villageDocument = DummyVillageWorldExporter.Assemble();
+Assert(villageDocument.ArtifactKind == "simulation-fixture" &&
+    !villageDocument.ProductionApproved &&
+    villageDocument.Buildings.Select(b => b.ObjectId)
+        .SequenceEqual(new[] { "house-east", "house-west" }),
+    "Portable world identifies fixture provenance and named building footprints");
+Assert(villageDocument.TerrainMaterials.Count > 0 &&
+    villageDocument.GardenBeds.Count > 0 && villageDocument.Vegetation.Count > 0,
+    "Portable world includes terrain, planting beds and vegetation in one document");
+Assert(JsonSerializer.Serialize(villageDocument) ==
+    JsonSerializer.Serialize(DummyVillageWorldExporter.Assemble()),
+    "Portable dummy village JSON stable across independent assemblies");
+var exportedVillagePath = Path.Combine(Path.GetTempPath(),
+    "gfw-village-" + Guid.NewGuid().ToString("N") + ".json");
+try
+{
+    await DummyVillageWorldExporter.ExportAsync(exportedVillagePath);
+    using var exportedVillage = JsonDocument.Parse(await File.ReadAllTextAsync(exportedVillagePath));
+    Assert(exportedVillage.RootElement.GetProperty("ProductionApproved").GetBoolean() == false &&
+        exportedVillage.RootElement.GetProperty("Buildings").GetArrayLength() == 2 &&
+        exportedVillage.RootElement.GetProperty("SemanticWorld").GetProperty("Paths")
+            .GetArrayLength() == 2,
+        "Portable export writes inspectable complete fixture with explicit nonproduction state");
+}
+finally { if (File.Exists(exportedVillagePath)) File.Delete(exportedVillagePath); }
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
