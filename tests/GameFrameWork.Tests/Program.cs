@@ -1211,7 +1211,7 @@ Assert(unplantedQuality.Issues.Contains("PLANTING_DENSITY_INSUFFICIENT"),
 
 var repeatedFill = villageDocument with {
     TerrainMaterials = villageDocument.TerrainMaterials.Concat(
-        new[] { villageDocument.TerrainMaterials[0] with { Id = "duplicate-ground-fill" } })
+        new[] { villageDocument.TerrainMaterials.First(p => p.SourceRegionId == "ground") with { Id = "duplicate-ground-fill" } })
         .ToArray()
 };
 var overlapQuality = worldQuality.Analyze(repeatedFill, qualityRules);
