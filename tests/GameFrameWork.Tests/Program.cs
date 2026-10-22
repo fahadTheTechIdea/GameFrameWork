@@ -1687,8 +1687,15 @@ try
         "Complete multi-asset simulated approval produces coordinated portable production world");
     using (var written = JsonDocument.Parse(await File.ReadAllTextAsync(multiOutput)))
         Assert(written.RootElement.GetProperty("ProductionApproved").GetBoolean() &&
-            written.RootElement.GetProperty("Buildings").GetArrayLength() == 2,
+            written.RootElement.GetProperty("Buildings").GetArrayLength() == 2 &&
+            written.RootElement.GetProperty("AssetDependencies").GetArrayLength() == assetIds.Length,
             "Production test export retains complete building data");
+    var manifestEvidence = await new WorldAssetDependencyManifestBuilder(multiRegistry)
+        .BuildAsync(assetIds.Reverse());
+    Assert(manifestEvidence.Valid &&
+        manifestEvidence.Dependencies.Select(x => x.AssetId)
+            .SequenceEqual(assetIds),
+        "Asset dependency evidence deterministic regardless of input ordering");
     var tamperedAsset = assetIds.First(id => id == "fixture-home");
     await File.WriteAllTextAsync(Path.Combine(multiAssetRoot, tamperedAsset + ".atlas.json"),
         "{\"frames\":[]}");
