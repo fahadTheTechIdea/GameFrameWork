@@ -790,6 +790,31 @@ Assert(!missingGardenRules.IsValid &&
     missingGardenRules.Diagnostics.Contains("GARDEN_GRAMMAR_MISSING:garden"),
     "Missing garden design refuses arbitrary placement");
 
+
+var vegetationPlanner = new VegetationCompositionPlanner();
+var designedOrchard = vegetationPlanner.Generate(semantic.Package!, new[]
+{
+    new VegetationGrammar("garden-shrubs", "garden", "approved-shrub",
+        VegetationPattern.OrchardGrid, 3, 1, "ordered game-style planting")
+});
+Assert(designedOrchard.IsValid && designedOrchard.Plants.Count == 9,
+    "Garden grid derives nine deliberate plant anchors");
+Assert(designedOrchard.Plants.All(x => x.ZoneId == "garden" &&
+    x.SpeciesAssetId == "approved-shrub" && x.GrammarId == "garden-shrubs"),
+    "Plant positions retain approved species and source rule");
+Assert(JsonSerializer.Serialize(designedOrchard) ==
+    JsonSerializer.Serialize(vegetationPlanner.Generate(semantic.Package!, new[]
+    {
+        new VegetationGrammar("garden-shrubs", "garden", "approved-shrub",
+            VegetationPattern.OrchardGrid, 3, 1, "ordered game-style planting")
+    })), "Vegetation placement is repeatable");
+Assert(vegetationPlanner.Generate(semantic.Package!, new[]
+{
+    new VegetationGrammar("absent", "unknown", "tree",
+        VegetationPattern.BorderRow, 3, 1, "boundary")
+}).Diagnostics.Contains("VEGETATION_ZONE_MISSING:absent"),
+    "Unknown zones fail without random placement");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
