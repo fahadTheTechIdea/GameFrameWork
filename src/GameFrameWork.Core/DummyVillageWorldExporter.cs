@@ -17,7 +17,8 @@ public sealed record DummyVillageWorldDocument(
     IReadOnlyList<StyledTerrainPiece> TerrainMaterials,
     IReadOnlyList<LandscapeWorldFeature> GardenBeds,
     IReadOnlyList<NamedBuildingFootprint> Buildings,
-    IReadOnlyList<PlannedVegetation> Vegetation);
+    IReadOnlyList<PlannedVegetation> Vegetation,
+    IReadOnlyList<BuildingEntranceLink>? Entrances = null);
 
 public static class DummyVillageWorldExporter
 {
@@ -37,7 +38,12 @@ public static class DummyVillageWorldExporter
         return new(1, "simulation-fixture", false, inspection.World,
             inspection.GroundMaterials.Pieces.ToArray(),
             inspection.GardenBeds.Features.ToArray(), footprints,
-            inspection.Vegetation.ToArray());
+            inspection.Vegetation.ToArray(), [
+                new("house-west", new WorldPoint(17, 20),
+                    new WorldPolyline([new(17, 20), new(17, 28), new(24, 28)]), "crosswalk"),
+                new("house-east", new WorldPoint(43, 20),
+                    new WorldPolyline([new(43, 20), new(43, 28), new(40, 28)]), "crosswalk")
+            ]);
     }
 
     public static async Task<string> ExportAsync(string outputPath,
