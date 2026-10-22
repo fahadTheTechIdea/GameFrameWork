@@ -1394,6 +1394,27 @@ Assert(worldQuality.Analyze(gradeSeparatedCrossing, qualityRules).Issues.Contain
     "CROSSING_GRADE_SEPARATED:village-zebra"),
     "Grade-separated routes cannot silently act as pedestrian crossings");
 
+
+var profileValidator = new CrossingRoadProfileValidator();
+Assert(profileValidator.Validate(villageDocument).Count == 0,
+    "Village crosswalk derives four-meter curb span from two lanes and two curbs");
+var incorrectProfile = villageDocument with {
+    RoadProfiles = new[] { villageDocument.RoadProfiles![0] with {
+        Section = villageDocument.RoadProfiles[0].Section with { LaneWidthMeters = 2.2 }
+    } }
+};
+Assert(worldQuality.Analyze(incorrectProfile, qualityRules).Issues.Contains(
+    "CROSSING_ROAD_PROFILE_WIDTH_MISMATCH:village-zebra"),
+    "Road-width changes invalidate an obsolete crossing span");
+var noSidewalk = villageDocument with {
+    RoadProfiles = new[] { villageDocument.RoadProfiles![0] with {
+        Section = villageDocument.RoadProfiles[0].Section with { SidewalkRightMeters = 0 }
+    } }
+};
+Assert(worldQuality.Analyze(noSidewalk, qualityRules).Issues.Contains(
+    "CROSSING_SIDEWALK_CONNECTION_MISSING:village-zebra"),
+    "Crossings require sidewalk approaches on both sides");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
