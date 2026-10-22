@@ -76,6 +76,11 @@ public sealed class WorldQualityAnalyzer
             if (distance > rules.MaximumBuildingPathDistanceMeters)
                 issues.Add("BUILDING_PATH_ACCESS_TOO_FAR:" + building.ObjectId);
         }
+        if (document.Entrances is { } entrances)
+        {
+            var access = new BuildingEntranceAccessValidator().Validate(document, entrances);
+            issues.AddRange(access.Issues);
+        }
         if (document.Vegetation.Count < rules.MinimumVegetationCount)
             issues.Add("PLANTING_DENSITY_INSUFFICIENT");
         return new(ratio, components, document.Buildings.Count,
