@@ -1313,6 +1313,35 @@ Assert(new PedestrianReachabilityValidator().Validate(splitPedestrianWorld)
 Assert(new PedestrianReachabilityValidator().Validate(villageDocument).Count == 0,
     "Fixture village entrances share one connected pedestrian network");
 
+
+var controlledWorld = villageDocument with {
+    SemanticWorld = villageDocument.SemanticWorld with {
+        Paths = villageDocument.SemanticWorld.Paths.Concat(new[] {
+            new PlannedWorldPath("branch-footpath", "footpath",
+                new WorldPolyline(new[] { new WorldPoint(32,20), new WorldPoint(32,36) }),
+                "approved-branch", "fixture-branch")
+        }).ToArray()
+    },
+    Entrances = villageDocument.Entrances!.Select(e =>
+        e.BuildingId == "house-east" ? e with {
+            TargetPathId = "branch-footpath",
+            AccessWalkway = new WorldPolyline(new[] {
+                new WorldPoint(43,20), new WorldPoint(32,20) })
+        } : e).ToArray()
+};
+var crossingControl = new ControlledPedestrianReachability();
+Assert(crossingControl.Validate(controlledWorld, Array.Empty<PedestrianJunction>())
+    .Contains("PEDESTRIAN_ENTRANCES_DISCONNECTED"),
+    "Intersecting pedestrian routes require an explicit authorized junction");
+var approvedCrossing = new PedestrianJunction("branch-crossing", "crosswalk",
+    "branch-footpath", new WorldPoint(32,28), true);
+Assert(crossingControl.Validate(controlledWorld, new[] { approvedCrossing }).Count == 0,
+    "Authorized pedestrian junction connects building entrance networks");
+Assert(crossingControl.Validate(controlledWorld,
+    new[] { approvedCrossing with { Traversable = false } })
+    .Contains("PEDESTRIAN_ENTRANCES_DISCONNECTED"),
+    "Blocked junction cannot connect independent pedestrian networks");
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
