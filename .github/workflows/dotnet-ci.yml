@@ -32,3 +32,13 @@ jobs:
           test -s generated/ci-desert/world.json
           test -s generated/ci-desert/GeneratedWorld.tscn
           test -s generated/ci-desert/EXPORT_STATUS.md
+
+      - name: Assemble dummy pixel village
+        run: dotnet run --project src/GameFrameWork.Cli/GameFrameWork.Cli.csproj --configuration Release --no-build -- dummy-village generated/dummy-village
+      - name: Inspect dummy Godot project
+        shell: bash
+        run: |
+          test -s generated/dummy-village/project.godot
+          test -s generated/dummy-village/Village.tscn
+          test -s generated/dummy-village/Village.gd
+          test -s generated/dummy-village/design.json
