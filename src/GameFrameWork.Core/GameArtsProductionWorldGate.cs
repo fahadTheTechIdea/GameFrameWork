@@ -69,7 +69,17 @@ public sealed class GameArtsProductionWorldGate(
                 issues.Add("GAMEARTS_BUNDLE_PATH_INVALID:" + id);
                 continue;
             }
-            var native = await new GameArtsBundleReader().ReadAsync(full, token);
+            NativeBundleResult native;
+            try
+            {
+                native = await new GameArtsBundleReader().ReadAsync(full, token);
+            }
+            catch (Exception ex) when (ex is IOException or System.Text.Json.JsonException
+                or ArgumentException or InvalidOperationException or KeyNotFoundException)
+            {
+                issues.Add("GAMEARTS_BUNDLE_UNREADABLE:" + id);
+                continue;
+            }
             if (!native.IsValid || native.Bundle?.AssetId != id)
             {
                 issues.Add("GAMEARTS_BUNDLE_ASSET_MISMATCH:" + id);
