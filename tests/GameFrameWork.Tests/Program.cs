@@ -625,6 +625,22 @@ try
         "Technical checks cannot bypass approval authority");
 }
 finally { Directory.Delete(approvalRoot, true); }
+
+var villageDir = Path.Combine(Path.GetTempPath(), "gameframework-village-" + Guid.NewGuid().ToString("N"));
+try
+{
+    await new DummyVillageAssembler().ExportAsync(villageDir);
+    foreach (var name in new[] { "project.godot", "Village.tscn", "Village.gd", "design.json" })
+        Assert(File.Exists(Path.Combine(villageDir,name)), "Dummy village emits " + name);
+    using var village = JsonDocument.Parse(await File.ReadAllTextAsync(Path.Combine(villageDir, "design.json")));
+    Assert(village.RootElement.GetProperty("Objects").GetArrayLength() == 7,
+        "Dummy village creates two homes, separate doors, two trees and a sign");
+    var gd = await File.ReadAllTextAsync(Path.Combine(villageDir, "Village.gd"));
+    Assert(gd.Contains("door_open") && gd.Contains("for hx in [3, 12]"),
+        "Dummy scene draws separate animated doors on planned buildings");
+}
+finally { if (Directory.Exists(villageDir)) Directory.Delete(villageDir, true); }
+
 // Durable operational service contract test: log, audit and user-facing notification are separate sinks.
 var operationsDir = Path.Combine(Path.GetTempPath(), "gameframework-ops-" + Guid.NewGuid().ToString("N"));
 try
