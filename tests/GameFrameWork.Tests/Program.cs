@@ -1027,6 +1027,24 @@ try
         emptyPathPlants, approvedBuildings, Array.Empty<VegetationClearanceRoute>(),
         Array.Empty<VegetationClearanceAnchor>(), measured, verifiedArtDir);
     Assert(ready.Accepted, "Verified production PNG and atlas hashes accept intended world");
+
+    var productionGate = new GameArtsProductionWorldGate(
+        new InMemoryRegistry(verifiedManifest), new TestApprovalAuthority(true));
+    var missingBundle = await productionGate.AcceptAsync(semantic.Package!, singleSpecies,
+        emptyPathPlants, approvedBuildings, Array.Empty<VegetationClearanceRoute>(),
+        Array.Empty<VegetationClearanceAnchor>(), measured, verifiedArtDir,
+        Array.Empty<GameArtsWorldBundleReference>());
+    Assert(!missingBundle.Accepted && missingBundle.Issues.Contains(
+        "GAMEARTS_BUNDLE_REFERENCE_MISSING:warehouse"),
+        "Production world cannot pass using verified sheet hashes without a native bundle");
+    var traversalBundle = await productionGate.AcceptAsync(semantic.Package!, singleSpecies,
+        emptyPathPlants, approvedBuildings, Array.Empty<VegetationClearanceRoute>(),
+        Array.Empty<VegetationClearanceAnchor>(), measured, verifiedArtDir,
+        new[] { new GameArtsWorldBundleReference("warehouse", "../outside.bundle.json", full.GameArtsRevision) });
+    Assert(!traversalBundle.Accepted && traversalBundle.Issues.Contains(
+        "GAMEARTS_BUNDLE_PATH_INVALID:warehouse"),
+        "Production bundle must remain inside trusted art root");
+
     await File.WriteAllTextAsync(verifiedAtlas, "{\"frames\":[0]}");
     var tampered = await verifiedPipeline.AcceptVerifiedAsync(semantic.Package!, singleSpecies,
         emptyPathPlants, approvedBuildings, Array.Empty<VegetationClearanceRoute>(),
