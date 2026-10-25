@@ -1,3 +1,4 @@
+using GameFrameWork.Catalogs.Modern;
 using System.Text.Json;
 using GameFrameWork.Core;
 using GameFrameWork.Core.Operations;
@@ -5,8 +6,43 @@ using GameFrameWork.Core.Geometry;
 using GameFrameWork.Core.Planning;
 using GameFrameWork.Worlds;
 using GameFrameWork.Godot;
-var generator = new DesertWorldGenerator();
-var req = new WorldRequest(32, 32, 123, Biome.Desert);
+if (args.Length==1 && args[0]=="--catalogs") { await CatalogContractTests.RunAsync(); return; }
+if (args.Length==1 && args[0]=="--capture") { await MockupCaptureTests.RunAsync(); return; }
+if (args.Length==1 && args[0]=="--roads") { await CurvedRoadTests.RunAsync(); return; }
+if (args.Length==1 && args[0]=="--siting") { await SitingAlgorithmTests.RunAsync(); return; }
+if (args.Length==2 && args[0]=="--write-siting-fixture")
+{
+    var fixturePath=Path.GetFullPath(args[1]); Directory.CreateDirectory(Path.GetDirectoryName(fixturePath)!);
+    await File.WriteAllTextAsync(fixturePath,JsonSerializer.Serialize(SitingAlgorithmTests.Create(),WorldJson.CreateOptions(writeIndented:true)));
+    Console.WriteLine("Wrote synthetic contextual siting fixture; no production art or regulatory qualification."); return;
+}
+if (args.Length == 1 && args[0] == "--infrastructure")
+{
+    await InfrastructureAlgorithmTests.RunAsync();
+    return;
+}
+if (args.Length == 2 && args[0] == "--write-infrastructure-fixture")
+{
+    var fixturePath=Path.GetFullPath(args[1]);
+    Directory.CreateDirectory(Path.GetDirectoryName(fixturePath)!);
+    await File.WriteAllTextAsync(fixturePath,JsonSerializer.Serialize(InfrastructureAlgorithmTests.Create(),WorldJson.CreateOptions(writeIndented:true)));
+    Console.WriteLine("Wrote synthetic infrastructure fixture; no production artwork or approval supplied.");
+    return;
+}
+if (args.Length == 2 && args[0] == "--write-generation-fixture")
+{
+    var fixturePath = Path.GetFullPath(args[1]);
+    Directory.CreateDirectory(Path.GetDirectoryName(fixturePath)!);
+    await File.WriteAllTextAsync(fixturePath,JsonSerializer.Serialize(MockupGenerationFixture.Create(64,64,1),
+        WorldJson.CreateOptions(writeIndented:true)));
+    Console.WriteLine("Wrote synthetic generation fixture; no production artwork or approval supplied.");
+    return;
+}
+var cliPath = args.Length == 2 && args[0] == "--cli" ? Path.GetFullPath(args[1]) : null;
+if (args.Length != 0 && cliPath is null)
+    throw new ArgumentException("Supported test option: --cli <GameFrameWork.Cli.dll>");
+var generator = new DesertWorldGenerator(TestCatalogs.Registry);
+var req = MockupGenerationFixture.Create(32,32,1,123);
 var first = await generator.GenerateAsync(req);
 var second = await generator.GenerateAsync(req);
 Assert(JsonSerializer.Serialize(first) == JsonSerializer.Serialize(second), "Determinism");
@@ -70,7 +106,7 @@ Assert(!revoked.Ready && revoked.Issues.Any(i => i.Code == "NOT_APPROVED"), "Rev
 
 
 // Spatial foundation: no arbitrary parcel position or disconnected street frontage.
-var planned = new SettlementPlanner().Plan(new WorldRequest(48, 48, 42, Biome.Desert, 2));
+var planned = new SettlementPlanner(TestCatalogs.Registry).Plan(MockupGenerationFixture.Create());
 Assert(planned.Diagnostics.Count == 0, "Planner reports no infeasible parcels for fixture");
 var roadCells = planned.Roads.SelectMany(r => r.Cells()).ToHashSet();
 Assert(planned.Roads.Any(r => r.Class == RoadClass.Collector), "Regional road spine");
@@ -80,10 +116,10 @@ Assert(planned.Buildings.All(b => roadCells.Contains(b.AccessRoadCell)), "Every 
 Assert(planned.Buildings.All(b => !roadCells.Contains(b.Site)), "No building blocks a road");
 Assert(planned.Buildings.All(b => !string.IsNullOrWhiteSpace(b.Purpose) &&
     !string.IsNullOrWhiteSpace(b.ConstraintId)), "Every placement is explainable");
-var plannedAgain = new SettlementPlanner().Plan(new WorldRequest(48, 48, 42, Biome.Desert, 2));
+var plannedAgain = new SettlementPlanner(TestCatalogs.Registry).Plan(MockupGenerationFixture.Create());
 Assert(JsonSerializer.Serialize(planned) == JsonSerializer.Serialize(plannedAgain), "Deterministic spatial plan");
 // All roads connect to one collector, and no structure overwrites the road raster.
-var plannedWorld = await generator.GenerateAsync(new WorldRequest(48, 48, 42, Biome.Desert, 2));
+var plannedWorld = await generator.GenerateAsync(MockupGenerationFixture.Create());
 Assert(plannedWorld.Objects.Count(o => o.Kind == "warehouse") == 8, "World projects all planned buildings");
 Assert(planned.Buildings.All(b => plannedWorld.At(b.AccessRoadCell.X, b.AccessRoadCell.Y).Kind == CellKind.Road),
     "Rasterized access road is preserved");
@@ -148,7 +184,8 @@ Assert(walks.All(b => Math.Abs(Math.Abs(StreetSurfaceBuilder.SignedArea(b.Polygo
     "Each sidewalk is 2m by 10m");
 var curvedBands = StreetSurfaceBuilder.Build(new StreetCorridor("bent",
     new WorldPolyline(new[] { new WorldPoint(0,0), new WorldPoint(10,0), new WorldPoint(10,10) }), crossSection));
-Assert(curvedBands.Count == 10, "Both road segments receive independent bands");
+Assert(curvedBands.Count(b=>b.SegmentIndex>=0) == 10 && curvedBands.Any(b=>b.SegmentIndex<0),
+    "Both road segments retain bands and receive explicit bend joins");
 
 // Continuous street intersection regression scenarios
 var crossing = PlanarIntersections.Intersect(new(0, 0), new(10, 0), new(5, -5), new(5, 5));
@@ -249,7 +286,7 @@ AssertThrows<ArgumentException>(() => new BuildingEnvelopeRules("house", -1, 1, 
 
 
 // Settlement identity selects functional building programs, not arbitrary sprites.
-var programPlanner = new BuildingProgramPlanner(ExampleBuildingCatalog.Create());
+var programPlanner = new BuildingProgramPlanner(new ModernCatalog().Structures,new ModernDemandPolicy());
 var villageProgram = programPlanner.Plan(new(SettlementClass.Village, SettlementRole.Agricultural, 200));
 var townProgram = programPlanner.Plan(new(SettlementClass.Town, SettlementRole.Commercial, 200));
 var cityProgram = programPlanner.Plan(new(SettlementClass.City, SettlementRole.Industrial, 200));
@@ -269,7 +306,14 @@ Assert(JsonSerializer.Serialize(programPlanner.Plan(new(SettlementClass.Village,
 var publicStreet = new StreetCorridor("public-main",
     new WorldPolyline(new[] { new WorldPoint(0, 0), new WorldPoint(100, 0) }), crossSection);
 var publicRules = new PublicRealmRules(25, 1, 1.5);
-var publicPlan = new PublicRealmPlanner().Plan(new[] { publicStreet }, publicRules);
+var publicDesign = MockupGenerationFixture.Create().Design! with {
+    Blueprint = new(1,"synthetic-public-mockup","simulated-r1","synthetic-style",
+        [new("public-region",MockupGenerationFixture.Rect(-5,-5,105,30),"street-composition")],[]),
+    Paths = [new("public-main","public-region",publicStreet.Centerline,"road")],
+    PublicRealmPatterns = [new("lights","public-main","Streetlight","authored street decoration","street-style-v1",25,25,25,12,1.5),
+        new("signs","public-main","StreetNameSign","identify the designed street approaches","street-style-v1",100,0,0,12,1.5)]
+};
+var publicPlan = new PublicRealmPlanner().Plan(publicDesign);
 Assert(publicPlan.Diagnostics.Count == 0, "Street accessories have legal clearances");
 Assert(publicPlan.Features.Count == 5, "Street endpoints and internal light positions derived from spacing");
 Assert(publicPlan.Features.Count(f => f.Kind == PublicFeatureKind.Streetlight) == 3,
@@ -280,7 +324,9 @@ var reserved = new SpatialReservationIndex();
 Assert(reserved.TryReserve(new WorldPoint(0, 0), 2), "First reservation succeeds");
 Assert(!reserved.TryReserve(new WorldPoint(1, 0), 2), "Overlapping accessory rejected");
 Assert(reserved.TryReserve(new WorldPoint(5, 0), 2), "Separated accessory allowed");
-Assert(JsonSerializer.Serialize(new PublicRealmPlanner().Plan(new[] { publicStreet }, publicRules)) ==
+Assert(new PublicRealmPlanner().Plan([publicStreet],publicRules).Diagnostics.Contains("MOCKUP_PUBLIC_REALM_DESIGN_REQUIRED"),
+    "Distance-only street furniture fallback is retired");
+Assert(JsonSerializer.Serialize(new PublicRealmPlanner().Plan(publicDesign)) ==
     JsonSerializer.Serialize(publicPlan), "Public realm deterministic");
 
 
@@ -341,16 +387,16 @@ Assert(!circularDesign.IsValid && circularDesign.Issues.Any(i => i.Code == "DESI
     "Circular design dependencies rejected");
 
 
-var integrated = new SettlementDesignPipeline().Build(new WorldRequest(48, 48, 42, Biome.Desert, 2));
+var integrated = new SettlementDesignPipeline(TestCatalogs.Registry).Build(MockupGenerationFixture.Create());
 Assert(integrated.Settlement.Buildings.Count == 8, "Integrated settlement has planned building demand");
 Assert(integrated.Streets.Count == integrated.Settlement.Roads.Count, "Street geometry follows transport plan");
 Assert(integrated.PublicRealm.Features.All(f => integrated.Streets.Any(s => s.Id == f.ParentId)),
     "Public realm features reference planned streets");
 Assert(new WorldDesignValidator().Validate(integrated.Design).IsValid, "Integrated object plan validates");
-Assert(new WorldPlanCompiler().Compile(integrated.Design).Count == 16,
+Assert(new WorldPlanCompiler().Compile(integrated.Design).Count(o => o.Kind is "warehouse" or "gate") == 16,
     "Integrated world compiles buildings with attached gates");
 Assert(JsonSerializer.Serialize(integrated) ==
-    JsonSerializer.Serialize(new SettlementDesignPipeline().Build(new WorldRequest(48,48,42,Biome.Desert,2))),
+    JsonSerializer.Serialize(new SettlementDesignPipeline(TestCatalogs.Registry).Build(MockupGenerationFixture.Create())),
     "Integrated settlement deterministic");
 
 
@@ -1700,6 +1746,8 @@ try
     var verifiedPackage = await packageVerifier.VerifyAsync(multiOutput, multiAssetRoot);
     Assert(verifiedPackage.Valid,
         "Previously exported coordinated world passes independent dependency audit");
+    await ProductionIntegrityTests.RunAsync(multiAssetRoot, multiOutput, manifests,
+        composedSettlement, multiInputs, cliPath);
     using (var originalDoc = JsonDocument.Parse(await File.ReadAllTextAsync(multiOutput)))
     {
         var tamperedDocument = JsonSerializer.Deserialize<DummyVillageWorldDocument>(
@@ -1752,7 +1800,14 @@ try
     }
 }
 finally { if (Directory.Exists(operationsDir)) Directory.Delete(operationsDir, true); }
-Console.WriteLine("PASS: world model and art contract structural tests (not PNG/atlas/Godot runtime verification).");
+await MockupAlgorithmTests.RunAsync(cliPath);
+await CatalogExpansionTests.RunAsync(cliPath);
+await InfrastructureAlgorithmTests.RunAsync();
+await SitingAlgorithmTests.RunAsync(cliPath);
+await CatalogContractTests.RunAsync(cliPath);
+await MockupCaptureTests.RunAsync(cliPath);
+await CurvedRoadTests.RunAsync(cliPath);
+Console.WriteLine("PASS: engine regression harness (synthetic artwork; real approval and Godot runtime not verified).");
 static void AssertThrows<T>(Action action, string message) where T : Exception
 {
     try { action(); } catch (T) { return; }

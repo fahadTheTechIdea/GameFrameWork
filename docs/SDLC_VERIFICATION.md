@@ -1,31 +1,123 @@
-# SDLC verification record — World Generation foundation
+# SDLC verification — mockup-driven generation and production integrity
 
-Date: 2026-10-21; review type: author self-review; current governing workflow: agentic-sdlc-framework master.
-Scope: foundational C# world data, approved art manifest contracts, CLI, Godot skeleton exporter and CI. This is NOT a game-ready engine.
+Date: 2026-10-25 (Asia/Kuwait). Review: author self-review. Base revision: `d5d851b9d37ba3ba6d344afc52cc3e25e0dd6ec6` plus the working tree, including the preserved earlier integrity and generation slices. [Earlier infrastructure evidence](evidence/2026-10-25-infrastructure-algorithms.txt) records source SHA-256 hashes, environment, exact commands, exits and output. [Catalog-expansion evidence](evidence/2026-10-25-catalog-expansion.txt) is an earlier source snapshot. [Earlier generation evidence](evidence/2026-10-25-mockup-algorithms.txt) and [integrity evidence](evidence/2026-10-25-production-integrity.txt) are historical snapshots, not certification of later edits. Requirements and status remain in the [master plan](ADVANCED_WORLD_GENERATION_MASTER_PLAN.md) and [roadmap](ROADMAP.md).
 
-| Requirement | Implementation | Verification | Status | Limitations |
-| --- | --- | --- | --- | --- |
-| C# projects compile | src/GameFrameWork.* | `dotnet build src/GameFrameWork.Cli/GameFrameWork.Cli.csproj -c Release --warnaserror` | NOT RUN locally | .NET SDK not available in current environment |
-| Core/test harness compiles | tests/GameFrameWork.Tests | `dotnet build tests/GameFrameWork.Tests/GameFrameWork.Tests.csproj -c Release --warnaserror` | NOT RUN locally | CI workflow newly committed; no completed run inspected |
-| Basic regression | tests/GameFrameWork.Tests | `dotnet run --project tests/GameFrameWork.Tests -c Release` | NOT RUN locally | This is a console harness, not xUnit; upgrade later |
-| CLI output smoke test | src/GameFrameWork.Cli | `dotnet run --project src/GameFrameWork.Cli -c Release -- desert generated/ci-desert 42` | NOT RUN locally | Only serializes basic desert world |
-| GitHub Actions build and smoke checks | .github/workflows/dotnet-ci.yml | CI on main, Windows and Linux | CONFIGURED, NOT VERIFIED | Confirm workflow runs and inspect build log before PASS |
-| Art manifest structure | Core art types + tests | Negative tests for missing/revoked/incomplete sheets | TESTS AUTHORED, NOT RUN | Does not inspect actual images or verify hashes |
-| Godot TileMapLayer rendering | Godot exporter | Godot headless import plus in-engine inspection | NOT RUN | No tile atlas or painted cells yet |
-| Shared logging/audit/notifications | Core/OperationalServices.cs + CLI | JSONL sink smoke test authored | IMPLEMENTED IN CLI; TESTS NOT RUN | Single-process file sinks; no long-running multi-process coordination, retention/redaction policies or service-wide coverage |
-| Full SDLC adoption installation | scripts/adopt_sdlc.py | Run from independent canonical checkout: preview, review, then --write | HELPER COMMITTED; INSTALL NOT RUN | Network checkout unavailable; installer has not been tested or executed; source pin/commit must be recorded |
-| Live Claude and Codex skill evaluations | .agents and .claude | Host-integration behavior tests | NOT RUN | Must evaluate live workflows separately |
+## Environment
 
-## Architecture and quality observations
-- GameArts manifest structural validation is not equivalent to GameArts approval proof or measured PNG/atlas verification. Runtime production gate remains incomplete.
-- Prototype world generator still uses seeded pseudo-random placement; does not meet purpose-driven constraint rules.
-- No actual GDScript/Godot engine verification, streaming or city planner exists.
-- Root AGENTS.md and CLAUDE.md route to canonical engineering rules, but the framework skill package has not been vendored.
+The current [catalog contracts and Modern implementation](SETTLEMENT_IDENTITY_AND_BUILDING_RULES.md#current-contract-and-module-boundaries) replaces the previous implicit catalog and geometry-only schema path. **Current execution evidence is [curved roads and Modern city generation](evidence/2026-10-25-curved-roads-modern-city.txt)**, including the full existing regression suite. [Modern catalog evidence](evidence/2026-10-25-modern-catalog-contracts.txt) is the previous source snapshot. Earlier research/siting/infrastructure logs are historical snapshots. The current full regression includes their intended behavior rewritten against explicit catalogs and complete siting.
 
-## Next engineering tasks
-1. Inspect actual GitHub CI run evidence and repair any build/test failures on main.
-2. Finish shared operational services with robust redaction, retention, multiple-process concurrency and wider event coverage; then run the authored tests.
-3. Adopt SDLC skills through a collision-aware reviewed installer, without overwriting GameArts/world skills.
-4. Implement real GameArts approved-art adapter, hash checks and atlas validation; then replace prototype placement with constraint-driven geometry.
+Windows x64, .NET runtime 10.0.12, installed SDK 10.0.401. Repository `global.json` requires 10.0.402; the root build cannot select that unavailable SDK. The pin is unchanged. Local compilation uses ignored `generated/sdk-validation/global.json` selecting `10.0.401` with `rollForward: disable`; build commands below run in that directory. No SDK or dependency was installed.
 
-Do not mark any item completed until observed execution evidence exists. Update this record in place rather than multiplying duplicate reports.
+## Current verification
+
+| Gate | Command/scope | Outcome |
+| --- | --- | --- |
+| Required SDK 10.0.402 | Root build using repository pin | UNAVAILABLE; earlier attempt failed before compilation |
+| Engine/Godot adapter/test harness build | `dotnet build ../../tests/GameFrameWork.Tests/GameFrameWork.Tests.csproj -c Release --warnaserror --no-restore` | PASS on SDK 10.0.401; 0 warnings/errors |
+| CLI build | `dotnet build ../../src/GameFrameWork.Cli/GameFrameWork.Cli.csproj -c Release --warnaserror --no-restore` | PASS on SDK 10.0.401; 0 warnings/errors |
+| Complete regression harness and child-process generation/audit checks | Root: `dotnet tests/GameFrameWork.Tests/bin/Release/net10.0/GameFrameWork.Tests.dll --cli src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll` | PASS; exit 0 |
+| Curved/diagonal road compiler | 361 octant/reversal supercover cases, bend join geometry/IDs, dense samples, disconnected continuous networks and complete worlds | PASS locally |
+| Modern city capture CLI | 99 scoped features, 49 authored junctions / 51 crossings; 43 buildings / 32 roads / 44 source-anchored park trees / 174 allocations; source rejection preserves output | PASS locally |
+| Mockup capture and engine handoff | Strict current JSON/schema, real PNG hash/header, geometry/calibration/junctions, review gates, complete synthetic capture-to-engine world, stale-trace rejection and actual CLI/audit/output-preservation tests | PASS locally |
+| Canonical GameArts atlas workflow | Actual builder + validator; rebuilt two-frame synthetic PNG/JSON equals fixture byte-for-byte; C# native atlas validation | PASS for synthetic geometry/packing, not city artwork or approval |
+| Source-image review viewer | IAB browser: rendered original-pixel overlay, toggled original/capture, inspected factory roof, reset view and labels; saved screenshot | PASS for these local controls; not complete browser/accessibility qualification |
+| Infrastructure algorithms | 10 families / 30 variant worlds, maximum-span boundaries, context scaling, reservations and negative designs | PASS locally; current run recorded in evidence |
+| Contextual siting algorithms | 197 profiles / 216 technology resolutions; 22 building + 10 infrastructure + 2 mixed/provider worlds; negative/JSON/cancellation/actual CLI checks | PASS locally |
+| Contextual siting CLI export | `generate-world tests/fixtures/synthetic-siting-world.json generated/modern-siting-smoke` | PASS; assessed world JSON, skeleton and status exported |
+| Independent catalog contracts/plugin | `--catalogs` and full CLI harness; custom vocabulary and fixed-code world generation | PASS locally |
+| Catalog discovery CLI | `list-buildings modern`, `list-buildings modern Healthcare`, invalid category, shared audit events | PASS; actual child-process checks |
+| Explicit synthetic generation smoke | Root: `dotnet src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll generate-world tests/fixtures/synthetic-desert-world.json generated/modern-desert-smoke` | PASS; world JSON and skeleton/status files exist and are nonempty |
+| Infrastructure CLI export | `generate-world tests/fixtures/synthetic-infrastructure-world.json generated/modern-infrastructure-smoke` | PASS; connections, reservations and terrain layers exported |
+| Separate dummy village smoke | Root: `dotnet src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll dummy-village generated/modern-dummy-village` | PASS; project/scene/script/design files exist and are nonempty |
+| Source and documentation checks | `git diff --check`, changed Markdown local links and execution-source hashes | PASS |
+| Godot import/startup, rendered mockup fidelity and gameplay | No Godot executable available in inspected locations | NOT RUN |
+| Remote Windows/Linux CI and clean pinned-SDK restore | Workflow updated to use explicit mockup request | NOT RUN/INSPECTED |
+| Real GameArts authority, source art/style matching and animation | Synthetic mockup identities, species and test approvals only | NOT RUN |
+| Live Claude/Codex capture/prompt/setup behavior | Canonical world-generator procedure and Claude routing updated; generated prompt drafts are not production calls | NOT RUN |
+
+## Algorithm acceptance evidence
+
+`MockupAlgorithmTests` and the updated existing harness exercise actual C# generation, not a replacement mock implementation:
+
+- Every emitted object/cell retains source lineage/rules. Exact building footprints, selected variant, height/capacity, site zones and vegetation survive into world JSON.
+- Missing mockup/revision, missing terrain coverage, equal-priority terrain ambiguity, overlapping building regions, missing species dimensions, insufficient road width and props intruding into road/site reservations reject generation. No object is moved to a different free location.
+- Authored masks/elevations determine rock/sand geography. Reordering grammar inputs preserves cells/design output. Moving one visual region and its frontage moves dependent building positions without changing unrelated building positions or stable IDs.
+- Small-town, larger-town and city demand select local/town/major-city stadium variants. Demand planning resolves scale before counts. Stadium dimensions are not normalized into small plots; oversize requirements fail.
+- Factories and warehouses retain distinct small/large dimensions and obey allowed settlement roles. Custom archetype IDs and physical size data work without new generator classes.
+- A compiled stadium has a much larger physical footprint than a house. Stadium courts/parking/green belts differ from house gardens and industrial service/loading yards/buffers.
+- Planting occurs in explicit public parks or building-owned green zones with species-specific dimensions; loading yards remain clear. Green masks cannot overlap built/service/road uses. Raster aliases reject conflicting design instead of overwriting it, with the explicit owning entrance/forecourt connection exception.
+- API cancellation is observable. Cancellation is propagated through design, raster, pattern and collision loops; large-world throughput, memory and cancellation-latency stress budgets are not qualified.
+- Shared JSON options roundtrip catalogs containing read-only sets and named/numeric enums. The actual CLI generates a world from this input, rejects missing design and the retired automatic `desert` command, and preserves previously exported output when generation rejects the request.
+- Earlier production-integrity cases still pass, including wrong-asset bundles, malformed records/manifests, revoked revisions, hash tampering and export preservation. CLI integrity tests verify JSON/exit codes and correlated log/audit/notification records.
+
+The CLI process checks require `--cli <dll>`; otherwise the harness explicitly prints NOT RUN for those checks. CI supplies the argument.
+
+## Expanded catalog acceptance
+
+`CatalogExpansionTests` validates **197 unique families, 585 physical variants and 15 categories** through the existing shared contracts. Category/function, capacity units, automatic-demand policy, placement domain, minimum road width, physical dimensions and site programs remain inspectable. Checks cover required missing-family examples across all categories and verify specialized entries are not automatically added to every town.
+
+All **555 frontage variants** pass physical sizing and surrounding-site planning in generous synthetic parcels; dimensions are retained unscaled. **Fourteen representative facility types** run through complete terrain/settlement/site generation, covering every supported category. The **10 linear/water infrastructure families** reject the frontage resolver, and an attempted whole-world road-bridge frontage generation is also rejected. Dedicated infrastructure placement is checked separately below. These checks establish catalog/algorithm behavior, not artwork, internal facility functionality or engineering standards.
+
+Actual `list-buildings` processes are checked for full counts, a Healthcare-only inventory, rejection of an unknown category, and successful/failed audit records. The CLI resolves the selected registered provider and reports its catalog/implementation provenance; Modern content lives only in its module. A local browsable inventory snapshot is generated under `generated/catalog-expansion/`; canonical definitions remain in C#.
+
+## Infrastructure algorithm acceptance
+
+`InfrastructureAlgorithmTests` executes the actual generator for all 10 infrastructure families and 30 variants, retaining variant dimensions, source geometry, connected approaches, safety/service reservations and underlying terrain. It checks connected land passage for bridges, tunnels and an explicitly profiled dam; connected pedestrian access for waterfront decks; and a waterway channel plus maintenance access for locks. Quays derive a service-to-deck access link rather than leaving arrival paths at a blocked edge.
+
+Each variant's maximum authored alignment length is checked by the continuous planner, and a span one meter too long is rejected through the generator. Automatic village/town/city demand selects small/medium/large road bridges and records the calculated capacity. Additional cases verify vertical alignment, input-order stability, a mixed housing/garden/street/bridge settlement, JSON roundtrip and pre-cancellation. Negative cases cover missing/wrong-mode/displaced approaches, insufficient widths, complete-profile mismatch, wrong approach direction, missing lock service access, broken waterways, invalid quay shores, unknown variants, excess capacity, invalid context/clearance, conflicting green zones, overlapping structures and a second unnamed terrain obstacle. Catalog tests continue to guard misuse of infrastructure through frontage parcels.
+
+Checks are synthetic game-algorithm evidence. The compiler remains the configured desert-profile 2D adapter with authored water masks; other biome compilers, multimodal runtime routing and Godot visual/gameplay integration are not established by these tests. CLI generation reuses the existing shared log/audit/notification boundary. CI has an infrastructure fixture smoke step; remote execution remains NOT RUN.
+## Contextual siting acceptance
+
+The actual generator validates all 197 attached catalog profiles and 216 allowed technology resolutions. Complete contextual generation passes for 22 building worlds (including three nuclear cooling options), all 10 infrastructure families and two combined worlds: industrial/residential separation and an actual power station supplying a factory. This is 34 contextual worlds, not full contextual generation of every family/variant.
+
+Negative cases reject incompatible districts, missing/unknown technologies or bindings, salt/quality/type/unit mismatches, insufficient shared supply, disconnected routes, narrow upstream truck routes, decorative-water substitutions, missing shutdown cooling, upstream contamination, sensitive/green exclusions, invented or unsuitable providers and cyclic provider graphs. Neighbor-policy checks are symmetric; input reordering preserves allocation evidence. JSON roundtrips preserve profile sets, allocations and source references; cancellation is observable. Actual child-process CLI cases verify accepted/rejected designs, exit codes, audit outcomes and preservation of prior successful output.
+
+The single current mockup contract requires catalog selection/capability flags and complete contextual siting. Missing context and alternative schemas are rejected; there is no geometry-only or implicit Modern fallback. Existing geometry regression fixtures now declare their services/districts explicitly. Utility and site-interface polygons reserve space before vegetation/public-prop collision checks. Conditional site uses reuse the existing site planner.
+
+Capacity defaults are editable game-service-unit heuristics; declared quality/reliability and upstream topology are authored facts. The tests do not validate physical quantities, hydraulic direction, pollution dispersion, emergency response times, safe traffic crossings, demographic catchment coverage, internal equipment, regional law or engineering certification. Additional profile research remains open as documented in the source register. The fixture and approvals are synthetic. CI now includes a contextual siting smoke step; its remote execution remains NOT RUN.
+
+## Catalog contract and Modern acceptance
+
+`GameFrameWork.Catalogs.Modern` owns all 197 families / 585 variants / 15 categories, the six capability flags, vocabulary constants, fixed demand/siting code and bridge/tunnel/waterfront algorithm. Core and Worlds reference only shared contracts. Registry registration validates profiles/policies, declared capabilities/vocabulary, unique IDs and dependency graphs, and freezes definition snapshots. Exported provenance identifies the selected catalog, enabled flags, content digest and entry-point assembly identities; it does not hash the complete transitive deployment closure.
+
+`CatalogContractTests` loads an independent test provider DLL with no Modern reference through the actual `AssemblyLoadContext` loader. Its custom resource/category/function/district/technology and fixed demand/siting/infrastructure implementations generate an accepted synthetic world; the custom attunement rule rejects another. This establishes code-and-data extensibility without a Core edit or Modern utilities. It is not a production Fantasy pack. Static Modern registration uses the same provider contract. Negative cases cover missing selection/provider/flags, unknown flags/vocabulary, missing/cyclic dependencies, invalid plugin paths and absent entry points, alternative schema input and missing siting. Cancellation and registration order are checked.
+
+Actual CLI checks discover the external provider, require a catalog for inventory, reject an unloaded selected pack, generate through the plugin, preserve prior output after plugin rejection and verify shared catalog/generation audit records. CI's full harness includes the independent DLL test and a Modern inventory smoke. Remote execution remains NOT RUN.
+
+Other production setting inventories, standalone data manifests, heterogeneous per-settlement composition, generalized site-use/placement extensions, dependency-closure signing, isolated untrusted execution, live module replacement/unload collection and Godot/AOT deployment qualification remain open. There is no hot-reload claim; catalog snapshots are selected before generation. Existing physical/real-art/runtime limits still apply.
+
+## Design review and limits
+
+This extends active catalog, envelope, visual planning, species-clearance, shared operation and serialization boundaries; it adds no alternate placement framework or package dependency. The catalog API is intentionally replaced: shared providers/policies/registry are injected, setting vocabularies are registered strings, the obsolete public example catalog and geometry-only path are removed, and fixtures are regenerated. No compatibility adapter or parallel contract is retained. Callers now supply `WorldRequest.Design`. Existing source-only art/design identity is not proof of real approval.
+
+The current building grammar supports rectangular north/south frontage sites; road paths also support diagonal/curved polylines with bevel joins and four-connected raster traversal. Exact building dimensions are physical size variants in meters, not a universal real-world building standard. The expanded catalog has 197 families and 585 variants and remains extensible. Ten linear/water families now use dedicated orthogonal infrastructure planning; curved/stacked spans, structural analysis, grades/deck elevation, vessel clearance and hydraulic/gate simulation remain future work. Campus/plant/farm entries describe aggregate footprints and site surroundings; internal equipment, compound/curved footprints, detailed road/district synthesis, parking/loading behavior, climate/irrigation/growth/hydrology and world-scale performance remain future work.
+
+The generation CLI exports an engine `WorldDocument` design with a Godot scene skeleton; it does not automatically create a GameArts-approved coordinated production package. `verify-world` audits the separate coordinated portable production-document format. Full TileSets, sprites, navigation/collision state transitions, component animation and in-engine visual acceptance remain unverified.
+
+CLI commands reuse `WorldOperationReporter` and preserve successful/failed/cancelled outcomes. Library methods expose diagnostics/exceptions to their caller. Interactive terminal Ctrl+C/exit-130 behavior, notification channel outages, retention/redaction and multiprocess sinks were not qualified. A local diagnostic capture/generated-map viewer is present. No hosted authorization boundary or migration was introduced. No vulnerability scan, Linux execution or symlink/reparse containment qualification was performed.
+
+Documentation updated in place: README, master plan, roadmap, constraint policy, settlement/building design and this verification record. Older execution logs remain historical evidence; current navigation points here.
+
+
+## Current source capture and curved-road execution (2026-10-25)
+
+Current compiled-surface/spacing slice: shared surface materials and placement-scope roles, eight compiled park surfaces, six configurable 1m clearance rules, authored/source mask separation and paved gap-band composition. Release warn-as-error builds pass; the current full harness is recorded in [spacing regression output](evidence/2026-10-25-surface-clearance-regression.txt). Coverage includes source-location materials/JSON, placement-scope non-painting, concave/crossing/exact-distance cases, invalid rules/roles/materials, fixed tree containment, actual gap-band cells and CLI failure/output preservation. Current source/city exports pass; browser close-up review verifies the generated park. See the current section appended to [detail evidence](evidence/2026-10-25-detailed-extraction.txt). Exact pixel masks, whole-city fidelity, production artwork and Godot remain open.
+
+Latest continuation: source-grid refinement of the southern garden and fork/perimeter strip; 59 current-contract surface checks reject contradicted interior/exterior samples. Current CLI/tests builds and the full harness, including schema parity and actual city/CLI generation, pass in [surface-check regression output](evidence/2026-10-25-surface-check-regression.txt). Current capture/world exports succeeded with all 44 park trees fixed and constrained; browser inspection verified revised contours and sample-toggle rendering. Current hashes and limits are appended to [detail evidence](evidence/2026-10-25-detailed-extraction.txt). Vector traces and sampled checks do not establish exact pixel masks or full scene extraction.
+
+Latest detailed extraction: see [detail evidence](evidence/2026-10-25-detailed-extraction.txt), [full regression output](evidence/2026-10-25-detailed-extraction-regression.txt) and [final contour checks](evidence/2026-10-25-detailed-ground-checks.txt). CLI/tests build with zero warnings/errors using the existing local SDK override. Inspection-area validation, anchored tree placement, ground parent/footprint/exclusion rejection, schema parity and full regression passed. Subsequent source contour refinements passed the focused actual-city/CLI gate, including independent planted-ground and walkway witness points, and current source capture/world exports succeeded. Browser inspection verified source filters, sports visibility, exact tree coordinates/ownership and the revised contour view. The 432-plant layout is a draft; 44 park trees are integrated into the 43-building city. Six ground islands are provisional source traces, not exact masks or fully compiled new terrain. Do not equate local geometry evidence with completed artwork/Godot acceptance.
+
+The [capture contract](GAMEARTS_INTEGRATION_CONTRACT.md) owns current behavior and boundaries. [Current evidence](evidence/2026-10-25-curved-roads-modern-city.txt) records builds, full regression/CLI output, actual city/capture exports and tested source hashes. The previous [capture log](evidence/2026-10-25-mockup-capture.txt) is historical evidence for the initial 34-feature provisional stage. An obsolete test assertion about the old bend-surface count failed on the first run; it was replaced with checks retaining the segment bands plus real bend joins, and the final full suite passes.
+
+Road checks cover all 361 integer endpoint offsets in a 19×19 neighborhood: every octant, reversal invariance, exact corner neighbors and zero-length raster anchors. Convex sweep/join pieces validate; outside bend wedges are filled and uniquely identified. Complete worlds retain diagonal/dense curve samples, reject disconnected continuous networks and preserve generation determinism. Curves are captured/sampled polylines, without automatic spline fitting or lane-level mesh reconstruction. Layered road navigation remains outside this slice.
+
+The actual Modern city uses 875 source/design annotations with a named 99-feature generation scope. All 51 road-pair crossings map to 49 explicit at-grade junctions. The selected ground transform X=(2/3)*pixelX+24m, Y=0.9*pixelY+24m is game-authored, with five non-collinear controls and 0.001m transform-consistency tolerance. It is not a measured survey or proof of source pixel accuracy; original roof silhouettes remain separate. Global visual coverage stays Partial and unselected occluded/ambiguous elements stay pending.
+
+The engine generates 536×485 cells at 2m/cell (1,072×970m including the compilation margin), 43 buildings, 32 roads, 44 source-anchored park trees and 174 accepted service allocations. Stadium: 180×140m, 12,000 seats. Factory: 140×90m, 3,000-worker game capacity. Warehouse: 60×40m, 200 storage capacity units. The 60,000 planning population selects city context and does not assert 60,000 residents are housed by this demonstration. Districts, external city-grid supplies, shared capacities, eligible freight/pedestrian/utility paths, neighbor clearances and site/green reservations pass the normal engine gates. Explicit shared-utility path declarations are required. Building dimensions are never shrunk; game-authored site-band insets avoid 2m raster aliasing through useful maintenance/circulation space.
+
+Actual `generate-world --capture --asset-root` child-process checks verify source hashing, complete generation, generated `plan.svg`, audit events, option validation and rejection of unresolved crossings without modifying existing world output. Current exports include a self-contained source/engine comparison viewer; renderer and palette contracts are injectable, with Modern palette code contained in the Modern pack. `compile-capture` additionally exports current report, overlay, prompt drafts and scoped geometry.
+
+Current source PNG hash/header verification and C# engine/CLI checks pass on installed SDK 10.0.401. Browser checks cover the local generated map/source/compare controls and source annotation review; saved previews are diagnostic geometry, not production art. Canonical synthetic atlas builder/validator evidence remains in the earlier capture log; no city atlas was invented.
+
+NOT RUN: pinned SDK 10.0.402, remote CI/Linux, live Codex/Claude behavior evaluations, production image/atlas visual approval, exhaustive source-capture accuracy, layered/curved infrastructure spans, large-world stress qualification or Godot runtime. No new runtime dependency, image API backend, model migration, branch, commit or PR was introduced.

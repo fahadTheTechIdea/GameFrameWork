@@ -1,0 +1,1 @@
+PASS: diagonal supercover octants/reversal, bend joins, dense curves, continuous topology, capture scopes and actual Modern city generation.

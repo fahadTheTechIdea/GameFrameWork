@@ -1,0 +1,144 @@
+2026-10-25 13:15 +03:00 | Windows | main | dirty working tree preserved
+Base revision: d5d851b9d37ba3ba6d344afc52cc3e25e0dd6ec6
+
+Authorization: continue detailed mockup extraction; include green areas/trees and sports surfaces;
+tree base at the same captured crown position; planted-ground boundaries include trees without
+conflicting with other boundaries; refine the east-pitch and other coarse contours.
+
+Current shared contracts: CaptureInspectionArea; optional CaptureVegetationPlacement;
+VegetationPattern.Anchored with explicit blueprint AnchorIds; existing PlannedVegetation output.
+No new runtime dependency or parallel format/version. Ground parent footprint and captured
+road-width/protected polygon checks reject conflicts. Existing generation gates remain active.
+
+Source hashes SHA256:
+MockupCapture.cs EEF620908B082685314DF6B27EF81B2603CB0062BC7457CFC0A3EF18072E0A0C
+MockupCaptureValidator.cs 52D1A6D57F354172072527BCD4547721D24D423B93E8BDF250C1E74C71A453C8
+MockupCapturePipeline.cs D3BE47A5113380B8B0176485EAB7A3552439FA961DAB3BD8628F63842E9A706B
+VegetationCompositionPlanner.cs FD61E0DE01836F144CB1B8863DBED466220852589B9E861C4FF1DDEC8196E9A7
+mockup-capture.json 79B1F3AF066C63AB5D2AD78232D0276E6ADED5B82FD92DCF2E6E1BF938DFA2F3
+world-request.json 0185A7130B0121CFF85EA762EAA379EF52E679E13622C526715A6734031C96EB
+Original PNG 49d037170001e1bc3158a74f8eb8e5182a6831920febfb9be31c8c5380be5b2a
+
+Executed:
+cwd generated/sdk-validation (installed 10.0.401; repository pin 10.0.402 preserved)
+dotnet build ../../src/GameFrameWork.Cli/GameFrameWork.Cli.csproj -c Release --warnaserror --no-restore
+dotnet build ../../tests/GameFrameWork.Tests/GameFrameWork.Tests.csproj -c Release --warnaserror --no-restore
+PASS: zero warnings/errors.
+
+cwd repository root
+dotnet tests/GameFrameWork.Tests/bin/Release/net10.0/GameFrameWork.Tests.dll --cli src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll
+PASS: see 2026-10-25-detailed-extraction-regression.txt. This full run preceded the final source contour refinement.
+dotnet tests/GameFrameWork.Tests/bin/Release/net10.0/GameFrameWork.Tests.dll --roads
+PASS: final contours, actual city generation, source tree preservation and witness points;
+see 2026-10-25-detailed-ground-checks.txt. Test project rebuilt after witness assertions.
+dotnet src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll capture-schema
+PASS: current schema snapshot exported; parity exercised by regression harness.
+dotnet src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll compile-capture .gameframework/worlds/modern-city/mockup-capture.json . generated/modern-city-refined-ground-review
+PASS: verified PNG, valid geometry/ownership, 0 unresolved projected crossings; output copied to current capture-review.
+dotnet src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll generate-world .gameframework/worlds/modern-city/world-request.json generated/modern-city --capture .gameframework/worlds/modern-city/mockup-capture.json --asset-root .
+PASS: current 536x485 world; 43 buildings, 32 road paths, 44 exact source-anchored park trees; existing siting/clearance/raster gates.
+git diff --check
+PASS.
+
+Initial authoring failures were preserved and corrected: one self-intersecting source roof;
+stale region memberships after tree refinement; too-narrow park perimeter; over-broad
+perimeter conflicting with a generated sidewalk. Final trees were not relocated to clear
+these checks; source bounds and surface contours were refined. Intermediate shell quoting
+and working-directory errors did not establish any successful check.
+
+Browser: IAB localhost source-details.html; verified landscape region filter includes six
+ground polygons and all 44 associated tree bases (50 visible), sport overlays, original
+toggle/crops and tree detail coordinates/parent/20 protected feature references.
+Original source inspected in enlarged stadium/civic/housing/industrial/park and 8x east-park crops.
+
+Current inventory: 869 manually proposed source/design annotations, including 432 tree/palm
+points and 42 landscape annotations; eight partial inspections; 91-feature city compilation
+scope; 49 junction records resolving 51 road-pair crossings. No automatic detector claim.
+The source-point draft uses the shared planner for all 432 plants with unresolved art mappings.
+Only 44 park trees join the collision-accepted city. Ground islands follow source edges
+independently of tree points; their vector boundaries remain provisional, not exact masks.
+Captured protected road widths do not establish full engineering sidewalk widths; existing
+engine profiles independently enforce street clearances. Fine pedestrian boundaries, crown
+extents, remaining small objects, full city-wide terrain/building/vegetation reconciliation,
+GameArts approvals and actual Godot runtime remain unverified/open.
+
+CURRENT CONTINUATION: surface witness checks and southern contour refinement
+2026-10-25 Asia/Kuwait | same main base revision, dirty changes preserved
+New shared contract: optional SurfaceChecks on current MockupCaptureDocument. Polygon target,
+finite source bounds, unique sample positions, notes, 4096-sample cap and expected containment
+are validated before any capture/world export. No alternate schema or compatibility path.
+Current source has 59 reviewed source interior/exterior samples. Marker rendering is optional;
+white means expected planted ground, pink means expected outside. Samples do not certify an
+exact mask or occluded ground pixels. Southern garden/fork/perimeter traces were refined from
+the enlarged original source-coordinate grid; all 44 tree coordinates remain unchanged.
+
+Current SHA256:
+MockupCapture.cs 1CCD00954C42C2137B49CDAF9384EB48B2E6A969107958A75EF72EA671F4DF82
+MockupCaptureValidator.cs A8DEE619377F6FED81917F495AC380D34535A4AB661B2EC8BCE83290E2C4126C
+MockupCapturePipeline.cs 831B57C9C167CDA8E5AD49F31CB92DC666235DC98B6C4DA82BA71A7A5A683FA3
+mockup-capture.json 76A9BF06A1E70A857C1D55D48B28167ED4BEAC744F69DAEBDCAA80E77F903ED2
+
+Executed the same Release warn-as-error CLI/test builds from generated/sdk-validation:
+PASS, zero warnings/errors. Exported current capture schema, then ran:
+dotnet tests/GameFrameWork.Tests/bin/Release/net10.0/GameFrameWork.Tests.dll --cli src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll
+PASS, exit 0; full output 2026-10-25-surface-check-regression.txt.
+Includes contradictory positive/negative samples, malformed target/bounds/duplicates,
+schema parity, actual current city generation and existing regressions/CLI preservation.
+compile-capture current source into generated/modern-city-surface-checked: PASS, 0 unresolved
+crossings; copied to current capture-review. generate-world current request with --capture
+and --asset-root into generated/modern-city: PASS. Existing exact tree, full street/site,
+siting and raster gates pass. Browser reload and sample checkbox verified source overlay.
+git diff --check: PASS. One intermediate contour rejected the authored base radius of tree
+012; a 1px source-edge refinement within provisional uncertainty corrected it without moving
+that tree. Original PNG and current scene/art/Godot limits above remain unchanged.
+Additional source geometry audit: python generated/check-ground-pairs.py, exit 0;
+all 15 pairs of the six park ground polygons have no interior overlap (shared edges allowed).
+Saved current ground-preview.png and surface-samples-preview.png in the existing capture-review.
+
+CURRENT COMPILED SURFACES AND CONFIGURABLE SPACING (2026-10-25, Asia/Kuwait)
+Same main base revision; dirty source/data changes preserved. User requested minimum space
+between planting and other boundaries. Configured a 1m authored visual default for this park.
+Observed contours remain independent of six authored setback masks linked by capture ParentId.
+99 selected features now compile six adjusted planting masks, two park sport surfaces,
+the existing city and 44 fixed park trees. Inventory 875 source/design annotations; 118 surface
+constraints (59 original + 59 retained on adjusted masks). Scope is not full scene fidelity.
+
+Shared changes: optional terrain/cell SurfaceMaterialId; GroundCover vs PlacementScope role;
+pack-owned IWorldPlanPalette.SurfaceColor; SurfaceClearanceRule with explicit protected
+regions/roads/buildings, tree base anchors/radius and optional GapMaterialId. Distances are
+continuous polygon-edge measurements, including road carriageways/curbs/sidewalks/bevels.
+Violations retain measured and required gaps; they reject before export. Material bands
+are sampled below peer/higher surfaces and rendered as round-joined outside bands before fills.
+Road/object raster overlays retain precedence. The 2m raster does not guarantee a separate
+navigation cell for every 1m subcell gap. This is not a regulatory/safety minimum.
+
+Current hashes SHA256:
+SurfaceClearanceValidator.cs 35F52B2D3CC2995852F258F1291DC6754A1D656272B4537D2FBDD36F2F7CBC62
+MockupWorldDesign.cs 685E9E588198941605AC0C9F6120D58E1492401371CF6024582572BDDAF0D517
+WorldPlanRenderer.cs 463AEB4829765856F274012A1FABC60BE09BF044724D7F4926B757F433DA5B8E
+MockupTerrainComposer.cs 7FB5F92E76AF44E179EB126217C8D99423824B038346A9F3A58A09B05D24687C
+mockup-capture.json 9DE6FD5F21A48E9538BDE5EEDA932A0A26487CF4F5F33B19B572353D658A8428
+world-request.json 7009BE6B4104985D0224D34C110E31A3AEA3484F2C40FCE4F6A86831BC359889
+
+Executed Release warn-as-error builds for CLI/tests from generated/sdk-validation using
+10.0.401 (10.0.402 repository pin preserved): PASS, zero warnings/errors.
+dotnet tests/GameFrameWork.Tests/bin/Release/net10.0/GameFrameWork.Tests.dll --cli src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll
+PASS, exit 0, final full output: 2026-10-25-surface-clearance-regression.txt.
+Coverage: material/source-location/JSON persistence, placement envelope non-painting,
+invalid materials/roles/rule references, exact/concave/crossing edge distances, impossible
+minimum gaps and fixed-tree extents, actual paved band beyond former park envelope, source
+and authored witness checks, native capture-to-city generation, and CLI rejection preserving
+the previous successful world. Existing catalog/siting/infrastructure/production checks pass.
+
+compile-capture current capture into generated/modern-city-clearance-current: PASS,
+0 unresolved crossings; copied to current .gameframework/worlds/modern-city/capture-review.
+generate-world current request into generated/modern-city with --capture and --asset-root:
+PASS. Shared audit adds world.generate.surface-clearance.passed for evaluated rules.
+Initial spacing runs rejected tight/overlapping northern road, western sidewalk and court
+edges. Corrected only authored masks; observed contours and all 44 tree positions retained.
+No automatic polygon-offset or arbitrary relocation algorithm is claimed.
+Browser actual generated-map/central-park focus: PASS; six visible spacing-band elements,
+six distinct planting masks, paving and sport materials. Screenshot saved as
+generated/modern-city/park-preview.png and capture-review/compiled-park-preview.png.
+git diff --check: PASS. Full source masks, whole-city fidelity, GameArts production
+approval and Godot runtime remain open; this output is engine geometry, not approved artwork.

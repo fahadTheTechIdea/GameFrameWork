@@ -1,0 +1,517 @@
+{
+  "valid": true,
+  "status": "provisional-review",
+  "issues": [],
+  "crossings": [
+    {
+      "firstRoadId": "design-access-civic-offices",
+      "secondRoadId": "r03-west-spine",
+      "position": {
+        "x": 542,
+        "y": 280
+      },
+      "junctionId": "junction-001",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "design-access-east-offices",
+      "secondRoadId": "r17-civic-east-local",
+      "position": {
+        "x": 1207.236220472441,
+        "y": 285
+      },
+      "junctionId": "junction-002",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "design-access-factory",
+      "secondRoadId": "r06-east-edge",
+      "position": {
+        "x": 1496,
+        "y": 520
+      },
+      "junctionId": "junction-003",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "design-access-homes-central-middle",
+      "secondRoadId": "r13-residential-local",
+      "position": {
+        "x": 280.4423076923077,
+        "y": 638
+      },
+      "junctionId": "junction-004",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "design-access-homes-central-north",
+      "secondRoadId": "r13-residential-local",
+      "position": {
+        "x": 282,
+        "y": 535
+      },
+      "junctionId": "junction-005",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "design-access-homes-central-south",
+      "secondRoadId": "r13-residential-local",
+      "position": {
+        "x": 280,
+        "y": 742
+      },
+      "junctionId": "junction-006",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "design-access-homes-lower",
+      "secondRoadId": "r13-residential-local",
+      "position": {
+        "x": 280,
+        "y": 870
+      },
+      "junctionId": "junction-007",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "design-access-homes-park-south",
+      "secondRoadId": "r14-park-west-south",
+      "position": {
+        "x": 686.2376237623762,
+        "y": 820
+      },
+      "junctionId": "junction-008",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "design-access-homes-west-middle",
+      "secondRoadId": "r12-west-local",
+      "position": {
+        "x": 82.31067961165049,
+        "y": 638
+      },
+      "junctionId": "junction-009",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "design-access-homes-west-north",
+      "secondRoadId": "r12-west-local",
+      "position": {
+        "x": 83.63636363636364,
+        "y": 535
+      },
+      "junctionId": "junction-010",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "design-access-homes-west-south",
+      "secondRoadId": "r12-west-local",
+      "position": {
+        "x": 81.20588235294117,
+        "y": 735
+      },
+      "junctionId": "junction-011",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "design-access-school",
+      "secondRoadId": "r04-central-spine",
+      "position": {
+        "x": 687,
+        "y": 576
+      },
+      "junctionId": "junction-012",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "design-access-stadium",
+      "secondRoadId": "r03-west-spine",
+      "position": {
+        "x": 542,
+        "y": 320
+      },
+      "junctionId": "junction-013",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "design-access-warehouse",
+      "secondRoadId": "r15-industrial-west",
+      "position": {
+        "x": 831,
+        "y": 818
+      },
+      "junctionId": "junction-014",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r01-boulevard",
+      "secondRoadId": "r03-west-spine",
+      "position": {
+        "x": 542,
+        "y": 418.06756756756755
+      },
+      "junctionId": "junction-015",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r01-boulevard",
+      "secondRoadId": "r04-central-spine",
+      "position": {
+        "x": 688,
+        "y": 423
+      },
+      "junctionId": "junction-016",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r01-boulevard",
+      "secondRoadId": "r05-freight-spine",
+      "position": {
+        "x": 1004,
+        "y": 435
+      },
+      "junctionId": "junction-017",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r01-boulevard",
+      "secondRoadId": "r06-east-edge",
+      "position": {
+        "x": 1492,
+        "y": 448
+      },
+      "junctionId": "junction-018",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r01-boulevard",
+      "secondRoadId": "r18-civic-far-east",
+      "position": {
+        "x": 1324,
+        "y": 441
+      },
+      "junctionId": "junction-019",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r02-north",
+      "secondRoadId": "r03-west-spine",
+      "position": {
+        "x": 542,
+        "y": 70
+      },
+      "junctionId": "junction-020",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r02-north",
+      "secondRoadId": "r04-central-spine",
+      "position": {
+        "x": 687,
+        "y": 75
+      },
+      "junctionId": "junction-021",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r02-north",
+      "secondRoadId": "r05-freight-spine",
+      "position": {
+        "x": 1004,
+        "y": 78
+      },
+      "junctionId": "junction-022",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r02-north",
+      "secondRoadId": "r06-east-edge",
+      "position": {
+        "x": 1481.1076655327902,
+        "y": 83.24460090182738
+      },
+      "junctionId": "junction-023",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r02-north",
+      "secondRoadId": "r17-civic-east-local",
+      "position": {
+        "x": 1208,
+        "y": 81
+      },
+      "junctionId": "junction-024",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r02-north",
+      "secondRoadId": "r18-civic-far-east",
+      "position": {
+        "x": 1318,
+        "y": 81
+      },
+      "junctionId": "junction-025",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r03-west-spine",
+      "secondRoadId": "r08-neighborhood-mid",
+      "position": {
+        "x": 542,
+        "y": 557
+      },
+      "junctionId": "junction-026",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r03-west-spine",
+      "secondRoadId": "r09-neighborhood-lower",
+      "position": {
+        "x": 545,
+        "y": 663
+      },
+      "junctionId": "junction-027",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r03-west-spine",
+      "secondRoadId": "r10-neighborhood-south",
+      "position": {
+        "x": 545,
+        "y": 772
+      },
+      "junctionId": "junction-028",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r03-west-spine",
+      "secondRoadId": "r11-neighborhood-bottom",
+      "position": {
+        "x": 545,
+        "y": 910
+      },
+      "junctionId": "junction-029",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r04-central-spine",
+      "secondRoadId": "r05-freight-spine",
+      "position": {
+        "x": 831,
+        "y": 639
+      },
+      "junctionId": "junction-030",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r04-central-spine",
+      "secondRoadId": "r08-neighborhood-mid",
+      "position": {
+        "x": 687,
+        "y": 557
+      },
+      "junctionId": "junction-031",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r04-central-spine",
+      "secondRoadId": "r14-park-west-south",
+      "position": {
+        "x": 687,
+        "y": 610
+      },
+      "junctionId": "junction-032",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r04-central-spine",
+      "secondRoadId": "r15-industrial-west",
+      "position": {
+        "x": 831,
+        "y": 639
+      },
+      "junctionId": "junction-030",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r04-central-spine",
+      "secondRoadId": "r16-civic-cross",
+      "position": {
+        "x": 687,
+        "y": 296
+      },
+      "junctionId": "junction-033",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r05-freight-spine",
+      "secondRoadId": "r15-industrial-west",
+      "position": {
+        "x": 831,
+        "y": 639
+      },
+      "junctionId": "junction-030",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r05-freight-spine",
+      "secondRoadId": "r16-civic-cross",
+      "position": {
+        "x": 1003,
+        "y": 309
+      },
+      "junctionId": "junction-034",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r06-east-edge",
+      "secondRoadId": "r07-south-bypass",
+      "position": {
+        "x": 1450,
+        "y": 853
+      },
+      "junctionId": "junction-035",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r06-east-edge",
+      "secondRoadId": "r16-civic-cross",
+      "position": {
+        "x": 1488,
+        "y": 320
+      },
+      "junctionId": "junction-036",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r07-south-bypass",
+      "secondRoadId": "r15-industrial-west",
+      "position": {
+        "x": 831,
+        "y": 965
+      },
+      "junctionId": "junction-037",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r08-neighborhood-mid",
+      "secondRoadId": "r12-west-local",
+      "position": {
+        "x": 84,
+        "y": 551
+      },
+      "junctionId": "junction-038",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r08-neighborhood-mid",
+      "secondRoadId": "r13-residential-local",
+      "position": {
+        "x": 282,
+        "y": 557
+      },
+      "junctionId": "junction-039",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r09-neighborhood-lower",
+      "secondRoadId": "r12-west-local",
+      "position": {
+        "x": 82,
+        "y": 654
+      },
+      "junctionId": "junction-040",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r09-neighborhood-lower",
+      "secondRoadId": "r13-residential-local",
+      "position": {
+        "x": 280,
+        "y": 661
+      },
+      "junctionId": "junction-041",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r10-neighborhood-south",
+      "secondRoadId": "r12-west-local",
+      "position": {
+        "x": 81,
+        "y": 756
+      },
+      "junctionId": "junction-042",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r10-neighborhood-south",
+      "secondRoadId": "r13-residential-local",
+      "position": {
+        "x": 280,
+        "y": 764
+      },
+      "junctionId": "junction-043",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r11-neighborhood-bottom",
+      "secondRoadId": "r12-west-local",
+      "position": {
+        "x": 81,
+        "y": 884
+      },
+      "junctionId": "junction-044",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r11-neighborhood-bottom",
+      "secondRoadId": "r13-residential-local",
+      "position": {
+        "x": 280,
+        "y": 895
+      },
+      "junctionId": "junction-045",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r11-neighborhood-bottom",
+      "secondRoadId": "r14-park-west-south",
+      "position": {
+        "x": 682,
+        "y": 921
+      },
+      "junctionId": "junction-046",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r11-neighborhood-bottom",
+      "secondRoadId": "r15-industrial-west",
+      "position": {
+        "x": 831,
+        "y": 928
+      },
+      "junctionId": "junction-047",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r16-civic-cross",
+      "secondRoadId": "r17-civic-east-local",
+      "position": {
+        "x": 1207,
+        "y": 315
+      },
+      "junctionId": "junction-048",
+      "kind": "AtGrade"
+    },
+    {
+      "firstRoadId": "r16-civic-cross",
+      "secondRoadId": "r18-civic-far-east",
+      "position": {
+        "x": 1320,
+        "y": 317
+      },
+      "junctionId": "junction-049",
+      "kind": "AtGrade"
+    }
+  ]
+}

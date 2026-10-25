@@ -28,7 +28,8 @@ public static class StreetTopologyBuilder
     private const double Precision = 1_000_000d;
     private static string Key(WorldPoint p) =>
         $"{Math.Round(p.X * Precision):F0}:{Math.Round(p.Y * Precision):F0}";
-    public static StreetTopology Build(IReadOnlyList<StreetCorridor> corridors)
+    public static StreetTopology Build(IReadOnlyList<StreetCorridor> corridors,
+        IReadOnlyList<WorldPoint>? terminals = null, CancellationToken token = default)
     {
         ArgumentNullException.ThrowIfNull(corridors);
         var diagnostics = new List<string>();
@@ -38,16 +39,21 @@ public static class StreetTopologyBuilder
         var ids = new HashSet<string>(StringComparer.Ordinal);
         foreach (var corridor in corridors)
         {
+            token.ThrowIfCancellationRequested();
             corridor.Centerline.Validate();
             corridor.Profile.Validate();
             if (!ids.Add(corridor.Id)) diagnostics.Add($"DUPLICATE_CORRIDOR_ID:{corridor.Id}");
             for (var i = 1; i < corridor.Centerline.Points.Count; i++)
+            {
                 segments.Add((corridor.Id, corridor.Centerline.Points[i - 1], corridor.Centerline.Points[i]));
+                if(segments.Count>4096) return new([],[],["STREET_SEGMENT_BUDGET_EXCEEDED"]);
+            }
         }
         var cuts = segments.Select(s => new List<WorldPoint> { s.A, s.B }).ToArray();
         for (int i = 0; i < segments.Count; i++)
         for (int j = i + 1; j < segments.Count; j++)
         {
+            token.ThrowIfCancellationRequested();
             var a = segments[i];
             var b = segments[j];
             var hit = PlanarIntersections.Intersect(a.A, a.B, b.A, b.B);
@@ -61,7 +67,15 @@ public static class StreetTopologyBuilder
         }
         for (int i = 0; i < segments.Count; i++)
         {
+            token.ThrowIfCancellationRequested();
             var segment = segments[i];
+            foreach (var point in terminals ?? [])
+            {
+                double dx=segment.B.X-segment.A.X,dy=segment.B.Y-segment.A.Y;
+                double t=((point.X-segment.A.X)*dx+(point.Y-segment.A.Y)*dy)/(dx*dx+dy*dy);
+                if (t>=0 && t<=1 && point.DistanceTo(new(segment.A.X+t*dx,segment.A.Y+t*dy))<1e-8)
+                    cuts[i].Add(point);
+            }
             var sorted = cuts[i].DistinctBy(Key)
                 .OrderBy(p => (p.X - segment.A.X) * (segment.B.X - segment.A.X) +
                               (p.Y - segment.A.Y) * (segment.B.Y - segment.A.Y)).ToArray();

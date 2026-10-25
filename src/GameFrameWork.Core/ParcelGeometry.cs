@@ -3,6 +3,40 @@ namespace GameFrameWork.Core.Geometry;
 /// <summary>A simple polygon without holes, in world meters. Coordinates are not image pixels.</summary>
 public sealed record WorldPolygon(IReadOnlyList<WorldPoint> Vertices)
 {
+    /// <summary>Boundary-inclusive winding test. Validate the polygon once before
+    /// repeated spatial queries; this method is linear in its vertex count.</summary>
+    public bool ContainsPoint(WorldPoint point)
+    {
+        if (!double.IsFinite(point.X) || !double.IsFinite(point.Y)) return false;
+        bool inside = false;
+        for (int i = 0, j = Vertices.Count - 1; i < Vertices.Count; j = i++)
+        {
+            var a = Vertices[j]; var b = Vertices[i];
+            double cross = (b.X-a.X)*(point.Y-a.Y)-(b.Y-a.Y)*(point.X-a.X);
+            if (Math.Abs(cross) <= 1e-8 && point.X >= Math.Min(a.X,b.X)-1e-8 &&
+                point.X <= Math.Max(a.X,b.X)+1e-8 && point.Y >= Math.Min(a.Y,b.Y)-1e-8 &&
+                point.Y <= Math.Max(a.Y,b.Y)+1e-8) return true;
+            if ((a.Y > point.Y) != (b.Y > point.Y) &&
+                point.X < (b.X-a.X)*(point.Y-a.Y)/(b.Y-a.Y)+a.X)
+                inside = !inside;
+        }
+        return inside;
+    }
+
+    public double DistanceToPoint(WorldPoint point)
+    {
+        if (ContainsPoint(point)) return 0;
+        double distance = double.PositiveInfinity;
+        for (int i = 0; i < Vertices.Count; i++)
+        {
+            var a = Vertices[i]; var b = Vertices[(i+1)%Vertices.Count];
+            double dx = b.X-a.X, dy = b.Y-a.Y;
+            double t = Math.Clamp(((point.X-a.X)*dx+(point.Y-a.Y)*dy)/(dx*dx+dy*dy),0,1);
+            distance = Math.Min(distance, point.DistanceTo(new(a.X+t*dx,a.Y+t*dy)));
+        }
+        return distance;
+    }
+
     public double SignedArea()
     {
         Validate();
@@ -61,9 +95,9 @@ public static class FrontageParcelPlanner
         var ys = polygon.Vertices.Select(v => v.Y).Distinct().Order().ToArray();
         if (xs.Length != 2 || ys.Length != 2) return new(Array.Empty<BuildableParcel>(), new[] { "UNSUPPORTED_NONRECTANGULAR_BLOCK" });
         double width = xs[1] - xs[0], depth = ys[1] - ys[0];
-        int count = (int)Math.Floor(width / TargetFrontageMeters);
+        int count = (int)Math.Floor(width / TargetFrontageMeters+1e-9);
         if (count < 1) count = 1;
-        if (width / count < MinimumFrontageMeters)
+        if (width / count+1e-8 < MinimumFrontageMeters)
             return new(Array.Empty<BuildableParcel>(), new[] { "INSUFFICIENT_FRONTAGE" });
         var parcels = new List<BuildableParcel>();
         for (int i = 0; i < count; i++)

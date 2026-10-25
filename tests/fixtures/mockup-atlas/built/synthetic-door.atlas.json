@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "generator": "GameArtsSkills/build_sheet_atlas.py",
+  "asset_id": "synthetic-door",
+  "name": "synthetic-door",
+  "image": "synthetic-door.png",
+  "image_size": [
+    49,
+    22
+  ],
+  "cell_size": [
+    24,
+    22
+  ],
+  "columns": 2,
+  "rows": 1,
+  "mask_color": "#FF00FF",
+  "background_alpha": 255,
+  "coordinate_system": "top_left_pixels_exclusive_bounds",
+  "pivot_coordinate_space": "frame_cell_local",
+  "pixels_per_meter": null,
+  "component": "door",
+  "parent_attachment": null,
+  "attachment_tracks": {},
+  "source_mockups": [],
+  "frames": [
+    {
+      "index": 0,
+      "name": "closed",
+      "direction": "fixed",
+      "action": "opening",
+      "rect": [
+        0,
+        0,
+        24,
+        22
+      ],
+      "source_size": [
+        16,
+        16
+      ],
+      "source_ink_bounds": [
+        4,
+        3,
+        8,
+        12
+      ],
+      "source_offset_in_cell": [
+        4,
+        4
+      ],
+      "pivot": [
+        12,
+        18
+      ],
+      "anchors": {
+        "hinge": [
+          8,
+          18
+        ]
+      },
+      "duration_ms": 125,
+      "source_file": "closed.png",
+      "source_sha256": "8eeaeb29c7b58734bee010d6fc8593093e600daaa87b600e0c879889796c9f5e"
+    },
+    {
+      "index": 1,
+      "name": "opening",
+      "direction": "fixed",
+      "action": "opening",
+      "rect": [
+        25,
+        0,
+        24,
+        22
+      ],
+      "source_size": [
+        20,
+        18
+      ],
+      "source_ink_bounds": [
+        8,
+        3,
+        8,
+        14
+      ],
+      "source_offset_in_cell": [
+        2,
+        2
+      ],
+      "pivot": [
+        12,
+        18
+      ],
+      "anchors": {
+        "hinge": [
+          10,
+          18
+        ]
+      },
+      "duration_ms": 125,
+      "source_file": "opening.png",
+      "source_sha256": "942791033f26a1abfe3d1a2cb9d151e2cb448cd1b9ba3e997fd436828092d60a"
+    }
+  ],
+  "validation": {
+    "geometry": "generated_from_source_pixels",
+    "visual_review": "not_performed",
+    "godot_runtime": "not_tested"
+  }
+}

@@ -21,11 +21,6 @@ public static class SpatialValidation
                 errors.Add(new("ROAD_OUT_OF_BOUNDS", road.Id));
                 continue;
             }
-            if (road.Start.X != road.End.X && road.Start.Y != road.End.Y)
-            {
-                errors.Add(new("UNSUPPORTED_ROAD_GEOMETRY", road.Id));
-                continue;
-            }
             foreach (var point in road.Cells()) network.Add(point);
         }
         if (network.Count > 0)
@@ -61,7 +56,9 @@ public static class SpatialValidation
                 errors.Add(new("FRONTAGE_NOT_ON_ROAD", building.Id));
             int distance = Math.Abs(building.Site.X - building.AccessRoadCell.X) +
                            Math.Abs(building.Site.Y - building.AccessRoadCell.Y);
-            if (distance != 1)
+            // Continuous envelopes can have a designed front setback. Their exact
+            // footprint/road clearance is checked by the mockup settlement planner.
+            if (building.VisualSource?.Footprint is null && distance != 1)
                 errors.Add(new("FRONTAGE_NOT_ADJACENT", building.Id));
             if (string.IsNullOrWhiteSpace(building.Purpose) ||
                 string.IsNullOrWhiteSpace(building.ParentId) ||

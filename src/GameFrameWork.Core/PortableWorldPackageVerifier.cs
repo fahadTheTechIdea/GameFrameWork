@@ -17,6 +17,7 @@ public sealed class PortableWorldPackageVerifier(IApprovedArtRegistry registry)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(worldJsonPath);
         ArgumentException.ThrowIfNullOrWhiteSpace(trustedAssetRoot);
+        token.ThrowIfCancellationRequested();
         DummyVillageWorldDocument? world;
         try
         {
@@ -24,7 +25,8 @@ public sealed class PortableWorldPackageVerifier(IApprovedArtRegistry registry)
             world = await JsonSerializer.DeserializeAsync<DummyVillageWorldDocument>(
                 stream, cancellationToken: token);
         }
-        catch (Exception ex) when (ex is IOException or JsonException or NotSupportedException)
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or
+            JsonException or NotSupportedException)
         {
             return new(["WORLD_DOCUMENT_UNREADABLE"]);
         }
@@ -33,6 +35,9 @@ public sealed class PortableWorldPackageVerifier(IApprovedArtRegistry registry)
             world.Vegetation is null || world.TerrainMaterials is null ||
             world.GardenBeds is null)
             return new(["WORLD_PRODUCTION_DOCUMENT_INVALID"]);
+
+        var inventoryIssues = WorldArtDependencyInventory.Validate(world);
+        if (inventoryIssues.Count != 0) return new(inventoryIssues);
 
         var issues = new List<string>();
         var expected = WorldArtDependencyInventory.Collect(world)
@@ -57,14 +62,25 @@ public sealed class PortableWorldPackageVerifier(IApprovedArtRegistry registry)
                 issues.Add("WORLD_DEPENDENCY_MISSING:" + id);
                 continue;
             }
-            var manifest = await registry.ResolveAsync(id, token);
-            if (manifest is null || manifest.SchemaVersion != 1 ||
-                manifest.AssetId != id || manifest.ApprovalState != ArtApprovalState.Approved ||
-                manifest.GameArtsRevision != evidence.GameArtsRevision ||
+            ApprovedArtManifest? manifest;
+            try { manifest = await registry.ResolveAsync(id, token); }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or
+                JsonException or ArgumentException or NotSupportedException)
+            {
+                issues.Add("WORLD_DEPENDENCY_MANIFEST_UNREADABLE:" + id + ":" + ex.GetType().Name);
+                continue;
+            }
+            if (!WorldAssetDependencyManifestBuilder.IsComplete(manifest, id) ||
+                manifest!.GameArtsRevision != evidence.GameArtsRevision ||
                 manifest.StandardVersion != evidence.StandardVersion ||
-                manifest.Sheets is null || evidence.Files is null)
+                evidence.Files is null)
             {
                 issues.Add("WORLD_DEPENDENCY_APPROVAL_OR_REVISION_MISMATCH:" + id);
+                continue;
+            }
+            if (evidence.Files.Any(s => s is null || string.IsNullOrWhiteSpace(s.SheetId)))
+            {
+                issues.Add("WORLD_DEPENDENCY_HASH_EVIDENCE_MISMATCH:" + id);
                 continue;
             }
             var actualSheets = manifest.Sheets.OrderBy(s => s.Id, StringComparer.Ordinal)
@@ -77,9 +93,16 @@ public sealed class PortableWorldPackageVerifier(IApprovedArtRegistry registry)
                 issues.Add("WORLD_DEPENDENCY_HASH_EVIDENCE_MISMATCH:" + id);
                 continue;
             }
-            var files = await verifier.VerifyAsync(manifest, token);
-            issues.AddRange(files.Issues.Select(e =>
-                "WORLD_DEPENDENCY_FILE_" + e.Code + ":" + id + ":" + e.AssetId));
+            try
+            {
+                var files = await verifier.VerifyAsync(manifest, token);
+                issues.AddRange(files.Issues.Select(e =>
+                    "WORLD_DEPENDENCY_FILE_" + e.Code + ":" + id + ":" + e.AssetId));
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+            {
+                issues.Add("WORLD_DEPENDENCY_FILE_UNREADABLE:" + id + ":" + ex.GetType().Name);
+            }
         }
         return new(issues);
     }

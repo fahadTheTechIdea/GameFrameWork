@@ -1,0 +1,105 @@
+Catalog expansion verification
+Recorded: 2026-10-25T08:09:09.0246054+03:00
+Base revision: d5d851b9d37ba3ba6d344afc52cc3e25e0dd6ec6
+Working tree: dirty; includes preserved integrity and mockup-generation changes.
+Environment: Windows x64; runtime 10.0.12; local SDK override 10.0.401. Repository SDK pin 10.0.402 unchanged and unavailable.
+Synthetic fixtures only. Real GameArts authority, rendered fidelity, Godot runtime and remote CI: NOT RUN.
+
+SOURCE SHA256 SNAPSHOT
+DB8889DD9475F49BD4E0E98BBBA32F1211134A9FBD610419C6DCA81FD590A73A  .github/workflows/dotnet-ci.yml
+17B510C506BB7C9C5D85CEB91649F88CD75ED04E313E454D26531D7B787ADE4A  .gitignore
+5EE8DF4B80D85D695DE0906DDF994A59718A9218C86CA12355B3E3CEE4643ACD  src/GameFrameWork.Cli/Program.cs
+61B99A05F8BF753FBB1048556A51AD3132CB16DB8D625182FFA2153F707B8711  src/GameFrameWork.Core/BuildingPrograms.cs
+F6790638CD80E0A31F2292CB6A421749D3B702464C0B0F4E761F78B80346B553  src/GameFrameWork.Core/BuildingSitePlanner.cs
+5A846A3F53A7326D982D0668F558031523E63DD5F595EB5845FCCD107EC75BE2  src/GameFrameWork.Core/BuildingSizePlanner.cs
+BE4EAE32EECCCC7E932F8C749CD25B7BF804A6E43A5479B984D7CD7574140662  src/GameFrameWork.Core/ExpandedBuildingCatalog.cs
+E0A3156E9F88CD76CE276AD0CEACE0AA23E8738961D18BA78C25904A6028F44C  src/GameFrameWork.Core/GameArtsNonVegetationGate.cs
+8381EADC87F20A7E2FB386AED3DD00B8CB6A5B4E0CEB397B42143C26D2F554FA  src/GameFrameWork.Core/MockupDesignValidator.cs
+C23C095510AAC489C5514A59C6B2818889EC4BCE99A45930D4872EE294DE9FD1  src/GameFrameWork.Core/MockupWorldDesign.cs
+347854C6FE9E70370F88A376F003958009ED53C0AB10CAFA0BE7E926A315AE71  src/GameFrameWork.Core/ParcelGeometry.cs
+D4E6FD24EED656577BA469A8F2CBE739C41A0E9DEA1EF05136FD0B0ABAC65FF9  src/GameFrameWork.Core/PortableWorldPackageVerifier.cs
+2E90894C7F1EA1CA756BE327F7F45C7A58C7C95C933CBD461C238B46329D0FE3  src/GameFrameWork.Core/PublicRealmPlanner.cs
+2D776EDABA82812EB4AF31101E52A5FB7AA420A66C15B9CAEEBAF83D6885EF1B  src/GameFrameWork.Core/SpatialPlanning.cs
+0F48BBC20838DCEE6467AFCC36AB6B392AF83152AF3251083E30C65DB72EE17A  src/GameFrameWork.Core/SpatialValidation.cs
+B269D6B75509A6BCADF7475622FA625D37885A46A291FFFFA07812D1F50F702C  src/GameFrameWork.Core/SpeciesAwareSemanticWorldGate.cs
+05CB4D950297B70215D8D6B878C62A072F8C51B8A5B608919860C171FE3C4290  src/GameFrameWork.Core/VegetationCompositionPlanner.cs
+D03439D28ABD7CFDDA09EE6256CAB3A815CCA6AC2B2E6AD20AEDBCD1600C31B3  src/GameFrameWork.Core/VisualPathPatterns.cs
+D8594503BAB936F1F2FD1965D624005E84240942081A9C4BA0AFDED656FE57CD  src/GameFrameWork.Core/VisualWorldPlanning.cs
+9409FC7763A6DF9F7F071F8A91B1CF0A80D21860A647262BAAC105F058431D92  src/GameFrameWork.Core/WorldAssetDependencyManifest.cs
+47506D62721065370FCDE77DD05A4888245EBBE8DD740D73168A622F0A765496  src/GameFrameWork.Core/WorldDesignPlanning.cs
+246732BD534E46C8B5A87FABA4C8B7A2E5B4EE2276707B28021294220A6DF42A  src/GameFrameWork.Core/WorldJson.cs
+F0544B39FB0FC867627CD1C6698A8F545CB619C9ACD0CA164031AB55337DBF5C  src/GameFrameWork.Core/WorldModel.cs
+EB7DF9BD01A15414311A6B503E15D203D795D10C64CCE31AC0EC3FAA72B27BE6  src/GameFrameWork.Worlds/CoordinatedProductionWorldExporter.cs
+A6FBF3B7E18FFD774780938B72279F510779FAB8748E15C2404C5E5E642041FC  src/GameFrameWork.Worlds/DesertWorldGenerator.cs
+EC4FF3F9FAA00D2FEEA8DBD1B0A71A5B85E48E3435D5FB0D5DE19B8598423821  src/GameFrameWork.Worlds/MockupTerrainComposer.cs
+BEA67DD3D8CCBF065C6FD456F3CBEE346F7F152D0714840597A4C467476F6D80  src/GameFrameWork.Worlds/SettlementDesignGate.cs
+0CFF8946432786FEB6AE67D19225B75562D038E45A980D25E10EDFADD7324FC2  src/GameFrameWork.Worlds/SettlementDesignPipeline.cs
+FB700D0FE753917C32110F17AE05494D584EC82F7C4E1B663660EC5CE24B478A  src/GameFrameWork.Worlds/SettlementPlanner.cs
+723821B242D19E43F2F8A0146655776F00A0B39FCBD7EC47E18628CF2119EB63  src/GameFrameWork.Worlds/WorldRasterGeometry.cs
+EE8A0CEA1EE3F685F871C6B19426F8CE57F87AAA246A732AC195192C77657607  tests/fixtures/synthetic-desert-world.json
+77600F08279BEE169DF4C1BA5AF677F7B4F72C1E1ACEEB4570160CF46FDD9785  tests/GameFrameWork.Tests/CatalogExpansionTests.cs
+2512772FCE691B11D1138B4B5B87574F94335AD22E3DADD5F012875F14F9B4D1  tests/GameFrameWork.Tests/CliIntegrityTests.cs
+1B85B04C429D91981B85C022981FBD3FCCB852ECF14D8A9FBB58B3A87C8CCF86  tests/GameFrameWork.Tests/MockupAlgorithmTests.cs
+7CE87A8852A97C1525A7B3ECF26DA28C1EA0DD728D2FA89E53897E8D0993A810  tests/GameFrameWork.Tests/MockupGenerationFixture.cs
+938229A53A7DC2B54BED73CC175D020AB218C288ABF7992053719C8982F782F1  tests/GameFrameWork.Tests/ProductionIntegrityTests.cs
+48ABE71F73AF9544C625F2BB4A670C69DC28BF6C2FB4E3FEC513918AD3F93EE0  tests/GameFrameWork.Tests/Program.cs
+`nCOMMAND: cwd=generated/sdk-validation: dotnet build ../../tests/GameFrameWork.Tests/GameFrameWork.Tests.csproj -c Release --warnaserror --no-restore
+  GameFrameWork.Core -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Core\bin\Release\net10.0\GameFrameWork.Core.dll
+  GameFrameWork.Godot -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Godot\bin\Release\net10.0\GameFrameWork.Godot.dll
+  GameFrameWork.Worlds -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Worlds\bin\Release\net10.0\GameFrameWork.Worlds.dll
+  GameFrameWork.Tests -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\tests\GameFrameWork.Tests\bin\Release\net10.0\GameFrameWork.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.45
+
+EXIT: 0
+`nCOMMAND: cwd=generated/sdk-validation: dotnet build ../../src/GameFrameWork.Cli/GameFrameWork.Cli.csproj -c Release --warnaserror --no-restore
+  GameFrameWork.Core -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Core\bin\Release\net10.0\GameFrameWork.Core.dll
+  GameFrameWork.Godot -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Godot\bin\Release\net10.0\GameFrameWork.Godot.dll
+  GameFrameWork.Worlds -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Worlds\bin\Release\net10.0\GameFrameWork.Worlds.dll
+  GameFrameWork.Cli -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Cli\bin\Release\net10.0\GameFrameWork.Cli.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.45
+
+EXIT: 0
+`nCOMMAND: dotnet tests/GameFrameWork.Tests/bin/Release/net10.0/GameFrameWork.Tests.dll --cli src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll
+PASS: CLI integrity JSON, exit codes and log/audit/notification process checks.
+PASS: production integrity regressions (synthetic GameArts fixtures).
+[world.validation.failed] Invalid placement rejected. (correlation: correlation-test)
+PASS: mockup-driven CLI generation and rejected-output preservation.
+PASS: mockup generation, contextual building sizes, surroundings, green zoning and negative algorithm cases.
+PASS: catalog CLI inventory, category filter, invalid input and audit checks.
+PASS: catalog coverage: 197 families / 585 variants / 15 categories; 555 frontage variants sized/site-checked; 10 infrastructure families explicitly guarded; 14 complete generation cases.
+PASS: engine regression harness (synthetic artwork; real approval and Godot runtime not verified).
+
+EXIT: 0
+`nCOMMAND: dotnet src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll generate-world tests/fixtures/synthetic-desert-world.json generated/mockup-generation-smoke
+Generated 64x64 mockup-driven world at C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\mockup-generation-smoke
+
+EXIT: 0
+`nCOMMAND: dotnet src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll dummy-village generated/mockup-dummy-village
+Generated test Godot village at C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\mockup-dummy-village
+
+EXIT: 0
+`nCOMMAND: git diff --check
+warning: in the working copy of 'docs/ROADMAP.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/SDLC_VERIFICATION.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/GameFrameWork.Worlds/DesertWorldGenerator.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/GameFrameWork.Worlds/SettlementDesignPipeline.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/GameFrameWork.Worlds/SettlementPlanner.cs', LF will be replaced by CRLF the next time Git touches it
+
+EXIT: 0
+NONEMPTY: C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\mockup-generation-smoke\GeneratedWorld.tscn (330 bytes)
+NONEMPTY: C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\mockup-generation-smoke\world.json (1192351 bytes)
+NONEMPTY: C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\mockup-dummy-village\design.json (2764 bytes)
+NONEMPTY: C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\mockup-dummy-village\project.godot (285 bytes)
+NONEMPTY: C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\mockup-dummy-village\Village.gd (2004 bytes)
+NONEMPTY: C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\mockup-dummy-village\Village.tscn (284 bytes)
+CHECK: execution-source SHA256 verified: 37; changed Markdown local links verified: 22; PASS

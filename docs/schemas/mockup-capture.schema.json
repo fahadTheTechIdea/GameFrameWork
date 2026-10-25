@@ -1,0 +1,547 @@
+{
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "mockupId": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        },
+        "artStyleId": {
+          "type": "string"
+        },
+        "camera": {
+          "type": "string"
+        },
+        "lifecycleManifest": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "mockupId",
+        "revision",
+        "file",
+        "sha256",
+        "width",
+        "height",
+        "artStyleId",
+        "camera",
+        "lifecycleManifest"
+      ],
+      "additionalProperties": false
+    },
+    "coverage": {
+      "enum": [
+        "Partial",
+        "Complete"
+      ]
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "semantic": {
+            "type": "string"
+          },
+          "shape": {
+            "enum": [
+              "Point",
+              "Polyline",
+              "Polygon"
+            ]
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "x": {
+                  "type": "number"
+                },
+                "y": {
+                  "type": "number"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "evidence": {
+            "enum": [
+              "Observed",
+              "Inferred",
+              "Authored",
+              "Unknown"
+            ]
+          },
+          "review": {
+            "enum": [
+              "Pending",
+              "Accepted",
+              "Rejected"
+            ]
+          },
+          "uncertaintyPixels": {
+            "type": "number"
+          },
+          "occluded": {
+            "type": "boolean"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "parentId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": null
+          },
+          "road": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "widthPixels": {
+                "type": "number"
+              },
+              "widthKind": {
+                "enum": [
+                  "Carriageway",
+                  "FullCorridor"
+                ]
+              },
+              "level": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "accessModes": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "widthPixels",
+              "widthKind",
+              "level",
+              "accessModes"
+            ],
+            "additionalProperties": false,
+            "default": null
+          },
+          "binding": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "kind": {
+                "type": "string"
+              },
+              "targetId": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "targetId"
+            ],
+            "additionalProperties": false,
+            "default": null
+          },
+          "vegetationPlacement": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "groundRadiusPixels": {
+                "type": "number"
+              },
+              "protectedFeatureIds": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "groundRadiusPixels",
+              "protectedFeatureIds"
+            ],
+            "additionalProperties": false,
+            "default": null
+          }
+        },
+        "required": [
+          "id",
+          "semantic",
+          "shape",
+          "points",
+          "evidence",
+          "review",
+          "uncertaintyPixels",
+          "occluded",
+          "notes"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "junctions": {
+      "type": "array",
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "position": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          },
+          "roadIds": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "kind": {
+            "enum": [
+              "AtGrade",
+              "GradeSeparated",
+              "Unresolved"
+            ]
+          },
+          "review": {
+            "enum": [
+              "Pending",
+              "Accepted",
+              "Rejected"
+            ]
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "position",
+          "roadIds",
+          "kind",
+          "review",
+          "notes"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "calibration": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "a": {
+          "type": "number"
+        },
+        "b": {
+          "type": "number"
+        },
+        "c": {
+          "type": "number"
+        },
+        "d": {
+          "type": "number"
+        },
+        "e": {
+          "type": "number"
+        },
+        "f": {
+          "type": "number"
+        },
+        "basis": {
+          "type": "string"
+        },
+        "toleranceMeters": {
+          "type": "number"
+        },
+        "controls": {
+          "type": "array",
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "pixel": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "worldX": {
+                "type": "number"
+              },
+              "worldY": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "pixel",
+              "worldX",
+              "worldY"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "basis",
+        "toleranceMeters",
+        "controls"
+      ],
+      "additionalProperties": false,
+      "default": null
+    },
+    "compilationScope": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "featureIds": {
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "excludedContent": {
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "required": [
+        "id",
+        "featureIds",
+        "purpose",
+        "excludedContent"
+      ],
+      "additionalProperties": false,
+      "default": null
+    },
+    "inspectionAreas": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "bounds": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "integer"
+              },
+              "y": {
+                "type": "integer"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ],
+            "additionalProperties": false
+          },
+          "status": {
+            "enum": [
+              "Uninspected",
+              "Partial",
+              "Complete"
+            ]
+          },
+          "featureIds": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "remainingWork": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "bounds",
+          "status",
+          "featureIds",
+          "remainingWork"
+        ],
+        "additionalProperties": false
+      },
+      "default": null
+    },
+    "surfaceChecks": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "featureId": {
+            "type": "string"
+          },
+          "pixel": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          },
+          "inside": {
+            "type": "boolean"
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "featureId",
+          "pixel",
+          "inside",
+          "notes"
+        ],
+        "additionalProperties": false
+      },
+      "default": null
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "source",
+    "coverage",
+    "unresolved",
+    "features",
+    "junctions"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GameFrameWork mockup capture",
+  "description": "Single current source-pixel capture contract. Runtime validation additionally enforces geometry, bounds, references, calibration and review gates. No lifecycle approval is conveyed."
+}

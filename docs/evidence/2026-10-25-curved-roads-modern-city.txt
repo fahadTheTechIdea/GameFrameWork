@@ -1,0 +1,335 @@
+Curved/diagonal road and Modern city capture verification
+UTC 2026-10-25T08:51:33.399078+00:00
+Dirty main; no branch/commit/PR created. Required SDK 10.0.402 is unavailable; ignored local override selects installed 10.0.401.
+Ground calibration and at-grade junctions are authored game-design decisions, not a survey, image-model measurement or GameArts approval.
+
+CWD C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork
+COMMAND git branch --show-current
+main
+
+
+EXIT 0
+
+CWD C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork
+COMMAND git rev-parse HEAD
+d5d851b9d37ba3ba6d344afc52cc3e25e0dd6ec6
+
+
+EXIT 0
+
+CWD C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\sdk-validation
+COMMAND dotnet --version
+10.0.401
+
+
+EXIT 0
+
+CWD C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\sdk-validation
+COMMAND dotnet build ../../src/GameFrameWork.Cli/GameFrameWork.Cli.csproj -c Release --warnaserror --no-restore
+  GameFrameWork.Core -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Core\bin\Release\net10.0\GameFrameWork.Core.dll
+  GameFrameWork.Godot -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Godot\bin\Release\net10.0\GameFrameWork.Godot.dll
+  GameFrameWork.Catalogs.Modern -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Catalogs.Modern\bin\Release\net10.0\GameFrameWork.Catalogs.Modern.dll
+  GameFrameWork.Worlds -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Worlds\bin\Release\net10.0\GameFrameWork.Worlds.dll
+  GameFrameWork.Cli -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Cli\bin\Release\net10.0\GameFrameWork.Cli.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.40
+
+
+EXIT 0
+
+CWD C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\sdk-validation
+COMMAND dotnet build ../../tests/GameFrameWork.Tests/GameFrameWork.Tests.csproj -c Release --warnaserror --no-restore
+  GameFrameWork.Core -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Core\bin\Release\net10.0\GameFrameWork.Core.dll
+  GameFrameWork.Catalogs.Modern -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Catalogs.Modern\bin\Release\net10.0\GameFrameWork.Catalogs.Modern.dll
+  GameFrameWork.Godot -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Godot\bin\Release\net10.0\GameFrameWork.Godot.dll
+  GameFrameWork.Worlds -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Worlds\bin\Release\net10.0\GameFrameWork.Worlds.dll
+  GameFrameWork.TestCatalog -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\tests\GameFrameWork.TestCatalog\bin\Release\net10.0\GameFrameWork.TestCatalog.dll
+  GameFrameWork.Tests -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\tests\GameFrameWork.Tests\bin\Release\net10.0\GameFrameWork.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.15
+
+
+EXIT 0
+
+CWD C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork
+COMMAND dotnet tests/GameFrameWork.Tests/bin/Release/net10.0/GameFrameWork.Tests.dll --cli src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll
+
+Unhandled exception. System.Exception: Failed: Both road segments receive independent bands
+   at Program.<<Main>$>g__Assert|0_84(Boolean pass, String message) in C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\tests\GameFrameWork.Tests\Program.cs:line 1817
+   at Program.<Main>$(String[] args) in C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\tests\GameFrameWork.Tests\Program.cs:line 185
+   at Program.<Main>(String[] args)
+
+EXIT 3762504530
+
+Curved/diagonal road and Modern city capture verification
+UTC 2026-10-25T08:57:17.075747+00:00
+Dirty main; no branch/commit/PR created. Required SDK 10.0.402 is unavailable; ignored local override selects installed 10.0.401.
+Ground calibration and at-grade junctions are authored game-design decisions, not a survey, image-model measurement or GameArts approval.
+
+CWD C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork
+COMMAND git branch --show-current
+main
+
+
+EXIT 0
+
+CWD C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork
+COMMAND git rev-parse HEAD
+d5d851b9d37ba3ba6d344afc52cc3e25e0dd6ec6
+
+
+EXIT 0
+
+CWD C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\sdk-validation
+COMMAND dotnet --version
+10.0.401
+
+
+EXIT 0
+
+CWD C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\sdk-validation
+COMMAND dotnet build ../../src/GameFrameWork.Cli/GameFrameWork.Cli.csproj -c Release --warnaserror --no-restore
+  GameFrameWork.Core -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Core\bin\Release\net10.0\GameFrameWork.Core.dll
+  GameFrameWork.Godot -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Godot\bin\Release\net10.0\GameFrameWork.Godot.dll
+  GameFrameWork.Catalogs.Modern -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Catalogs.Modern\bin\Release\net10.0\GameFrameWork.Catalogs.Modern.dll
+  GameFrameWork.Worlds -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Worlds\bin\Release\net10.0\GameFrameWork.Worlds.dll
+  GameFrameWork.Cli -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Cli\bin\Release\net10.0\GameFrameWork.Cli.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.48
+
+
+EXIT 0
+
+CWD C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\sdk-validation
+COMMAND dotnet build ../../tests/GameFrameWork.Tests/GameFrameWork.Tests.csproj -c Release --warnaserror --no-restore
+  GameFrameWork.Core -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Core\bin\Release\net10.0\GameFrameWork.Core.dll
+  GameFrameWork.Catalogs.Modern -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Catalogs.Modern\bin\Release\net10.0\GameFrameWork.Catalogs.Modern.dll
+  GameFrameWork.Godot -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Godot\bin\Release\net10.0\GameFrameWork.Godot.dll
+  GameFrameWork.Worlds -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Worlds\bin\Release\net10.0\GameFrameWork.Worlds.dll
+  GameFrameWork.TestCatalog -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\tests\GameFrameWork.TestCatalog\bin\Release\net10.0\GameFrameWork.TestCatalog.dll
+  GameFrameWork.Tests -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\tests\GameFrameWork.Tests\bin\Release\net10.0\GameFrameWork.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.17
+
+
+EXIT 0
+
+CWD C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork
+COMMAND dotnet tests/GameFrameWork.Tests/bin/Release/net10.0/GameFrameWork.Tests.dll --cli src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll
+PASS: CLI integrity JSON, exit codes and log/audit/notification process checks.
+PASS: production integrity regressions (synthetic GameArts fixtures).
+PASS: mockup-driven CLI generation and rejected-output preservation.
+PASS: mockup generation, contextual building sizes, surroundings, green zoning and negative algorithm cases.
+PASS: catalog CLI inventory, category filter, invalid input and audit checks.
+PASS: catalog coverage: 197 families / 585 variants / 15 categories; 555 frontage variants sized/site-checked; 10 infrastructure families explicitly guarded; 14 complete generation cases.
+PASS: infrastructure algorithms: 10 families / 30 variant worlds, contextual sizes, connected passage, reserved surroundings, terrain layers, JSON, invalid designs and cancellation.
+PASS: siting: 197 catalog profiles / 216 technology resolutions; 22 building + 10 infrastructure + 2 mixed/provider contextual worlds; typed supplies, capacity, districts, provider cycles, nuclear cooling, surroundings, JSON, negatives and cancellation.
+PASS: catalog contracts: Modern 197/585; explicit capability flags; independent dynamic plugin with custom vocabulary, fixed demand/siting code and actual world; no implicit catalog or legacy schema; CLI/plugin failures and audit.
+PASS: mockup source capture, geometry/calibration/topology/review gates, prompt drafts, schema, engine handoff, canonical atlas fixture; CLI PASS (synthetic inputs; no visual approval).
+PASS: diagonal supercover octants/reversal, bend joins, dense curves, continuous topology, capture scopes and actual Modern city generation.
+PASS: engine regression harness (synthetic artwork; real approval and Godot runtime not verified).
+
+[world.validation.failed] Invalid placement rejected. (correlation: correlation-test)
+
+EXIT 0
+
+CWD C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork
+COMMAND dotnet src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll generate-world .gameframework/worlds/modern-city/world-request.json generated/modern-city --capture .gameframework/worlds/modern-city/mockup-capture.json --asset-root .
+Generated 536x485 mockup-driven world at C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\modern-city
+
+
+EXIT 0
+
+CWD C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork
+COMMAND dotnet src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll compile-capture .gameframework/worlds/modern-city/mockup-capture.json . generated/modern-city-capture
+Capture review exported to C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\modern-city-capture; 0 unresolved projected crossings.
+
+
+EXIT 0
+
+
+FINAL ARTIFACT/UI/DOCUMENT AUDIT 2026-10-25T09:05:03.365535+00:00
+PASS: schema/current capture exports; 65 annotations, 50 selected features, 49 junctions, 51 resolved road-pair crossings.
+PASS: IAB generated-map view, source mockup toggle, compare showing both source and engine, return to map; screenshot generated/modern-city/preview.png. Refreshed source capture displays 65 features and authored calibration; screenshot updated in current capture review. These are local browser checks, not comprehensive a11y, production art or Godot acceptance.
+PASS: current Markdown local links, git diff --check exit 0. Canonical skill route updated; live Claude/Codex behavior evaluation NOT RUN.
+FINAL INPUT AND OUTPUT SHA256
+d1a4d969d487008c0a898d2b5e29015537677bba33cfe7d620cd63654dea7082  .agents/skills/gameframework-project-setup/SKILL.md
+60981e62c11de51823e46488003977fc1fe7dd513faac9d6429b5213a9d28ff7  .agents/skills/world-generator/SKILL.md
+182a62ae470abdf6083e8164ec7981dbccf8a1bc12c58d2aa7e736d6c9d7a115  .claude/skills/gameframework-project-setup/SKILL.md
+b954aa98e0aa7bbfe2427c5c623512268cc3ce6d16508dcc94c36ec5626bbe98  .claude/skills/world-generator/SKILL.md
+23d86b7de649267a4181372fac85f53d7fa29011425055c18bcf7ae94f239e60  .gamearts/outputs/manifests/mockups.json
+49d037170001e1bc3158a74f8eb8e5182a6831920febfb9be31c8c5380be5b2a  .gamearts/outputs/mockups/generated/modern_city_mockup.png
+27616164802475d6632be65ff142e651fb3d3ae916f60a94ec85b996fefa0ed2  .gameframework/worlds/modern-city/capture-review/capture.json
+a73ab7d2ee2950b358f60d76954156f49747f5d58153d8adeb2386f55f62c010  .gameframework/worlds/modern-city/capture-review/geometry-draft.json
+c0e5bc73043d5927cea7a6b32e95430fcb8f1776bcbfcd5a9d5e53b52dee33a9  .gameframework/worlds/modern-city/capture-review/index.html
+e4281282230b46f69060cbf86dcbe40ba8a6186e265cecb45e3f3a5193824ca5  .gameframework/worlds/modern-city/capture-review/overlay.svg
+6906533701bc3dab6293763d882c008d4c3af0792c20bef4440b79efe2dbb4ff  .gameframework/worlds/modern-city/capture-review/preview.png
+c0a09765bb1298d5a5372a84c6d9ac70e8aedff07379747c06cb5f1cdab4e4e5  .gameframework/worlds/modern-city/capture-review/prompts.json
+b0e368748a7bd9555b1464b9094fa9f0db1e74fd8b7fba36cf6f70593ee2c869  .gameframework/worlds/modern-city/capture-review/report.json
+a7f7d93090af4c9f9d64d02b03911aa270b9de5c3257fcccc995e6e35f16ecd7  .gameframework/worlds/modern-city/city-design.json
+ef1a7dc96d064b28fff946d549b4fd764c647b8f7ef75d7021249d8dc7d69854  .gameframework/worlds/modern-city/generation-decisions.json
+7989bb9fd7de0b4a03e4fdc71bd2c4afd208d6f144e1611ed558a7995a01a6af  .gameframework/worlds/modern-city/mockup-capture.json
+eb52b97fd6acec67137e0a669f24329694d1d41e294434a3e66e290c2df4e2cf  .gameframework/worlds/modern-city/world-request.json
+bab0ee2bf423fb2f1ac71636605adc04740a47367fe1a6dc5159c807a8ba0a1a  docs/ADVANCED_WORLD_GENERATION_MASTER_PLAN.md
+b3acfdb327c020ece9351ba7530f5fafe57b84062cea436b6a8bf045f2884c45  docs/GAMEARTS_INTEGRATION_CONTRACT.md
+d56d6633bab713ed560b8773744a933543d896f7671ba65fb38b0dcc0f45084f  docs/ROADMAP.md
+1126a124a7380afcea1793413761e03723ec6fa871aa5fabc43f6ac6d3ba28ae  docs/schemas/mockup-capture.schema.json
+cfc9aeeab48e80261e220d00c43fb7c9900693616d2397598dfc132e57d01ff0  docs/SDLC_VERIFICATION.md
+e242c19eb7320c7555c11a3a448e4838bd1f0de89a4a3ec218854ad561d2d89e  generated/modern-city/capture-review.html
+b7f98861e5d67159cc9165b9ff8afdacf4ee91404f3ab626e8d011a5b5701c9f  generated/modern-city/EXPORT_STATUS.md
+2b2299badeeb09b72917598fc4e36defe1371704a3fe86918fbc66b1f515ce32  generated/modern-city/GeneratedWorld.tscn
+2ce95b0bae3236b06a5663413d9257cd8c13f709b1bb12a28f6a188d8a45e36f  generated/modern-city/plan.svg
+7702ab77b1fa5c550f045aa7b9e191f7253c71fa4e843eff4e3ef961ebaea1c4  generated/modern-city/preview.png
+057765ec8e2ea079010d5829747f8dc1fbf6a9522bfdc417c4ba7e7dcc9d419b  generated/modern-city/world.json
+08155312e671f4196bc250572d31af2d427b378c02224d14b2e4e3373daf9a89  README.md
+fcc4a264417d1e4b8f068adab9467f0cac1d4b5005544ba8baa1d468e6882341  src/GameFrameWork.Catalogs.Modern/GameFrameWork.Catalogs.Modern.csproj
+d479a23b2c356f7ad6aadafcf069b46fa997ff15260c4201d9c15164324ae518  src/GameFrameWork.Catalogs.Modern/ModernCatalog.cs
+c9065387992922f2585da346dbb70a291b8644fbac81fae9f6398bdb40823420  src/GameFrameWork.Catalogs.Modern/ModernDemandPolicy.cs
+cf06edad7cf407f2a7ee7acb96f704b8358d1bd2fcf9bceb5fcbe62051f05a45  src/GameFrameWork.Catalogs.Modern/ModernExpandedStructures.cs
+0be0258bc2deaa8b18228cebb5c9956a962af8588c3eb4918260b4b802761e95  src/GameFrameWork.Catalogs.Modern/ModernInfrastructureDesignStrategy.cs
+a2b9dbedc07c42e2ddde6ec28668cec2437001327c50a8aaf202d15079184af6  src/GameFrameWork.Catalogs.Modern/ModernSitingProfiles.cs
+b78cbfe3c79d47cdc4898560fb3dd07417bd4315f3a095c4d15aebf33f366f52  src/GameFrameWork.Catalogs.Modern/ModernStructures.cs
+fc6edb9aa1cd5f47f8de1c5873f6ac1b7ad726f7094053c91e737965a4c53533  src/GameFrameWork.Catalogs.Modern/ModernVocabulary.cs
+991b906d5ca29a77c8a3e873bc38bca5b046a97a84d526ea086f5ce3a2518bc6  src/GameFrameWork.Cli/GameFrameWork.Cli.csproj
+87a84a72527dce4feff7fd3c5646e9205e84443c98f2f63e6a2b25143f26ef2f  src/GameFrameWork.Cli/Program.cs
+34ddf7818caedc504f107a90dd7d0b23869ffebef615990fbbda82cc6f97f94f  src/GameFrameWork.Core/ApprovedArtValidator.cs
+adefe2aa59882a611592ef67e6aed848add5cb234de05d94a96570d73a7b52f9  src/GameFrameWork.Core/ArtContracts.cs
+c2c15fcd012f7fdc81365e2efbb2cf59fe6a208437411bc0fc4844d4b0a9ccd6  src/GameFrameWork.Core/BuildingEntranceAccessValidator.cs
+4f0f42c5ede55abdd90d1e5697157c2caac9351453d7aa4f75148474c5d6c764  src/GameFrameWork.Core/BuildingEnvelopes.cs
+728afa81b2524d32ff34cf5bf7ff9de82bff8f75bfc8450caca7d19ea46f7b7c  src/GameFrameWork.Core/BuildingPrograms.cs
+d2bb23f950f36e47394fac66e9d48d603f221ba1a3c11746e272a8c2e42993ae  src/GameFrameWork.Core/BuildingSitePlanner.cs
+2e30673b8b766c58d49b32723bb8a236d9f1e1df0f5018ee9ca613ae5f3f91d6  src/GameFrameWork.Core/BuildingSizePlanner.cs
+6980747cb39757e97fadbc77096c741b5a7e18c78b97539edc54c717aebdf13f  src/GameFrameWork.Core/CaptureWorldPreview.cs
+a05caa03b4aaddc3df1bc6f6e5c13628b0c8fcd9b7b11e972c4d333b9caf80ab  src/GameFrameWork.Core/ContinuousGeometry.cs
+dd0c4dd970bf5604a4930b5247aadd0baa987c1c850c64999cfa6f4494d9f906  src/GameFrameWork.Core/ControlledPedestrianReachability.cs
+f30d1345c19c60d17b9610e399f7ccb34251a38514fb88557dddb11e046710fd  src/GameFrameWork.Core/ConvexLandscapeInsetComposer.cs
+0beebf62ff7ccb8146ba15382f70427eac85c84b1dc8832fab72a5c2c40851a6  src/GameFrameWork.Core/ConvexParcelGeometry.cs
+91eda16e93358e26154dfdf8c53f6c2f6cc6dbfe356a7fc678e15d024889063b  src/GameFrameWork.Core/CrossingApproachValidator.cs
+893e876335d58523e264033fcc9dddd190697f2c28f77caf3239f4c5dc21f1d5  src/GameFrameWork.Core/CrossingRoadProfileValidator.cs
+5a384f6ac87a642e529484e013442f90d3ba870638d6c208f3441678dd155978  src/GameFrameWork.Core/DummyVillageAssemblyFixture.cs
+e7125be8ebca6e4d15c1c053cde2aff45485e958599030d0b818d2c16a059096  src/GameFrameWork.Core/DummyVillageWorldExporter.cs
+db0b80c53eb36e4294c8df43333d2f936178ef0945f6156ae0464ba1ad9f5239  src/GameFrameWork.Core/DummyVillageWorldFixture.cs
+dddff96a446154e277024bc54b42be06b85dc00798c079e54e92a08140205f34  src/GameFrameWork.Core/FileSystemArtRegistry.cs
+26068b6d5d9a25a9ce8326c392485e64befb38897dce497bb529717f6f795fc0  src/GameFrameWork.Core/GameArtsAtlasValidator.cs
+fac01ba7f0badecc1b4b5e97fcbacd88c3b9ff1ddfc2823f0a58cab3aa0ca67a  src/GameFrameWork.Core/GameArtsBundleFileValidator.cs
+181ef7b543d3bbb85e8db9863d41d485c926d4fda154f0c36fd59b3e740f5f57  src/GameFrameWork.Core/GameArtsBundleReader.cs
+5a7b4cad9f2306c7c777440d15d2d5247d9d216e0d0a4eefd0f598ebdb71737d  src/GameFrameWork.Core/GameArtsFileVerifier.cs
+4fa22a564ce7f568b25c4bdc0a93ee8f01678eb4ac36a211fdf1d93ebbd46b62  src/GameFrameWork.Core/GameArtsMotionValidator.cs
+e0a3156e9f88cd76ce276ad0ceace0aa23e8738961d18ba78c25904a6028f44c  src/GameFrameWork.Core/GameArtsNonVegetationGate.cs
+6305e47ce60ef4c5552aef65b885232e2905e997ad3f748674c22358ef728c32  src/GameFrameWork.Core/GameArtsProductionGate.cs
+516092b811202873d3120ff29a276aa776bcda98537175545f88ff629234606a  src/GameFrameWork.Core/GameArtsProductionWorldGate.cs
+36bded7b5a4467f7c94a91c591b802f86e2194dc4e7b071c6b51c1ed3220027d  src/GameFrameWork.Core/GameArtsSemanticWorldPipeline.cs
+bd48456fbafc966c3c428fd97f455c7d3d4f34fe7ce43d1cc9d41a78118ea2a7  src/GameFrameWork.Core/GameArtsVegetationProfileResolver.cs
+8378be293fdba9ebdac0b7a05288c59c06b885340d077fca8d2d451d13ec90ef  src/GameFrameWork.Core/GameFrameWork.Core.csproj
+9258051edfb9f5aa1a774e824cad78515fec7ea37850c50432b7682a88b85461  src/GameFrameWork.Core/InfrastructureContracts.cs
+864ca76728062798dcfae640631f59d65d1d7dca0e5a8b1a6e5fbb4024658a0a  src/GameFrameWork.Core/LandscapeBandComposer.cs
+df53e91c9564dfcdcc290e302e274318eedd1ae057cb9462c7974dce43c727bf  src/GameFrameWork.Core/LandscapePolygonTriangulator.cs
+bc53755d6d918d33f717998e61e630dd745ae36e8fae39c73d7b67e18aeef40c  src/GameFrameWork.Core/LandscapeWorldPlanner.cs
+29da57284548508bf260b71ecd196405bef2e9f1724751d036efe9ae208fcb81  src/GameFrameWork.Core/MockupCapture.cs
+672b52e7d11867470e071e39a421e8f61db060ad5a1aa0c70f5d3161ccb35a79  src/GameFrameWork.Core/MockupCapturePipeline.cs
+297b00b2c2c93b60bdeaf3db485dfef133e668711c7b940df9d99659c35c3193  src/GameFrameWork.Core/MockupCaptureValidator.cs
+750d513ddebc3b3f0597a7c53bd2fb807b0f5e2fc3ae8e27aee5e1388c8a99d6  src/GameFrameWork.Core/MockupDesignValidator.cs
+9cf0b20f8e3a625ce3a11ff66049b53bd3aaea880188ea322da0e93981d71468  src/GameFrameWork.Core/MockupTerrainQuery.cs
+508ec8cf9f24c732d7ce1d461fa37a4b25a9d5cf5b5d7ce95a60098b89394941  src/GameFrameWork.Core/MockupWorldDesign.cs
+b1d4da5c6dcdbd4c393ead53fee18439dcf18d76787376f0cd604d4c4cfe462a  src/GameFrameWork.Core/OperationalServices.cs
+1704ca28b31450d9fb2ea0e6b7a7cb0432932729ada5b3ae7ecf34a063fb53d3  src/GameFrameWork.Core/ParcelGeometry.cs
+d8106881707930a0727283c86dbb74ea04a166ff1c2886b93c1970db42f3bbd7  src/GameFrameWork.Core/PathVegetationComposer.cs
+7bc4b1c425da03f6c52f6047d0f14bf1cb89978e832a6888bae24ac3e12066af  src/GameFrameWork.Core/PedestrianAccessNetworkValidator.cs
+dc6c1ca4e5ec3cdbe5e42a070f57b35884b973814dec1dc172e69c60a3fa7414  src/GameFrameWork.Core/PedestrianCrossingSpanValidator.cs
+bc069d0b5fc2039a9804ba3fc3810b7b7223782fb9b009ffe339f178cb54532c  src/GameFrameWork.Core/PedestrianReachabilityValidator.cs
+24a3dce07682f7d9f5539a777ee3fca7b7c44019870a275eaf9e88995233996a  src/GameFrameWork.Core/PedestrianRoadCrossingValidator.cs
+d4e6fd24eed656577ba469a8f2cbe739c41a0e9dea1ef05136fd0b0abac65ff9  src/GameFrameWork.Core/PortableWorldPackageVerifier.cs
+8ff9dd792cb49b62ba527e83a1e6c1a0d59f60fca173b599dc2fa2acc90f8997  src/GameFrameWork.Core/ProductionWorldBuilder.cs
+2e90894c7f1ea1ca756be327f7f45c7a58c7c95c933cbd461c238b46329d0fe3  src/GameFrameWork.Core/PublicRealmPlanner.cs
+0cda0ea1ed6159c3c5c5f9a4a8d5cc27f35fbb995bbbda3fb94ea4467007104b  src/GameFrameWork.Core/SemanticWorldAcceptanceGate.cs
+c9aab2fcdf76532acaf695077768aa2367a67a243fad90bdef2e0eff4e708926  src/GameFrameWork.Core/SemanticWorldPackage.cs
+a65b516b788b2c351b7b118f4f7b4c38cc84a8eb9d2bd2ff870ce49d20f818a8  src/GameFrameWork.Core/SettlementCatalogPlugin.cs
+3d897921126b4e7a337171a86ff158d0f05535e8c738bafbac7e4715b0cd2eb4  src/GameFrameWork.Core/SettlementCatalogs.cs
+67827d0853971f1f4240e16849053807cca5d3fd85626e89cb21de587df72429  src/GameFrameWork.Core/SettlementCrossingPlanner.cs
+9742a8fa0e170271b8ea1687941efa2fe6c7502d3825299706f24a33f7952a5a  src/GameFrameWork.Core/SpatialPlanning.cs
+d13044bb689f9760e4bd9d95804d1511ba5b99fa11606a29dfd3946ea9fa8c43  src/GameFrameWork.Core/SpatialValidation.cs
+b269d6b75509a6bcadf7475622fa625d37885a46a291ffffa07812d1f50f702c  src/GameFrameWork.Core/SpeciesAwareSemanticWorldGate.cs
+05c341120189f22595115ec195a4195523ff87ee99833c60ff3a6e4c3a267662  src/GameFrameWork.Core/StreetIntersections.cs
+d0e2b3bb784f9d6fb7755496ca66b8661fb11604cf1daaddfa8cbfc5e85ed654  src/GameFrameWork.Core/StreetSurfaces.cs
+e4a4299c71482e5e17a15d9d2985ab45ba0285c5427cf98bbe26306814aae8e0  src/GameFrameWork.Core/StreetTopology.cs
+9d0cccad5c42cc742e3f8d536809628fb8e916171d071683742cddefbeb250e7  src/GameFrameWork.Core/StructureSiting.cs
+7726faa41114f6025bc2ca5f04114a055da6795a1809d04d2b065179b89b2bd6  src/GameFrameWork.Core/StructureSitingPlanner.cs
+c143da2014da5279dfc7b5c1fa464fbfe807cf9e2fc197b9d9971e91986968fa  src/GameFrameWork.Core/StructureSitingValidator.cs
+accbad226a7f48a1ad504738610fa2090fe0d0e662a029a295e5349ac8e409ee  src/GameFrameWork.Core/StyledTerrainComposer.cs
+9fe886a7391fa5e0d649b9a46ffee70a7bff7b0794c91aab505a64e8c28ac4fe  src/GameFrameWork.Core/TerrainArtAssembler.cs
+a9d42925398a8fb95be9f46d681f67cb0e8ffd900e149219796d9dbe0b977f35  src/GameFrameWork.Core/TerrainCoverageTopology.cs
+0d9fad2d79e5567515cf60bdcd738944049ac35a280df834f2d83cc5635263d6  src/GameFrameWork.Core/UrbanBlocks.cs
+70000239404686e84bb5c266f73a72067ce4a36f80da2c9c7bcc9370b111d5dd  src/GameFrameWork.Core/VegetationClearanceValidator.cs
+05cb4d950297b70215d8d6b878c62a072f8c51b8a5b608919860c171fe3c4290  src/GameFrameWork.Core/VegetationCompositionPlanner.cs
+c1641851eac311e102acb54176d783a8a55450d304ebcb1d0cbc137a2ce43374  src/GameFrameWork.Core/VegetationWorldAcceptanceGate.cs
+f0658a64779b40f5a4622d74f73ab8d13210d700df2deb0b70b730e4be8305f5  src/GameFrameWork.Core/VisualCompositionGenerator.cs
+289322421441a0e5a4c5df16916550341cbb00127b73b2f91e5a31489820f196  src/GameFrameWork.Core/VisualPathPatterns.cs
+248e93de89d766274e2e4931109c73aa2815e1a4a1df3c6c821f4c6bd21df57d  src/GameFrameWork.Core/VisualRegionPatterns.cs
+d8594503bab936f1f2fd1965d624005e84240942081a9c4ba0afded656fe57cd  src/GameFrameWork.Core/VisualWorldPlanning.cs
+54cb87f721ffcce031e3ab91c3a2fd135398c02ff32b8f03365b7a564e8a4841  src/GameFrameWork.Core/WorldArtAssembly.cs
+3319c528e0b8f70e77b0975c7c2b773996243f895fdcd7fa2da965a4c2989d16  src/GameFrameWork.Core/WorldAssemblyPackage.cs
+9409fc7763a6df9f7f071f8a91b1cf0a80d21860a647262baac105f058431d92  src/GameFrameWork.Core/WorldAssetDependencyManifest.cs
+9423cec0527e3c37f22a87bd842732f9374d327b33ee056af23282ca8718c57f  src/GameFrameWork.Core/WorldBuildGate.cs
+47506d62721065370fcde77dd05a4888245ebbe8dd740d73168a622f0a765496  src/GameFrameWork.Core/WorldDesignPlanning.cs
+d4f5798d27c71f1ba117d9eefb952d9c4f41e6919277508ab58ffdedb3d5841e  src/GameFrameWork.Core/WorldJson.cs
+0c5cc9457aad83c618ae7225805bcd6e0759ecd54119c42031e8922897dd94bc  src/GameFrameWork.Core/WorldModel.cs
+7d5c48602e85d7f66251cdf9c56bb5ed51252b18811212859740c027ba24c53f  src/GameFrameWork.Core/WorldPlanCoordinator.cs
+9c472179fa19000e2edf68951d5c6d581b2bc4bd3b9961f80782756a6dbde03f  src/GameFrameWork.Core/WorldPlanRenderer.cs
+6944071cdca3ee33867e0b5b573682623c5bfda3fac14c0052b10aeb05a34142  src/GameFrameWork.Core/WorldQualityAnalyzer.cs
+75ca2288c0be47d38e3537575a4f697e92d5b3d28b3a42e8ef34e92327a3006c  src/GameFrameWork.Godot/DummyVillageAssembler.cs
+9442da6e87a8eb49ecead1833065abf6d24e36720fb46f3a3ec6a345e50fbed9  src/GameFrameWork.Godot/GameFrameWork.Godot.csproj
+cbbd06cfccb8b7e9e328e9b2c5b9e21efdc1afb6365b2f8a0e723369c0d2f1b2  src/GameFrameWork.Godot/GodotWorldExporter.cs
+eb7df9bd01a15414311a6b503e15d203d795d10c64cce31ac0ec3faa72b27be6  src/GameFrameWork.Worlds/CoordinatedProductionWorldExporter.cs
+5ae8abfb7b653484f1947f9a8f16a9c47e2427454caa165fc148a493bab31a94  src/GameFrameWork.Worlds/CoordinatedSettlementWorldBuilder.cs
+e69387359a4a16d488510e88dacd2823e1f841acff30c2858da70bbd757a3e64  src/GameFrameWork.Worlds/DesertWorldGenerator.cs
+9442da6e87a8eb49ecead1833065abf6d24e36720fb46f3a3ec6a345e50fbed9  src/GameFrameWork.Worlds/GameFrameWork.Worlds.csproj
+c65376b3df734423d1bfec21fc5bc8274afcb04aefb3569210eff91687f9ff1e  src/GameFrameWork.Worlds/MockupTerrainComposer.cs
+a611105c26e69f2f131169a0dacd3ff5f7eb3e446084d2b080c4af869b15b1a0  src/GameFrameWork.Worlds/ParcelSuitability.cs
+c978f0b7bec37c9aa87c37f92615bd94757232b624a04822f7e61da951a0fc38  src/GameFrameWork.Worlds/SettlementCrossingIntegration.cs
+bea67dd3d8ccbf065c6fd456f3cbee346f7f152d0714840597a4c467476f6d80  src/GameFrameWork.Worlds/SettlementDesignGate.cs
+d5083882be858cbba3d7bba97da26d0bdd482202859769efbe0b2a08336ef40b  src/GameFrameWork.Worlds/SettlementDesignPipeline.cs
+18cbe4beef6f54df85b82cc0a3d59694a6ee287801b515193a577518cd2207cc  src/GameFrameWork.Worlds/SettlementPlanner.cs
+db0cb554983dc68b975fa744b3714dfa1a261f40fe7bd6bd032bdd3e451ff800  src/GameFrameWork.Worlds/SettlementTransportCrossingCoordinator.cs
+0e1737226986989b9034625ec7b262001b44ac859766b988e30e8ce74e6ce0df  src/GameFrameWork.Worlds/SettlementTransportDesignBuilder.cs
+70308771bb09bc7a136afc3f7e770873962a7f7a136fb4433676c5094f6b9233  src/GameFrameWork.Worlds/SettlementTransportWorldAssembler.cs
+fa98b0da5c9d75730b6aa73710307fb312d1a731121806fe33061d95c84ffed5  src/GameFrameWork.Worlds/WorldRasterGeometry.cs
+166483d59219e2f177687242c61143505b60eab87085b984dd544735e8d676f8  tests/fixtures/mockup-atlas/built/synthetic-door.atlas.json
+bc23a89bab4810e35a6672b12c66353baf24db3e89d62ee7559abebcb966a2e5  tests/fixtures/mockup-atlas/built/synthetic-door.png
+8eeaeb29c7b58734bee010d6fc8593093e600daaa87b600e0c879889796c9f5e  tests/fixtures/mockup-atlas/closed.png
+69069baf7b7ecb510208188682a7ce12779f8fb4a82216d7c0b73e79c4029cf6  tests/fixtures/mockup-atlas/frames.json
+942791033f26a1abfe3d1a2cb9d151e2cb448cd1b9ba3e997fd436828092d60a  tests/fixtures/mockup-atlas/opening.png
+fcbceb6ecf2cd5a0005cee3b53187d2e991d9a078c6666c3c4aa1e4dc2eded42  tests/fixtures/mockup-capture-source.png
+55663d7b1cefa14262491653ae2119c4bab3a918960218a5a7bd6db687e86e32  tests/fixtures/synthetic-desert-world.json
+8965687cae5712d689612efad0b9e0988ba58a02d93022ecfee42378d7b6f8d9  tests/fixtures/synthetic-infrastructure-world.json
+f011bdddd7982bef9e40ec78237c183500e98254ab9ae71926815b1c8b914685  tests/fixtures/synthetic-siting-world.json
+b8abd229dedc9d6e016bf972ae3956a20942b8353f812da13345aa1fa0114db5  tests/GameFrameWork.TestCatalog/ArcaneTestCatalog.cs
+1c8504dfba7a042db8be361f5d42705be001f00749109c03d413c5e2f08a951e  tests/GameFrameWork.TestCatalog/GameFrameWork.TestCatalog.csproj
+a4ff8b1fe2ee615f1ffc1eb2e0235df238343a10a2b21ec4bccc42b20090d9a4  tests/GameFrameWork.Tests/CatalogContractTests.cs
+b2235b7be40e59d6fc5fdb1a003e497e981edc5aa0a7e953810eaab9c50c2172  tests/GameFrameWork.Tests/CatalogExpansionTests.cs
+d93d1357bf7f8898c2260eb41c076925ef518f4a65188f7034ba4643acb9a972  tests/GameFrameWork.Tests/CliIntegrityTests.cs
+4d3e6577a5f5a3514ae865aa6014751d99c4279536c684ee7d1f87bdc38342a2  tests/GameFrameWork.Tests/CurvedRoadTests.cs
+6228cb40114840f3b38fc6e3da81c182af11ebb603e4dc65129091b39d7285a9  tests/GameFrameWork.Tests/GameFrameWork.Tests.csproj
+86fcef35da47e9feeb1fe8ce87dd06827b3f8051a9233fc83989920a74bcd0b9  tests/GameFrameWork.Tests/InfrastructureAlgorithmTests.cs
+5220a10f42a590043de57ea46f4e40b3b2ae06d14ad118ff0e815a5afa6d3f96  tests/GameFrameWork.Tests/MockupAlgorithmTests.cs
+24249448743bb42e36ce275aaceabde4b4088290184b972e5c4418dc69627029  tests/GameFrameWork.Tests/MockupCaptureTests.cs
+ce1adbe07b21ffdeb5aa86eaddd6969ebe8d326418b45b8443944cd5883c9dbb  tests/GameFrameWork.Tests/MockupGenerationFixture.cs
+2d46fe1771f0a34a445d9d4abaf3670979c25f2f9da31e241864d79c8ec81b7b  tests/GameFrameWork.Tests/ProductionIntegrityTests.cs
+5afcc81f29277449346db79bb5807447488d6731f7b59ada93c92b3be866a7ff  tests/GameFrameWork.Tests/Program.cs
+3e7b9643c985233ef2d3517801dbe0e08b6eaedfddab91f20842ad793774e2c0  tests/GameFrameWork.Tests/SitingAlgorithmTests.cs
+3dce94cdddc28f086f6f725bca2362401ecefa0d57904614f863c2da9352f5da  tests/GameFrameWork.Tests/TestCatalogs.cs

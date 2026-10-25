@@ -1,0 +1,151 @@
+{
+  "id": "modern-city",
+  "status": "engine-generated-layout-awaiting-production-art",
+  "purpose": "First Modern city with a properly sized football stadium and a separately sited factory",
+  "catalogId": "modern",
+  "enabledCapabilities": [
+    "modern.electricity-network",
+    "modern.potable-water-network",
+    "modern.wastewater-network",
+    "modern.motor-road-network",
+    "modern.district-policy",
+    "modern.facility-technology"
+  ],
+  "settlement": {
+    "class": "City",
+    "role": "Mixed",
+    "planningPopulation": 60000
+  },
+  "world": {
+    "widthMeters": 1072,
+    "heightMeters": 970,
+    "metersPerCell": 2,
+    "biome": "Desert",
+    "north": "image-top",
+    "calibrationSource": "mockup-capture.json; explicit game-authored scale, not survey"
+  },
+  "visualDraft": {
+    "settingsSource": "provisional defaults; no saved project art profile or approved reference exists",
+    "artStyle": "pixel_art",
+    "camera": "orthographic overhead",
+    "scalePolicy": "consistent relative footprints in an overview; production sprite scale and atlas calibration pending",
+    "animation": "automatic per-component method; no animation production requested at concept stage",
+    "referenceImages": [],
+    "approval": "pending",
+    "gameArtsSourceCommit": "17963c482d749b3644791346771ee40cea5464b0",
+    "mockupFile": ".gamearts/outputs/mockups/generated/modern_city_mockup.png",
+    "mockupSha256": "49d037170001e1bc3158a74f8eb8e5182a6831920febfb9be31c8c5380be5b2a"
+  },
+  "districtComposition": [
+    {
+      "id": "stadium-precinct",
+      "use": "Recreation",
+      "location": "northwest",
+      "purpose": "Regional sports destination with public arrival, event circulation and distinct service access",
+      "structures": [
+        {
+          "familyId": "football-stadium",
+          "variantId": "regional",
+          "footprintMeters": [
+            180,
+            140
+          ],
+          "capacity": 12000,
+          "capacityUnit": "seats"
+        }
+      ],
+      "surroundings": [
+        "entrance plaza",
+        "public transport arrival",
+        "pedestrian approaches",
+        "parking",
+        "service and emergency access",
+        "maintained planted edges"
+      ]
+    },
+    {
+      "id": "civic-commercial-core",
+      "use": "MixedUse",
+      "location": "center",
+      "purpose": "Shops, offices, civic and public services reachable from neighborhoods and the stadium"
+    },
+    {
+      "id": "residential-neighborhoods",
+      "use": "Residential",
+      "location": "west and southwest",
+      "purpose": "Housing blocks with local streets, schools, local shops and useful neighborhood greens"
+    },
+    {
+      "id": "industrial-estate",
+      "use": "HeavyIndustry",
+      "location": "southeast",
+      "purpose": "Industrial production and logistics with freight access separate from local residential streets",
+      "structures": [
+        {
+          "familyId": "factory",
+          "technology": "HeavyProcess",
+          "variantId": "large",
+          "footprintMeters": [
+            140,
+            90
+          ],
+          "capacity": 3000,
+          "capacityUnit": "workers"
+        },
+        {
+          "familyId": "warehouse",
+          "technology": "GeneralStorage",
+          "variantId": "large",
+          "footprintMeters": [
+            60,
+            40
+          ]
+        }
+      ],
+      "surroundings": [
+        "loading yards",
+        "freight circulation",
+        "service access",
+        "operational clear space",
+        "utility corridors",
+        "compatible industrial planting"
+      ]
+    },
+    {
+      "id": "central-green-network",
+      "use": "Recreation",
+      "location": "connected civic park and neighborhood greens west of the industrial estate",
+      "purpose": "Public recreation and deliberate planting; greenery does not waive industrial separation"
+    }
+  ],
+  "connections": {
+    "roads": "Connected main boulevard and north-south distributor; stadium event access and industrial freight branches; local residential streets remain distinct",
+    "utilities": "Explicit power, potable water and wastewater networks required by selected Modern structures; authored source quality and shared capacity must be bound before engine generation",
+    "factorySupply": "HeavyProcess; do not invent river/coast cooling requirements unless the selected process actually needs them",
+    "separation": "Authored sensitive-neighbor policy and district boundaries; numeric game clearance to be checked against exact approved geometry"
+  },
+  "nextGate": "Review actual engine/source comparison and original concept; production artwork/atlas and Godot runtime retain separate approval/verification gates.",
+  "verification": {
+    "engineWorldGenerated": true,
+    "mockupApproved": false,
+    "productionArtApproved": false,
+    "godotRuntime": "not-run",
+    "contextualSiting": "Passed",
+    "modeledBuildingCount": 43,
+    "sourceAnchoredParkTrees": 44,
+    "annotatedTreeLayoutCount": 432,
+    "compiledParkSurfaceCount": 8,
+    "minimumPlantingGapMeters": 1,
+    "surfaceClearanceRules": 6
+  },
+  "capture": ".gameframework/worlds/modern-city/mockup-capture.json",
+  "schematicReview": {
+    "status": "rejected_by_user",
+    "reason": "Abstract sketch does not capture actual mockup roads/features. Replaced by source-image capture overlay.",
+    "originalMockupApproval": "pending_user_review"
+  },
+  "engineRequest": ".gameframework/worlds/modern-city/world-request.json",
+  "generatedWorld": "generated/modern-city/world.json",
+  "generatedPreview": "generated/modern-city/capture-review.html",
+  "detailedSourceReview": "generated/modern-city/source-details.html"
+}

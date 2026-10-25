@@ -31,25 +31,30 @@ public sealed class WorldAssetDependencyManifestBuilder(IApprovedArtRegistry reg
                 continue;
             }
             var manifest = await registry.ResolveAsync(id, token);
-            if (manifest is null || manifest.SchemaVersion != 1 ||
-                manifest.AssetId != id || manifest.ApprovalState != ArtApprovalState.Approved ||
-                string.IsNullOrWhiteSpace(manifest.GameArtsRevision) ||
-                string.IsNullOrWhiteSpace(manifest.StandardVersion) ||
-                manifest.Sheets is null || manifest.Sheets.Count == 0 ||
-                manifest.Sheets.Any(s => !ValidHash(s.ImageSha256) ||
-                    !ValidHash(s.AtlasSha256) ||
-                    string.IsNullOrWhiteSpace(s.ComponentId)))
+            if (!IsComplete(manifest, id))
             {
                 errors.Add("WORLD_ASSET_EVIDENCE_INCOMPLETE:" + id);
                 continue;
             }
-            result.Add(new(id, manifest.GameArtsRevision, manifest.StandardVersion,
+            result.Add(new(id, manifest!.GameArtsRevision, manifest.StandardVersion,
                 manifest.Sheets.OrderBy(s => s.Id, StringComparer.Ordinal)
                     .Select(s => new WorldAssetFileEvidence(s.Id,
                         s.ImageSha256, s.AtlasSha256, s.ComponentId)).ToArray()));
         }
         return errors.Count == 0 ? new(result, []) : new([], errors);
     }
+
+    internal static bool IsComplete(ApprovedArtManifest? manifest, string assetId) =>
+        manifest is { SchemaVersion: 1, ApprovalState: ArtApprovalState.Approved } &&
+        manifest.AssetId == assetId &&
+        !string.IsNullOrWhiteSpace(manifest.GameArtsRevision) &&
+        !string.IsNullOrWhiteSpace(manifest.StandardVersion) &&
+        manifest.Sheets is { Count: > 0 } &&
+        manifest.Sheets.All(s => s is not null && !string.IsNullOrWhiteSpace(s.Id) &&
+            ValidHash(s.ImageSha256) && ValidHash(s.AtlasSha256) &&
+            !string.IsNullOrWhiteSpace(s.ComponentId)) &&
+        manifest.Sheets.Select(s => s.Id).Distinct(StringComparer.Ordinal).Count() == manifest.Sheets.Count;
+
     private static bool ValidHash(string? hash) =>
         hash is { Length: 64 } && hash.All(Uri.IsHexDigit);
 }

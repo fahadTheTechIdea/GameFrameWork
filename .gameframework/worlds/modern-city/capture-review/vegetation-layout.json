@@ -1,0 +1,4774 @@
+{
+  "status": "exact-position-layout-draft-not-collision-accepted",
+  "source": {
+    "mockupId": "modern-city",
+    "revision": "49d037170001e1bc3158a74f8eb8e5182a6831920febfb9be31c8c5380be5b2a",
+    "file": ".gamearts/outputs/mockups/generated/modern_city_mockup.png",
+    "sha256": "49d037170001e1bc3158a74f8eb8e5182a6831920febfb9be31c8c5380be5b2a",
+    "width": 1536,
+    "height": 1024,
+    "artStyleId": "pixel_art_provisional",
+    "camera": "elevated near-overhead concept; visible wall faces, not a calibrated ground orthographic plan",
+    "lifecycleManifest": ".gamearts/outputs/manifests/mockups.json"
+  },
+  "placementPolicy": "Tree/palm base uses the captured crown center at the same source coordinate, transformed by the authored ground calibration.",
+  "plants": [
+    {
+      "id": "capture-vegetation.palm-detail-civic-plaza-palm-1",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.palm",
+      "positionMeters": {
+        "x": 564.6666666666666,
+        "y": 214.8
+      },
+      "grammarId": "capture-vegetation.palm",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.palm-detail-civic-plaza-palm-2",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.palm",
+      "positionMeters": {
+        "x": 616,
+        "y": 204.9
+      },
+      "grammarId": "capture-vegetation.palm",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.palm-detail-civic-plaza-palm-3",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.palm",
+      "positionMeters": {
+        "x": 630.6666666666666,
+        "y": 219.3
+      },
+      "grammarId": "capture-vegetation.palm",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.palm-detail-civic-plaza-palm-4",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.palm",
+      "positionMeters": {
+        "x": 564,
+        "y": 245.4
+      },
+      "grammarId": "capture-vegetation.palm",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.palm-detail-civic-plaza-palm-5",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.palm",
+      "positionMeters": {
+        "x": 613.3333333333333,
+        "y": 267
+      },
+      "grammarId": "capture-vegetation.palm",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.palm-detail-civic-plaza-palm-6",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.palm",
+      "positionMeters": {
+        "x": 630,
+        "y": 260.70000000000005
+      },
+      "grammarId": "capture-vegetation.palm",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.palm-detail-civic-plaza-palm-7",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.palm",
+      "positionMeters": {
+        "x": 590,
+        "y": 272.4
+      },
+      "grammarId": "capture-vegetation.palm",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.palm-detail-stadium-palm-1",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.palm",
+      "positionMeters": {
+        "x": 151.33333333333331,
+        "y": 295.8
+      },
+      "grammarId": "capture-vegetation.palm",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.palm-detail-stadium-palm-2",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.palm",
+      "positionMeters": {
+        "x": 168,
+        "y": 299.40000000000003
+      },
+      "grammarId": "capture-vegetation.palm",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.palm-detail-stadium-palm-3",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.palm",
+      "positionMeters": {
+        "x": 184,
+        "y": 303.90000000000003
+      },
+      "grammarId": "capture-vegetation.palm",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.palm-detail-stadium-palm-4",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.palm",
+      "positionMeters": {
+        "x": 203.33333333333331,
+        "y": 308.40000000000003
+      },
+      "grammarId": "capture-vegetation.palm",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.palm-detail-stadium-palm-5",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.palm",
+      "positionMeters": {
+        "x": 241.33333333333331,
+        "y": 308.40000000000003
+      },
+      "grammarId": "capture-vegetation.palm",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.palm-detail-stadium-palm-6",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.palm",
+      "positionMeters": {
+        "x": 258,
+        "y": 303.90000000000003
+      },
+      "grammarId": "capture-vegetation.palm",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.palm-detail-stadium-palm-7",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.palm",
+      "positionMeters": {
+        "x": 275.3333333333333,
+        "y": 298.5
+      },
+      "grammarId": "capture-vegetation.palm",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.palm-detail-stadium-palm-8",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.palm",
+      "positionMeters": {
+        "x": 292,
+        "y": 294.90000000000003
+      },
+      "grammarId": "capture-vegetation.palm",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.palm-detail-stadium-palm-9",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.palm",
+      "positionMeters": {
+        "x": 310,
+        "y": 286.8
+      },
+      "grammarId": "capture-vegetation.palm",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-001",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 404,
+        "y": 119.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-002",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 405.3333333333333,
+        "y": 142.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-003",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 402.66666666666663,
+        "y": 168
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-004",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 458.66666666666663,
+        "y": 128.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-005",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 460.66666666666663,
+        "y": 155.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-006",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 497.3333333333333,
+        "y": 143.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-007",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 498.66666666666663,
+        "y": 120.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-008",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 558.6666666666666,
+        "y": 123.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-009",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 554,
+        "y": 165.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-010",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 586,
+        "y": 135.60000000000002
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-011",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 583.3333333333333,
+        "y": 161.70000000000002
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-012",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 649.3333333333333,
+        "y": 138.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-013",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 648.6666666666666,
+        "y": 163.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-014",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 688,
+        "y": 136.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-015",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 687.3333333333333,
+        "y": 162.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-016",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 709.3333333333333,
+        "y": 132
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-017",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 754,
+        "y": 136.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-018",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 756,
+        "y": 166.20000000000002
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-019",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 777.3333333333333,
+        "y": 120.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-020",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 777.3333333333333,
+        "y": 143.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-021",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 825.3333333333333,
+        "y": 175.20000000000002
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-022",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 840,
+        "y": 117.60000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-023",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 854,
+        "y": 137.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-024",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 878.6666666666666,
+        "y": 116.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-025",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 881.3333333333333,
+        "y": 159
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-026",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 865.3333333333333,
+        "y": 179.70000000000002
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-027",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 843.3333333333333,
+        "y": 177
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-028",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 909.3333333333333,
+        "y": 122.10000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-029",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 910.6666666666666,
+        "y": 150
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-030",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 949.3333333333333,
+        "y": 135.60000000000002
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-031",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 992.6666666666666,
+        "y": 134.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-032",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 993.3333333333333,
+        "y": 162.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-033",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 950.6666666666666,
+        "y": 194.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-034",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 994,
+        "y": 195.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-035",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 908.6666666666666,
+        "y": 224.70000000000002
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-036",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 909.3333333333333,
+        "y": 252.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-037",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 949.3333333333333,
+        "y": 239.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-038",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 951.3333333333333,
+        "y": 267
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-039",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 994,
+        "y": 269.70000000000005
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-040",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 994,
+        "y": 294
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-041",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 909.3333333333333,
+        "y": 343.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-042",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 950.6666666666666,
+        "y": 339
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-043",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 950.6666666666666,
+        "y": 366.90000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-044",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 994.6666666666666,
+        "y": 357
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-045",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 994.6666666666666,
+        "y": 380.40000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-046",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 760,
+        "y": 210.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-047",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 758.6666666666666,
+        "y": 239.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-048",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 759.3333333333333,
+        "y": 268.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-049",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 777.3333333333333,
+        "y": 272.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-050",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 835.3333333333333,
+        "y": 237.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-051",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 834.6666666666666,
+        "y": 263.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-052",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 888.6666666666666,
+        "y": 236.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-053",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 888.6666666666666,
+        "y": 267
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-054",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 641.3333333333333,
+        "y": 204
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-055",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 641.3333333333333,
+        "y": 228.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-056",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 640.6666666666666,
+        "y": 264.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-057",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 648,
+        "y": 319.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-058",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 647.3333333333333,
+        "y": 356.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-059",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 692.6666666666666,
+        "y": 329.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-060",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 692,
+        "y": 364.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-061",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 582.6666666666666,
+        "y": 340.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-062",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 580.6666666666666,
+        "y": 367.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-063",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 630.6666666666666,
+        "y": 364.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-064",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 629.3333333333333,
+        "y": 338.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-065",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 557.3333333333333,
+        "y": 309.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-066",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 566,
+        "y": 328.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-067",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 566,
+        "y": 356.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-068",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 484,
+        "y": 330.90000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-069",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 483.3333333333333,
+        "y": 354.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-070",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 495.3333333333333,
+        "y": 374.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-071",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 544,
+        "y": 374.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-072",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 404,
+        "y": 252.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-073",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 412,
+        "y": 247.20000000000002
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-074",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 426.66666666666663,
+        "y": 246.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-075",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 439.3333333333333,
+        "y": 248.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-076",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 454,
+        "y": 249
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-077",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 464.66666666666663,
+        "y": 248.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-078",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 402.66666666666663,
+        "y": 360.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-079",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 422.66666666666663,
+        "y": 366
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-civic-080",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 473.3333333333333,
+        "y": 362.40000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-001",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 59.33333333333333,
+        "y": 421.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-002",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 88,
+        "y": 431.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-003",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 124,
+        "y": 433.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-004",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 126,
+        "y": 459.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-005",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 126,
+        "y": 488.40000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-006",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 88.66666666666666,
+        "y": 502.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-007",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 122,
+        "y": 507.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-008",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 198.66666666666666,
+        "y": 431.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-009",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 199.33333333333331,
+        "y": 456.90000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-010",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 197.33333333333331,
+        "y": 491.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-011",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 160.66666666666666,
+        "y": 477.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-012",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 226,
+        "y": 433.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-013",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 288.66666666666663,
+        "y": 432.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-014",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 288,
+        "y": 458.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-015",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 291.3333333333333,
+        "y": 483.90000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-016",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 360.66666666666663,
+        "y": 443.40000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-017",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 360,
+        "y": 467.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-018",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 363.3333333333333,
+        "y": 500.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-019",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 278.66666666666663,
+        "y": 505.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-020",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 304.66666666666663,
+        "y": 505.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-021",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 328,
+        "y": 505.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-022",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 381.3333333333333,
+        "y": 441.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-023",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 382.66666666666663,
+        "y": 467.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-024",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 383.3333333333333,
+        "y": 495.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-025",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 466,
+        "y": 435.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-026",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 465.3333333333333,
+        "y": 459.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-027",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 464.66666666666663,
+        "y": 496.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-028",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 401.3333333333333,
+        "y": 504.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-029",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 454,
+        "y": 505.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-030",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 33.33333333333333,
+        "y": 572.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-031",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 56.666666666666664,
+        "y": 557.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-032",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 57.33333333333333,
+        "y": 588.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-033",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 120.66666666666666,
+        "y": 550.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-034",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 121.33333333333333,
+        "y": 578.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-035",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 122,
+        "y": 600
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-036",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 134.66666666666666,
+        "y": 547.8000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-037",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 153.33333333333331,
+        "y": 555.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-038",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 169.33333333333331,
+        "y": 566.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-039",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 161.33333333333331,
+        "y": 582.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-040",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 190,
+        "y": 549.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-041",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 193.33333333333331,
+        "y": 576.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-042",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 199.33333333333331,
+        "y": 599.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-043",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 228,
+        "y": 570.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-044",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 250,
+        "y": 567.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-045",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 252.66666666666666,
+        "y": 598.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-046",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 288.66666666666663,
+        "y": 555.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-047",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 292,
+        "y": 584.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-048",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 302.66666666666663,
+        "y": 600.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-049",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 338,
+        "y": 571.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-050",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 361.3333333333333,
+        "y": 553.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-051",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 362.66666666666663,
+        "y": 582.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-052",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 384,
+        "y": 610.8000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-053",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 398,
+        "y": 609
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-054",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 412.66666666666663,
+        "y": 613.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-055",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 430.66666666666663,
+        "y": 614.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-056",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 382,
+        "y": 685.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-057",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 399.3333333333333,
+        "y": 691.8000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-058",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 414.66666666666663,
+        "y": 690.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-059",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 430.66666666666663,
+        "y": 690.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-060",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 449.3333333333333,
+        "y": 690.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-061",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 464,
+        "y": 644.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-062",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 464.66666666666663,
+        "y": 669.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-063",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 492,
+        "y": 630.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-064",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 517.3333333333333,
+        "y": 627.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-065",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 554,
+        "y": 633.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-066",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 555.3333333333333,
+        "y": 664.8000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-067",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 556,
+        "y": 696.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-068",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 555.3333333333333,
+        "y": 738.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-069",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 495.3333333333333,
+        "y": 746.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-070",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 512,
+        "y": 752.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-071",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 535.3333333333333,
+        "y": 750.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-072",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 54,
+        "y": 636.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-073",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 53.33333333333333,
+        "y": 670.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-074",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 120.66666666666666,
+        "y": 639.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-075",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 121.33333333333333,
+        "y": 668.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-076",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 126.66666666666666,
+        "y": 692.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-077",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 198.66666666666666,
+        "y": 642.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-078",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 198,
+        "y": 668.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-079",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 198.66666666666666,
+        "y": 692.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-080",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 160,
+        "y": 661.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-081",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 226.66666666666666,
+        "y": 677.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-082",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 226,
+        "y": 702.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-083",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 254,
+        "y": 685.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-084",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 270.66666666666663,
+        "y": 685.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-085",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 290,
+        "y": 685.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-086",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 310,
+        "y": 690.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-087",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 344.66666666666663,
+        "y": 686.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-088",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 354.66666666666663,
+        "y": 663
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-089",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 354,
+        "y": 699
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-090",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 380.66666666666663,
+        "y": 729.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-091",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 380.66666666666663,
+        "y": 762
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-092",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 408,
+        "y": 734.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-093",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 424,
+        "y": 733.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-094",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 463.3333333333333,
+        "y": 723.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-095",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 462,
+        "y": 754.8000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-096",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 387.3333333333333,
+        "y": 778.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-097",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 406,
+        "y": 779.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-098",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 431.3333333333333,
+        "y": 780.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-099",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 455.3333333333333,
+        "y": 780
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-100",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 56.666666666666664,
+        "y": 734.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-101",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 57.33333333333333,
+        "y": 765.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-102",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 56,
+        "y": 798.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-103",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 120,
+        "y": 735
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-104",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 121.33333333333333,
+        "y": 764.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-105",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 121.33333333333333,
+        "y": 804.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-106",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 158.66666666666666,
+        "y": 750.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-107",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 160,
+        "y": 784.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-108",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 200,
+        "y": 738.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-109",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 200.66666666666666,
+        "y": 774.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-110",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 200.66666666666666,
+        "y": 805.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-111",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 226,
+        "y": 766.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-112",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 226,
+        "y": 798.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-113",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 279.3333333333333,
+        "y": 750.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-114",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 280.66666666666663,
+        "y": 780
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-115",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 280.66666666666663,
+        "y": 809.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-116",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 347.3333333333333,
+        "y": 758.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-117",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 348,
+        "y": 785.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-118",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 348.66666666666663,
+        "y": 811.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-119",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 488.66666666666663,
+        "y": 803.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-120",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 489.3333333333333,
+        "y": 832.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-121",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 550.6666666666666,
+        "y": 815.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-122",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 551.3333333333333,
+        "y": 841.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-123",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 500.66666666666663,
+        "y": 843.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-124",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 518.6666666666666,
+        "y": 843.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-125",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 534,
+        "y": 844.8000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-126",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 33.33333333333333,
+        "y": 839.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-127",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 56,
+        "y": 848.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-128",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 90.66666666666666,
+        "y": 848.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-129",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 124,
+        "y": 852.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-130",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 199.33333333333331,
+        "y": 858.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-131",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 200,
+        "y": 886.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-132",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 200,
+        "y": 911.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-133",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 158,
+        "y": 875.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-134",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 158,
+        "y": 902.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-135",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 226,
+        "y": 893.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-136",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 250,
+        "y": 888
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-137",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 284.66666666666663,
+        "y": 876.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-138",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 284.66666666666663,
+        "y": 908.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-139",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 320,
+        "y": 879
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-140",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 320.66666666666663,
+        "y": 910.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-141",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 348.66666666666663,
+        "y": 878.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-142",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 349.3333333333333,
+        "y": 911.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-143",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 380.66666666666663,
+        "y": 888.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-144",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 406.66666666666663,
+        "y": 884.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-145",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 408,
+        "y": 913.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-146",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 432.66666666666663,
+        "y": 897.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-housing-147",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 453.3333333333333,
+        "y": 906
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-001",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 714,
+        "y": 443.40000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-002",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 732,
+        "y": 445.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-003",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 749.3333333333333,
+        "y": 445.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-004",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 765.3333333333333,
+        "y": 446.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-005",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 780,
+        "y": 443.40000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-006",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 797.3333333333333,
+        "y": 438.90000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-007",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 817.3333333333333,
+        "y": 439.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-008",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 837.3333333333333,
+        "y": 438.90000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-009",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 858,
+        "y": 440.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-010",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 878.6666666666666,
+        "y": 440.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-011",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 898,
+        "y": 442.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-012",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 919.3333333333333,
+        "y": 444.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-013",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 939.3333333333333,
+        "y": 445.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-014",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 960,
+        "y": 446.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-015",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 980.6666666666666,
+        "y": 451.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-016",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 992,
+        "y": 461.40000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-017",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 994,
+        "y": 687.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-018",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 978.6666666666666,
+        "y": 706.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-019",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 964,
+        "y": 721.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-020",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 944,
+        "y": 739.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-021",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 922.6666666666666,
+        "y": 756.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-022",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 901.3333333333333,
+        "y": 771.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-023",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 875.3333333333333,
+        "y": 787.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-024",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 848,
+        "y": 799.8000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-025",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 816.6666666666666,
+        "y": 807.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-026",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 794,
+        "y": 817.8000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-027",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 770,
+        "y": 823.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-028",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 744,
+        "y": 831.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-029",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 714.6666666666666,
+        "y": 836.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-030",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 686,
+        "y": 835.8000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-031",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 659.3333333333333,
+        "y": 838.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-032",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 633.3333333333333,
+        "y": 839.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-033",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 608.6666666666666,
+        "y": 835.8000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-034",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 590.6666666666666,
+        "y": 802.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-035",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 591.3333333333333,
+        "y": 769.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-036",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 590.6666666666666,
+        "y": 735.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-037",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 592,
+        "y": 703.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-038",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 591.3333333333333,
+        "y": 666.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-industry-039",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 590.6666666666666,
+        "y": 633.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-001",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 40.666666666666664,
+        "y": 33
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-002",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 61.33333333333333,
+        "y": 37.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-003",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 78.66666666666666,
+        "y": 36.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-004",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 98.66666666666666,
+        "y": 34.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-005",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 113.33333333333333,
+        "y": 32.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-006",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 128.66666666666666,
+        "y": 38.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-007",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 139.33333333333331,
+        "y": 45.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-008",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 158.66666666666666,
+        "y": 39.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-009",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 176.66666666666666,
+        "y": 35.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-010",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 192,
+        "y": 43.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-011",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 210,
+        "y": 33
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-012",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 230,
+        "y": 31.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-013",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 248,
+        "y": 39.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-014",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 265.3333333333333,
+        "y": 34.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-015",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 284.66666666666663,
+        "y": 32.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-016",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 306,
+        "y": 36.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-017",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 322.66666666666663,
+        "y": 42.900000000000006
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-018",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 341.3333333333333,
+        "y": 55.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-019",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 448.66666666666663,
+        "y": 34.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-020",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 468,
+        "y": 40.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-021",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 488.66666666666663,
+        "y": 36.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-022",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 510,
+        "y": 43.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-023",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 530.6666666666666,
+        "y": 42.900000000000006
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-024",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 549.3333333333333,
+        "y": 35.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-025",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 566,
+        "y": 50.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-026",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 754,
+        "y": 36.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-027",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 773.3333333333333,
+        "y": 37.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-028",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 796,
+        "y": 42.900000000000006
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-029",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 814,
+        "y": 36.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-030",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 838.6666666666666,
+        "y": 34.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-031",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 862,
+        "y": 37.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-032",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 878,
+        "y": 50.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-033",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 936.6666666666666,
+        "y": 33.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-034",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 958.6666666666666,
+        "y": 35.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-035",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 978,
+        "y": 42
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-036",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1006,
+        "y": 36.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-037",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1029.3333333333333,
+        "y": 36.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-038",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1033.3333333333333,
+        "y": 132.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-039",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1031.3333333333333,
+        "y": 164.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-040",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1034,
+        "y": 196.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-041",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1031.3333333333333,
+        "y": 228.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-042",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1032.6666666666665,
+        "y": 260.70000000000005
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-043",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1032.6666666666665,
+        "y": 294.90000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-044",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1030.6666666666665,
+        "y": 348.90000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-045",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1033.3333333333333,
+        "y": 379.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-046",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1033.3333333333333,
+        "y": 417.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-047",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1035.3333333333333,
+        "y": 449.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-048",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1036.6666666666665,
+        "y": 490.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-049",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1031.3333333333333,
+        "y": 528
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-050",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1030,
+        "y": 564.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-051",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1024.6666666666665,
+        "y": 606.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-052",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1041.3333333333333,
+        "y": 670.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-053",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1032.6666666666665,
+        "y": 712.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-054",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1014.6666666666666,
+        "y": 741.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-055",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1028.6666666666665,
+        "y": 775.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-056",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1035.3333333333333,
+        "y": 823.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-057",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1026,
+        "y": 870.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-058",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 1009.3333333333333,
+        "y": 917.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-059",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 970,
+        "y": 894.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-060",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 947.3333333333333,
+        "y": 873.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-061",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 925.3333333333333,
+        "y": 892.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-062",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 895.3333333333333,
+        "y": 874.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-063",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 858,
+        "y": 904.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-064",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 818,
+        "y": 895.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-065",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 780.6666666666666,
+        "y": 908.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-066",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 741.3333333333333,
+        "y": 909.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-067",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 702.6666666666666,
+        "y": 924
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-068",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 663.3333333333333,
+        "y": 915
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-069",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 626.6666666666666,
+        "y": 934.8000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-070",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 595.3333333333333,
+        "y": 927.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-071",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 557.3333333333333,
+        "y": 937.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-072",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 41.33333333333333,
+        "y": 926.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-073",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 74.66666666666666,
+        "y": 927.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-074",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 104,
+        "y": 925.8000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-075",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 142.66666666666666,
+        "y": 936.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-076",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 174,
+        "y": 936.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-077",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 210.66666666666666,
+        "y": 935.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-078",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 248,
+        "y": 933.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-079",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 282.66666666666663,
+        "y": 938.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-margins-080",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 318.66666666666663,
+        "y": 937.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-001",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 494,
+        "y": 442.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-002",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 500,
+        "y": 462.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-003",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 512.6666666666666,
+        "y": 450.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-004",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 512.6666666666666,
+        "y": 471.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-005",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 494.66666666666663,
+        "y": 486.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-006",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 492,
+        "y": 509.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-007",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 499.3333333333333,
+        "y": 537.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-008",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 508.66666666666663,
+        "y": 546.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-009",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 501.3333333333333,
+        "y": 569.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-010",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 530.6666666666666,
+        "y": 572.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-011",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 542,
+        "y": 545.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-012",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 548,
+        "y": 536.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-013",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 551.3333333333333,
+        "y": 570.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-014",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 564.6666666666666,
+        "y": 553.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-015",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 567.3333333333333,
+        "y": 572.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-016",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 581.3333333333333,
+        "y": 570.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-017",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 604.6666666666666,
+        "y": 574.8000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-018",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 624,
+        "y": 577.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-019",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 646,
+        "y": 578.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-020",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 659.3333333333333,
+        "y": 561.3000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-021",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 665.3333333333333,
+        "y": 539.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-022",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 678.6666666666666,
+        "y": 526.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-023",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 678.6666666666666,
+        "y": 501.90000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-024",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 679.3333333333333,
+        "y": 480.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-025",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 679.3333333333333,
+        "y": 462.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-026",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 674,
+        "y": 449.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-027",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 660,
+        "y": 436.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-028",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 638,
+        "y": 440.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-029",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 616,
+        "y": 437.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-030",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 600.6666666666666,
+        "y": 447
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-031",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 587.3333333333333,
+        "y": 455.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-032",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 551.3333333333333,
+        "y": 446.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-033",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 535.3333333333333,
+        "y": 441.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-034",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 533.3333333333333,
+        "y": 474
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-035",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 532.6666666666666,
+        "y": 492
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-036",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 546,
+        "y": 504.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-037",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 559.3333333333333,
+        "y": 492.90000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-038",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 562.6666666666666,
+        "y": 519.9000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-039",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 588.6666666666666,
+        "y": 484.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-040",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 584,
+        "y": 501.90000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-041",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 591.3333333333333,
+        "y": 526.2
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-042",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 581.3333333333333,
+        "y": 520.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-043",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 678,
+        "y": 547.8000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-park-044",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 678,
+        "y": 568.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-001",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 95.33333333333333,
+        "y": 92.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-002",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 94,
+        "y": 113.10000000000001
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-003",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 95.33333333333333,
+        "y": 135.60000000000002
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-004",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 95.33333333333333,
+        "y": 158.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-005",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 95.33333333333333,
+        "y": 180.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-006",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 96,
+        "y": 202.20000000000002
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-007",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 95.33333333333333,
+        "y": 224.70000000000002
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-008",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 95.33333333333333,
+        "y": 246.3
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-009",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 348,
+        "y": 96.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-010",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 348,
+        "y": 128.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-011",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 347.3333333333333,
+        "y": 154.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-012",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 347.3333333333333,
+        "y": 180.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-013",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 348.66666666666663,
+        "y": 206.70000000000002
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-014",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 348,
+        "y": 231.9
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-015",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 348,
+        "y": 254.4
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-016",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 84,
+        "y": 339
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-017",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 94,
+        "y": 359.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-018",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 110,
+        "y": 366.90000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-019",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 124.66666666666666,
+        "y": 368.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-020",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 201.33333333333331,
+        "y": 340.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-021",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 201.33333333333331,
+        "y": 358.8
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-022",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 242,
+        "y": 339.90000000000003
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-023",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 242,
+        "y": 359.7
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-024",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 325.3333333333333,
+        "y": 370.5
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-025",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 343.3333333333333,
+        "y": 369.6
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    },
+    {
+      "id": "capture-vegetation.tree-detail-tree-stadium-026",
+      "zoneId": "capture-landscape",
+      "speciesAssetId": "unresolved-vegetation.tree",
+      "positionMeters": {
+        "x": 360.66666666666663,
+        "y": 365.1
+      },
+      "grammarId": "capture-vegetation.tree",
+      "purpose": "Tree base at captured crown center; exact source position, no relocation."
+    }
+  ],
+  "remainingGates": [
+    "Review provisional source annotations and species/master asset mapping",
+    "Reconcile detailed buildings, paths and planting surfaces with this layout; run existing clearance/raster gates without moving trees",
+    "GameArts artwork approval, approved assets and Godot runtime"
+  ]
+}

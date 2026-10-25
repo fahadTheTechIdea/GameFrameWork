@@ -1,0 +1,26 @@
+{
+  "mockups": [
+    {
+      "mockup_id": "modern-city",
+      "revision": "49d037170001e1bc3158a74f8eb8e5182a6831920febfb9be31c8c5380be5b2a",
+      "status": "generated",
+      "visual_review": "pending_user_review",
+      "file": ".gamearts/outputs/mockups/generated/modern_city_mockup.png",
+      "sha256": "49d037170001e1bc3158a74f8eb8e5182a6831920febfb9be31c8c5380be5b2a",
+      "scope": "whole-city-concept",
+      "brief": ".gameframework/worlds/modern-city/city-design.json",
+      "settings_source": "provisional defaults; no saved/approved art profile",
+      "art_style_requested": "pixel_art",
+      "camera_requested": "orthographic overhead",
+      "camera_observed": "elevated near-overhead with visible building wall faces; requires visual review",
+      "created_at": "2026-10-25T10:18:21.3528611+03:00",
+      "source": {
+        "tool": "image_gen",
+        "source_references": [],
+        "gamearts_framework_commit": "17963c482d749b3644791346771ee40cea5464b0"
+      },
+      "approval": "not_granted",
+      "technical_status": "concept_only_not_measured_sprite_art_or_engine_output"
+    }
+  ]
+}

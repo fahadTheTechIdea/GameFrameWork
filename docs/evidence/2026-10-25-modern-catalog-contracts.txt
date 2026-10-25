@@ -1,0 +1,125 @@
+Modern catalog and shared current contracts - execution evidence
+Date: 2026-10-25 (Asia/Kuwait). Author self-review. Direct main with preserved prior dirty work.
+Scope: shared catalog/provider/registry/policy/demand/infrastructure contracts, Modern assembly 197 families/585 variants/15 categories, six explicit capability flags, extensible registered vocabulary, explicit static/dynamic host registration, CLI and rewritten current-contract fixtures. No compatibility schema path or obsolete public catalog API.
+Environment: Windows x64, SDK 10.0.401, .NET 10.0.12. global.json 10.0.402 unchanged; root attempt fails before compilation (SDK unavailable). Local builds use ignored generated/sdk-validation/global.json selecting installed 10.0.401. Restore uses project references, no new package or SDK installed.
+Scope limits: independent Arcane plugin is a synthetic contract fixture, not a production Fantasy pack. Other production packs, heterogeneous per-settlement catalog composition, data-file manifests, generalized site-use/placement strategy vocabularies and Godot/AOT target qualification remain future work. Builtin Modern vocabulary is catalog-local; external IDs can be namespaced. Digests cover descriptor/definition snapshots and implementation entry-point assemblies (module identity when location is unavailable), not the complete transitive package dependency closure.
+Actual GameArts art/approval/rendered fidelity, Godot startup/gameplay, remote CI/Linux, pinned-SDK 10.0.402 and performance/stress: NOT RUN. Trusted DLL dependency isolation is not a sandbox. Registry owns immutable content snapshots; arbitrary trusted plugin code is subject to its deterministic/side-effect-free contract, not process isolation.
+
+CWD generated/sdk-validation; command: dotnet build ../../tests/GameFrameWork.Tests/GameFrameWork.Tests.csproj -c Release --warnaserror --no-restore
+Base revision: d5d851b9d37ba3ba6d344afc52cc3e25e0dd6ec6
+Timestamp: 2026-10-25T09:56:35.2625573+03:00
+  GameFrameWork.Core -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Core\bin\Release\net10.0\GameFrameWork.Core.dll
+  GameFrameWork.Godot -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Godot\bin\Release\net10.0\GameFrameWork.Godot.dll
+  GameFrameWork.Catalogs.Modern -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Catalogs.Modern\bin\Release\net10.0\GameFrameWork.Catalogs.Modern.dll
+  GameFrameWork.Worlds -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Worlds\bin\Release\net10.0\GameFrameWork.Worlds.dll
+  GameFrameWork.TestCatalog -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\tests\GameFrameWork.TestCatalog\bin\Release\net10.0\GameFrameWork.TestCatalog.dll
+  GameFrameWork.Tests -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\tests\GameFrameWork.Tests\bin\Release\net10.0\GameFrameWork.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:04.95
+Build exit 0. CLI build: dotnet build ../../src/GameFrameWork.Cli/GameFrameWork.Cli.csproj -c Release --warnaserror --no-restore
+  GameFrameWork.Core -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Core\bin\Release\net10.0\GameFrameWork.Core.dll
+  GameFrameWork.Godot -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Godot\bin\Release\net10.0\GameFrameWork.Godot.dll
+  GameFrameWork.Catalogs.Modern -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Catalogs.Modern\bin\Release\net10.0\GameFrameWork.Catalogs.Modern.dll
+  GameFrameWork.Worlds -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Worlds\bin\Release\net10.0\GameFrameWork.Worlds.dll
+  GameFrameWork.Cli -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Cli\bin\Release\net10.0\GameFrameWork.Cli.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.32
+CLI build exit 0.
+CWD repository root; dotnet tests/GameFrameWork.Tests/bin/Release/net10.0/GameFrameWork.Tests.dll --cli src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll
+PASS: CLI integrity JSON, exit codes and log/audit/notification process checks.
+PASS: production integrity regressions (synthetic GameArts fixtures).
+[world.validation.failed] Invalid placement rejected. (correlation: correlation-test)
+PASS: mockup-driven CLI generation and rejected-output preservation.
+PASS: mockup generation, contextual building sizes, surroundings, green zoning and negative algorithm cases.
+PASS: catalog CLI inventory, category filter, invalid input and audit checks.
+PASS: catalog coverage: 197 families / 585 variants / 15 categories; 555 frontage variants sized/site-checked; 10 infrastructure families explicitly guarded; 14 complete generation cases.
+PASS: infrastructure algorithms: 10 families / 30 variant worlds, contextual sizes, connected passage, reserved surroundings, terrain layers, JSON, invalid designs and cancellation.
+PASS: siting: 197 catalog profiles / 216 technology resolutions; 22 building + 10 infrastructure + 2 mixed/provider contextual worlds; typed supplies, capacity, districts, provider cycles, nuclear cooling, surroundings, JSON, negatives and cancellation.
+PASS: catalog contracts: Modern 197/585; explicit capability flags; independent dynamic plugin with custom vocabulary, fixed demand/siting code and actual world; no implicit catalog or legacy schema; CLI/plugin failures and audit.
+PASS: engine regression harness (synthetic artwork; real approval and Godot runtime not verified).
+Complete regression / actual CLI / independent dynamic plugin: EXIT 0.
+Fixture regeneration: --write-generation-fixture tests/fixtures/synthetic-desert-world.json; --write-infrastructure-fixture tests/fixtures/synthetic-infrastructure-world.json; --write-siting-fixture tests/fixtures/synthetic-siting-world.json (harness DLL, all exit 0).
+dotnet src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll generate-world tests/fixtures/synthetic-desert-world.json generated/modern-desert-smoke
+Generated 64x64 mockup-driven world at C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\modern-desert-smoke
+EXIT 0; Modern, 6 flags, siting Passed; content=e9726a1eb83c52b802ec73998ff902d071e2a8efe25a29404c705d51402e2e4a
+dotnet src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll generate-world tests/fixtures/synthetic-infrastructure-world.json generated/modern-infrastructure-smoke
+Generated 256x256 mockup-driven world at C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\modern-infrastructure-smoke
+EXIT 0; Modern, 6 flags, siting Passed; content=e9726a1eb83c52b802ec73998ff902d071e2a8efe25a29404c705d51402e2e4a
+dotnet src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll generate-world tests/fixtures/synthetic-siting-world.json generated/modern-siting-smoke
+Generated 228x226 mockup-driven world at C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\modern-siting-smoke
+EXIT 0; Modern, 6 flags, siting Passed; content=e9726a1eb83c52b802ec73998ff902d071e2a8efe25a29404c705d51402e2e4a
+list-buildings modern -> ignored inventory snapshot; dummy-village generated/modern-dummy-village: EXIT 0.
+PASS: 59 local Markdown links/anchors checked.
+Source boundary check PASS: Core/Worlds contain no Modern references, obsolete example catalog/profile API, legacy assessment or dual-schema branch. Moved old Core content files are absent; provider/registry selection is explicit.
+git diff --check: PASS exit 0. SHA-256 current changed/untracked execution inputs (includes preserved earlier slices):
+b996b9df8320e8a7ec25fa5f47cf6ba069d6b169a7bda258cea8197c2df06581  .github/workflows/dotnet-ci.yml
+17b510c506bb7c9c5d85ceb91649f88cd75ed04e313e454d26531d7b787ade4a  .gitignore
+fcc4a264417d1e4b8f068adab9467f0cac1d4b5005544ba8baa1d468e6882341  src/GameFrameWork.Catalogs.Modern/GameFrameWork.Catalogs.Modern.csproj
+692c7ab9f64c9776e9b02e772f314df8386608308a61f4ddf8484eb11489702a  src/GameFrameWork.Catalogs.Modern/ModernCatalog.cs
+c9065387992922f2585da346dbb70a291b8644fbac81fae9f6398bdb40823420  src/GameFrameWork.Catalogs.Modern/ModernDemandPolicy.cs
+cf06edad7cf407f2a7ee7acb96f704b8358d1bd2fcf9bceb5fcbe62051f05a45  src/GameFrameWork.Catalogs.Modern/ModernExpandedStructures.cs
+0be0258bc2deaa8b18228cebb5c9956a962af8588c3eb4918260b4b802761e95  src/GameFrameWork.Catalogs.Modern/ModernInfrastructureDesignStrategy.cs
+a2b9dbedc07c42e2ddde6ec28668cec2437001327c50a8aaf202d15079184af6  src/GameFrameWork.Catalogs.Modern/ModernSitingProfiles.cs
+b78cbfe3c79d47cdc4898560fb3dd07417bd4315f3a095c4d15aebf33f366f52  src/GameFrameWork.Catalogs.Modern/ModernStructures.cs
+fc6edb9aa1cd5f47f8de1c5873f6ac1b7ad726f7094053c91e737965a4c53533  src/GameFrameWork.Catalogs.Modern/ModernVocabulary.cs
+991b906d5ca29a77c8a3e873bc38bca5b046a97a84d526ea086f5ce3a2518bc6  src/GameFrameWork.Cli/GameFrameWork.Cli.csproj
+fbac59325049a58698b5f080c0ce1a5cc5616b2c8a05a5a313ba339ca2b34719  src/GameFrameWork.Cli/Program.cs
+728afa81b2524d32ff34cf5bf7ff9de82bff8f75bfc8450caca7d19ea46f7b7c  src/GameFrameWork.Core/BuildingPrograms.cs
+d2bb23f950f36e47394fac66e9d48d603f221ba1a3c11746e272a8c2e42993ae  src/GameFrameWork.Core/BuildingSitePlanner.cs
+2e30673b8b766c58d49b32723bb8a236d9f1e1df0f5018ee9ca613ae5f3f91d6  src/GameFrameWork.Core/BuildingSizePlanner.cs
+e0a3156e9f88cd76ce276ad0ceace0aa23e8738961d18ba78c25904a6028f44c  src/GameFrameWork.Core/GameArtsNonVegetationGate.cs
+9258051edfb9f5aa1a774e824cad78515fec7ea37850c50432b7682a88b85461  src/GameFrameWork.Core/InfrastructureContracts.cs
+589fde684283fb371704e563bf966d6e795a4d03ea98f00908c53120facf50d9  src/GameFrameWork.Core/MockupDesignValidator.cs
+9cf0b20f8e3a625ce3a11ff66049b53bd3aaea880188ea322da0e93981d71468  src/GameFrameWork.Core/MockupTerrainQuery.cs
+3fa6f87f52f63bb7d474e64102ac188f759e78a610243473e39659d023a4922f  src/GameFrameWork.Core/MockupWorldDesign.cs
+347854c6fe9e70370f88a376f003958009ed53c0ab10cafa0be7e926a315ae71  src/GameFrameWork.Core/ParcelGeometry.cs
+d4e6fd24eed656577ba469a8f2cbe739c41a0e9dea1ef05136fd0b0abac65ff9  src/GameFrameWork.Core/PortableWorldPackageVerifier.cs
+2e90894c7f1ea1ca756be327f7f45c7a58c7c95c933cbd461c238b46329d0fe3  src/GameFrameWork.Core/PublicRealmPlanner.cs
+a65b516b788b2c351b7b118f4f7b4c38cc84a8eb9d2bd2ff870ce49d20f818a8  src/GameFrameWork.Core/SettlementCatalogPlugin.cs
+3d897921126b4e7a337171a86ff158d0f05535e8c738bafbac7e4715b0cd2eb4  src/GameFrameWork.Core/SettlementCatalogs.cs
+2d776edaba82812eb4af31101e52a5fb7aa420a66c15b9caeebaf83d6885ef1b  src/GameFrameWork.Core/SpatialPlanning.cs
+0f48bbc20838dcee6467afcc36ab6b392af83152af3251083e30c65db72ee17a  src/GameFrameWork.Core/SpatialValidation.cs
+b269d6b75509a6bcadf7475622fa625d37885a46a291ffffa07812d1f50f702c  src/GameFrameWork.Core/SpeciesAwareSemanticWorldGate.cs
+bed4dbb777dd145cdef5d859881c1c815d4c0833ae76c4a41243df152b0c80ae  src/GameFrameWork.Core/StreetTopology.cs
+9d0cccad5c42cc742e3f8d536809628fb8e916171d071683742cddefbeb250e7  src/GameFrameWork.Core/StructureSiting.cs
+7726faa41114f6025bc2ca5f04114a055da6795a1809d04d2b065179b89b2bd6  src/GameFrameWork.Core/StructureSitingPlanner.cs
+8ea89f944497ab8d1e55829be37f621a27c31396a6af4d06ebba3f0a76a4ee77  src/GameFrameWork.Core/StructureSitingValidator.cs
+05cb4d950297b70215d8d6b878c62a072f8c51b8a5b608919860c171fe3c4290  src/GameFrameWork.Core/VegetationCompositionPlanner.cs
+d03439d28abd7cfdda09ee6256cab3a815cca6ac2b2e6ad20aedbcd1600c31b3  src/GameFrameWork.Core/VisualPathPatterns.cs
+d8594503bab936f1f2fd1965d624005e84240942081a9c4ba0afded656fe57cd  src/GameFrameWork.Core/VisualWorldPlanning.cs
+9409fc7763a6df9f7f071f8a91b1cf0a80d21860a647262baac105f058431d92  src/GameFrameWork.Core/WorldAssetDependencyManifest.cs
+47506d62721065370fcde77dd05a4888245ebbe8dd740d73168a622f0a765496  src/GameFrameWork.Core/WorldDesignPlanning.cs
+d4f5798d27c71f1ba117d9eefb952d9c4f41e6919277508ab58ffdedb3d5841e  src/GameFrameWork.Core/WorldJson.cs
+0c5cc9457aad83c618ae7225805bcd6e0759ecd54119c42031e8922897dd94bc  src/GameFrameWork.Core/WorldModel.cs
+eb7df9bd01a15414311a6b503e15d203d795d10c64cce31ac0ec3faa72b27be6  src/GameFrameWork.Worlds/CoordinatedProductionWorldExporter.cs
+e69387359a4a16d488510e88dacd2823e1f841acff30c2858da70bbd757a3e64  src/GameFrameWork.Worlds/DesertWorldGenerator.cs
+c65376b3df734423d1bfec21fc5bc8274afcb04aefb3569210eff91687f9ff1e  src/GameFrameWork.Worlds/MockupTerrainComposer.cs
+bea67dd3d8ccbf065c6fd456f3cbee346f7f152d0714840597a4c467476f6d80  src/GameFrameWork.Worlds/SettlementDesignGate.cs
+d5083882be858cbba3d7bba97da26d0bdd482202859769efbe0b2a08336ef40b  src/GameFrameWork.Worlds/SettlementDesignPipeline.cs
+3256a066c062480e3e9e1b709a6155231ad65eec8bfa2b97399ee31022317f34  src/GameFrameWork.Worlds/SettlementPlanner.cs
+fa98b0da5c9d75730b6aa73710307fb312d1a731121806fe33061d95c84ffed5  src/GameFrameWork.Worlds/WorldRasterGeometry.cs
+55663d7b1cefa14262491653ae2119c4bab3a918960218a5a7bd6db687e86e32  tests/fixtures/synthetic-desert-world.json
+8965687cae5712d689612efad0b9e0988ba58a02d93022ecfee42378d7b6f8d9  tests/fixtures/synthetic-infrastructure-world.json
+f011bdddd7982bef9e40ec78237c183500e98254ab9ae71926815b1c8b914685  tests/fixtures/synthetic-siting-world.json
+b8abd229dedc9d6e016bf972ae3956a20942b8353f812da13345aa1fa0114db5  tests/GameFrameWork.TestCatalog/ArcaneTestCatalog.cs
+1c8504dfba7a042db8be361f5d42705be001f00749109c03d413c5e2f08a951e  tests/GameFrameWork.TestCatalog/GameFrameWork.TestCatalog.csproj
+a4ff8b1fe2ee615f1ffc1eb2e0235df238343a10a2b21ec4bccc42b20090d9a4  tests/GameFrameWork.Tests/CatalogContractTests.cs
+b2235b7be40e59d6fc5fdb1a003e497e981edc5aa0a7e953810eaab9c50c2172  tests/GameFrameWork.Tests/CatalogExpansionTests.cs
+d93d1357bf7f8898c2260eb41c076925ef518f4a65188f7034ba4643acb9a972  tests/GameFrameWork.Tests/CliIntegrityTests.cs
+6228cb40114840f3b38fc6e3da81c182af11ebb603e4dc65129091b39d7285a9  tests/GameFrameWork.Tests/GameFrameWork.Tests.csproj
+86fcef35da47e9feeb1fe8ce87dd06827b3f8051a9233fc83989920a74bcd0b9  tests/GameFrameWork.Tests/InfrastructureAlgorithmTests.cs
+fb5905b7d7117678c11f36a437d5a8cd52f444438a673723b8b950c49ad66c1a  tests/GameFrameWork.Tests/MockupAlgorithmTests.cs
+ce1adbe07b21ffdeb5aa86eaddd6969ebe8d326418b45b8443944cd5883c9dbb  tests/GameFrameWork.Tests/MockupGenerationFixture.cs
+2d46fe1771f0a34a445d9d4abaf3670979c25f2f9da31e241864d79c8ec81b7b  tests/GameFrameWork.Tests/ProductionIntegrityTests.cs
+ad04e81bbf868b638cc96e538aeab4d05b4fe69880bd5bf92a3dd7dfb78851ab  tests/GameFrameWork.Tests/Program.cs
+3e7b9643c985233ef2d3517801dbe0e08b6eaedfddab91f20842ad793774e2c0  tests/GameFrameWork.Tests/SitingAlgorithmTests.cs
+3dce94cdddc28f086f6f725bca2362401ecefa0d57904614f863c2da9352f5da  tests/GameFrameWork.Tests/TestCatalogs.cs
+PASS: 62 execution-input hashes re-read and matched.

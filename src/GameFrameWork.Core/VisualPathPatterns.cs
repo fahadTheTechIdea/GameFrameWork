@@ -2,9 +2,11 @@ using GameFrameWork.Core.Geometry;
 namespace GameFrameWork.Core.Planning;
 
 /// <summary>A named composition path extracted from an approved GameArts mockup.</summary>
-public sealed record VisualDesignPath(string Id, string RegionId, WorldPolyline Centerline, string Role);
+public sealed record VisualDesignPath(string Id, string RegionId, WorldPolyline Centerline, string Role,
+    IReadOnlySet<string>? AdditionalNetworkModes = null);
 public sealed record PathPattern(string Id, string PathId, string Kind, string Purpose,
-    string RuleId, double SpacingMeters, double StartInsetMeters = 0, double EndInsetMeters = 0);
+    string RuleId, double SpacingMeters, double StartInsetMeters = 0, double EndInsetMeters = 0,
+    double NormalOffsetMeters = 0, double ClearanceRadiusMeters = 0);
 public sealed record PathPatternResult(IReadOnlyList<VisualAnchor> Anchors,
     IReadOnlyList<VisualObjectDecision> Decisions, IReadOnlyList<WorldDesignIssue> Issues);
 
@@ -15,11 +17,12 @@ public sealed record PathPatternResult(IReadOnlyList<VisualAnchor> Anchors,
 public sealed class VisualPathPatternGenerator
 {
     public PathPatternResult Generate(ApprovedVisualWorldBlueprint blueprint,
-        IReadOnlyList<VisualDesignPath> paths, PathPattern pattern)
+        IReadOnlyList<VisualDesignPath> paths, PathPattern pattern, CancellationToken token = default)
     {
         ArgumentNullException.ThrowIfNull(blueprint);
         ArgumentNullException.ThrowIfNull(paths);
         ArgumentNullException.ThrowIfNull(pattern);
+        token.ThrowIfCancellationRequested();
         PathPatternResult Reject(string code, string message) =>
             new([], [], [new(code, pattern.Id, message)]);
         if (string.IsNullOrWhiteSpace(pattern.Id) || string.IsNullOrWhiteSpace(pattern.PathId) ||
@@ -27,33 +30,42 @@ public sealed class VisualPathPatternGenerator
             string.IsNullOrWhiteSpace(pattern.RuleId) || !double.IsFinite(pattern.SpacingMeters) ||
             pattern.SpacingMeters <= 0 || !double.IsFinite(pattern.StartInsetMeters) ||
             pattern.StartInsetMeters < 0 || !double.IsFinite(pattern.EndInsetMeters) ||
-            pattern.EndInsetMeters < 0)
+            pattern.EndInsetMeters < 0 || !double.IsFinite(pattern.NormalOffsetMeters) ||
+            !double.IsFinite(pattern.ClearanceRadiusMeters) || pattern.ClearanceRadiusMeters < 0)
             return Reject("INVALID_PATH_PATTERN", "A valid path, design rule and positive spacing are required.");
+        if (paths.Count(p => p.Id == pattern.PathId) > 1)
+            return Reject("VISUAL_PATH_DUPLICATE", "Path IDs must be unique.");
         var path = paths.SingleOrDefault(p => p.Id == pattern.PathId);
         if (path is null) return Reject("VISUAL_PATH_MISSING", "Approved visual path is absent.");
-        if (!blueprint.Regions.Any(r => r.Id == path.RegionId))
+        var region = blueprint.Regions.FirstOrDefault(r => r.Id == path.RegionId);
+        if (region is null)
             return Reject("PATH_REGION_MISSING", "Path must belong to an approved visual region.");
-        try { path.Centerline.Validate(); }
+        try { path.Centerline.Validate(); region.Outline.Validate(); }
         catch (ArgumentException) { return Reject("INVALID_VISUAL_PATH", "Path geometry is invalid."); }
         var total = path.Centerline.LengthMeters();
         if (pattern.StartInsetMeters + pattern.EndInsetMeters > total)
             return Reject("PATH_TOO_SHORT", "Requested insets exceed the authored path.");
         var available = total - pattern.StartInsetMeters - pattern.EndInsetMeters;
-        var count = 1 + (int)Math.Floor(available / pattern.SpacingMeters);
-        if (count > 100000) return Reject("PATH_PATTERN_TOO_LARGE", "Requested count exceeds safety limit.");
+        var requested = 1 + Math.Floor(available / pattern.SpacingMeters);
+        if (!double.IsFinite(requested) || requested > 100000)
+            return Reject("PATH_PATTERN_TOO_LARGE", "Requested count exceeds safety limit.");
+        var count = (int)requested;
         var anchors = new List<VisualAnchor>(count);
         var decisions = new List<VisualObjectDecision>(count);
         for (var i = 0; i < count; i++)
         {
+            token.ThrowIfCancellationRequested();
             double distance = pattern.StartInsetMeters + i * pattern.SpacingMeters;
-            var point = Sample(path.Centerline.Points, distance);
+            var point = Sample(path.Centerline.Points, distance, pattern.NormalOffsetMeters);
+            if (!region.Outline.ContainsPoint(point))
+                return Reject("PATH_PATTERN_OUTSIDE_REGION", "The authored offset leaves its visual region; revise the grammar.");
             var id = $"{pattern.Id}-{i}";
             anchors.Add(new(id, path.RegionId, point, path.Role));
             decisions.Add(new(id, pattern.Kind, id, pattern.Purpose, pattern.RuleId));
         }
         return new(anchors, decisions, []);
     }
-    private static WorldPoint Sample(IReadOnlyList<WorldPoint> points, double distance)
+    private static WorldPoint Sample(IReadOnlyList<WorldPoint> points, double distance, double offset)
     {
         for (int i = 1; i < points.Count; i++)
         {
@@ -62,7 +74,8 @@ public sealed class VisualPathPatternGenerator
             if (distance <= segment || i == points.Count - 1)
             {
                 var t = Math.Clamp(distance / segment, 0, 1);
-                return new(a.X + (b.X - a.X) * t, a.Y + (b.Y - a.Y) * t);
+                return new(a.X + (b.X - a.X) * t - (b.Y-a.Y)/segment*offset,
+                    a.Y + (b.Y - a.Y) * t + (b.X-a.X)/segment*offset);
             }
             distance -= segment;
         }

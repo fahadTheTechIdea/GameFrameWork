@@ -1,0 +1,44 @@
+{
+  "name": "synthetic-door",
+  "asset_id": "synthetic-door",
+  "component": "door",
+  "columns": 2,
+  "padding": 2,
+  "spacing": 1,
+  "frames": [
+    {
+      "name": "closed",
+      "file": "closed.png",
+      "pivot": [
+        8,
+        14
+      ],
+      "anchors": {
+        "hinge": [
+          4,
+          14
+        ]
+      },
+      "direction": "fixed",
+      "action": "opening",
+      "duration_ms": 125
+    },
+    {
+      "name": "opening",
+      "file": "opening.png",
+      "pivot": [
+        10,
+        16
+      ],
+      "anchors": {
+        "hinge": [
+          8,
+          16
+        ]
+      },
+      "direction": "fixed",
+      "action": "opening",
+      "duration_ms": 125
+    }
+  ]
+}

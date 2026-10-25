@@ -1,0 +1,604 @@
+{
+  "Width": 228,
+  "Height": 226,
+  "Seed": 42,
+  "Biome": "Desert",
+  "SettlementCount": 1,
+  "Design": {
+    "SchemaVersion": 1,
+    "Blueprint": {
+      "SchemaVersion": 1,
+      "MockupId": "synthetic-siting-layout",
+      "ApprovedRevision": "layout-r1",
+      "ArtStyleId": "synthetic-style",
+      "Regions": [
+        {
+          "Id": "world",
+          "Outline": {
+            "Vertices": [
+              {
+                "X": 0,
+                "Y": 0
+              },
+              {
+                "X": 228,
+                "Y": 0
+              },
+              {
+                "X": 228,
+                "Y": 226
+              },
+              {
+                "X": 0,
+                "Y": 226
+              }
+            ]
+          },
+          "VisualRole": "synthetic-world"
+        },
+        {
+          "Id": "site",
+          "Outline": {
+            "Vertices": [
+              {
+                "X": 64,
+                "Y": 64
+              },
+              {
+                "X": 196,
+                "Y": 64
+              },
+              {
+                "X": 196,
+                "Y": 194
+              },
+              {
+                "X": 64,
+                "Y": 194
+              }
+            ]
+          },
+          "VisualRole": "authored-facility-site"
+        },
+        {
+          "Id": "water",
+          "Outline": {
+            "Vertices": [
+              {
+                "X": 0,
+                "Y": 0
+              },
+              {
+                "X": 16,
+                "Y": 0
+              },
+              {
+                "X": 16,
+                "Y": 226
+              },
+              {
+                "X": 0,
+                "Y": 226
+              }
+            ]
+          },
+          "VisualRole": "authored-water-source"
+        }
+      ],
+      "Anchors": []
+    },
+    "MetersPerCell": 1,
+    "Paths": [
+      {
+        "Id": "approach",
+        "RegionId": "world",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 32,
+              "Y": 64
+            },
+            {
+              "X": 212,
+              "Y": 64
+            }
+          ]
+        },
+        "Role": "road"
+      },
+      {
+        "Id": "service-potable-water",
+        "RegionId": "world",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 32,
+              "Y": 64
+            },
+            {
+              "X": 212,
+              "Y": 64
+            }
+          ]
+        },
+        "Role": "utility"
+      },
+      {
+        "Id": "service-power",
+        "RegionId": "world",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 32,
+              "Y": 64
+            },
+            {
+              "X": 212,
+              "Y": 64
+            }
+          ]
+        },
+        "Role": "utility"
+      },
+      {
+        "Id": "service-wastewater",
+        "RegionId": "world",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 32,
+              "Y": 64
+            },
+            {
+              "X": 212,
+              "Y": 64
+            }
+          ]
+        },
+        "Role": "utility"
+      }
+    ],
+    "RoadRules": [
+      {
+        "PathId": "approach",
+        "Class": "Collector",
+        "Profile": {
+          "LaneWidthMeters": 3,
+          "LaneCount": 4,
+          "SidewalkLeftMeters": 2,
+          "SidewalkRightMeters": 2,
+          "CurbLeftMeters": 0,
+          "CurbRightMeters": 0,
+          "MedianMeters": 0,
+          "TotalWidthMeters": 16
+        }
+      }
+    ],
+    "SettlementRules": [
+      {
+        "Id": "facility",
+        "RegionId": "site",
+        "SettlementId": "settlement",
+        "FrontagePathId": "approach",
+        "Purpose": "serve the explicit contextual warehouse program",
+        "TargetFrontageMeters": 132,
+        "MinimumFrontageMeters": 132,
+        "Envelope": {
+          "BuildingType": "warehouse",
+          "FrontSetbackMeters": 20,
+          "RearSetbackMeters": 20,
+          "SideSetbackMeters": 20,
+          "MinimumWidthMeters": 1,
+          "MinimumDepthMeters": 1
+        },
+        "Components": [],
+        "SizeVariantId": "small",
+        "RequiredCapacity": 10,
+        "Settlement": {
+          "Class": "Town",
+          "Role": "Agricultural",
+          "Population": 1000
+        },
+        "Siting": {
+          "DistrictId": "district",
+          "Technology": "GeneralStorage",
+          "Dependencies": [
+            {
+              "RequirementId": "freight",
+              "SourceId": "freight",
+              "LinkIds": [
+                "link-freight"
+              ],
+              "ServicePointMeters": null
+            },
+            {
+              "RequirementId": "potable-water",
+              "SourceId": "potable-water",
+              "LinkIds": [
+                "link-potable-water"
+              ],
+              "ServicePointMeters": null
+            },
+            {
+              "RequirementId": "power",
+              "SourceId": "power",
+              "LinkIds": [
+                "link-power"
+              ],
+              "ServicePointMeters": null
+            },
+            {
+              "RequirementId": "wastewater",
+              "SourceId": "wastewater",
+              "LinkIds": [
+                "link-wastewater"
+              ],
+              "ServicePointMeters": null
+            }
+          ]
+        }
+      }
+    ],
+    "TerrainRules": [
+      {
+        "RegionId": "world",
+        "Kind": "Sand",
+        "Priority": 0,
+        "ElevationMeters": 2,
+        "RuleId": "authored-base",
+        "SlopeX": 0,
+        "SlopeY": 0
+      },
+      {
+        "RegionId": "water",
+        "Kind": "Water",
+        "Priority": 1,
+        "ElevationMeters": 0,
+        "RuleId": "authored-water",
+        "SlopeX": 0,
+        "SlopeY": 0
+      }
+    ],
+    "PublicRealmPatterns": [],
+    "BuildingCatalog": [
+      {
+        "Id": "warehouse",
+        "Function": "Storage",
+        "ServiceCapacity": 10,
+        "AllowedClasses": [
+          "Village",
+          "Town",
+          "City"
+        ],
+        "FavoredRoles": [],
+        "SizeVariants": [
+          {
+            "Id": "small",
+            "WidthMeters": 12,
+            "DepthMeters": 10,
+            "HeightMeters": 8,
+            "ServiceCapacity": 10,
+            "SiteClearanceMeters": 2,
+            "AllowedClasses": null,
+            "MinimumRoadWidthMeters": 0
+          },
+          {
+            "Id": "medium",
+            "WidthMeters": 30,
+            "DepthMeters": 20,
+            "HeightMeters": 12,
+            "ServiceCapacity": 50,
+            "SiteClearanceMeters": 4,
+            "AllowedClasses": null,
+            "MinimumRoadWidthMeters": 0
+          },
+          {
+            "Id": "large",
+            "WidthMeters": 60,
+            "DepthMeters": 40,
+            "HeightMeters": 18,
+            "ServiceCapacity": 200,
+            "SiteClearanceMeters": 6,
+            "AllowedClasses": null,
+            "MinimumRoadWidthMeters": 0
+          },
+          {
+            "Id": "distribution-hub",
+            "WidthMeters": 120,
+            "DepthMeters": 80,
+            "HeightMeters": 24,
+            "ServiceCapacity": 1000,
+            "SiteClearanceMeters": 10,
+            "AllowedClasses": null,
+            "MinimumRoadWidthMeters": 0
+          }
+        ],
+        "ScaleDemandPerResident": 0.001,
+        "SiteRules": [
+          {
+            "Id": "service-yard",
+            "Kind": "LoadingYard",
+            "Band": "Rear",
+            "MinimumDepthMeters": 4,
+            "InsetMeters": 0,
+            "Required": true,
+            "SpeciesAssetId": null,
+            "PlantSpacingMeters": 0,
+            "PlantMarginMeters": 0,
+            "MaximumDepthMeters": 60
+          },
+          {
+            "Id": "landscape-buffer",
+            "Kind": "GreenBuffer",
+            "Band": "Left",
+            "MinimumDepthMeters": 2,
+            "InsetMeters": 0.25,
+            "Required": true,
+            "SpeciesAssetId": null,
+            "PlantSpacingMeters": 0,
+            "PlantMarginMeters": 0,
+            "MaximumDepthMeters": 8
+          }
+        ],
+        "AccessWidthMeters": 4,
+        "MinimumRoadWidthMeters": 6,
+        "AllowedRoles": [
+          "Agricultural",
+          "Industrial",
+          "Mixed"
+        ],
+        "Category": "IndustryExtraction",
+        "CapacityUnit": "storage-units",
+        "AutomaticDemand": true,
+        "PlacementKind": "FrontageSite",
+        "SitingProfile": {
+          "Id": "siting:warehouse",
+          "Revision": 1,
+          "ResearchRuleIds": [
+            "S01",
+            "S04"
+          ],
+          "SourceIds": [
+            "R04",
+            "R22"
+          ],
+          "AllowedDistricts": [
+            "Agriculture",
+            "HeavyIndustry",
+            "LightIndustry",
+            "Logistics",
+            "Port"
+          ],
+          "AllowedTechnologies": [
+            "AgriculturalStorage",
+            "GeneralStorage",
+            "HazardousStorage"
+          ],
+          "Tags": [
+            "freight-intensive"
+          ],
+          "Requirements": [
+            {
+              "Id": "freight",
+              "Kind": "Freight",
+              "Mode": "Road",
+              "Unit": "game-service-units",
+              "BaseQuantity": 1,
+              "QuantityPerCapacity": 0.1,
+              "RequiredQualities": null,
+              "RequiredOrigin": null,
+              "WhenTechnologies": null,
+              "SourceContainsSite": false,
+              "MinimumRouteWidthMeters": 6,
+              "MaximumRouteLengthMeters": null
+            },
+            {
+              "Id": "potable-water",
+              "Kind": "PotableWater",
+              "Mode": "Utility",
+              "Unit": "game-service-units",
+              "BaseQuantity": 1,
+              "QuantityPerCapacity": 0.1,
+              "RequiredQualities": [
+                "potable",
+                "reliable"
+              ],
+              "RequiredOrigin": null,
+              "WhenTechnologies": null,
+              "SourceContainsSite": false,
+              "MinimumRouteWidthMeters": 0,
+              "MaximumRouteLengthMeters": null
+            },
+            {
+              "Id": "power",
+              "Kind": "Electricity",
+              "Mode": "Utility",
+              "Unit": "game-service-units",
+              "BaseQuantity": 1,
+              "QuantityPerCapacity": 0.1,
+              "RequiredQualities": null,
+              "RequiredOrigin": null,
+              "WhenTechnologies": null,
+              "SourceContainsSite": false,
+              "MinimumRouteWidthMeters": 0,
+              "MaximumRouteLengthMeters": null
+            },
+            {
+              "Id": "wastewater",
+              "Kind": "Wastewater",
+              "Mode": "Utility",
+              "Unit": "game-service-units",
+              "BaseQuantity": 1,
+              "QuantityPerCapacity": 0.1,
+              "RequiredQualities": null,
+              "RequiredOrigin": null,
+              "WhenTechnologies": null,
+              "SourceContainsSite": false,
+              "MinimumRouteWidthMeters": 0,
+              "MaximumRouteLengthMeters": null
+            }
+          ],
+          "RequiredSurroundings": [
+            "AccessWalkway",
+            "LoadingYard",
+            "GreenBuffer"
+          ],
+          "Provides": [
+            "Freight",
+            "ParentFacility"
+          ],
+          "OutputUnit": "game-service-units",
+          "OutputUnitsPerCapacity": 1
+        }
+      }
+    ],
+    "LandscapeZones": null,
+    "VegetationGrammars": null,
+    "VegetationClearances": null,
+    "InfrastructureRules": null,
+    "Siting": {
+      "SchemaVersion": 1,
+      "Districts": [
+        {
+          "Id": "district",
+          "RegionId": "site",
+          "SettlementId": "settlement",
+          "Use": "HeavyIndustry",
+          "RuleId": "synthetic-district"
+        }
+      ],
+      "Sources": [
+        {
+          "Id": "freight",
+          "Kind": "Freight",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 32,
+            "Y": 64
+          },
+          "Capacity": 100000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "synthetic-resource:freight",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "potable-water",
+          "Kind": "PotableWater",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 32,
+            "Y": 64
+          },
+          "Capacity": 100000,
+          "Unit": "game-service-units",
+          "Qualities": [
+            "potable",
+            "reliable"
+          ],
+          "RuleId": "synthetic-resource:potable-water",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "power",
+          "Kind": "Electricity",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 32,
+            "Y": 64
+          },
+          "Capacity": 100000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "synthetic-resource:power",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "wastewater",
+          "Kind": "Wastewater",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 32,
+            "Y": 64
+          },
+          "Capacity": 100000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "synthetic-resource:wastewater",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        }
+      ],
+      "Links": [
+        {
+          "Id": "link-freight",
+          "PathId": "approach",
+          "Mode": "Road",
+          "Capacity": 100000,
+          "Unit": "game-service-units",
+          "RuleId": "synthetic-link:freight",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Freight"
+          ]
+        },
+        {
+          "Id": "link-potable-water",
+          "PathId": "service-potable-water",
+          "Mode": "Utility",
+          "Capacity": 100000,
+          "Unit": "game-service-units",
+          "RuleId": "synthetic-link:potable-water",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "PotableWater"
+          ]
+        },
+        {
+          "Id": "link-power",
+          "PathId": "service-power",
+          "Mode": "Utility",
+          "Capacity": 100000,
+          "Unit": "game-service-units",
+          "RuleId": "synthetic-link:power",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Electricity"
+          ]
+        },
+        {
+          "Id": "link-wastewater",
+          "PathId": "service-wastewater",
+          "Mode": "Utility",
+          "Capacity": 100000,
+          "Unit": "game-service-units",
+          "RuleId": "synthetic-link:wastewater",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Wastewater"
+          ]
+        }
+      ],
+      "Separations": [],
+      "Exclusions": []
+    },
+    "Catalog": {
+      "CatalogId": "modern",
+      "EnabledCapabilities": [
+        "modern.district-policy",
+        "modern.electricity-network",
+        "modern.facility-technology",
+        "modern.motor-road-network",
+        "modern.potable-water-network",
+        "modern.wastewater-network"
+      ]
+    }
+  }
+}

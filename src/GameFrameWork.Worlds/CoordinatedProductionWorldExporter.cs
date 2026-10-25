@@ -6,9 +6,8 @@ using GameFrameWork.Core.Planning;
 namespace GameFrameWork.Worlds;
 
 /// <summary>Production export from an already coordinated world. Every referenced
-/// production object and surface must be approved by the caller's external authority;
-/// this first integration strictly validates vegetation bundles only and therefore
-/// refuses worlds containing unverified nonvegetation artwork.</summary>
+/// production object and surface requires native-bundle verification and approval
+/// by the caller's external authority, including nonvegetation artwork.</summary>
 public sealed record CoordinatedProductionRequest(
     CoordinatedSettlementResult Composition,
     ProductionWorldRequest GameArtsRequest);

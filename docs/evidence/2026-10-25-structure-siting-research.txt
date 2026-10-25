@@ -1,0 +1,31 @@
+Structure siting research verification
+Recorded: 2026-10-25T08:40:13.6655567+03:00
+Base revision: d5d851b9d37ba3ba6d344afc52cc3e25e0dd6ec6
+Working tree remains dirty on main; existing engine, infrastructure, catalog and integrity changes preserved.
+Scope: user-requested research and specification/documentation only. New siting enforcement NOT IMPLEMENTED.
+Builds/runtime test harness NOT RUN for this documentation-only slice. Previous infrastructure evidence remains historical.
+Source retrieval: primary-authored publications; URLs, date/scope and retired/draft exclusions recorded in the siting source register.
+Self-review only. No jurisdiction-specific regulatory approval, numeric calibration or real-world facility qualification claimed.
+
+COMMAND: dotnet src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll list-buildings (read-only catalog inventory)
+EXIT: 0
+PASS: 197 live catalog IDs and 15 categories match coverage exactly; 45 unique proposed rule profiles; 26 source register entries.
+PASS: 40 execution-source SHA256 hashes unchanged from the infrastructure evidence snapshot.
+SOURCE LIMITATION: USFA full PDF retrieval exceeded browsing size limit; indexed chapter 3 excerpt was reviewed. Other rule/source gaps and retired-source exclusions are stated in the research register.
+PASS: 36 local document links and target anchors verified.
+COMMAND: git diff --check
+warning: in the working copy of 'docs/ADVANCED_WORLD_GENERATION_MASTER_PLAN.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/CONSTRAINT_DRIVEN_PLACEMENT.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/ROADMAP.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/SDLC_VERIFICATION.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/SETTLEMENT_IDENTITY_AND_BUILDING_RULES.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/GameFrameWork.Worlds/DesertWorldGenerator.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/GameFrameWork.Worlds/SettlementDesignPipeline.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/GameFrameWork.Worlds/SettlementPlanner.cs', LF will be replaced by CRLF the next time Git touches it
+
+EXIT: 0
+DOCUMENT SHA256 SNAPSHOT
+5BDB34F49F8D13F9BD3625C9796D1167F728414A27F950E8A64D164B06E3A812  docs/SETTLEMENT_IDENTITY_AND_BUILDING_RULES.md
+219B72A37B9F6AD76649D74D141475D1809096DED36790282F6123D3D08E96F5  docs/ROADMAP.md
+4509C885853C57BCAF4DED3B1B1B30755D9D60E78424750F6B8228D2A3BFFA87  docs/ADVANCED_WORLD_GENERATION_MASTER_PLAN.md
+FF9F1DB1443B79A5014352BA6BB47951B457BB4599BD5B2764F46E0CAE58BE46  docs/SDLC_VERIFICATION.md

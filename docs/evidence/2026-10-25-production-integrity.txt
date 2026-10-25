@@ -1,0 +1,52 @@
+Timestamp: 2026-10-25T07:02:45+03:00
+Base revision: d5d851b9d37ba3ba6d344afc52cc3e25e0dd6ec6 plus working-tree changes
+Environment: Windows x64; .NET SDK 10.0.401; runtime 10.0.12.
+Repository pins SDK 10.0.402, unavailable locally. Validation uses ignored generated/sdk-validation/global.json (10.0.401, rollForward disable).
+Root pinned-SDK build: FAILED before compilation (compatible SDK not found).
+No Godot executable found on PATH or in inspected repository/tool locations; runtime integration NOT RUN.
+SHA256 src/GameFrameWork.Cli/Program.cs 63EFB3D7202F220C609D8EA9158C3C9B95AA85293C0048817EF209CEE5D69D15
+SHA256 src/GameFrameWork.Core/GameArtsNonVegetationGate.cs E0A3156E9F88CD76CE276AD0CEACE0AA23E8738961D18BA78C25904A6028F44C
+SHA256 src/GameFrameWork.Core/PortableWorldPackageVerifier.cs D4E6FD24EED656577BA469A8F2CBE739C41A0E9DEA1EF05136FD0B0ABAC65FF9
+SHA256 src/GameFrameWork.Core/WorldAssetDependencyManifest.cs 9409FC7763A6DF9F7F071F8A91B1CF0A80D21860A647262BAAC105F058431D92
+SHA256 src/GameFrameWork.Worlds/CoordinatedProductionWorldExporter.cs EB7DF9BD01A15414311A6B503E15D203D795D10C64CCE31AC0EC3FAA72B27BE6
+SHA256 tests/GameFrameWork.Tests/Program.cs 387E0E7C24EFF7AAE6FE09771F1E25F725709968CCCBCA80C401B6784C4AC602
+SHA256 tests/GameFrameWork.Tests/ProductionIntegrityTests.cs 938229A53A7DC2B54BED73CC175D020AB218C288ABF7992053719C8982F782F1
+SHA256 tests/GameFrameWork.Tests/CliIntegrityTests.cs 2512772FCE691B11D1138B4B5B87574F94335AD22E3DADD5F012875F14F9B4D1
+SHA256 .github/workflows/dotnet-ci.yml 66E1E18DC7CB8EA7A6D0FCA9BDB7829F819F066AF544D9F50E0D8B5468450FA0
+Command (cwd generated/sdk-validation): dotnet build ../../tests/GameFrameWork.Tests/GameFrameWork.Tests.csproj -c Release --warnaserror --no-restore
+  GameFrameWork.Core -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Core\bin\Release\net10.0\GameFrameWork.Core.dll
+  GameFrameWork.Godot -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Godot\bin\Release\net10.0\GameFrameWork.Godot.dll
+  GameFrameWork.Worlds -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Worlds\bin\Release\net10.0\GameFrameWork.Worlds.dll
+  GameFrameWork.Tests -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\tests\GameFrameWork.Tests\bin\Release\net10.0\GameFrameWork.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.94
+Exit: 0
+Command (cwd generated/sdk-validation): dotnet build ../../src/GameFrameWork.Cli/GameFrameWork.Cli.csproj -c Release --warnaserror --no-restore
+  GameFrameWork.Core -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Core\bin\Release\net10.0\GameFrameWork.Core.dll
+  GameFrameWork.Godot -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Godot\bin\Release\net10.0\GameFrameWork.Godot.dll
+  GameFrameWork.Worlds -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Worlds\bin\Release\net10.0\GameFrameWork.Worlds.dll
+  GameFrameWork.Cli -> C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\src\GameFrameWork.Cli\bin\Release\net10.0\GameFrameWork.Cli.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.12
+Exit: 0
+Command (cwd repository root): dotnet tests/GameFrameWork.Tests/bin/Release/net10.0/GameFrameWork.Tests.dll --cli src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll
+PASS: CLI integrity JSON, exit codes and log/audit/notification process checks.
+PASS: production integrity regressions (synthetic GameArts fixtures).
+[world.validation.failed] Invalid placement rejected. (correlation: correlation-test)
+PASS: engine regression harness (synthetic artwork; real approval and Godot runtime not verified).
+Exit: 0
+Command (cwd generated/sdk-validation): dotnet ../../src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll desert ../revision-desert 42
+Generated 64x64 desert world at C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\revision-desert
+Exit: 0
+Command (cwd generated/sdk-validation): dotnet ../../src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll dummy-village ../revision-village
+Generated test Godot village at C:\Users\f_ald\source\repos\fahadTheTechIdea\GameFrameWork\generated\revision-village
+Exit: 0
+PASS: all seven existing CI smoke output files exist and are nonempty. This does not run Godot.

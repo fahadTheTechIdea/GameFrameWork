@@ -8,8 +8,9 @@ public sealed record TerrainRegion(string Id, string Kind, WorldPolygon Boundary
     string SourceVisualRegionId, string DesignRuleId);
 public sealed record PlannedWorldPath(string Id, string Kind, WorldPolyline Geometry,
     string SourceVisualPathId, string DesignRuleId);
+public enum LandscapeZoneRole { GroundCover, PlacementScope }
 public sealed record LandscapeZone(string Id, string Kind, WorldPolygon Boundary,
-    string SourceVisualRegionId, string DesignRuleId);
+    string SourceVisualRegionId, string DesignRuleId, LandscapeZoneRole Role = LandscapeZoneRole.GroundCover);
 
 public sealed record SemanticWorldPackage(WorldAssemblyPackage Base,
     IReadOnlyList<TerrainRegion> Terrain,
@@ -49,7 +50,11 @@ public sealed class SemanticWorldBuilder
             catch (ArgumentException) { errors.Add("INVALID_POLYGON:" + id); }
         }
         foreach (var t in terrain) InspectPolygon(t.Id,t.SourceVisualRegionId,t.DesignRuleId,t.Boundary);
-        foreach (var l in landscape) InspectPolygon(l.Id,l.SourceVisualRegionId,l.DesignRuleId,l.Boundary);
+        foreach (var l in landscape)
+        {
+            InspectPolygon(l.Id,l.SourceVisualRegionId,l.DesignRuleId,l.Boundary);
+            if(!Enum.IsDefined(l.Role)) errors.Add("INVALID_LANDSCAPE_ROLE:"+l.Id);
+        }
         foreach (var p in paths)
         {
             if (string.IsNullOrWhiteSpace(p.Id) || !used.Add(p.Id)) errors.Add("DUPLICATE_SEMANTIC_ID:" + p.Id);

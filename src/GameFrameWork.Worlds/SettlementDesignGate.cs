@@ -7,11 +7,11 @@ namespace GameFrameWork.Worlds;
 /// <summary>Validates a settlement design as a whole before allowing compilation.</summary>
 public sealed class SettlementDesignGate
 {
-    public IReadOnlyList<string> Validate(SettlementDesignResult result)
+    public IReadOnlyList<string> Validate(SettlementDesignResult result, CancellationToken token = default)
     {
         ArgumentNullException.ThrowIfNull(result);
         var errors = new List<string>(result.Diagnostics);
-        errors.AddRange(new WorldDesignValidator().Validate(result.Design).Issues
+        errors.AddRange(new WorldDesignValidator().Validate(result.Design,token).Issues
             .Select(x => $"{x.Code}:{x.ObjectId}"));
         var roadIds = result.Streets.Select(s => s.Id).ToHashSet(StringComparer.Ordinal);
         var plannedIds = result.Design.Objects.Select(o => o.Id).ToHashSet(StringComparer.Ordinal);
@@ -45,11 +45,11 @@ public sealed class SettlementDesignGate
         return errors.Distinct(StringComparer.Ordinal).ToArray();
     }
 
-    public IReadOnlyList<WorldObject> Compile(SettlementDesignResult result)
+    public IReadOnlyList<WorldObject> Compile(SettlementDesignResult result, CancellationToken token = default)
     {
-        var errors = Validate(result);
+        var errors = Validate(result,token);
         if (errors.Count != 0)
             throw new InvalidOperationException("Settlement design rejected: " + string.Join("; ", errors));
-        return new WorldPlanCompiler().Compile(result.Design);
+        return new WorldPlanCompiler().Compile(result.Design,token);
     }
 }

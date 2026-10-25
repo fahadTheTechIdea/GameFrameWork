@@ -1,0 +1,31 @@
+Settlement catalog research and replacement design
+Date: 2026-10-25 (Asia/Kuwait). Scope: online primary-source research, current source inspection, active documentation only.
+User direction: Modern flag/capabilities for current services; other packs may own fixed C# code; shared contracts, modular plug-and-play; no legacy, compatibility or retained parallel versions.
+Implementation status: NOT IMPLEMENTED; no application code, dependency, skill, fixture or SDK changes in this research pass.
+Owner: repository owner. Responsible: implementation agent. Review: author self-review.
+
+Observed source: ExampleBuildingCatalog in BuildingPrograms.cs and ExpandedBuildingCatalog.cs owns 197 families / 585 variants / 15 categories. MockupWorldDesign embeds BuildingDefinition data without a catalog selector. StructureSitingProfiles applies Modern utility baselines and ID/technology switches. District/resource/technology vocabulary is closed enums in StructureSiting.cs. No settlement catalog plugin registry/load context found in inspected src C# search. Existing art registry and operation services are reusable boundaries.
+
+Online sources accessed 2026-10-25:
+Microsoft .NET plugin tutorial: https://learn.microsoft.com/en-us/dotnet/core/tutorials/creating-app-with-plugin-support
+Godot custom resources: https://docs.godotengine.org/en/stable/tutorials/scripting/resources.html
+OpenRA traits (page documents release-20250330, not assumed latest engine): https://docs.openra.net/en/release/traits/
+Epic modular game features: https://dev.epicgames.com/documentation/unreal-engine/game-features-and-modular-gameplay-in-unreal-engine
+Wesnoth primary terrain source (mutable master inspected, no content imported): https://github.com/wesnoth/wesnoth/blob/master/data/core/terrain.cfg
+UNESCO Provins: https://whc.unesco.org/en/list/873
+UNESCO Moenjodaro: https://whc.unesco.org/en/list/138
+UNESCO Jaipur: https://whc.unesco.org/en/list/1605
+UNESCO Yazd: https://whc.unesco.org/en/list/1544
+UNESCO Lijiang: https://whc.unesco.org/en/list/811/
+UNESCO Crespi d'Adda: https://whc.unesco.org/en/list/730/
+NASA ECLSS: https://www.nasa.gov/reference/environmental-control-and-life-support-systems-eclss/
+NASA lunar surface habitat thermal reference paper: https://ntrs.nasa.gov/api/citations/20210026557/downloads/IEEE%202022%20Paper%20SH%20TCS%20Architecture%20and%20Technical%20Challenges%20Update.pdf
+NOAA historical Aquarius reference: https://sanctuaries.noaa.gov/missions/2010aquarius/meet_aquarius.html
+The Wesnoth TerrainTypeWML wiki URL could not be retrieved; it is not used as evidence. Primary terrain source used instead.
+
+Conclusions/design synthesis and acceptance C1-C5 are in docs/SETTLEMENT_IDENTITY_AND_BUILDING_RULES.md; master plan/roadmap updated in place. Type IDs and capabilities extensible; fixed pack code allowed, no universal DSL requirement. One current contract; exact content identity does not negotiate old versions. Historical cultural/period specifics, fictional lore and 3D/target deployment remain scoped future research/implementation.
+Builds/tests/Godot/plugin execution: NOT RUN for this documentation-only pass. Prior siting runtime evidence is not catalog implementation evidence.
+Base revision: d5d851b9d37ba3ba6d344afc52cc3e25e0dd6ec6 plus preserved dirty working tree.
+Timestamp: 2026-10-25T09:32:27.5434830+03:00
+PASS: 48 execution-input SHA-256 hashes unchanged from prior siting snapshot.
+PASS: 48 local links/anchors across four updated documents; git diff --check exit 0.

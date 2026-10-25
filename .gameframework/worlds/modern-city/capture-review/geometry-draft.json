@@ -1,0 +1,3350 @@
+{
+  "status": "geometry-draft-not-production-world",
+  "source": {
+    "mockupId": "modern-city",
+    "revision": "49d037170001e1bc3158a74f8eb8e5182a6831920febfb9be31c8c5380be5b2a",
+    "file": ".gamearts/outputs/mockups/generated/modern_city_mockup.png",
+    "sha256": "49d037170001e1bc3158a74f8eb8e5182a6831920febfb9be31c8c5380be5b2a",
+    "width": 1536,
+    "height": 1024,
+    "artStyleId": "pixel_art_provisional",
+    "camera": "elevated near-overhead concept; visible wall faces, not a calibrated ground orthographic plan",
+    "lifecycleManifest": ".gamearts/outputs/manifests/mockups.json"
+  },
+  "features": [
+    {
+      "featureId": "central-park",
+      "semantic": "green.region",
+      "binding": {
+        "kind": "region",
+        "targetId": "central-park"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 500,
+          "y": 424.5
+        },
+        {
+          "x": 664.6666666666666,
+          "y": 429.90000000000003
+        },
+        {
+          "x": 682,
+          "y": 449.7
+        },
+        {
+          "x": 682,
+          "y": 570.3000000000001
+        },
+        {
+          "x": 665.3333333333333,
+          "y": 582.9
+        },
+        {
+          "x": 498,
+          "y": 579.3000000000001
+        },
+        {
+          "x": 489.3333333333333,
+          "y": 562.2
+        },
+        {
+          "x": 488,
+          "y": 443.40000000000003
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "design-access-civic-offices",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "design-access-civic-offices"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 385.3333333333333,
+          "y": 276
+        },
+        {
+          "x": 474,
+          "y": 276
+        }
+      ],
+      "road": {
+        "widthPixels": 14,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "design-access-east-offices",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "design-access-east-offices"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 828.8241469816272,
+          "y": 280.5
+        },
+        {
+          "x": 724,
+          "y": 280.5
+        }
+      ],
+      "road": {
+        "widthPixels": 14,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "design-access-factory",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "design-access-factory"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 1021.3333333333333,
+          "y": 492
+        },
+        {
+          "x": 747.3333333333333,
+          "y": 492
+        }
+      ],
+      "road": {
+        "widthPixels": 14,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "design-access-homes-central-middle",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "design-access-homes-central-middle"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 210.96153846153845,
+          "y": 598.2
+        },
+        {
+          "x": 364,
+          "y": 598.2
+        }
+      ],
+      "road": {
+        "widthPixels": 14,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "design-access-homes-central-north",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "design-access-homes-central-north"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 212,
+          "y": 505.5
+        },
+        {
+          "x": 364,
+          "y": 505.5
+        }
+      ],
+      "road": {
+        "widthPixels": 14,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "design-access-homes-central-south",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "design-access-homes-central-south"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 210.66666666666666,
+          "y": 691.8000000000001
+        },
+        {
+          "x": 364,
+          "y": 691.8000000000001
+        }
+      ],
+      "road": {
+        "widthPixels": 14,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "design-access-homes-lower",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "design-access-homes-lower"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 210.66666666666666,
+          "y": 807
+        },
+        {
+          "x": 364,
+          "y": 807
+        }
+      ],
+      "road": {
+        "widthPixels": 14,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "design-access-homes-park-south",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "design-access-homes-park-south"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 481.49174917491746,
+          "y": 762
+        },
+        {
+          "x": 564,
+          "y": 762
+        }
+      ],
+      "road": {
+        "widthPixels": 14,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "design-access-homes-west-middle",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "design-access-homes-west-middle"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 78.87378640776699,
+          "y": 598.2
+        },
+        {
+          "x": 194,
+          "y": 598.2
+        }
+      ],
+      "road": {
+        "widthPixels": 14,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "design-access-homes-west-north",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "design-access-homes-west-north"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 79.75757575757575,
+          "y": 505.5
+        },
+        {
+          "x": 194,
+          "y": 505.5
+        }
+      ],
+      "road": {
+        "widthPixels": 14,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "design-access-homes-west-south",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "design-access-homes-west-south"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 78.13725490196077,
+          "y": 685.5
+        },
+        {
+          "x": 194,
+          "y": 685.5
+        }
+      ],
+      "road": {
+        "widthPixels": 14,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "design-access-school",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "design-access-school"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 482,
+          "y": 542.4
+        },
+        {
+          "x": 394,
+          "y": 542.4
+        }
+      ],
+      "road": {
+        "widthPixels": 14,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "design-access-stadium",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "design-access-stadium"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 385.3333333333333,
+          "y": 312
+        },
+        {
+          "x": 90.66666666666666,
+          "y": 312
+        }
+      ],
+      "road": {
+        "widthPixels": 14,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "design-access-warehouse",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "design-access-warehouse"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 578,
+          "y": 760.2
+        },
+        {
+          "x": 737.3333333333333,
+          "y": 760.2
+        }
+      ],
+      "road": {
+        "widthPixels": 14,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "design-clearance-detail-park-lawn-center",
+      "semantic": "landscape.planted-ground",
+      "binding": {
+        "kind": "region",
+        "targetId": "design-clearance-detail-park-lawn-center"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 531.7333333333333,
+          "y": 465.36
+        },
+        {
+          "x": 537.0666666666666,
+          "y": 467.52000000000004
+        },
+        {
+          "x": 542.1333333333333,
+          "y": 468.42
+        },
+        {
+          "x": 547.7333333333333,
+          "y": 466.98
+        },
+        {
+          "x": 553.5999999999999,
+          "y": 463.38
+        },
+        {
+          "x": 559.4666666666667,
+          "y": 459.06
+        },
+        {
+          "x": 563.8666666666666,
+          "y": 457.08
+        },
+        {
+          "x": 568.4,
+          "y": 456.72
+        },
+        {
+          "x": 571.3333333333333,
+          "y": 458.52000000000004
+        },
+        {
+          "x": 574,
+          "y": 464.46
+        },
+        {
+          "x": 578.1333333333333,
+          "y": 468.96
+        },
+        {
+          "x": 582.9333333333333,
+          "y": 471.84000000000003
+        },
+        {
+          "x": 588.1333333333333,
+          "y": 473.1
+        },
+        {
+          "x": 592.8,
+          "y": 471.12
+        },
+        {
+          "x": 596.1333333333333,
+          "y": 467.88
+        },
+        {
+          "x": 595.8666666666666,
+          "y": 479.22
+        },
+        {
+          "x": 595.7333333333333,
+          "y": 491.82
+        },
+        {
+          "x": 596,
+          "y": 504.78000000000003
+        },
+        {
+          "x": 596,
+          "y": 517.2
+        },
+        {
+          "x": 597.1999999999999,
+          "y": 525.66
+        },
+        {
+          "x": 599.3333333333333,
+          "y": 531.6
+        },
+        {
+          "x": 602.6666666666666,
+          "y": 535.02
+        },
+        {
+          "x": 608,
+          "y": 537.9
+        },
+        {
+          "x": 610,
+          "y": 542.22
+        },
+        {
+          "x": 610.9333333333333,
+          "y": 547.26
+        },
+        {
+          "x": 610.9333333333333,
+          "y": 553.3800000000001
+        },
+        {
+          "x": 610.1333333333333,
+          "y": 559.14
+        },
+        {
+          "x": 607.7333333333333,
+          "y": 564.5400000000001
+        },
+        {
+          "x": 604.1333333333333,
+          "y": 566.7
+        },
+        {
+          "x": 598.6666666666666,
+          "y": 566.7
+        },
+        {
+          "x": 592.6666666666666,
+          "y": 564.72
+        },
+        {
+          "x": 586.9333333333333,
+          "y": 561.84
+        },
+        {
+          "x": 581.1999999999999,
+          "y": 558.24
+        },
+        {
+          "x": 576.4,
+          "y": 553.2
+        },
+        {
+          "x": 572.6666666666666,
+          "y": 546.36
+        },
+        {
+          "x": 568.4,
+          "y": 539.8800000000001
+        },
+        {
+          "x": 563.4666666666667,
+          "y": 534.1199999999999
+        },
+        {
+          "x": 558,
+          "y": 529.6199999999999
+        },
+        {
+          "x": 552.4,
+          "y": 525.66
+        },
+        {
+          "x": 547.3333333333333,
+          "y": 522.6
+        },
+        {
+          "x": 542.8,
+          "y": 519.54
+        },
+        {
+          "x": 541.8666666666666,
+          "y": 513.6
+        },
+        {
+          "x": 539.7333333333333,
+          "y": 507.3
+        },
+        {
+          "x": 536.4,
+          "y": 502.08000000000004
+        },
+        {
+          "x": 532.8,
+          "y": 497.94000000000005
+        },
+        {
+          "x": 528.6666666666666,
+          "y": 493.61999999999995
+        },
+        {
+          "x": 528.9333333333333,
+          "y": 487.14000000000004
+        },
+        {
+          "x": 529.8666666666666,
+          "y": 479.58
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "design-clearance-detail-park-lawn-east",
+      "semantic": "landscape.planted-ground",
+      "binding": {
+        "kind": "region",
+        "targetId": "design-clearance-detail-park-lawn-east"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 671.3333333333333,
+          "y": 452.40000000000003
+        },
+        {
+          "x": 673.3333333333333,
+          "y": 457.8
+        },
+        {
+          "x": 674.3333333333333,
+          "y": 462.3
+        },
+        {
+          "x": 674.6666666666666,
+          "y": 467.7
+        },
+        {
+          "x": 674,
+          "y": 474
+        },
+        {
+          "x": 673.3333333333333,
+          "y": 481.2
+        },
+        {
+          "x": 673,
+          "y": 489.3
+        },
+        {
+          "x": 673,
+          "y": 497.40000000000003
+        },
+        {
+          "x": 673.3333333333333,
+          "y": 505.5
+        },
+        {
+          "x": 673.3333333333333,
+          "y": 513.6
+        },
+        {
+          "x": 673.3333333333333,
+          "y": 519.9000000000001
+        },
+        {
+          "x": 672.6666666666666,
+          "y": 525.3
+        },
+        {
+          "x": 670.6666666666666,
+          "y": 528.9000000000001
+        },
+        {
+          "x": 668,
+          "y": 531.6
+        },
+        {
+          "x": 664.6666666666666,
+          "y": 534.3
+        },
+        {
+          "x": 661.3333333333333,
+          "y": 537.9
+        },
+        {
+          "x": 658.6666666666666,
+          "y": 542.4
+        },
+        {
+          "x": 656,
+          "y": 546.9
+        },
+        {
+          "x": 654.8,
+          "y": 551.4
+        },
+        {
+          "x": 654.8,
+          "y": 556.8000000000001
+        },
+        {
+          "x": 654.8,
+          "y": 562.2
+        },
+        {
+          "x": 654.8,
+          "y": 567.6
+        },
+        {
+          "x": 653.3333333333333,
+          "y": 573
+        },
+        {
+          "x": 654.6666666666666,
+          "y": 577.5
+        },
+        {
+          "x": 658.6666666666666,
+          "y": 582
+        },
+        {
+          "x": 675.3333333333333,
+          "y": 582.9
+        },
+        {
+          "x": 679.15,
+          "y": 581.1
+        },
+        {
+          "x": 680.8166666666666,
+          "y": 577.5
+        },
+        {
+          "x": 683.3166666666666,
+          "y": 572.1
+        },
+        {
+          "x": 684.6666666666666,
+          "y": 564
+        },
+        {
+          "x": 684.6666666666666,
+          "y": 555
+        },
+        {
+          "x": 684.6666666666666,
+          "y": 545.1
+        },
+        {
+          "x": 684.6666666666666,
+          "y": 535.2
+        },
+        {
+          "x": 684.6666666666666,
+          "y": 523.5
+        },
+        {
+          "x": 684.6666666666666,
+          "y": 511.8
+        },
+        {
+          "x": 684.6666666666666,
+          "y": 500.1
+        },
+        {
+          "x": 684.6666666666666,
+          "y": 488.40000000000003
+        },
+        {
+          "x": 684.6666666666666,
+          "y": 476.7
+        },
+        {
+          "x": 684.6666666666666,
+          "y": 465.90000000000003
+        },
+        {
+          "x": 684.6666666666666,
+          "y": 456
+        },
+        {
+          "x": 684.6666666666666,
+          "y": 442.5
+        },
+        {
+          "x": 680.1333333333333,
+          "y": 452.40000000000003
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "design-clearance-detail-park-lawn-north",
+      "semantic": "landscape.planted-ground",
+      "binding": {
+        "kind": "region",
+        "targetId": "design-clearance-detail-park-lawn-north"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 530,
+          "y": 424.5
+        },
+        {
+          "x": 684.6666666666666,
+          "y": 427.65569620253166
+        },
+        {
+          "x": 684.6666666666666,
+          "y": 442.5
+        },
+        {
+          "x": 680.1333333333333,
+          "y": 452.40000000000003
+        },
+        {
+          "x": 671.3333333333333,
+          "y": 452.40000000000003
+        },
+        {
+          "x": 664.6666666666666,
+          "y": 446.64000000000004
+        },
+        {
+          "x": 658,
+          "y": 445.92
+        },
+        {
+          "x": 650,
+          "y": 445.92
+        },
+        {
+          "x": 642,
+          "y": 445.92
+        },
+        {
+          "x": 636.2666666666667,
+          "y": 443.04
+        },
+        {
+          "x": 636.6666666666666,
+          "y": 438.18
+        },
+        {
+          "x": 638.4,
+          "y": 429.72
+        },
+        {
+          "x": 635.0666666666666,
+          "y": 428.1
+        },
+        {
+          "x": 632.1333333333333,
+          "y": 437.28
+        },
+        {
+          "x": 631.5999999999999,
+          "y": 444.48
+        },
+        {
+          "x": 629.1999999999999,
+          "y": 448.26
+        },
+        {
+          "x": 622,
+          "y": 450.6
+        },
+        {
+          "x": 614,
+          "y": 450.6
+        },
+        {
+          "x": 608,
+          "y": 449.7
+        },
+        {
+          "x": 602.6666666666666,
+          "y": 449.7
+        },
+        {
+          "x": 597.8666666666666,
+          "y": 451.68
+        },
+        {
+          "x": 594.9333333333333,
+          "y": 457.62
+        },
+        {
+          "x": 592,
+          "y": 462.3
+        },
+        {
+          "x": 587.1999999999999,
+          "y": 463.02000000000004
+        },
+        {
+          "x": 582,
+          "y": 461.76
+        },
+        {
+          "x": 578.2666666666667,
+          "y": 457.8
+        },
+        {
+          "x": 576.9333333333333,
+          "y": 452.22
+        },
+        {
+          "x": 573.4666666666667,
+          "y": 448.08
+        },
+        {
+          "x": 568.6666666666666,
+          "y": 446.82
+        },
+        {
+          "x": 563.4666666666667,
+          "y": 448.08
+        },
+        {
+          "x": 558.1333333333333,
+          "y": 450.6
+        },
+        {
+          "x": 552.5333333333333,
+          "y": 455.1
+        },
+        {
+          "x": 547.4666666666667,
+          "y": 458.34000000000003
+        },
+        {
+          "x": 541.5999999999999,
+          "y": 459.42
+        },
+        {
+          "x": 536,
+          "y": 459.06
+        },
+        {
+          "x": 530.9333333333333,
+          "y": 456.72
+        },
+        {
+          "x": 528.6666666666666,
+          "y": 452.76
+        },
+        {
+          "x": 526.5333333333333,
+          "y": 446.82
+        },
+        {
+          "x": 525.8666666666666,
+          "y": 440.34000000000003
+        },
+        {
+          "x": 526.2666666666667,
+          "y": 434.94000000000005
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "design-clearance-detail-park-lawn-south",
+      "semantic": "landscape.planted-ground",
+      "binding": {
+        "kind": "region",
+        "targetId": "design-clearance-detail-park-lawn-south"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 516.6666666666666,
+          "y": 542.4
+        },
+        {
+          "x": 522,
+          "y": 540.6
+        },
+        {
+          "x": 527.3333333333333,
+          "y": 537.9
+        },
+        {
+          "x": 532.6666666666666,
+          "y": 533.4000000000001
+        },
+        {
+          "x": 537.3333333333333,
+          "y": 528
+        },
+        {
+          "x": 541.3333333333333,
+          "y": 529.8
+        },
+        {
+          "x": 546.6666666666666,
+          "y": 533.4000000000001
+        },
+        {
+          "x": 552.6666666666666,
+          "y": 537
+        },
+        {
+          "x": 558,
+          "y": 542.4
+        },
+        {
+          "x": 563.3333333333333,
+          "y": 546.9
+        },
+        {
+          "x": 568.6666666666666,
+          "y": 547.8000000000001
+        },
+        {
+          "x": 571.3333333333333,
+          "y": 552.3000000000001
+        },
+        {
+          "x": 574,
+          "y": 556.8000000000001
+        },
+        {
+          "x": 575.3333333333333,
+          "y": 560.4
+        },
+        {
+          "x": 572.6666666666666,
+          "y": 564.9
+        },
+        {
+          "x": 570.6666666666666,
+          "y": 568.5
+        },
+        {
+          "x": 569.3333333333333,
+          "y": 573
+        },
+        {
+          "x": 568.6666666666666,
+          "y": 578.4
+        },
+        {
+          "x": 569.3333333333333,
+          "y": 583.8000000000001
+        },
+        {
+          "x": 518,
+          "y": 583.8000000000001
+        },
+        {
+          "x": 515.3333333333333,
+          "y": 578.4
+        },
+        {
+          "x": 514.3333333333333,
+          "y": 572.1
+        },
+        {
+          "x": 514,
+          "y": 565.8000000000001
+        },
+        {
+          "x": 514.6666666666666,
+          "y": 560.4
+        },
+        {
+          "x": 515.3333333333333,
+          "y": 554.1
+        },
+        {
+          "x": 517.3333333333333,
+          "y": 547.8000000000001
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "design-clearance-detail-park-lawn-west",
+      "semantic": "landscape.planted-ground",
+      "binding": {
+        "kind": "region",
+        "targetId": "design-clearance-detail-park-lawn-west"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 490.66666666666663,
+          "y": 425.94000000000005
+        },
+        {
+          "x": 522.8,
+          "y": 424.5
+        },
+        {
+          "x": 520.5333333333333,
+          "y": 432.06
+        },
+        {
+          "x": 520.1333333333333,
+          "y": 439.08
+        },
+        {
+          "x": 521.1999999999999,
+          "y": 447.54
+        },
+        {
+          "x": 523.3333333333333,
+          "y": 455.64000000000004
+        },
+        {
+          "x": 524.4,
+          "y": 462.48
+        },
+        {
+          "x": 522.5333333333333,
+          "y": 470.94000000000005
+        },
+        {
+          "x": 520.8,
+          "y": 479.04
+        },
+        {
+          "x": 518.6666666666666,
+          "y": 488.04
+        },
+        {
+          "x": 516.4,
+          "y": 495.96
+        },
+        {
+          "x": 513.1999999999999,
+          "y": 499.74
+        },
+        {
+          "x": 508.5333333333333,
+          "y": 502.08000000000004
+        },
+        {
+          "x": 504,
+          "y": 506.04
+        },
+        {
+          "x": 500,
+          "y": 511.44000000000005
+        },
+        {
+          "x": 498.9333333333333,
+          "y": 517.56
+        },
+        {
+          "x": 500.4,
+          "y": 524.04
+        },
+        {
+          "x": 503.59999999999997,
+          "y": 528.9000000000001
+        },
+        {
+          "x": 507.3333333333333,
+          "y": 532.1400000000001
+        },
+        {
+          "x": 511.06666666666666,
+          "y": 535.3800000000001
+        },
+        {
+          "x": 513.7333333333333,
+          "y": 538.8000000000001
+        },
+        {
+          "x": 514.6666666666666,
+          "y": 545.1
+        },
+        {
+          "x": 512.4,
+          "y": 552.66
+        },
+        {
+          "x": 510,
+          "y": 560.0400000000001
+        },
+        {
+          "x": 508.66666666666663,
+          "y": 567.96
+        },
+        {
+          "x": 508.4,
+          "y": 580.2
+        },
+        {
+          "x": 492.4,
+          "y": 580.2
+        },
+        {
+          "x": 489.8666666666666,
+          "y": 575.34
+        },
+        {
+          "x": 488.4,
+          "y": 565.44
+        },
+        {
+          "x": 488.5333333333333,
+          "y": 550.5
+        },
+        {
+          "x": 488.5333333333333,
+          "y": 532.86
+        },
+        {
+          "x": 488.66666666666663,
+          "y": 512.8800000000001
+        },
+        {
+          "x": 488.66666666666663,
+          "y": 493.9800000000001
+        },
+        {
+          "x": 488.66666666666663,
+          "y": 474.36
+        },
+        {
+          "x": 488.8,
+          "y": 453.3
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "design-clearance-detail-park-south-perimeter-ground",
+      "semantic": "landscape.planted-ground",
+      "binding": {
+        "kind": "region",
+        "targetId": "design-clearance-detail-park-south-perimeter-ground"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 578,
+          "y": 562.2
+        },
+        {
+          "x": 581.3333333333333,
+          "y": 564.9
+        },
+        {
+          "x": 586.6666666666666,
+          "y": 567.6
+        },
+        {
+          "x": 592.6666666666666,
+          "y": 569.4
+        },
+        {
+          "x": 599.3333333333333,
+          "y": 571.2
+        },
+        {
+          "x": 606.6666666666666,
+          "y": 572.1
+        },
+        {
+          "x": 614,
+          "y": 573
+        },
+        {
+          "x": 622,
+          "y": 573.9
+        },
+        {
+          "x": 630.6666666666666,
+          "y": 573
+        },
+        {
+          "x": 638.6666666666666,
+          "y": 572.1
+        },
+        {
+          "x": 647.3333333333333,
+          "y": 570.3000000000001
+        },
+        {
+          "x": 653,
+          "y": 569.94
+        },
+        {
+          "x": 653.3333333333333,
+          "y": 573
+        },
+        {
+          "x": 654.6666666666666,
+          "y": 577.5
+        },
+        {
+          "x": 658.6666666666666,
+          "y": 582
+        },
+        {
+          "x": 573.3333333333333,
+          "y": 583.8000000000001
+        },
+        {
+          "x": 572,
+          "y": 579.3000000000001
+        },
+        {
+          "x": 572.6666666666666,
+          "y": 573.9
+        },
+        {
+          "x": 574.6666666666666,
+          "y": 569.4
+        },
+        {
+          "x": 578,
+          "y": 565.8000000000001
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-001",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-001"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 494,
+          "y": 442.5
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-002",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-002"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 500,
+          "y": 462.3
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-003",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-003"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 512.6666666666666,
+          "y": 450.6
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-004",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-004"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 512.6666666666666,
+          "y": 471.3
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-005",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-005"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 494.66666666666663,
+          "y": 486.6
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-006",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-006"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 492,
+          "y": 509.1
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-007",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-007"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 499.3333333333333,
+          "y": 537.9
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-008",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-008"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 508.66666666666663,
+          "y": 546.9
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-009",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-009"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 501.3333333333333,
+          "y": 569.4
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-010",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-010"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 530.6666666666666,
+          "y": 572.1
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-011",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-011"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 542,
+          "y": 545.1
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-012",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-012"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 548,
+          "y": 536.1
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-013",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-013"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 551.3333333333333,
+          "y": 570.3000000000001
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-014",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-014"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 564.6666666666666,
+          "y": 553.2
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-015",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-015"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 567.3333333333333,
+          "y": 572.1
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-016",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-016"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 581.3333333333333,
+          "y": 570.3000000000001
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-017",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-017"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 604.6666666666666,
+          "y": 574.8000000000001
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-018",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-018"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 624,
+          "y": 577.5
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-019",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-019"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 646,
+          "y": 578.4
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-020",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-020"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 659.3333333333333,
+          "y": 561.3000000000001
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-021",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-021"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 665.3333333333333,
+          "y": 539.7
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-022",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-022"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 678.6666666666666,
+          "y": 526.2
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-023",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-023"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 678.6666666666666,
+          "y": 501.90000000000003
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-024",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-024"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 679.3333333333333,
+          "y": 480.3
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-025",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-025"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 679.3333333333333,
+          "y": 462.3
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-026",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-026"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 674,
+          "y": 449.7
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-027",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-027"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 660,
+          "y": 436.2
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-028",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-028"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 638,
+          "y": 440.7
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-029",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-029"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 616,
+          "y": 437.1
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-030",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-030"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 600.6666666666666,
+          "y": 447
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-031",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-031"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 587.3333333333333,
+          "y": 455.1
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-032",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-032"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 551.3333333333333,
+          "y": 446.1
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-033",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-033"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 535.3333333333333,
+          "y": 441.6
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-034",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-034"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 533.3333333333333,
+          "y": 474
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-035",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-035"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 532.6666666666666,
+          "y": 492
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-036",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-036"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 546,
+          "y": 504.6
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-037",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-037"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 559.3333333333333,
+          "y": 492.90000000000003
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-038",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-038"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 562.6666666666666,
+          "y": 519.9000000000001
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-039",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-039"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 588.6666666666666,
+          "y": 484.8
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-040",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-040"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 584,
+          "y": 501.90000000000003
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-041",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-041"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 591.3333333333333,
+          "y": 526.2
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-042",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-042"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 581.3333333333333,
+          "y": 520.8
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-043",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-043"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 678,
+          "y": 547.8000000000001
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "detail-tree-park-044",
+      "semantic": "vegetation.tree",
+      "binding": {
+        "kind": "anchor",
+        "targetId": "detail-tree-park-044"
+      },
+      "shape": "Point",
+      "points": [
+        {
+          "x": 678,
+          "y": 568.5
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "park-court",
+      "semantic": "sport.basketball-court",
+      "binding": {
+        "kind": "region",
+        "targetId": "park-court"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 612,
+          "y": 533.4000000000001
+        },
+        {
+          "x": 652.6666666666666,
+          "y": 534.3
+        },
+        {
+          "x": 653.3333333333333,
+          "y": 568.5
+        },
+        {
+          "x": 612,
+          "y": 568.5
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "park-field",
+      "semantic": "sport.football-pitch",
+      "binding": {
+        "kind": "region",
+        "targetId": "park-field"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 602.6666666666666,
+          "y": 456
+        },
+        {
+          "x": 664.6666666666666,
+          "y": 457.8
+        },
+        {
+          "x": 665.3333333333333,
+          "y": 528
+        },
+        {
+          "x": 601.3333333333333,
+          "y": 527.1
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "r01-boulevard",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r01-boulevard"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 24,
+          "y": 389.40000000000003
+        },
+        {
+          "x": 223.33333333333331,
+          "y": 393.90000000000003
+        },
+        {
+          "x": 384,
+          "y": 400.2
+        },
+        {
+          "x": 482.66666666666663,
+          "y": 404.7
+        },
+        {
+          "x": 693.3333333333333,
+          "y": 415.5
+        },
+        {
+          "x": 906.6666666666666,
+          "y": 420.90000000000003
+        },
+        {
+          "x": 1018.6666666666666,
+          "y": 427.2
+        },
+        {
+          "x": 1048,
+          "y": 428.1
+        }
+      ],
+      "road": {
+        "widthPixels": 28,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r02-north",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r02-north"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 74.66666666666666,
+          "y": 78.9
+        },
+        {
+          "x": 222,
+          "y": 82.5
+        },
+        {
+          "x": 385.3333333333333,
+          "y": 87
+        },
+        {
+          "x": 482,
+          "y": 91.5
+        },
+        {
+          "x": 594.6666666666666,
+          "y": 92.4
+        },
+        {
+          "x": 693.3333333333333,
+          "y": 94.2
+        },
+        {
+          "x": 829.3333333333333,
+          "y": 96.9
+        },
+        {
+          "x": 902.6666666666666,
+          "y": 96.9
+        },
+        {
+          "x": 1048,
+          "y": 99.60000000000001
+        }
+      ],
+      "road": {
+        "widthPixels": 22,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r03-west-spine",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r03-west-spine"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 384,
+          "y": 24
+        },
+        {
+          "x": 385.3333333333333,
+          "y": 87
+        },
+        {
+          "x": 385.3333333333333,
+          "y": 400.2
+        },
+        {
+          "x": 385.3333333333333,
+          "y": 525.3
+        },
+        {
+          "x": 387.3333333333333,
+          "y": 620.7
+        },
+        {
+          "x": 387.3333333333333,
+          "y": 843
+        },
+        {
+          "x": 390,
+          "y": 930.3000000000001
+        }
+      ],
+      "road": {
+        "widthPixels": 21,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r04-central-spine",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r04-central-spine"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 482,
+          "y": 24
+        },
+        {
+          "x": 482,
+          "y": 91.5
+        },
+        {
+          "x": 482,
+          "y": 290.40000000000003
+        },
+        {
+          "x": 482.66666666666663,
+          "y": 404.7
+        },
+        {
+          "x": 482,
+          "y": 525.3
+        },
+        {
+          "x": 482,
+          "y": 573
+        },
+        {
+          "x": 490.66666666666663,
+          "y": 591
+        },
+        {
+          "x": 578,
+          "y": 599.1
+        }
+      ],
+      "road": {
+        "widthPixels": 18,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r05-freight-spine",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r05-freight-spine"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 692.6666666666666,
+          "y": 24
+        },
+        {
+          "x": 693.3333333333333,
+          "y": 94.2
+        },
+        {
+          "x": 692.6666666666666,
+          "y": 195.9
+        },
+        {
+          "x": 692.6666666666666,
+          "y": 302.1
+        },
+        {
+          "x": 693.3333333333333,
+          "y": 415.5
+        },
+        {
+          "x": 693.3333333333333,
+          "y": 571.2
+        },
+        {
+          "x": 683.3333333333333,
+          "y": 592.8000000000001
+        },
+        {
+          "x": 578,
+          "y": 599.1
+        }
+      ],
+      "road": {
+        "widthPixels": 20,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r06-east-edge",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r06-east-edge"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 1011.3333333333333,
+          "y": 93.3
+        },
+        {
+          "x": 1012.6666666666666,
+          "y": 197.70000000000002
+        },
+        {
+          "x": 1016,
+          "y": 312
+        },
+        {
+          "x": 1018.6666666666666,
+          "y": 427.2
+        },
+        {
+          "x": 1021.3333333333333,
+          "y": 451.5
+        },
+        {
+          "x": 1021.3333333333333,
+          "y": 664.8000000000001
+        },
+        {
+          "x": 1012,
+          "y": 713.4
+        },
+        {
+          "x": 990.6666666666666,
+          "y": 791.7
+        },
+        {
+          "x": 1004,
+          "y": 825.9
+        },
+        {
+          "x": 1012,
+          "y": 894.3000000000001
+        }
+      ],
+      "road": {
+        "widthPixels": 22,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r07-south-bypass",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r07-south-bypass"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 322.66666666666663,
+          "y": 945.6
+        },
+        {
+          "x": 451.3333333333333,
+          "y": 931.2
+        },
+        {
+          "x": 578,
+          "y": 892.5
+        },
+        {
+          "x": 690.6666666666666,
+          "y": 860.1
+        },
+        {
+          "x": 827.3333333333333,
+          "y": 821.4
+        },
+        {
+          "x": 936.6666666666666,
+          "y": 795.3000000000001
+        },
+        {
+          "x": 990.6666666666666,
+          "y": 791.7
+        },
+        {
+          "x": 1048,
+          "y": 753.9
+        }
+      ],
+      "road": {
+        "widthPixels": 37,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r08-neighborhood-mid",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r08-neighborhood-mid"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 24,
+          "y": 517.2
+        },
+        {
+          "x": 80,
+          "y": 519.9000000000001
+        },
+        {
+          "x": 212,
+          "y": 525.3
+        },
+        {
+          "x": 385.3333333333333,
+          "y": 525.3
+        },
+        {
+          "x": 482,
+          "y": 525.3
+        }
+      ],
+      "road": {
+        "widthPixels": 17,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r09-neighborhood-lower",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r09-neighborhood-lower"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 24,
+          "y": 609
+        },
+        {
+          "x": 78.66666666666666,
+          "y": 612.6
+        },
+        {
+          "x": 210.66666666666666,
+          "y": 618.9
+        },
+        {
+          "x": 387.3333333333333,
+          "y": 620.7
+        }
+      ],
+      "road": {
+        "widthPixels": 16,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r10-neighborhood-south",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r10-neighborhood-south"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 24,
+          "y": 702.6
+        },
+        {
+          "x": 78,
+          "y": 704.4
+        },
+        {
+          "x": 210.66666666666666,
+          "y": 711.6
+        },
+        {
+          "x": 387.3333333333333,
+          "y": 718.8000000000001
+        }
+      ],
+      "road": {
+        "widthPixels": 18,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r11-neighborhood-bottom",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r11-neighborhood-bottom"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 24,
+          "y": 816
+        },
+        {
+          "x": 78,
+          "y": 819.6
+        },
+        {
+          "x": 210.66666666666666,
+          "y": 829.5
+        },
+        {
+          "x": 387.3333333333333,
+          "y": 843
+        },
+        {
+          "x": 478.66666666666663,
+          "y": 852.9
+        },
+        {
+          "x": 578,
+          "y": 859.2
+        }
+      ],
+      "road": {
+        "widthPixels": 19,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r12-west-local",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r12-west-local"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 78,
+          "y": 401.1
+        },
+        {
+          "x": 80,
+          "y": 519.9000000000001
+        },
+        {
+          "x": 78.66666666666666,
+          "y": 612.6
+        },
+        {
+          "x": 78,
+          "y": 704.4
+        },
+        {
+          "x": 78,
+          "y": 819.6
+        },
+        {
+          "x": 78,
+          "y": 904.2
+        },
+        {
+          "x": 200.66666666666666,
+          "y": 912.3000000000001
+        }
+      ],
+      "road": {
+        "widthPixels": 15,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r13-residential-local",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r13-residential-local"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 212,
+          "y": 402.90000000000003
+        },
+        {
+          "x": 212,
+          "y": 525.3
+        },
+        {
+          "x": 210.66666666666666,
+          "y": 618.9
+        },
+        {
+          "x": 210.66666666666666,
+          "y": 711.6
+        },
+        {
+          "x": 210.66666666666666,
+          "y": 829.5
+        },
+        {
+          "x": 208.66666666666666,
+          "y": 913.2
+        }
+      ],
+      "road": {
+        "widthPixels": 16,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r14-park-west-south",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r14-park-west-south"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 482,
+          "y": 573
+        },
+        {
+          "x": 482,
+          "y": 692.7
+        },
+        {
+          "x": 481.3333333333333,
+          "y": 783.6
+        },
+        {
+          "x": 478.66666666666663,
+          "y": 852.9
+        },
+        {
+          "x": 479.3333333333333,
+          "y": 901.5
+        }
+      ],
+      "road": {
+        "widthPixels": 16,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r15-industrial-west",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r15-industrial-west"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 578,
+          "y": 599.1
+        },
+        {
+          "x": 578,
+          "y": 782.7
+        },
+        {
+          "x": 578,
+          "y": 859.2
+        },
+        {
+          "x": 578,
+          "y": 892.5
+        }
+      ],
+      "road": {
+        "widthPixels": 18,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r16-civic-cross",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r16-civic-cross"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 386,
+          "y": 285.90000000000003
+        },
+        {
+          "x": 482,
+          "y": 290.40000000000003
+        },
+        {
+          "x": 594.6666666666666,
+          "y": 293.1
+        },
+        {
+          "x": 692.6666666666666,
+          "y": 302.1
+        },
+        {
+          "x": 828.6666666666666,
+          "y": 307.5
+        },
+        {
+          "x": 904,
+          "y": 309.3
+        },
+        {
+          "x": 1016,
+          "y": 312
+        },
+        {
+          "x": 1048,
+          "y": 312.90000000000003
+        }
+      ],
+      "road": {
+        "widthPixels": 18,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r17-civic-east-local",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r17-civic-east-local"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 829.3333333333333,
+          "y": 96.9
+        },
+        {
+          "x": 829.3333333333333,
+          "y": 193.20000000000002
+        },
+        {
+          "x": 828.6666666666666,
+          "y": 307.5
+        },
+        {
+          "x": 829.3333333333333,
+          "y": 418.2
+        }
+      ],
+      "road": {
+        "widthPixels": 16,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "r18-civic-far-east",
+      "semantic": "road.centerline",
+      "binding": {
+        "kind": "path",
+        "targetId": "r18-civic-far-east"
+      },
+      "shape": "Polyline",
+      "points": [
+        {
+          "x": 902.6666666666666,
+          "y": 24
+        },
+        {
+          "x": 902.6666666666666,
+          "y": 96.9
+        },
+        {
+          "x": 902.6666666666666,
+          "y": 194.1
+        },
+        {
+          "x": 904,
+          "y": 309.3
+        },
+        {
+          "x": 906.6666666666666,
+          "y": 420.90000000000003
+        }
+      ],
+      "road": {
+        "widthPixels": 17,
+        "widthKind": "Carriageway",
+        "level": 0,
+        "accessModes": [
+          "vehicle",
+          "pedestrian"
+        ]
+      }
+    },
+    {
+      "featureId": "site-civic-offices",
+      "semantic": "site.region",
+      "binding": {
+        "kind": "region",
+        "targetId": "site-civic-offices"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 400.66666666666663,
+          "y": 118.5
+        },
+        {
+          "x": 474,
+          "y": 118.5
+        },
+        {
+          "x": 474,
+          "y": 276
+        },
+        {
+          "x": 400.66666666666663,
+          "y": 276
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "site-east-offices",
+      "semantic": "site.region",
+      "binding": {
+        "kind": "region",
+        "targetId": "site-east-offices"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 724,
+          "y": 118.5
+        },
+        {
+          "x": 817.3333333333333,
+          "y": 118.5
+        },
+        {
+          "x": 817.3333333333333,
+          "y": 280.5
+        },
+        {
+          "x": 724,
+          "y": 280.5
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "site-factory",
+      "semantic": "site.region",
+      "binding": {
+        "kind": "region",
+        "targetId": "site-factory"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 747.3333333333333,
+          "y": 492
+        },
+        {
+          "x": 950.6666666666666,
+          "y": 492
+        },
+        {
+          "x": 950.6666666666666,
+          "y": 700.8000000000001
+        },
+        {
+          "x": 747.3333333333333,
+          "y": 700.8000000000001
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "site-homes-central-middle",
+      "semantic": "site.region",
+      "binding": {
+        "kind": "region",
+        "targetId": "site-homes-central-middle"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 230.66666666666666,
+          "y": 541.5
+        },
+        {
+          "x": 364,
+          "y": 541.5
+        },
+        {
+          "x": 364,
+          "y": 598.2
+        },
+        {
+          "x": 230.66666666666666,
+          "y": 598.2
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "site-homes-central-north",
+      "semantic": "site.region",
+      "binding": {
+        "kind": "region",
+        "targetId": "site-homes-central-north"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 230.66666666666666,
+          "y": 424.5
+        },
+        {
+          "x": 364,
+          "y": 424.5
+        },
+        {
+          "x": 364,
+          "y": 505.5
+        },
+        {
+          "x": 230.66666666666666,
+          "y": 505.5
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "site-homes-central-south",
+      "semantic": "site.region",
+      "binding": {
+        "kind": "region",
+        "targetId": "site-homes-central-south"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 230.66666666666666,
+          "y": 636
+        },
+        {
+          "x": 364,
+          "y": 636
+        },
+        {
+          "x": 364,
+          "y": 691.8000000000001
+        },
+        {
+          "x": 230.66666666666666,
+          "y": 691.8000000000001
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "site-homes-lower",
+      "semantic": "site.region",
+      "binding": {
+        "kind": "region",
+        "targetId": "site-homes-lower"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 240.66666666666666,
+          "y": 739.5
+        },
+        {
+          "x": 364,
+          "y": 739.5
+        },
+        {
+          "x": 364,
+          "y": 807
+        },
+        {
+          "x": 240.66666666666666,
+          "y": 807
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "site-homes-park-south",
+      "semantic": "site.region",
+      "binding": {
+        "kind": "region",
+        "targetId": "site-homes-park-south"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 500.66666666666663,
+          "y": 636
+        },
+        {
+          "x": 564,
+          "y": 636
+        },
+        {
+          "x": 564,
+          "y": 762
+        },
+        {
+          "x": 500.66666666666663,
+          "y": 762
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "site-homes-west-middle",
+      "semantic": "site.region",
+      "binding": {
+        "kind": "region",
+        "targetId": "site-homes-west-middle"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 97.33333333333333,
+          "y": 541.5
+        },
+        {
+          "x": 194,
+          "y": 541.5
+        },
+        {
+          "x": 194,
+          "y": 598.2
+        },
+        {
+          "x": 97.33333333333333,
+          "y": 598.2
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "site-homes-west-north",
+      "semantic": "site.region",
+      "binding": {
+        "kind": "region",
+        "targetId": "site-homes-west-north"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 97.33333333333333,
+          "y": 424.5
+        },
+        {
+          "x": 194,
+          "y": 424.5
+        },
+        {
+          "x": 194,
+          "y": 505.5
+        },
+        {
+          "x": 97.33333333333333,
+          "y": 505.5
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "site-homes-west-south",
+      "semantic": "site.region",
+      "binding": {
+        "kind": "region",
+        "targetId": "site-homes-west-south"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 97.33333333333333,
+          "y": 636
+        },
+        {
+          "x": 194,
+          "y": 636
+        },
+        {
+          "x": 194,
+          "y": 685.5
+        },
+        {
+          "x": 97.33333333333333,
+          "y": 685.5
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "site-school",
+      "semantic": "site.region",
+      "binding": {
+        "kind": "region",
+        "targetId": "site-school"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 398,
+          "y": 542.4
+        },
+        {
+          "x": 472.66666666666663,
+          "y": 542.4
+        },
+        {
+          "x": 472.66666666666663,
+          "y": 696.3000000000001
+        },
+        {
+          "x": 398,
+          "y": 696.3000000000001
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "site-stadium",
+      "semantic": "site.region",
+      "binding": {
+        "kind": "region",
+        "targetId": "site-stadium"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 90.66666666666666,
+          "y": 73.5
+        },
+        {
+          "x": 350.66666666666663,
+          "y": 73.5
+        },
+        {
+          "x": 350.66666666666663,
+          "y": 312
+        },
+        {
+          "x": 90.66666666666666,
+          "y": 312
+        }
+      ],
+      "road": null
+    },
+    {
+      "featureId": "site-warehouse",
+      "semantic": "site.region",
+      "binding": {
+        "kind": "region",
+        "targetId": "site-warehouse"
+      },
+      "shape": "Polygon",
+      "points": [
+        {
+          "x": 607.3333333333333,
+          "y": 631.5
+        },
+        {
+          "x": 737.3333333333333,
+          "y": 631.5
+        },
+        {
+          "x": 737.3333333333333,
+          "y": 760.2
+        },
+        {
+          "x": 607.3333333333333,
+          "y": 760.2
+        }
+      ],
+      "road": null
+    }
+  ],
+  "remainingGates": [
+    "Verified GameArts lifecycle approval and saved profile",
+    "Bind draft paths/regions/anchors into current MockupWorldDesign with catalog, road profiles, district/siting, terrain and composition grammars",
+    "Run engine continuous/swept-surface/raster validation without snapping captured road geometry",
+    "Production art bundle/file/atlas gates and Godot import/runtime visual verification"
+  ]
+}

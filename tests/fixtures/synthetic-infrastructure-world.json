@@ -1,0 +1,385 @@
+{
+  "Width": 256,
+  "Height": 256,
+  "Seed": 42,
+  "Biome": "Desert",
+  "SettlementCount": 1,
+  "Design": {
+    "SchemaVersion": 1,
+    "Blueprint": {
+      "SchemaVersion": 1,
+      "MockupId": "synthetic-infrastructure",
+      "ApprovedRevision": "layout-r1",
+      "ArtStyleId": "synthetic-pixel",
+      "Regions": [
+        {
+          "Id": "world",
+          "Outline": {
+            "Vertices": [
+              {
+                "X": 0,
+                "Y": 0
+              },
+              {
+                "X": 128,
+                "Y": 0
+              },
+              {
+                "X": 128,
+                "Y": 128
+              },
+              {
+                "X": 0,
+                "Y": 128
+              }
+            ]
+          },
+          "VisualRole": "synthetic-infrastructure-composition"
+        },
+        {
+          "Id": "obstacle",
+          "Outline": {
+            "Vertices": [
+              {
+                "X": 35.6,
+                "Y": 0
+              },
+              {
+                "X": 40.4,
+                "Y": 0
+              },
+              {
+                "X": 40.4,
+                "Y": 128
+              },
+              {
+                "X": 35.6,
+                "Y": 128
+              }
+            ]
+          },
+          "VisualRole": "water"
+        }
+      ],
+      "Anchors": []
+    },
+    "MetersPerCell": 0.5,
+    "Paths": [
+      {
+        "Id": "alignment",
+        "RegionId": "world",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 32,
+              "Y": 64
+            },
+            {
+              "X": 44,
+              "Y": 64
+            }
+          ]
+        },
+        "Role": "road"
+      },
+      {
+        "Id": "approach-a",
+        "RegionId": "world",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 8,
+              "Y": 64
+            },
+            {
+              "X": 32,
+              "Y": 64
+            }
+          ]
+        },
+        "Role": "road"
+      },
+      {
+        "Id": "approach-b",
+        "RegionId": "world",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 44,
+              "Y": 64
+            },
+            {
+              "X": 120,
+              "Y": 64
+            }
+          ]
+        },
+        "Role": "road"
+      }
+    ],
+    "RoadRules": [
+      {
+        "PathId": "approach-a",
+        "Class": "Local",
+        "Profile": {
+          "LaneWidthMeters": 6,
+          "LaneCount": 1,
+          "SidewalkLeftMeters": 0,
+          "SidewalkRightMeters": 0,
+          "CurbLeftMeters": 0,
+          "CurbRightMeters": 0,
+          "MedianMeters": 0,
+          "TotalWidthMeters": 6
+        }
+      },
+      {
+        "PathId": "approach-b",
+        "Class": "Local",
+        "Profile": {
+          "LaneWidthMeters": 6,
+          "LaneCount": 1,
+          "SidewalkLeftMeters": 0,
+          "SidewalkRightMeters": 0,
+          "CurbLeftMeters": 0,
+          "CurbRightMeters": 0,
+          "MedianMeters": 0,
+          "TotalWidthMeters": 6
+        }
+      },
+      {
+        "PathId": "alignment",
+        "Class": "Local",
+        "Profile": {
+          "LaneWidthMeters": 6,
+          "LaneCount": 1,
+          "SidewalkLeftMeters": 0,
+          "SidewalkRightMeters": 0,
+          "CurbLeftMeters": 0,
+          "CurbRightMeters": 0,
+          "MedianMeters": 0,
+          "TotalWidthMeters": 6
+        }
+      }
+    ],
+    "SettlementRules": [],
+    "TerrainRules": [
+      {
+        "RegionId": "world",
+        "Kind": "Sand",
+        "Priority": 0,
+        "ElevationMeters": 2,
+        "RuleId": "base",
+        "SlopeX": 0,
+        "SlopeY": 0
+      },
+      {
+        "RegionId": "obstacle",
+        "Kind": "Water",
+        "Priority": 1,
+        "ElevationMeters": 0,
+        "RuleId": "obstacle-mask",
+        "SlopeX": 0,
+        "SlopeY": 0
+      }
+    ],
+    "PublicRealmPatterns": [],
+    "BuildingCatalog": [
+      {
+        "Id": "road-bridge",
+        "Function": "Transport",
+        "ServiceCapacity": 10,
+        "AllowedClasses": [
+          "Village",
+          "Town",
+          "City"
+        ],
+        "FavoredRoles": [],
+        "SizeVariants": [
+          {
+            "Id": "small",
+            "WidthMeters": 8,
+            "DepthMeters": 20,
+            "HeightMeters": 6,
+            "ServiceCapacity": 10,
+            "SiteClearanceMeters": 1,
+            "AllowedClasses": null,
+            "MinimumRoadWidthMeters": 6
+          },
+          {
+            "Id": "medium",
+            "WidthMeters": 18,
+            "DepthMeters": 100,
+            "HeightMeters": 20,
+            "ServiceCapacity": 80,
+            "SiteClearanceMeters": 1,
+            "AllowedClasses": null,
+            "MinimumRoadWidthMeters": 12
+          },
+          {
+            "Id": "large",
+            "WidthMeters": 35,
+            "DepthMeters": 600,
+            "HeightMeters": 70,
+            "ServiceCapacity": 400,
+            "SiteClearanceMeters": 1,
+            "AllowedClasses": null,
+            "MinimumRoadWidthMeters": 24
+          }
+        ],
+        "ScaleDemandPerResident": 0.005,
+        "SiteRules": [],
+        "AccessWidthMeters": 1.5,
+        "MinimumRoadWidthMeters": 3,
+        "AllowedRoles": null,
+        "Category": "LinearWaterInfrastructure",
+        "CapacityUnit": "vehicle-flow-units",
+        "AutomaticDemand": false,
+        "PlacementKind": "LinearInfrastructure",
+        "SitingProfile": {
+          "Id": "siting:road-bridge",
+          "Revision": 1,
+          "ResearchRuleIds": [
+            "S01",
+            "S36"
+          ],
+          "SourceIds": [
+            "R22",
+            "R25"
+          ],
+          "AllowedDistricts": [
+            "Logistics",
+            "MixedUse",
+            "Port",
+            "Recreation",
+            "Transport"
+          ],
+          "AllowedTechnologies": [
+            "Standard"
+          ],
+          "Tags": [],
+          "Requirements": [
+            {
+              "Id": "carried-route",
+              "Kind": "Freight",
+              "Mode": "Road",
+              "Unit": "game-service-units",
+              "BaseQuantity": 1,
+              "QuantityPerCapacity": 0.1,
+              "RequiredQualities": null,
+              "RequiredOrigin": null,
+              "WhenTechnologies": null,
+              "SourceContainsSite": false,
+              "MinimumRouteWidthMeters": 0,
+              "MaximumRouteLengthMeters": null
+            }
+          ],
+          "RequiredSurroundings": [],
+          "Provides": [
+            "ParentFacility"
+          ],
+          "OutputUnit": "game-service-units",
+          "OutputUnitsPerCapacity": 1
+        }
+      }
+    ],
+    "LandscapeZones": null,
+    "VegetationGrammars": null,
+    "VegetationClearances": null,
+    "InfrastructureRules": [
+      {
+        "Id": "structure",
+        "RegionId": "world",
+        "SettlementId": "settlement",
+        "DefinitionId": "road-bridge",
+        "AlignmentPathId": "alignment",
+        "ObstacleRegionId": "obstacle",
+        "Purpose": "connect the authored settlement infrastructure",
+        "Settlement": {
+          "Class": "Town",
+          "Role": "Mixed",
+          "Population": 1000
+        },
+        "StartConnectionPathId": "approach-a",
+        "EndConnectionPathId": "approach-b",
+        "ServicePathId": null,
+        "SizeVariantId": "small",
+        "RequiredCapacity": 1,
+        "ClearanceMeters": 2,
+        "Siting": {
+          "DistrictId": "district",
+          "Technology": "Standard",
+          "Dependencies": [
+            {
+              "RequirementId": "carried-route",
+              "SourceId": "source-carried-route",
+              "LinkIds": [
+                "link-carried-route"
+              ],
+              "ServicePointMeters": {
+                "X": 32,
+                "Y": 64
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "Siting": {
+      "SchemaVersion": 1,
+      "Districts": [
+        {
+          "Id": "district",
+          "RegionId": "world",
+          "SettlementId": "settlement",
+          "Use": "Logistics",
+          "RuleId": "infrastructure-district"
+        }
+      ],
+      "Sources": [
+        {
+          "Id": "source-carried-route",
+          "Kind": "Freight",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 8,
+            "Y": 64
+          },
+          "Capacity": 1000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "authored-infrastructure-supply",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        }
+      ],
+      "Links": [
+        {
+          "Id": "link-carried-route",
+          "PathId": "approach-a",
+          "Mode": "Road",
+          "Capacity": 1000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-infrastructure-link",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Freight"
+          ]
+        }
+      ],
+      "Separations": [],
+      "Exclusions": []
+    },
+    "Catalog": {
+      "CatalogId": "modern",
+      "EnabledCapabilities": [
+        "modern.district-policy",
+        "modern.electricity-network",
+        "modern.facility-technology",
+        "modern.motor-road-network",
+        "modern.potable-water-network",
+        "modern.wastewater-network"
+      ]
+    }
+  }
+}

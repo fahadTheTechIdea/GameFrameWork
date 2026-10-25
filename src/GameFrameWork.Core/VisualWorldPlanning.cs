@@ -20,17 +20,18 @@ public sealed record VisualWorldBuildResult(WorldDesignPlan? Design, IReadOnlyLi
 }
 
 /// <summary>
-/// Compiles manually/agent-extracted mockup anchors. Never invents missing anchor positions.
+/// Compiles authored or engine-derived mockup anchors. Never invents missing anchor positions.
 /// Uses explicit rounding to raster cells until continuous-object output is supported.
 /// </summary>
 public sealed class VisualWorldPlanner
 {
     public VisualWorldBuildResult Plan(ApprovedVisualWorldBlueprint blueprint,
         IReadOnlyList<VisualObjectDecision> decisions, string planId,
-        GridBounds bounds, double metersPerCell)
+        GridBounds bounds, double metersPerCell, CancellationToken token = default)
     {
         ArgumentNullException.ThrowIfNull(blueprint);
         ArgumentNullException.ThrowIfNull(decisions);
+        token.ThrowIfCancellationRequested();
         var issues = new List<WorldDesignIssue>();
         void Fail(string code, string id, string message) => issues.Add(new(code,id,message));
         if (blueprint.SchemaVersion != 1 || string.IsNullOrWhiteSpace(blueprint.MockupId) ||
@@ -43,6 +44,7 @@ public sealed class VisualWorldPlanner
         var regions = new Dictionary<string, VisualRegion>(StringComparer.Ordinal);
         foreach (var region in blueprint.Regions ?? [])
         {
+            token.ThrowIfCancellationRequested();
             if (string.IsNullOrWhiteSpace(region.Id) || !regions.TryAdd(region.Id, region))
                 Fail("DUPLICATE_REGION", region.Id, "Visual region ID must be unique.");
             try { region.Outline.Validate(); }
@@ -51,10 +53,14 @@ public sealed class VisualWorldPlanner
         var anchors = new Dictionary<string, VisualAnchor>(StringComparer.Ordinal);
         foreach (var anchor in blueprint.Anchors ?? [])
         {
+            token.ThrowIfCancellationRequested();
             if (string.IsNullOrWhiteSpace(anchor.Id) || !anchors.TryAdd(anchor.Id, anchor))
                 Fail("DUPLICATE_ANCHOR", anchor.Id, "Visual anchor ID must be unique.");
-            if (!regions.ContainsKey(anchor.RegionId))
+            if (!regions.TryGetValue(anchor.RegionId, out var anchorRegion))
                 Fail("ANCHOR_REGION_MISSING", anchor.Id, "Anchor must belong to a declared region.");
+            else if (!issues.Any(i => i.Code == "INVALID_VISUAL_REGION") &&
+                !anchorRegion.Outline.ContainsPoint(anchor.PositionMeters))
+                Fail("ANCHOR_OUTSIDE_VISUAL_REGION", anchor.Id, "Anchor must stay within its authored parent region.");
             if (!double.IsFinite(anchor.PositionMeters.X) || !double.IsFinite(anchor.PositionMeters.Y))
                 Fail("ANCHOR_POSITION_INVALID", anchor.Id, "Anchor coordinates must be finite.");
         }
@@ -62,6 +68,7 @@ public sealed class VisualWorldPlanner
         if (issues.Count != 0) return new(null, issues);
         foreach (var decision in decisions)
         {
+            token.ThrowIfCancellationRequested();
             if (!anchors.TryGetValue(decision.AnchorId, out var anchor))
             {
                 Fail("VISUAL_ANCHOR_MISSING", decision.Id, "An explicit approved-mockup anchor is required.");
@@ -83,11 +90,13 @@ public sealed class VisualWorldPlanner
             planned.Add(new(decision.Id, decision.Kind,
                 new GridPoint((int)Math.Floor(x), (int)Math.Floor(y)),
                 decision.Purpose, decision.RuleId, planId, decision.ParentObjectId,
-                decision.State, decision.AnimationId));
+                decision.State, decision.AnimationId,
+                new VisualPlacementSource(blueprint.MockupId, blueprint.ApprovedRevision,
+                    blueprint.ArtStyleId, anchor.RegionId, decision.RuleId, anchor.PositionMeters)));
         }
         if (issues.Count != 0) return new(null, issues);
         var design = new WorldDesignPlan(planId, bounds, planned);
-        issues.AddRange(new WorldDesignValidator().Validate(design).Issues);
+        issues.AddRange(new WorldDesignValidator().Validate(design,token).Issues);
         return issues.Count == 0 ? new(design, issues) : new(null, issues);
     }
 }

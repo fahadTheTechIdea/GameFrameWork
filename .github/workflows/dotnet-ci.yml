@@ -23,15 +23,34 @@ jobs:
       - name: Build test harness
         run: dotnet build tests/GameFrameWork.Tests/GameFrameWork.Tests.csproj --configuration Release --warnaserror
       - name: Run test harness
-        run: dotnet run --project tests/GameFrameWork.Tests/GameFrameWork.Tests.csproj --configuration Release --no-build
+        run: dotnet run --project tests/GameFrameWork.Tests/GameFrameWork.Tests.csproj --configuration Release --no-build -- --cli src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll
       - name: Smoke test CLI
-        run: dotnet run --project src/GameFrameWork.Cli/GameFrameWork.Cli.csproj --configuration Release --no-build -- desert generated/ci-desert 42
+        run: dotnet run --project src/GameFrameWork.Cli/GameFrameWork.Cli.csproj --configuration Release --no-build -- generate-world tests/fixtures/synthetic-desert-world.json generated/ci-desert
+      - name: Discover Modern catalog
+        run: dotnet run --project src/GameFrameWork.Cli/GameFrameWork.Cli.csproj --configuration Release --no-build -- list-buildings modern
       - name: Verify exported data
         shell: bash
         run: |
           test -s generated/ci-desert/world.json
           test -s generated/ci-desert/GeneratedWorld.tscn
           test -s generated/ci-desert/EXPORT_STATUS.md
+      - name: Smoke test infrastructure CLI
+        run: dotnet run --project src/GameFrameWork.Cli/GameFrameWork.Cli.csproj --configuration Release --no-build -- generate-world tests/fixtures/synthetic-infrastructure-world.json generated/ci-infrastructure
+      - name: Verify infrastructure export data
+        shell: bash
+        run: |
+          test -s generated/ci-infrastructure/world.json
+          test -s generated/ci-infrastructure/GeneratedWorld.tscn
+          test -s generated/ci-infrastructure/EXPORT_STATUS.md
+
+      - name: Smoke test contextual siting CLI
+        run: dotnet run --project src/GameFrameWork.Cli/GameFrameWork.Cli.csproj --configuration Release --no-build -- generate-world tests/fixtures/synthetic-siting-world.json generated/ci-siting
+      - name: Verify siting export data
+        shell: bash
+        run: |
+          test -s generated/ci-siting/world.json
+          test -s generated/ci-siting/GeneratedWorld.tscn
+          test -s generated/ci-siting/EXPORT_STATUS.md
 
       - name: Assemble dummy pixel village
         run: dotnet run --project src/GameFrameWork.Cli/GameFrameWork.Cli.csproj --configuration Release --no-build -- dummy-village generated/dummy-village

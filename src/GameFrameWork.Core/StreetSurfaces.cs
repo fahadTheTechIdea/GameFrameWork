@@ -3,7 +3,8 @@ namespace GameFrameWork.Core.Geometry;
 public enum StreetSurfaceKind { Carriageway, LeftCurb, RightCurb, LeftSidewalk, RightSidewalk }
 public sealed record StreetSurface(string RoadId, int SegmentIndex, StreetSurfaceKind Kind,
     IReadOnlyList<WorldPoint> Polygon);
-/// <summary>Creates per-segment rectangular bands. Does not yet merge bends or intersection corners.</summary>
+/// <summary>Creates segment bands and bevel joins along captured/sampled curves.
+/// Returned polygons form a swept surface union, not a disjoint material mesh.</summary>
 public static class StreetSurfaceBuilder
 {
     public static IReadOnlyList<StreetSurface> Build(StreetCorridor corridor)
@@ -41,6 +42,30 @@ public static class StreetSurfaceBuilder
                     b.Offset(nx * band.High, ny * band.High),
                     a.Offset(nx * band.High, ny * band.High)
                 }));
+            }
+        }
+        int joinIndex = -1;
+        for (int i = 1; i < corridor.Centerline.Points.Count-1; i++)
+        {
+            var a = corridor.Centerline.Points[i-1]; var at = corridor.Centerline.Points[i]; var b = corridor.Centerline.Points[i+1];
+            double first = a.DistanceTo(at), second = at.DistanceTo(b);
+            var n0 = new WorldPoint(-(at.Y-a.Y)/first,(at.X-a.X)/first);
+            var n1 = new WorldPoint(-(b.Y-at.Y)/second,(b.X-at.X)/second);
+            double cross = n0.X*n1.Y-n0.Y*n1.X;
+            if (Math.Abs(cross) < 1e-10) continue;
+            foreach (var band in bands.Where(band => band.High-band.Low > 1e-8))
+            {
+                if (band.Low < 0 && band.High > 0)
+                {
+                    Join([at,at.Offset(n0.X*band.Low,n0.Y*band.Low),at.Offset(n1.X*band.Low,n1.Y*band.Low)],band.Kind);
+                    Join([at,at.Offset(n0.X*band.High,n0.Y*band.High),at.Offset(n1.X*band.High,n1.Y*band.High)],band.Kind);
+                }
+                else Join([at.Offset(n0.X*band.Low,n0.Y*band.Low),at.Offset(n1.X*band.Low,n1.Y*band.Low),
+                    at.Offset(n1.X*band.High,n1.Y*band.High),at.Offset(n0.X*band.High,n0.Y*band.High)],band.Kind);
+            }
+            void Join(IReadOnlyList<WorldPoint> polygon,StreetSurfaceKind kind)
+            {
+                if (Math.Abs(SignedArea(polygon)) > 1e-8) result.Add(new(corridor.Id,joinIndex--,kind,polygon));
             }
         }
         return result;

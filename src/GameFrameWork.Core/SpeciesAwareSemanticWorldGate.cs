@@ -5,7 +5,7 @@ namespace GameFrameWork.Core;
 
 /// <summary>Explicit game-world clearance dimensions in meters, keyed by production asset ID.
 /// Values must ultimately come from verified GameArts metadata; no pixel-to-meter guessing.</summary>
-public sealed record VegetationAssetClearance(string AssetId, double RadiusMeters);
+public sealed record VegetationAssetClearance(string AssetId, double RadiusMeters, bool BlocksMovement = true);
 
 public sealed class SpeciesAwareSemanticWorldGate
 {
@@ -16,7 +16,7 @@ public sealed class SpeciesAwareSemanticWorldGate
         IReadOnlyDictionary<string, BuildingEnvelopeResult> buildings,
         IReadOnlyList<VegetationClearanceRoute> routes,
         IReadOnlyList<VegetationClearanceAnchor> anchors,
-        IReadOnlyList<VegetationAssetClearance> assetClearances)
+        IReadOnlyList<VegetationAssetClearance> assetClearances, CancellationToken token = default)
     {
         ArgumentNullException.ThrowIfNull(world);
         ArgumentNullException.ThrowIfNull(zonePlants);
@@ -25,6 +25,7 @@ public sealed class SpeciesAwareSemanticWorldGate
         ArgumentNullException.ThrowIfNull(routes);
         ArgumentNullException.ThrowIfNull(anchors);
         ArgumentNullException.ThrowIfNull(assetClearances);
+        token.ThrowIfCancellationRequested();
         var issues = new List<string>();
         var byAsset = new Dictionary<string, double>(StringComparer.Ordinal);
         foreach (var profile in assetClearances)
@@ -49,6 +50,7 @@ public sealed class SpeciesAwareSemanticWorldGate
         issues.AddRange(accepted.Issues);
         foreach (var plant in plants)
         {
+            token.ThrowIfCancellationRequested();
             var one = new VegetationWorldAcceptanceGate().Accept(
                 new VegetationComposition([plant], []),
                 new PathVegetationResult([], []),
@@ -62,6 +64,7 @@ public sealed class SpeciesAwareSemanticWorldGate
         for (int i = 0; i < plants.Length; i++)
         for (int j = i + 1; j < plants.Length; j++)
         {
+            token.ThrowIfCancellationRequested();
             var p = plants[i];
             var q = plants[j];
             if (p.PositionMeters.DistanceTo(q.PositionMeters) + 1e-9 <
