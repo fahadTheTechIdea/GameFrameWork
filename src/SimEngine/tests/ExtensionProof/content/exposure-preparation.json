@@ -1,0 +1,8 @@
+{
+  "prepared_terrain_effects": [
+    { "id": "exposure.original-terrain", "layer": "terrain.receiver-mask", "operation": "set", "value": 2 }
+  ],
+  "exposure_preparation_probes": [
+    { "id": "exposure.preparation", "effect": "exposure.original-terrain" }
+  ]
+}

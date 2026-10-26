@@ -1,0 +1,142 @@
+{
+  "entities": [
+    {
+      "id": "recovery.far",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "pool_port": {
+          "id": "return",
+          "pool": "recovery.fourth",
+          "alternatives": [
+            "source.first",
+            "source.second"
+          ],
+          "endpoint_scope":"proof.pools","original_access": "retained"
+        }
+      }
+    },
+    {
+      "id": "recovery.evac",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "haul.store",
+          "public": true,
+          "evacuate": true,
+          "initial_stock": {
+            "steel": 6
+          }
+        }
+      }
+    }
+  ],
+  "world_setup_profiles": [{"id":"recovery.start","entries":["source.warehouse-start","source.store-start","source.sink-start","recovery.far-start","source.machine-start"],"includes":[]},{"id":"recovery.evac-start","entries":["recovery.evac-entry","source.store-start","recovery.machine-entry"],"includes":[]}],
+  "entity_setups": [
+    {
+      "id": "recovery.far-start",
+      "after": [],
+      "entity": "recovery.far",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 35,
+        "y": 20
+      },
+      "home": null
+    },
+    {
+      "id": "recovery.evac-entry",
+      "after": [],
+      "entity": "recovery.evac",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 8,
+        "y": 6
+      },
+      "home": null
+    },
+    {
+      "id": "recovery.machine-entry",
+      "after": [
+        "recovery.evac-entry"
+      ],
+      "entity": "haul.machine",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 2,
+        "y": 10
+      },
+      "home": "recovery.evac-entry"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "scoped-recovery",
+      "game_mode": "haul.resource-only",
+      "mode_overrides": {},
+      "time": "haul.minute",
+      "space": "haul.tiles",
+      "seats": 2,
+      "default_seats": 2,
+      "modules": [
+        "proof.output-ports",
+        "sim.logistics",
+        "sim.tile-navigation",
+        "sim.logistics-recovery"
+      ],
+      "settings": {
+        "sim.world-setup": {
+          "profile": "recovery.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.logistics-recovery": {
+          "profile": "scoped.recovery"
+        }
+      }
+    },
+    {
+      "id": "scoped-evacuation",
+      "game_mode": "haul.resource-only",
+      "mode_overrides": {},
+      "time": "haul.minute",
+      "space": "haul.tiles",
+      "seats": 2,
+      "default_seats": 2,
+      "modules": [
+        "proof.output-ports",
+        "sim.logistics",
+        "sim.tile-navigation",
+        "sim.logistics-recovery"
+      ],
+      "settings": {
+        "sim.world-setup": {
+          "profile": "recovery.evac-start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.logistics-recovery": {
+          "profile": "scoped.recovery"
+        }
+      }
+    }
+  ]
+}

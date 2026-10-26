@@ -1,0 +1,19 @@
+{
+  "direct_tile_cells": [
+    {"id":"extract.direct","identity":1,"layer":"extract.deposit","x":20,"y":20,"capacity_policy":"fixture.count.40","public":false}
+  ],
+  "entities": [
+    {"id":"extract.receiver","kind":"structure","components":{"tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":true,"movable":false},"storage":{"capacity_policy":"fixture.count.8","public":false,"initial_stock":{}}}}
+  ],
+  "tile_layer_setups": [
+    {"id":"extract.start.deposit","after":[],"layer":"extract.deposit","x":20,"y":20,"width":1,"height":1,"value":12,"owner":0}
+  ],
+  "entity_setups": [
+    {"id":"extract.start.site","after":["extract.start.deposit"],"entity":"extract.site","company":0,"placement":{"space":"colony.tiles","x":20,"y":20},"home":null},
+    {"id":"extract.start.worker","after":["extract.start.deposit"],"entity":"extract.worker","company":0,"placement":{"space":"colony.tiles","x":12,"y":20},"home":null},
+    {"id":"extract.start.receiver","after":["extract.start.deposit"],"entity":"extract.receiver","company":0,"placement":{"space":"colony.tiles","x":24,"y":20},"home":null}
+  ],
+  "world_setup_profiles": [
+    {"id":"extract.start","entries":["extract.start.deposit","extract.start.site","extract.start.worker","extract.start.receiver"],"includes":["colony.start"]}
+  ]
+}

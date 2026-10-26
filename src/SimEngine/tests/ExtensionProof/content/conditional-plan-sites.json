@@ -1,0 +1,212 @@
+{
+  "plan_playbooks": [
+    {
+      "id": "choice.controller",
+      "cadence": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "commands_per_decision": 1,
+      "steps": [
+        {
+          "id": "expand",
+          "template": "choice.single",
+          "group": "choice.expand",
+          "after": [],
+          "priority": 70,
+          "conditions": [],
+          "sites": "choice.sites",
+          "recovery": null
+        }
+      ]
+    }
+  ],
+  "plan_site_sets": [
+    {
+      "id": "choice.sites",
+      "sites": [
+        {
+          "id": "b.alternate",
+          "priority": 50,
+          "anchor": {
+            "space": "field.points",
+            "position": 42
+          },
+          "conditions": [
+            "strategy.reserve"
+          ]
+        },
+        {
+          "id": "primary",
+          "priority": 100,
+          "anchor": {
+            "space": "field.points",
+            "position": 30
+          },
+          "conditions": [
+            "strategy.risk",
+            "strategy.reserve"
+          ]
+        },
+        {
+          "id": "a.alternate",
+          "priority": 50,
+          "anchor": {
+            "space": "field.points",
+            "position": 24
+          },
+          "conditions": [
+            "strategy.reserve"
+          ]
+        }
+      ]
+    }
+  ],
+  "plan_templates": [
+    {
+      "id": "choice.single",
+      "space": "field.points",
+      "entries": [
+        {
+          "id": "tower",
+          "definition": "build:point.tower",
+          "arguments": {
+            "placement": {
+              "space": "field.points",
+              "offset": 0
+            }
+          },
+          "priority": 70,
+          "paused": false,
+          "after": []
+        }
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "id": "strategy.enabled",
+      "kind": "boolean",
+      "metric": "operation.enabled",
+      "unit": "unit.boolean",
+      "providers": [
+        {
+          "component": "strategy_dial",
+          "schema": 1
+        }
+      ]
+    }
+  ],
+  "resource_signals": [
+    {
+      "id": "strategy.stock", "kind": "number", "metric": "inventory.available",
+      "resource": "supply", "unit": "unit.supply",
+      "providers": [{"component":"inventory_signal","schema":3}]
+    }
+  ],
+  "entity_states": [
+    {
+      "id": "working",
+      "state": "proof.strategy.working",
+      "priority": 25
+    },
+    {
+      "id": "stopped",
+      "state": "proof.strategy.stopped",
+      "priority": 35
+    }
+  ],
+  "entities": [
+    {
+      "id": "strategy.beacon",
+      "kind": "structure",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 0
+        },
+        "storage": {
+          "capacity_policy": "fixture.count.40",
+          "public": true,
+          "initial_stock": {
+            "supply": 32
+          }
+        },
+        "inventory_signal": {
+          "id": "feed",
+          "inventory": "storage",
+          "quantities": null
+        },
+        "strategy_dial": {
+          "operation": {
+            "id": "risk-dial",
+            "enabled": false,
+            "target": 0,
+            "minimum": 0,
+            "maximum": 1,
+            "unit": "unit.units"
+          }
+        }
+      }
+    }
+  ],
+  "entity_setups": [
+  {
+    "id": "strategy.beacon-own",
+    "after": [],
+    "entity": "strategy.beacon",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  },
+  {
+    "id": "strategy.beacon-foreign",
+    "after": [],
+    "entity": "strategy.beacon",
+    "company": 1,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  },
+  {
+    "id": "choice.rival.source",
+    "after": [],
+    "entity": "source",
+    "company": 1,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  },
+  {
+    "id": "choice.rival.machine",
+    "after": [],
+    "entity": "machine",
+    "company": 1,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "conditional-plan-sites.start",
+    "entries": [
+      "strategy.beacon-own",
+      "strategy.beacon-foreign",
+      "choice.rival.source",
+      "choice.rival.machine"
+    ],
+    "includes": []
+  }
+]
+}

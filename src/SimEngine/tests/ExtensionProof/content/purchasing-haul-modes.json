@@ -1,0 +1,7 @@
+{
+  "game_modes": [
+    {"id":"haul-economic","name":"Supplier hauling and optional income","properties":{"business.money.enabled":true,"business.trading.enabled":true,"business.values.enabled":true,"business.production_income.enabled":true,"business.manufacturing_costs.enabled":true}},
+    {"id":"haul-disabled","name":"Money without supplier trading","properties":{"business.money.enabled":true}},
+    {"id":"haul-survival","name":"Resource hauling without economics","properties":{}}
+  ]
+}

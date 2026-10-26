@@ -1,0 +1,11 @@
+{
+  "staffed_activity_executors":[{"id":"work.staffed","travel":"sim.work.travel","work":"sim.work.productive","departure":"sim.work.departure"}],
+  "timed_activity_executors":[{"id":"frontier.timed","rate":1}],
+  "activities":[
+    {"id":"timed.funded","player_orderable":true,"automatic_supply":false,"nodes":[
+      {"id":"a","executor":"frontier.timed","roles":[],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"budget.ready"},
+      {"id":"b","executor":"frontier.timed","roles":[],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"budget.ready"},
+      {"id":"finish","executor":"frontier.timed","roles":[],"duration":{"numerator":1,"denominator":1,"unit":"minute"},"after":["a","b"]}
+    ]}
+  ]
+}

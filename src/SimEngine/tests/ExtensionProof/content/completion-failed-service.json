@@ -1,0 +1,11 @@
+{
+  "completion_effects": [
+    {"id":"completion.fail","mode":"fail","quantities":{"supply":1}}
+  ],
+  "activities": [
+    {"id":"completion.failed-service","automatic_supply":false,"player_orderable":true,"target_tags":[],"on_complete":"completion.fail","nodes":[
+      {"executor":"work.staffed","id":"service","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"completion.ready","effect":"completion.restore"},
+      {"executor":"work.timed","id":"settle","roles":[],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"after":["service"]}
+    ]}
+  ]
+}

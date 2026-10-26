@@ -1,0 +1,13 @@
+{
+  "independent_technologies": [{
+    "id":"research.external","prerequisites":[],"unlocks":["unlock.external"],
+    "player_orderable":true,"priority":70,"automatic_supply":false,"on_complete":"research.complete",
+    "nodes":[{"id":"research","executor":"work.staffed","roles":["inspect"],
+      "duration":{"numerator":1,"denominator":2,"unit":"hour"},"requirement":"preempt.ready"}]
+  }],
+  "independent_activity_unlocks":[{"id":"unlock.external","activity":"point.tower"}],
+  "technology_requirements":[{"id":"knowledge.external","technology":"research.external"}],
+  "technology_objective_predicates":[{"id":"objective.external","technology":"research.external"}],
+  "objectives":[{"id":"external.earned","prerequisites":[],"predicate":"objective.external","deadline":null,"on_complete":null,"on_failure":null}]
+}
+

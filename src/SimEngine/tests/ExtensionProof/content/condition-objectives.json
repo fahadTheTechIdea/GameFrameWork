@@ -1,0 +1,66 @@
+{
+  "condition_objective_predicates": [
+    {
+      "id": "field.detected-predicate",
+      "condition": "field.detected"
+    },
+    {
+      "id": "field.recovered-predicate",
+      "condition": "field.recovered"
+    },
+    {
+      "id": "field.elapsed-predicate",
+      "condition": "field.elapsed"
+    }
+  ],
+  "logical_objective_predicates": [
+    {
+      "id": "field.safe-predicate",
+      "kind": "all",
+      "predicates": [
+        "field.recovered-predicate",
+        "field.elapsed-predicate"
+      ]
+    }
+  ],
+  "objectives": [
+    {
+      "id": "field.win",
+      "prerequisites": [
+        "field.repair"
+      ],
+      "predicate": "field.safe-predicate",
+      "deadline": null,
+      "on_complete": "field.win-effect",
+      "on_failure": null
+    },
+    {
+      "id": "field.repair",
+      "prerequisites": [
+        "field.detect"
+      ],
+      "predicate": "field.recovered-predicate",
+      "deadline": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "hour"
+      },
+      "on_complete": null,
+      "on_failure": null
+    },
+    {
+      "id": "field.detect",
+      "prerequisites": [],
+      "predicate": "field.detected-predicate",
+      "deadline": null,
+      "on_complete": null,
+      "on_failure": null
+    }
+  ],
+  "outcome_objective_effects": [
+    {
+      "id": "field.win-effect",
+      "outcome": "field.recovery-complete"
+    }
+  ]
+}

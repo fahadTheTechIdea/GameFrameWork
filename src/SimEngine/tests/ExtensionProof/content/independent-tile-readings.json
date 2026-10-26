@@ -1,0 +1,6 @@
+{
+  "tile_readings":[{"id":"sensor.deposit-reading","layer":"sensor.deposit","x":14,"y":20,"retention":"latest","fresh_for":null}],
+  "knowledge_effects":[{"id":"sensor.observe-deposit","subject":"sensor.deposit-reading"}],
+  "activities":[{"id":"sensor.survey","priority":10,"player_orderable":true,"automatic_supply":false,"on_complete":null,
+    "nodes":[{"executor":"work.staffed","id":"observe","roles":["sensor.inspect"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"effect":"sensor.observe-deposit"}]}]
+}

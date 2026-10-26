@@ -1,0 +1,9 @@
+{
+  "worker_roles":[{"id":"process.inspect"},{"id":"haul"}],
+  "work_policies":[{"id":"process.worker","enabled":true,"priority":1,"allowed_roles":["process.inspect","haul"],"area":null,"interruptible":true,"emergency_eligible":false,"assignment_mode":"all","states":{"disabled":"process.stopped","standby":"process.stopped"}}],
+  "handling_profiles":[{"id":"process.handling","resources":[
+    {"resource":"process.input","quantity":1,"loading":{"numerator":1,"denominator":1,"unit":"minute"},"unloading":{"numerator":2,"denominator":1,"unit":"minute"}},
+    {"resource":"process.output","quantity":1,"loading":{"numerator":1,"denominator":1,"unit":"minute"},"unloading":{"numerator":2,"denominator":1,"unit":"minute"}}
+  ]}],
+  "activities":[{"id":"process.inspect","priority":50,"player_orderable":true,"automatic_supply":false,"nodes":[{"id":"inspect","executor":"work.staffed","roles":["process.inspect"],"duration":{"numerator":6,"denominator":1,"unit":"minute"}}]}]
+}

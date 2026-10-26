@@ -1,0 +1,16 @@
+{
+  "activities": [
+    {"id":"selected.service","automatic_supply":false,"player_orderable":true,"target_tags":[],"nodes":[
+      {"executor":"work.staffed","id":"service","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"service.ready","effect":"service.repair"},
+      {"executor":"work.timed","id":"settle","roles":[],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"after":["service"]}
+    ]},
+    {"id":"selected.parallel","automatic_supply":false,"player_orderable":true,"target_tags":[],"nodes":[
+      {"executor":"work.staffed","id":"a","roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"service.tools"},
+      {"executor":"work.staffed","id":"b","roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"service.tools"},
+      {"executor":"work.timed","id":"settle","roles":[],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"after":["a","b"]}
+    ]},
+    {"id":"selected.zero","automatic_supply":false,"player_orderable":true,"target_tags":[],"nodes":[
+      {"executor":"work.staffed","id":"zero","roles":["inspect"],"duration":{"numerator":0,"denominator":1,"unit":"hour"}}
+    ]}
+  ]
+}

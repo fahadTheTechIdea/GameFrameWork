@@ -1,0 +1,5 @@
+{
+  "layer_fresh_knowledge_visibility": [
+    {"id":"survey.deposit.fresh","definition":"survey.deposit","readings":["survey.reading"]}
+  ]
+}

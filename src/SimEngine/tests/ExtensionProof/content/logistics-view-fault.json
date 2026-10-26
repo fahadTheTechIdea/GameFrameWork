@@ -1,0 +1,30 @@
+{
+  "scenarios": [
+    {
+      "id": "logistics-view-fault",
+      "game_mode": "process.survival",
+      "mode_overrides": {},
+      "time": "process.minute",
+      "space": "queue.tiles",
+      "modules": [
+        "sim.world-setup",
+        "sim.logistics",
+        "points",
+        "sim.tile-navigation",
+        "proof.prior-activity",
+        "proof.logistics-projection-fault"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "queue.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        }
+      },
+      "name": "Logistics view fault durability"
+    }
+  ]
+}

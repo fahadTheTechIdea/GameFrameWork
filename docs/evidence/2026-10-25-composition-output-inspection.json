@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-10-25T16:42:54.689294+03:00",
+  "environment": "Windows-11-10.0.26200-SP0",
+  "outputs": [
+    {
+      "world": "football-club-composition",
+      "buildings": 4,
+      "facilityGroups": 2,
+      "allVariantsUnscaled": true,
+      "ownershipSeparateFromRenderParents": true,
+      "resourceAllocations": 18
+    },
+    {
+      "world": "factory-campus-composition",
+      "buildings": 5,
+      "facilityGroups": 1,
+      "allVariantsUnscaled": true,
+      "ownershipSeparateFromRenderParents": true,
+      "resourceAllocations": 20
+    }
+  ]
+}

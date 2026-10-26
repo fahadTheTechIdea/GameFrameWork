@@ -1,0 +1,28 @@
+{
+  "SchemaVersion": 1,
+  "Id": "platformer",
+  "GameProfile": "platformer-game",
+  "CatalogId": "platformer-catalog",
+  "RootArchetypeId": "root",
+  "Scale": "platformer",
+  "Coverage": "CompleteDeclaredScope",
+  "RemainingScopes": [],
+  "Parameters": {
+    "levels": 4
+  },
+  "Space": {
+    "Axes": [
+      "x",
+      "y"
+    ],
+    "Unit": "meters"
+  },
+  "Origin": [
+    0,
+    0
+  ],
+  "RequireAllPositions": true,
+  "MaximumNodes": 10000,
+  "MaximumConnections": 50000,
+  "AdditionalConnections": []
+}

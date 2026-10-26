@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Open-world sandbox layer proposed definition",
+  "description": "Standalone design contract; current ScenarioEngine loading support is not implemented.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "definitionVersion",
+    "worldDefinition",
+    "regionIds",
+    "streamRadiusRegions",
+    "completionPolicy"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+      "maxLength": 64
+    },
+    "definitionVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "worldDefinition": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+      "maxLength": 64,
+      "description": "Registered world/content/generator identity."
+    },
+    "regionIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+        "maxLength": 64
+      },
+      "description": "Persisted regions with stable graph/coordinate keys."
+    },
+    "streamRadiusRegions": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "description": "Proposed residency policy; qualify actual native budgets."
+    },
+    "completionPolicy": {
+      "type": "string",
+      "enum": [
+        "ongoing_world",
+        "bounded_expedition"
+      ],
+      "description": "Side activities do not automatically end the world."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "independent_visibility_policies":[{"id":"field.visibility","own_entities":false,"unlisted_entities":true,"unlisted_content":true,
+    "rules":["field.visibility-entity","field.visibility-secret","field.visibility-layer"]}],
+  "independent_entity_visibility":[{"id":"field.visibility-entity","definition":"destination","mode":"all","facts":["field.stock-reading","field.method"]}],
+  "independent_activity_visibility":[{"id":"field.visibility-secret","definition":"field.secret","mode":"any","facts":["field.stock-reading"]}],
+  "independent_layer_visibility":[{"id":"field.visibility-layer","definition":"point.terrain","mode":"all","facts":["field.stock-reading"],"start":0,"end":20,"key_subject":"field.stock-reading"}],
+  "activities":[{"id":"field.secret","player_orderable":true,"priority":60,"automatic_supply":false,
+    "nodes":[{"id":"work","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":2,"denominator":1,"unit":"minute"}}]}]
+}

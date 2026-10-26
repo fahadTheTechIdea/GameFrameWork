@@ -1,0 +1,6 @@
+{
+  "point_interval_regions": [
+    {"id":"discover.first","space":"field.points","minimum":0,"maximum":2},
+    {"id":"discover.second","space":"field.points","minimum":4,"maximum":6}
+  ]
+}

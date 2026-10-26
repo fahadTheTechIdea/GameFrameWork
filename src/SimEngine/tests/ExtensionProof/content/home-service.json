@@ -1,0 +1,13 @@
+{
+  "signals": [
+    {"id":"home.integrity","kind":"number","metric":"condition.value","unit":"unit.condition","providers":[
+      {"component":"equipment_condition","schema":1}, {"component":"proof_service_condition","schema":1}
+    ]}
+  ],
+  "activities": [
+    {"id":"home.service","automatic_supply":false,"player_orderable":true,"target_tags":[],"nodes":[
+      {"executor":"work.staffed","id":"service","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"service.ready","effect":"service.repair"},
+      {"executor":"work.timed","id":"settle","roles":[],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"after":["service"]}
+    ]}
+  ]
+}

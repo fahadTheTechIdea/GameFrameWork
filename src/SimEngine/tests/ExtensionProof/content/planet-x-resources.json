@@ -1,0 +1,142 @@
+{
+  "units": [
+    {
+      "id": "space.kg",
+      "dimension": "mass",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": false
+    },
+    {
+      "id": "space.count",
+      "dimension": "count",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    }
+  ],
+  "resources": [
+    {
+      "id": "space.planetx.ore",
+      "unit": "space.kg",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "space.kg": 1
+      }
+    },
+    {
+      "id": "space.alloy",
+      "unit": "space.kg",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "space.kg": 1
+      }
+    },
+    {
+      "id": "space.slag",
+      "unit": "space.kg",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "space.kg": 1
+      }
+    },
+    {
+      "id": "space.blank",
+      "unit": "space.count",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "space.count": 1,
+        "space.kg": 1
+      }
+    },
+    {
+      "id": "space.crucible",
+      "unit": "space.count",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "space.count": 1,
+        "space.kg": 1
+      }
+    },
+    {
+      "id": "space.fixture",
+      "unit": "space.count",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "space.count": 1,
+        "space.kg": 1
+      }
+    },
+    {
+      "id": "space.finished",
+      "unit": "space.count",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "space.count": 1,
+        "space.kg": 1
+      }
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "space.source",
+      "limits": {
+        "space.kg": 60
+      }
+    },
+    {
+      "id": "space.smelter",
+      "limits": {
+        "space.kg": 21
+      }
+    },
+    {
+      "id": "space.assembler",
+      "limits": {
+        "space.count": 20
+      }
+    },
+    {
+      "id": "space.receiver",
+      "limits": {
+        "space.kg": 60
+      }
+    },
+    {
+      "id": "space.cargo",
+      "limits": {
+        "space.kg": 10
+      }
+    },
+    {
+      "id": "space.mass-wip",
+      "limits": {
+        "space.kg": 10
+      }
+    },
+    {
+      "id": "space.count-wip",
+      "limits": {
+        "space.count": 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "progression_view_predicates": [
+    {
+      "id": "probe.progression"
+    }
+  ],
+  "objectives": [
+    {
+      "id": "probe.earned",
+      "prerequisites": [],
+      "predicate": "probe.progression",
+      "deadline": null,
+      "on_complete": null,
+      "on_failure": null
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "progression-view-probe",
+      "game_mode": "space.survival",
+      "mode_overrides": {},
+      "time": "space.seconds",
+      "space": "space.points",
+      "modules": [
+        "sim.world-setup",
+        "sim.transformations",
+        "sim.logistics",
+        "points",
+        "sim.technology",
+        "sim.objectives",
+        "proof.progression-declarations",
+        "proof.progression-views"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "space.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.objectives": {
+          "companies": [
+            {
+              "company": 0,
+              "objectives": [
+                "decl.external-earned",
+                "decl.native-earned",
+                "probe.earned"
+              ]
+            },
+            {
+              "company": 1,
+              "objectives": [
+                "decl.external-earned",
+                "decl.native-earned",
+                "probe.earned"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

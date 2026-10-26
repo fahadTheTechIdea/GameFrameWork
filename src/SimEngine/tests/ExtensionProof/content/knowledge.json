@@ -1,0 +1,4 @@
+{
+  "knowledge_facts": [{"id":"field.observed","fresh_for":null,"value":{"classification":"sampled","layers":["surface","subsurface"]}}],
+  "knowledge_effects": [{"id":"field.learn","subject":"field.observed"}]
+}

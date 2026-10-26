@@ -1,0 +1,12 @@
+{
+  "id": "activity_instances",
+  "definitionVersion": "1.0.0",
+  "activityKinds": [
+    "craft",
+    "escort",
+    "incident"
+  ],
+  "maxInstances": 128,
+  "deadlineUnit": "millisecond",
+  "cancellationPolicy": "release_unconsumed"
+}

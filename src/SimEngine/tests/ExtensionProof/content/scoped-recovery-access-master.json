@@ -1,0 +1,166 @@
+{
+  "schema": 1,
+  "modules": [
+    {
+      "id": "sim.access",
+      "version": "1.0.0",
+      "documents": [
+        "open-access.json"
+      ]
+    },
+    {
+      "id": "sim.inventory",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.motion",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.tile-navigation",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.motion",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "sim.work",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.access",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.motion",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "work-retry.json"
+      ]
+    },
+    {
+      "id": "sim.logistics",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.work",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "sim.resource-flows",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "endpoints-flows.json"
+      ]
+    },
+    {
+      "id": "sim.operations",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.transformations",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.access",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.operations",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "sim.world-setup",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "proof.pools",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.resource-flows",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "proof.output-ports",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "proof.pools",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.transformations",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.world-setup",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "scoped-haul-common.json",
+        "scoped-haul.json",
+        "scoped-source-stores.json",
+        "scoped-sources.json",
+        "scoped-evacuation-origins.json",
+        "scoped-recovery-access.json"
+      ]
+    },
+    {
+      "id": "sim.logistics-recovery",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.logistics",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "scoped-recovery-policies.json",
+        "scoped-recovery.json"
+      ]
+    }
+  ]
+}

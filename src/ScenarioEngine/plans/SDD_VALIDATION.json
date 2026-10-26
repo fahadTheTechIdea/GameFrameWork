@@ -1,0 +1,1317 @@
+{
+  "runtimeStatus": "not_run",
+  "limitations": [
+    "No C# or Godot runtime executed",
+    "No physical navigation or ending reachability proved",
+    "No asset or commercial readiness claimed",
+    "Self-review only"
+  ],
+  "sourceHashes": [
+    {
+      "sha256": "9556ac9aafc5a0a7aa9b17725051dd2bfe71f4696332529fdaa0435bedaace5a",
+      "path": "docs/sdd/01_SYSTEM_OVERVIEW.md"
+    },
+    {
+      "sha256": "87b488da43ce4fb50a0ecb585823199591979d8b28d2a8d7a1110e8813188f0a",
+      "path": "docs/sdd/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "7a4c78d7f32fb96535bf39303ca761365384569cef237c357bdbe9a9d6628e6a",
+      "path": "docs/sdd/03_SCENARIO_ENGINE.md"
+    },
+    {
+      "sha256": "9da0dcf198bd10f3c30bc641a1b9d9bb3c61906ab6bb14379074714d0a6b82ec",
+      "path": "docs/sdd/04_SCENARIO_CONTENT.md"
+    },
+    {
+      "sha256": "aecbee5e975c4151efe20ffd6e98895a3bb1b06850e4efbd6b6b90630ae38034",
+      "path": "docs/sdd/05_LOST_SOLDIER_LAYER.md"
+    },
+    {
+      "sha256": "4e8dce09b0dfe40b5119fd93a901d1a6468da5c02cdddc86cdb6334e28dbc721",
+      "path": "docs/sdd/06_GODOT_RUNTIME.md"
+    },
+    {
+      "sha256": "e1d0813dfa7a00c16ed88b00735884026299322800ca73148917edcf9ee747d1",
+      "path": "docs/sdd/07_PERSISTENCE_TESTING_OPERATIONS.md"
+    },
+    {
+      "sha256": "5ba2d791651853eab67899c9ca6f0ca73e189697407e36e950f94b5a66020d3a",
+      "path": "docs/sdd/08_SCENARIO_AUTHORING_GUIDE.md"
+    },
+    {
+      "sha256": "8c2464e2ca8d5a917ae224337b5a41da56751945da54d9c0e17aa422afda1d16",
+      "path": "docs/sdd/09_GAME_TYPE_EXTENSIBILITY.md"
+    },
+    {
+      "sha256": "83a00abc22b404b219797926a6b15215951fd25dad9dc2c7d8a7e08235a766ec",
+      "path": "docs/sdd/README.md"
+    },
+    {
+      "sha256": "a3d298fa3f7bc9c710724fe1f08e9d18559536a86dad11b0bee8f32aacbc02c9",
+      "path": "docs/sdd/details/ENGINE_BASELINE.md"
+    },
+    {
+      "sha256": "c0802e62c79898226b474e4156468a036bf1a360fdf771aceb8ccb6c0a0b1c44",
+      "path": "docs/sdd/details/README.md"
+    },
+    {
+      "sha256": "3a4a6a52ab7c2a9cba79ebb237ba79a4b9dbbdd9f39eb15e93aff6c75879778a",
+      "path": "docs/sdd/details/activity-instances/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "16d26fb2607f52c9a8cea7cfa0f23a3ddfb4f8341c9a21ab4acd0dd2f20b98b7",
+      "path": "docs/sdd/details/activity-instances/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "d1d6b2a7fa1514a706320fc8f644c30a0143fcfc02d127239049b3951ad10037",
+      "path": "docs/sdd/details/activity-instances/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "ab8d0ed3f58e5b626174ca84c4ce6f95cc07f47aced10d4f8766d43f05c55d3a",
+      "path": "docs/sdd/details/activity-instances/04_AUTHORING.md"
+    },
+    {
+      "sha256": "850daba104e28441e155a7b5a1c48149e42e21737d2a1d54d5194258483b7479",
+      "path": "docs/sdd/details/activity-instances/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "5bb984653779fcf357aad288dd4583cf6b82914dba40c9848f9f1f3c5052a138",
+      "path": "docs/sdd/details/activity-instances/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "8940ac684563f0abb57d3435f9e0392058d7cdaf4b7f70bdba31be3e6ab792bc",
+      "path": "docs/sdd/details/activity-instances/README.md"
+    },
+    {
+      "sha256": "7841c3fb797580133cee7a499f67e012795c44e97bae875a8041744d67a529e1",
+      "path": "docs/sdd/details/adventure-layer/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "341e56e3c7ca92a87b600576318d08e3bc64b3acd8041fb56bb8f19b058ed94d",
+      "path": "docs/sdd/details/adventure-layer/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "247dbecffeac06ac34beddace466ec5a116a4d69fe0068202987bfe1e1b90623",
+      "path": "docs/sdd/details/adventure-layer/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "17994f27c65f8fe267fdaed8df4e62bd0adb063083df3d8ef3c84b8cec63331a",
+      "path": "docs/sdd/details/adventure-layer/04_AUTHORING.md"
+    },
+    {
+      "sha256": "adbc345a9e101e1a76ba64b0d1f902d058dbbe931de4ad2dfb9dbe344691e025",
+      "path": "docs/sdd/details/adventure-layer/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "78edca62f4cfde99b703ad0a642c2ef3fc9f07dc74c44d295b7d73e57619308b",
+      "path": "docs/sdd/details/adventure-layer/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "8c057215a3730049460fbe6ae57c110940a5f5075b106f6048f8e1f494db97b1",
+      "path": "docs/sdd/details/adventure-layer/README.md"
+    },
+    {
+      "sha256": "70f62927edde99378a436f717412c7d691851f6d326ab1f7b78f78569c38f100",
+      "path": "docs/sdd/details/campaign-rpg-layer/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "bdcb3473c000427f831aa29222c22de625597ed38a46a944eabdc27d780583e3",
+      "path": "docs/sdd/details/campaign-rpg-layer/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "98ce8796539bd314a61e71b011f47b7ba7f3fb6e412a2f692fb555ab29a7574c",
+      "path": "docs/sdd/details/campaign-rpg-layer/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "f950fd20cdb49c245c72ad9f5a47e285511f58eee8898a2d6131cbdaf0eeead2",
+      "path": "docs/sdd/details/campaign-rpg-layer/04_AUTHORING.md"
+    },
+    {
+      "sha256": "403b647484ec68db9418e51a67fe45241817e4c959b038426fde1b2546e11c89",
+      "path": "docs/sdd/details/campaign-rpg-layer/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "e3c8536510c2f5a6726e00f63101eba11b437dbeb30701c52bd255db56de8974",
+      "path": "docs/sdd/details/campaign-rpg-layer/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "e979fbb8f7f08b790b268858fb44812d0cb244ce81b7d907ab58eef3e11cf20d",
+      "path": "docs/sdd/details/campaign-rpg-layer/README.md"
+    },
+    {
+      "sha256": "ba9908b2612d209b12ec6ca3b1de3ee90a215097139be2edbb4a1eb86e20a988",
+      "path": "docs/sdd/details/capability-profiles/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "f94cef1161a44ada672f6e5b4d5d2ebd1f7bea5b90b33cd11f4a3323a3dba8fb",
+      "path": "docs/sdd/details/capability-profiles/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "82b1efcf7511a46f2cc3a3516c45b608811f9b792058979bad2a0a16df78015a",
+      "path": "docs/sdd/details/capability-profiles/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "3788477efca4a84ddef26cf777f39ab8c6b142de5bf0a7213a5954ca7c221b0b",
+      "path": "docs/sdd/details/capability-profiles/04_AUTHORING.md"
+    },
+    {
+      "sha256": "7fe27e727931a30ec3fb5bd72729fd328fbdb25dcf5f2a3f9f491710bca16f52",
+      "path": "docs/sdd/details/capability-profiles/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "c8167ab0ee3e7b6ac256ac0d72f2b1265b3c31387c0e7c166c94002e636e4a4c",
+      "path": "docs/sdd/details/capability-profiles/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "9334d1104f8c5d91c59ab3d7160ce3a917fbc5a838da9a90304b71bf60d283c3",
+      "path": "docs/sdd/details/capability-profiles/README.md"
+    },
+    {
+      "sha256": "9180e9f07972658688929311734ed01a8b80ff13826ad48a3305c966ddbba76c",
+      "path": "docs/sdd/details/checkpoint-history/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "81e6d6da37adac78c6a45511456226146b9d8853f0d8e048651b166c62607a8f",
+      "path": "docs/sdd/details/checkpoint-history/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "519d95bbde661b0f9367447f214e6b179d368de5eac041130303124238cfca2a",
+      "path": "docs/sdd/details/checkpoint-history/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "9f03093b0abaa75db96dab83c4e75b3af3fdb2e2423361c0625077e13dfe8579",
+      "path": "docs/sdd/details/checkpoint-history/04_AUTHORING.md"
+    },
+    {
+      "sha256": "993c5de33ea7702c5240154af877fe7947404d43a719f44fb3981c7d3de29c5f",
+      "path": "docs/sdd/details/checkpoint-history/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "a3f6d8c549591dd0fffa08f3c30160f5cf20125ee660cc3cd59610725fdb2110",
+      "path": "docs/sdd/details/checkpoint-history/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "508b9c00868df42a37e6e57213a8951175080ea3e652a2cd5e958fded989f606",
+      "path": "docs/sdd/details/checkpoint-history/README.md"
+    },
+    {
+      "sha256": "a67a93089e17dde1d773cd1e9a549d1e5f2a7b88cd097fde4201fd9c56c48160",
+      "path": "docs/sdd/details/colony-layer/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "16a7c93fda8669837461021c6f94f604b03bf7bedba4f60d2b56a72717436d9c",
+      "path": "docs/sdd/details/colony-layer/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "907972b56a48129546a5007a7fefa5d5d95bf1b19773e0a9bf4eaa68e7239e13",
+      "path": "docs/sdd/details/colony-layer/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "c3bde6e02638682a8d1c59a7e5cae3a0bb12625b6ed1338a80f4b0f9dfa5e0ac",
+      "path": "docs/sdd/details/colony-layer/04_AUTHORING.md"
+    },
+    {
+      "sha256": "8de2ba7d5d356d66619a23a12f5d21871b5b16e10ae55e9c9ff584e841bc08c5",
+      "path": "docs/sdd/details/colony-layer/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "29d87af07e004407e6c876cd0262effedbec164f24a732155cfd4e7212f0a02e",
+      "path": "docs/sdd/details/colony-layer/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "4b04ae3e45b00954f9082db370e3e2dd6339a93bc09bc57d5279c43c66917539",
+      "path": "docs/sdd/details/colony-layer/README.md"
+    },
+    {
+      "sha256": "ca3be196f8388c5edd62302046c397f700a954246a02375bb578b08dadd575b0",
+      "path": "docs/sdd/details/deckbuilding-layer/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "293ddd8ea4b5b251cbfba22c2c799c09e0a80a765e3eeb42ca90d3f2de3729b5",
+      "path": "docs/sdd/details/deckbuilding-layer/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "e1f0a4fe058786f1811baffb30e6d9aa5309cb6855aeb7c62fab29fa7402e9c9",
+      "path": "docs/sdd/details/deckbuilding-layer/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "b50c5c743479c0485ff8d43de4e8c2a773ded6975000dc18e7aca3c0c291737d",
+      "path": "docs/sdd/details/deckbuilding-layer/04_AUTHORING.md"
+    },
+    {
+      "sha256": "98f7a61e05e9d29895cf22ffc1a9b58c1bacc4b171d6af00d3cfb1b97ac805a2",
+      "path": "docs/sdd/details/deckbuilding-layer/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "f6d00c182ec3b1770a254461355b95f56befa06b563bbc002870dbdadedad3d1",
+      "path": "docs/sdd/details/deckbuilding-layer/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "b679dbca7affba21a7610fcde11e1f573daf381f732803b99034b11bf3e4fc73",
+      "path": "docs/sdd/details/deckbuilding-layer/README.md"
+    },
+    {
+      "sha256": "b11e8304e858d5385a256aa3ca294520127a4c267ea766bf5d8e6a47ab9f8229",
+      "path": "docs/sdd/details/factory-economy-layer/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "fb319a5dbb632b4b2e30f6c9ade45f29a01e2234aead073cb2e7750612a0a7ac",
+      "path": "docs/sdd/details/factory-economy-layer/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "1e8d8deca652ca24a44fca8a27f031168d6fa294d8f2c1c01846437be5745008",
+      "path": "docs/sdd/details/factory-economy-layer/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "f84cca2bf4714a3bd108750e34cb686e3be68d96a0a0439001e38f16b5a66476",
+      "path": "docs/sdd/details/factory-economy-layer/04_AUTHORING.md"
+    },
+    {
+      "sha256": "1164e0b9c3cda6bf2815853e96fb31f5594bb31ed6732c1f560bcdc58b7aa9df",
+      "path": "docs/sdd/details/factory-economy-layer/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "b27aa38989332544536af3c7dbf85d1a4bb4328229bff7d866cde96f7d10896b",
+      "path": "docs/sdd/details/factory-economy-layer/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "25785804a00027db448175dee0f4b297e2d67c3acbcb1583df85055783158f70",
+      "path": "docs/sdd/details/factory-economy-layer/README.md"
+    },
+    {
+      "sha256": "69524fa5d6622998c6ea26a9fec227bd5e3e593415911962733733387a2a584a",
+      "path": "docs/sdd/details/four-x-layer/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "5582c5f821388cf59fbe7512aea02a08985d48f1d5fba1a8713ab8de08dfe9a8",
+      "path": "docs/sdd/details/four-x-layer/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "1c2138cf893213a8c301f2c2022169dd24837b2751ad8cd2381bc291426a6620",
+      "path": "docs/sdd/details/four-x-layer/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "06579750e06f6feec03d233095a5a3a51275580779660dd6bd72d38598907681",
+      "path": "docs/sdd/details/four-x-layer/04_AUTHORING.md"
+    },
+    {
+      "sha256": "1b86e28a26f4b5d514f07e3b14368616f9555322307948183488b5e5c0c9d496",
+      "path": "docs/sdd/details/four-x-layer/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "7d30637a0e688a49d09725bf1e486de27b841f33a11c2f2df48a395d25433f4b",
+      "path": "docs/sdd/details/four-x-layer/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "576650c544a99361da1bfcb636a724b7d0d228d432f78c72dd0163d76c0d4bc5",
+      "path": "docs/sdd/details/four-x-layer/README.md"
+    },
+    {
+      "sha256": "935e0a77f7408f0839fe1eed57cbe1409ffad837e497a1bd1e8da6183f9f562a",
+      "path": "docs/sdd/details/generation-scale/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "170a2355ae69a5f8cea6f70d424b17618edebdc34a56a89e0ec827d90c441871",
+      "path": "docs/sdd/details/generation-scale/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "c7e110693308d94722447900482debc5288db3ebf7237d2c8b67ae51d39d73fd",
+      "path": "docs/sdd/details/generation-scale/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "ea047963a60730abf1dc29e1baaa6bf22372f09c34bc0671f8d1fbf85562413c",
+      "path": "docs/sdd/details/generation-scale/04_AUTHORING.md"
+    },
+    {
+      "sha256": "14ff62d4e1c51d02f1ba953634e1ba10f8af590628f5ad7506335ccb4a63181a",
+      "path": "docs/sdd/details/generation-scale/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "cd428bbd016c6e504382dfeb0cdbb3e6684059c9997fe90ad0e8a747024847a8",
+      "path": "docs/sdd/details/generation-scale/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "0593b909a7c8057dc441190e922fbff5834128e4622d278b611ad663735592f7",
+      "path": "docs/sdd/details/generation-scale/README.md"
+    },
+    {
+      "sha256": "b55ba4d88a8bf4bd443b6a6cee3ea30a2f10e69621e71cd599c5ec95feb2dcc8",
+      "path": "docs/sdd/details/institution-management-layer/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "658e8526d949e88468cedcbea4293e79e63b0807e338b8ccf63f5b168c20316d",
+      "path": "docs/sdd/details/institution-management-layer/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "aa09e6488c7cc7f291f8caf783f67fcb43faab2f72f1d0c5d2a0e13ce47c69b2",
+      "path": "docs/sdd/details/institution-management-layer/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "884d58b89aecc4099b21369006efa7937ffb6aaa078256aa6cbbde839941ce50",
+      "path": "docs/sdd/details/institution-management-layer/04_AUTHORING.md"
+    },
+    {
+      "sha256": "ca1a426faf0837de3147d4863860bf66c5dcea2e7ed16e6fd1f570bdb36f5fc0",
+      "path": "docs/sdd/details/institution-management-layer/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "cabe5fcf397d923bf3f043659f0a24280b6a02c4f0337c69e5ebf46cb58f75b9",
+      "path": "docs/sdd/details/institution-management-layer/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "39f727b112dfae848fe79c4e9c4360d5bf1f70fef07ab9c107d49ec71321cbb0",
+      "path": "docs/sdd/details/institution-management-layer/README.md"
+    },
+    {
+      "sha256": "318cb1ee570198acbb84b9797a8f1a8082a61dd5daee7e566eba4dce9d092b3f",
+      "path": "docs/sdd/details/logical-time/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "dfa27c03739c1ee588b647b3054ed83335523de0bcbff1f7c3814a41920e1407",
+      "path": "docs/sdd/details/logical-time/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "fbc46771ff5a39c77491feb73cec77f33771be67992d524c1f12b879dded5562",
+      "path": "docs/sdd/details/logical-time/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "9bba06d63e47658d0980ae50c1f313c20f350d785bea59e47f4986fbc2cdb403",
+      "path": "docs/sdd/details/logical-time/04_AUTHORING.md"
+    },
+    {
+      "sha256": "f48299d92636726a112fcb5ebfd606421e3cd63bf2356930ed7726d225bf5965",
+      "path": "docs/sdd/details/logical-time/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "c83b91e93882ba8c9e63d2d6415d84fc78a30b114b0151bbfee07ace73bfd00e",
+      "path": "docs/sdd/details/logical-time/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "0360faf37b7a7187a67fe709ffe0a28d59a72e22fe8ddfb99b1b6be3432e2079",
+      "path": "docs/sdd/details/logical-time/README.md"
+    },
+    {
+      "sha256": "14d5ae84b3c8b36b1ee9cfd344cdd233c481fa3eab61a757a859d47eac4a8e88",
+      "path": "docs/sdd/details/multiplayer-authority/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "9fdc2a5f2cfd45e3a6df1678a1262fc7b61e2e1afdbf6c978258a395bd3289a7",
+      "path": "docs/sdd/details/multiplayer-authority/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "94aa2700e16b7aac9084cf78802b650de3709bdbd067cb9dee03d5c2afb3e510",
+      "path": "docs/sdd/details/multiplayer-authority/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "ab88d55940b8cfb03a8fc0f94d44487e6043cd1a83d7f0d02ab755597e042a7c",
+      "path": "docs/sdd/details/multiplayer-authority/04_AUTHORING.md"
+    },
+    {
+      "sha256": "c86dab017bb471dfc3f375448d990fda4abd83b5ddf6890633618f5682618198",
+      "path": "docs/sdd/details/multiplayer-authority/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "7ed1f36fa85e603dc5eaa331d90212b0e2cf1bc10f93fd7236d1af8d37350614",
+      "path": "docs/sdd/details/multiplayer-authority/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "9f1135e79eb574930d214da99d8a1de442b85292c2fa01afc751ab84680dec00",
+      "path": "docs/sdd/details/multiplayer-authority/README.md"
+    },
+    {
+      "sha256": "25209bbb482177cc8889fa09cb4c136fcd9027db6b82514a0d47186f802967b8",
+      "path": "docs/sdd/details/narrative-interactions/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "8cea2d02a42bfe9c79d8113efd5521e267d0a71740667207a64be83e6564924a",
+      "path": "docs/sdd/details/narrative-interactions/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "7768e69cdcfc4d6d7c141bc1f018b2c827f928d99c58101fb1a86bb5e54049ef",
+      "path": "docs/sdd/details/narrative-interactions/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "e0c570bf3a359760877e2182b485578b0bd0a7622b32c3637b81726d77dcd533",
+      "path": "docs/sdd/details/narrative-interactions/04_AUTHORING.md"
+    },
+    {
+      "sha256": "674fdd4df32ead02069f8074ceda072d917d023837a988e3fa6e5b16e5f6d3f6",
+      "path": "docs/sdd/details/narrative-interactions/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "81afc165c5b3624efa8df5b057d3c2610e979412cf58a4ad0321bbfb543f3059",
+      "path": "docs/sdd/details/narrative-interactions/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "8452373cfae893326c8121b0a7eb67f6e3b2fc4542c9e0053b50e4c00e7964b2",
+      "path": "docs/sdd/details/narrative-interactions/README.md"
+    },
+    {
+      "sha256": "5a066037b28d5724bd7ae61cb149423559e08d0309a482af85bc53d80c1f0204",
+      "path": "docs/sdd/details/native-godot-host/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "47d1e6043d3a143b980972d9bea939a63ebd97c8b017f3012db1410a592cb6a7",
+      "path": "docs/sdd/details/native-godot-host/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "4ae57ba3b06f55f5cb37a0e75214ed6935c5bf07d819aef087a07630f9efda30",
+      "path": "docs/sdd/details/native-godot-host/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "66a01d5102b4edf5a022388c93bc9700b4aba6bee4b8c842efbb2fa868eb3f5a",
+      "path": "docs/sdd/details/native-godot-host/04_AUTHORING.md"
+    },
+    {
+      "sha256": "7fe0cf84ee7f0bcbc9b0fda64d2291794f09b3dbb9ede97d736ddda7da6c3a6c",
+      "path": "docs/sdd/details/native-godot-host/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "88b9432fac4bd9e63ec722817be774098f7db23f5c88ed9c901ea36c1dcaea37",
+      "path": "docs/sdd/details/native-godot-host/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "6af3f4a0fb920314041afba8e031d78a039c12cf39dae6e78585612be9caf8e1",
+      "path": "docs/sdd/details/native-godot-host/README.md"
+    },
+    {
+      "sha256": "dc40e5981d01c8946451b98c6d3da9c0afb454cc6ef2099168e1bf88a7405799",
+      "path": "docs/sdd/details/open-world-layer/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "6b320a98a45785fb937d8a1f4103fdbf41d19c807d789d77679a2fa8e1c5a802",
+      "path": "docs/sdd/details/open-world-layer/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "88106a1d66f3fe39b489202849d15b7579ac268ae17f803fad6f7484498768bd",
+      "path": "docs/sdd/details/open-world-layer/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "a4edb7a5360239786d27a992931d7b444c2ae98bb7c00f8531367d4608c2f288",
+      "path": "docs/sdd/details/open-world-layer/04_AUTHORING.md"
+    },
+    {
+      "sha256": "4c3378914fa290bbfb6aeec0c762d18b4c5cb8536a1b1571c8141a6f6751f518",
+      "path": "docs/sdd/details/open-world-layer/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "43583e5dda592eb3818bd1fba8ecde8a84f6f7e165cf2ef3c7489d3ab496cd3d",
+      "path": "docs/sdd/details/open-world-layer/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "8c14dc5e0e49a5e5e7afb7c0600cf5ff2c538bbb33750cc2f80ccf2c5ea21b27",
+      "path": "docs/sdd/details/open-world-layer/README.md"
+    },
+    {
+      "sha256": "2e49e2948fb8df351232e033c4a3829674d99df115d07e72b84f184894e27ede",
+      "path": "docs/sdd/details/party-rpg-layer/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "6ca534d44b9e3b78f9cbdc8c6b38cb663304d84b7456ba841398dd75a40a5446",
+      "path": "docs/sdd/details/party-rpg-layer/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "341a17892d50db02d74dda52e1ed737e4514f6420631123ebb43991780ad4070",
+      "path": "docs/sdd/details/party-rpg-layer/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "1a5f6bbb9d97ec5d73f26f396cda111528d49ac7c755dc07adbecf64e72028a3",
+      "path": "docs/sdd/details/party-rpg-layer/04_AUTHORING.md"
+    },
+    {
+      "sha256": "598194db4b8b817e03043f59d25cf8cb37b71d53cd67ca6e6f421d4086eeffa3",
+      "path": "docs/sdd/details/party-rpg-layer/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "e6c6ec2d23c146cacc2bac43a519e25311dec195f7a678739becdca45d0a6c44",
+      "path": "docs/sdd/details/party-rpg-layer/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "c3d4fcf15dad7962a187bd913f3bd8c4682ece1fe11d957348c8ba756226bc2f",
+      "path": "docs/sdd/details/party-rpg-layer/README.md"
+    },
+    {
+      "sha256": "9b9973da46a8c7a8b583dc0c1d4073d5aa4f77549c174f98b96a3c460c5a9b27",
+      "path": "docs/sdd/details/persistent-world/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "0c10ba328b2cae406ecf12e1f16242f945ab6c76b15e1d52f9ffdf425d16886f",
+      "path": "docs/sdd/details/persistent-world/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "610a7f980721f2a3b6414c6437c48f962086d3aa7efa712cf1ac9d6f26642474",
+      "path": "docs/sdd/details/persistent-world/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "2be0a2f11bf0eca788144ce972f978176858b7007084fb0af5e287331b280da5",
+      "path": "docs/sdd/details/persistent-world/04_AUTHORING.md"
+    },
+    {
+      "sha256": "9875595677e2a039b69c41b9180fb3de0653b932188eb23ec8703032dc4dc284",
+      "path": "docs/sdd/details/persistent-world/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "8628e5aee73ddeeb879317f9121804ef63b99ef4819ad5570959b39635190270",
+      "path": "docs/sdd/details/persistent-world/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "7681971df1aa937b76a052c86db3b43ff21363724fa7b9097045d7338ad458c2",
+      "path": "docs/sdd/details/persistent-world/README.md"
+    },
+    {
+      "sha256": "b0ec6ac46ea11ce764fc91f444baa07f907bb8809f63325136db8a2042897e46",
+      "path": "docs/sdd/details/play-contexts/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "e4cced38a62f8b115e1a49cf3b9832a5814f1f2bc6b6adbd8d41d0935ce4ecfe",
+      "path": "docs/sdd/details/play-contexts/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "705b2eb99c12c97777569d5a236f1d6c9bc3c0882cc7b2738bdb3e5ceb2e6a3a",
+      "path": "docs/sdd/details/play-contexts/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "4bc10a026648d5168119779f9b53eb84661c7144c3975aec3f3fb9e556163d34",
+      "path": "docs/sdd/details/play-contexts/04_AUTHORING.md"
+    },
+    {
+      "sha256": "426499e0b4f554cba0fd7040e80be4c10cea3e3a228b832bff3a98bc19f9f26f",
+      "path": "docs/sdd/details/play-contexts/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "1ad0d5f25250ac6d8dec39a514bde1f863a946fa0c8f1d6bfc958536c2a92793",
+      "path": "docs/sdd/details/play-contexts/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "b48c4c8b7719fe696fa8cd3bd2cf894f76f8742e2c2c70d63d583ee42b2f1beb",
+      "path": "docs/sdd/details/play-contexts/README.md"
+    },
+    {
+      "sha256": "7b09bed6106ee7ec2906f391ed51534f774690a1531938c2638f3699a316533c",
+      "path": "docs/sdd/details/player-queries/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "ae5a55f415bc3ec8c1a4f1cc8913b52d198a47e434bf39b9fe518a803c2e7ca7",
+      "path": "docs/sdd/details/player-queries/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "1221ee741daa92523be0d59dec46c4b2e1adcfb752decd0e64bbeee0dcac45c0",
+      "path": "docs/sdd/details/player-queries/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "abad80f85edfe590e0348ec4c47ac64b19b32b1b1bd39c4e18fd39e1d511d433",
+      "path": "docs/sdd/details/player-queries/04_AUTHORING.md"
+    },
+    {
+      "sha256": "c1e50c6e71c2d086d9605575956bacb6b8ccafc912c58c6e43973eee3a283e46",
+      "path": "docs/sdd/details/player-queries/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "f1cd7b4a4ca88d33b4539573e940e665be7fa2dd8d4b630341b6eac945183ff3",
+      "path": "docs/sdd/details/player-queries/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "2d25beb57aacf850e5ebeba6cb251b9468af366a01acfd289116ec0db176ef4a",
+      "path": "docs/sdd/details/player-queries/README.md"
+    },
+    {
+      "sha256": "7de293d32967cb62242428d510213cd6f0551d7294bbb20807d851953652def2",
+      "path": "docs/sdd/details/progression-scopes/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "8a990ac42f1cba0104d0ae80343ea28b1f40689bb2823a31e9e5c5197f5bfd7d",
+      "path": "docs/sdd/details/progression-scopes/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "62d4bdeb84d62fa4c86ef56ea53bb91cfa0cbd4efcc0a1739563be7592b71493",
+      "path": "docs/sdd/details/progression-scopes/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "0af6326955bc0d3cef3ac6f80314018b9266a228e4b14065185a46fa9bc0294c",
+      "path": "docs/sdd/details/progression-scopes/04_AUTHORING.md"
+    },
+    {
+      "sha256": "b94fc557ec2060b8a4e7a5bff9499ac626c9a870260a24b60d86aeea1d2b771e",
+      "path": "docs/sdd/details/progression-scopes/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "c77d750ad30a00a0e6f33145d5f540362ec237a080d5f5375b7bdc8da84fe427",
+      "path": "docs/sdd/details/progression-scopes/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "97bb2a20524e57cae0bf587368996b0fc840d73490429875e0a31db76e9900bf",
+      "path": "docs/sdd/details/progression-scopes/README.md"
+    },
+    {
+      "sha256": "f0e75c56b698c631a9478e2c86ba42c2bcce5539177029202f86d7203dec4099",
+      "path": "docs/sdd/details/resource-transactions/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "ab1e560d42ede92b53d6a671882c919ff4b6a9d82aeb450f5827372823799b67",
+      "path": "docs/sdd/details/resource-transactions/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "99927c1b78a4240e3d17e5df3791cf3fbff4dc9d19f05ccae76b78e6c209b3c1",
+      "path": "docs/sdd/details/resource-transactions/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "f7386604e1a8d49fe58a928cec55e484c3d1e2085a08c897ff938e438aad5f92",
+      "path": "docs/sdd/details/resource-transactions/04_AUTHORING.md"
+    },
+    {
+      "sha256": "f7e008f3d131839672c1d1cb9bc8551aade71a10066e58fc7c205ed16516fe1e",
+      "path": "docs/sdd/details/resource-transactions/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "f729f400609eee01ca11af65ca8b1b153b3678a9cecf9871afc89828ed13614b",
+      "path": "docs/sdd/details/resource-transactions/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "fd77be661b3d76ce75ef1dd9a6d5c438d9d70de74e209b1dab8324d4d9e50912",
+      "path": "docs/sdd/details/resource-transactions/README.md"
+    },
+    {
+      "sha256": "b0620ddddae37be31e43e42dc5aaf705684c96d7b1276a92ba0feacc2a656b82",
+      "path": "docs/sdd/details/roguelite-layer/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "f908e9be64bad834e4d01a3aa62ad71e7ee2a4552957644a878abee3fa8201bd",
+      "path": "docs/sdd/details/roguelite-layer/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "56167a25f6c7f85bc6d82d009c219bbf024661bb0feb821a7e10c49dca3c90f9",
+      "path": "docs/sdd/details/roguelite-layer/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "6519c3d2bdd60b4c4b55f887b64e1ff086a885459975caf7bb3d9982c3de0995",
+      "path": "docs/sdd/details/roguelite-layer/04_AUTHORING.md"
+    },
+    {
+      "sha256": "842bf10b66a7476a07d026c9cb91a4570d79d299db3ca202771a4249776d40db",
+      "path": "docs/sdd/details/roguelite-layer/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "ac624e1e4a478af9a8fc7138d8f6db8f2439e3fd313cf76bd979d99f0347b19a",
+      "path": "docs/sdd/details/roguelite-layer/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "2fbb397257582038cbae03a5a2719bd4f4e04c439650821e928e2ede6129fe13",
+      "path": "docs/sdd/details/roguelite-layer/README.md"
+    },
+    {
+      "sha256": "37531bca8b84bf5dd6e9bb29decf3ede875ba3ccfd5b9b908033972f257a7667",
+      "path": "docs/sdd/details/rts-layer/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "ac14ed3bd9915d4122e1a7d961b3ff6859c06720e23dbd164823623f9c294b1e",
+      "path": "docs/sdd/details/rts-layer/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "57af7df3b1f482cbdb9ed03e6d51baabe740079abf744c81a8b7a28fef4d264d",
+      "path": "docs/sdd/details/rts-layer/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "168d8f0dba28692503e773d4fd011dc4fe94e5de3f5b67cf6fdd732349d85b95",
+      "path": "docs/sdd/details/rts-layer/04_AUTHORING.md"
+    },
+    {
+      "sha256": "7e2ad66c2bf87c434246b1f516a9525bd640513363a482b3b584f5ff57cb27f5",
+      "path": "docs/sdd/details/rts-layer/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "fb8488340de2e3ff09c7a9072f02de6d8faea117bc4847a46fba2d8a3f15b853",
+      "path": "docs/sdd/details/rts-layer/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "49e8f5e19cd420b261eb3121d94112034448e172ad050fa3e7e8ecc54161d2c9",
+      "path": "docs/sdd/details/rts-layer/README.md"
+    },
+    {
+      "sha256": "2efd69b95f6a75a6e153d7e683e2bfdfde5fc493da54579c220fbff85c323fde",
+      "path": "docs/sdd/details/survival-layer/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "7bfc8be5e6404c2e7748f2841d518e674bc741170cda3ce5a36ccb2cf6406ba3",
+      "path": "docs/sdd/details/survival-layer/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "9684ec3eec7b07d74edea028f9a79e14456f408f5a2b4315f1c9d6fa560d70c3",
+      "path": "docs/sdd/details/survival-layer/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "c8ce834deff3e9a07a3996ba47323f8213f3c8fc2382a2aea990cb60dc6e1b8e",
+      "path": "docs/sdd/details/survival-layer/04_AUTHORING.md"
+    },
+    {
+      "sha256": "af47279d8147c18431c7ce44c0941463447c469e8c9f1e33cb84c040c47fe967",
+      "path": "docs/sdd/details/survival-layer/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "0a8f14e94cf8031409948993824a36c6d54574c41e91638d4df9ad8ccd0eb4ed",
+      "path": "docs/sdd/details/survival-layer/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "08b9203f516efd3cdf9b27a1c8860c2472ab9d2975005dee5e515f1fdf94c0b0",
+      "path": "docs/sdd/details/survival-layer/README.md"
+    },
+    {
+      "sha256": "07b70417a4589531b6af8cd72c2e7c2e17fd1572279533b906bedeff033ab676",
+      "path": "docs/sdd/details/tactical-campaign-layer/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "771b7fec76e92c30148f194439a1c534bc2bd7038cd34b3d4422175c67ad93d3",
+      "path": "docs/sdd/details/tactical-campaign-layer/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "c6494ff9da23b173acd3ac448d783a5eae5a8346a598e4d93335f8c2e61419f9",
+      "path": "docs/sdd/details/tactical-campaign-layer/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "663e41932d57001f7f487e2fe3ed70e13b9a533a5cc77d9e232442b003795f4c",
+      "path": "docs/sdd/details/tactical-campaign-layer/04_AUTHORING.md"
+    },
+    {
+      "sha256": "48c901c7d88f03640cde7935cb290e4475268f32eca50cd33fc20477b136ac95",
+      "path": "docs/sdd/details/tactical-campaign-layer/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "3c05a87b55e5df511c806dca25b958777422b3dd49308fbe6a59a1644725ac41",
+      "path": "docs/sdd/details/tactical-campaign-layer/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "d7625af53611985c1b96b9d0145d8e4966da0c69d0d98a203a76598426960144",
+      "path": "docs/sdd/details/tactical-campaign-layer/README.md"
+    },
+    {
+      "sha256": "7e68ca45a9b73bbc25381c929920d936fb63e0a5b1a7ba3d984ce6d5f75eb999",
+      "path": "docs/sdd/details/turn-tactics-layer/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "ddf1a188da7612aef1d861668b8e12bd2a0a2b498dc9b4f72f9c2a8579e2dbc8",
+      "path": "docs/sdd/details/turn-tactics-layer/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "9c528898363c65f3fb5cf19941c4a98eee33be9394c05c2c4dada1e69771c540",
+      "path": "docs/sdd/details/turn-tactics-layer/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "ecee3d43ba4ce74361cb1e7ec280241a32cd49cea2d9878fffd6f35fb359a2c2",
+      "path": "docs/sdd/details/turn-tactics-layer/04_AUTHORING.md"
+    },
+    {
+      "sha256": "6f3b17e3c13ecbbad1957d6b6d9b805ed86e5bfb2d8ca35e61d490868dd97f54",
+      "path": "docs/sdd/details/turn-tactics-layer/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "c4de1eeded4e57dd76dfba7556a63c45177dfcdf80c6246967b03fa7d85ecfdf",
+      "path": "docs/sdd/details/turn-tactics-layer/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "3f996da4b5e8dba5c73ec2428106bedfda7a47f174ff63ec08bc4d69acc72d31",
+      "path": "docs/sdd/details/turn-tactics-layer/README.md"
+    },
+    {
+      "sha256": "8aa0d65a9b7bb3ae216f066a06467f1bd40705ae9562d7661ba1cbf19b5455a6",
+      "path": "docs/sdd/details/world-requests/01_REQUIREMENTS.md"
+    },
+    {
+      "sha256": "0658c2eac43782cc38c4fb7d6fb6f4b864f837bdf5cf7367ee92ecc18cd1bdf5",
+      "path": "docs/sdd/details/world-requests/02_ARCHITECTURE.md"
+    },
+    {
+      "sha256": "24e5471fb67e5382b8ad39e00d405f99ed376795d575bf8dbfbc658bebdab3e9",
+      "path": "docs/sdd/details/world-requests/03_CONTRACTS_STATE.md"
+    },
+    {
+      "sha256": "63e9903fdceddbd4a488fed0db4c86257dfeb8c9e6e236c56b2b13207b97f346",
+      "path": "docs/sdd/details/world-requests/04_AUTHORING.md"
+    },
+    {
+      "sha256": "414f64d54a70381d364e76ad73c92ee64ef489dac1f4cb788f6f3b88db4d0dc3",
+      "path": "docs/sdd/details/world-requests/05_RUNTIME_RECOVERY.md"
+    },
+    {
+      "sha256": "3036b449f3b8516b69ce1ea7e039387ee64c0958027dd3cd105c00e090fc2d16",
+      "path": "docs/sdd/details/world-requests/06_VERIFICATION_DELIVERY.md"
+    },
+    {
+      "sha256": "a1622a5c7258fe35b43adb2fd23701bcb10ec2563030fbbd1b6579b37b89f56b",
+      "path": "docs/sdd/details/world-requests/README.md"
+    },
+    {
+      "sha256": "4b93740fd5b34ce7b42814e0a492e3bf8a33fa49b3aec2e03032341641a0e719",
+      "path": "docs/sdd/details/capability-profiles/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "254ce9d160f217f3c7bd65f8fef2fd871d479e1d5ada416a1bc7f6b1753ef4d3",
+      "path": "docs/sdd/details/capability-profiles/examples/definition.json"
+    },
+    {
+      "sha256": "f0a50d08dd267cf20913f4f716b7df549ab442d7702ed35b44c2ef77d4870e64",
+      "path": "docs/sdd/details/logical-time/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "ae44ab5015656425fb7f992a56d3b145f144501d8d06d05d138bf6a27976f411",
+      "path": "docs/sdd/details/logical-time/examples/definition.json"
+    },
+    {
+      "sha256": "21ac8a47f487ec39b41221c5658a114dd5504108b4ea5cd768a1f089278f73f3",
+      "path": "docs/sdd/details/world-requests/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "f1c76e93a7affeb04ece66ddbd721d37d495b76c640a8c7a77f7227d3be86094",
+      "path": "docs/sdd/details/world-requests/examples/definition.json"
+    },
+    {
+      "sha256": "b928c06c875bbebf9efdbce5ab919825cba97cf674afe0dfb1a048503a63df74",
+      "path": "docs/sdd/details/persistent-world/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "959cbcb27c1361f0118d91da90c21ba5a4b76f0507bc6118b579734ccf15e813",
+      "path": "docs/sdd/details/persistent-world/examples/definition.json"
+    },
+    {
+      "sha256": "56b38b5f6bf717f018ef7f8555b2cbfe6ce8fe73e2f182b5a28cef2ce8c3baf8",
+      "path": "docs/sdd/details/player-queries/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "0efc5cde222bb67cbe5f89a7757f4b882e03b430b8937bbd08d0089ef7b35163",
+      "path": "docs/sdd/details/player-queries/examples/definition.json"
+    },
+    {
+      "sha256": "196d78db4d33f1c86fc21620ecf5d0451f560b476a8149eab3156abeed2f6736",
+      "path": "docs/sdd/details/progression-scopes/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "88c85294cad9bedc6d628dd1e83ba4f5a549b343f995aca0aa244c3acd939f8b",
+      "path": "docs/sdd/details/progression-scopes/examples/definition.json"
+    },
+    {
+      "sha256": "58251e7517cec5de69d6bbecfe0b23f4e10da9f8e03c3ad03c9206ca81bacc8f",
+      "path": "docs/sdd/details/narrative-interactions/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "1702dd938f0031515cc9ebc2251b9a80434aefddf3c90c345d48bfd99b74ac78",
+      "path": "docs/sdd/details/narrative-interactions/examples/definition.json"
+    },
+    {
+      "sha256": "cdb29e3f16f94c90b7c5f59994f1b425f9020a399af8dce76b35ba335de3e554",
+      "path": "docs/sdd/details/activity-instances/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "edd1d49f7ac12d32764267dbd2917b398c0fecefc6dad447f5bb283e949d004d",
+      "path": "docs/sdd/details/activity-instances/examples/definition.json"
+    },
+    {
+      "sha256": "4f59a26ef35430c21413e46c1459b7b23a1b1ac96b4afb5bae3795a23af35fa8",
+      "path": "docs/sdd/details/resource-transactions/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "54f6443835232b528bca884b7eceb8012d0c223de88c8652696483c32317d32d",
+      "path": "docs/sdd/details/resource-transactions/examples/definition.json"
+    },
+    {
+      "sha256": "2f8b2dcbcb8eb45ed7cef71aafc393f517a67e9754a2b15982c812b1dfed007b",
+      "path": "docs/sdd/details/checkpoint-history/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "2f0857489028093e58da5f46484306540b48c22ccd85222b25ca820165eae79a",
+      "path": "docs/sdd/details/checkpoint-history/examples/definition.json"
+    },
+    {
+      "sha256": "477df3e8a9dc5495c25bbdab222cbf26ef84505ab6d6bb6108c8ea505d5cbd61",
+      "path": "docs/sdd/details/generation-scale/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "3cda000e004a78be7630fc65ab37ca102662bd3bebd22e3a9d1ec5b5e58f7009",
+      "path": "docs/sdd/details/generation-scale/examples/definition.json"
+    },
+    {
+      "sha256": "1f700411bab6af8808a511db7467b1cea65acd3f4941981ad837a9c9c7555294",
+      "path": "docs/sdd/details/multiplayer-authority/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "4c594190a7a07f99002de8884464bd5cf861558e95e266c49410f287c74d4da8",
+      "path": "docs/sdd/details/multiplayer-authority/examples/definition.json"
+    },
+    {
+      "sha256": "f4b47ff159d069ab65f88db7c54f5c2f582ca217dba8ea381c3d9259142f25e7",
+      "path": "docs/sdd/details/play-contexts/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "6d18eec532c1b161db5bd8a650cc190d0b15bff9685719d70fa3a0dd0e1ace46",
+      "path": "docs/sdd/details/play-contexts/examples/definition.json"
+    },
+    {
+      "sha256": "dc9d3919bd7fe00f79a27558e516b292fabd901e7a73708e7a9d575311ece7d7",
+      "path": "docs/sdd/details/native-godot-host/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "e0dcd34b7f9dedc0b4a960e36bcc7cda00933ce7f158b49194367806d90dfae5",
+      "path": "docs/sdd/details/native-godot-host/examples/definition.json"
+    },
+    {
+      "sha256": "5b9130cbfc8b22adc097a671a2ff2719937f55002c97ee6bccad36ee34a910e1",
+      "path": "docs/sdd/details/adventure-layer/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "d45c2b0d30bbde46cd89417d885be4fc54b478780a1f96a308ffe9b45bf7369c",
+      "path": "docs/sdd/details/adventure-layer/examples/definition.json"
+    },
+    {
+      "sha256": "3f23c4cedea23765460e4adfafc340d4a120813398f73240cbaa6dbfb4280d97",
+      "path": "docs/sdd/details/party-rpg-layer/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "b9ccc2b6517c82727180ffce2e141e41c5c0cb78ea5505d87ab764bd4568f3d0",
+      "path": "docs/sdd/details/party-rpg-layer/examples/definition.json"
+    },
+    {
+      "sha256": "6b88c6222348231a0d370e83e2423c6bb666e65cec28c025e4db379da3cba91b",
+      "path": "docs/sdd/details/survival-layer/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "33a05e5e6bf31db7f8da579067682f2f36fb3be4622dd5c2c994ecf94f5b4520",
+      "path": "docs/sdd/details/survival-layer/examples/definition.json"
+    },
+    {
+      "sha256": "ceb9a1c47267c223ea21c2d3af941654518a17ad5c13dc14d4f830ed58213f13",
+      "path": "docs/sdd/details/open-world-layer/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "50949c3a39b8af822cd00e071b3e2f5cec5a642ae51fd3766d60f897b957ca80",
+      "path": "docs/sdd/details/open-world-layer/examples/definition.json"
+    },
+    {
+      "sha256": "a2e5633303d01c1de742e35c3e6f19b00f70ecff81263cb73d4833fc0fc1ed40",
+      "path": "docs/sdd/details/rts-layer/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "3deeddd34e30b945d4e8ed19ddb954e85c66aa33ffd50f4de585450e7f2da9fb",
+      "path": "docs/sdd/details/rts-layer/examples/definition.json"
+    },
+    {
+      "sha256": "bc66ea70afbdd0ffc0c2459a2a309998d7ec3eb2f63d96694a24016dffda3fa3",
+      "path": "docs/sdd/details/turn-tactics-layer/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "79db02c15421dc4fcc732269c2e067d943eb1e4d6ded062520f04f2563c5c3a5",
+      "path": "docs/sdd/details/turn-tactics-layer/examples/definition.json"
+    },
+    {
+      "sha256": "0dbf25f7b5a7a8af1b27ee09eff1db87e3d57492aa139e42cae77d812e6086ec",
+      "path": "docs/sdd/details/tactical-campaign-layer/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "36f87af7cfabf5c56d75007ec6bed3b585761ed381f63d40e6263e0e211956fc",
+      "path": "docs/sdd/details/tactical-campaign-layer/examples/definition.json"
+    },
+    {
+      "sha256": "a437b735fc25d3eee9fc388728f27585664a42fe2171eaae5f691fa7694e7253",
+      "path": "docs/sdd/details/colony-layer/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "ce9846c5de08e587ca2ae9e8bd0b7009db089802d288f8e0abd314302d40f1ef",
+      "path": "docs/sdd/details/colony-layer/examples/definition.json"
+    },
+    {
+      "sha256": "50bc041dcee1681964fc32f52fd0e1ac39661129b674ab490e0006564a58c126",
+      "path": "docs/sdd/details/factory-economy-layer/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "6ac94ba2886631ef089a068121535e4f3754992fd113b43ed63e940e69d77e99",
+      "path": "docs/sdd/details/factory-economy-layer/examples/definition.json"
+    },
+    {
+      "sha256": "b6c87f85040b038c02b7d1a804fb81d88e69b32a7ffd54d8ad307e837ab83436",
+      "path": "docs/sdd/details/four-x-layer/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "0193b9e9453e2f0f48f2ee802de8a330f1dd97f7a3391aa313541f4f6b51ef59",
+      "path": "docs/sdd/details/four-x-layer/examples/definition.json"
+    },
+    {
+      "sha256": "f8ef46c8ad7e809c78ad406c6ea38860727911e674f49d3e70f9679191246ea9",
+      "path": "docs/sdd/details/roguelite-layer/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "8e0e97c65239d67634ba666fd4a6f81b965852f080a13d6e2db65354fc11ef2a",
+      "path": "docs/sdd/details/roguelite-layer/examples/definition.json"
+    },
+    {
+      "sha256": "3149f05a41703fe50d4d60bc0337794ee7d5db256187c09ef6c43c8d66504cbc",
+      "path": "docs/sdd/details/deckbuilding-layer/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "6008987e4ebffd139c398afe949aa2703b8ceb71cd498ab0bf400c7f9574eea1",
+      "path": "docs/sdd/details/deckbuilding-layer/examples/definition.json"
+    },
+    {
+      "sha256": "0a10c946ae67a61d4fa9ef96bec91b58cc1638309c8f9ad1dee842391e563f58",
+      "path": "docs/sdd/details/institution-management-layer/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "30ebb2fc7fce1494cfc24badf1afd29fe48b50fb84cca0308b0683495832c546",
+      "path": "docs/sdd/details/institution-management-layer/examples/definition.json"
+    },
+    {
+      "sha256": "715661123c149888e344197b4741ad6c8ed811fc9ee1b73c0ac7e6d065a4f0b5",
+      "path": "docs/sdd/details/campaign-rpg-layer/contracts/definition.schema.json"
+    },
+    {
+      "sha256": "fc5767e76d8770e00eecfb0cdadeea6db2828b4caa73b03c018f32318dc4ced8",
+      "path": "docs/sdd/details/campaign-rpg-layer/examples/definition.json"
+    },
+    {
+      "sha256": "d36d297a2960aee90a58f849065601c029cca2f4e16b4ca5e6031a94a5e6207c",
+      "path": "docs/sdd/details/catalog.json"
+    },
+    {
+      "sha256": "26a5ccac652b871cec26bf493e71227a027e16ec985cfc1013b06fff15d18006",
+      "path": "docs/sdd/contracts/content.schema.json"
+    },
+    {
+      "sha256": "72dccddf2ea8e949db85de4f27916a47a49267ef6b54baf424bc13254cde55f7",
+      "path": "docs/sdd/contracts/lost_soldier.schema.json"
+    },
+    {
+      "sha256": "36ee5062bd96dadde1a0f78f2bd8e53cc3c979502b35e723460d2cac940b88bf",
+      "path": "docs/sdd/examples/river_crossing.json"
+    },
+    {
+      "sha256": "2d3a7b33e5e6ed854efb35d77620af982c920c08ffbc144050d7d396659a9dff",
+      "path": "tools/Validate-Sdd.ps1"
+    }
+  ],
+  "scope": "Recursive SDD links/anchors, detailed package inventory/dependencies, structural definition schemas, selected fixture references and abstract ending predicates only",
+  "checkedAtUtc": "2026-10-25T03:07:28.0703225Z",
+  "environment": "PowerShell 7.6.5 on Microsoft Windows 10.0.26200",
+  "checks": [
+    {
+      "name": "schema_semantics_and_12_abstract_cases",
+      "status": "verified"
+    },
+    {
+      "status": "verified",
+      "name": "definition_capability-profiles",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_logical-time",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_world-requests",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_persistent-world",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_player-queries",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_progression-scopes",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_narrative-interactions",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_activity-instances",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_resource-transactions",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_checkpoint-history",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_generation-scale",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_multiplayer-authority",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_play-contexts",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_native-godot-host",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_adventure-layer",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_party-rpg-layer",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_survival-layer",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_open-world-layer",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_rts-layer",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_turn-tactics-layer",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_tactical-campaign-layer",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_colony-layer",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_factory-economy-layer",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_four-x-layer",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_roguelite-layer",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_deckbuilding-layer",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_institution-management-layer",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "name": "definition_campaign-rpg-layer",
+      "scope": "Structural schema only; semantic/runtime behavior not_run"
+    },
+    {
+      "status": "verified",
+      "expectedCode": "SDD_PACKAGE_CYCLE",
+      "name": "package_graph_rejects_cycle"
+    },
+    {
+      "status": "verified",
+      "expectedCode": "SDD_PACKAGE_REFERENCE",
+      "name": "package_graph_rejects_missing_dependency"
+    },
+    {
+      "status": "verified",
+      "name": "markdown_anchor_fixture",
+      "scope": "Duplicate headings and fenced-code exclusion"
+    },
+    {
+      "status": "verified",
+      "count": 28,
+      "name": "detail_package_inventory_and_dependency_graph"
+    },
+    {
+      "status": "verified",
+      "count": 84,
+      "name": "definition_negative_mutations",
+      "scope": "Unknown-field, missing-ID and invalid-version-type structural checks"
+    },
+    {
+      "status": "verified",
+      "count": 1529,
+      "name": "local_links",
+      "anchors": 2
+    },
+    {
+      "status": "verified",
+      "expectedCode": "PACK_REFERENCE",
+      "name": "missing_zone"
+    },
+    {
+      "status": "verified",
+      "expectedCode": "CONDITION_FACT",
+      "name": "unknown_fact"
+    },
+    {
+      "status": "verified",
+      "expectedCode": "CONDITION_TYPE",
+      "name": "wrong_condition_type"
+    },
+    {
+      "status": "verified",
+      "expectedCode": "LAYER_SCHEMA",
+      "name": "negative_stock"
+    },
+    {
+      "status": "verified",
+      "expectedCode": "OBJECTIVE_CYCLE",
+      "name": "objective_cycle"
+    },
+    {
+      "status": "verified",
+      "expectedCode": "EFFECT_UNKNOWN",
+      "name": "unregistered_effect"
+    },
+    {
+      "status": "verified",
+      "expectedCode": "PACK_SCHEMA",
+      "name": "traversal_path"
+    },
+    {
+      "status": "verified",
+      "expectedCode": "ENDING_PRIORITY_DUPLICATE",
+      "name": "ending_priority_collision"
+    },
+    {
+      "status": "verified",
+      "expectedCode": "ASSET_ROLE",
+      "name": "unknown_scene_role"
+    },
+    {
+      "name": "duplicate_json_property",
+      "status": "verified"
+    }
+  ]
+}

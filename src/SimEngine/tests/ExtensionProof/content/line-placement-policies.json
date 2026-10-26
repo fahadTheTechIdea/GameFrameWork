@@ -1,0 +1,8 @@
+{
+  "tile_layer_band_conditions":[{"id":"segment.underlaid","space":"survey.tiles","layer":"segment.pipe","minimum":1,"maximum":null}],
+  "independent_line_placement_policies":[{
+    "id":"segment.underlay-policy","space":"survey.tiles","blocker":"line.requires-underlay",
+    "footprint":{"match":"all","conditions":["segment.underlaid"]},
+    "fault":"none","read_after":{"numerator":2,"denominator":1,"unit":"minute"}
+  }]
+}

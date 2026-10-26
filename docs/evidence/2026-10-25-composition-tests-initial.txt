@@ -1,0 +1,5 @@
+Unhandled exception. WorldCreator.Worlds.WorldGenerationException: Mockup world generation rejected: BUILDING_GREEN_RASTER_CONFLICT:campus:administration-parcel-0-building:campus:administration-parcel-0-building-staff-green; BUILDING_GREEN_RASTER_CONFLICT:campus:training:academy-parcel-0-building:campus:training:academy-parcel-0-building-recreation-green; BUILDING_GREEN_RASTER_CONFLICT:campus:training:first-team-parcel-0-building:campus:training:first-team-parcel-0-building-recreation-green
+   at WorldCreator.Worlds.DesertWorldGenerator.GenerateAsync(WorldRequest request, CancellationToken cancellationToken) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\DesertWorldGenerator.cs:line 143
+   at FacilityCompositionTests.RunAsync(String cli) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\FacilityCompositionTests.cs:line 52
+   at Program.<Main>$(String[] args) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\Program.cs:line 9
+   at Program.<Main>(String[] args)

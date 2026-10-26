@@ -1,0 +1,10 @@
+{
+  "knowledge_facts":[{"id":"recipe.discovered","fresh_for":null,"value":{"classification":"learned"}}],
+  "knowledge_effects":[{"id":"recipe.learn","subject":"recipe.discovered"}],
+  "activities":[{"id":"recipe.discover","player_orderable":true,"automatic_supply":false,"nodes":[{"id":"observe","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":3,"denominator":1,"unit":"minute"}}],"on_complete":"recipe.learn"}],
+  "knowledge_visibility_policies":[{"id":"recipe.visibility","own_entities":true,"unlisted_entities":false,"unlisted_content":true,"rules":["recipe.hide-resource"]}],
+  "resource_knowledge_visibility":[{"id":"recipe.hide-resource","definition":"supply","mode":"all","facts":["recipe.discovered"]}],
+  "unit_knowledge_visibility":[{"id":"recipe.hide-quantity","definition":"unit.supply","mode":"all","facts":["recipe.discovered"]},{"id":"recipe.hide-capacity","definition":"unit.capacity.count","mode":"all","facts":["recipe.discovered"]}],
+  "entity_knowledge_visibility":[{"id":"recipe.hide-result","definition":"contract.result","mode":"all","facts":["recipe.discovered"]}]
+}
+

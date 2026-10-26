@@ -1,0 +1,107 @@
+{
+  "timestamp": "2026-10-25T19:33:18.221942+03:00",
+  "status": "count-fidelity-failed; concept-only",
+  "output": {
+    "file": "city-engine-layout-trial.png",
+    "sha256": "1815fb4d4ff5907482fb6b9aaa89baab4efeb26a58c7d856df3a501607da36a2",
+    "size": [
+      1672,
+      941
+    ],
+    "format": "PNG",
+    "mode": "RGB"
+  },
+  "inputsUnchanged": true,
+  "sourceWorldUnchanged": true,
+  "inspectionMethod": "Author manual visual rooftop/office-instance count in the full generated image; no automated detector or owner approval.",
+  "houseGroups": [
+    {
+      "id": "west-north",
+      "expected": 4,
+      "observed": 3
+    },
+    {
+      "id": "west-middle",
+      "expected": 4,
+      "observed": 3
+    },
+    {
+      "id": "west-south",
+      "expected": 4,
+      "observed": 3
+    },
+    {
+      "id": "central-north",
+      "expected": 5,
+      "observed": 4
+    },
+    {
+      "id": "central-middle",
+      "expected": 5,
+      "observed": 4
+    },
+    {
+      "id": "central-south",
+      "expected": 5,
+      "observed": 4
+    },
+    {
+      "id": "lower",
+      "expected": 5,
+      "observed": 4
+    },
+    {
+      "id": "park-south",
+      "expected": 3,
+      "observed": 2
+    }
+  ],
+  "familyCounts": {
+    "detached-house": {
+      "expected": 35,
+      "observed": 27
+    },
+    "office-building": {
+      "expected": 4,
+      "observed": 2
+    },
+    "primary-school": {
+      "expected": 1,
+      "observed": 1
+    },
+    "football-stadium": {
+      "expected": 1,
+      "observed": 1
+    },
+    "factory": {
+      "expected": 1,
+      "observed": 1
+    },
+    "warehouse": {
+      "expected": 1,
+      "observed": 1
+    }
+  },
+  "totalBuildings": {
+    "expected": 43,
+    "observed": 33,
+    "missing": 10
+  },
+  "visualFindings": [
+    "Northern open plots, northwest stadium, central park, narrow school site, southeast factory/warehouse and diagonal southern bypass are closer to the engine diagram than the preceding concept.",
+    "The model reduced every house frontage group and merged each pair of upper office buildings into one.",
+    "Road geometry/site scale was redrawn; exact plan adherence is not established.",
+    "Warehouse appears to have three front loading doors versus four in its isolated design. Exact architectural identity is not preserved.",
+    "The reference board still supports a recognisable shared architectural family."
+  ],
+  "gateResults": {
+    "referenceFilesVerified": "passed",
+    "preservedEngineGeometryAndAssets": "passed",
+    "buildingCount": "failed",
+    "exactRoadSiteGeometry": "not qualified; visibly redrawn",
+    "ownerArtApproval": "not granted",
+    "productionMasksAndAtlases": "not run",
+    "Godot": "not run"
+  },
+  "nextTechnicalGate": "Use C# placement of stored validated assets to enforce exact quantities and geometry. ImageGen remains a concept/art source; a generated city illustration is not an exact compiled world."
+}

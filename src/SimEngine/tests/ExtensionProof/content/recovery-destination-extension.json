@@ -1,0 +1,28 @@
+{
+  "proof_recovery_destinations": [{"id":"return.priority-required","minimum_priority":150}],
+  "entities": [{"id":"return.depot","kind":"entity","components":{
+    "point_presence":{"space":"purchase.points","position":11},
+    "point_stock":{"resource":"supply","capacity_policy":"purchase.store","initial":0}}}],
+  "entity_setups": [
+  {
+    "id": "return.depot.start",
+    "after": [],
+    "entity": "return.depot",
+    "company": 0,
+    "placement": {
+      "space": "purchase.points",
+      "position": 11
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "recovery-destination-extension.start",
+    "entries": [
+      "return.depot.start"
+    ],
+    "includes": []
+  }
+]
+}

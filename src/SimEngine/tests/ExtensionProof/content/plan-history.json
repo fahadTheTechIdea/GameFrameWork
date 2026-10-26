@@ -1,0 +1,9 @@
+{
+  "plan_history_policies": [
+    {"id":"history.proof","minimum_age":{"numerator":6,"denominator":1,"unit":"minute"},"minimum_retained_cohorts":1,"cohorts_per_update":2},
+    {"id":"history.immediate","minimum_age":{"numerator":0,"denominator":1,"unit":"minute"},"minimum_retained_cohorts":0,"cohorts_per_update":1}
+  ],
+  "public_plan_history_policies": [
+    {"id":"history.public","minimum_age":{"numerator":0,"denominator":1,"unit":"minute"},"minimum_retained_cohorts":0,"cohorts_per_update":1}
+  ]
+}

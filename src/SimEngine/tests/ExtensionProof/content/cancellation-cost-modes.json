@@ -1,0 +1,8 @@
+{
+  "units": [{"id":"unit.cancellation.money","dimension":"currency","scale":{"numerator":1,"denominator":1},"discrete":false}],
+  "game_modes": [
+    {"id":"cancellation.resources","name":"Resource only cancellation","properties":{}},
+    {"id":"cancellation.accounts","name":"Accounts without manufacturing costs","properties":{"business.money.enabled":true,"business.manufacturing_costs.enabled":false}},
+    {"id":"cancellation.paid","name":"Paid manufacturing cancellation","properties":{"business.money.enabled":true,"business.manufacturing_costs.enabled":true}}
+  ]
+}

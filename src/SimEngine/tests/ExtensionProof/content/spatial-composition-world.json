@@ -1,0 +1,31 @@
+{
+  "game_modes":[{"id":"spatial.resource-only","name":"Physical simulation without economy","properties":{}}],
+  "time_definitions":[{"id":"spatial.minute","quantum":{"numerator":60,"denominator":1,"unit":"second"},"frame_ticks":1,"ticks_per_second":30,"horizon":null}],
+  "entity_states":[
+    {"id":"spatial.idle","state":"spatial.idle","priority":0,"default":true},
+    {"id":"spatial.moving","state":"spatial.moving","priority":40},
+    {"id":"spatial.stopped","state":"spatial.stopped","priority":60}
+  ],
+  "tile_spaces":[{"id":"spatial.tiles","width":12,"height":8}],
+  "absent_spatial_spaces":[{"id":"spatial.absent"}],
+  "spatial_composition_probes":[{"id":"spatial.probe","mode":"valid"}],
+  "entities":[
+    {"id":"spatial.cart","kind":"entity","components":{
+      "tile_presence":{"space":"spatial.tiles","width":1,"height":1,"blocks":true,"movable":true},
+      "mover":{"classes":["spatial.ground","spatial.heavy"],"class":"spatial.ground","speed":60,"states":{"moving":"spatial.moving","stopped":"spatial.stopped"}}
+    }},
+    {"id":"spatial.obstacle","kind":"entity","components":{"tile_presence":{"space":"spatial.tiles","width":1,"height":1,"blocks":true,"movable":false}}},
+    {"id":"spatial.local","kind":"entity","components":{}}
+  ],
+  "world_setup_profiles":[
+    {"id":"spatial.start","entries":["spatial.start-cart","spatial.start-obstacle","spatial.start-local"],"includes":[]},
+    {"id":"spatial.empty","entries":[],"includes":[]},
+    {"id":"spatial.local-only","entries":["spatial.start-local"],"includes":[]}
+  ],
+  "entity_setups":[
+    {"id":"spatial.start-cart","after":[],"entity":"spatial.cart","company":0,"placement":{"space":"spatial.tiles","x":1,"y":2},"home":null},
+    {"id":"spatial.start-obstacle","after":[],"entity":"spatial.obstacle","company":0,"placement":{"space":"spatial.tiles","x":3,"y":2},"home":null},
+    {"id":"spatial.start-local","after":[],"entity":"spatial.local","company":0,"placement":null,"home":null}
+  ],
+  "scenarios":[{"id":"spatial-composition","game_mode":"spatial.resource-only","mode_overrides":{},"time":"spatial.minute","space":"spatial.tiles","modules":["sim.world-setup","sim.tile-navigation","proof.spatial-composition"],"seats":1,"default_seats":1,"settings":{"sim.world-setup":{"profile":"spatial.start"}}}]
+}

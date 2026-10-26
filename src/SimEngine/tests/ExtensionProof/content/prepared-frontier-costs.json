@@ -1,0 +1,46 @@
+{
+  "staffed_activity_executors":[{"id":"work.staffed","travel":"sim.work.travel","work":"sim.work.productive","departure":"sim.work.departure"}],
+  "timed_activity_executors":[{"id":"work.timed","rate":1}],
+  "response_effects":[{"id":"frontier.restart","bound_response":true}],
+  "activities":[{"id":"frontier.response","priority":10,"automatic_supply":false,"nodes":[
+    {"id":"a","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"budget.ready"},
+    {"id":"b","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"budget.ready"},
+    {"id":"restart","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":2,"denominator":1,"unit":"minute"},"after":["a","b"]}
+  ],"on_complete":"frontier.restart"}],
+  "incident_workflows":[{"id":"frontier.workflow","kind":"frontier.failure","response":"frontier.response","phases":[
+    {"id":"repair","nodes":["a","b"]},{"id":"restart","nodes":["restart"]}
+  ]}],
+  "entities":[{"id":"frontier.site","kind":"entity","components":{
+    "point_presence":{"space":"purchase.points","position":20},
+    "point_dock":{"work_roles":["inspect"],"resources":[],"slots":[
+      {"id":"frontier.service.outer","kind":"service","offset":-1},
+      {"id":"frontier.service.inner","kind":"service","offset":-2},
+      {"id":"frontier.departure.a","kind":"departure","offset":1},
+      {"id":"frontier.departure.b","kind":"departure","offset":-3}
+    ]},
+    "storage":{"capacity_policy":"purchase.store","initial_stock":{"supply":8},"public":false,"evacuate":false,"accepts":["supply"],"phases":[]},
+    "incident":{"id":"damage","workflow":"frontier.workflow","states":{"active":"blocked"}}
+  }}],
+  "entity_setups": [
+  {
+    "id": "frontier.site.start",
+    "after": [],
+    "entity": "frontier.site",
+    "company": 0,
+    "placement": {
+      "space": "purchase.points",
+      "position": 20
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "prepared-frontier-costs.start",
+    "entries": [
+      "frontier.site.start"
+    ],
+    "includes": []
+  }
+]
+}

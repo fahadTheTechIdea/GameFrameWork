@@ -1,0 +1,14 @@
+{
+  "independent_handling_profiles": [
+    {"id":"contract.handling","resources":[{"resource":"supply","quantity":2,"loading":{"numerator":3,"denominator":1,"unit":"minute"},"unloading":{"numerator":2,"denominator":1,"unit":"minute"}}]},
+    {"id":"contract.unused-handling","resources":[{"resource":"supply","quantity":1,"loading":{"numerator":1,"denominator":1,"unit":"minute"},"unloading":{"numerator":1,"denominator":1,"unit":"minute"}}]}
+  ],
+  "slot_handling_profiles": [
+    {"id":"contract.slots","resource":"supply","batch":4,"loading":{"numerator":5,"denominator":1,"unit":"minute"},"unloading":{"numerator":3,"denominator":1,"unit":"minute"}}
+  ],
+  "fault_handling_profiles": [
+    {"id":"contract.pause-fault","mode":"pause"},
+    {"id":"contract.throw-fault","mode":"throw"},
+    {"id":"contract.default-fault","mode":"default"}
+  ]
+}

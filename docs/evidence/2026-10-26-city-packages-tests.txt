@@ -1,0 +1,1 @@
+PASS: city package manifests, byte hashes, regenerated geometry/metadata/viewer, forged hashes, path traversal, engine identity, cancellation and read-only verification.

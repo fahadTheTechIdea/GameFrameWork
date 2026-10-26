@@ -1,0 +1,12 @@
+{
+  "entity_replacement_effects":[{"id":"remote.replace","source":"utility.remote-alternative","target":"utility.remote-provider"}],
+  "entity_removal_effects":[{"id":"remote.retire","source":"utility.remote-provider"}],
+  "entity_activities":[
+    {"id":"remote.upgrade","target":"utility.remote-alternative","player_orderable":true,"automatic_supply":false,"priority":80,
+      "on_complete":"remote.replace","nodes":[{"id":"replace","executor":"work.staffed","roles":["inspect"],
+        "duration":{"numerator":3,"denominator":1,"unit":"minute"},"after":[],"requirement":null,"effect":null}]},
+    {"id":"remote.remove","target":"utility.remote-provider","player_orderable":true,"automatic_supply":false,"priority":80,
+      "on_complete":"remote.retire","nodes":[{"id":"retire","executor":"work.staffed","roles":["inspect"],
+        "duration":{"numerator":3,"denominator":1,"unit":"minute"},"after":[],"requirement":null,"effect":null}]}
+  ]
+}

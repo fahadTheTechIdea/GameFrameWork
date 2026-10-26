@@ -1,0 +1,26 @@
+{
+  "resources": [{ "id": "leak.product", "unit": "unit.capacity.count", "category": "material", "phase": "solid", "traits": [], "capacity": { "unit.capacity.count": 1 } }],
+  "signals": [
+    { "id": "leak.active", "kind": "boolean", "metric": "incident.active", "unit": "unit.boolean", "providers": [{ "component": "incident_signal", "schema": 1 }] },
+    { "id": "leak.isolation-hold", "kind": "boolean", "metric": "incident.phase-hold", "unit": "unit.boolean", "providers": [{ "component": "incident_signal", "schema": 1 }] }
+  ],
+  "transformations": [
+    {"tool_consumption":{},"operating_ports":{},"tool_ports":{"steel":"tool.input"},"input_ports":{"steel":"material.input"},"output_ports":{"leak.product":"material.output"}, "id": "leak.batch", "mode": "batch", "cancel_policy": "return_inputs", "operating_inputs": [], "tools": { "steel": 2 }, "inputs": { "steel": 2 }, "outputs": { "leak.product": 1 }, "duration": { "numerator": 2, "denominator": 1, "unit": "hour" } },
+    {"tool_consumption":[],"operating_ports":{},"tool_ports":{"steel":"tool.input"},"input_ports":{"steel":"material.input"},"output_ports":{"leak.product":"material.output"}, "id": "leak.flow", "mode": "continuous", "cancel_policy": "stop", "operating_inputs": [], "tools": { "steel": 2 },
+      "inputs": [{ "resource": "steel", "quantity": 1, "period": { "numerator": 10, "denominator": 1, "unit": "minute" } }],
+      "outputs": [{ "resource": "leak.product", "quantity": 1, "period": { "numerator": 10, "denominator": 1, "unit": "minute" } }], "duration": null }
+  ],
+  "entities": [{ "id": "isolated-machine", "kind": "structure", "components": {"inventory_port":[{"id":"material.output"},{"id":"material.input"},{"id":"tool.input"},{"id":"operating.input"}],
+    "tile_presence": { "space": "colony.tiles", "width": 1, "height": 1, "blocks": true, "movable": false },
+    "storage": { "capacity_policy": "fixture.count.40", "public": false, "initial_stock": { "steel": 30 } },
+    "work_permit": { "enabled": false },
+    "incident": { "id": "leak", "workflow": "machine.leak", "states": { "active": "stopped" } },
+    "incident_signal": { "id": "isolation", "source": "leak", "workflow": "machine.leak", "phase": "isolation" },
+    "transformer": { "automatic_supply": false, "wip_capacity": "fixture.count.40", "transformations": ["leak.batch", "leak.flow"],
+      "states": { "working": "working", "stopped": "stopped" },
+      "operation": { "id": "process", "enabled": true, "target": 1, "minimum": 1, "maximum": 2, "unit": "unit.work-rate" } },
+    "signal_transformation_gate": { "id": "safe-process", "transformations": ["leak.batch", "leak.flow"], "conditions": [
+      { "id": "isolation", "source": "isolation", "signal": "leak.isolation-hold", "expected": false, "blocker": "incident.isolated" }
+    ] }
+  } }]
+}

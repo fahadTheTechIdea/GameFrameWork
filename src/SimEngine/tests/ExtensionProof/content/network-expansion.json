@@ -1,0 +1,11 @@
+{
+  "timed_activity_executors": [{"id":"expansion.timer","rate":1}],
+  "target_network_resource_requirements": [
+    {"id":"expansion.tool","network":"point.network","use":"hold","quantities":{"supply":2}}
+  ],
+  "activities": [
+    {"id":"expansion.hold","player_orderable":true,"automatic_supply":false,"nodes":[
+      {"id":"retain","executor":"expansion.timer","duration":{"numerator":400,"denominator":1,"unit":"minute"},"requirement":"expansion.tool"}
+    ]}
+  ]
+}

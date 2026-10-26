@@ -1,0 +1,15 @@
+{
+  "id": "survival_layer",
+  "definitionVersion": "1.0.0",
+  "needIds": [
+    "hunger",
+    "fatigue",
+    "exposure"
+  ],
+  "recipeIds": [
+    "field_dressing",
+    "camp_shelter"
+  ],
+  "startingFood": 4,
+  "restPolicy": "interrupt_at_event"
+}

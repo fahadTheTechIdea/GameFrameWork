@@ -1,0 +1,275 @@
+{
+  "worker_roles": [
+    {
+      "id": "priority.flex"
+    },
+    {
+      "id": "priority.fixed"
+    },
+    {
+      "id": "priority.lower"
+    }
+  ],
+  "work_policies": [
+    {
+      "id": "priority.machine",
+      "enabled": false,
+      "priority": 0,
+      "allowed_roles": [
+        "priority.flex",
+        "priority.fixed",
+        "priority.lower"
+      ],
+      "area": null,
+      "interruptible": true,
+      "emergency_eligible": true,
+      "assignment_mode": "all",
+      "states": {
+        "disabled": "blocked",
+        "standby": "blocked"
+      }
+    }
+  ],
+  "proof_dual_input_requirements": [
+    {
+      "id": "priority.alternatives",
+      "use": "consume",
+      "quantities": {
+        "supply": 8
+      },
+      "target_cost": 0,
+      "worker_cost": 1
+    }
+  ],
+  "entities": [
+    {
+      "id": "prefix.first",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 10
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "priority.flex"
+          ],
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "work_policy": {
+          "profile": "priority.machine"
+        }
+      }
+    },
+    {
+      "id": "prefix.second",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 30
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "priority.fixed"
+          ],
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "work_policy": {
+          "profile": "priority.machine"
+        }
+      }
+    },
+    {
+      "id": "prefix.third",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 20
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "priority.flex",
+            "priority.lower"
+          ],
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "storage": {
+          "capacity_policy": "fixture.count.8",
+          "public": false,
+          "initial_stock": {
+            "supply": 8
+          }
+        },
+        "work_policy": {
+          "profile": "priority.machine"
+        }
+      }
+    }
+  ],
+  "entity_setups": [
+  {
+    "id": "prefix.first",
+    "after": [],
+    "entity": "prefix.first",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 10
+    },
+    "home": null
+  },
+  {
+    "id": "prefix.second",
+    "after": [],
+    "entity": "prefix.second",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 30
+    },
+    "home": null
+  },
+  {
+    "id": "prefix.third",
+    "after": [],
+    "entity": "prefix.third",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 20
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "native-priority-workers.start",
+    "entries": [
+      "prefix.first",
+      "prefix.second",
+      "prefix.third"
+    ],
+    "includes": []
+  }
+],
+  "activities": [
+    {
+      "id": "priority.flexible",
+      "priority": 1000,
+      "player_orderable": true,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "work",
+          "executor": "work.staffed",
+          "roles": [
+            "priority.flex"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 5,
+            "unit": "hour"
+          },
+          "requirement": "priority.alternatives"
+        }
+      ]
+    },
+    {
+      "id": "priority.fixed",
+      "priority": 100,
+      "player_orderable": true,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "work",
+          "executor": "work.staffed",
+          "roles": [
+            "priority.fixed"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 5,
+            "unit": "hour"
+          },
+          "requirement": "shared.input"
+        }
+      ]
+    },
+    {
+      "id": "priority.lower",
+      "priority": 1,
+      "player_orderable": true,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "work",
+          "executor": "work.staffed",
+          "roles": [
+            "priority.lower"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 5,
+            "unit": "hour"
+          }
+        }
+      ]
+    }
+  ],
+  "proof_shipments": [
+    {
+      "id": "proof.shipment",
+      "enabled": false,
+      "identity": 2147483652,
+      "company": 0,
+      "from": "source",
+      "to": "destination",
+      "resource": "supply",
+      "desired": 8,
+      "priority": 100,
+      "interval": {
+        "numerator": 10,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    }
+  ]
+}

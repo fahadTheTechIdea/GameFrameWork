@@ -1,0 +1,12 @@
+{
+  "id": "player_queries",
+  "definitionVersion": "1.0.0",
+  "viewKinds": [
+    "party",
+    "actions",
+    "known_map"
+  ],
+  "maxSelection": 32,
+  "stalePolicy": "refuse",
+  "unknownValue": "explicit_unknown"
+}

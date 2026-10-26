@@ -1,0 +1,7 @@
+{
+  "entity_setups": [
+    {"id":"fleet.load-native-start","after":["start.site","fleet.second"],"entity":"fleet.load-native","company":0,"placement":{"space":"survey.tiles","x":2,"y":14},"home":"start.site"},
+    {"id":"fleet.load-public-start","after":["start.site","fleet.load-native-start"],"entity":"fleet.load-public","company":0,"placement":{"space":"survey.tiles","x":2,"y":16},"home":"start.site"}
+  ],
+  "world_setup_profiles": [{"id":"fleet.load-start","entries":["start.site","start.machine","start.deposit","start.terrain","start.class","start.foreign","fleet.second","fleet.limited","fleet.destination-start","fleet.load-native-start","fleet.load-public-start","road.2","road.3","road.4","road.5","road.6","road.7","road.8","road.9","road.10","road.11","road.12","road.13","road.14","road.15","road.16"],"includes":[]}]
+}

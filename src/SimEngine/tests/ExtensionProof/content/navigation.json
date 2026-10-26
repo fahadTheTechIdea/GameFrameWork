@@ -1,0 +1,25 @@
+{
+  "game_modes": [{ "id": "navigation.resource-only", "name": "Resource-only physical simulation", "properties": {} }],
+  "time_definitions": [ { "id": "navigation.minute", "quantum": { "numerator": 60, "denominator": 1, "unit": "second" }, "frame_ticks": 1, "ticks_per_second": 30, "horizon": null } ],
+  "entity_states": [
+    { "id": "idle", "state": "navigation.idle", "priority": 0, "default": true },
+    { "id": "moving", "state": "navigation.moving", "priority": 40 },
+    { "id": "stopped", "state": "navigation.stopped", "priority": 60 }
+  ],
+  "tile_spaces": [ { "id": "navigation.tiles", "width": 12, "height": 8 } ],
+  "navigation_costs": [ { "id": "ordinary", "movement": "ground", "entry_cost": 10 } ],
+  "entities": [
+    { "id": "cart", "kind": "entity", "components": {
+      "tile_presence": { "space": "navigation.tiles", "width": 1, "height": 1, "blocks": true, "movable": true },
+      "mover": { "classes": ["ground"], "class": "ground", "speed": 60, "states": { "moving": "moving", "stopped": "stopped" } }
+    } },
+    { "id": "obstacle", "kind": "entity", "components": {
+      "tile_presence": { "space": "navigation.tiles", "width": 1, "height": 1, "blocks": true, "movable": false }
+    } }
+  ],
+  "navigation_starts": [
+    { "id": "cart-start", "entity": "cart", "x": 1, "y": 2, "owner": 0 },
+    { "id": "obstacle-start", "entity": "obstacle", "x": 3, "y": 2, "owner": 0 }
+  ],
+  "scenarios": [ { "id": "navigation", "game_mode": "navigation.resource-only", "mode_overrides": {}, "time": "navigation.minute", "space": "navigation.tiles", "modules": ["proof.navigation"], "seats": 1 } ]
+}

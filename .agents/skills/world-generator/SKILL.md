@@ -1,18 +1,39 @@
 ---
 name: world-generator
-description: Conversationally set up and generate complete 2D game worlds using GameFrameWork, canonical SDLC guidelines, GameArts and Godot.
+description: Generate cities procedurally in the C# engine, author reusable catalogs and world metadata, and orchestrate optional JavaScript/GameArts/Godot adapters.
 ---
 # World Generator — conversational orchestrator
 
 The user talks normally to Claude Code or Codex. **Never ask the user to clone repositories, run Python, edit JSON, copy files, install skill folders or execute commands.** These are internal implementation operations for the agent to perform using its available file, terminal and connected tool permissions. Ask only for genuinely missing world/game preferences or approvals mandated by GameArts. If tools cannot perform an operation, explain the exact limitation, don't instruct the user to execute a setup command as the default workaround.
 
+## Engine procedural city generation
+
+For procedural city generation, use the C# `ProceduralCityGenerator` in `WorldCreator.Worlds` and the `generate-city <request.json> <catalog.json> <new-output-dir>` CLI. The engine calculates actual meter-based geometry from district rules, street strategies, frontage density, setbacks and reusable structure programs. It supports grid and recursive-neighborhood strategies through `ICityStreetLayout`, including mixed strategies within one city. It requires no mockup or per-object coordinates. See `docs/PROCEDURAL_CITY.md` and `examples/procedural-city/`.
+
+Author or reuse the catalog and request, invoke the actual engine, inspect `city.json`, validate connected streets, parcel frontages, footprints, compound ownership, access and explicit scope, and show the generated JavaScript schematic. The exported `MapGeometry` is authoritative for this route; JavaScript displays it without relocating objects or inventing streets. Keep artwork, navigation/gameplay, resource simulation and additional street/boundary algorithms as separately verified work. Metadata expansion and presentation-only packing do not establish procedural city generation. This correction supersedes the earlier interpretation of the user's request as only metadata/diagrams.
+
+For parcel design, use `CityParcelRules` with explicit cardinal frontages, optional maximum depth and interior purpose, including district overrides. Reuse the engine's rotated compound frames and declared courtyard/passage reserves. After generation run `verify-city <package-directory>`; require the saved packet to reproduce its geometry, metadata and viewer from current engine inputs/build. Record failed integrity or unsupported-build checks honestly and preserve the destination; never hand-edit hashes to imply acceptance. Package verification is not GameArts approval or native Godot/runtime acceptance.
+
+## Metadata world creation (reusable supporting core)
+
+For requests to create a meta world creator, world metadata, reusable world recipes, or worlds without mockups, use this route before any visual setup wizard. The owner's 2026-10-25 clarification makes mockups optional for the core. GameArts and Godot are required only for their respective artwork/runtime tasks. Do not resume the earlier image-extraction or sprite pipeline for metadata-only work.
+
+1. Inspect saved inputs and the user's intended game. Define arbitrary world kinds, nested programs, purposes, parameters, typed connections, child-count requirements and scope. A node may be a room, region, star system, building or another game-defined kind; those examples are not a hardcoded routing list.
+2. Reuse or extend a `WorldMetadataCatalog` and `WorldMetadataRecipe` in the active project. Add missing constituent archetypes to the reusable catalog, rather than duplicating an object list for one generated world. Use the contracts in `WorldCreator.Core.Metadata`; refer to `docs/WORLD_METADATA.md` and `examples/metadata/`.
+3. Use topological space when no geometry was requested. For coordinates, explicitly declare axes/units, a root origin and supported layout grammars. Current spatial grammar is parent-relative line repetition. Do not invent measured geometry or claim collision, traversal physics or visual completeness. Additional layout/constraint algorithms require implementation and verification.
+4. Invoke the actual C# `WorldMetadataGenerator` API or `generate-metadata <recipe.json> <catalog.json> <new-output-dir>` CLI. No mockup, GameArts profile, sprite atlas or Godot project is required. Optional `MetadataStructureReference` resolves existing registered structure facts; do not duplicate dimensions or siting facts in the generic catalog. Settlement catalog flags apply only when those references are used or explicitly requested.
+5. Verify exact expanded hierarchy/counts, connection endpoints/direction, constraints and explicit remaining scope. `CompleteDeclaredScope` means the supplied recipe is complete within its declared scope; it is not a claim of whole-city, game, art or runtime readiness. Save the reusable inputs and generated JSON/review through the new-directory export boundary; preserve existing output and report actual log/audit outcomes.
+6. For new game-specific behavior, extend reusable contracts/algorithms proportionately. Do not hardcode a city or add a per-genre switch to the generator. Agent authoring is orchestration; the C# engine performs actual expansion and layout. Live Claude/Codex behavior scenarios remain NOT RUN until separately evaluated; passing C# tests cannot certify autonomous routing.
+
 ## Natural-language workflows
+
+For a JavaScript city/world schematic, use the generated `schematic.html` and `schematic.js` packet. Author reusable `Properties.schematic` diagram hints for hierarchy layout and corridor channels, preserve all constituent nodes, expose actual graph connections separately, and show the working preview. The city recipe under `examples/metadata/` is an example, not a required game setting. Keep diagram units distinct from world coordinates and mark incomplete city coverage. Verify actual JavaScript/browser behavior; do not substitute an image mockup or a JSON-only response for the requested schematic.
 - "Set up GameFrameWork for my game": inspect game workspace, current project instructions and installed skills, automatically adopt the canonical SDLC and GameArts workflows non-destructively, apply project configuration defaults, verify installed capabilities, report real outcomes.
-- "Generate a coastal town" or "Create a city": inspect settings, resolve settlement/biome/world-specific rules, build a coherent world specification, locate approved art or initiate its mockup approval workflow, drive the C# world engine via its API/CLI, validate results, and integrate into Godot.
+- "Generate a coastal town" or "Create a city": inspect saved intent, author reusable catalogs/recipes and drive the C# metadata engine. If the user requested a rendered/mockup-derived map or Godot integration, follow the corresponding visual workflow and its separate gates.
 - "Change my world rules": update persisted game-specific rules with scope and validation.
 - "Continue world generation": inspect state/approvals and resume incomplete work.
 
-## Unified first-run wizard (mandatory)
+## Unified visual-game first-run wizard (mandatory for integrated visual setup)
 "Set up GameFrameWork" must run **both** conversational wizards: the canonical GameArts project setup wizard and the GameFrameWork world-generation setup wizard. **Either order is valid**; let the user choose an order if they have a preference, otherwise select a sensible order using existing workspace state. Neither wizard is optional for a complete initial setup.
 
 - Inspect existing `.gamearts/project.json`, GameArts installation and existing GameFrameWork settings. Reuse answers already provided in either system; never repeat already-answered questions.
@@ -33,6 +54,17 @@ The user talks normally to Claude Code or Codex. **Never ask the user to clone r
 5. Follow the canonical SDLC orchestrator for coding/design, with risk-based tests and evidence, and GameArts for separate mockup and production-asset approvals.
 6. Invoke actual C# world generators and Godot adapters. Do not claim runtime or visual readiness without observed checks.
 
+## General structure and constituent-part catalog workflow
+
+This applies to **any** requested structure/site, in every registered setting. Football clubs and factories are examples only; never use a two-example or keyword-only routing rule. A house, school, hospital, transport hub, shop or an unknown user-described facility can have constituent structures when the game program requires them.
+
+1. Inspect the selected catalog, its `BuildingDefinition.Composition` assessment/part roles, facility templates and saved `.gameframework/catalogs/*.json` content. Reuse matching current definitions; do not assume an unreviewed family is atomic. Modern's complete current 197-family review distinguishes structure shells, context-dependent sites, compound sites and infrastructure assemblies. Suggestions are not universal requirements or proof of generated parts.
+2. Interpret the user's actual program and visual design: parent identity/purpose, distinct part roles, counts/variants, nested groups, allowed layout, access/collision, common services and style/source provenance. Separate independent structures from rooms, equipment, grounds and infrastructure. Infer reversible game-design details from saved context; ask only for material missing decisions. Do not require every structure to be multi-building.
+3. If the requested parent/parts are absent or a reusable definition needs extension, **add/update catalog content before generating the world**. Use the shared C# `CatalogContentAuthoring` contracts, not a one-off world-only object list or a new parent-specific C# planner. Add missing `BuildingDefinition` records with explicit sizes, composition assessment, siting/resource profile and existing registered vocabulary. Add `FacilityProgramDefinition` parts/counts/variant IDs/relationships and an authored layout grammar; use nested child programs for subfacilities. Update the appropriate source pack; compose packs afterwards. Replacements list exact IDs and preserve one current definition per ID.
+4. Persist the validated `CatalogContentManifest` under the active project's `.gameframework/catalogs/` using the engine authoring/save boundary and shared log/audit reporting. The CLI's `save-catalog-content` validates registered policy/geometry before saving; it loads saved project catalogs automatically for subsequent listing/generation. Use `--catalog-content` for explicit external manifests. Perform these operations with available tools; do not instruct the user to write JSON or run commands. Preserve unrelated catalog content and record the resulting manifest/catalog digest.
+5. The engine resolves the catalog program and computes child sites/positions from its grammar. Bind genuine game-authored district/resource/context facts, run actual generation/validation, and verify that parent membership and parts survive persistence/reload. Do not fabricate capacity, approvals, art, dimensions claimed as measured, or source evidence. Unsupported equipment/interior/ground/infrastructure compilation stays an explicit diagnostic/remaining gate; do not replace it with a generic building and claim completion.
+6. Keep the full-catalog review and definitions current when adding families. Newly authored structures require a composition assessment. Catalog/schema/build checks do not prove autonomous agent behavior. Record actual prompt/tool/manifest/generation evidence for a live evaluation; mark unrun scenarios NOT RUN.
+
 ## Source capture and image/atlas handoff
 
 Follow `docs/GAMEARTS_INTEGRATION_CONTRACT.md` for the current capture and prompting procedure. Before authoring engine geometry from a mockup:
@@ -47,7 +79,7 @@ Follow `docs/GAMEARTS_INTEGRATION_CONTRACT.md` for the current capture and promp
 8. Update current capture/design/review artifacts in place for authorized revisions; reject stale hashes and preserve failed-export destinations. Report partial coverage, outstanding approvals and unrun live-agent/Godot gates explicitly.
 
 ## Rules
-- C# world model and agent workflow are two parts of the same product; GameArts is integral, not optional.
+- C# world metadata and agent workflow are two parts of the same product; metadata requires no mockup or artwork. GameArts owns actual artwork production when requested.
 - No arbitrary placement of any objects. Respect world/biome/settlement/district/parcel rules and valid placement provenance.
 - Separate independently animated doors/windows/gates/wheels from static masters, with measured sprite sheets/atlases as appropriate.
 - Work directly on main only when modifying the GameFrameWork repository. No new branches or pull requests.

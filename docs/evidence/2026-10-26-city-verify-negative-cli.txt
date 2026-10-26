@@ -1,0 +1,2 @@
+[world.city.verify.failed] World operation failed (ArgumentException). (correlation: db6d8d162fe84a3a8082bc77a183799a)
+World operation failed: CITY_PACKAGE_INVALID:CITY_PACKAGE_FILE_MISSING_OR_CHANGED:city.json

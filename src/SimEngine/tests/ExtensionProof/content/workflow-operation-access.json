@@ -1,0 +1,30 @@
+{
+  "signals": [
+    {"id":"wo.enabled","kind":"boolean","metric":"operation.enabled","unit":"unit.boolean","providers":[{"component":"transformer","schema":1}]},
+    {"id":"wo.target","kind":"number","metric":"operation.target","unit":"unit.work-rate","providers":[{"component":"transformer","schema":1}]}
+  ],
+  "target_signal_requirements": [
+    {"id":"wo.target-bool","conditions":[{"id":"ready","source":"contract.process","signal":"wo.enabled","expected":true,"blocker":"wo.signal-unready"}]},
+    {"id":"wo.target-number","conditions":[{"id":"ready","source":"contract.process","signal":"wo.target","minimum":2,"maximum":2,"unit":"unit.work-rate","blocker":"wo.signal-unready"}]}
+  ],
+  "worker_signal_requirements": [
+    {"id":"wo.worker-bool","conditions":[{"id":"ready","source":"contract.process","signal":"wo.enabled","expected":true,"blocker":"wo.signal-unready"}]},
+    {"id":"wo.worker-number","conditions":[{"id":"ready","source":"contract.process","signal":"wo.target","minimum":2,"maximum":2,"unit":"unit.work-rate","blocker":"wo.signal-unready"}]}
+  ],
+  "knowledge_facts": [{"id":"wo.completed","fresh_for":null,"value":{"stage":"complete"}}],
+  "knowledge_effects": [{"id":"wo.record","subject":"wo.completed"}],
+  "transformation_dispatch_effects": [{"id":"wo.dispatch","transformation":"contract.make","capability":"contract.process","count":1,"repeat":false,"home":"none"}],
+  "activities": [
+    {"id":"wo.target-bool","player_orderable":true,"automatic_supply":false,"on_complete":"wo.record","nodes":[{"id":"work","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":12,"denominator":1,"unit":"minute"},"requirement":"wo.target-bool"}]},
+    {"id":"wo.target-number","player_orderable":true,"automatic_supply":false,"on_complete":"wo.record","nodes":[{"id":"work","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":12,"denominator":1,"unit":"minute"},"requirement":"wo.target-number"}]},
+    {"id":"wo.worker-bool","player_orderable":true,"automatic_supply":false,"on_complete":"wo.record","nodes":[{"id":"work","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":12,"denominator":1,"unit":"minute"},"requirement":"wo.worker-bool"}]},
+    {"id":"wo.worker-number","player_orderable":true,"automatic_supply":false,"on_complete":"wo.record","nodes":[{"id":"work","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":12,"denominator":1,"unit":"minute"},"requirement":"wo.worker-number"}]},
+    {"id":"wo.manufacture","player_orderable":true,"automatic_supply":false,"on_complete":"wo.dispatch","nodes":[{"id":"prepare","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":8,"denominator":1,"unit":"minute"}}]}
+  ],
+  "knowledge_forgetting_policies": [{"id":"wo.forget","subjects":[{"provider":"sim.knowledge.facts","subject":"recipe.discovered"}],"companies":[0]}],
+  "signal_knowledge_visibility": [
+    {"id":"wo.hide-enabled","definition":"wo.enabled","mode":"all","facts":["recipe.discovered"]},
+    {"id":"wo.hide-target","definition":"wo.target","mode":"all","facts":["recipe.discovered"]}
+  ],
+  "work_retry_profiles": [{"id":"wo.retry","initial_delay":{"numerator":2,"denominator":1,"unit":"minute"},"maximum_delay":{"numerator":8,"denominator":1,"unit":"minute"},"multiplier":2,"retry_blockers":["blocker.unreachable","sim.resource.active-promises","proof.access.a.denied","proof.access.b.denied"]}]
+}

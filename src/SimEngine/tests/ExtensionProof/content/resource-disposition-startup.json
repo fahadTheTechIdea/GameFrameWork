@@ -1,0 +1,9 @@
+{
+  "world_setup_profiles": [{"id":"disposition.start","entries":["disposition.depot-0","disposition.crane-0","disposition.depot-1","disposition.crane-1"],"includes":[]}],
+  "entity_setups": [
+    {"id":"disposition.depot-0","after":[],"entity":"depot","company":0,"placement":{"space":"recovery.tiles","x":4,"y":4},"home":null},
+    {"id":"disposition.crane-0","after":["disposition.depot-0"],"entity":"crane","company":0,"placement":{"space":"recovery.tiles","x":8,"y":5},"home":"disposition.depot-0"},
+    {"id":"disposition.depot-1","after":[],"entity":"depot","company":1,"placement":{"space":"recovery.tiles","x":18,"y":4},"home":null},
+    {"id":"disposition.crane-1","after":["disposition.depot-1"],"entity":"crane","company":1,"placement":{"space":"recovery.tiles","x":22,"y":5},"home":"disposition.depot-1"}
+  ]
+}

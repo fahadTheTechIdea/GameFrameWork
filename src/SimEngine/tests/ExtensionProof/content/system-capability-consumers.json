@@ -1,0 +1,24 @@
+{
+  "activities": [{
+    "id": "contract.system.work", "player_orderable": true, "automatic_supply": false,
+    "nodes": [{"id":"service","executor":"work.staffed","roles":["haul"],
+      "duration":{"numerator":9,"denominator":1,"unit":"minute"}}]
+  }],
+  "entities": [{
+    "id":"contract.system.target", "kind":"entity",
+    "components": {
+      "point_presence":{"space":"field.points","position":18},
+      "point_stock":{"resource":"supply","capacity_policy":"fixture.count.40","initial":0},
+      "independent_recurring":{
+        "id":"routine","plan":"activity:contract.system.work","template":null,
+        "enabled":false,"priority":40,"interval":{"numerator":6,"denominator":1,"unit":"minute"},
+        "facility_policy":null,"cadence":"successful_completion","trigger":"schedule","dispatch_mode":"compete",
+        "target":"self","worker_nodes":[],"reserve_use":"none","arguments":null,
+        "group":"contract.system.routine","operation_policy":null,"conditions":[],"metadata_fault":"none"
+      }
+    }
+  }],
+  "entity_setups":[{"id":"contract.system.target.start","after":[],"entity":"contract.system.target","company":0,
+    "placement":{"space":"field.points","position":18},"home":null}],
+  "world_setup_profiles":[{"id":"contract.system.start","entries":["contract.system.target.start"],"includes":[]}]
+}

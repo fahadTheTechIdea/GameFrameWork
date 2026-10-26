@@ -1,0 +1,13 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  WorldCreator.Core -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Core\bin\Release\net10.0\WorldCreator.Core.dll
+  WorldCreator.Worlds -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\bin\Release\net10.0\WorldCreator.Worlds.dll
+  WorldCreator.Catalogs.Modern -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Catalogs.Modern\bin\Release\net10.0\WorldCreator.Catalogs.Modern.dll
+  WorldCreator.Godot -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Godot\bin\Release\net10.0\WorldCreator.Godot.dll
+  WorldCreator.Cli -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Cli\bin\Release\net10.0\WorldCreator.Cli.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:04.61

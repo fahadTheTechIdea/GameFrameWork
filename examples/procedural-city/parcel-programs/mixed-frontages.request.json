@@ -1,0 +1,85 @@
+{
+  "SchemaVersion": 1,
+  "Id": "mixed-frontage-city",
+  "WidthMeters": 1200,
+  "HeightMeters": 800,
+  "StreetProfile": {
+    "LaneWidthMeters": 3,
+    "LaneCount": 2,
+    "SidewalkLeftMeters": 1.5,
+    "SidewalkRightMeters": 1.5,
+    "CurbLeftMeters": 0.25,
+    "CurbRightMeters": 0.25,
+    "MedianMeters": 0,
+    "TotalWidthMeters": 9.5
+  },
+  "TargetBlockWidthMeters": 180,
+  "TargetBlockDepthMeters": 170,
+  "MinimumBlockSpanMeters": 120,
+  "TargetParcelFrontageMeters": 26,
+  "SetbackMeters": 3,
+  "Districts": [
+    {
+      "Id": "neighborhoods",
+      "Purpose": "Homes and local shops",
+      "AreaWeight": 2,
+      "LayoutId": "recursive-neighborhoods",
+      "StructureCycle": [
+        "house",
+        "house",
+        "shop"
+      ],
+      "OpenSpaceEveryBlocks": 5,
+      "ParcelRules": null
+    },
+    {
+      "Id": "center",
+      "Purpose": "Civic services and trade",
+      "AreaWeight": 1,
+      "LayoutId": "recursive-neighborhoods",
+      "StructureCycle": [
+        "civic",
+        "shop"
+      ],
+      "OpenSpaceEveryBlocks": 4,
+      "ParcelRules": null
+    },
+    {
+      "Id": "production",
+      "Purpose": "Employment and production",
+      "AreaWeight": 1,
+      "LayoutId": "recursive-neighborhoods",
+      "StructureCycle": [
+        "workshop",
+        "compound"
+      ],
+      "OpenSpaceEveryBlocks": 4,
+      "ParcelRules": {
+        "Frontages": [
+          "North",
+          "South"
+        ],
+        "MaximumDepthMeters": null,
+        "InteriorAccessWidthMeters": 3,
+        "InteriorPurpose": "Shared block interior"
+      }
+    }
+  ],
+  "Variation": 1,
+  "MaximumBlocks": 256,
+  "MaximumParcels": 3000,
+  "MaximumStructures": 5000,
+  "Coverage": "CompleteDeclaredScope",
+  "RemainingScopes": null,
+  "ParcelRules": {
+    "Frontages": [
+      "North",
+      "East",
+      "South",
+      "West"
+    ],
+    "MaximumDepthMeters": 32,
+    "InteriorAccessWidthMeters": 3,
+    "InteriorPurpose": "Shared block interior"
+  }
+}

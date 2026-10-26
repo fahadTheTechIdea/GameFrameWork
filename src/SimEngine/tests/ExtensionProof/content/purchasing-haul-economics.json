@@ -1,0 +1,11 @@
+{
+  "transformation_cost_bindings": [{"id":"purchase.spend.cost","transformation":"purchase.spend","amount":90}],
+  "units": [{"id":"unit.money","dimension":"currency","scale":{"numerator":1,"denominator":1},"discrete":false}],
+  "business_accounts": [{"id":"haul.accounts","currency":"unit.money","opening_cash":100}],
+  "fixed_resource_values": [{"id":"haul.values","catalog":"haul","currency":"unit.money"}],
+  "resource_values": [
+    {"id":"haul.supply","catalog":"haul","resource":"supply","unit":"unit.supply","currency":"unit.money","value":5},
+    {"id":"haul.support","catalog":"haul","resource":"support","unit":"unit.supply","currency":"unit.money","value":5}
+  ],
+  "primary_production_income": [{"id":"haul.primary","input_rule":"primary_only","causes":["purchase.fund"]}]
+}

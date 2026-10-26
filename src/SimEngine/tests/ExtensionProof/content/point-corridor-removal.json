@@ -1,0 +1,13 @@
+{
+  "line_effects": [{"id":"corridor.remove-effect","operation":"remove","line":"corridor.point-line"}],
+  "activities": [
+    {"id":"corridor.remove","player_orderable":true,"automatic_supply":false,"priority":100,"on_complete":"corridor.remove-effect",
+      "nodes":[{"id":"cut","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":4,"denominator":1,"unit":"minute"}}]}
+  ],
+  "entities": [
+    {"id":"corridor.removal-site","kind":"structure","components":{"point_presence":{"space":"field.points","position":0}}}
+  ],
+  "entity_setups": [
+    {"id":"corridor.removal-site.start","after":["machine"],"entity":"corridor.removal-site","company":0,"placement":{"space":"field.points","position":5},"home":null}
+  ]
+}

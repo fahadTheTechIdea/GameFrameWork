@@ -1,0 +1,31 @@
+{
+  "capacity_network_demands":[{"id":"proof.network-rates.capacity-demand"}],
+"resource_transfer_network_solvers": [{"id":"proof.network-rates.transfer"}],
+"network_round_robin_policies": [{"id":"proof.network-rates.round-robin"}],
+  "networks": [
+    {"id":"rate.slow","line":"network.pipe","demand_policy":"proof.network-rates.capacity-demand","solver":"proof.network-rates.transfer","flow_policy":"proof.network-rates.round-robin","capacity_policy":"network.shared","public":false,"rates":[
+      {"resource":"steel","quantity":1,"period":{"numerator":1,"denominator":1,"unit":"hour"}},
+      {"resource":"water","quantity":0.5,"period":{"numerator":1,"denominator":1,"unit":"hour"}}
+    ]}
+  ],
+  "signals": [{"id":"rate.open","kind":"boolean","metric":"operation.enabled","unit":"unit.boolean","providers":[{"component":"network_sensor","schema":1}]}],
+  "entities": [
+    {"id":"rate.source","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"recovery.mixed","public":false,"initial_stock":{"steel":30,"water":6}},
+      "ports":{"list":[{"network":"rate.slow","push":["steel","water"]}]},
+      "network_sensor":{"operation":{"id":"valve","enabled":true,"target":1,"minimum":1,"maximum":1,"unit":"unit.boolean"},"level":0},
+      "signal_network_gate":{"id":"safety","networks":["rate.slow"],"conditions":[{"id":"open","source":"valve","signal":"rate.open","expected":true,"blocker":"rate.closed"}]}
+    }},
+    {"id":"rate.receiver","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"recovery.mixed","public":false},
+      "proof_network_ports":{"list":[{"network":"rate.slow","pull":["steel","water"]}]}
+    }},
+    {"id":"rate.batch-receiver","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"network.cases","public":false},
+      "ports":{"list":[{"network":"rate.slow","pull":["steel","water"]}]}
+    }}
+  ]
+}

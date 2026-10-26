@@ -1,0 +1,39 @@
+{
+  "transformations": [
+    {"tool_consumption":{},"operating_ports":{},"tool_ports":{"supply":"tool.input"},"input_ports":{"supply":"material.input"},"output_ports":{},"id":"supply.first","mode":"batch","cancel_policy":"return_inputs","operating_inputs":[],"tools":{"supply":1},"inputs":{"supply":3},"outputs":{},"entity_output":"supply.result", "output_home": "unassigned","duration":{"numerator":30,"denominator":1,"unit":"minute"}},
+    {"tool_consumption":{},"operating_ports":{},"tool_ports":{"supply":"tool.input"},"input_ports":{"supply":"material.input"},"output_ports":{},"id":"supply.second","mode":"batch","cancel_policy":"return_inputs","operating_inputs":[],"tools":{"supply":1},"inputs":{"supply":2},"outputs":{},"entity_output":"supply.result", "output_home": "unassigned","duration":{"numerator":36,"denominator":1,"unit":"minute"}}
+  ],
+  "entities": [
+    {"id":"supply.result","kind":"entity","components":{}},
+    {"id":"supply.factory","kind":"entity","components":{"inventory_port":[{"id":"material.output"},{"id":"material.input"},{"id":"tool.input"},{"id":"operating.input"}],
+      "point_presence":{"space":"field.points","position":60},
+      "storage":{"capacity_policy":"fixture.count.20","initial_stock":{},"public":false},
+      "transformer":[
+        {"automatic_supply":true,"wip_capacity":"fixture.count.20","transformations":["supply.first"],"states":{"working":"processing","stopped":"blocked"},"operation":{"id":"a-process","enabled":true,"target":1,"minimum":1,"maximum":1,"unit":"unit.work-rate"}},
+        {"automatic_supply":true,"wip_capacity":"fixture.count.20","transformations":["supply.second"],"states":{"working":"processing","stopped":"blocked"},"operation":{"id":"b-process","enabled":true,"target":1,"minimum":1,"maximum":1,"unit":"unit.work-rate"}}
+      ]
+    }}
+  ],
+  "entity_setups": [
+  {
+    "id": "supply.factory",
+    "after": [],
+    "entity": "supply.factory",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 60
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "transformation-supply.start",
+    "entries": [
+      "supply.factory"
+    ],
+    "includes": []
+  }
+]
+}

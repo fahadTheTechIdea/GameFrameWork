@@ -1,0 +1,7 @@
+{
+  "event_dispatch_policies": [
+    { "id": "events.unlimited", "maximum_events_per_dispatch": null },
+    { "id": "events.large", "maximum_events_per_dispatch": 2000000 },
+    { "id": "events.small", "maximum_events_per_dispatch": 128 }
+  ]
+}

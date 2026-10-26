@@ -1,0 +1,107 @@
+{
+  "signals": [
+    {
+      "id": "binding.stock-ready",
+      "kind": "boolean",
+      "metric": "inventory.stock-ready",
+      "unit": "unit.boolean",
+      "providers": [
+        {
+          "component": "independent_inventory_signal",
+          "schema": 3
+        }
+      ]
+    },
+    {
+      "id": "binding.available-ready",
+      "kind": "boolean",
+      "metric": "inventory.available-ready",
+      "unit": "unit.boolean",
+      "providers": [
+        {
+          "component": "independent_inventory_signal",
+          "schema": 3
+        }
+      ]
+    },
+    {
+      "id": "binding.incoming-ready",
+      "kind": "boolean",
+      "metric": "inventory.incoming-ready",
+      "unit": "unit.boolean",
+      "providers": [
+        {
+          "component": "independent_inventory_signal",
+          "schema": 3
+        }
+      ]
+    }
+  ],
+  "resource_signals": [
+    {
+      "id": "binding.stored",
+      "kind": "number",
+      "metric": "inventory.stored",
+      "resource": "supply",
+      "unit": "unit.supply",
+      "providers": [
+        {
+          "component": "independent_inventory_signal",
+          "schema": 3
+        }
+      ]
+    },
+    {
+      "id": "binding.available",
+      "kind": "number",
+      "metric": "inventory.available",
+      "resource": "supply",
+      "unit": "unit.supply",
+      "providers": [
+        {
+          "component": "independent_inventory_signal",
+          "schema": 3
+        }
+      ]
+    },
+    {
+      "id": "binding.inbound",
+      "kind": "number",
+      "metric": "inventory.inbound",
+      "resource": "supply",
+      "unit": "unit.supply",
+      "providers": [
+        {
+          "component": "independent_inventory_signal",
+          "schema": 3
+        }
+      ]
+    },
+    {
+      "id": "binding.outbound",
+      "kind": "number",
+      "metric": "inventory.outbound",
+      "resource": "supply",
+      "unit": "unit.supply",
+      "providers": [
+        {
+          "component": "independent_inventory_signal",
+          "schema": 3
+        }
+      ]
+    },
+    {
+      "id": "binding.receiving-room",
+      "kind": "number",
+      "metric": "inventory.receiving-room",
+      "resource": "supply",
+      "unit": "unit.supply",
+      "providers": [
+        {
+          "component": "independent_inventory_signal",
+          "schema": 3
+        }
+      ]
+    }
+  ]
+}

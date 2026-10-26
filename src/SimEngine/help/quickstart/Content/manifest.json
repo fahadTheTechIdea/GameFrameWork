@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "modules": [
+    { "id": "sim.access", "version": "1.0.0", "documents": ["quick/access.json"] },
+    { "id": "sim.world-setup", "version": "1.0.0", "documents": ["quick/startup.json"] },
+    {
+      "id": "quick",
+      "version": "1.1.0",
+      "requires": [
+        { "id": "sim.access", "version": "1.0.0" },
+        { "id": "sim.world-setup", "version": "1.0.0" }
+      ],
+      "documents": [
+        "quick/world.json",
+        "quick/resources.json"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "utility_network_demands": [
+    {
+      "id": "utility.group.motion",
+      "consumers": [
+        "propulsion",
+        "auxiliary"
+      ]
+    },
+    {
+      "id": "utility.group.process",
+      "consumers": [
+        "meter",
+        "auxiliary"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "id": "utility.group.motion",
+      "kind": "vehicle",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "mover": {
+          "classes": ["land"], "class": "land",
+          "speed": 60,
+          "states": {
+            "moving": "moving",
+            "stopped": "stopped"
+          }
+        },
+        "storage": {
+          "capacity_policy": "recovery.mixed",
+          "initial_stock": {
+            "steel": 1
+          },
+          "public": false
+        },
+        "ports": {
+          "list": [
+            {
+              "network": "arbitration.main",
+              "pull": [
+                "steel"
+              ]
+            }
+          ]
+        },
+        "operating_inputs": [
+          {
+            "id": "propulsion",
+            "inputs": [
+              {
+                "resource": "steel",
+                "quantity": 1,
+                "period": {
+                  "numerator": 1,
+                  "denominator": 1,
+                  "unit": "minute"
+                }
+              }
+            ],
+            "states": {
+              "disabled": "stopped"
+            },
+            "phase": "movement"
+          },
+          {
+            "id": "auxiliary",
+            "inputs": [
+              {
+                "resource": "steel",
+                "quantity": 1,
+                "period": {
+                  "numerator": 1,
+                  "denominator": 1,
+                  "unit": "minute"
+                }
+              }
+            ],
+            "states": {
+              "disabled": "stopped"
+            },
+            "phase": "movement"
+          }
+        ]
+      }
+    },
+    {
+      "id": "utility.group.independent",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "recovery.mixed",
+          "initial_stock": {
+            "steel": 1
+          },
+          "public": false
+        },
+        "proof_network_ports": {
+          "list": [
+            {
+              "network": "arbitration.main",
+              "pull": [
+                "steel"
+              ]
+            }
+          ]
+        },
+        "proof_utility_consumer": [
+          {
+            "id": "meter",
+            "inputs": {
+              "steel": 2
+            }
+          },
+          {
+            "id": "auxiliary",
+            "inputs": {
+              "steel": 2
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "utility.group.processors",
+      "kind": "structure",
+      "components": {"inventory_port":[{"id":"material.output"},{"id":"material.input"},{"id":"tool.input"},{"id":"operating.input"}],
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "recovery.mixed",
+          "initial_stock": {},
+          "public": false
+        },
+        "ports": {
+          "list": [
+            {
+              "network": "arbitration.main",
+              "pull": [
+                "steel"
+              ]
+            }
+          ]
+        },
+        "transformer": [
+          {
+            "automatic_supply": false,
+            "wip_capacity": "recovery.mixed",
+            "transformations": [
+              "utility.consume"
+            ],
+            "states": {
+              "working": "working",
+              "stopped": "stopped"
+            },
+            "operation": {
+              "id": "meter",
+              "enabled": true,
+              "target": 1,
+              "minimum": 1,
+              "maximum": 1,
+              "unit": "unit.work-rate"
+            }
+          },
+          {
+            "automatic_supply": false,
+            "wip_capacity": "recovery.mixed",
+            "transformations": [
+              "utility.consume"
+            ],
+            "states": {
+              "working": "working",
+              "stopped": "stopped"
+            },
+            "operation": {
+              "id": "auxiliary",
+              "enabled": true,
+              "target": 1,
+              "minimum": 1,
+              "maximum": 1,
+              "unit": "unit.work-rate"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

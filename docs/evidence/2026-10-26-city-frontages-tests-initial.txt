@@ -1,0 +1,5 @@
+Unhandled exception. System.Exception: City frontages: footprint rotates with frontage
+   at CityFrontageTests.Check(Boolean ok, String message) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\CityFrontageTests.cs:line 75
+   at CityFrontageTests.RunAsync() in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\CityFrontageTests.cs:line 33
+   at Program.<Main>$(String[] args) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\Program.cs:line 10
+   at Program.<Main>(String[] args)

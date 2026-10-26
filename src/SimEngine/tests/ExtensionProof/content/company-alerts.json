@@ -1,0 +1,7 @@
+{
+  "company_alert_profiles": [
+    {"id":"alerts.standard","normal":[],"urgent":[{"scope":"sim.logistics","emergency":false,"priority_adjustment":200}],"emergency":[{"scope":"sim.work","emergency":false,"priority_adjustment":500}]},
+    {"id":"alerts.neutral","normal":[],"urgent":[],"emergency":[]},
+    {"id":"alerts.wide","normal":[],"urgent":[{"scope":null,"emergency":false,"priority_adjustment":2147483647},{"scope":"sim.work","emergency":false,"priority_adjustment":2147483647}],"emergency":[{"scope":null,"emergency":false,"priority_adjustment":-2147483648}]}
+  ]
+}

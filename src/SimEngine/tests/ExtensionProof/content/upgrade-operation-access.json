@@ -1,0 +1,9 @@
+{
+  "knowledge_forgetting_policies": [{"id":"recipe.forget","subjects":[{"provider":"sim.knowledge.facts","subject":"recipe.discovered"}],"companies":[0]}],
+  "entity_knowledge_visibility": [{"id":"operating.hide-upgrade","definition":"operating.enhanced","mode":"all","facts":["recipe.discovered"]}],
+  "entity_replacement_effects": [{"id":"operating.upgrade","source":"point.tower","target":"operating.enhanced"}],
+  "target_resource_requirements": [{"id":"operating.materials","port":null,"use":"consume","quantities":{"supply":2}}],
+  "entity_activities": [{"id":"operating.upgrade","target":"point.tower","player_orderable":true,"priority":80,"automatic_supply":true,"on_complete":"operating.upgrade","nodes":[{"id":"prepare","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":1,"unit":"minute"}},{"id":"upgrade","after":["prepare"],"executor":"work.staffed","roles":["inspect"],"duration":{"numerator":6,"denominator":1,"unit":"minute"},"requirement":"operating.materials"}]}],
+  "entities": [{"id":"operating.enhanced","kind":"structure","components":{"point_presence":{"space":"field.points","position":99},"storage":{"capacity_policy":"fixture.count.60","public":false,"initial_stock":{}}}}],
+  "work_retry_profiles": [{"id":"operating.retry","initial_delay":{"numerator":2,"denominator":1,"unit":"minute"},"maximum_delay":{"numerator":8,"denominator":1,"unit":"minute"},"multiplier":2,"retry_blockers":["blocker.unreachable","sim.resource.active-promises","core.replacement-inventory-reserved","proof.access.a.denied","proof.access.b.denied"]}]
+}

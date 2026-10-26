@@ -1,0 +1,228 @@
+{
+"inventory_effects": [
+  {
+    "id": "proof.damage",
+    "kind": "destroyed",
+    "quantities": {
+      "steel": 2,
+      "water": 1.5
+    },
+    "ports": {
+      "steel": "disposition.input",
+      "water": "disposition.input"
+    }
+  },
+  {
+    "id": "proof.leak",
+    "kind": "lost",
+    "quantities": {
+      "water": 0.5
+    },
+    "ports": {
+      "water": "disposition.input"
+    }
+  },
+  {
+    "id": "proof.consume",
+    "kind": "consumed",
+    "quantities": {
+      "steel": 1
+    },
+    "ports": {
+      "steel": "disposition.input"
+    }
+  },
+  {
+    "id": "proof.single.damage",
+    "kind": "destroyed",
+    "quantities": {
+      "steel": 2
+    },
+    "ports": {
+      "steel": "disposition.input"
+    }
+  }
+],
+"response_effects": [
+  {"id":"proof.restart","bound_response":true}
+],
+"resource_recovery_effects": [
+  {"id":"proof.recover"}
+],
+"mark_effects": [
+  {"id":"proof.mark","source":"damage","amount":1}
+],
+"activities": [
+  {"id":"recover.cargo","player_orderable":true,"priority":90,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"recover","roles":["crane"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"effect":"proof.recover","requirement":"proof.resource-disposition.recover.cargo.recover.inputs"}]},
+  {"id":"recover.final","player_orderable":true,"priority":90,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"prepare","roles":["crane"],"duration":{"numerator":1,"denominator":10,"unit":"hour"}},{"executor":"work.timed","id":"recover","duration":{"numerator":0,"denominator":1,"unit":"hour"},"after":["prepare"],"effect":"proof.recover"}]},
+  {"id":"recover.complete","player_orderable":true,"priority":90,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"recover","roles":["crane"],"duration":{"numerator":1,"denominator":10,"unit":"hour"}}],"on_complete":"proof.recover"},
+  {"id":"response.shared","priority":85,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"isolate","roles":["crane"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"proof.resource-disposition.response.shared.isolate.inputs"},{"executor":"work.staffed","id":"damage","roles":["crane"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"after":["isolate"],"effect":"proof.damage"},{"executor":"work.staffed","id":"leak","roles":["crane"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"after":["damage"],"effect":"proof.leak"}],"on_complete":"proof.restart"},
+  {"id":"response.fault","priority":85,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"damage","roles":["crane"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"effect":"proof.single.damage"}],"on_complete":"proof.restart"},
+  {"id":"consume","player_orderable":true,"priority":50,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"consume","roles":["crane"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"effect":"proof.consume"}]},
+  {"id":"leak.cargo","player_orderable":true,"priority":50,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"leak","roles":["crane"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"effect":"proof.leak"}]},
+  {"id":"inspect","player_orderable":true,"priority":50,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"mark","roles":["crane"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"effect":"proof.mark"}]},
+  {"id":"dispose","player_orderable":true,"priority":50,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"damage","roles":["crane"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"effect":"proof.damage"}]}
+],
+"entities": [
+  {
+    "id": "response_site",
+    "kind": "structure",
+    "components": {
+      "tile_presence": {
+        "space": "recovery.tiles",
+        "width": 2,
+        "height": 2,
+        "blocks": true,
+        "movable": false
+      },
+      "storage": {
+        "capacity_policy": "recovery.site",
+        "public": false,
+        "initial_stock": {
+          "steel": 40,
+          "water": 8
+        }
+      },
+      "contract_incident": {
+        "id": "damage",
+        "kind": "proof.failure",
+        "response": "response.shared"
+      },
+      "alarm_incident": {
+        "id": "alarm",
+        "kind": "proof.alarm",
+        "response": "response.shared"
+      },
+      "inventory_port": {
+        "id": "disposition.input"
+      }
+    }
+  },
+  {
+    "id": "fault_site",
+    "kind": "structure",
+    "components": {
+      "tile_presence": {
+        "space": "recovery.tiles",
+        "width": 2,
+        "height": 2,
+        "blocks": true,
+        "movable": false
+      },
+      "single_resource_port": {
+        "resource": "steel",
+        "capacity_policy": "recovery.site",
+        "initial": 10,
+        "receipt_fault": "partial_take"
+      },
+      "contract_incident": {
+        "id": "damage",
+        "kind": "proof.failure",
+        "response": "response.fault"
+      },
+      "inventory_port": {
+        "id": "disposition.input"
+      }
+    }
+  },
+  {
+    "id": "water_store",
+    "kind": "structure",
+    "components": {
+      "tile_presence": {
+        "space": "recovery.tiles",
+        "width": 1,
+        "height": 1,
+        "blocks": true,
+        "movable": false
+      },
+      "storage": {
+        "capacity_policy": "recovery.site",
+        "public": true,
+        "accepts": [
+          "water"
+        ]
+      },
+      "inventory_port": {
+        "id": "disposition.input"
+      }
+    }
+  },
+  {
+    "id": "steel_store",
+    "kind": "structure",
+    "components": {
+      "tile_presence": {
+        "space": "recovery.tiles",
+        "width": 1,
+        "height": 1,
+        "blocks": true,
+        "movable": false
+      },
+      "storage": {
+        "capacity_policy": "recovery.site",
+        "public": true,
+        "accepts": [
+          "steel"
+        ]
+      },
+      "inventory_port": {
+        "id": "disposition.input"
+      }
+    }
+  },
+  {
+    "id": "loaded_truck",
+    "kind": "vehicle",
+    "components": {
+      "tile_presence": {
+        "space": "recovery.tiles",
+        "width": 1,
+        "height": 1,
+        "blocks": true,
+        "movable": true
+      },
+      "mover": {
+        "classes": [
+          "land"
+        ],
+        "class": "land",
+        "speed": 30,
+        "states": {
+          "moving": "moving",
+          "stopped": "stopped"
+        }
+      },
+      "worker": {
+        "work_rate": 1,
+        "roles": [
+          "haul"
+        ],
+        "states": {
+          "working": "working",
+          "loading": "loading",
+          "stopped": "stopped"
+        }
+      },
+      "storage": {
+        "capacity_policy": "recovery.cargo",
+        "public": false,
+        "initial_stock": {
+          "steel": 3,
+          "water": 5.5
+        }
+      },
+      "transporter": {
+        "handling": "recovery.handling"
+      },
+      "inventory_port": {
+        "id": "disposition.input"
+      }
+    }
+  }
+],
+"target_resource_requirements": [
+  {"port":null,"id":"proof.resource-disposition.recover.cargo.recover.inputs","use":"consume","quantities":{"steel":1}},
+  {"port":null,"id":"proof.resource-disposition.response.shared.isolate.inputs","use":"consume","quantities":{"steel":1}}
+]
+}

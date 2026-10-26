@@ -1,0 +1,15 @@
+{
+  "independent_recovery_destinations": [
+    {"id":"contract.nearest","mode":"nearest_available"},
+    {"id":"contract.demand-first","mode":"demand_first"},
+    {"id":"contract.demand-only","mode":"demand_only"}
+  ],
+  "independent_recovery_profiles": [
+    {"id":"contract.recovery",
+      "evacuation":{"enabled":true,"priority":90,"attempts_per_pass":2,"destination_policy":"contract.demand-only","reroute_blockers":["blocker.unreachable","core.not-found"]},
+      "cargo_return":{"enabled":true,"priority":110,"attempts_per_pass":1,"destination_policy":"contract.demand-first","reroute_blockers":["blocker.unreachable","core.not-found"]}},
+    {"id":"contract.unused",
+      "evacuation":{"enabled":false,"priority":0,"attempts_per_pass":1,"destination_policy":"contract.nearest","reroute_blockers":[]},
+      "cargo_return":{"enabled":false,"priority":0,"attempts_per_pass":1,"destination_policy":"contract.nearest","reroute_blockers":[]}}
+  ]
+}

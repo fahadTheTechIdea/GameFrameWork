@@ -1,0 +1,45 @@
+{
+  "entity_setups": [
+    {
+      "id": "extra.source",
+      "after": [],
+      "entity": "source",
+      "company": 1,
+      "placement": {
+        "space": "field.points",
+        "position": 40
+      },
+      "home": null
+    },
+    {
+      "id": "extra.machine",
+      "after": [
+        "extra.source"
+      ],
+      "entity": "machine",
+      "company": 1,
+      "placement": {
+        "space": "field.points",
+        "position": 35
+      },
+      "home": "extra.source"
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "point.extra",
+      "entries": [],
+      "includes": [
+        "point.extra.shared"
+      ]
+    },
+    {
+      "id": "point.extra.shared",
+      "entries": [
+        "extra.source",
+        "extra.machine"
+      ],
+      "includes": []
+    }
+  ]
+}

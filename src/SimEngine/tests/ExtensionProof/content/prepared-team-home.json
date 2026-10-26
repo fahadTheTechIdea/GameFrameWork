@@ -1,0 +1,7 @@
+{
+  "id": "prepared.east-home",
+  "kind": "structure",
+  "components": {
+    "point_presence": { "space": "field.points", "position": 20 }
+  }
+}

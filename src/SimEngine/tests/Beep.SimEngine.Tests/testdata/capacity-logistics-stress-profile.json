@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "id": "capacity.logistics.concurrent",
+  "carriers": [8, 32],
+  "destinations": 4,
+  "rounds": 3,
+  "haul_quantity": 8,
+  "carrier_tiles_per_hour": 600,
+  "max_updates_per_round": 2048,
+  "sample_every_updates": 16,
+  "max_allocated_bytes_per_update": 33554432,
+  "max_total_update_allocated_bytes": 1073741824
+}

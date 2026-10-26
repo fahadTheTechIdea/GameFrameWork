@@ -1,0 +1,53 @@
+{
+  "plan_playbooks": [
+    {
+      "id": "field.playbook",
+      "cadence": {
+        "numerator": 3,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "commands_per_decision": 1,
+      "steps": [
+        {
+          "id": "establish",
+          "template": "point.pair",
+          "group": "autopilot.field",
+          "after": [],
+          "priority": 0,
+          "conditions": [],
+          "sites": "field.playbook.establish.sites",
+          "recovery": null
+        }
+      ]
+    }
+  ],
+  "reply_controllers": [
+    {
+      "id": "reply.proof",
+      "cadence": {
+        "numerator": 3,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "commands_per_decision": 1,
+      "mode": "refusal"
+    }
+  ],
+  "plan_site_sets": [
+    {
+      "id": "field.playbook.establish.sites",
+      "sites": [
+        {
+          "id": "primary",
+          "priority": 0,
+          "anchor": {
+            "space": "field.points",
+            "position": 12
+          },
+          "conditions": []
+        }
+      ]
+    }
+  ]
+}

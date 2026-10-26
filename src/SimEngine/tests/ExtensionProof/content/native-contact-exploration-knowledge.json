@@ -1,0 +1,6 @@
+{
+  "knowledge_facts": [
+    {"id":"contact.north.known","fresh_for":null,"value":{"area":"north","classification":"visited"}},
+    {"id":"contact.east.known","fresh_for":null,"value":{"area":"east","classification":"visited"}}
+  ]
+}

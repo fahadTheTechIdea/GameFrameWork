@@ -1,0 +1,37 @@
+{
+  "resource_pools": [
+    {
+      "evacuate": false,
+      "id": "source.first",
+      "identity": 9000000001,
+      "public": true,
+      "owner": 0,
+      "capacity_policy": "haul.store",
+      "resources": [
+        "steel"
+      ]
+    },
+    {
+      "evacuate": false,
+      "id": "source.second",
+      "identity": 9000000002,
+      "public": true,
+      "owner": 0,
+      "capacity_policy": "haul.store",
+      "resources": [
+        "steel"
+      ]
+    },
+    {
+      "evacuate": false,
+      "id": "source.third",
+      "identity": 9000000003,
+      "public": false,
+      "owner": 0,
+      "capacity_policy": "haul.store",
+      "resources": [
+        "steel"
+      ]
+    }
+  ]
+}

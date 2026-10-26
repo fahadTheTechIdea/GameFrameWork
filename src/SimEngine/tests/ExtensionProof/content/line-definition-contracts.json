@@ -1,0 +1,26 @@
+{
+  "independent_lines": [
+    {"value":1,
+      "id": "segment.road-line",
+      "metadata_fault": "none",
+      "activity": "segment.shared",
+      "segment_node": "install",
+      "layer": "segment.road",
+      "owned": false,
+      "placement_policy": "segment.placement",
+      "finish_effect": "segment.finish",
+      "work_marker": "sim.line-work.segment.road-line"
+    },
+    {"value":1,
+      "id": "segment.pipe-line",
+      "metadata_fault": "none",
+      "activity": "segment.shared",
+      "segment_node": "install",
+      "layer": "segment.pipe",
+      "owned": false,
+      "placement_policy": "segment.placement",
+      "finish_effect": "segment.finish",
+      "work_marker": "sim.line-work.segment.pipe-line"
+    }
+  ]
+}

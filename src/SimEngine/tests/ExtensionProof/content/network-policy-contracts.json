@@ -1,0 +1,5 @@
+{
+  "independent_network_rankings": [{"id":"policy.round-robin","fault":"none"}],
+  "independent_network_demands": [{"id":"policy.capacity","fault":"none"}],
+  "independent_network_transfers": [{"id":"policy.transfer","fault":"none"}]
+}

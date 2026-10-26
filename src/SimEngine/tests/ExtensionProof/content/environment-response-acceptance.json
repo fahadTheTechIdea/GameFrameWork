@@ -1,0 +1,36 @@
+{
+  "resources": [{"id":"environment.residue","unit":"unit.capacity.count","category":"material","phase":"solid","traits":[],"capacity":{"unit.capacity.count":1,"unit.capacity.volume":1}}],
+  "environmental_metrics": [
+    {"id":"environment.loss","unit":"unit.steel","rate_unit":"hour","window":null,"resources":["steel"],"kinds":["lost"],"causes":["environment.spill"]},
+    {"id":"environment.recovered","unit":"unit.steel","rate_unit":"hour","window":null,"resources":["steel"],"kinds":["produced"],"causes":["environment.recovery"]},
+    {"id":"environment.disposed","unit":"unit.capacity.count","rate_unit":"hour","window":null,"resources":["environment.residue"],"kinds":["destroyed"],"causes":["environment.dispose"]},
+    {"id":"environment.feed","unit":"unit.capacity.count","rate_unit":"hour","window":null,"resources":["response.waste"],"kinds":["consumed"],"causes":["environment.recovery"]},
+    {"id":"environment.recent-loss","unit":"unit.steel","rate_unit":"minute","window":{"numerator":60,"denominator":1,"unit":"minute"},"resources":["steel"],"kinds":["lost"],"causes":["environment.spill"]},
+    {"id":"environment.other-kind","unit":"unit.steel","rate_unit":"hour","window":null,"resources":["steel"],"kinds":["destroyed"],"causes":["environment.spill"]},
+    {"id":"environment.other-cause","unit":"unit.steel","rate_unit":"hour","window":null,"resources":["steel"],"kinds":["lost"],"causes":["environment.dispose"]}
+  ],
+  "inventory_effects": [
+  {
+    "id": "environment.spill",
+    "kind": "lost",
+    "quantities": {
+      "steel": 1
+    },
+    "ports": {
+      "steel": "disposition.input"
+    }
+  },
+  {
+    "id": "environment.dispose",
+    "kind": "destroyed",
+    "quantities": {
+      "environment.residue": 1
+    },
+    "ports": {
+      "environment.residue": "disposition.input"
+    }
+  }
+],
+  "transformations": [{"id":"environment.recovery","mode":"batch","cancel_policy":"return_inputs","tool_consumption":{},"operating_ports":{},"tool_ports":{"steel":"tool.input"},"input_ports":{"response.waste":"material.input"},"output_ports":{"steel":"material.output","environment.residue":"material.output"},"operating_inputs":[],"tools":{"steel":1},"inputs":{"response.waste":2},"outputs":{"steel":1,"environment.residue":1},"duration":{"numerator":120,"denominator":1,"unit":"minute"}}],
+  "activities": [{"id":"environment.disposal","player_orderable":true,"automatic_supply":false,"priority":100,"nodes":[{"id":"dispose","executor":"work.staffed","roles":["haul"],"duration":{"numerator":8,"denominator":1,"unit":"minute"},"requirement":"response.fuel-one","effect":"environment.dispose"}]}]
+}

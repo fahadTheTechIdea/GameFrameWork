@@ -1,0 +1,883 @@
+{
+  "SchemaVersion": 1,
+  "Id": "city-schematic-catalog",
+  "Archetypes": [
+    {
+      "Id": "city",
+      "Kind": "city",
+      "Purpose": "Planned city schematic program",
+      "Properties": {
+        "schematic": {
+          "label": "City schematic",
+          "color": "#d8e7df",
+          "columns": 3,
+          "corridors": true,
+          "gap": 64,
+          "padding": 32
+        }
+      },
+      "Parts": [
+        {
+          "Id": "a-homes",
+          "ArchetypeId": "residential",
+          "Count": 1,
+          "Purpose": "Homes and neighborhood services"
+        },
+        {
+          "Id": "b-center",
+          "ArchetypeId": "civic",
+          "Count": 1,
+          "Purpose": "Public services and civic center"
+        },
+        {
+          "Id": "c-market",
+          "ArchetypeId": "commercial",
+          "Count": 1,
+          "Purpose": "Trade and workplaces"
+        },
+        {
+          "Id": "d-works",
+          "ArchetypeId": "industrial",
+          "Count": 1,
+          "Purpose": "Production and logistics"
+        },
+        {
+          "Id": "e-gardens",
+          "ArchetypeId": "recreation",
+          "Count": 1,
+          "Purpose": "Open space and leisure"
+        },
+        {
+          "Id": "f-campus",
+          "ArchetypeId": "education",
+          "Count": 1,
+          "Purpose": "Learning and research"
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "radial-0",
+          "Kind": "district-connection",
+          "Pattern": "Pairs",
+          "FromPart": "a-homes",
+          "ToPart": "b-center",
+          "Bidirectional": true
+        },
+        {
+          "Id": "radial-1",
+          "Kind": "district-connection",
+          "Pattern": "Pairs",
+          "FromPart": "a-homes",
+          "ToPart": "c-market",
+          "Bidirectional": true
+        },
+        {
+          "Id": "radial-2",
+          "Kind": "district-connection",
+          "Pattern": "Pairs",
+          "FromPart": "a-homes",
+          "ToPart": "d-works",
+          "Bidirectional": true
+        },
+        {
+          "Id": "radial-3",
+          "Kind": "district-connection",
+          "Pattern": "Pairs",
+          "FromPart": "a-homes",
+          "ToPart": "e-gardens",
+          "Bidirectional": true
+        },
+        {
+          "Id": "radial-4",
+          "Kind": "district-connection",
+          "Pattern": "Pairs",
+          "FromPart": "a-homes",
+          "ToPart": "f-campus",
+          "Bidirectional": true
+        }
+      ],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "residential",
+      "Kind": "district",
+      "Purpose": "Planned north neighborhoods program",
+      "Properties": {
+        "schematic": {
+          "label": "North neighborhoods",
+          "color": "#dbe9df",
+          "columns": 2,
+          "corridors": true,
+          "gap": 26,
+          "padding": 18
+        }
+      },
+      "Parts": [
+        {
+          "Id": "a-houses",
+          "ArchetypeId": "house",
+          "Count": 4,
+          "Purpose": "Family homes"
+        },
+        {
+          "Id": "b-service",
+          "ArchetypeId": "clinic",
+          "Count": 1,
+          "Purpose": "Neighborhood care"
+        },
+        {
+          "Id": "c-green",
+          "ArchetypeId": "green",
+          "Count": 1,
+          "Purpose": "Local shared garden"
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "access-0",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "a-houses",
+          "Bidirectional": true
+        },
+        {
+          "Id": "access-1",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "b-service",
+          "Bidirectional": true
+        },
+        {
+          "Id": "access-2",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "c-green",
+          "Bidirectional": true
+        }
+      ],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "civic",
+      "Kind": "district",
+      "Purpose": "Planned civic center program",
+      "Properties": {
+        "schematic": {
+          "label": "Civic center",
+          "color": "#d9e6ee",
+          "columns": 2,
+          "corridors": true,
+          "gap": 26,
+          "padding": 18
+        }
+      },
+      "Parts": [
+        {
+          "Id": "a-hall",
+          "ArchetypeId": "hall",
+          "Count": 1,
+          "Purpose": "Public administration"
+        },
+        {
+          "Id": "b-square",
+          "ArchetypeId": "square",
+          "Count": 1,
+          "Purpose": "Central meeting space"
+        },
+        {
+          "Id": "c-library",
+          "ArchetypeId": "library",
+          "Count": 1,
+          "Purpose": "Public reading rooms"
+        },
+        {
+          "Id": "d-safety",
+          "ArchetypeId": "safety",
+          "Count": 1,
+          "Purpose": "Emergency response"
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "access-0",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "a-hall",
+          "Bidirectional": true
+        },
+        {
+          "Id": "access-1",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "b-square",
+          "Bidirectional": true
+        },
+        {
+          "Id": "access-2",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "c-library",
+          "Bidirectional": true
+        },
+        {
+          "Id": "access-3",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "d-safety",
+          "Bidirectional": true
+        }
+      ],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "commercial",
+      "Kind": "district",
+      "Purpose": "Planned market district program",
+      "Properties": {
+        "schematic": {
+          "label": "Market district",
+          "color": "#ece2cc",
+          "columns": 2,
+          "corridors": true,
+          "gap": 26,
+          "padding": 18
+        }
+      },
+      "Parts": [
+        {
+          "Id": "a-market",
+          "ArchetypeId": "market",
+          "Count": 2,
+          "Purpose": "Daily trade"
+        },
+        {
+          "Id": "b-office",
+          "ArchetypeId": "office",
+          "Count": 2,
+          "Purpose": "Employment locations"
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "access-0",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "a-market",
+          "Bidirectional": true
+        },
+        {
+          "Id": "access-1",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "b-office",
+          "Bidirectional": true
+        }
+      ],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "industrial",
+      "Kind": "district",
+      "Purpose": "Planned production district program",
+      "Properties": {
+        "schematic": {
+          "label": "Production district",
+          "color": "#e3d9ce",
+          "columns": 2,
+          "corridors": true,
+          "gap": 26,
+          "padding": 18
+        }
+      },
+      "Parts": [
+        {
+          "Id": "a-factory",
+          "ArchetypeId": "factory",
+          "Count": 1,
+          "Purpose": "Compound production facility"
+        },
+        {
+          "Id": "b-warehouse",
+          "ArchetypeId": "warehouse",
+          "Count": 2,
+          "Purpose": "Storage and distribution"
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "access-0",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "a-factory",
+          "Bidirectional": true
+        },
+        {
+          "Id": "access-1",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "b-warehouse",
+          "Bidirectional": true
+        }
+      ],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "recreation",
+      "Kind": "district",
+      "Purpose": "Planned gardens and leisure program",
+      "Properties": {
+        "schematic": {
+          "label": "Gardens and leisure",
+          "color": "#d5e6cb",
+          "columns": 2,
+          "corridors": true,
+          "gap": 26,
+          "padding": 18
+        }
+      },
+      "Parts": [
+        {
+          "Id": "a-park",
+          "ArchetypeId": "park",
+          "Count": 2,
+          "Purpose": "Open recreation space"
+        },
+        {
+          "Id": "b-club",
+          "ArchetypeId": "club",
+          "Count": 1,
+          "Purpose": "Compound recreation club"
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "access-0",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "a-park",
+          "Bidirectional": true
+        },
+        {
+          "Id": "access-1",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "b-club",
+          "Bidirectional": true
+        }
+      ],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "education",
+      "Kind": "district",
+      "Purpose": "Planned learning quarter program",
+      "Properties": {
+        "schematic": {
+          "label": "Learning quarter",
+          "color": "#dddff0",
+          "columns": 2,
+          "corridors": true,
+          "gap": 26,
+          "padding": 18
+        }
+      },
+      "Parts": [
+        {
+          "Id": "a-school",
+          "ArchetypeId": "school",
+          "Count": 2,
+          "Purpose": "Teaching sites"
+        },
+        {
+          "Id": "b-lab",
+          "ArchetypeId": "laboratory",
+          "Count": 1,
+          "Purpose": "Research"
+        },
+        {
+          "Id": "c-green",
+          "ArchetypeId": "green",
+          "Count": 1,
+          "Purpose": "Shared campus garden"
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "access-0",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "a-school",
+          "Bidirectional": true
+        },
+        {
+          "Id": "access-1",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "b-lab",
+          "Bidirectional": true
+        },
+        {
+          "Id": "access-2",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "c-green",
+          "Bidirectional": true
+        }
+      ],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "factory",
+      "Kind": "facility",
+      "Purpose": "Planned factory campus program",
+      "Properties": {
+        "schematic": {
+          "label": "Factory campus",
+          "color": "#d8c4b1",
+          "columns": 2,
+          "padding": 12,
+          "gap": 12,
+          "header": 30
+        }
+      },
+      "Parts": [
+        {
+          "Id": "a-production",
+          "ArchetypeId": "workshop",
+          "Count": 1,
+          "Purpose": "Main production building"
+        },
+        {
+          "Id": "b-admin",
+          "ArchetypeId": "admin",
+          "Count": 1,
+          "Purpose": "Detached administration"
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "access-0",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "a-production",
+          "Bidirectional": true
+        },
+        {
+          "Id": "access-1",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "b-admin",
+          "Bidirectional": true
+        }
+      ],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "club",
+      "Kind": "facility",
+      "Purpose": "Planned recreation club program",
+      "Properties": {
+        "schematic": {
+          "label": "Recreation club",
+          "color": "#c7d8be",
+          "columns": 2,
+          "padding": 12,
+          "gap": 12,
+          "header": 30
+        }
+      },
+      "Parts": [
+        {
+          "Id": "a-hall",
+          "ArchetypeId": "clubhouse",
+          "Count": 1,
+          "Purpose": "Club building"
+        },
+        {
+          "Id": "b-court",
+          "ArchetypeId": "court",
+          "Count": 1,
+          "Purpose": "Outdoor sports surface"
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "access-0",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "a-hall",
+          "Bidirectional": true
+        },
+        {
+          "Id": "access-1",
+          "Kind": "planned-access",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "b-court",
+          "Bidirectional": true
+        }
+      ],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "house",
+      "Kind": "building",
+      "Purpose": "Planned home program",
+      "Properties": {
+        "schematic": {
+          "label": "Home",
+          "color": "#b9d0ce",
+          "width": 120,
+          "height": 70,
+          "footprint": true
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    },
+    {
+      "Id": "clinic",
+      "Kind": "building",
+      "Purpose": "Planned clinic program",
+      "Properties": {
+        "schematic": {
+          "label": "Clinic",
+          "color": "#f0c6bb",
+          "width": 120,
+          "height": 70,
+          "footprint": true
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    },
+    {
+      "Id": "green",
+      "Kind": "green-space",
+      "Purpose": "Planned garden program",
+      "Properties": {
+        "schematic": {
+          "label": "Garden",
+          "color": "#c4dfb3",
+          "width": 120,
+          "height": 70,
+          "footprint": false
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    },
+    {
+      "Id": "hall",
+      "Kind": "building",
+      "Purpose": "Planned city hall program",
+      "Properties": {
+        "schematic": {
+          "label": "City hall",
+          "color": "#bacbdc",
+          "width": 120,
+          "height": 70,
+          "footprint": true
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    },
+    {
+      "Id": "square",
+      "Kind": "plaza",
+      "Purpose": "Planned public square program",
+      "Properties": {
+        "schematic": {
+          "label": "Public square",
+          "color": "#e8dcc3",
+          "width": 120,
+          "height": 70,
+          "footprint": false
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    },
+    {
+      "Id": "library",
+      "Kind": "building",
+      "Purpose": "Planned library program",
+      "Properties": {
+        "schematic": {
+          "label": "Library",
+          "color": "#bacbdc",
+          "width": 120,
+          "height": 70,
+          "footprint": true
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    },
+    {
+      "Id": "safety",
+      "Kind": "building",
+      "Purpose": "Planned safety station program",
+      "Properties": {
+        "schematic": {
+          "label": "Safety station",
+          "color": "#d7c1bb",
+          "width": 120,
+          "height": 70,
+          "footprint": true
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    },
+    {
+      "Id": "market",
+      "Kind": "building",
+      "Purpose": "Planned market program",
+      "Properties": {
+        "schematic": {
+          "label": "Market",
+          "color": "#e7c896",
+          "width": 120,
+          "height": 70,
+          "footprint": true
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    },
+    {
+      "Id": "office",
+      "Kind": "building",
+      "Purpose": "Planned office program",
+      "Properties": {
+        "schematic": {
+          "label": "Office",
+          "color": "#c2d3de",
+          "width": 120,
+          "height": 70,
+          "footprint": true
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    },
+    {
+      "Id": "warehouse",
+      "Kind": "building",
+      "Purpose": "Planned warehouse program",
+      "Properties": {
+        "schematic": {
+          "label": "Warehouse",
+          "color": "#d8c8b7",
+          "width": 120,
+          "height": 70,
+          "footprint": true
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    },
+    {
+      "Id": "park",
+      "Kind": "green-space",
+      "Purpose": "Planned city park program",
+      "Properties": {
+        "schematic": {
+          "label": "City park",
+          "color": "#b4d6a1",
+          "width": 120,
+          "height": 70,
+          "footprint": false
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    },
+    {
+      "Id": "school",
+      "Kind": "building",
+      "Purpose": "Planned school program",
+      "Properties": {
+        "schematic": {
+          "label": "School",
+          "color": "#c9c6df",
+          "width": 120,
+          "height": 70,
+          "footprint": true
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    },
+    {
+      "Id": "laboratory",
+      "Kind": "building",
+      "Purpose": "Planned laboratory program",
+      "Properties": {
+        "schematic": {
+          "label": "Laboratory",
+          "color": "#c9c6df",
+          "width": 120,
+          "height": 70,
+          "footprint": true
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    },
+    {
+      "Id": "workshop",
+      "Kind": "building",
+      "Purpose": "Planned workshop program",
+      "Properties": {
+        "schematic": {
+          "label": "Workshop",
+          "color": "#d6b898",
+          "width": 88,
+          "height": 70,
+          "footprint": true
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    },
+    {
+      "Id": "admin",
+      "Kind": "building",
+      "Purpose": "Planned admin program",
+      "Properties": {
+        "schematic": {
+          "label": "Admin",
+          "color": "#c7d5da",
+          "width": 88,
+          "height": 70,
+          "footprint": true
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    },
+    {
+      "Id": "clubhouse",
+      "Kind": "building",
+      "Purpose": "Planned clubhouse program",
+      "Properties": {
+        "schematic": {
+          "label": "Clubhouse",
+          "color": "#c4d2c4",
+          "width": 88,
+          "height": 70,
+          "footprint": true
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    },
+    {
+      "Id": "court",
+      "Kind": "sports-surface",
+      "Purpose": "Planned sports court program",
+      "Properties": {
+        "schematic": {
+          "label": "Sports court",
+          "color": "#c7dcbb",
+          "width": 88,
+          "height": 70,
+          "footprint": false
+        }
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    }
+  ]
+}

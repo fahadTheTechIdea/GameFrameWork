@@ -1,0 +1,7 @@
+{
+  "world_setup_profiles":[{"id":"survey.start","entries":["start.machine","start.site"],"includes":[]}],
+  "entity_setups":[
+    {"id":"start.site","after":[],"entity":"survey.site","company":0,"placement":{"space":"survey.tiles","x":2,"y":10},"home":null},
+    {"id":"start.machine","after":[],"entity":"survey.machine","company":0,"placement":{"space":"survey.tiles","x":17,"y":10},"home":null}
+  ]
+}

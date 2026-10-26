@@ -1,0 +1,14 @@
+{
+  "signals":[
+    {"id":"boundary.level","kind":"number","metric":"probe.level","unit":"unit.level","providers":[{"component":"boundary_sensor","schema":1}]},
+    {"id":"boundary.enabled","kind":"boolean","metric":"operation.enabled","unit":"unit.boolean","providers":[{"component":"boundary_sensor","schema":1}]},
+    {"id":"boundary.native-enabled","kind":"boolean","metric":"operation.enabled","unit":"unit.boolean","providers":[{"component":"transformer","schema":1}]},
+    {"id":"boundary.native-backlog","kind":"number","metric":"transformation.backlog","unit":"unit.count","providers":[{"component":"transformer","schema":1}]}
+  ],
+  "entities":[
+    {"id":"boundary.factory","kind":"structure","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "boundary_sensor":{"level":2,"operation":{"id":"boundary.sensor","enabled":true,"target":1,"minimum":0,"maximum":2,"unit":"unit.work-rate"}}
+    }}
+  ]
+}

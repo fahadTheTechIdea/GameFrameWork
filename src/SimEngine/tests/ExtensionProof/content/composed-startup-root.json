@@ -1,0 +1,32 @@
+{
+  "world_setup_profiles": [
+    {
+      "id": "startup.root",
+      "entries": [],
+      "includes": [
+        "startup.alpha",
+        "startup.beta"
+      ]
+    },
+    {
+      "id": "startup.unselected",
+      "entries": [
+        "startup.unselected.source"
+      ],
+      "includes": []
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "startup.unselected.source",
+      "after": [],
+      "entity": "startup.source",
+      "company": 0,
+      "placement": {
+        "space": "startup.points",
+        "position": 63
+      },
+      "home": null
+    }
+  ]
+}

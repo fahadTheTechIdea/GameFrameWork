@@ -1,0 +1,35 @@
+{
+  "logistics_recovery_profiles": [
+    {"id":"recovery.quantum-evacuation",
+      "evacuation":{"enabled":true,"priority":200,"attempts_per_pass":1,"reroute_blockers":["blocker.unreachable","core.not-found"],"destination_policy":"return.demand-only"},
+      "cargo_return":{"enabled":false,"priority":200,"attempts_per_pass":1,"reroute_blockers":[],"destination_policy":"return.demand-only"}}
+  ],
+  "entities": [
+    {"id":"recovery.triple-source","kind":"entity","components":{
+      "point_presence":{"space":"purchase.points","position":5},
+      "storage":{"capacity_policy":"recovery.triple-stock","initial_stock":{"supply":12},"public":true,"evacuate":true,"accepts":["supply"],"phases":[]}
+    }}
+  ],
+  "entity_setups": [
+  {
+    "id": "recovery.triple-source.start",
+    "after": [],
+    "entity": "recovery.triple-source",
+    "company": 0,
+    "placement": {
+      "space": "purchase.points",
+      "position": 5
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "recovery-quantum-evacuation.start",
+    "entries": [
+      "recovery.triple-source.start"
+    ],
+    "includes": []
+  }
+]
+}

@@ -1,0 +1,5 @@
+{
+  "dependency_direct_resources": [{"id":"deps.external-materials","port":null,"use":"consume","quantities":{"supply":2}}],
+  "dependency_direct_effects": [{"id":"deps.external-finish","mode":"wait","quantities":{"supply":1}}],
+  "dependency_invalid_effects": []
+}

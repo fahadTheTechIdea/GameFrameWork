@@ -1,0 +1,24 @@
+{
+  "game_modes": [{ "id": "process.resource-only", "name": "Resource-only physical simulation", "properties": {} }],
+  "time_definitions": [ { "id": "process.minute", "quantum": { "numerator": 60, "denominator": 1, "unit": "second" }, "frame_ticks": 1, "ticks_per_second": 30, "horizon": null } ],
+  "entity_states": [
+    { "id": "idle", "state": "process.idle", "priority": 0, "default": true },
+    { "id": "working", "state": "process.working", "priority": 20 },
+    { "id": "blocked", "state": "process.blocked", "priority": 60 }
+  ],
+  "units": [{"id":"unit.capacity.count","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true},{"id":"unit.capacity.volume","dimension":"volume","scale":{"numerator":1,"denominator":1},"discrete":false},{"id":"unit.capacity.mass","dimension":"mass","scale":{"numerator":1,"denominator":1},"discrete":false},{"id":"unit.kit","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true}], "capacity_policies": [{"id":"fixture.count.1","limits":{"unit.capacity.count":1}},{"id":"fixture.count.4","limits":{"unit.capacity.count":4}},{"id":"fixture.count.5","limits":{"unit.capacity.count":5}},{"id":"fixture.count.8","limits":{"unit.capacity.count":8}},{"id":"fixture.count.10","limits":{"unit.capacity.count":10}},{"id":"fixture.count.20","limits":{"unit.capacity.count":20}},{"id":"fixture.count.40","limits":{"unit.capacity.count":40}},{"id":"fixture.count.60","limits":{"unit.capacity.count":60}},{"id":"fixture.count.80","limits":{"unit.capacity.count":80}},{"id":"fixture.count.100","limits":{"unit.capacity.count":100}},{"id":"fixture.count.200","limits":{"unit.capacity.count":200}},{"id":"fixture.count.1000","limits":{"unit.capacity.count":1000}},{"id":"fixture.volume.1","limits":{"unit.capacity.volume":1}},{"id":"fixture.volume.4","limits":{"unit.capacity.volume":4}},{"id":"fixture.volume.5","limits":{"unit.capacity.volume":5}},{"id":"fixture.volume.8","limits":{"unit.capacity.volume":8}},{"id":"fixture.volume.10","limits":{"unit.capacity.volume":10}},{"id":"fixture.volume.20","limits":{"unit.capacity.volume":20}},{"id":"fixture.volume.40","limits":{"unit.capacity.volume":40}},{"id":"fixture.volume.60","limits":{"unit.capacity.volume":60}},{"id":"fixture.volume.80","limits":{"unit.capacity.volume":80}},{"id":"fixture.volume.100","limits":{"unit.capacity.volume":100}},{"id":"fixture.volume.200","limits":{"unit.capacity.volume":200}},{"id":"fixture.volume.1000","limits":{"unit.capacity.volume":1000}},{"id":"fixture.mass.1","limits":{"unit.capacity.mass":1}},{"id":"fixture.mass.4","limits":{"unit.capacity.mass":4}},{"id":"fixture.mass.5","limits":{"unit.capacity.mass":5}},{"id":"fixture.mass.8","limits":{"unit.capacity.mass":8}},{"id":"fixture.mass.10","limits":{"unit.capacity.mass":10}},{"id":"fixture.mass.20","limits":{"unit.capacity.mass":20}},{"id":"fixture.mass.40","limits":{"unit.capacity.mass":40}},{"id":"fixture.mass.60","limits":{"unit.capacity.mass":60}},{"id":"fixture.mass.80","limits":{"unit.capacity.mass":80}},{"id":"fixture.mass.100","limits":{"unit.capacity.mass":100}},{"id":"fixture.mass.200","limits":{"unit.capacity.mass":200}},{"id":"fixture.mass.1000","limits":{"unit.capacity.mass":1000}}], "resources": [{"id":"supply","unit":"unit.kit","category":"general","phase":"solid","traits":[],"capacity":{"unit.kit":1}}],
+  "entities": [
+    { "id": "assembler", "kind": "entity", "components": {"inventory_port":[{"id":"material.output"},{"id":"material.input"},{"id":"tool.input"},{"id":"operating.input"}],
+      "process_stock": { "resource": "supply", "capacity_policy": "fixture.count.40", "initial": 20 },
+      "transformer": { "automatic_supply": false, "wip_capacity": "fixture.count.40", "transformations": ["build"],
+        "states": { "working": "working", "stopped": "blocked" },
+        "operation": { "id": "transformation", "enabled": true, "target": 1, "minimum": 1, "maximum": 1, "unit": "unit.work-rate" }
+      }
+    } },
+    { "id": "token", "kind": "entity", "components": {} }
+  ],
+  "transformations": [ {"tool_consumption":{},"operating_ports":{},"tool_ports":{},"input_ports":{"supply":"material.input"},"output_ports":{"supply":"material.output"}, "id": "build", "mode":"batch","cancel_policy": "return_inputs","operating_inputs":[], "tools": {}, "inputs": { "supply": 3 }, "outputs": { "supply": 1 }, "entity_output": "token", "output_home": "unassigned", "duration": { "numerator": 1, "denominator": 10, "unit": "hour" } } ],
+  "world_setup_profiles": [{"id":"process.start","entries":["start"],"includes":[]}],
+  "entity_setups": [{"id":"start","after":[],"entity":"assembler","company":0,"placement":null,"home":null}],
+  "scenarios": [ { "id": "process", "game_mode": "process.resource-only", "mode_overrides": {}, "settings": {"sim.world-setup":{"profile":"process.start"}}, "time": "process.minute", "modules": ["proof.process","sim.world-setup"], "seats": 1 } ]
+}

@@ -1,0 +1,248 @@
+{
+  "worker_roles": [
+    {
+      "id": "staff.technician"
+    }
+  ],
+  "work_policies": [
+    {
+      "id": "staff.enabled",
+      "enabled": true,
+      "priority": 1,
+      "allowed_roles": [
+        "staff.technician"
+      ],
+      "area": null,
+      "interruptible": true,
+      "emergency_eligible": false,
+      "assignment_mode": "all",
+      "states": {
+        "disabled": "survey.stopped",
+        "standby": "survey.stopped"
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "staff.operate",
+      "player_orderable": true,
+      "priority": 60,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "primary",
+          "executor": "work.staffed",
+          "roles": [
+            "survey",
+            "staff.technician"
+          ],
+          "duration": {
+            "numerator": 2,
+            "denominator": 1,
+            "unit": "hour"
+          }
+        },
+        {
+          "id": "secondary",
+          "executor": "work.staffed",
+          "roles": [
+            "survey"
+          ],
+          "duration": {
+            "numerator": 2,
+            "denominator": 1,
+            "unit": "hour"
+          }
+        }
+      ]
+    }
+  ],
+  "transformations": [
+    {
+      "id": "staff.batch",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "inputs": {
+        "steel": 2
+      },
+      "tools": {
+        "steel": 1
+      },
+      "tool_consumption": {},
+      "operating_inputs": [],
+      "outputs": {
+        "steel": 1
+      },
+      "input_ports": {
+        "steel": "stock"
+      },
+      "tool_ports": {
+        "steel": "stock"
+      },
+      "operating_ports": {},
+      "output_ports": {
+        "steel": "stock"
+      },
+      "duration": {
+        "numerator": 8,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    },
+    {
+      "id": "staff.flow",
+      "mode": "continuous",
+      "cancel_policy": "stop",
+      "inputs": [
+        {
+          "resource": "steel",
+          "quantity": 1,
+          "period": {
+            "numerator": 3,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ],
+      "tools": {
+        "steel": 1
+      },
+      "tool_consumption": [],
+      "operating_inputs": [],
+      "outputs": [
+        {
+          "resource": "steel",
+          "quantity": 1,
+          "period": {
+            "numerator": 4,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ],
+      "input_ports": {
+        "steel": "stock"
+      },
+      "tool_ports": {
+        "steel": "stock"
+      },
+      "operating_ports": {},
+      "output_ports": {
+        "steel": "stock"
+      },
+      "duration": null
+    }
+  ],
+  "entities": [
+    {
+      "id": "staff.factory",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "survey.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "survey.storage",
+          "public": false,
+          "initial_stock": {
+            "steel": 20
+          }
+        },
+        "inventory_port": {
+          "id": "stock"
+        },
+        "transformer": {
+          "transformations": [
+            "staff.batch",
+            "staff.flow"
+          ],
+          "automatic_supply": false,
+          "wip_capacity": "survey.storage",
+          "operation": {
+            "id": "process",
+            "enabled": true,
+            "target": 1,
+            "minimum": 0.5,
+            "maximum": 2,
+            "unit": "unit.work-rate"
+          },
+          "states": {
+            "working": "survey.working",
+            "stopped": "survey.stopped"
+          }
+        },
+        "staffed_transformation_gate": {
+          "mode": "facility",
+          "id": "staffing",
+          "transformations": [
+            "staff.batch",
+            "staff.flow"
+          ],
+          "requirements": [
+            {
+              "id": "primary",
+              "activity": "staff.operate",
+              "node": "primary",
+              "roles": [
+                "survey",
+                "staff.technician"
+              ],
+              "count": 1
+            },
+            {
+              "id": "secondary",
+              "activity": "staff.operate",
+              "node": "secondary",
+              "roles": [
+                "survey"
+              ],
+              "count": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "staff.assistant",
+      "kind": "vehicle",
+      "components": {
+        "tile_presence": {
+          "space": "survey.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "mover": {
+          "classes": [
+            "survey.route"
+          ],
+          "class": "survey.route",
+          "speed": 30,
+          "states": {
+            "moving": "survey.moving",
+            "stopped": "survey.stopped"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "staff.technician"
+          ],
+          "states": {
+            "working": "survey.working",
+            "loading": "survey.loading",
+            "stopped": "survey.stopped"
+          }
+        },
+        "work_policy": {
+          "profile": "staff.enabled"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "schema": 1,
+  "modules": [
+    {
+      "id": "sim.access",
+      "version": "1.0.0",
+      "documents": [
+        "open-access.json"
+      ]
+    },
+    {
+      "id": "sim.inventory",
+      "version": "1.0.0",
+      "documents": [
+        "planet-x-resources.json"
+      ]
+    },
+    {
+      "id": "sim.operations",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.motion",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.work",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.access",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.motion",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "planet-x-work.json",
+        "work-retry.json"
+      ]
+    },
+    {
+      "id": "sim.logistics",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.work",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "planet-x-logistics.json"
+      ]
+    },
+    {
+      "id": "sim.transformations",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.access",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.operations",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "planet-x-recipes.json"
+      ]
+    },
+    {
+      "id": "sim.world-setup",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "points",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.work",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.transformations",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.logistics",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "planet-x-world.json"
+      ]
+    },
+    {
+      "id": "sim.knowledge",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.technology",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.work",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.knowledge",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "sim.objectives",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "proof.progression-declarations",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.technology",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.objectives",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "progression-declarations.json"
+      ]
+    },
+    {
+      "id": "sim.knowledge-visibility",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.knowledge",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "proof.progression-disclosure",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.objectives",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "progression-disclosure.json"
+      ]
+    },
+    {
+      "id": "proof.activity-disclosure",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.work",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "activity-disclosure.json",
+        "plan-disclosure.json"
+      ]
+    }
+  ]
+}

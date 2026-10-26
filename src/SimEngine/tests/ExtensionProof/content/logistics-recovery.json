@@ -1,0 +1,8 @@
+{
+  "recovery_destination_policies": [{"id":"recovery.nearest","mode":"nearest_available"}],
+  "logistics_recovery_profiles": [
+    {"id":"recovery.low","evacuation":{"enabled":true,"priority":10,"attempts_per_pass":2,"destination_policy":"recovery.nearest","reroute_blockers":["blocker.unreachable","core.not-found","work.policy-outside-area"]},"cargo_return":{"enabled":true,"priority":10,"attempts_per_pass":1,"destination_policy":"recovery.nearest","reroute_blockers":["blocker.unreachable","core.not-found","work.policy-outside-area"]}},
+    {"id":"recovery.high","evacuation":{"enabled":true,"priority":100,"attempts_per_pass":2,"destination_policy":"recovery.nearest","reroute_blockers":["blocker.unreachable","core.not-found","work.policy-outside-area"]},"cargo_return":{"enabled":true,"priority":100,"attempts_per_pass":1,"destination_policy":"recovery.nearest","reroute_blockers":["blocker.unreachable","core.not-found","work.policy-outside-area"]}},
+    {"id":"recovery.off","evacuation":{"enabled":false,"priority":100,"attempts_per_pass":2,"destination_policy":"recovery.nearest","reroute_blockers":["blocker.unreachable","core.not-found","work.policy-outside-area"]},"cargo_return":{"enabled":false,"priority":100,"attempts_per_pass":1,"destination_policy":"recovery.nearest","reroute_blockers":["blocker.unreachable","core.not-found","work.policy-outside-area"]}}
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "resources":[{"id":"space.incompatible-fluid","unit":"space.kg","category":"fluid","phase":"liquid","traits":[],"capacity":{"space.kg":1}}],
+  "entities":[{
+    "id":"space.cargo2","kind":"vehicle","components":{
+      "point_presence":{"space":"space.points","position":90},
+      "storage":{"capacity_policy":"space.cargo","public":false,"initial_stock":{},"accepts":["space.planetx.ore"],"phases":["solid"]},
+      "inventory_port":[{"id":"ports.stock"},{"id":"ports.same"}],
+      "point_dock":{"work_roles":[],"resources":["space.planetx.ore"],"slots":[{"id":"ports.bay","kind":"service","offset":-2},{"id":"ports.wait","kind":"waiting","offset":-3},{"id":"ports.exit","kind":"departure","offset":-4}]},
+      "point_motion":{"rate":3600,"states":{"moving":"space.moving","stopped":"space.stopped"}},
+      "worker":{"work_rate":1,"roles":["haul"],"states":{"working":"space.working","loading":"space.loading","stopped":"space.stopped"}},
+      "work_policy":{"profile":"space.worker"},"transporter":{"handling":"space.handling"}
+    }
+  }],
+  "entity_setups":[{"id":"ports.cargo2","after":[],"entity":"space.cargo2","company":0,"placement":{"space":"space.points","position":90},"home":null}],
+  "world_setup_profiles":[
+    {"id":"ports.vehicle","entries":["ports.cargo2"],"includes":[]},
+    {"id":"ports.start","entries":[],"includes":["space.start","ports.vehicle"]}
+  ]
+}

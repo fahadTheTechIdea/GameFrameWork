@@ -1,0 +1,5 @@
+{
+  "operation": {"id":"availability","enabled":true,"target":1,"minimum":0,"maximum":2,"unit":"unit.work-rate"},
+  "conditions": [],
+  "states": {"disabled":"blocked"}
+}

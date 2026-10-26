@@ -1,0 +1,100 @@
+{
+  "proof_dispatch_profiles": [
+    {
+      "id": "dispatch.mod",
+      "preempt_emergencies": false,
+      "work_after": {
+        "numerator": 4,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "shipment_after": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "fault": "none",
+      "ordering": "starvation-first"
+    },
+    {
+      "id": "dispatch.zero",
+      "preempt_emergencies": false,
+      "work_after": {
+        "numerator": 4,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "shipment_after": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "fault": "zero",
+      "ordering": "starvation-first"
+    },
+    {
+      "id": "dispatch.negative",
+      "preempt_emergencies": false,
+      "work_after": {
+        "numerator": 4,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "shipment_after": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "fault": "negative",
+      "ordering": "starvation-first"
+    },
+    {
+      "id": "dispatch.undeclared",
+      "preempt_emergencies": false,
+      "work_after": {
+        "numerator": 4,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "shipment_after": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "fault": "undeclared",
+      "ordering": "starvation-first"
+    },
+    {
+      "id": "dispatch.mod-preempt",
+      "preempt_emergencies": true,
+      "work_after": {
+        "numerator": 4,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "shipment_after": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "fault": "none",
+      "ordering": "starvation-first"
+    },
+    {
+      "id": "dispatch.mod-priority",
+      "ordering": "priority-first",
+      "preempt_emergencies": false,
+      "work_after": {
+        "numerator": 4,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "shipment_after": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "fault": "none"
+    }
+  ]
+}

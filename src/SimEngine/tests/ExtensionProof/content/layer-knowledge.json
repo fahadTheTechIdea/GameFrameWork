@@ -1,0 +1,11 @@
+{
+  "knowledge_visibility_policies": [
+    {"id":"discovery.policy","own_entities":true,"unlisted_entities":false,"unlisted_content":true,
+     "rules":["visibility.terrain","visibility.deposit","visibility.water"]}
+  ],
+  "layer_knowledge_visibility": [
+    {"id":"visibility.terrain","definition":"point.terrain","mode":"all","facts":["field.observed"]},
+    {"id":"visibility.deposit","definition":"point.deposit","mode":"all","facts":["field.observed"]},
+    {"id":"visibility.water","definition":"point.water","mode":"all","facts":["field.second"]}
+  ]
+}

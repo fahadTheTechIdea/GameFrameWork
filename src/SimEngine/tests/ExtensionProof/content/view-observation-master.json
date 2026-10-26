@@ -1,0 +1,4 @@
+{
+  "schema": 1,
+  "modules": [{ "id": "proof.views", "version": "1.0.0", "documents": ["view-observation.json"] }]
+}

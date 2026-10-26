@@ -1,0 +1,44 @@
+{
+  "transformations": [{
+    "id":"sensor.power-cycle","mode":"continuous","cancel_policy":"stop",
+    "tools":{},"tool_consumption":[],"tool_ports":{},
+    "inputs":[{"resource":"supply","quantity":1,"period":{"numerator":1,"denominator":1,"unit":"minute"}}],
+    "input_ports":{"supply":"sensor.feed"},"outputs":[],"output_ports":{},
+    "operating_inputs":[{"resource":"supply","quantity":1,"period":{"numerator":1,"denominator":1,"unit":"minute"}}],
+    "operating_ports":{"supply":"sensor.utility"},"duration":null
+  }],
+  "entities": [
+    {"id":"sensor.machine","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":5},
+      "point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},
+      "worker":{"work_rate":1,"roles":["inspect"],"states":{"working":"processing","loading":"transfer","stopped":"blocked"}},
+      "storage":{"capacity_policy":"fixture.count.8","public":false,"initial_stock":{}},
+      "inventory_port":[{"id":"sensor.feed"},{"id":"sensor.utility"}],
+      "transformer":{"automatic_supply":false,"wip_capacity":"fixture.count.4","transformations":["sensor.power-cycle"],
+        "states":{"working":"processing","stopped":"blocked"},
+        "operation":{"id":"sensor.power","enabled":false,"target":1,"minimum":0.5,"maximum":1,"unit":"unit.work-rate"}},
+      "utility_signal":{"id":"sensor.utility-state","consumer":"sensor.power"},
+      "point_sensor":{"space":"field.points",
+        "operation":{"id":"sensor.sight","enabled":true,"target":2.5,"minimum":0,"maximum":20,"unit":"point.metre"},
+        "states":{"disabled":"blocked"},
+        "conditions":[
+          {"id":"sensor.powered","source":"sensor.power","signal":"sensor.power.running","expected":true,"blocker":"sensor.power-off"},
+          {"id":"sensor.utility-ready","source":"sensor.utility-state","signal":"sensor.utility.ready","expected":true,"blocker":"sensor.no-utility"}
+        ]}
+    }},
+    {"id":"sensor.contact","kind":"entity","components":{"point_presence":{"space":"field.points","position":7.5}}}
+  ],
+  "entity_setups":[
+    {"id":"sensor.machine.start","after":[],"entity":"sensor.machine","company":0,"placement":{"space":"field.points","position":5},"home":null},
+    {"id":"sensor.contact.start","after":[],"entity":"sensor.contact","company":1,"placement":{"space":"field.points","position":7.5},"home":null}
+  ],
+  "world_setup_profiles":[{"id":"point-sensor.start","entries":["sensor.machine.start","sensor.contact.start"],"includes":[]}],
+  "signals":[
+    {"id":"sensor.power.running","kind":"boolean","metric":"operation.running","unit":"unit.boolean","providers":[{"component":"transformer","schema":1}]},
+    {"id":"sensor.utility.ready","kind":"boolean","metric":"utility.ready","unit":"unit.boolean","providers":[{"component":"utility_signal","schema":1}]}
+  ],
+  "knowledge_visibility_policies":[{"id":"sensor.sight.policy","own_entities":true,"unlisted_entities":false,"unlisted_content":true,
+    "rules":["sensor.terrain.sight","sensor.contact.sight"]}],
+  "layer_sensor_visibility":[{"id":"sensor.terrain.sight","definition":"point.terrain","sensors":["sensor.sight"]}],
+  "entity_sensor_visibility":[{"id":"sensor.contact.sight","definition":"sensor.contact","sensors":["sensor.sight"]}]
+}

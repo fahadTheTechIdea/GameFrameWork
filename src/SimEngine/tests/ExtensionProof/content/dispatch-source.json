@@ -1,0 +1,3 @@
+{
+  "proof_shipments": [{"id":"proof.shipment","enabled":false,"identity":2147483652,"company":0,"from":"source","to":"destination","resource":"supply","desired":8,"priority":0,"interval":{"numerator":10,"denominator":1,"unit":"minute"}}]
+}

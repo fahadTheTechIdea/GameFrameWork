@@ -1,0 +1,14 @@
+{
+  "corridor_path_probes": [
+    {"id":"path.points","space":"field.points","path":[
+      {"space":"field.points","position":1.5},
+      {"space":"field.points","position":7.25},
+      {"space":"field.points","position":10}
+    ]},
+    {"id":"path.reversed","space":"field.points","path":[
+      {"space":"field.points","position":10},
+      {"space":"field.points","position":7.25},
+      {"space":"field.points","position":1.5}
+    ]}
+  ]
+}

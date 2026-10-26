@@ -1,0 +1,199 @@
+{
+  "units": [
+    {
+      "id": "route.depth",
+      "dimension": "length",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": false
+    }
+  ],
+  "spatial_layers": [
+    {
+      "id": "route.surface",
+      "space": "survey.tiles",
+      "type": "terrain.route-class",
+      "value_type": "int",
+      "visibility": "public",
+      "unit": "survey.count"
+    },
+    {
+      "id": "route.water",
+      "space": "survey.tiles",
+      "type": "water.depth",
+      "value_type": "fixed",
+      "visibility": "public",
+      "unit": "route.depth"
+    }
+  ],
+  "world_setup_profiles": [{"id":"route.start","entries":["start.deposit","start.terrain","start.class","start.site","start.machine","start.foreign","road.2","road.3","road.4","road.5","road.6","road.7","road.8","road.9","road.10","road.11","road.12","road.13","road.14","road.15","road.16"],"includes":[]}],
+  "tile_layer_setups": [
+    {
+      "id": "road.2",
+      "after": [],
+      "layer": "route.surface",
+      "x": 2,
+      "y": 8,
+      "value": 2,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "road.3",
+      "after": [],
+      "layer": "route.surface",
+      "x": 3,
+      "y": 8,
+      "value": 2,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "road.4",
+      "after": [],
+      "layer": "route.surface",
+      "x": 4,
+      "y": 8,
+      "value": 2,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "road.5",
+      "after": [],
+      "layer": "route.surface",
+      "x": 5,
+      "y": 8,
+      "value": 2,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "road.6",
+      "after": [],
+      "layer": "route.surface",
+      "x": 6,
+      "y": 8,
+      "value": 2,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "road.7",
+      "after": [],
+      "layer": "route.surface",
+      "x": 7,
+      "y": 8,
+      "value": 2,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "road.8",
+      "after": [],
+      "layer": "route.surface",
+      "x": 8,
+      "y": 8,
+      "value": 2,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "road.9",
+      "after": [],
+      "layer": "route.surface",
+      "x": 9,
+      "y": 8,
+      "value": 2,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "road.10",
+      "after": [],
+      "layer": "route.surface",
+      "x": 10,
+      "y": 8,
+      "value": 2,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "road.11",
+      "after": [],
+      "layer": "route.surface",
+      "x": 11,
+      "y": 8,
+      "value": 2,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "road.12",
+      "after": [],
+      "layer": "route.surface",
+      "x": 12,
+      "y": 8,
+      "value": 2,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "road.13",
+      "after": [],
+      "layer": "route.surface",
+      "x": 13,
+      "y": 8,
+      "value": 2,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "road.14",
+      "after": [],
+      "layer": "route.surface",
+      "x": 14,
+      "y": 8,
+      "value": 2,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "road.15",
+      "after": [],
+      "layer": "route.surface",
+      "x": 15,
+      "y": 8,
+      "value": 2,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "road.16",
+      "after": [],
+      "layer": "route.surface",
+      "x": 16,
+      "y": 8,
+      "value": 2,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    }
+  ]
+}

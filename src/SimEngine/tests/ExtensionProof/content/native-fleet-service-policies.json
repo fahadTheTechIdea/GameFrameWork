@@ -1,0 +1,222 @@
+{
+  "entities": [
+    {
+      "id": "fleet.trip-native",
+      "kind": "vehicle",
+      "components": {
+        "tile_presence": {
+          "space": "survey.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "mover": {
+          "classes": [
+            "survey.route",
+            "terrain.route"
+          ],
+          "class": "survey.route",
+          "speed": 30,
+          "states": {
+            "moving": "survey.moving",
+            "stopped": "survey.stopped"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "survey.working",
+            "loading": "survey.loading",
+            "stopped": "survey.stopped"
+          }
+        },
+        "work_policy": {
+          "profile": "fleet.enabled"
+        },
+        "storage": {
+          "capacity_policy": "fleet.trip-cargo",
+          "public": false,
+          "initial_stock": {
+            "fleet.fuel": 30
+          }
+        },
+        "transporter": {
+          "handling": "fleet.handling"
+        },
+        "haul_trip_policy": {
+          "profile": "fleet.trip-unrestricted"
+        },
+        "logistics_policy": {"profiles":[{"port":null,"profile":"fleet.trip-outlet"}]},
+        "operating_inputs": {
+          "id": "propulsion",
+          "phase": "movement",
+          "inputs": [
+            {
+              "resource": "fleet.fuel",
+              "quantity": 1,
+              "period": {
+                "numerator": 10,
+                "denominator": 1,
+                "unit": "minute"
+              }
+            }
+          ],
+          "states": {
+            "disabled": "survey.stopped"
+          }
+        },
+        "recurring_activity": {
+          "id": "service.interval",
+          "plan": "activity:fleet.inspection",
+          "template": null,
+          "cadence": "successful_completion",
+          "trigger": "schedule",
+          "dispatch_mode": "compete",
+          "target": "worker_home",
+          "arguments": null,
+          "facility_policy": null,
+          "reserve_use": "none",
+          "worker_nodes": [
+            "inspect"
+          ],
+          "enabled": false,
+          "priority": 100,
+          "group": "fleet.inspections",
+          "operation_policy": null,
+          "interval": {
+            "numerator": 200,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "conditions": []
+        },
+        "proof_fleet_service": {
+          "id": "service.inspect",
+          "plan": "activity:fleet.inspection",
+          "template": null,
+          "cadence": "successful_completion",
+          "trigger": "schedule",
+          "dispatch_mode": "compete",
+          "target": "worker_home",
+          "arguments": null,
+          "facility_policy": null,
+          "reserve_use": "none",
+          "worker_nodes": [
+            "inspect"
+          ],
+          "enabled": false,
+          "priority": 100,
+          "group": "fleet.inspections",
+          "operation_policy": null,
+          "interval": {
+            "numerator": 300,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "fault": 0,
+          "idle_only": false
+        }
+      }
+    }
+  ],
+  "haul_trip_profiles": [
+    {
+      "id": "fleet.trip-funded",
+      "enabled": true,
+      "preserve_outlet_reserve": true,
+      "service_sources": []
+    },
+    {
+      "id": "fleet.trip-unrestricted",
+      "enabled": true,
+      "preserve_outlet_reserve": false,
+      "service_sources": [
+        "service.inspect",
+        "service.interval"
+      ]
+    },
+    {
+      "id": "fleet.trip-veto",
+      "enabled": true,
+      "preserve_outlet_reserve": false,
+      "service_sources": []
+    }
+  ],
+  "resources": [
+    {
+      "id": "fleet.fuel",
+      "unit": "survey.count",
+      "category": "energy",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "survey.count": 1
+      }
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "fleet.trip-cargo",
+      "limits": {
+        "survey.count": 64
+      }
+    }
+  ],
+  "logistics_policies": [
+    {
+      "id": "fleet.trip-outlet",
+      "stock": {},
+      "outlet": {
+        "enabled": true,
+        "reserve": {
+          "fleet.fuel": 30
+        },
+        "reserve_access": "protected",
+        "export_priority": 0,
+        "allowed_destinations": null
+      },
+      "states": {
+        "disabled": "survey.stopped"
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "fleet.inspection",
+      "player_orderable": true,
+      "automatic_supply": false,
+      "target_tags": [],
+      "nodes": [
+        {
+          "id": "inspect",
+          "executor": "work.staffed",
+          "roles": [
+            "haul"
+          ],
+          "duration": {
+            "numerator": 6,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        },
+        {
+          "id": "settle",
+          "executor": "work.timed",
+          "roles": [],
+          "after": [
+            "inspect"
+          ],
+          "duration": {
+            "numerator": 3,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    }
+  ]
+}

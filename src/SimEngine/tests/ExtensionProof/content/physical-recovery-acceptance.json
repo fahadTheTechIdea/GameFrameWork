@@ -1,0 +1,63 @@
+{
+  "units": [{"id":"unit.recovery-fuel","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true}],
+  "resources": [{"id":"recovery.fuel","category":"fuel","unit":"unit.recovery-fuel","phase":"solid","traits":[],"capacity":{"unit.recovery-fuel":1}}],
+  "handling_profiles": [{"id":"recovery.handling","resources":[
+    {"resource":"steel","quantity":1,"loading":{"numerator":1,"denominator":1,"unit":"minute"},"unloading":{"numerator":1,"denominator":1,"unit":"minute"}},
+    {"resource":"recovery.fuel","quantity":1,"loading":{"numerator":1,"denominator":1,"unit":"minute"},"unloading":{"numerator":1,"denominator":1,"unit":"minute"}}
+  ]}],
+  "work_policies": [{"id":"recovery.hauler","enabled":true,"priority":0,"allowed_roles":["haul"],"area":null,"interruptible":true,"emergency_eligible":true,"assignment_mode":"all","states":{"disabled":"stopped","standby":"stopped"}}],
+  "logistics_policies": [{"id":"recovery.retained-fuel","stock":{},"outlet":{"enabled":true,"reserve":{"recovery.fuel":32,"recovery.parts":1},"reserve_access":"protected","export_priority":0,"allowed_destinations":null},"states":{"disabled":"stopped"}}],
+  "tile_layer_band_conditions": [{"id":"recovery.road-present","space":"colony.tiles","layer":"road","minimum":1,"maximum":2}],
+  "layered_tile_navigation": [{"id":"recovery.road","space":"colony.tiles","base_cost":0,"rules":[{"id":"recovery.road-passable","priority":100,"cost":10,"conditions":["recovery.road-present"]}]}],
+  "line_effects": [{"id":"recovery.cut","operation":"remove","line":"road"}],
+  "activities": [{"id":"recovery.cut-road","player_orderable":true,"automatic_supply":false,"target_tags":["recovery.road-worksite"],"priority":100,"on_complete":"recovery.cut","nodes":[{"id":"cut","executor":"work.staffed","roles":["crane"],"duration":{"numerator":6,"denominator":1,"unit":"minute"}}]}],
+  "entities": [
+    {"id":"recovery.source","kind":"structure","components":{
+      "tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"fixture.count.100","public":false,"initial_stock":{"steel":20,"recovery.fuel":40}},
+      "tile_work_dock":{"work_roles":["haul"],"resources":["steel","recovery.fuel"],"slots":[{"id":"bay","kind":"service","x":1,"y":1},{"id":"wait","kind":"waiting","x":0,"y":1},{"id":"exit","kind":"departure","x":2,"y":1}]}
+    }},
+    {"id":"recovery.destination","kind":"structure","components":{
+      "tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"fixture.count.40","public":false,"initial_stock":{}},
+      "tile_work_dock":{"work_roles":["haul"],"resources":["steel","recovery.fuel"],"slots":[{"id":"bay","kind":"service","x":-1,"y":1},{"id":"wait","kind":"waiting","x":-2,"y":1},{"id":"exit","kind":"departure","x":0,"y":1}]}
+    }},
+    {"id":"recovery.carrier","kind":"vehicle","components":{
+      "tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":true,"movable":true},
+      "mover":{"classes":["recovery.road"],"class":"recovery.road","speed":30,"states":{"moving":"moving","stopped":"stopped"}},
+      "worker":{"work_rate":1,"roles":["haul"],"states":{"working":"working","loading":"loading","stopped":"stopped"}},
+      "work_policy":{"profile":"recovery.hauler"},
+      "storage":{"capacity_policy":"fixture.count.100","public":false,"initial_stock":{"recovery.fuel":32,"recovery.parts":1}},
+      "incident":{"id":"damage","workflow":"recovery.breakdown","states":{"active":"stopped"}},
+      "incident_signal":{"id":"safety","source":"damage","workflow":"recovery.breakdown","phase":"repair"},
+      "worker_execution":{"operation":{"id":"availability","enabled":true,"target":1,"minimum":0,"maximum":1,"unit":"unit.work-rate"},"conditions":[{"id":"safe","source":"safety","signal":"recovery.damage-active","expected":false,"blocker":"recovery.broken"}],"states":{"disabled":"stopped"}},
+      "motion_execution":{"operation":{"id":"travel","enabled":true,"target":1,"minimum":0,"maximum":1,"unit":"unit.speed-multiplier"},"conditions":[{"id":"safe","source":"safety","signal":"recovery.damage-active","expected":false,"blocker":"recovery.broken"}],"states":{"disabled":"stopped"}},
+      "transporter":{"handling":"recovery.handling"},
+      "logistics_policy":{"profiles":[{"port":null,"profile":"recovery.retained-fuel"}]},
+      "operating_inputs":{"id":"propulsion","inputs":[{"resource":"recovery.fuel","quantity":1,"period":{"numerator":2,"denominator":1,"unit":"minute"}}],"phase":"movement","states":{"disabled":"stopped"}},
+      "tile_work_dock":{"work_roles":["haul","crane"],"resources":["recovery.fuel","recovery.parts"],"slots":[{"id":"bay","kind":"service","x":0,"y":1},{"id":"wait","kind":"waiting","x":1,"y":1},{"id":"exit","kind":"departure","x":2,"y":1}]}
+    }},
+    {"id":"recovery.service","kind":"vehicle","components":{
+      "tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":true,"movable":true},
+      "mover":{"classes":["land"],"class":"land","speed":60,"states":{"moving":"moving","stopped":"stopped"}},
+      "worker":{"work_rate":1,"roles":["haul"],"states":{"working":"working","loading":"loading","stopped":"stopped"}},
+      "work_policy":{"profile":"recovery.hauler"},
+      "storage":{"capacity_policy":"fixture.count.40","public":false,"initial_stock":{}},
+      "transporter":{"handling":"recovery.handling"}
+    }},
+    {"id":"recovery.cut-site","kind":"structure","tags":["recovery.road-worksite"],"components":{
+      "tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":false,"movable":false},
+      "tile_work_dock":{"work_roles":["crane"],"resources":[],"slots":[{"id":"bay","kind":"service","x":0,"y":1},{"id":"wait","kind":"waiting","x":1,"y":1},{"id":"exit","kind":"departure","x":2,"y":1}]}
+    }}
+  ],
+  "tile_layer_setups": [{"id":"recovery.corridor","after":[],"layer":"road","x":4,"y":12,"width":44,"height":1,"value":1,"owner":-1}],
+  "entity_setups": [
+    {"id":"recovery.source-start","after":["recovery.corridor"],"entity":"recovery.source","company":0,"placement":{"space":"colony.tiles","x":4,"y":11},"home":null},
+    {"id":"recovery.destination-start","after":["recovery.source-start"],"entity":"recovery.destination","company":0,"placement":{"space":"colony.tiles","x":30,"y":11},"home":null},
+    {"id":"recovery.carrier-start","after":["recovery.destination-start"],"entity":"recovery.carrier","company":0,"placement":{"space":"colony.tiles","x":5,"y":12},"home":null},
+    {"id":"recovery.service-start","after":["recovery.carrier-start"],"entity":"recovery.service","company":0,"placement":{"space":"colony.tiles","x":3,"y":14},"home":null},
+    {"id":"recovery.cut-start","after":["recovery.service-start"],"entity":"recovery.cut-site","company":0,"placement":{"space":"colony.tiles","x":18,"y":12},"home":null},
+    {"id":"recovery.crane-start","after":["recovery.cut-start"],"entity":"crane","company":0,"placement":{"space":"colony.tiles","x":18,"y":13},"home":null}
+  ],
+  "world_setup_profiles": [{"id":"recovery.acceptance.start","entries":["recovery.corridor","recovery.source-start","recovery.destination-start","recovery.carrier-start","recovery.service-start","recovery.cut-start","recovery.crane-start"],"includes":[]}]
+}

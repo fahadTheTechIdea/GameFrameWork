@@ -1,0 +1,6 @@
+{
+  "uniform_tile_navigation":[
+    {"id":"spatial.ground","space":"spatial.tiles","cost":10},
+    {"id":"spatial.heavy","space":"spatial.tiles","cost":20}
+  ]
+}

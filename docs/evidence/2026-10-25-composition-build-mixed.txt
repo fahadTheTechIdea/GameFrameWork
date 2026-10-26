@@ -1,0 +1,18 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  WorldCreator.Core -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Core\bin\Release\net10.0\WorldCreator.Core.dll
+  WorldCreator.Worlds -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\bin\Release\net10.0\WorldCreator.Worlds.dll
+  WorldCreator.Godot -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Godot\bin\Release\net10.0\WorldCreator.Godot.dll
+  WorldCreator.Catalogs.Modern -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Catalogs.Modern\bin\Release\net10.0\WorldCreator.Catalogs.Modern.dll
+  WorldCreator.TestCatalog -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.TestCatalog\bin\Release\net10.0\WorldCreator.TestCatalog.dll
+H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\FacilityCompositionTests.cs(153,210): error CS1026: ) expected [H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\WorldCreator.Tests.csproj]
+H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\FacilityCompositionTests.cs(158,14): error CS1003: Syntax error, ']' expected [H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\WorldCreator.Tests.csproj]
+
+Build FAILED.
+
+H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\FacilityCompositionTests.cs(153,210): error CS1026: ) expected [H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\WorldCreator.Tests.csproj]
+H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\FacilityCompositionTests.cs(158,14): error CS1003: Syntax error, ']' expected [H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\WorldCreator.Tests.csproj]
+    0 Warning(s)
+    2 Error(s)
+
+Time Elapsed 00:00:01.82

@@ -1,0 +1,49 @@
+{
+  "engine_build": "beep-simengine-2.782.0",
+  "save_format": 166,
+  "replay_version": 2,
+  "state_codecs": [
+    {
+      "kind": "service",
+      "id": "sim.work",
+      "owner": "sim.work",
+      "schema": 54
+    },
+    {
+      "kind": "system",
+      "id": "sim.work",
+      "owner": "sim.work",
+      "schema": 45
+    },
+    {
+      "kind": "service",
+      "id": "sim.logistics",
+      "owner": "sim.logistics",
+      "schema": 27
+    },
+    {
+      "kind": "system",
+      "id": "sim.automation",
+      "owner": "sim.automation",
+      "schema": 5
+    },
+    {
+      "kind": "system",
+      "id": "sim.movement",
+      "owner": "sim.motion",
+      "schema": 6
+    },
+    {
+      "kind": "service",
+      "id": "sim.resource-flows",
+      "owner": "sim.resource-flows",
+      "schema": 8
+    },
+    {
+      "kind": "system",
+      "id": "sim.equipment-condition",
+      "owner": "sim.equipment-condition",
+      "schema": 3
+    }
+  ]
+}

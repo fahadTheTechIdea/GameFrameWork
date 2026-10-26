@@ -1,0 +1,8 @@
+{
+  "world_setup_profiles":[{"id":"survey.start","entries":["dispatch.factory","signal.first","signal.second"],"includes":[]}],
+  "entity_setups":[
+    {"id":"dispatch.factory","after":[],"entity":"dispatch.factory","company":0,"placement":{"space":"survey.tiles","x":16,"y":10},"home":null},
+    {"id":"signal.first","after":["dispatch.factory"],"entity":"signal.machine","company":0,"placement":{"space":"survey.tiles","x":2,"y":10},"home":"dispatch.factory"},
+    {"id":"signal.second","after":["dispatch.factory"],"entity":"signal.machine","company":0,"placement":{"space":"survey.tiles","x":3,"y":12},"home":"dispatch.factory"}
+  ]
+}

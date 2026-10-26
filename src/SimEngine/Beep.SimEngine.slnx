@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="src/Beep.SimEngine/Beep.SimEngine.csproj" />
+  <Project Path="tests/ExtensionProof/ExtensionProof.csproj" />
+  <Project Path="tests/Beep.SimEngine.Testing/Beep.SimEngine.Testing.csproj" />
+  <Project Path="tests/Beep.SimEngine.Tests/Beep.SimEngine.Tests.csproj" />
+</Solution>

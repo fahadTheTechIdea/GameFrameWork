@@ -1,0 +1,24 @@
+{
+  "world_setup_profiles": [
+    {
+      "id": "startup.shared",
+      "entries": [
+        "startup.source.start"
+      ],
+      "includes": []
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "startup.source.start",
+      "after": [],
+      "entity": "startup.source",
+      "company": 0,
+      "placement": {
+        "space": "startup.points",
+        "position": 12
+      },
+      "home": null
+    }
+  ]
+}

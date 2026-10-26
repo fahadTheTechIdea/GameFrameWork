@@ -1,0 +1,34 @@
+{
+  "work_policies": [
+    {
+      "id": "route.policy",
+      "enabled": true,
+      "priority": 100,
+      "allowed_roles": [
+        "inspect",
+        "haul"
+      ],
+      "area": null,
+      "interruptible": true,
+      "emergency_eligible": true,"assignment_mode":"all",
+      "states": {
+        "disabled": "blocked","standby":"blocked"
+      }
+    }
+  ],
+  "point_station_regions": [{"id":"route.stations","space":"field.points","a":0,"b":10}],
+  "point_interval_regions": [
+    {
+      "id": "route.all",
+      "space": "field.points",
+      "minimum": 0,
+      "maximum": 20
+    },
+    {
+      "id": "route.short",
+      "space": "field.points",
+      "minimum": 0,
+      "maximum": 6
+    }
+  ]
+}

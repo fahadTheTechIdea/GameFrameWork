@@ -1,0 +1,1 @@
+ERROR: house-attempt-02.png: 1258262 near-#FF00FF pixel(s) within 24 of the key (blend fringe or contamination)

@@ -1,0 +1,25 @@
+{
+  "knowledge_facts": [{"id":"deps.completed","fresh_for":null,"value":{"stage":"complete"}}],
+  "knowledge_effects": [{"id":"deps.record","subject":"deps.completed"}],
+  "target_resource_requirements": [{"id":"deps.materials","port":null,"use":"consume","quantities":{"supply":2}}],
+  "inventory_effects": [
+  {
+    "id": "deps.dispose",
+    "kind": "destroyed",
+    "quantities": {
+      "supply": 1
+    },
+    "ports": {
+      "supply": "disposition.input"
+    }
+  }
+],
+  "activities": [
+    {"id":"deps.requirement","player_orderable":true,"priority":80,"automatic_supply":false,"on_complete":"deps.record","nodes":[{"id":"work","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":8,"denominator":1,"unit":"minute"},"requirement":"deps.materials"}]},
+    {"id":"deps.effect","player_orderable":true,"priority":80,"automatic_supply":false,"on_complete":"deps.dispose","nodes":[{"id":"work","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":8,"denominator":1,"unit":"minute"}}]},
+    {"id":"deps.subject","player_orderable":true,"priority":80,"automatic_supply":false,"on_complete":"deps.record","nodes":[{"id":"work","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":8,"denominator":1,"unit":"minute"}}]},
+    {"id":"deps.external","player_orderable":true,"priority":80,"automatic_supply":false,"on_complete":"deps.external-finish","nodes":[{"id":"work","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":8,"denominator":1,"unit":"minute"},"requirement":"deps.external-materials"}]}
+  ],
+  "knowledge_forgetting_policies": [{"id":"deps.forget","subjects":[{"provider":"sim.knowledge.facts","subject":"recipe.discovered"}],"companies":[0]}],
+  "activity_subject_knowledge_visibility": [{"id":"deps.hide-subject","definition":"deps.completed","mode":"all","facts":["recipe.discovered"]}]
+}

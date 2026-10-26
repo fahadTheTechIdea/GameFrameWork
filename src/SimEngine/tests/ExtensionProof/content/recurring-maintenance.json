@@ -1,0 +1,33 @@
+{
+  "target_resource_requirements": [
+    {"port":null, "id": "inspection.spares", "use": "consume", "quantities": { "steel": 1 } }
+  ],
+  "work_requirement_groups": [
+    { "id": "inspection.ready", "mode": "all", "entries": [
+      { "id": "spares", "requirement": "inspection.spares" },
+      { "id": "permit", "requirement": "equipment.permit" }
+    ] }
+  ],
+  "activities": [
+    { "id": "equipment.inspect", "player_orderable": true, "priority": 10, "automatic_supply": false, "nodes": [
+      {"executor":"work.staffed", "id": "inspect", "roles": ["crane"], "duration":{"numerator":1,"denominator":10,"unit":"hour"}, "requirement": "inspection.ready" }
+    ] }
+  ],
+  "entities": [
+    { "id": "recurring-machine", "kind": "structure", "components": {
+      "tile_presence": { "space": "colony.tiles", "width": 1, "height": 1, "blocks": true, "movable": false },
+      "storage": { "capacity_policy": "fixture.count.40", "public": false, "initial_stock": { "steel": 30 } },
+      "work_permit": { "enabled": true },
+      "equipment_condition": { "id": "integrity", "unit": "unit.condition", "maximum": 10, "initial": 10, "wear": null, "states": { "damaged": "stopped", "failed": "stopped" } },
+      "recurring_activity": [
+        { "id": "inspection", "plan":"activity:equipment.inspect","template":null, "target":"self","arguments":null, "reserve_use":"none","worker_nodes": [], "cadence":"submission","trigger":"schedule","dispatch_mode":"compete","facility_policy": null, "enabled": false, "priority": 10, "group": "inspections", "operation_policy": null,
+          "interval": { "numerator": 120, "denominator": 1, "unit": "minute" }, "conditions": [] },
+        { "id": "maintenance", "plan":"activity:equipment.service","template":null, "target":"self","arguments":null, "reserve_use":"none","worker_nodes": [], "cadence":"submission","trigger":"schedule","dispatch_mode":"compete","facility_policy": null, "enabled": false, "priority": 70, "group": "maintenance", "operation_policy": null,
+          "interval": { "numerator": 5, "denominator": 1, "unit": "minute" }, "conditions": [
+            { "id": "condition", "source": "integrity", "signal": "equipment.integrity", "unit": "unit.condition",
+              "minimum": 0, "maximum": 4, "blocker": "equipment.service-not-due" }
+          ] }
+      ]
+    } }
+  ]
+}

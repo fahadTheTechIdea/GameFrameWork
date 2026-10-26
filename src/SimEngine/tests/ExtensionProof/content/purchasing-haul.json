@@ -1,0 +1,361 @@
+{
+  "time_definitions": [
+    {
+      "id": "purchase.minute",
+      "quantum": {
+        "numerator": 60,
+        "denominator": 1,
+        "unit": "second"
+      },
+      "frame_ticks": 1,
+      "ticks_per_second": 30,
+      "horizon": null
+    }
+  ],
+  "entity_states": [
+    {
+      "id": "ready",
+      "state": "purchase.ready",
+      "priority": 0,
+      "default": true
+    },
+    {
+      "id": "travel",
+      "state": "purchase.travel",
+      "priority": 40
+    },
+    {
+      "id": "blocked",
+      "state": "purchase.blocked",
+      "priority": 60
+    },
+    {
+      "id": "processing",
+      "state": "purchase.processing",
+      "priority": 20
+    },
+    {
+      "id": "transfer",
+      "state": "purchase.transfer",
+      "priority": 30
+    }
+  ],
+  "worker_roles": [
+    {
+      "id": "haul"
+    },
+    {
+      "id": "inspect"
+    }
+  ],
+  "units": [
+    {
+      "id": "unit.supply",
+      "dimension": "count",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    }
+  ],
+  "resources": [
+    {
+      "id": "supply",
+      "unit": "unit.supply",
+      "category": "general",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "unit.supply": 1
+      }
+    },
+    {
+      "id": "support",
+      "unit": "unit.supply",
+      "category": "general",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "unit.supply": 1
+      }
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "purchase.cargo",
+      "limits": {
+        "unit.supply": 8
+      }
+    },
+    {
+      "id": "purchase.store",
+      "limits": {
+        "unit.supply": 40
+      }
+    }
+  ],
+  "point_spaces": [
+    {
+      "id": "purchase.points",
+      "extent": 100,
+      "access_open": true,
+      "rollout_offset": 1
+    }
+  ],
+  "entities": [
+    {
+      "id": "source",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "purchase.points",
+          "position": 10
+        },
+        "supplier": {
+          "sells": {
+            "supply": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "destination",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "purchase.points",
+          "position": 20
+        },
+        "point_stock": {
+          "resource": "supply",
+          "capacity_policy": "purchase.store",
+          "initial": 0
+        }
+      }
+    },
+    {
+      "id": "machine",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "purchase.points",
+          "position": 0
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "storage": {
+          "capacity_policy": "purchase.cargo",
+          "initial_stock": {},
+          "public": false,
+          "evacuate": false,
+          "accepts": [
+            "supply"
+          ],
+          "phases": []
+        },
+        "transporter": {
+          "handling": "points.handling"
+        }
+      }
+    },
+    {
+      "id": "processor",
+      "kind": "entity",
+      "components": {
+        "inventory_port": [
+          {
+            "id": "material.output"
+          },
+          {
+            "id": "material.input"
+          },
+          {
+            "id": "tool.input"
+          },
+          {
+            "id": "operating.input"
+          }
+        ],
+        "storage": {
+          "capacity_policy": "purchase.store",
+          "initial_stock": {},
+          "public": false,
+          "evacuate": false,
+          "accepts": [
+            "support"
+          ],
+          "phases": []
+        },
+        "transformer": {
+          "automatic_supply": false,
+          "wip_capacity": "purchase.store",
+          "transformations": [
+            "purchase.spend",
+            "purchase.fund"
+          ],
+          "states": {
+            "working": "processing",
+            "stopped": "blocked"
+          },
+          "operation": {
+            "id": "transformation",
+            "enabled": true,
+            "target": 1,
+            "minimum": 1,
+            "maximum": 1,
+            "unit": "unit.work-rate"
+          }
+        }
+      }
+    }
+  ],
+  "transformations": [
+    {
+      "tool_consumption": {},
+      "operating_ports": {},
+      "tool_ports": {},
+      "input_ports": {},
+      "output_ports": {
+        "support": "material.output"
+      },
+      "id": "purchase.spend",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "operating_inputs": [],
+      "tools": {},
+      "inputs": {},
+      "outputs": {
+        "support": 1
+      },
+      "duration": {
+        "numerator": 3,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    },
+    {
+      "tool_consumption": {},
+      "operating_ports": {},
+      "tool_ports": {},
+      "input_ports": {},
+      "output_ports": {
+        "support": "material.output"
+      },
+      "id": "purchase.fund",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "operating_inputs": [],
+      "tools": {},
+      "inputs": {},
+      "outputs": {
+        "support": 6
+      },
+      "duration": {
+        "numerator": 3,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "source.start",
+      "after": [],
+      "entity": "source",
+      "company": 0,
+      "placement": {
+        "space": "purchase.points",
+        "position": 10
+      },
+      "home": null
+    },
+    {
+      "id": "destination.start",
+      "after": [],
+      "entity": "destination",
+      "company": 0,
+      "placement": {
+        "space": "purchase.points",
+        "position": 20
+      },
+      "home": null
+    },
+    {
+      "id": "machine.start",
+      "after": [],
+      "entity": "machine",
+      "company": 0,
+      "placement": {
+        "space": "purchase.points",
+        "position": 0
+      },
+      "home": null
+    },
+    {
+      "id": "processor.start",
+      "after": [],
+      "entity": "processor",
+      "company": 0,
+      "placement": null,
+      "home": null
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "purchasing-haul.start",
+      "entries": [
+        "source.start",
+        "destination.start",
+        "machine.start",
+        "processor.start"
+      ],
+      "includes": []
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "purchase-haul",
+      "mode_overrides": {},
+      "game_mode": "haul-economic",
+      "time": "purchase.minute",
+      "space": "purchase.points",
+      "seats": 1,
+      "modules": [
+        "points",
+        "proof.modes",
+        "sim.tycoon",
+        "sim.world-setup"
+      ],
+      "settings": {
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.tycoon": {
+          "account_policy": "haul.accounts",
+          "valuation_policy": "haul.values",
+          "income_policy": "haul.primary"
+        },
+        "sim.world-setup": {
+          "profile": "purchasing-haul.start"
+        }
+      }
+    }
+  ]
+}

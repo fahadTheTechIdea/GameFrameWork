@@ -1,0 +1,79 @@
+{
+  "worker_roles":[{"id":"resource.builder"}],
+  "resources":[{"id":"wrench","unit":"unit.steel","category":"tool","phase":"solid","traits":["tool"],"capacity":{"unit.storage":1}}],
+  "resource_pools":[
+    { "evacuate": false,"id":"requirements.first","identity":1, "public": false,"owner":0,"capacity_policy":"recovery.site","resources":["water"]},
+    { "evacuate": false,"id":"requirements.wide","identity":5000000000, "public": false,"owner":0,"capacity_policy":"recovery.site","resources":["water"]},
+    { "evacuate": false,"id":"requirements.foreign","identity":2, "public": false,"owner":1,"capacity_policy":"recovery.site","resources":["water"]}
+  ],
+  "target_resource_requirements":[
+    {"port":null,"id":"requirements.materials","use":"consume","quantities":{"steel":2}},
+    {"port":null,"id":"requirements.overlap","use":"hold","quantities":{"steel":9}}
+  ],
+  "worker_resource_requirements":[{"port":null,"id":"requirements.tools","use":"hold","quantities":{"wrench":1}}],
+  "connected_resource_requirements":[
+    {"id":"requirements.fluid","use":"consume","quantities":{"water":0.5}},
+    {"id":"requirements.fluid-again","use":"consume","quantities":{"water":0.75}}
+  ],
+  "work_permits":[{"id":"requirements.permit","blocker":"requirements.disabled","missing":"requirements.no-permit"}],
+  "work_requirement_groups":[
+    {"id":"requirements.supplied","mode":"all","entries":[
+      {"id":"material","requirement":"requirements.materials"},{"id":"tools","requirement":"requirements.tools"},
+      {"id":"fluid","requirement":"requirements.fluid"},{"id":"permit","requirement":"requirements.permit"}
+    ]},
+    {"id":"requirements.choice","mode":"any","entries":[
+      {"id":"a.preferred","requirement":"requirements.supplied"},{"id":"z.safe","requirement":"requirements.safe"}
+    ]},
+    {"id":"requirements.safe","mode":"all","entries":[
+      {"id":"material","requirement":"requirements.materials"},{"id":"tools","requirement":"requirements.tools"},{"id":"fluid","requirement":"requirements.fluid"}
+    ]},
+    {"id":"requirements.shared-sources","mode":"all","entries":[
+      {"id":"first","requirement":"requirements.fluid"},{"id":"second","requirement":"requirements.fluid-again"},{"id":"tools","requirement":"requirements.tools"}
+    ]},
+    {"id":"requirements.conflict","mode":"all","entries":[
+      {"id":"material","requirement":"requirements.materials"},{"id":"overlap","requirement":"requirements.overlap"}
+    ]}
+  ],
+  "activities":[
+    {"id":"requirements.frontier","player_orderable":true,"automatic_supply":false,"nodes":[
+      {"executor":"work.staffed","id":"work","roles":["resource.builder"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"requirements.fluid-again"}
+    ]},
+    {"id":"requirements.work","player_orderable":true,"automatic_supply":false,"nodes":[
+      {"executor":"work.staffed","id":"work","roles":["resource.builder"],"duration":{"numerator":1,"denominator":1,"unit":"hour"},"requirement":"requirements.choice"}
+    ]},
+    {"id":"requirements.blocked","player_orderable":true,"automatic_supply":false,"nodes":[
+      {"executor":"work.staffed","id":"work","roles":["resource.builder"],"duration":{"numerator":1,"denominator":1,"unit":"hour"},"requirement":"requirements.conflict"}
+    ]},
+    {"id":"requirements.multisource","player_orderable":true,"automatic_supply":false,"nodes":[
+      {"executor":"work.staffed","id":"work","roles":["resource.builder"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"requirements.shared-sources"}
+    ]},
+    {"id":"requirements.timed","player_orderable":true,"automatic_supply":false,"nodes":[
+      {"executor":"work.timed","id":"work","roles":[],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"requirements.materials"}
+    ]}
+  ],
+  "entities":[
+    {"id":"requirements.restricted","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":2,"height":2,"blocks":true,"movable":false},
+      "activity_record":{},
+      "resource_connection":{"sources":[{"pool":"requirements.first","cost":0}]}
+    }},
+    {"id":"requirements.target","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":2,"height":2,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"recovery.site","public":false,"initial_stock":{"steel":10,"water":5}},
+      "work_permit":{"enabled":true},"activity_record":{},
+      "resource_connection":{"sources":[{"pool":"requirements.wide","cost":0},{"pool":"requirements.first","cost":0},{"pool":"requirements.foreign","cost":0}]}
+    }},
+    {"id":"requirements.builder","kind":"vehicle","components":{
+      "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":true},
+      "mover":{"classes": ["land"], "class":"land","speed":5,"states":{"moving":"moving","stopped":"stopped"}},
+      "worker":{"roles":["resource.builder"],"work_rate":1,"states":{"working":"working","loading":"loading","stopped":"stopped"}},
+      "storage":{"capacity_policy":"recovery.cargo","public":false,"initial_stock":{"wrench":1}}
+    }},
+    {"id":"requirements.empty-builder","kind":"vehicle","components":{
+      "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":true},
+      "mover":{"classes": ["land"], "class":"land","speed":5,"states":{"moving":"moving","stopped":"stopped"}},
+      "worker":{"roles":["resource.builder"],"work_rate":1,"states":{"working":"working","loading":"loading","stopped":"stopped"}},
+      "storage":{"capacity_policy":"recovery.cargo","public":false}
+    }}
+  ]
+}

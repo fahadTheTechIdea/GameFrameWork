@@ -1,0 +1,11 @@
+{
+  "units":[{"id":"sensor.half","dimension":"count","scale":{"numerator":1,"denominator":2},"discrete":false}],
+  "spatial_layers":[{"id":"sensor.deposit","space":"sensor.tiles","type":"deposit.material","value_type":"byte",
+    "visibility":"company_private","unit":"sensor.half","resource":"steel","resource_measure":"quantity"}],
+  "tile_resource_cells":[{"id":"sensor.cell","identity":1,"layer":"sensor.deposit","x":14,"y":20,"capacity_policy":"sensor.stock","public":false}],
+  "spatial_resource_transfer_effects":[{"id":"sensor.extract","operation":"withdraw","cell":"sensor.cell","quantities":{"steel":2}}],
+  "activities":[{"id":"sensor.extraction","priority":10,"player_orderable":true,"automatic_supply":false,"on_complete":null,
+    "nodes":[{"executor":"work.staffed","id":"extract","roles":["sensor.inspect"],"duration":{"numerator":6,"denominator":1,"unit":"minute"},"effect":"sensor.extract"}]}],
+  "world_setup_profiles":[{"id":"sensor.extraction-start","entries":["sensor.start-deposit"],"includes":["sensor.construction-start"]}],
+  "tile_layer_setups":[{"id":"sensor.start-deposit","after":[],"layer":"sensor.deposit","x":14,"y":20,"width":1,"height":1,"value":12,"owner":0}]
+}

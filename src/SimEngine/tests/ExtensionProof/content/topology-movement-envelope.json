@@ -1,0 +1,9 @@
+{
+  "resource_pools": [
+    {"id":"tb.world-source","identity":1,"owner":-1,"public":true,"evacuate":false,"capacity_policy":"contract.destination","resources":["supply"]},
+    {"id":"tb.company-a","identity":2,"owner":0,"public":false,"evacuate":false,"capacity_policy":"contract.destination","resources":["supply"]},
+    {"id":"tb.company-b","identity":3,"owner":1,"public":false,"evacuate":false,"capacity_policy":"contract.destination","resources":["supply"]},
+    {"id":"tb.world-target","identity":4,"owner":-1,"public":false,"evacuate":false,"capacity_policy":"contract.destination","resources":["supply"]},
+    {"id":"tb.shared-inlet","identity":5,"owner":-1,"public":true,"evacuate":false,"capacity_policy":"contract.wip","resources":["supply"]}
+  ]
+}

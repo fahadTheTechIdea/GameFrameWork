@@ -1,0 +1,51 @@
+{
+  "SchemaVersion": 1,
+  "Id": "four-frontage-city",
+  "WidthMeters": 720,
+  "HeightMeters": 520,
+  "StreetProfile": {
+    "LaneWidthMeters": 3,
+    "LaneCount": 2,
+    "SidewalkLeftMeters": 1.5,
+    "SidewalkRightMeters": 1.5,
+    "CurbLeftMeters": 0.25,
+    "CurbRightMeters": 0.25,
+    "MedianMeters": 0,
+    "TotalWidthMeters": 9.5
+  },
+  "TargetBlockWidthMeters": 180,
+  "TargetBlockDepthMeters": 170,
+  "MinimumBlockSpanMeters": 120,
+  "TargetParcelFrontageMeters": 26,
+  "SetbackMeters": 3,
+  "Districts": [
+    {
+      "Id": "homes",
+      "Purpose": "Four-frontage neighborhoods",
+      "AreaWeight": 1,
+      "LayoutId": "rectilinear-grid",
+      "StructureCycle": [
+        "house"
+      ],
+      "OpenSpaceEveryBlocks": 5,
+      "ParcelRules": null
+    }
+  ],
+  "Variation": 0,
+  "MaximumBlocks": 256,
+  "MaximumParcels": 3000,
+  "MaximumStructures": 5000,
+  "Coverage": "CompleteDeclaredScope",
+  "RemainingScopes": null,
+  "ParcelRules": {
+    "Frontages": [
+      "North",
+      "East",
+      "South",
+      "West"
+    ],
+    "MaximumDepthMeters": 32,
+    "InteriorAccessWidthMeters": 3,
+    "InteriorPurpose": "Shared block interior"
+  }
+}

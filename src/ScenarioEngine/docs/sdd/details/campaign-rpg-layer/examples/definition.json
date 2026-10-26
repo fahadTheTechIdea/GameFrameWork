@@ -1,0 +1,18 @@
+{
+  "id": "campaign_rpg_layer",
+  "definitionVersion": "1.0.0",
+  "characterIds": [
+    "leader",
+    "quartermaster",
+    "healer",
+    "captain"
+  ],
+  "headquartersId": "river_keep",
+  "contextKinds": [
+    "exploration",
+    "party_battle",
+    "duel",
+    "army_battle"
+  ],
+  "partyCapacity": 4
+}

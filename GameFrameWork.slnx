@@ -1,0 +1,28 @@
+<Solution>
+  <Folder Name="/WorldCreator/">
+    <Project Path="src/WorldCreator/WorldCreator.Catalogs.Modern/WorldCreator.Catalogs.Modern.csproj" />
+    <Project Path="src/WorldCreator/WorldCreator.Cli/WorldCreator.Cli.csproj" />
+    <Project Path="src/WorldCreator/WorldCreator.Core/WorldCreator.Core.csproj" />
+    <Project Path="src/WorldCreator/WorldCreator.Godot/WorldCreator.Godot.csproj" />
+    <Project Path="src/WorldCreator/WorldCreator.Worlds/WorldCreator.Worlds.csproj" />
+    <Project Path="tests/WorldCreator.TestCatalog/WorldCreator.TestCatalog.csproj" />
+    <Project Path="tests/WorldCreator.Tests/WorldCreator.Tests.csproj" />
+  </Folder>
+  <Folder Name="/ScenarioEngine/">
+    <Project Path="src/ScenarioEngine/src/ScenarioEngine.Contracts/ScenarioEngine.Contracts.csproj" />
+    <Project Path="src/ScenarioEngine/src/ScenarioEngine.Core/ScenarioEngine.Core.csproj" />
+    <Project Path="src/ScenarioEngine/src/ScenarioEngine.Content/ScenarioEngine.Content.csproj" />
+    <Project Path="src/ScenarioEngine/src/ScenarioEngine.Persistence/ScenarioEngine.Persistence.csproj" />
+    <Project Path="src/ScenarioEngine/src/ScenarioEngine.Diagnostics/ScenarioEngine.Diagnostics.csproj" />
+    <Project Path="src/ScenarioEngine/src/ScenarioEngine.Replay/ScenarioEngine.Replay.csproj" />
+    <Project Path="src/ScenarioEngine/samples/Counter.GameLayer/Counter.GameLayer.csproj" />
+    <Project Path="src/ScenarioEngine/tools/ScenarioSimulator/ScenarioSimulator.csproj" />
+    <Project Path="src/ScenarioEngine/tests/ScenarioEngine.Tests/ScenarioEngine.Tests.csproj" />
+  </Folder>
+  <Folder Name="/SimEngine/">
+    <Project Path="src/SimEngine/src/Beep.SimEngine/Beep.SimEngine.csproj" />
+    <Project Path="src/SimEngine/tests/ExtensionProof/ExtensionProof.csproj" />
+    <Project Path="src/SimEngine/tests/Beep.SimEngine.Testing/Beep.SimEngine.Testing.csproj" />
+    <Project Path="src/SimEngine/tests/Beep.SimEngine.Tests/Beep.SimEngine.Tests.csproj" />
+  </Folder>
+</Solution>

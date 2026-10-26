@@ -1,0 +1,16 @@
+{
+  "proof_fleet_load_profiles": [
+    {"id":"fleet.odd","enabled":true,"minimum_load":{"steel":2},"maximum_wait":{"numerator":1000,"denominator":1,"unit":"minute"},"emergency_bypass":false}
+  ],
+  "entities": [
+    {"id":"fleet.load-public","kind":"vehicle","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":true},
+      "mover":{"classes":["survey.route","terrain.route"],"class":"survey.route","speed":30,"states":{"moving":"survey.moving","stopped":"survey.stopped"}},
+      "worker":{"work_rate":1,"roles":["haul"],"states":{"working":"survey.working","loading":"survey.loading","stopped":"survey.stopped"}},
+      "work_policy":{"profile":"fleet.enabled"},
+      "proof_fleet_load":{"profile":"fleet.batch","fault":0},
+      "storage":{"capacity_policy":"fleet.cargo","public":false,"initial_stock":{}},
+      "transporter":{"handling":"fleet.handling"}
+    }}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "activities":[
+    {"id":"group.fabricate","player_orderable":true,"priority":40,"automatic_supply":false,
+      "nodes":[{"executor":"work.staffed","id":"work","roles":["inspect"],"duration":{"numerator":1,"denominator":2,"unit":"hour"},"requirement":"preempt.ready"}]},
+    {"id":"group.travel","player_orderable":true,"priority":30,"automatic_supply":false,
+      "nodes":[{"executor":"work.staffed","id":"work","roles":["inspect"],"duration":{"numerator":1,"denominator":2,"unit":"hour"}}]},
+    {"id":"group.supplied","player_orderable":true,"priority":20,"automatic_supply":true,
+      "nodes":[{"executor":"work.staffed","id":"work","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"preempt.materials"}]}
+  ],
+  "planned_inspections":[
+    {"id":"group.inspection","admission_target":"source","player_orderable":true,"priority":40,"automatic_supply":false,
+      "nodes":[{"executor":"work.timed","id":"finish","after":["inspect","measure"],"duration":{"numerator":1,"denominator":20,"unit":"hour"}},
+               {"executor":"work.staffed","id":"inspect","roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"}},
+               {"executor":"work.timed","id":"measure","duration":{"numerator":2,"denominator":25,"unit":"hour"}}]}
+  ]
+}

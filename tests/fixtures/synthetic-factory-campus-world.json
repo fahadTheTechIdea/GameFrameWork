@@ -1,0 +1,1256 @@
+{
+  "Width": 221,
+  "Height": 96,
+  "Seed": 42,
+  "Biome": "Desert",
+  "SettlementCount": 1,
+  "Design": {
+    "SchemaVersion": 1,
+    "Blueprint": {
+      "SchemaVersion": 1,
+      "MockupId": "synthetic-facility-mockup",
+      "ApprovedRevision": "authored-r1",
+      "ArtStyleId": "synthetic-style",
+      "Regions": [
+        {
+          "Id": "world",
+          "Outline": {
+            "Vertices": [
+              {
+                "X": 0,
+                "Y": 0
+              },
+              {
+                "X": 221,
+                "Y": 0
+              },
+              {
+                "X": 221,
+                "Y": 96
+              },
+              {
+                "X": 0,
+                "Y": 96
+              }
+            ]
+          },
+          "VisualRole": "campus-design"
+        }
+      ],
+      "Anchors": [
+        {
+          "Id": "campus-origin",
+          "RegionId": "world",
+          "PositionMeters": {
+            "X": 20,
+            "Y": 20
+          },
+          "VisualRole": "campus-top-left"
+        }
+      ]
+    },
+    "MetersPerCell": 1,
+    "Paths": [
+      {
+        "Id": "arrival",
+        "RegionId": "world",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 4,
+              "Y": 28
+            },
+            {
+              "X": 20,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "road",
+        "AdditionalNetworkModes": null
+      },
+      {
+        "Id": "campus:administration-customers-path",
+        "RegionId": "campus",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 20,
+              "Y": 28
+            },
+            {
+              "X": 201,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "pedestrian",
+        "AdditionalNetworkModes": null
+      },
+      {
+        "Id": "campus:administration-potable-water-path",
+        "RegionId": "campus",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 20,
+              "Y": 28
+            },
+            {
+              "X": 201,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "utility",
+        "AdditionalNetworkModes": null
+      },
+      {
+        "Id": "campus:administration-power-path",
+        "RegionId": "campus",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 20,
+              "Y": 28
+            },
+            {
+              "X": 201,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "utility",
+        "AdditionalNetworkModes": null
+      },
+      {
+        "Id": "campus:administration-wastewater-path",
+        "RegionId": "campus",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 20,
+              "Y": 28
+            },
+            {
+              "X": 201,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "utility",
+        "AdditionalNetworkModes": null
+      },
+      {
+        "Id": "campus:dispatch-potable-water-path",
+        "RegionId": "campus",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 20,
+              "Y": 28
+            },
+            {
+              "X": 201,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "utility",
+        "AdditionalNetworkModes": null
+      },
+      {
+        "Id": "campus:dispatch-power-path",
+        "RegionId": "campus",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 20,
+              "Y": 28
+            },
+            {
+              "X": 201,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "utility",
+        "AdditionalNetworkModes": null
+      },
+      {
+        "Id": "campus:dispatch-wastewater-path",
+        "RegionId": "campus",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 20,
+              "Y": 28
+            },
+            {
+              "X": 201,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "utility",
+        "AdditionalNetworkModes": null
+      },
+      {
+        "Id": "campus:maintenance-potable-water-path",
+        "RegionId": "campus",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 20,
+              "Y": 28
+            },
+            {
+              "X": 201,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "utility",
+        "AdditionalNetworkModes": null
+      },
+      {
+        "Id": "campus:maintenance-power-path",
+        "RegionId": "campus",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 20,
+              "Y": 28
+            },
+            {
+              "X": 201,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "utility",
+        "AdditionalNetworkModes": null
+      },
+      {
+        "Id": "campus:maintenance-wastewater-path",
+        "RegionId": "campus",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 20,
+              "Y": 28
+            },
+            {
+              "X": 201,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "utility",
+        "AdditionalNetworkModes": null
+      },
+      {
+        "Id": "campus:production-potable-water-path",
+        "RegionId": "campus",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 20,
+              "Y": 28
+            },
+            {
+              "X": 201,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "utility",
+        "AdditionalNetworkModes": null
+      },
+      {
+        "Id": "campus:production-power-path",
+        "RegionId": "campus",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 20,
+              "Y": 28
+            },
+            {
+              "X": 201,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "utility",
+        "AdditionalNetworkModes": null
+      },
+      {
+        "Id": "campus:production-wastewater-path",
+        "RegionId": "campus",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 20,
+              "Y": 28
+            },
+            {
+              "X": 201,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "utility",
+        "AdditionalNetworkModes": null
+      },
+      {
+        "Id": "campus:receiving-potable-water-path",
+        "RegionId": "campus",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 20,
+              "Y": 28
+            },
+            {
+              "X": 201,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "utility",
+        "AdditionalNetworkModes": null
+      },
+      {
+        "Id": "campus:receiving-power-path",
+        "RegionId": "campus",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 20,
+              "Y": 28
+            },
+            {
+              "X": 201,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "utility",
+        "AdditionalNetworkModes": null
+      },
+      {
+        "Id": "campus:receiving-wastewater-path",
+        "RegionId": "campus",
+        "Centerline": {
+          "Points": [
+            {
+              "X": 20,
+              "Y": 28
+            },
+            {
+              "X": 201,
+              "Y": 28
+            }
+          ]
+        },
+        "Role": "utility",
+        "AdditionalNetworkModes": null
+      }
+    ],
+    "RoadRules": [
+      {
+        "PathId": "arrival",
+        "Class": "Local",
+        "Profile": {
+          "LaneWidthMeters": 4,
+          "LaneCount": 2,
+          "SidewalkLeftMeters": 0,
+          "SidewalkRightMeters": 0,
+          "CurbLeftMeters": 0,
+          "CurbRightMeters": 0,
+          "MedianMeters": 0,
+          "TotalWidthMeters": 8
+        }
+      }
+    ],
+    "SettlementRules": [],
+    "TerrainRules": [
+      {
+        "RegionId": "world",
+        "Kind": "Sand",
+        "Priority": 0,
+        "ElevationMeters": 0,
+        "RuleId": "synthetic-ground",
+        "SlopeX": 0,
+        "SlopeY": 0,
+        "SurfaceMaterialId": null
+      }
+    ],
+    "PublicRealmPatterns": [],
+    "BuildingCatalog": [],
+    "LandscapeZones": null,
+    "VegetationGrammars": null,
+    "VegetationClearances": null,
+    "InfrastructureRules": null,
+    "Siting": {
+      "SchemaVersion": 1,
+      "Districts": [
+        {
+          "Id": "campus:administration-district",
+          "RegionId": "campus:administration",
+          "SettlementId": "settlement",
+          "Use": "CommercialCenter",
+          "RuleId": "authored-test-district"
+        },
+        {
+          "Id": "campus:dispatch-district",
+          "RegionId": "campus:dispatch",
+          "SettlementId": "settlement",
+          "Use": "HeavyIndustry",
+          "RuleId": "authored-test-district"
+        },
+        {
+          "Id": "campus:maintenance-district",
+          "RegionId": "campus:maintenance",
+          "SettlementId": "settlement",
+          "Use": "LightIndustry",
+          "RuleId": "authored-test-district"
+        },
+        {
+          "Id": "campus:production-district",
+          "RegionId": "campus:production",
+          "SettlementId": "settlement",
+          "Use": "HeavyIndustry",
+          "RuleId": "authored-test-district"
+        },
+        {
+          "Id": "campus:receiving-district",
+          "RegionId": "campus:receiving",
+          "SettlementId": "settlement",
+          "Use": "HeavyIndustry",
+          "RuleId": "authored-test-district"
+        }
+      ],
+      "Sources": [
+        {
+          "Id": "campus:administration-customers",
+          "Kind": "PedestrianCatchment",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:administration-potable-water",
+          "Kind": "PotableWater",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [
+            "potable",
+            "reliable"
+          ],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:administration-power",
+          "Kind": "Electricity",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:administration-wastewater",
+          "Kind": "Wastewater",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:dispatch-freight",
+          "Kind": "Freight",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:dispatch-potable-water",
+          "Kind": "PotableWater",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [
+            "potable",
+            "reliable"
+          ],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:dispatch-power",
+          "Kind": "Electricity",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:dispatch-wastewater",
+          "Kind": "Wastewater",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:maintenance-freight",
+          "Kind": "Freight",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:maintenance-potable-water",
+          "Kind": "PotableWater",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [
+            "potable",
+            "reliable"
+          ],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:maintenance-power",
+          "Kind": "Electricity",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:maintenance-wastewater",
+          "Kind": "Wastewater",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:production-freight",
+          "Kind": "Freight",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:production-potable-water",
+          "Kind": "PotableWater",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [
+            "potable",
+            "reliable"
+          ],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:production-power",
+          "Kind": "Electricity",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:production-wastewater",
+          "Kind": "Wastewater",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:receiving-freight",
+          "Kind": "Freight",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:receiving-potable-water",
+          "Kind": "PotableWater",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [
+            "potable",
+            "reliable"
+          ],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:receiving-power",
+          "Kind": "Electricity",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        },
+        {
+          "Id": "campus:receiving-wastewater",
+          "Kind": "Wastewater",
+          "Origin": "UtilityNetwork",
+          "RegionId": "world",
+          "Port": {
+            "X": 20,
+            "Y": 28
+          },
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "Qualities": [],
+          "RuleId": "authored-test-service",
+          "ProviderObjectId": null,
+          "UpstreamSourceIds": null
+        }
+      ],
+      "Links": [
+        {
+          "Id": "campus:administration-customers-link",
+          "PathId": "campus:administration-customers-path",
+          "Mode": "Pedestrian",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "PedestrianCatchment"
+          ]
+        },
+        {
+          "Id": "campus:administration-potable-water-link",
+          "PathId": "campus:administration-potable-water-path",
+          "Mode": "Utility",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "PotableWater"
+          ]
+        },
+        {
+          "Id": "campus:administration-power-link",
+          "PathId": "campus:administration-power-path",
+          "Mode": "Utility",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Electricity"
+          ]
+        },
+        {
+          "Id": "campus:administration-wastewater-link",
+          "PathId": "campus:administration-wastewater-path",
+          "Mode": "Utility",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Wastewater"
+          ]
+        },
+        {
+          "Id": "campus:dispatch-freight-link",
+          "PathId": "campus:entry",
+          "Mode": "Road",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Freight"
+          ]
+        },
+        {
+          "Id": "campus:dispatch-potable-water-link",
+          "PathId": "campus:dispatch-potable-water-path",
+          "Mode": "Utility",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "PotableWater"
+          ]
+        },
+        {
+          "Id": "campus:dispatch-power-link",
+          "PathId": "campus:dispatch-power-path",
+          "Mode": "Utility",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Electricity"
+          ]
+        },
+        {
+          "Id": "campus:dispatch-wastewater-link",
+          "PathId": "campus:dispatch-wastewater-path",
+          "Mode": "Utility",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Wastewater"
+          ]
+        },
+        {
+          "Id": "campus:maintenance-freight-link",
+          "PathId": "campus:entry",
+          "Mode": "Road",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Freight"
+          ]
+        },
+        {
+          "Id": "campus:maintenance-potable-water-link",
+          "PathId": "campus:maintenance-potable-water-path",
+          "Mode": "Utility",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "PotableWater"
+          ]
+        },
+        {
+          "Id": "campus:maintenance-power-link",
+          "PathId": "campus:maintenance-power-path",
+          "Mode": "Utility",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Electricity"
+          ]
+        },
+        {
+          "Id": "campus:maintenance-wastewater-link",
+          "PathId": "campus:maintenance-wastewater-path",
+          "Mode": "Utility",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Wastewater"
+          ]
+        },
+        {
+          "Id": "campus:production-freight-link",
+          "PathId": "campus:entry",
+          "Mode": "Road",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Freight"
+          ]
+        },
+        {
+          "Id": "campus:production-potable-water-link",
+          "PathId": "campus:production-potable-water-path",
+          "Mode": "Utility",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "PotableWater"
+          ]
+        },
+        {
+          "Id": "campus:production-power-link",
+          "PathId": "campus:production-power-path",
+          "Mode": "Utility",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Electricity"
+          ]
+        },
+        {
+          "Id": "campus:production-wastewater-link",
+          "PathId": "campus:production-wastewater-path",
+          "Mode": "Utility",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Wastewater"
+          ]
+        },
+        {
+          "Id": "campus:receiving-freight-link",
+          "PathId": "campus:entry",
+          "Mode": "Road",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Freight"
+          ]
+        },
+        {
+          "Id": "campus:receiving-potable-water-link",
+          "PathId": "campus:receiving-potable-water-path",
+          "Mode": "Utility",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "PotableWater"
+          ]
+        },
+        {
+          "Id": "campus:receiving-power-link",
+          "PathId": "campus:receiving-power-path",
+          "Mode": "Utility",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Electricity"
+          ]
+        },
+        {
+          "Id": "campus:receiving-wastewater-link",
+          "PathId": "campus:receiving-wastewater-path",
+          "Mode": "Utility",
+          "Capacity": 1000000000,
+          "Unit": "game-service-units",
+          "RuleId": "authored-test-service",
+          "ReservationWidthMeters": 1,
+          "Services": [
+            "Wastewater"
+          ]
+        }
+      ],
+      "Separations": [
+        {
+          "Id": "authored-impact-buffer",
+          "FirstTag": "heavy-impact",
+          "SecondTag": "sensitive",
+          "MinimumMeters": 8,
+          "ParameterOrigin": "authored game clearance",
+          "SourceId": "synthetic-game-design"
+        },
+        {
+          "Id": "authored-freight-buffer",
+          "FirstTag": "freight-intensive",
+          "SecondTag": "sensitive",
+          "MinimumMeters": 8,
+          "ParameterOrigin": "authored game clearance",
+          "SourceId": "synthetic-game-design"
+        }
+      ],
+      "Exclusions": []
+    },
+    "Catalog": {
+      "CatalogId": "modern",
+      "EnabledCapabilities": [
+        "modern.district-policy",
+        "modern.electricity-network",
+        "modern.facility-technology",
+        "modern.motor-road-network",
+        "modern.potable-water-network",
+        "modern.wastewater-network"
+      ]
+    },
+    "Capture": null,
+    "SurfaceClearances": null,
+    "FacilityPlacements": [
+      {
+        "Id": "campus",
+        "DefinitionId": "modern.factory-campus",
+        "RegionId": "world",
+        "AnchorId": "campus-origin",
+        "SettlementId": "settlement",
+        "Purpose": "authored campus composition",
+        "Settlement": {
+          "Class": "Town",
+          "Role": "Mixed",
+          "Population": 1
+        },
+        "MemberContexts": {
+          "receiving": {
+            "DistrictId": "campus:receiving-district",
+            "Technology": "GeneralStorage",
+            "Dependencies": [
+              {
+                "RequirementId": "freight",
+                "SourceId": "campus:receiving-freight",
+                "LinkIds": [
+                  "campus:receiving-freight-link"
+                ],
+                "ServicePointMeters": null
+              },
+              {
+                "RequirementId": "potable-water",
+                "SourceId": "campus:receiving-potable-water",
+                "LinkIds": [
+                  "campus:receiving-potable-water-link"
+                ],
+                "ServicePointMeters": null
+              },
+              {
+                "RequirementId": "power",
+                "SourceId": "campus:receiving-power",
+                "LinkIds": [
+                  "campus:receiving-power-link"
+                ],
+                "ServicePointMeters": null
+              },
+              {
+                "RequirementId": "wastewater",
+                "SourceId": "campus:receiving-wastewater",
+                "LinkIds": [
+                  "campus:receiving-wastewater-link"
+                ],
+                "ServicePointMeters": null
+              }
+            ]
+          },
+          "production": {
+            "DistrictId": "campus:production-district",
+            "Technology": "HeavyProcess",
+            "Dependencies": [
+              {
+                "RequirementId": "freight",
+                "SourceId": "campus:production-freight",
+                "LinkIds": [
+                  "campus:production-freight-link"
+                ],
+                "ServicePointMeters": null
+              },
+              {
+                "RequirementId": "potable-water",
+                "SourceId": "campus:production-potable-water",
+                "LinkIds": [
+                  "campus:production-potable-water-link"
+                ],
+                "ServicePointMeters": null
+              },
+              {
+                "RequirementId": "power",
+                "SourceId": "campus:production-power",
+                "LinkIds": [
+                  "campus:production-power-link"
+                ],
+                "ServicePointMeters": null
+              },
+              {
+                "RequirementId": "wastewater",
+                "SourceId": "campus:production-wastewater",
+                "LinkIds": [
+                  "campus:production-wastewater-link"
+                ],
+                "ServicePointMeters": null
+              }
+            ]
+          },
+          "dispatch": {
+            "DistrictId": "campus:dispatch-district",
+            "Technology": "GeneralStorage",
+            "Dependencies": [
+              {
+                "RequirementId": "freight",
+                "SourceId": "campus:dispatch-freight",
+                "LinkIds": [
+                  "campus:dispatch-freight-link"
+                ],
+                "ServicePointMeters": null
+              },
+              {
+                "RequirementId": "potable-water",
+                "SourceId": "campus:dispatch-potable-water",
+                "LinkIds": [
+                  "campus:dispatch-potable-water-link"
+                ],
+                "ServicePointMeters": null
+              },
+              {
+                "RequirementId": "power",
+                "SourceId": "campus:dispatch-power",
+                "LinkIds": [
+                  "campus:dispatch-power-link"
+                ],
+                "ServicePointMeters": null
+              },
+              {
+                "RequirementId": "wastewater",
+                "SourceId": "campus:dispatch-wastewater",
+                "LinkIds": [
+                  "campus:dispatch-wastewater-link"
+                ],
+                "ServicePointMeters": null
+              }
+            ]
+          },
+          "maintenance": {
+            "DistrictId": "campus:maintenance-district",
+            "Technology": "CleanLight",
+            "Dependencies": [
+              {
+                "RequirementId": "freight",
+                "SourceId": "campus:maintenance-freight",
+                "LinkIds": [
+                  "campus:maintenance-freight-link"
+                ],
+                "ServicePointMeters": null
+              },
+              {
+                "RequirementId": "potable-water",
+                "SourceId": "campus:maintenance-potable-water",
+                "LinkIds": [
+                  "campus:maintenance-potable-water-link"
+                ],
+                "ServicePointMeters": null
+              },
+              {
+                "RequirementId": "power",
+                "SourceId": "campus:maintenance-power",
+                "LinkIds": [
+                  "campus:maintenance-power-link"
+                ],
+                "ServicePointMeters": null
+              },
+              {
+                "RequirementId": "wastewater",
+                "SourceId": "campus:maintenance-wastewater",
+                "LinkIds": [
+                  "campus:maintenance-wastewater-link"
+                ],
+                "ServicePointMeters": null
+              }
+            ]
+          },
+          "administration": {
+            "DistrictId": "campus:administration-district",
+            "Technology": "Standard",
+            "Dependencies": [
+              {
+                "RequirementId": "customers",
+                "SourceId": "campus:administration-customers",
+                "LinkIds": [
+                  "campus:administration-customers-link"
+                ],
+                "ServicePointMeters": null
+              },
+              {
+                "RequirementId": "potable-water",
+                "SourceId": "campus:administration-potable-water",
+                "LinkIds": [
+                  "campus:administration-potable-water-link"
+                ],
+                "ServicePointMeters": null
+              },
+              {
+                "RequirementId": "power",
+                "SourceId": "campus:administration-power",
+                "LinkIds": [
+                  "campus:administration-power-link"
+                ],
+                "ServicePointMeters": null
+              },
+              {
+                "RequirementId": "wastewater",
+                "SourceId": "campus:administration-wastewater",
+                "LinkIds": [
+                  "campus:administration-wastewater-link"
+                ],
+                "ServicePointMeters": null
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "PlannedFacilities": null
+  }
+}

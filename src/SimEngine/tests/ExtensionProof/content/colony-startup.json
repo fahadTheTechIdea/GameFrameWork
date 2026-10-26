@@ -1,0 +1,190 @@
+{
+  "world_setup_profiles": [{"id":"colony.start","entries":["colony.lake","colony.island","colony.lane","colony.company-0.depot","colony.company-0.factory","colony.company-0.crane","colony.company-0.truck-a","colony.company-0.truck-b","colony.company-1.depot","colony.company-1.factory","colony.company-1.crane","colony.company-1.truck-a","colony.company-1.truck-b"],"includes":[]}],
+  "tile_layer_setups": [
+    {
+      "id": "colony.lake",
+      "after": [],
+      "layer": "water",
+      "x": 34,
+      "y": 4,
+      "width": 11,
+      "height": 11,
+      "value": 1,
+      "owner": -1
+    },
+    {
+      "id": "colony.island",
+      "after": [
+        "colony.lake"
+      ],
+      "layer": "water",
+      "x": 38,
+      "y": 8,
+      "width": 3,
+      "height": 3,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "colony.lane",
+      "after": [
+        "colony.island"
+      ],
+      "layer": "colony.lanes",
+      "x": 0,
+      "y": 9,
+      "width": 48,
+      "height": 1,
+      "value": 1,
+      "owner": -1
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "colony.company-0.depot",
+      "after": [
+        "colony.lane"
+      ],
+      "entity": "depot",
+      "company": 0,
+      "placement": {
+        "space": "colony.tiles",
+        "x": 4,
+        "y": 4
+      },
+      "home": null
+    },
+    {
+      "id": "colony.company-0.factory",
+      "after": [
+        "colony.company-0.depot"
+      ],
+      "entity": "factory",
+      "company": 0,
+      "placement": {
+        "space": "colony.tiles",
+        "x": 4,
+        "y": 9
+      },
+      "home": null
+    },
+    {
+      "id": "colony.company-0.crane",
+      "after": [
+        "colony.company-0.factory",
+        "colony.company-0.depot"
+      ],
+      "entity": "crane",
+      "company": 0,
+      "placement": {
+        "space": "colony.tiles",
+        "x": 8,
+        "y": 5
+      },
+      "home": "colony.company-0.depot"
+    },
+    {
+      "id": "colony.company-0.truck-a",
+      "after": [
+        "colony.company-0.crane",
+        "colony.company-0.depot"
+      ],
+      "entity": "truck",
+      "company": 0,
+      "placement": {
+        "space": "colony.tiles",
+        "x": 8,
+        "y": 6
+      },
+      "home": "colony.company-0.depot"
+    },
+    {
+      "id": "colony.company-0.truck-b",
+      "after": [
+        "colony.company-0.truck-a",
+        "colony.company-0.depot"
+      ],
+      "entity": "truck",
+      "company": 0,
+      "placement": {
+        "space": "colony.tiles",
+        "x": 8,
+        "y": 7
+      },
+      "home": "colony.company-0.depot"
+    },
+    {
+      "id": "colony.company-1.depot",
+      "after": [
+        "colony.lane"
+      ],
+      "entity": "depot",
+      "company": 1,
+      "placement": {
+        "space": "colony.tiles",
+        "x": 18,
+        "y": 4
+      },
+      "home": null
+    },
+    {
+      "id": "colony.company-1.factory",
+      "after": [
+        "colony.company-1.depot"
+      ],
+      "entity": "factory",
+      "company": 1,
+      "placement": {
+        "space": "colony.tiles",
+        "x": 18,
+        "y": 9
+      },
+      "home": null
+    },
+    {
+      "id": "colony.company-1.crane",
+      "after": [
+        "colony.company-1.factory",
+        "colony.company-1.depot"
+      ],
+      "entity": "crane",
+      "company": 1,
+      "placement": {
+        "space": "colony.tiles",
+        "x": 22,
+        "y": 5
+      },
+      "home": "colony.company-1.depot"
+    },
+    {
+      "id": "colony.company-1.truck-a",
+      "after": [
+        "colony.company-1.crane",
+        "colony.company-1.depot"
+      ],
+      "entity": "truck",
+      "company": 1,
+      "placement": {
+        "space": "colony.tiles",
+        "x": 22,
+        "y": 6
+      },
+      "home": "colony.company-1.depot"
+    },
+    {
+      "id": "colony.company-1.truck-b",
+      "after": [
+        "colony.company-1.truck-a",
+        "colony.company-1.depot"
+      ],
+      "entity": "truck",
+      "company": 1,
+      "placement": {
+        "space": "colony.tiles",
+        "x": 22,
+        "y": 7
+      },
+      "home": "colony.company-1.depot"
+    }
+  ]
+}

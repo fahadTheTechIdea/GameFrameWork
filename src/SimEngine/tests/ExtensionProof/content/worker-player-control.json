@@ -1,0 +1,27 @@
+{
+  "work_policies": [{"id":"budget.player-control","enabled":true,"priority":0,
+    "allowed_roles":["inspect"],"area":null,"interruptible":true,"emergency_eligible":true,
+    "assignment_mode":"all","states":{"disabled":"blocked","standby":"blocked"}}],
+  "entities": [{"id":"control.stationary","kind":"entity","components":{
+    "worker":{"work_rate":1,"roles":["inspect"],"states":{"working":"processing","loading":"transfer","stopped":"blocked"}},
+    "work_policy":{"profile":"budget.player-control"}}}],
+  "entity_setups": [
+  {
+    "id": "control.stationary.start",
+    "after": [],
+    "entity": "control.stationary",
+    "company": 0,
+    "placement": null,
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "worker-player-control.start",
+    "entries": [
+      "control.stationary.start"
+    ],
+    "includes": []
+  }
+]
+}

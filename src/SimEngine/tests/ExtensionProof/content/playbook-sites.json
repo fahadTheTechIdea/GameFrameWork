@@ -1,0 +1,170 @@
+{
+  "plan_playbooks": [
+    {
+      "id": "expansion.player",
+      "cadence": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "commands_per_decision": 1,
+      "steps": [
+        {
+          "id": "overflow",
+          "template": "expansion.tower",
+          "group": "expansion.overflow",
+          "sites": "expansion.delayed",
+          "after": [
+            "expand"
+          ],
+          "priority": 60,
+          "conditions": [],
+          "recovery": null
+        },
+        {
+          "id": "expand",
+          "template": "expansion.tower",
+          "group": "expansion.expand",
+          "sites": "expansion.delayed",
+          "after": [
+            "claim"
+          ],
+          "priority": 70,
+          "conditions": [],
+          "recovery": null
+        },
+        {
+          "id": "claim",
+          "template": "expansion.tower",
+          "group": "expansion.claim",
+          "sites": "expansion.delayed",
+          "after": [],
+          "priority": 80,
+          "conditions": [],
+          "recovery": null
+        }
+      ]
+    },
+    {
+      "id": "expansion.rival",
+      "cadence": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "commands_per_decision": 1,
+      "steps": [
+        {
+          "id": "claim",
+          "template": "expansion.tower",
+          "group": "expansion.claim",
+          "sites": "expansion.sites",
+          "after": [],
+          "priority": 80,
+          "conditions": [],
+          "recovery": null
+        }
+      ]
+    }
+  ],
+  "plan_site_sets": [
+    {
+      "id": "expansion.sites",
+      "sites": [
+        {
+          "id": "b.alternative",
+          "priority": 50,
+          "anchor": {
+            "space": "field.points",
+            "position": 42
+          },
+          "conditions": []
+        },
+        {
+          "id": "primary",
+          "priority": 100,
+          "anchor": {
+            "space": "field.points",
+            "position": 30
+          },
+          "conditions": []
+        },
+        {
+          "id": "a.alternative",
+          "priority": 50,
+          "anchor": {
+            "space": "field.points",
+            "position": 24
+          },
+          "conditions": []
+        }
+      ]
+    }
+  ],
+  "delayed_plan_sites": [
+    {
+      "id": "expansion.delayed",
+      "site_set": "expansion.sites",
+      "after": {
+        "numerator": 5,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    }
+  ],
+  "plan_templates": [
+    {
+      "id": "expansion.tower",
+      "space": "field.points",
+      "entries": [
+        {
+          "id": "tower",
+          "definition": "build:point.tower",
+          "arguments": {
+            "placement": {
+              "space": "field.points",
+              "offset": 0
+            }
+          },
+          "priority": 70,
+          "paused": false,
+          "after": []
+        }
+      ]
+    }
+  ],
+  "entity_setups": [
+  {
+    "id": "rival.source",
+    "after": [],
+    "entity": "source",
+    "company": 1,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  },
+  {
+    "id": "rival.machine",
+    "after": [],
+    "entity": "machine",
+    "company": 1,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "playbook-sites.start",
+    "entries": [
+      "rival.source",
+      "rival.machine"
+    ],
+    "includes": []
+  }
+]
+}

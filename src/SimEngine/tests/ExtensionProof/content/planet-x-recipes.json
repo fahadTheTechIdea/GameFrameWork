@@ -1,0 +1,70 @@
+{
+  "transformations": [
+    {
+      "id": "space.smelt.planetx",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "category": "manufacturing",
+      "inputs": {
+        "space.planetx.ore": 10
+      },
+      "tools": {
+        "space.crucible": 1
+      },
+      "tool_consumption": {},
+      "outputs": {
+        "space.alloy": 6,
+        "space.slag": 4
+      },
+      "operating_inputs": [],
+      "input_ports": {
+        "space.planetx.ore": "space.feed"
+      },
+      "tool_ports": {
+        "space.crucible": "space.tool"
+      },
+      "output_ports": {
+        "space.alloy": "space.product",
+        "space.slag": "space.waste"
+      },
+      "operating_ports": {},
+      "duration": {
+        "numerator": 30,
+        "denominator": 1,
+        "unit": "second"
+      }
+    },
+    {
+      "id": "space.assemble.parts",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "category": "manufacturing",
+      "inputs": {
+        "space.blank": 3
+      },
+      "tools": {
+        "space.fixture": 1
+      },
+      "tool_consumption": {},
+      "outputs": {
+        "space.finished": 1
+      },
+      "operating_inputs": [],
+      "input_ports": {
+        "space.blank": "space.feed"
+      },
+      "tool_ports": {
+        "space.fixture": "space.tool"
+      },
+      "output_ports": {
+        "space.finished": "space.product"
+      },
+      "operating_ports": {},
+      "duration": {
+        "numerator": 60,
+        "denominator": 1,
+        "unit": "second"
+      }
+    }
+  ]
+}

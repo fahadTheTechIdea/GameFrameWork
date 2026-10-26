@@ -1,0 +1,40 @@
+{
+  "capacity_network_demands":[{"id":"proof.network-arbitration.capacity-demand"}],
+"resource_transfer_network_solvers": [{"id":"proof.network-arbitration.transfer"}],
+  "capacity_policies": [{"id":"arbitration.one","limits":{"unit.storage":1}}],
+  "network_round_robin_policies": [{"id":"arbitration.fair"}],
+  "proof_network_flow_policies": [{"id":"arbitration.highest","ranking":"highest-identity"},{"id":"arbitration.equal","ranking":"equal"}],
+  "fault_network_flow_policies": [{"id":"arbitration.fault"}],
+  "networks": [{"id":"arbitration.main","line":"network.pipe","demand_policy":"proof.network-arbitration.capacity-demand","solver":"proof.network-arbitration.transfer","flow_policy":"arbitration.fair","capacity_policy":"arbitration.one","public":false,
+    "rates":[{"resource":"steel","quantity":1,"period":{"numerator":2,"denominator":1,"unit":"minute"}}]}],
+  "signals": [{"id":"arbitration.open","kind":"boolean","metric":"operation.enabled","unit":"unit.boolean","providers":[{"component":"network_sensor","schema":1}]}],
+  "entities": [
+    {"id":"arbitration.source","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"recovery.mixed","public":false,"initial_stock":{"steel":30}},
+      "ports":{"list":[{"network":"arbitration.main","push":["steel"]}]},
+      "network_sensor":{"operation":{"id":"valve","enabled":true,"target":1,"minimum":1,"maximum":1,"unit":"unit.boolean"},"level":0},
+      "signal_network_gate":{"id":"safety","networks":["arbitration.main"],"conditions":[{"id":"open","source":"valve","signal":"arbitration.open","expected":true,"blocker":"arbitration.closed"}]}
+    }},
+    {"id":"arbitration.proof-source","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"recovery.mixed","public":false,"initial_stock":{"steel":30}},
+      "proof_network_ports":{"list":[{"network":"arbitration.main","push":["steel"]}]}
+    }},
+    {"id":"arbitration.receiver","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"recovery.mixed","public":false},
+      "ports":{"list":[{"network":"arbitration.main","pull":["steel"]}]}
+    }},
+    {"id":"arbitration.proof-receiver","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"recovery.mixed","public":false},
+      "proof_network_ports":{"list":[{"network":"arbitration.main","pull":["steel"]}]}
+    }},
+    {"id":"arbitration.inactive","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"recovery.mixed","public":false},
+      "ports":{"list":[{"network":"arbitration.main","push":[],"pull":[]}]}
+    }}
+  ]
+}

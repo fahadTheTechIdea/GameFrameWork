@@ -1,0 +1,6 @@
+{
+  "haul_trip_profiles": [
+    { "id": "trip.funded", "enabled": true, "preserve_outlet_reserve": true, "service_sources": [] },
+    { "id": "trip.no-floor", "enabled": true, "preserve_outlet_reserve": false, "service_sources": [] }
+  ]
+}

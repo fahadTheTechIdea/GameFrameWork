@@ -1,0 +1,12 @@
+{
+  "entities": [
+    {"id":"cursor.road","kind":"marker","tags":["line-work"],"components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":false,"movable":true},
+      "storage":{"capacity_policy":"survey.storage","public":false,"initial_stock":{}},"proof_line_work":{}
+    }},
+    {"id":"cursor.pipe","kind":"marker","tags":["line-work"],"components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":false,"movable":true},
+      "storage":{"capacity_policy":"survey.storage","public":false,"initial_stock":{}},"proof_line_work":{}
+    }}
+  ]
+}

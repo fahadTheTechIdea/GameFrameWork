@@ -1,0 +1,16 @@
+{
+  "resource_pools": [
+    {"id":"gp.tools","identity":1,"owner":0,"public":false,"evacuate":false,"capacity_policy":"contract.destination","resources":["supply"]},
+    {"id":"gp.flow","identity":2,"owner":0,"public":false,"evacuate":false,"capacity_policy":"contract.destination","resources":["supply"]}
+  ],
+  "target_resource_requirements": [
+    {"id":"gp.tool","port":"gp.tool","use":"hold","quantities":{"supply":1}},
+    {"id":"gp.start","port":"gp.flow","use":"consume","quantities":{"supply":1}},
+    {"id":"gp.running","port":"gp.flow","use":"elapsed","rates":[{"resource":"supply","quantity":1,"period":{"numerator":1,"denominator":1,"unit":"minute"}}]}
+  ],
+  "work_requirement_groups": [{"id":"gp.ready","mode":"all","entries":[{"id":"tool","requirement":"gp.tool"},{"id":"start","requirement":"gp.start"},{"id":"running","requirement":"gp.running"}]}],
+  "activities": [{"id":"gp.parallel","player_orderable":true,"automatic_supply":false,"nodes":[
+    {"id":"a","executor":"work.timed","roles":[],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"gp.ready"},
+    {"id":"b","executor":"work.timed","roles":[],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"gp.ready"}
+  ]}]
+}

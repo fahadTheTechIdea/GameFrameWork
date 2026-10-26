@@ -1,0 +1,303 @@
+{
+  "point_spaces": [
+    {
+      "id": "restore.points",
+      "extent": 48,
+      "access_open": true,
+      "rollout_offset": 1
+    }
+  ],
+  "entities": [
+    {
+      "id": "point.restore.target",
+      "kind": "structure",
+      "components": {
+        "pool_port": [
+          {
+            "id": "alias",
+            "pool": "source.first",
+            "alternatives": [
+              "source.second"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "current_only"
+          },
+          {
+            "id": "queue",
+            "pool": "source.second",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          }
+        ],
+        "point_presence": {
+          "space": "restore.points",
+          "position": 22
+        },
+        "point_dock": {
+          "work_roles": [],
+          "resources": [
+            "steel"
+          ],
+          "slots": [
+            {
+              "id": "bay",
+              "kind": "service",
+              "offset": -1
+            },
+            {
+              "id": "wait",
+              "kind": "waiting",
+              "offset": -2
+            },
+            {
+              "id": "exit",
+              "kind": "departure",
+              "offset": 3
+            },
+            {
+              "id": "exit-alt",
+              "kind": "departure",
+              "offset": -8
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "point.source.warehouse",
+      "kind": "structure",
+      "components": {
+        "storage": {
+          "capacity_policy": "haul.store",
+          "public": false,
+          "initial_stock": {
+            "steel": 30
+          }
+        },
+        "inventory_port": {
+          "id": "stock"
+        },
+        "point_presence": {
+          "space": "restore.points",
+          "position": 8
+        }
+      }
+    },
+    {
+      "id": "point.source.sink",
+      "kind": "structure",
+      "components": {
+        "pool_port": {
+          "id": "tank",
+          "pool": "source.third",
+          "alternatives": [
+            "source.first",
+            "source.second"
+          ],
+          "endpoint_scope":"proof.pools","original_access": "retained"
+        },
+        "point_presence": {
+          "space": "restore.points",
+          "position": 28
+        }
+      }
+    },
+    {
+      "id": "point.recovery.far",
+      "kind": "structure",
+      "components": {
+        "pool_port": {
+          "id": "return",
+          "pool": "recovery.fourth",
+          "alternatives": [
+            "source.first",
+            "source.second"
+          ],
+          "endpoint_scope":"proof.pools","original_access": "retained"
+        },
+        "point_presence": {
+          "space": "restore.points",
+          "position": 35
+        }
+      }
+    },
+    {
+      "id": "point.dock.machine",
+      "kind": "vehicle",
+      "components": {
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "haul.working",
+            "loading": "haul.loading",
+            "stopped": "haul.stopped"
+          }
+        },
+        "storage": {
+          "capacity_policy": "haul.cargo",
+          "public": false,
+          "initial_stock": {}
+        },
+        "transporter": {
+          "handling": "haul.handling"
+        },
+        "work_policy": {
+          "profile": "dock.worker"
+        },
+        "point_presence": {
+          "space": "restore.points",
+          "position": 2
+        },
+        "point_motion": {
+          "rate": 30,
+          "states": {
+            "moving": "haul.moving",
+            "stopped": "haul.stopped"
+          }
+        }
+      }
+    },
+    {
+      "id": "point.dock.queue",
+      "kind": "vehicle",
+      "components": {
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "haul.working",
+            "loading": "haul.loading",
+            "stopped": "haul.stopped"
+          }
+        },
+        "storage": {
+          "capacity_policy": "haul.cargo",
+          "public": false,
+          "initial_stock": {}
+        },
+        "transporter": {
+          "handling": "haul.handling"
+        },
+        "work_policy": {
+          "profile": "dock.worker"
+        },
+        "point_presence": {
+          "space": "restore.points",
+          "position": 0
+        },
+        "point_motion": {
+          "rate": 30,
+          "states": {
+            "moving": "haul.moving",
+            "stopped": "haul.stopped"
+          }
+        }
+      }
+    }
+  ],
+  "world_setup_profiles": [{"id":"point.restore.start","entries":["point.restore.warehouse-entry","point.restore.target-entry","point.restore.sink-entry","point.restore.far-entry","point.restore.machine-entry","point.restore.queue-entry"],"includes":[]}],
+  "entity_setups": [
+    {
+      "id": "point.restore.warehouse-entry",
+      "after": [],
+      "entity": "point.source.warehouse",
+      "company": 0,
+      "placement": {
+        "space": "restore.points",
+        "position": 8
+      },
+      "home": null
+    },
+    {
+      "id": "point.restore.target-entry",
+      "after": [],
+      "entity": "point.restore.target",
+      "company": 0,
+      "placement": {
+        "space": "restore.points",
+        "position": 22
+      },
+      "home": null
+    },
+    {
+      "id": "point.restore.sink-entry",
+      "after": [],
+      "entity": "point.source.sink",
+      "company": 0,
+      "placement": {
+        "space": "restore.points",
+        "position": 28
+      },
+      "home": null
+    },
+    {
+      "id": "point.restore.far-entry",
+      "after": [],
+      "entity": "point.recovery.far",
+      "company": 0,
+      "placement": {
+        "space": "restore.points",
+        "position": 35
+      },
+      "home": null
+    },
+    {
+      "id": "point.restore.machine-entry",
+      "after": [
+        "point.restore.warehouse-entry"
+      ],
+      "entity": "point.dock.machine",
+      "company": 0,
+      "placement": {
+        "space": "restore.points",
+        "position": 2
+      },
+      "home": "point.restore.warehouse-entry"
+    },
+    {
+      "id": "point.restore.queue-entry",
+      "after": [
+        "point.restore.warehouse-entry"
+      ],
+      "entity": "point.dock.queue",
+      "company": 0,
+      "placement": {
+        "space": "restore.points",
+        "position": 0
+      },
+      "home": "point.restore.warehouse-entry"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "scoped-point-dock-restoration",
+      "game_mode": "haul.resource-only",
+      "mode_overrides": {},
+      "time": "haul.minute",
+      "space": "restore.points",
+      "seats": 2,
+      "default_seats": 2,
+      "modules": [
+        "proof.output-ports",
+        "sim.logistics",
+        "sim.logistics-recovery",
+        "points"
+      ],
+      "settings": {
+        "sim.world-setup": {
+          "profile": "point.restore.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.logistics-recovery": {
+          "profile": "binding.recovery"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "party_rpg_layer",
+  "definitionVersion": "1.0.0",
+  "characterIds": [
+    "leader",
+    "medic",
+    "scout"
+  ],
+  "partyCapacity": 3,
+  "abilityIds": [
+    "strike",
+    "treat",
+    "guard"
+  ],
+  "formationPolicy": "front_back"
+}

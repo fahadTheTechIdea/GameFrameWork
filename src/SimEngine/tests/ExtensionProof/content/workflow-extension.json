@@ -1,0 +1,266 @@
+{
+  "colony_roles": [
+    {
+      "id": "extension.builder"
+    }
+  ],
+  "colony_staffed": [
+    {
+      "id": "extension.staffed",
+      "travel": "sim.work.travel",
+      "work": "sim.work.productive",
+      "departure": "sim.work.departure"
+    }
+  ],
+  "colony_timed": [
+    {
+      "id": "extension.timer",
+      "rate": 1
+    }
+  ],
+  "colony_workflows": [
+    {
+      "id": "extension.calibrate",
+      "player_orderable": true,
+      "target_tags": [
+        "extension.worker"
+      ],
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "calibrate",
+          "executor": "extension.timer",
+          "duration": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    },
+    {
+      "id": "extension.build",
+      "player_orderable": false,
+      "automatic_supply": true,
+      "nodes": [
+        {
+          "id": "materials",
+          "executor": "extension.timer",
+          "duration": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "extension.materials"
+        },
+        {
+          "id": "assemble",
+          "after": [
+            "materials"
+          ],
+          "executor": "extension.staffed",
+          "roles": [
+            "extension.builder"
+          ],
+          "duration": {
+            "numerator": 12,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "extension.calibrated"
+        },
+        {
+          "id": "cure",
+          "after": [
+            "materials"
+          ],
+          "executor": "extension.timer",
+          "duration": {
+            "numerator": 30,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "extension.calibrated"
+        },
+        {
+          "id": "finish",
+          "after": [
+            "assemble",
+            "cure"
+          ],
+          "executor": "extension.timer",
+          "duration": {
+            "numerator": 2,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    },
+    {
+      "id": "extension.remove",
+      "player_orderable": false,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "remove",
+          "executor": "extension.staffed",
+          "roles": [
+            "extension.builder"
+          ],
+          "duration": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    },
+    {
+      "id": "extension.certify",
+      "player_orderable": true,
+      "target_tags": [
+        "extension.facility"
+      ],
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "certify",
+          "executor": "extension.staffed",
+          "roles": [
+            "extension.builder"
+          ],
+          "duration": {
+            "numerator": 4,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "extension.built"
+        }
+      ]
+    }
+  ],
+  "work_policies": [
+    {
+      "id": "extension.machine-policy",
+      "enabled": false,
+      "priority": 0,
+      "allowed_roles": [
+        "extension.builder"
+      ],
+      "area": null,
+      "interruptible": true,
+      "emergency_eligible": true,
+      "assignment_mode": "all",
+      "states": {
+        "disabled": "blocked",
+        "standby": "blocked"
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "extension.machine",
+      "kind": "vehicle",
+      "tags": [
+        "extension.worker"
+      ],
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 40
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "contract_worker": {
+          "role": "extension.builder",
+          "rate": 1,
+          "states": {
+            "working": "processing",
+            "stopped": "blocked"
+          }
+        },
+        "work_policy": {
+          "profile": "extension.machine-policy"
+        }
+      }
+    },
+    {
+      "id": "extension.facility",
+      "kind": "structure",
+      "tags": [
+        "extension.facility"
+      ],
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 0
+        },
+        "storage": {
+          "capacity_policy": "fixture.count.40",
+          "public": false,
+          "initial_stock": {}
+        },
+        "construction": {
+          "site": "extension.site",
+          "activity": "extension.build",
+          "demolish": {
+            "activity": "extension.remove",
+            "salvage": {}
+          },
+          "states": {
+            "site": "point.site"
+          }
+        }
+      }
+    },
+    {
+      "id": "extension.site",
+      "kind": "structure",
+      "tags": [
+        "site"
+      ],
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 0
+        },
+        "storage": {
+          "capacity_policy": "fixture.count.40",
+          "public": false,
+          "initial_stock": {}
+        },
+        "site": {
+          "target": "extension.facility"
+        }
+      }
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "extension.machine",
+      "after": [],
+      "entity": "extension.machine",
+      "company": 0,
+      "placement": {
+        "space": "field.points",
+        "position": 40
+      },
+      "home": null
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "extension.start",
+      "entries": [
+        "extension.machine"
+      ],
+      "includes": []
+    }
+  ]
+}

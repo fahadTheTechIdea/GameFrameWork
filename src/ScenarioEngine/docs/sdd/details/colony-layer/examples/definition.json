@@ -1,0 +1,16 @@
+{
+  "id": "colony_layer",
+  "definitionVersion": "1.0.0",
+  "inhabitantIds": [
+    "settler_a",
+    "settler_b",
+    "settler_c"
+  ],
+  "jobIds": [
+    "haul",
+    "treat",
+    "repair"
+  ],
+  "incidentProfile": "measured_pressure",
+  "activePopulation": 32
+}

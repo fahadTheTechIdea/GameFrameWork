@@ -1,0 +1,21 @@
+{
+  "schema":1,
+  "modules":[
+    {"id":"proof.tile-sensor-space","version":"1.0.0","documents":["independent-tile-sensor-world.json"]},
+    {"id":"sim.world-setup","version":"1.0.0","documents":["independent-tile-sensor-startup.json","independent-tile-navigation-startup.json"]},
+    {"id":"sim.operations","version":"1.0.0","documents":[]},
+    {"id":"sim.knowledge","version":"1.0.0","documents":[]},
+    {"id":"sim.knowledge-visibility","version":"1.0.0","requires":[{"id":"sim.knowledge","version":"1.0.0"}],"documents":["independent-tile-sensor-visibility.json"]},
+    {"id":"sim.motion","version":"1.0.0","documents":[]},
+    {"id":"sim.tile-navigation","version":"1.0.0","requires":[{"id":"sim.motion","version":"1.0.0"}],"documents":["independent-tile-navigation.json"]},
+    {"id":"sim.tile-conditions","version":"1.0.0","documents":["independent-tile-navigation-conditions.json"]},
+    {"id":"sim.access","version":"1.0.0","documents":["open-access.json"]},
+    {"id":"sim.inventory","version":"1.0.0","documents":[]},
+    {"id":"sim.work","version":"1.0.0","requires":[{"id":"sim.access","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"},{"id":"sim.motion","version":"1.0.0"}],"documents":["independent-tile-work.json","work-retry.json"]},
+    {"id":"sim.logistics","version":"1.0.0","requires":[{"id":"sim.work","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"}],"documents":[]},
+    {"id":"sim.construction","version":"1.0.0","requires":[{"id":"sim.work","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"}],"documents":["independent-tile-construction.json"]},
+    {"id":"sim.inventory-signals","version":"1.0.0","requires":[{"id":"sim.inventory","version":"1.0.0"},{"id":"sim.operations","version":"1.0.0"}],"documents":[]},
+    {"id":"sim.incidents","version":"1.0.0","requires":[{"id":"sim.work","version":"1.0.0"}],"documents":[]},
+    {"id":"proof.colony-extension","version":"1.0.0","requires":[{"id":"sim.construction","version":"1.0.0"},{"id":"sim.inventory-signals","version":"1.0.0"},{"id":"sim.incidents","version":"1.0.0"},{"id":"sim.tile-navigation","version":"1.0.0"},{"id":"proof.tile-sensor-space","version":"1.0.0"}],"documents":["colony-extension.json"]}
+  ]
+}

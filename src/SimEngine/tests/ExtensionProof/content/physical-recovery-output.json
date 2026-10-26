@@ -1,0 +1,25 @@
+{
+  "resources": [
+    {"id":"recovery.product","category":"material","unit":"unit.capacity.count","phase":"solid","traits":[],"capacity":{"unit.capacity.count":1}},
+    {"id":"recovery.scrap","category":"material","unit":"unit.capacity.count","phase":"solid","traits":[],"capacity":{"unit.capacity.count":1}}
+  ],
+  "capacity_policies": [{"id":"recovery.output-vessel","limits":{"unit.capacity.count":2}}],
+  "resource_pools": [
+    {"id":"recovery.product-book","identity":9100000003,"owner":0,"public":false,"evacuate":false,"capacity_policy":"recovery.output-vessel","resources":["recovery.product"]},
+    {"id":"recovery.scrap-book","identity":9100000004,"owner":0,"public":false,"evacuate":false,"capacity_policy":"recovery.output-vessel","resources":["recovery.scrap"]}
+  ],
+  "handling_profiles": [{"id":"recovery.finished-handling","resources":[
+    {"resource":"recovery.product","quantity":1,"loading":{"numerator":1,"denominator":1,"unit":"minute"},"unloading":{"numerator":1,"denominator":1,"unit":"minute"}},
+    {"resource":"recovery.scrap","quantity":1,"loading":{"numerator":1,"denominator":1,"unit":"minute"},"unloading":{"numerator":1,"denominator":1,"unit":"minute"}}
+  ]}],
+  "transformations": [{"id":"recovery.batch","mode":"batch","cancel_policy":"return_inputs","tool_consumption":{},"operating_ports":{},"tool_ports":{"steel":"tool.input"},"input_ports":{"steel":"material.input"},"output_ports":{"recovery.product":"product","recovery.scrap":"scrap"},"operating_inputs":[],"tools":{"steel":1},"inputs":{"steel":2},"outputs":{"recovery.product":2,"recovery.scrap":2},"duration":{"numerator":6,"denominator":1,"unit":"minute"}}],
+  "entities": [{"id":"recovery.processor","kind":"structure","components":{
+    "tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":true,"movable":false},
+    "storage":{"capacity_policy":"fixture.count.20","public":false,"initial_stock":{"steel":5}},
+    "inventory_port":[{"id":"material.input"},{"id":"tool.input"}],
+    "pool_port":[{"id":"product","pool":"recovery.product-book","alternatives":[],"endpoint_scope":"colony.pools","original_access":"retained"},{"id":"scrap","pool":"recovery.scrap-book","alternatives":[],"endpoint_scope":"colony.pools","original_access":"retained"}],
+    "transformer":{"automatic_supply":false,"wip_capacity":"fixture.count.20","transformations":["recovery.batch"],"states":{"working":"working","stopped":"stopped"},"operation":{"id":"process","enabled":true,"target":1,"minimum":1,"maximum":1,"unit":"unit.work-rate"}},
+    "tile_work_dock":{"work_roles":["haul"],"resources":["recovery.product","recovery.scrap"],"slots":[{"id":"bay","kind":"service","x":0,"y":1},{"id":"wait","kind":"waiting","x":-1,"y":1},{"id":"exit","kind":"departure","x":1,"y":1}]}
+  }}],
+  "entity_setups": [{"id":"recovery.processor-start","after":["recovery.crane-start"],"entity":"recovery.processor","company":0,"placement":{"space":"colony.tiles","x":10,"y":11},"home":null}]
+}

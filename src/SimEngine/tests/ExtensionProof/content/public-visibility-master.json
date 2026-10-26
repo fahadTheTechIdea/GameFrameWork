@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "modules": [
+    {
+      "id": "sim.world-setup",
+      "version": "1.0.0",
+      "documents": [
+        "public-visibility-world.json"
+      ]
+    },
+    {
+      "id": "sim.knowledge",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.knowledge-visibility",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.knowledge",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    }
+  ]
+}

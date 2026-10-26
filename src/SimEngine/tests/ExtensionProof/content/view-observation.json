@@ -1,0 +1,22 @@
+{
+  "time_definitions": [{ "id": "views.minute", "quantum": { "numerator": 60, "denominator": 1, "unit": "second" }, "frame_ticks": 1, "ticks_per_second": 30, "calendar": "views.calendar", "horizon": null }],
+  "calendars": [{ "id": "views.calendar", "fields": [
+    { "id": "minute", "duration": { "numerator": 1, "denominator": 1, "unit": "minute" }, "radix": 60, "origin": 0 },
+    { "id": "hour", "duration": { "numerator": 1, "denominator": 1, "unit": "hour" }, "radix": 24, "origin": 0 },
+    { "id": "day", "duration": { "numerator": 1, "denominator": 1, "unit": "day" }, "radix": 365, "origin": 1 },
+    { "id": "year", "duration": { "numerator": 365, "denominator": 1, "unit": "day" }, "radix": 0, "origin": 1 }
+  ] }],
+  "entity_states": [{ "id": "idle", "state": "state.idle", "priority": 0, "default": true }],
+  "units": [{ "id": "views.count", "dimension": "count", "scale": { "numerator": 1, "denominator": 1 }, "discrete": true }],
+  "resources": [
+    { "id": "visible", "category": "proof", "unit": "views.count", "phase": "solid", "traits": [], "capacity": { "views.count": 1 } },
+    { "id": "secret", "category": "proof", "unit": "views.count", "phase": "solid", "traits": [], "capacity": { "views.count": 1 } }
+  ],
+  "entities": [
+    { "id": "actor", "kind": "structure", "components": { "tile_presence": { "space": "views.tiles", "width": 1, "height": 1, "blocks": true, "movable": false }, "observation_probe": { "initial": 2, "per_update": 1 } } },
+    { "id": "secret", "kind": "structure", "components": { "observation_probe": { "initial": 7, "per_update": 3 } } }
+  ],
+  "tile_spaces": [{ "id": "views.tiles", "width": 16, "height": 16 }],
+  "game_modes": [{ "id": "views.resource-only", "name": "View observation proof", "properties": {} }],
+  "scenarios": [{ "id": "views", "game_mode": "views.resource-only", "mode_overrides": {}, "time": "views.minute", "space": "views.tiles", "modules": ["proof.views"], "seats": 2, "settings": { "proof.views": { "prototype": "actor", "x": 2, "y": 2, "spacing": 3 } } }]
+}

@@ -1,0 +1,15 @@
+{
+  "proof_demands": [
+    {
+      "id": "proof.delivery",
+      "scope": "proof.demands",
+      "identity": 4294967297,
+      "company": 0,
+      "destination": "destination",
+      "quantities": { "supply": 8 },
+      "priority": 65,
+      "active": true,
+      "emergency": false
+    }
+  ]
+}

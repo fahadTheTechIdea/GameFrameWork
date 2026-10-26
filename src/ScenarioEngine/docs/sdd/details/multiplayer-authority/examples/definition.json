@@ -1,0 +1,8 @@
+{
+  "id": "multiplayer_authority",
+  "definitionVersion": "1.0.0",
+  "authorityMode": "host",
+  "maxPeers": 4,
+  "reconnectPolicy": "checkpoint_resync",
+  "maxQueuedPerPeer": 32
+}

@@ -1,0 +1,492 @@
+{
+  "tile_line_placement_policies": [{"id":"network.transfer-placement","space":"recovery.tiles","blocker":"line.placement-blocked","footprint":{"match":"all","conditions":[]}}],
+  "activities": [
+    {
+      "id": "network.pipe.segment-work",
+      "player_orderable": false,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "install",
+          "executor": "work.staffed",
+          "roles": [
+            "crane"
+          ],
+          "duration": {
+            "numerator": 360,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "effect": "sim.line.segment",
+          "requirement": "proof.network-transfers.network.pipe.inputs"
+        }
+      ]
+    },
+    {
+      "id": "network.public-pipe.segment-work",
+      "player_orderable": false,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "install",
+          "executor": "work.staffed",
+          "roles": [
+            "crane"
+          ],
+          "duration": {
+            "numerator": 360,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "effect": "sim.line.segment",
+          "requirement": "proof.network-transfers.network.public-pipe.inputs"
+        }
+      ]
+    }
+  ],
+  "capacity_network_demands": [
+    {
+      "id": "proof.network-transfers.capacity-demand"
+    }
+  ],
+  "resource_transfer_network_solvers": [
+    {
+      "id": "proof.network-transfers.transfer"
+    }
+  ],
+  "network_round_robin_policies": [
+    {
+      "id": "proof.network-transfers.round-robin"
+    }
+  ],
+  "units": [
+    {
+      "id": "network.case",
+      "dimension": "mass",
+      "scale": {
+        "numerator": 2,
+        "denominator": 1
+      },
+      "discrete": true
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "network.shared",
+      "limits": {
+        "unit.storage": 10
+      }
+    },
+    {
+      "id": "network.tight",
+      "limits": {
+        "unit.storage": 2
+      }
+    },
+    {
+      "id": "network.cases",
+      "limits": {
+        "network.case": 50
+      }
+    }
+  ],
+  "spatial_layers": [
+    {
+      "id": "network.line",
+      "space": "recovery.tiles",
+      "type": "network.topology",
+      "value_type": "byte",
+      "visibility": "public",
+      "unit": "unit.classification"
+    },
+    {
+      "id": "network.owner",
+      "space": "recovery.tiles",
+      "type": "network.ownership",
+      "value_type": "int",
+      "visibility": "company_private",
+      "unit": "unit.classification"
+    },
+    {
+      "id": "network.neutral",
+      "space": "recovery.tiles",
+      "type": "network.topology",
+      "value_type": "byte",
+      "visibility": "public",
+      "unit": "unit.classification"
+    }
+  ],
+  "lines": [
+    {"value":1,
+      "id": "network.pipe",
+      "layer": "network.line",
+      "owner_layer": "network.owner",
+      "owned": true,
+      "placement_policy": "network.transfer-placement",
+      "finish_effect": "sim.line.finish",
+      "activity": "network.pipe.segment-work",
+      "segment_node": "install",
+      "work_marker": "sim.line-work.network.pipe"
+    },
+    {"value":1,
+      "id": "network.public-pipe",
+      "layer": "network.neutral",
+      "owned": false,
+      "placement_policy": "network.transfer-placement",
+      "finish_effect": "sim.line.finish",
+      "activity": "network.public-pipe.segment-work",
+      "segment_node": "install",
+      "work_marker": "sim.line-work.network.public-pipe"
+    }
+  ],
+  "networks": [
+    {
+      "id": "network.main",
+      "line": "network.pipe",
+      "demand_policy": "proof.network-transfers.capacity-demand",
+      "solver": "proof.network-transfers.transfer",
+      "flow_policy": "proof.network-transfers.round-robin",
+      "rates": [
+        {
+          "resource": "steel",
+          "quantity": 9,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "hour"
+          }
+        },
+        {
+          "resource": "water",
+          "quantity": 9,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "hour"
+          }
+        }
+      ],
+      "capacity_policy": "network.shared",
+      "public": false
+    },
+    {
+      "id": "network.public",
+      "line": "network.public-pipe",
+      "demand_policy": "proof.network-transfers.capacity-demand",
+      "solver": "proof.network-transfers.transfer",
+      "flow_policy": "proof.network-transfers.round-robin",
+      "rates": [
+        {
+          "resource": "steel",
+          "quantity": 9,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "hour"
+          }
+        },
+        {
+          "resource": "water",
+          "quantity": 9,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "hour"
+          }
+        }
+      ],
+      "capacity_policy": "network.shared",
+      "public": true
+    },
+    {
+      "id": "network.private-neutral",
+      "line": "network.public-pipe",
+      "demand_policy": "proof.network-transfers.capacity-demand",
+      "solver": "proof.network-transfers.transfer",
+      "flow_policy": "proof.network-transfers.round-robin",
+      "rates": [
+        {
+          "resource": "steel",
+          "quantity": 9,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "hour"
+          }
+        },
+        {
+          "resource": "water",
+          "quantity": 9,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "hour"
+          }
+        }
+      ],
+      "capacity_policy": "network.shared",
+      "public": false
+    },
+    {
+      "id": "network.secondary",
+      "line": "network.pipe",
+      "demand_policy": "proof.network-transfers.capacity-demand",
+      "solver": "proof.network-transfers.transfer",
+      "flow_policy": "proof.network-transfers.round-robin",
+      "rates": [
+        {
+          "resource": "steel",
+          "quantity": 9,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "hour"
+          }
+        },
+        {
+          "resource": "water",
+          "quantity": 9,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "hour"
+          }
+        }
+      ],
+      "capacity_policy": "network.tight",
+      "public": false
+    }
+  ],
+  "entities": [
+    {
+      "id": "network.source",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "recovery.mixed",
+          "public": false,
+          "initial_stock": {
+            "steel": 30,
+            "water": 6
+          }
+        },
+        "ports": {
+          "list": [
+            {
+              "network": "network.main",
+              "push": [
+                "steel",
+                "water"
+              ]
+            },
+            {
+              "network": "network.public",
+              "push": [
+                "steel",
+                "water"
+              ]
+            },
+            {
+              "network": "network.private-neutral",
+              "push": [
+                "steel",
+                "water"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "network.receiver",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "recovery.mixed",
+          "public": false
+        },
+        "ports": {
+          "list": [
+            {
+              "network": "network.main",
+              "pull": [
+                "steel",
+                "water"
+              ]
+            },
+            {
+              "network": "network.public",
+              "pull": [
+                "steel",
+                "water"
+              ]
+            },
+            {
+              "network": "network.private-neutral",
+              "pull": [
+                "steel",
+                "water"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "network.cased-receiver",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "network.cases",
+          "public": false
+        },
+        "ports": {
+          "list": [
+            {
+              "network": "network.main",
+              "pull": [
+                "steel",
+                "water"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "network.buffer",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "recovery.mixed",
+          "public": false
+        }
+      }
+    },
+    {
+      "id": "network.fault",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "single_resource_port": {
+          "resource": "steel",
+          "capacity_policy": "recovery.mixed",
+          "initial": 30,
+          "receipt_fault": "retain_take"
+        },
+        "ports": {
+          "list": [
+            {
+              "network": "network.main",
+              "push": [
+                "steel"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "sim.line-work.network.pipe",
+      "kind": "marker",
+      "tags": [
+        "line-work"
+      ],
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": false,
+          "movable": true
+        },
+        "storage": {
+          "capacity_policy": "recovery.site",
+          "public": false,
+          "evacuate": false,
+          "accepts": [],
+          "phases": [],
+          "initial_stock": {}
+        },
+        "line_work": {}
+      }
+    },
+    {
+      "id": "sim.line-work.network.public-pipe",
+      "kind": "marker",
+      "tags": [
+        "line-work"
+      ],
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": false,
+          "movable": true
+        },
+        "storage": {
+          "capacity_policy": "recovery.site",
+          "public": false,
+          "evacuate": false,
+          "accepts": [],
+          "phases": [],
+          "initial_stock": {}
+        },
+        "line_work": {}
+      }
+    }
+  ],
+  "target_resource_requirements": [
+    {
+      "port": null,
+      "id": "proof.network-transfers.network.pipe.inputs",
+      "use": "consume",
+      "quantities": {
+        "steel": 1
+      }
+    },
+    {
+      "port": null,
+      "id": "proof.network-transfers.network.public-pipe.inputs",
+      "use": "consume",
+      "quantities": {
+        "steel": 1
+      }
+    }
+  ]
+}

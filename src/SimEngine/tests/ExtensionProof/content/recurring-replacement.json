@@ -1,0 +1,18 @@
+{
+  "native_source": {
+    "id": "routine", "plan": "activity:inspect", "template": null,
+    "enabled": false, "priority": 40,
+    "interval": { "numerator": 45, "denominator": 1, "unit": "minute" },
+    "facility_policy": null, "cadence": "successful_completion", "trigger": "schedule", "dispatch_mode": "compete",
+    "target": "authored_intent", "worker_nodes": [], "reserve_use": "none", "arguments": { "target": 1 },
+    "group": "field.routine", "operation_policy": null, "conditions": []
+  },
+  "contract_source": {
+    "id": "routine", "plan": "activity:inspect", "template": null,
+    "enabled": false, "priority": 40,
+    "interval": { "numerator": 45, "denominator": 1, "unit": "minute" },
+    "facility_policy": null, "cadence": "successful_completion", "trigger": "schedule", "dispatch_mode": "compete",
+    "target": "authored_intent", "worker_nodes": [], "reserve_use": "none", "arguments": { "target": 1 },
+    "group": "field.routine", "operation_policy": null, "fault": 0, "idle_only": false
+  }
+}

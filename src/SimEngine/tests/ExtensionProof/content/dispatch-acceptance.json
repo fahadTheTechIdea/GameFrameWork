@@ -1,0 +1,21 @@
+{
+  "worker_roles": [{"id":"alternate"}],
+  "entities": [
+    {"id":"acceptance.alternate","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":30},
+      "point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},
+      "worker":{"work_rate":1,"roles":["alternate","inspect","haul"],"states":{"working":"processing","loading":"transfer","stopped":"blocked"}},
+      "storage":{"capacity_policy":"fixture.count.8","public":false},
+      "transporter":{"handling":"points.handling"},"work_policy":{"profile":"shared.machine"}}},
+    {"id":"acceptance.sink","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":50},
+      "point_stock":{"resource":"supply","capacity_policy":"fixture.count.40","initial":0}}}
+  ],
+  "entity_setups":[
+    {"id":"acceptance.alternate","after":[],"entity":"acceptance.alternate","company":0,"placement":{"space":"field.points","position":30},"home":null},
+    {"id":"acceptance.sink","after":[],"entity":"acceptance.sink","company":0,"placement":{"space":"field.points","position":50},"home":null}
+  ],
+  "world_setup_profiles":[{"id":"dispatch-acceptance.start","entries":["acceptance.alternate","acceptance.sink"],"includes":[]}],
+  "activities":[{"id":"acceptance.work","priority":100,"player_orderable":true,"automatic_supply":false,"nodes":[{
+    "id":"work","executor":"work.staffed","roles":["inspect","alternate"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"shared.input"}]}]
+}

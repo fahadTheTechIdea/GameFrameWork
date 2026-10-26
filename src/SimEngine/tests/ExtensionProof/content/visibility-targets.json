@@ -1,0 +1,5 @@
+{
+  "declared_visibility_targets": [
+    { "id": "field.visibility-declared", "targets": ["source", "machine"], "allowed": false, "invalid": null }
+  ]
+}

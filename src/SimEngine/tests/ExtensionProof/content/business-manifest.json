@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "modules": [
+    { "id": "proof.business", "version": "1.0.0", "documents": ["business-core.json", "game-mode-properties.json", "game-mode-proof-properties.json", "game-modes.json", "business-modes.json"] },
+    { "id": "sim.tycoon", "version": "1.0.0", "documents": ["business-accounts.json"] },
+    { "id": "proof.business-values", "version": "1.0.0", "requires": [{ "id": "sim.tycoon", "version": "1.0.0" }], "documents": ["business-values.json"] },
+    { "id": "proof.modes", "version": "1.0.0", "documents": [] }
+  ]
+}

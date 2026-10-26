@@ -1,0 +1,6 @@
+{
+  "knowledge_facts": [{"id":"reserve.profile.observed","fresh_for":null,"value":{"classification":"declared"}}],
+  "knowledge_visibility_policies": [{"id":"reserve.profile.visibility","own_entities":true,"unlisted_entities":false,"unlisted_content":true,"rules":["reserve.visibility.resource","reserve.visibility.unit"]}],
+  "resource_knowledge_visibility": [{"id":"reserve.visibility.resource","definition":"supply","mode":"all","facts":["reserve.profile.observed"]}],
+  "unit_knowledge_visibility": [{"id":"reserve.visibility.unit","definition":"unit.supply","mode":"all","facts":["reserve.profile.observed"]}]
+}

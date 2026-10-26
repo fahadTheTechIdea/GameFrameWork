@@ -1,0 +1,27 @@
+{
+  "target_resource_requirements": [
+    {
+      "id": "cargo.request-materials",
+      "port": null,
+      "use": "consume",
+      "quantities": { "supply": 24 }
+    }
+  ],
+  "activities": [
+    {
+      "id": "cargo.request",
+      "player_orderable": true,
+      "priority": 40,
+      "automatic_supply": true,
+      "nodes": [
+        {
+          "id": "inspect",
+          "executor": "work.staffed",
+          "roles": [ "inspect" ],
+          "duration": { "numerator": 1, "denominator": 5, "unit": "hour" },
+          "requirement": "cargo.request-materials"
+        }
+      ]
+    }
+  ]
+}

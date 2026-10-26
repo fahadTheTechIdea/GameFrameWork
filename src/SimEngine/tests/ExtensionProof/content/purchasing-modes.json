@@ -1,0 +1,7 @@
+{
+  "game_modes": [
+    {"id":"purchasing","name":"Authored purchasing","properties":{"business.money.enabled":true,"business.trading.enabled":true}},
+    {"id":"purchase-disabled","name":"Accounts without trading","properties":{"business.money.enabled":true}},
+    {"id":"purchase-dormant","name":"Dormant economics","properties":{}}
+  ]
+}

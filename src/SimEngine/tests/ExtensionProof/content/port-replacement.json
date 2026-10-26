@@ -1,0 +1,13 @@
+{
+  "resource_pools": [
+    {
+      "id": "replacement.receiver",
+      "identity": 1,
+      "owner": 0,
+      "public": false,
+      "evacuate": false,
+      "capacity_policy": "fixture.count.40",
+      "resources": ["supply"]
+    }
+  ]
+}

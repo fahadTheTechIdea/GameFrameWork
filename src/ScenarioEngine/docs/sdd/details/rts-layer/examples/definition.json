@@ -1,0 +1,15 @@
+{
+  "id": "rts_layer",
+  "definitionVersion": "1.0.0",
+  "unitDefinitionIds": [
+    "rifle_squad",
+    "engineer",
+    "transport"
+  ],
+  "maxGroupSelection": 16,
+  "productionIds": [
+    "train_engineer",
+    "assemble_transport"
+  ],
+  "activeActorBudget": 64
+}

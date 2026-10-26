@@ -1,0 +1,5 @@
+{
+  "point_resource_cells":[{"id":"point.extract.cell","identity":1,"layer":"point.deposit","point":10,"capacity_policy":"fixture.count.40","public":false}],
+  "spatial_resource_transfer_effects":[{"id":"point.extract.material","operation":"withdraw","cell":"point.extract.cell","quantities":{"supply":2}}],
+  "activities":[{"id":"point.extract.activity","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"operate","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"effect":"point.extract.material"}]}]
+}

@@ -1,0 +1,23 @@
+{
+  "independent_control_rules": [
+    {"id":"contract.incident-alert","rule":"automation.incident-alert","action_policy":"contract.alert","input_recovery":"contract.inputs"},
+    {"id":"contract.sensor-rule","rule":"contract.native-sensor","action_policy":"contract.sensor-action","input_recovery":"contract.inputs"}
+  ],
+  "independent_control_actions": [
+    {"id":"contract.alert","policy":"automation.alert"},
+    {"id":"contract.sensor-action","policy":"contract.native-operation"}
+  ],
+  "independent_control_recovery": [{"id":"contract.inputs","policy":"automation.alert-inputs"}],
+  "operation_control_actions": [{"id":"contract.native-operation","command":"sim.configure-operation","owner":"sim.operations"}],
+  "signals": [{"id":"contract.sensor-level","kind":"number","metric":"probe.level","unit":"unit.level","providers":[{"component":"automation_probe","schema":1}]}],
+  "entities": [{"id":"contract.sensor","kind":"entity","components":{"automation_probe":{"level":6,"operation":{"id":"probe","enabled":true,"target":1,"minimum":0,"maximum":10,"unit":"unit.work-rate"}}}}],
+  "entity_setups": [{"id":"contract.sensor-own","after":[],"entity":"contract.sensor","company":0,"placement":null,"home":null}],
+  "world_setup_profiles": [{"id":"contract.control-start","entries":["contract.sensor-own"],"includes":[]}],
+  "control_rules": [{
+    "id":"contract.native-sensor","input_recovery":"contract.inputs","action_policy":"contract.sensor-action","arbitration":"exclusive","initial_latch":false,
+    "inputs":[{"id":"level","signal":"contract.sensor-level"}],
+    "conditions":[{"id":"low","kind":"below","input":"level","unit":"unit.level","on":3,"off":5,"initial":false}],
+    "root":"low","dwell":{"numerator":2,"denominator":1,"unit":"minute"},"cooldown":{"numerator":3,"denominator":1,"unit":"minute"},
+    "when_true":{"enabled":false,"target":1,"unit":"unit.work-rate"},"when_false":{"enabled":true,"target":1,"unit":"unit.work-rate"}
+  }]
+}

@@ -1,0 +1,142 @@
+{
+  "game_modes": [
+    {
+      "id": "public-test.mode",
+      "name": "Resource-only visibility",
+      "properties": {}
+    }
+  ],
+  "time_definitions": [
+    {
+      "id": "public-test.time",
+      "quantum": {
+        "numerator": 60,
+        "denominator": 1,
+        "unit": "second"
+      },
+      "frame_ticks": 1,
+      "ticks_per_second": 30,
+      "horizon": null
+    }
+  ],
+  "entity_states": [
+    {
+      "id": "public-test.idle",
+      "state": "idle",
+      "priority": 0,
+      "default": true
+    }
+  ],
+  "tile_spaces": [
+    {
+      "id": "public-test.tiles",
+      "width": 16,
+      "height": 16
+    }
+  ],
+  "entities": [
+    {
+      "id": "public-test.town",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "public-test.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        }
+      }
+    },
+    {
+      "id": "public-test.hidden",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "public-test.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        }
+      }
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "public-test.start",
+      "entries": [
+        "start.town",
+        "start.hidden"
+      ],
+      "includes": []
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "start.town",
+      "after": [],
+      "entity": "public-test.town",
+      "company": 1,
+      "placement": {
+        "space": "public-test.tiles",
+        "x": 12,
+        "y": 12
+      },
+      "home": null
+    },
+    {
+      "id": "start.hidden",
+      "after": [],
+      "entity": "public-test.hidden",
+      "company": 1,
+      "placement": {
+        "space": "public-test.tiles",
+        "x": 12,
+        "y": 10
+      },
+      "home": null
+    }
+  ],
+  "entity_public_visibility": [
+    {
+      "id": "public-test.town-rule",
+      "definition": "public-test.town"
+    }
+  ],
+  "knowledge_visibility_policies": [
+    {
+      "id": "public-test.sight",
+      "own_entities": true,
+      "unlisted_entities": false,
+      "unlisted_content": true,
+      "rules": [
+        "public-test.town-rule"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "public-test",
+      "game_mode": "public-test.mode",
+      "mode_overrides": {},
+      "time": "public-test.time",
+      "space": "public-test.tiles",
+      "modules": [
+        "sim.world-setup",
+        "sim.knowledge",
+        "sim.knowledge-visibility"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "public-test.start"
+        },
+        "sim.knowledge-visibility": {
+          "policy": "public-test.sight"
+        }
+      }
+    }
+  ]
+}

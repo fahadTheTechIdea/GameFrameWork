@@ -1,0 +1,9 @@
+{
+  "point_interval_regions": [
+    {"id":"policy.both","space":"field.points","minimum":0,"maximum":12},
+    {"id":"policy.site","space":"field.points","minimum":8,"maximum":12},
+    {"id":"policy.source","space":"field.points","minimum":0,"maximum":2}
+  ],
+  "work_policies": [{"id":"policy.initial","enabled":true,"priority":4,"allowed_roles":["inspect","haul"],"area":null,"interruptible":true,"emergency_eligible":true,"assignment_mode":"all","states":{"disabled":"blocked","standby":"blocked"}}],
+  "activities": [{"id":"policy.work","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"work","roles":["haul","inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"}}]}]
+}

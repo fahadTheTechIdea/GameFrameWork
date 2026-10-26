@@ -1,0 +1,35 @@
+{
+  "entity_states":[{"id":"proof.building","state":"building","priority":80}],
+  "construction_effects":[
+    {"id":"sim.construction.finish","operation":"finish"},
+    {"id":"sim.construction.demolish","operation":"demolish"}
+  ],
+  "entities":[
+    {"id":"proof.builder","kind":"structure","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"survey.storage","public":false,"initial_stock":{"steel":20}},
+      "worker":{"work_rate":1,"roles":["survey"],"states":{"working":"survey.working","loading":"survey.loading","stopped":"survey.stopped"}},
+      "work_policy":{"profile":"survey.enabled"}
+    }},
+    {"id":"proof.tower","kind":"structure","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"survey.storage","public":false,"initial_stock":{}},
+      "construction":{"site":"proof.tower-site","activity":"proof.shared-build","demolish":{"activity":"proof.shared-remove","salvage":{}},"states":{"site":"proof.building"}}
+    }},
+    {"id":"proof.tower-site","kind":"structure","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"survey.storage","public":false,"initial_stock":{}},
+      "site":{"target":"proof.tower"}
+    }},
+    {"id":"proof.shelter","kind":"structure","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"survey.storage","public":false,"initial_stock":{}},
+      "construction":{"site":"proof.shelter-site","activity":"proof.shared-build","states":{"site":"proof.building"}}
+    }},
+    {"id":"proof.shelter-site","kind":"structure","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"survey.storage","public":false,"initial_stock":{}},
+      "site":{"target":"proof.shelter"}
+    }}
+  ]
+}

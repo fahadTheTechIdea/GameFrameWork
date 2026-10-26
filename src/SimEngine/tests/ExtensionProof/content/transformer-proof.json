@@ -1,0 +1,13 @@
+{
+  "transformations": [
+    {"tool_consumption":{},"operating_ports":{},"tool_ports":{},"input_ports":{},"output_ports":{},"id":"pulse","mode":"batch","cancel_policy":"return_inputs","operating_inputs":[],"tools":{},"inputs":{},"outputs":{},"entity_output":"token", "output_home": "unassigned","duration":{"numerator":2,"denominator":1,"unit":"minute"}}
+  ],
+  "entities": [
+    {"id":"emitter","kind":"entity","components":{
+      "pulse_transformer":{"transformations":["pulse"],"states":{"working":"working","stopped":"blocked"},
+        "operation":{"id":"pulse","enabled":true,"target":1,"minimum":1,"maximum":2,"unit":"unit.work-rate"}}
+    }}
+  ],
+  "world_setup_profiles": [{"id":"transformer.start","entries":["start","emitter-start"],"includes":[]}],
+  "entity_setups": [{"id":"emitter-start","after":[],"entity":"emitter","company":0,"placement":null,"home":null}]
+}

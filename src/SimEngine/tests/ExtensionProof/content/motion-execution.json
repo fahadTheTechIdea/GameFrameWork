@@ -1,0 +1,5 @@
+{
+  "operation": {"id":"travel","enabled":true,"target":1,"minimum":0,"maximum":2,"unit":"unit.speed-multiplier"},
+  "conditions": [],
+  "states": {"disabled":"blocked"}
+}

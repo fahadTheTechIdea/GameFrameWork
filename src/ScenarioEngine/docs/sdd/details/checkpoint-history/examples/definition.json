@@ -1,0 +1,8 @@
+{
+  "id": "checkpoint_history",
+  "definitionVersion": "1.0.0",
+  "checkpointEverySteps": 1000,
+  "maxSegmentBytes": 16777216,
+  "retainedCheckpoints": 2,
+  "receiptPolicy": "bounded_epoch"
+}

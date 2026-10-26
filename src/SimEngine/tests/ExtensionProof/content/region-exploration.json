@@ -1,0 +1,5 @@
+{
+  "sensor_region_exploration_requirements": [
+    { "id": "exploration.sensor-region" }
+  ]
+}

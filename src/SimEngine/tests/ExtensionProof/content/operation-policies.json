@@ -1,0 +1,17 @@
+{
+  "entities": [
+    { "id": "policy-machine", "kind": "structure", "components": {"inventory_port":[{"id":"material.output"},{"id":"material.input"},{"id":"tool.input"},{"id":"operating.input"}],
+      "tile_presence": { "space": "colony.tiles", "width": 1, "height": 1, "blocks": true, "movable": false },
+      "storage": { "capacity_policy": "fixture.count.40", "public": false, "initial_stock": { "steel": 30 } },
+      "work_permit": { "enabled": true },
+      "equipment_condition": { "id": "integrity", "unit": "unit.condition", "maximum": 10, "initial": 10, "wear": null, "states": { "damaged": "stopped", "failed": "stopped" } },
+      "transformer": { "automatic_supply": false, "wip_capacity": "fixture.count.40", "transformations": ["equipment.batch"],
+        "states": { "working": "working", "stopped": "stopped" },
+        "operation": { "id": "process", "enabled": true, "target": 1, "minimum": 1, "maximum": 2, "unit": "unit.work-rate" } },
+      "operation_policy": { "id": "safety", "operation": "process", "condition": "integrity", "unit": "unit.condition",
+        "criticality": 20, "maintenance_threshold": 4, "shutdown_threshold": 4, "restart_threshold": 8, "restart_policy": "automatic" },
+      "recurring_activity": { "id": "maintenance", "plan":"activity:equipment.service","template":null, "target":"self","arguments":null, "reserve_use":"none","worker_nodes": [], "cadence":"submission","trigger":"maintenance","dispatch_mode":"compete","facility_policy": null, "enabled": false, "priority": 70, "group": "service",
+        "operation_policy": "safety", "interval": { "numerator": 5, "denominator": 1, "unit": "minute" }, "conditions": [] }
+    } }
+  ]
+}

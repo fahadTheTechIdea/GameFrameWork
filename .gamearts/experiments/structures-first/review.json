@@ -1,0 +1,124 @@
+{
+  "timestamp": "2026-10-25T19:16:51.417953+03:00",
+  "status": "visual-experiment-delivered; no-owner-approval",
+  "baseRevision": "b4c789d5db1ce87ac1d9687986799253acf584fe",
+  "workingTree": "dirty; existing work preserved",
+  "successfulImageCalls": 7,
+  "files": {
+    "house": {
+      "file": "structures/house.png",
+      "sha256": "62ebac984264280d4fc27e2baa5fca7dce9d841ee13f6f9f682f87bfaf7fe846",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "office": {
+      "file": "structures/office.png",
+      "sha256": "f5c265889871e4725b5ddd6a9237906a9d5e62606430f93ae54429aabed58711",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "school": {
+      "file": "structures/school.png",
+      "sha256": "29c4c95efb2cab039ce387067735329b09d0b4bd89be4018221c5f5a7fb5ec2c",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "warehouse": {
+      "file": "structures/warehouse.png",
+      "sha256": "7caca8c5f178a91309529c381d1ea54843a9a36176eb31eef5599dce217e4e49",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "factory": {
+      "file": "structures/factory.png",
+      "sha256": "a31482b8de84a216a67b741ede8b918ddabb91ab89d11a2d6d627164376a2c77",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "stadium": {
+      "file": "structures/stadium.png",
+      "sha256": "5d5d53100a89f8584b853f409e439f3798bf74e3b70fb3af42f9c3512258df12",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    "city": {
+      "file": "city-from-structures.png",
+      "sha256": "d30ebc331a6169f2b51771c2f02f2e82ea495c8b8394b8bf49a8f42a120ca8b6",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGB"
+    }
+  },
+  "referenceBoard": {
+    "pixelRoundtrip": [
+      {
+        "id": "house",
+        "rgbaPixelsPreserved": true,
+        "sourceHashVerified": true
+      },
+      {
+        "id": "office",
+        "rgbaPixelsPreserved": true,
+        "sourceHashVerified": true
+      },
+      {
+        "id": "school",
+        "rgbaPixelsPreserved": true,
+        "sourceHashVerified": true
+      },
+      {
+        "id": "warehouse",
+        "rgbaPixelsPreserved": true,
+        "sourceHashVerified": true
+      },
+      {
+        "id": "factory",
+        "rgbaPixelsPreserved": true,
+        "sourceHashVerified": true
+      },
+      {
+        "id": "stadium",
+        "rgbaPixelsPreserved": true,
+        "sourceHashVerified": true
+      }
+    ],
+    "productionMaskAcceptance": false,
+    "note": "Canonical builder near-key exception used only to present all six unmodified source images to a tool limited to five reference paths."
+  },
+  "observedVisualOutcome": [
+    "House roof terraces, cream/blue office frames, L-shaped school, flat-roof warehouse, sawtooth industrial roof with striped chimney pair and white-roof stadium are recognisable in the city.",
+    "Repeated residential and civic architecture is more consistent than the earlier city-first/extracted-sprite trial. This is author visual judgement, not owner approval or a pixel-fidelity metric.",
+    "Stadium northwest, park central, school southwest of park, factory southeast and warehouse beside industry remain recognisable.",
+    "Building details, counts, roof-bay counts, road geometry and relative scale are redrawn by the model; exact preservation was not established.",
+    "Source structures remain unapproved drafts with masking/component-cleanup/native-grid issues; no production atlas claim."
+  ],
+  "notRun": [
+    "Owner visual acceptance",
+    "Exact structure identity/count/scale/geometry qualification",
+    "C# placement or catalog/world replacement using new concept",
+    "Production asset lifecycle/masks/components/atlases",
+    "Godot import/runtime/fidelity"
+  ],
+  "sourceCityPreserved": true,
+  "existingApprovalsPreserved": true
+}

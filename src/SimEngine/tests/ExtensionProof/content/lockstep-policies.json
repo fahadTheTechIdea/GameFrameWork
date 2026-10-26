@@ -1,0 +1,7 @@
+{
+  "lockstep_policies": [
+    { "id": "net.unlimited", "maximum_ahead": null, "maximum_commands_per_frame": null },
+    { "id": "net.large", "maximum_ahead": 2048, "maximum_commands_per_frame": 400 },
+    { "id": "net.small", "maximum_ahead": 4, "maximum_commands_per_frame": 4 }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "recovery_destination_policies": [
+    {"id":"return.nearest","mode":"nearest_available"},
+    {"id":"return.demand-first","mode":"demand_first"},
+    {"id":"return.demand-only","mode":"demand_only"}
+  ],
+  "logistics_recovery_profiles": [
+    {"id":"return.nearest.profile","evacuation":{"enabled":false,"priority":200,"attempts_per_pass":1,"reroute_blockers":[],"destination_policy":"return.nearest"},
+      "cargo_return":{"enabled":true,"priority":200,"attempts_per_pass":1,"reroute_blockers":["blocker.unreachable","core.not-found"],"destination_policy":"return.nearest"}},
+    {"id":"return.demand-first.profile","evacuation":{"enabled":false,"priority":200,"attempts_per_pass":1,"reroute_blockers":[],"destination_policy":"return.demand-first"},
+      "cargo_return":{"enabled":true,"priority":200,"attempts_per_pass":1,"reroute_blockers":["blocker.unreachable","core.not-found"],"destination_policy":"return.demand-first"}},
+    {"id":"return.demand-only.profile","evacuation":{"enabled":false,"priority":200,"attempts_per_pass":1,"reroute_blockers":[],"destination_policy":"return.demand-only"},
+      "cargo_return":{"enabled":true,"priority":200,"attempts_per_pass":1,"reroute_blockers":["blocker.unreachable","core.not-found"],"destination_policy":"return.demand-only"}},
+    {"id":"return.custom.profile","evacuation":{"enabled":false,"priority":200,"attempts_per_pass":1,"reroute_blockers":[],"destination_policy":"return.priority-required"},
+      "cargo_return":{"enabled":true,"priority":200,"attempts_per_pass":1,"reroute_blockers":["blocker.unreachable","core.not-found"],"destination_policy":"return.priority-required"}}
+  ]
+}

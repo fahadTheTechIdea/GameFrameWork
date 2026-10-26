@@ -1,0 +1,50 @@
+{
+  "world_setup_profiles": [
+    {
+      "id": "startup.alpha",
+      "entries": [
+        "startup.machine.start"
+      ],
+      "includes": [
+        "startup.shared"
+      ]
+    },
+    {
+      "id": "startup.beta",
+      "entries": [
+        "startup.destination.start"
+      ],
+      "includes": [
+        "startup.shared"
+      ]
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "startup.machine.start",
+      "after": [
+        "startup.source.start"
+      ],
+      "entity": "startup.machine",
+      "company": 0,
+      "placement": {
+        "space": "startup.points",
+        "position": 4
+      },
+      "home": "startup.source.start"
+    },
+    {
+      "id": "startup.destination.start",
+      "after": [
+        "startup.source.start"
+      ],
+      "entity": "startup.destination",
+      "company": 0,
+      "placement": {
+        "space": "startup.points",
+        "position": 22
+      },
+      "home": null
+    }
+  ]
+}

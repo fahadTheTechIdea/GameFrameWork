@@ -1,0 +1,5 @@
+PASS four-frontage orientation 0: 176 parcels, 8 courtyards, 8 reserved passages.
+PASS four-frontage orientation 1: 184 parcels, 8 courtyards, 8 reserved passages.
+PASS four-frontage orientation 2: 176 parcels, 8 courtyards, 8 reserved passages.
+PASS four-frontage orientation 3: 184 parcels, 8 courtyards, 8 reserved passages.
+PASS: four-sided frontages, bounded depths, complete land allocation, reserved swept-width interior access, recursive rotations, corrupt/missing geometry rejection and persistence.

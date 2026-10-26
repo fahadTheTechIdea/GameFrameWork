@@ -1,0 +1,14 @@
+{
+  "independent_units": [
+    {"id":"unit.capacity.count","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true},
+    {"id":"unit.capacity.mass","dimension":"mass","scale":{"numerator":1,"denominator":1},"discrete":false},
+    {"id":"unit.capacity.volume","dimension":"volume","scale":{"numerator":1,"denominator":1},"discrete":false},
+    {"id":"unit.supply","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true},
+    {"id":"unit.contract.g","dimension":"mass","scale":{"numerator":2,"denominator":2000},"discrete":false},
+    {"id":"unit.contract.third","dimension":"mass","scale":{"numerator":3,"denominator":1},"discrete":false},
+    {"id":"unit.contract.pair","dimension":"count","scale":{"numerator":2,"denominator":1},"discrete":true},
+    {"id":"unit.contract.huge","dimension":"mass","scale":{"numerator":9223372036854775807,"denominator":1},"discrete":false},
+    {"id":"unit.contract.unused","dimension":"mass","scale":{"numerator":1,"denominator":1},"discrete":false}
+  ],
+  "invalid_units": []
+}

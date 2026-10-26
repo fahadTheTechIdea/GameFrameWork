@@ -1,0 +1,8 @@
+{
+  "point_interval_regions":[{"id":"region.travel","space":"field.points","minimum":0,"maximum":20}],
+  "work_policies":[{"id":"region.machine","enabled":true,"priority":0,"allowed_roles":["inspect"],"area":"region.travel","interruptible":true,"emergency_eligible":true,"assignment_mode":"all","states":{"disabled":"blocked","standby":"blocked"}}],
+  "target_region_requirements":[{"id":"region.inside","region":"binding.region"}],
+  "activities":[{"id":"region.inspect","player_orderable":true,"priority":70,"automatic_supply":false,
+    "nodes":[{"id":"inspect","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"region.inside"}]}],
+  "layer_region_knowledge_visibility":[{"id":"region.discovery","definition":"point.terrain","regions":[{"region":"binding.region","mode":"all","facts":["binding.reset-known"]}]}]
+}

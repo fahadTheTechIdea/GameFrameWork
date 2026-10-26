@@ -1,0 +1,28 @@
+{
+  "knowledge_facts": [
+    {"id":"graph.node-earned","fresh_for":null,"value":{"stage":"node"}},
+    {"id":"graph.completed","fresh_for":null,"value":{"stage":"complete"}}
+  ],
+  "knowledge_effects": [
+    {"id":"graph.node.record","subject":"graph.node-earned"},
+    {"id":"graph.final.record","subject":"graph.completed"}
+  ],
+  "prior_activity_requirements": [
+    {"id":"graph.prior","plan":"activity:recipe.discover","scope":"target","blocker":"graph.prior-incomplete"},
+    {"id":"graph.prior-visible","plan":"activity:recipe.discover","scope":"target","blocker":"graph.prior-incomplete"}
+  ],
+  "work_requirement_groups": [
+    {"id":"graph.alternatives","mode":"any","entries":[{"id":"a","requirement":"graph.prior-visible"},{"id":"b","requirement":"graph.prior"}]},
+    {"id":"graph.requirements","mode":"all","entries":[{"id":"choice","requirement":"graph.alternatives"}]}
+  ],
+  "activities": [{"id":"graph.perform","player_orderable":true,"priority":80,"automatic_supply":false,"on_complete":"graph.final.record","nodes":[
+    {"id":"prepare","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":2,"denominator":1,"unit":"minute"},"requirement":"graph.requirements","effect":"graph.node.record"},
+    {"id":"perform","after":["prepare"],"executor":"work.staffed","roles":["inspect"],"duration":{"numerator":8,"denominator":1,"unit":"minute"},"requirement":"graph.requirements"}
+  ]}],
+  "knowledge_forgetting_policies": [{"id":"graph.forget","subjects":[{"provider":"sim.knowledge.facts","subject":"recipe.discovered"}],"companies":[0]}],
+  "activity_requirement_knowledge_visibility": [{"id":"graph.hide-requirement","definition":"graph.prior","mode":"all","facts":["recipe.discovered"]}],
+  "activity_effect_knowledge_visibility": [
+    {"id":"graph.hide-node","definition":"graph.node.record","mode":"all","facts":["recipe.discovered"]},
+    {"id":"graph.hide-final","definition":"graph.final.record","mode":"all","facts":["recipe.discovered"]}
+  ]
+}

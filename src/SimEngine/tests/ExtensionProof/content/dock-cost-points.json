@@ -1,0 +1,52 @@
+{
+  "entities": [
+    {
+      "id": "destination",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 10
+        },
+        "point_stock": {
+          "resource": "supply",
+          "capacity_policy": "fixture.count.40",
+          "initial": 0
+        },
+        "point_dock": {
+          "work_roles": [],
+          "resources": [
+            "supply"
+          ],
+          "slots": [
+            {
+              "id": "a.far-bay",
+              "kind": "service",
+              "offset": 4
+            },
+            {
+              "id": "z.near-bay",
+              "kind": "service",
+              "offset": 1
+            },
+            {
+              "id": "waiting",
+              "kind": "waiting",
+              "offset": -5
+            },
+            {
+              "id": "a.far-exit",
+              "kind": "departure",
+              "offset": 7
+            },
+            {
+              "id": "z.near-exit",
+              "kind": "departure",
+              "offset": 3
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

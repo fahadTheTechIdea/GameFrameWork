@@ -1,0 +1,15 @@
+{
+  "rectangular_tile_regions": [{"id":"policy.field","space":"recovery.tiles","x":18,"y":18,"width":10,"height":10}],
+  "work_policies": [{"id":"policy.tile","enabled":true,"priority":4,"allowed_roles":["crane","haul"],"area":null,"interruptible":true,"emergency_eligible":true,"assignment_mode":"all","states":{"disabled":"stopped","standby":"stopped"}}],
+  "activities": [
+    {"id":"policy.tile-work","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"work","roles":["crane"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"policy.inputs"}]},
+    {"id":"policy.response","automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"work","roles":["crane"],"duration":{"numerator":1,"denominator":5,"unit":"hour"}}],"on_complete":"policy.restart"}
+  ],
+  "target_resource_requirements": [{"port":null,"id":"policy.inputs","use":"consume","quantities":{"steel":2}}],
+  "response_effects": [{"id":"policy.restart","bound_response":true}],
+  "entities": [
+    {"id":"policy.target","kind":"structure","components":{"tile_presence":{"space":"recovery.tiles","width":2,"height":2,"blocks":true,"movable":false},"storage":{"capacity_policy":"recovery.site","public":false,"initial_stock":{"steel":10}},"activity_record":{},"contract_incident":{"id":"damage","kind":"proof.failure","response":"policy.response"}}},
+    {"id":"policy.machine","kind":"vehicle","components":{"tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":true},"mover":{"classes": ["land"], "class":"land","speed":20,"states":{"moving":"moving","stopped":"stopped"}},"worker":{"roles":["crane","haul"],"work_rate":1,"states":{"working":"working","loading":"loading","stopped":"stopped"}},"work_policy":{"profile":"policy.tile"}}},
+    {"id":"policy.external","kind":"vehicle","components":{"tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":true},"mover":{"classes": ["land"], "class":"land","speed":20,"states":{"moving":"moving","stopped":"stopped"}},"contract_worker":{"role":"crane","rate":1,"states":{"working":"working","stopped":"stopped"}},"work_policy":{"profile":"policy.tile"}}}
+  ]
+}

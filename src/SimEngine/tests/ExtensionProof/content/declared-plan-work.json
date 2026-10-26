@@ -1,0 +1,7 @@
+{
+  "target_resource_requirements":[{"port":null,"id":"declared.tool","use":"hold","quantities":{"steel":1}}],
+  "activities":[{"id":"declared.profile","player_orderable":true,"automatic_supply":false,"priority":70,"nodes":[
+    {"id":"install","executor":"work.staffed","roles":["survey"],"duration":{"numerator":4,"denominator":1,"unit":"minute"},"after":["prepare"],"requirement":"survey.inputs"},
+    {"id":"prepare","executor":"work.staffed","roles":["survey"],"duration":{"numerator":4,"denominator":1,"unit":"minute"},"requirement":"declared.tool"}
+  ]}]
+}

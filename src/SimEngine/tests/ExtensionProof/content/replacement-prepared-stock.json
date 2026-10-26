@@ -1,0 +1,11 @@
+{
+  "entities": [
+    { "id": "replacement.atomic", "kind": "entity", "components": {
+      "atomic_inventory": {
+        "capacity_policy": "replacement.capacity", "public": false, "evacuate": false,
+        "initial_stock": { "alpha": 1, "beta": 1 }, "conversion_behavior": "healthy",
+        "transfer_receive_fault": "none"
+      }
+    } }
+  ]
+}

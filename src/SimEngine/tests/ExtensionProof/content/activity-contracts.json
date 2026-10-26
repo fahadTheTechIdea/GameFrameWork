@@ -1,0 +1,29 @@
+{
+  "target_resource_requirements": [
+    {"id":"contract.inspection-materials","port":null,"use":"consume","quantities":{"supply":2}},
+    {"id":"contract.inspection-tools","port":null,"use":"hold","quantities":{"supply":2}}
+  ],
+  "work_requirement_groups": [{"id":"contract.inspection-inputs","mode":"all","entries":[
+    {"id":"materials","requirement":"contract.inspection-materials"},
+    {"id":"tools","requirement":"contract.inspection-tools"}
+  ]}],
+  "independent_activities": [
+    {"id":"contract.inspection","player_orderable":true,"priority":60,"automatic_supply":false,"target_tags":[],"nodes":[
+      {"id":"prepare","executor":"work.timed","duration":{"numerator":1,"denominator":20,"unit":"hour"}},
+      {"id":"inspect","after":["prepare"],"executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"contract.inspection-inputs"},
+      {"id":"calibrate","after":["prepare"],"executor":"work.timed","duration":{"numerator":3,"denominator":10,"unit":"hour"}},
+      {"id":"finish","after":["inspect","calibrate"],"executor":"work.timed","duration":{"numerator":1,"denominator":20,"unit":"hour"}}
+    ]},
+    {"id":"pressure.response","player_orderable":false,"priority":90,"automatic_supply":false,"target_tags":[],"on_complete":"pressure.resolve","nodes":[
+      {"id":"detect","executor":"work.timed","duration":{"numerator":1,"denominator":20,"unit":"hour"}},
+      {"id":"prepare","after":["detect"],"executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"}},
+      {"id":"repair","after":["prepare"],"executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"pressure.materials"},
+      {"id":"verify","after":["prepare"],"executor":"work.timed","duration":{"numerator":1,"denominator":10,"unit":"hour"}},
+      {"id":"restart","after":["repair","verify"],"executor":"work.timed","duration":{"numerator":1,"denominator":20,"unit":"hour"}}
+    ]},
+    {"id":"point.tower.build-work","player_orderable":false,"priority":50,"automatic_supply":true,"target_tags":[],"nodes":[
+      {"id":"prepare","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":20,"unit":"hour"}},
+      {"id":"build","after":["prepare"],"executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"point.build-inputs"}
+    ]}
+  ]
+}

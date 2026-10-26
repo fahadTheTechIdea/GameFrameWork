@@ -1,0 +1,8 @@
+{
+  "plan_templates": [
+    {"id":"point.pair","space":"field.points","entries":[
+      {"id":"first","definition":"build:point.tower","arguments":{"placement":{"space":"field.points","offset":0}},"priority":70,"paused":true,"after":[]},
+      {"id":"second","definition":"build:point.tower","arguments":{"placement":{"space":"field.points","offset":4}},"priority":60,"paused":true,"after":[]}
+    ]}
+  ]
+}

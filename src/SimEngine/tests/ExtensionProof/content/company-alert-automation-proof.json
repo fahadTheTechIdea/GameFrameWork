@@ -1,0 +1,7 @@
+{
+  "proof_redirected_company_actions": [
+    {"id":"proof.redirected-alert","command":"sim.configure-company-alert","owner":"sim.company-alerts",
+     "enabled":{"profile":"alerts.response","level":"emergency","worker_reserves":[]},
+     "disabled":{"profile":"alerts.response","level":"normal","worker_reserves":[]}}
+  ]
+}

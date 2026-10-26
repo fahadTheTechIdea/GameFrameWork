@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "modules": [
+    {
+      "id": "sim.inventory",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.resource-flows",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "flows.json"
+      ]
+    },
+    {
+      "id": "proof.pools",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.resource-flows",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "endpoints.json"
+      ]
+    },
+    {
+      "id": "sim.world-setup",
+      "version": "1.0.0",
+      "documents": [
+        "endpoint-startup.json"
+      ]
+    }
+  ]
+}

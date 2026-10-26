@@ -1,0 +1,22 @@
+{
+  "target_resource_requirements": [
+    {"port":null,"id":"prepared.inputs","use":"consume","quantities":{"supply":4}},
+    {"port":null,"id":"unified.tool","use":"hold","quantities":{"supply":4}}
+  ],
+  "activities": [
+    {"id":"prepared.response","priority":10,"automatic_supply":false,"nodes":[
+      {"id":"a.timer","executor":"work.timed","roles":[],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"prepared.inputs"},
+      {"id":"b.inspect","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"prepared.inputs"},
+      {"id":"restart","executor":"work.timed","roles":[],"duration":{"numerator":1,"denominator":1,"unit":"minute"},"after":["a.timer","b.inspect"]}
+    ],"on_complete":"preempt.restart"},
+    {"id":"unified.timer","player_orderable":true,"automatic_supply":false,"nodes":[
+      {"id":"timer","executor":"work.timed","roles":[],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"unified.tool"}
+    ]},
+    {"id":"unified.staffed","player_orderable":true,"automatic_supply":false,"nodes":[
+      {"id":"staffed","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"unified.tool"}
+    ]}
+  ],
+  "incident_workflows":[{"id":"prepared.workflow","kind":"proof.failure","response":"prepared.response","phases":[
+    {"id":"stabilize","nodes":["a.timer"]},{"id":"repair","nodes":["b.inspect"]},{"id":"restart","nodes":["restart"]}
+  ]}]
+}

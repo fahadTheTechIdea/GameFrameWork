@@ -1,0 +1,35 @@
+{
+  "layered_tile_navigation": [
+    {
+      "id": "land",
+      "space": "colony.tiles",
+      "base_cost": 10,
+      "rules": [
+        {
+          "id": "land.water",
+          "priority": 100,
+          "cost": 0,
+          "conditions": [
+            "colony.condition.wet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lane",
+      "space": "colony.tiles",
+      "base_cost": 0,
+      "rules": [
+        {
+          "id": "lane.dry",
+          "priority": 100,
+          "cost": 10,
+          "conditions": [
+            "colony.condition.lane",
+            "colony.condition.dry"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "SchemaVersion": 1,
+  "Id": "dungeon",
+  "GameProfile": "dungeon-game",
+  "CatalogId": "dungeon-catalog",
+  "RootArchetypeId": "root",
+  "Scale": "dungeon",
+  "Coverage": "CompleteDeclaredScope",
+  "RemainingScopes": [],
+  "Parameters": {
+    "floors": 2,
+    "rooms": 6
+  },
+  "Space": {
+    "Axes": [],
+    "Unit": "none"
+  },
+  "Origin": null,
+  "RequireAllPositions": false,
+  "MaximumNodes": 10000,
+  "MaximumConnections": 50000,
+  "AdditionalConnections": [
+    {
+      "Id": "stairs-room-link",
+      "Kind": "stairs",
+      "FromId": "dungeon/floors-0/rooms-5",
+      "ToId": "dungeon/floors-1/rooms-0",
+      "Bidirectional": true,
+      "Properties": null
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "propulsion",
+  "inputs": [
+    {
+      "resource": "supply",
+      "quantity": 1,
+      "period": {
+        "numerator": 2,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    }
+  ],
+  "states": {
+    "disabled": "blocked"
+  },
+  "phase": "movement"
+}

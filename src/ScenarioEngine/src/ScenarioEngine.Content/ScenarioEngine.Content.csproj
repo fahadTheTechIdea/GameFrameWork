@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk"><ItemGroup>
+<ProjectReference Include="../ScenarioEngine.Contracts/ScenarioEngine.Contracts.csproj" />
+<PackageReference Include="JsonSchema.Net" />
+<EmbeddedResource Include="../../docs/sdd/contracts/content.schema.json" Link="Schemas/content.schema.json" />
+</ItemGroup></Project>

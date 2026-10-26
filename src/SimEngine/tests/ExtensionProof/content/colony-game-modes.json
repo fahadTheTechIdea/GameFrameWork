@@ -1,0 +1,19 @@
+{
+  "game_modes": [
+    {
+      "id": "colony.survival",
+      "name": "Resource-only colony",
+      "properties": {
+        "business.values.enabled": false,
+        "business.money.enabled": false,
+        "business.production_income.enabled": false,
+        "business.construction_costs.enabled": false,
+        "business.manufacturing_costs.enabled": false,
+        "business.running_costs.enabled": false,
+        "business.trading.enabled": false,
+        "business.tycoon.enabled": false
+      }
+    },
+    { "id": "colony.resource-defaults", "name": "Authored resource defaults", "properties": {} }
+  ]
+}

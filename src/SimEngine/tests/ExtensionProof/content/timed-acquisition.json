@@ -1,0 +1,23 @@
+{
+  "independent_timed_executors":[{"id":"timed.timer","rate":1}],
+  "independent_staffed_executors":[{"id":"timed.staffed","travel":"sim.work.travel","work":"sim.work.productive","departure":"sim.work.departure"}],
+  "independent_target_resources":[
+    {"id":"timed.large-material","port":null,"use":"consume","quantities":{"supply":2}},
+    {"id":"timed.large-tool","port":null,"use":"hold","quantities":{"supply":2}},
+    {"id":"timed.small-material","port":null,"use":"consume","quantities":{"supply":1}},
+    {"id":"timed.small-tool","port":null,"use":"hold","quantities":{"supply":1}}
+  ],
+  "independent_requirement_groups":[
+    {"id":"timed.large","mode":"all","entries":[{"id":"material","requirement":"timed.large-material"},{"id":"tool","requirement":"timed.large-tool"}]},
+    {"id":"timed.small","mode":"all","entries":[{"id":"material","requirement":"timed.small-material"},{"id":"tool","requirement":"timed.small-tool"}]},
+    {"id":"timed.choice","mode":"any","entries":[{"id":"a.preferred","requirement":"timed.large"},{"id":"z.feasible","requirement":"timed.small"}]}
+  ],
+  "activities":[
+    {"id":"timed.parallel","player_orderable":true,"automatic_supply":false,"nodes":[
+      {"id":"alpha","executor":"timed.timer","duration":{"numerator":12,"denominator":1,"unit":"minute"},"requirement":"timed.choice"},
+      {"id":"beta","executor":"timed.timer","duration":{"numerator":12,"denominator":1,"unit":"minute"},"requirement":"timed.choice"},
+      {"id":"join","after":["alpha","beta"],"executor":"timed.timer","duration":{"numerator":2,"denominator":1,"unit":"minute"}}
+    ]},
+    {"id":"timed.single","player_orderable":true,"automatic_supply":false,"nodes":[{"id":"work","executor":"timed.timer","duration":{"numerator":4,"denominator":1,"unit":"minute"},"requirement":"timed.choice"}]}
+  ]
+}

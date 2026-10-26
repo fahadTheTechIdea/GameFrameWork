@@ -1,0 +1,80 @@
+{
+  "entities": [
+    {
+      "id": "fleet.trip-public",
+      "kind": "vehicle",
+      "components": {
+        "tile_presence": {
+          "space": "survey.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "mover": {
+          "classes": [
+            "survey.route",
+            "terrain.route"
+          ],
+          "class": "survey.route",
+          "speed": 30,
+          "states": {
+            "moving": "survey.moving",
+            "stopped": "survey.stopped"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "survey.working",
+            "loading": "survey.loading",
+            "stopped": "survey.stopped"
+          }
+        },
+        "work_policy": {
+          "profile": "fleet.enabled"
+        },
+        "storage": {
+          "capacity_policy": "fleet.trip-cargo",
+          "public": false,
+          "initial_stock": {
+            "fleet.fuel": 30
+          }
+        },
+        "transporter": {
+          "handling": "fleet.handling"
+        },
+        "proof_fleet_trip": {
+          "profile": "fleet.trip-unrestricted",
+          "refuse_profile": "fleet.trip-veto",
+          "fault": 0
+        },
+        "operating_inputs": {
+          "id": "propulsion",
+          "phase": "movement",
+          "inputs": [
+            {
+              "resource": "fleet.fuel",
+              "quantity": 1,
+              "period": {
+                "numerator": 10,
+                "denominator": 1,
+                "unit": "minute"
+              }
+            }
+          ],
+          "states": {
+            "disabled": "survey.stopped"
+          }
+        },
+        "proof_fleet_outlet": {
+          "profile": "fleet.outlet-public",
+          "fault": 0
+        }
+      }
+    }
+  ]
+}

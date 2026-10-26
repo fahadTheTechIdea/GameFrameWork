@@ -1,0 +1,347 @@
+{
+  "units": [
+    {
+      "id": "unit.fuel",
+      "dimension": "count",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    }
+  ],
+  "resources": [
+    {
+      "id": "fuel",
+      "unit": "unit.fuel",
+      "category": "energy",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "unit.capacity.count": 1
+      }
+    }
+  ],
+  "handling_profiles": [
+    {
+      "id": "reserve.handling",
+      "resources": [
+        {
+          "resource": "supply",
+          "quantity": 1,
+          "loading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "unloading": {
+            "numerator": 2,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        },
+        {
+          "resource": "fuel",
+          "quantity": 1,
+          "loading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "unloading": {
+            "numerator": 2,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    }
+  ],
+  "work_policies": [
+    {
+      "id": "reserve.truck.work",
+      "enabled": true,
+      "priority": 20,
+      "allowed_roles": [
+        "haul",
+        "inspect"
+      ],
+      "area": null,
+      "interruptible": true,
+      "emergency_eligible": true,
+      "assignment_mode": "all",
+      "states": {
+        "disabled": "blocked",
+        "standby": "blocked"
+      }
+    },
+    {
+      "id": "reserve.courier.work",
+      "enabled": true,
+      "priority": 0,
+      "allowed_roles": [
+        "haul"
+      ],
+      "area": null,
+      "interruptible": true,
+      "emergency_eligible": true,
+      "assignment_mode": "all",
+      "states": {
+        "disabled": "blocked",
+        "standby": "blocked"
+      }
+    }
+  ],
+  "logistics_policies": [
+    {
+      "id": "reserve.truck.policy",
+      "stock": {
+        "fuel": {
+          "enabled": true,
+          "minimum": 3,
+          "reserve_access": "protected",
+          "desired": 4,
+          "maximum": 4,
+          "priority": 200
+        }
+      },
+      "outlet": {
+        "enabled": true,
+        "reserve": {
+          "fuel": 4
+        },
+        "reserve_access": "protected",
+        "export_priority": 0,
+        "allowed_destinations": null
+      },
+      "states": {
+        "disabled": "blocked"
+      }
+    },
+    {
+      "id": "reserve.courier.policy",
+      "stock": {
+        "fuel": {
+          "enabled": true,
+          "minimum": 0,
+          "reserve_access": "protected",
+          "desired": 30,
+          "maximum": 30,
+          "priority": 200
+        }
+      },
+      "outlet": {
+        "enabled": true,
+        "reserve": {
+          "fuel": 30
+        },
+        "reserve_access": "protected",
+        "export_priority": 0,
+        "allowed_destinations": null
+      },
+      "states": {
+        "disabled": "blocked"
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "reserve.source",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 0
+        },
+        "storage": {
+          "capacity_policy": "fixture.count.60",
+          "public": true,
+          "initial_stock": {
+            "fuel": 50
+          }
+        }
+      }
+    },
+    {
+      "id": "reserve.truck",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 0
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "roles": [
+            "haul",
+            "inspect"
+          ],
+          "work_rate": 1,
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "work_policy": {
+          "profile": "reserve.truck.work"
+        },
+        "storage": {
+          "capacity_policy": "fixture.count.8",
+          "public": false,
+          "initial_stock": {
+            "fuel": 4
+          }
+        },
+        "transporter": {
+          "handling": "reserve.handling"
+        },
+        "logistics_policy": {"profiles":[{"port":null,"profile":"reserve.truck.policy"}]},
+        "motion_execution": {
+          "operation": {
+            "id": "travel",
+            "enabled": true,
+            "target": 1,
+            "minimum": 0,
+            "maximum": 2,
+            "unit": "unit.speed-multiplier"
+          },
+          "conditions": [],
+          "states": {
+            "disabled": "blocked"
+          }
+        },
+        "operating_inputs": {
+          "id": "propulsion",
+          "inputs": [
+            {
+              "resource": "fuel",
+              "quantity": 1,
+              "period": {
+                "numerator": 2,
+                "denominator": 1,
+                "unit": "minute"
+              }
+            }
+          ],
+          "states": {
+            "disabled": "blocked"
+          },
+          "phase": "movement"
+        }
+      }
+    },
+    {
+      "id": "reserve.courier",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 0
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "roles": [
+            "haul"
+          ],
+          "work_rate": 1,
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "work_policy": {
+          "profile": "reserve.courier.work"
+        },
+        "storage": {
+          "capacity_policy": "fixture.count.40",
+          "public": false,
+          "initial_stock": {
+            "fuel": 30
+          }
+        },
+        "transporter": {
+          "handling": "reserve.handling"
+        },
+        "logistics_policy": {"profiles":[{"port":null,"profile":"reserve.courier.policy"}]},
+        "operating_inputs": {
+          "id": "propulsion",
+          "inputs": [
+            {
+              "resource": "fuel",
+              "quantity": 1,
+              "period": {
+                "numerator": 2,
+                "denominator": 1,
+                "unit": "minute"
+              }
+            }
+          ],
+          "states": {
+            "disabled": "blocked"
+          },
+          "phase": "movement"
+        }
+      }
+    }
+  ],
+  "entity_setups": [
+  {
+    "id": "reserve.source",
+    "after": [],
+    "entity": "reserve.source",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  },
+  {
+    "id": "reserve.truck",
+    "after": [],
+    "entity": "reserve.truck",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  },
+  {
+    "id": "reserve.courier",
+    "after": [],
+    "entity": "reserve.courier",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "powered-hauling.start",
+    "entries": [
+      "reserve.source",
+      "reserve.truck",
+      "reserve.courier"
+    ],
+    "includes": []
+  }
+]
+}

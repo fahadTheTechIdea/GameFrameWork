@@ -1,0 +1,220 @@
+{
+  "capacity_policies": [
+    {
+      "id": "block.return-feed",
+      "limits": {
+        "space.kg": 13
+      }
+    }
+  ],
+  "transformations": [
+    {
+      "id": "block.flow",
+      "mode": "continuous",
+      "cancel_policy": "stop",
+      "category": "manufacturing",
+      "inputs": [
+        {
+          "resource": "space.planetx.ore",
+          "quantity": 2,
+          "period": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "space.alloy",
+          "quantity": 1,
+          "period": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "space.slag",
+          "quantity": 1,
+          "period": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ],
+      "tools": {
+        "space.crucible": 1
+      },
+      "tool_consumption": [],
+      "operating_inputs": [
+        {
+          "resource": "block.fuel",
+          "quantity": 1,
+          "period": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ],
+      "input_ports": {
+        "space.planetx.ore": "space.feed"
+      },
+      "tool_ports": {
+        "space.crucible": "space.tool"
+      },
+      "output_ports": {
+        "space.alloy": "space.product",
+        "space.slag": "space.waste"
+      },
+      "operating_ports": {
+        "block.fuel": "block.fuel"
+      },
+      "duration": null
+    }
+  ],
+  "entities": [
+    {
+      "id": "block.return-factory",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "block.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "block.return-feed",
+          "public": false,
+          "initial_stock": {}
+        },
+        "inventory_port": [
+          {
+            "id": "space.feed"
+          },
+          {
+            "id": "space.tool"
+          },
+          {
+            "id": "block.fuel"
+          }
+        ],
+        "pool_port": [
+          {
+            "id": "space.product",
+            "pool": "block.product",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "space.waste",
+            "pool": "block.waste",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          }
+        ],
+        "transformer": {
+          "automatic_supply": false,
+          "wip_capacity": "space.mass-wip",
+          "transformations": [
+            "block.smelt",
+            "block.flow"
+          ],
+          "states": {
+            "working": "space.working",
+            "stopped": "space.stopped"
+          },
+          "operation": {
+            "id": "space.operation",
+            "enabled": true,
+            "target": 1,
+            "minimum": 1,
+            "maximum": 1,
+            "unit": "unit.work-rate"
+          }
+        },
+        "staffed_transformation_gate": {
+          "id": "block.staffing",
+          "mode": "process",
+          "processes": [
+            "space.operation"
+          ],
+          "orders_per_update": 1,
+          "transformations": [
+            "block.smelt",
+            "block.flow"
+          ],
+          "requirements": [
+            {
+              "id": "operator",
+              "activity": "block.staff",
+              "node": "operator",
+              "roles": [
+                "block.operator"
+              ],
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "block.return-factory",
+      "after": [],
+      "entity": "block.return-factory",
+      "company": 0,
+      "placement": {
+        "space": "block.tiles",
+        "x": 12,
+        "y": 8
+      },
+      "home": null
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "block.return-start",
+      "entries": [
+        "block.source",
+        "block.return-factory",
+        "block.receiver",
+        "block.carrier",
+        "block.operator"
+      ],
+      "includes": []
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "production-cancellation-return",
+      "game_mode": "space.survival",
+      "mode_overrides": {},
+      "time": "space.seconds",
+      "space": "block.tiles",
+      "modules": [
+        "sim.world-setup",
+        "sim.transformations",
+        "sim.logistics",
+        "points",
+        "sim.tile-navigation",
+        "proof.output-ports"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "block.return-start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        }
+      }
+    }
+  ]
+}

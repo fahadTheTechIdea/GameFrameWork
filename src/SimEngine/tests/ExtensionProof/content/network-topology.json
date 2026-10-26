@@ -1,0 +1,181 @@
+{
+  "tile_line_placement_policies": [{"id":"network.placement","space":"recovery.tiles","blocker":"line.placement-blocked","footprint":{"match":"all","conditions":[]}}],
+  "activities": [
+    {
+      "id": "network.pipe.segment-work",
+      "player_orderable": false,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "install",
+          "executor": "work.staffed",
+          "roles": [
+            "crane"
+          ],
+          "duration": {
+            "numerator": 360,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "effect": "sim.line.segment",
+          "requirement": "proof.network-topology.network.pipe.inputs"
+        }
+      ]
+    }
+  ],
+  "capacity_network_demands": [
+    {
+      "id": "proof.network-topology.capacity-demand"
+    }
+  ],
+  "resource_transfer_network_solvers": [
+    {
+      "id": "proof.network-topology.transfer"
+    }
+  ],
+  "network_round_robin_policies": [
+    {
+      "id": "proof.network-topology.round-robin"
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "network.shared",
+      "limits": {
+        "unit.storage": 10
+      }
+    },
+    {
+      "id": "network.tight",
+      "limits": {
+        "unit.storage": 2
+      }
+    }
+  ],
+  "spatial_layers": [
+    {
+      "id": "network.line",
+      "space": "recovery.tiles",
+      "type": "network.topology",
+      "value_type": "byte",
+      "visibility": "public",
+      "unit": "unit.classification"
+    },
+    {
+      "id": "network.owner",
+      "space": "recovery.tiles",
+      "type": "network.ownership",
+      "value_type": "int",
+      "visibility": "company_private",
+      "unit": "unit.classification"
+    }
+  ],
+  "lines": [
+    {"value":1,
+      "id": "network.pipe",
+      "layer": "network.line",
+      "owner_layer": "network.owner",
+      "owned": true,
+      "placement_policy": "network.placement",
+      "finish_effect": "sim.line.finish",
+      "activity": "network.pipe.segment-work",
+      "segment_node": "install",
+      "work_marker": "sim.line-work.network.pipe"
+    }
+  ],
+  "networks": [
+    {
+      "id": "network.main",
+      "line": "network.pipe",
+      "demand_policy": "proof.network-topology.capacity-demand",
+      "solver": "proof.network-topology.transfer",
+      "flow_policy": "proof.network-topology.round-robin",
+      "rates": [
+        {
+          "resource": "steel",
+          "quantity": 60,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "hour"
+          }
+        },
+        {
+          "resource": "water",
+          "quantity": 60,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "hour"
+          }
+        }
+      ],
+      "capacity_policy": "network.shared"
+    },
+    {
+      "id": "network.secondary",
+      "line": "network.pipe",
+      "demand_policy": "proof.network-topology.capacity-demand",
+      "solver": "proof.network-topology.transfer",
+      "flow_policy": "proof.network-topology.round-robin",
+      "rates": [
+        {
+          "resource": "steel",
+          "quantity": 60,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "hour"
+          }
+        },
+        {
+          "resource": "water",
+          "quantity": 60,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "hour"
+          }
+        }
+      ],
+      "capacity_policy": "network.tight"
+    }
+  ],
+  "target_resource_requirements": [
+    {
+      "port": null,
+      "id": "proof.network-topology.network.pipe.inputs",
+      "use": "consume",
+      "quantities": {
+        "steel": 1
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "sim.line-work.network.pipe",
+      "kind": "marker",
+      "tags": [
+        "line-work"
+      ],
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": false,
+          "movable": true
+        },
+        "storage": {
+          "capacity_policy": "recovery.site",
+          "public": false,
+          "evacuate": false,
+          "accepts": [],
+          "phases": [],
+          "initial_stock": {}
+        },
+        "line_work": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "malformed_activity_disclosure": [
+    {
+      "id": "activity.disclosure-unused",
+      "mode": "self",
+      "references": [],
+      "player_orderable": false,
+      "priority": 0,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "unused",
+          "executor": "work.timed",
+          "duration": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ]
+    }
+  ],
+  "disclosure_plan_bindings": [
+    {
+      "id": "activity.disclosure-binding",
+      "plan_key": "binding:disclosure",
+      "activity": "activity.disclosure-workflow"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "activity-disclosure",
+      "game_mode": "space.survival",
+      "mode_overrides": {},
+      "time": "space.seconds",
+      "space": "space.points",
+      "modules": [
+        "sim.world-setup",
+        "sim.transformations",
+        "sim.logistics",
+        "points",
+        "sim.technology",
+        "sim.objectives",
+        "proof.progression-declarations",
+        "sim.knowledge-visibility",
+        "proof.progression-disclosure",
+        "proof.activity-disclosure"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "space.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.objectives": {
+          "companies": [
+            {
+              "company": 0,
+              "objectives": [
+                "decl.external-earned",
+                "decl.native-earned",
+                "disclose.forward-earned"
+              ]
+            },
+            {
+              "company": 1,
+              "objectives": [
+                "decl.external-earned",
+                "decl.native-earned",
+                "disclose.forward-earned"
+              ]
+            }
+          ]
+        },
+        "sim.knowledge-visibility": {
+          "policy": "activity.disclosure-policy"
+        }
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "activity.disclosure-workflow",
+      "player_orderable": true,
+      "priority": 70,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "work",
+          "executor": "work.staffed",
+          "roles": [
+            "haul"
+          ],
+          "duration": {
+            "numerator": 20,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ]
+    }
+  ],
+  "activity_knowledge_visibility": [
+    {
+      "id": "activity.disclosure-hide",
+      "definition": "activity.disclosure-workflow",
+      "mode": "all",
+      "facts": [
+        "disclose.tech"
+      ]
+    }
+  ],
+  "knowledge_visibility_policies": [
+    {
+      "id": "activity.disclosure-policy",
+      "own_entities": true,
+      "unlisted_entities": true,
+      "unlisted_content": true,
+      "rules": [
+        "disclose.hide-tech",
+        "disclose.hide-predicate",
+        "disclose.hide-objective",
+        "activity.disclosure-hide"
+      ]
+    }
+  ]
+}

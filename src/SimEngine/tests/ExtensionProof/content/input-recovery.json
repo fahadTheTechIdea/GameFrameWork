@@ -1,0 +1,6 @@
+{
+  "control_input_recovery_policies": [
+    {"id":"proof.input.offline","retry_blockers":["probe.sensor-offline"]},
+    {"id":"proof.input.network","retry_blockers":["network.topology-pending","network.disconnected"]}
+  ]
+}

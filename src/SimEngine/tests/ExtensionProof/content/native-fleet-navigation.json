@@ -1,0 +1,27 @@
+{
+  "worker_roles": [{"id":"haul"}],
+  "work_policies": [{"id":"fleet.enabled","enabled":true,"priority":100,"allowed_roles":["haul"],"area":null,"interruptible":true,"emergency_eligible":false,"assignment_mode":"all","states":{"disabled":"survey.stopped","standby":"survey.stopped"}}],
+  "capacity_policies": [{"id":"fleet.cargo","limits":{"survey.count":8}}],
+  "handling_profiles": [{"id":"fleet.handling","resources":[{"resource":"steel","quantity":1,"loading":{"numerator":1,"denominator":2,"unit":"minute"},"unloading":{"numerator":1,"denominator":2,"unit":"minute"}}]}],
+  "entities": [
+    {"id":"fleet.destination","kind":"structure","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"survey.storage","public":false,"initial_stock":{}},
+      "tile_work_dock":{"work_roles":["haul"],"resources":["steel"],"slots":[{"id":"bay","kind":"service","x":-1,"y":0},{"id":"wait","kind":"waiting","x":-1,"y":2},{"id":"exit","kind":"departure","x":-1,"y":4}]}
+    }},
+    {"id":"fleet.restricted","kind":"vehicle","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":true},
+      "mover":{"classes":["survey.route"],"class":"survey.route","speed":30,"states":{"moving":"survey.moving","stopped":"survey.stopped"}},
+      "worker":{"work_rate":1,"roles":["haul"],"states":{"working":"survey.working","loading":"survey.loading","stopped":"survey.stopped"}},
+      "work_policy":{"profile":"fleet.enabled"},
+      "storage":{"capacity_policy":"fleet.cargo","public":false,"initial_stock":{}},
+      "transporter":{"handling":"fleet.handling"}
+    }}
+  ],
+  "entity_setups": [
+    {"id":"fleet.second","after":["start.machine","start.site"],"entity":"survey.machine","company":0,"placement":{"space":"survey.tiles","x":2,"y":12},"home":"start.site"},
+    {"id":"fleet.limited","after":["fleet.second"],"entity":"fleet.restricted","company":0,"placement":{"space":"survey.tiles","x":1,"y":1},"home":null},
+    {"id":"fleet.destination-start","after":["start.site"],"entity":"fleet.destination","company":0,"placement":{"space":"survey.tiles","x":32,"y":10},"home":null}
+  ],
+  "world_setup_profiles": [{"id":"fleet.start","entries":["start.site","start.machine","start.deposit","start.terrain","start.class","start.foreign","fleet.second","fleet.limited","fleet.destination-start","road.2","road.3","road.4","road.5","road.6","road.7","road.8","road.9","road.10","road.11","road.12","road.13","road.14","road.15","road.16"],"includes":[]}]
+}

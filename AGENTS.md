@@ -13,6 +13,10 @@ Use that framework's adoption installer in preview mode before incorporating its
 
 ## Automatic conversational game-intent routing
 
+**Procedural city generation:** when the user asks the engine to generate cities, invoke the headless C# `ProceduralCityGenerator` / `generate-city` pipeline. The engine calculates districts, connected streets, blocks, frontage parcels, compound structures and open space from rules and catalogs. JavaScript renders the exported `MapGeometry` at the engine's meter coordinates. Metadata expansion and automatic diagram packing are supporting routes, not substitutes for procedural generation. Mockups are optional for this geometry route. See `docs/PROCEDURAL_CITY.md`. This follows the owner's explicit correction after the schematic experiment.
+
+**Metadata-only intent takes precedence:** WorldCreator is a reusable, engine-independent world metadata creator for different games. For catalogs, recipes, hierarchical locations, relationships, constraints and optional layout metadata, use the metadata route in `.agents/skills/world-generator/SKILL.md`. Do not require a mockup, GameArts setup, sprites, an art approval or Godot. Full visual game setup still uses the integrated wizards below. This scope follows the owner's 2026-10-25 clarification.
+
 When a user says something like **"Let's start building a game"**, "I want to make a game", "Create a 2D city builder", "Build a Godot game", or "Continue my game", treat it as game-development intent even if no skill name is mentioned. This routing is semantic, NOT a keyword-only exact match.
 
 1. Inspect the active project and existing `.gamearts/project.json`, `.gameframework/project.json`, and `.gameframework/setup-state.json` if present. Identify whether the user is starting, continuing, modifying, or discussing a game.
@@ -44,7 +48,9 @@ Rules are world/biome/settlement/district/parcel/object scoped; every placement 
 ## Current baseline caution
 The initial generator contains simplified pseudo-random terrain and settlement positions, and Godot exporter only creates a scene skeleton. They are research/prototype artifacts, not compliance with final world-placement, art or functional Godot acceptance criteria.
 
-## Primary world-generation invariant: game mockup fidelity plus intentional design
+## Visual world-generation invariant: game mockup fidelity plus intentional design
+
+The following visual fidelity requirements apply when the user requests mockup-derived visual maps or artwork. Metadata generation uses reusable game-authored catalog/recipe provenance and does not require images. Coordinates are optional; when requested they come from explicit layout grammars, without arbitrary scattering. Complete declared metadata scope does not certify a complete game or a visually complete world.
 
 The approved GameArts mockup and saved game art profile are the **primary visual design source of truth** for world creation. Every object (terrain feature, structure, door/window, road, streetlight, sign, vegetation, grass, flower, vehicle, decorative detail, etc.) must be derived from a traceable scene/region/feature anchor or a coherent style-compatible design grammar. A planner must produce explicit purpose, parent/region, constraints, position/footprint and visual source provenance *before* a compiler places anything. Do not search for empty positions or scatter objects randomly, including seeded random placement. Resolve clashes by revising the game-world design, not by placing objects arbitrarily. Test style and composition fidelity against the approved mockup, and preserve playable movement/collision and animation.
 
@@ -52,4 +58,6 @@ This is a **game** framework: prioritize intended art style, composition, game r
 
 
 ## Final generation responsibility
+
+The C# metadata engine owns catalog expansion, hierarchy, graph connections, constraints and declared layout calculations. Claude/Codex authors reusable inputs and orchestrates the engine. Renderers, Godot and GameArts are optional downstream consumers for metadata-only work. The visual generation responsibilities below apply when that downstream work is requested.
 The **C# engine owns actual world design algorithms and generation**, including deliberate positioning of every terrain, settlement, building, road, planting and accessory element. Claude/Codex orchestrates and GameArts supplies approved visual mockups/style/art and animation atlases. The engine uses the approved mockup's anchors **and compositional regions/design grammars** to calculate precise positions; explicit per-object anchors are not mandatory for repeated procedural details. No arbitrary scattering or vacant-cell fallback. Godot adapter compiles and runs the generated result. Detailed real-life infrastructure simulation is optional unless gameplay requires it.

@@ -1,0 +1,13 @@
+{
+  "units": [
+    {"id":"recovery.pair","dimension":"count","scale":{"numerator":2,"denominator":1},"discrete":true},
+    {"id":"recovery.triple","dimension":"count","scale":{"numerator":3,"denominator":1},"discrete":true}
+  ],
+  "capacity_policies": [
+    {"id":"recovery.pair-cargo","limits":{"recovery.pair":4}},
+    {"id":"recovery.triple-stock","limits":{"recovery.triple":4}}
+  ],
+  "handling_profiles": [
+    {"id":"recovery.pair-handling","resources":[{"resource":"supply","quantity":2,"loading":{"numerator":2,"denominator":1,"unit":"minute"},"unloading":{"numerator":4,"denominator":1,"unit":"minute"}}]}
+  ]
+}

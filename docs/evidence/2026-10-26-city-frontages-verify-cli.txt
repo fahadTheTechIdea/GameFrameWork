@@ -1,0 +1,1 @@
+City package verified: file integrity, matching engine build, reproducible geometry and derived outputs.

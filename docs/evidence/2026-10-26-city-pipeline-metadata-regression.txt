@@ -1,0 +1,1 @@
+PASS: mockup-free town, dungeon, platformer and space metadata; exact hierarchy/counts/connections/positions, reusable catalogs, scaling/partial scope, constraints, negatives, cancellation, JSON persistence and actual CLI/audit.

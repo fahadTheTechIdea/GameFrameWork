@@ -1,0 +1,21 @@
+{
+  "transformations":[{
+    "id":"remote.utility-recipe","mode":"batch","cancel_policy":"return_inputs",
+    "tools":{},"tool_consumption":{},"tool_ports":{},"inputs":{},"input_ports":{},
+    "outputs":{"supply":1},"output_ports":{"supply":"point.output"},
+    "operating_inputs":[{"resource":"supply","quantity":1,"period":{"numerator":2,"denominator":1,"unit":"minute"}}],
+    "operating_ports":{"supply":"point.input"},"duration":{"numerator":24,"denominator":1,"unit":"minute"}
+  }],
+  "entities":[{"id":"remote.production-provider","kind":"entity","components":{
+    "point_presence":{"space":"field.points","position":3},
+    "storage":{"capacity_policy":"fixture.count.40","initial_stock":{},"public":false},
+    "inventory_port":[{"id":"point.input"},{"id":"point.output"}],
+    "transformer":{"automatic_supply":false,"wip_capacity":"fixture.count.4","transformations":["remote.utility-recipe"],
+      "states":{"working":"processing","stopped":"blocked"},
+      "operation":{"id":"point.process","enabled":true,"target":1,"minimum":1,"maximum":1,"unit":"unit.work-rate"}},
+    "utility_signal":{"id":"utility","consumer":"point.process"}
+  }}],
+  "entity_setups":[{"id":"remote.production-provider.start","after":[],"entity":"remote.production-provider","company":0,
+    "placement":{"space":"field.points","position":3},"home":null}],
+  "world_setup_profiles":[{"id":"remote.production.start","entries":["remote.production-provider.start"],"includes":[]}]
+}

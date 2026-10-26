@@ -1,0 +1,32 @@
+{
+  "units": [
+    {"id":"unit.boolean","dimension":"boolean","scale":{"numerator":1,"denominator":1},"discrete":true}
+  ],
+  "haul_trip_profiles": [
+    {"id":"completion.trip","enabled":true,"preserve_outlet_reserve":false,"service_sources":["service.interval"]},
+    {"id":"completion.unlinked-trip","enabled":true,"preserve_outlet_reserve":false,"service_sources":[]}
+  ],
+  "signals": [
+    {"id":"completion.operating","kind":"boolean","metric":"operation.enabled","unit":"unit.boolean","providers":[{"component":"proof_service_operation","schema":1}]}
+  ],
+  "condition_wear_profiles": [
+    {"id":"completion.wear","unit":"unit.condition","quantity":1,"period":{"numerator":20,"denominator":1,"unit":"minute"},"conditions":[
+      {"id":"running","source":"process","signal":"completion.operating","expected":true,"blocker":"completion.process-stopped"}
+    ]}
+  ],
+  "worker_condition_effects": [
+    {"id":"completion.restore","source":"integrity","kind":"restore","unit":"unit.condition","amount":10}
+  ],
+  "work_requirement_groups": [
+    {"id":"completion.ready","mode":"all","entries":[
+      {"id":"physical-spares","requirement":"service.spares"},
+      {"id":"held-tools","requirement":"service.tools"}
+    ]}
+  ],
+  "activities": [
+    {"id":"completion.service","automatic_supply":false,"player_orderable":true,"target_tags":[],"nodes":[
+      {"executor":"work.staffed","id":"service","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"completion.ready","effect":"completion.restore"},
+      {"executor":"work.timed","id":"settle","roles":[],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"after":["service"]}
+    ]}
+  ]
+}

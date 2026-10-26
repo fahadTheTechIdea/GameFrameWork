@@ -1,0 +1,37 @@
+{
+  "entities": [
+    {"id":"recurring.controller","kind":"entity","components":{
+      "recurring_activity":{
+        "id":"native.repeat","plan":"build:point.tower","template":null,"target":"authored_intent",
+        "arguments":{"placement":{"space":"field.points","position":12}},
+        "worker_nodes":[],"reserve_use":"none","cadence":"submission","trigger":"schedule","dispatch_mode":"compete","facility_policy":null,
+        "enabled":false,"priority":60,"group":"field.repeat","operation_policy":null,
+        "interval":{"numerator":1,"denominator":1,"unit":"minute"},"conditions":[]},
+      "proof_plan_recurring":{
+        "id":"public.repeat","plan":"build:point.tower","template":null,"target":"authored_intent",
+        "arguments":{"placement":{"space":"field.points","position":12}},
+        "worker_nodes":[],"reserve_use":"none","cadence":"submission","trigger":"schedule","dispatch_mode":"compete","facility_policy":null,
+        "enabled":false,"priority":40,"group":"field.repeat","operation_policy":null,
+        "interval":{"numerator":1,"denominator":1,"unit":"minute"},"fault":0,"idle_only":false}
+    }}
+  ],
+  "entity_setups": [
+  {
+    "id": "recurring.controller",
+    "after": [],
+    "entity": "recurring.controller",
+    "company": 0,
+    "placement": null,
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "recurring-plan-intents.start",
+    "entries": [
+      "recurring.controller"
+    ],
+    "includes": []
+  }
+]
+}

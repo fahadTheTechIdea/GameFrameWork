@@ -1,0 +1,3 @@
+{
+  "spatial_layers":[{"id":"guard.sample","space":"field.points","type":"proof.observation.sample","value_type":"fixed","visibility":"public","unit":"unit.supply"}]
+}

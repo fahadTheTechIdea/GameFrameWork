@@ -1,0 +1,39 @@
+{
+  "resources": [{"id":"spare","unit":"unit.supply","category":"general","phase":"solid","traits":[],"capacity":{"unit.supply":1}}],
+  "logistics_policies": [
+    {"id":"reserve.source","stock":{},"outlet":{"enabled":true,"reserve":{"supply":4,"spare":3},"reserve_access": "protected", "export_priority":3,"allowed_destinations":["destination"]},"states":{"disabled":"blocked"}},
+    {"id":"reserve.destination","stock":{"supply":{"enabled":false,"minimum":2,"reserve_access": "protected", "desired":4,"maximum":12,"priority":65}},"outlet":{"enabled":true,"reserve":{},"reserve_access": "protected", "export_priority":0,"allowed_destinations":null},"states":{"disabled":"blocked"}}
+  ],
+  "resource_signals": [
+    {"id":"stock.source","kind":"number","metric":"inventory.stored","resource":"supply","unit":"unit.supply","providers":[{"component":"inventory_signal","schema":3}]}
+  ],
+  "control_input_recovery_policies": [{"id":"stock.suspend","retry_blockers":[]}],
+  "stock_control_actions": [
+    {"id":"stock.supply","command":"sim.configure-stock-policy","owner":"sim.logistics","resource":"supply","unit":"unit.supply","level":"desired"},
+    {"id":"stock.spare","command":"sim.configure-stock-policy","owner":"sim.logistics","resource":"spare","unit":"unit.supply","level":"desired"},
+    {"id":"stock.minimum-action","command":"sim.configure-stock-policy","owner":"sim.logistics","resource":"supply","unit":"unit.supply","level":"minimum"},
+    {"id":"stock.maximum-action","command":"sim.configure-stock-policy","owner":"sim.logistics","resource":"supply","unit":"unit.supply","level":"maximum"}
+  ],
+  "control_rules": [
+    {"id":"stock.band","input_recovery":"stock.suspend","action_policy":"stock.supply","arbitration":"exclusive","initial_latch":false,
+     "inputs":[{"id":"stock","signal":"stock.source"}],
+     "conditions":[{"id":"high","kind":"above","input":"stock","unit":"unit.supply","on":15,"off":14,"initial":false}],"root":"high",
+     "dwell":{"numerator":2,"denominator":1,"unit":"minute"},"cooldown":{"numerator":4,"denominator":1,"unit":"minute"},
+     "when_true":{"enabled":true,"target":12,"unit":"unit.supply"},"when_false":{"enabled":false,"target":4,"unit":"unit.supply"}},
+    {"id":"stock.spares","input_recovery":"stock.suspend","action_policy":"stock.spare","arbitration":"exclusive","initial_latch":false,
+     "inputs":[{"id":"stock","signal":"stock.source"}],
+     "conditions":[{"id":"high","kind":"above","input":"stock","unit":"unit.supply","on":15,"off":14,"initial":false}],"root":"high",
+     "dwell":{"numerator":2,"denominator":1,"unit":"minute"},"cooldown":{"numerator":4,"denominator":1,"unit":"minute"},
+     "when_true":{"enabled":true,"target":2,"unit":"unit.supply"},"when_false":{"enabled":false,"target":1,"unit":"unit.supply"}},
+    {"id":"stock.minimum","input_recovery":"stock.suspend","action_policy":"stock.minimum-action","arbitration":"exclusive","initial_latch":false,
+     "inputs":[{"id":"stock","signal":"stock.source"}],
+     "conditions":[{"id":"high","kind":"above","input":"stock","unit":"unit.supply","on":15,"off":14,"initial":false}],"root":"high",
+     "dwell":{"numerator":2,"denominator":1,"unit":"minute"},"cooldown":{"numerator":4,"denominator":1,"unit":"minute"},
+     "when_true":{"enabled":true,"target":3,"unit":"unit.supply"},"when_false":{"enabled":true,"target":2,"unit":"unit.supply"}},
+    {"id":"stock.maximum","input_recovery":"stock.suspend","action_policy":"stock.maximum-action","arbitration":"exclusive","initial_latch":false,
+     "inputs":[{"id":"stock","signal":"stock.source"}],
+     "conditions":[{"id":"high","kind":"above","input":"stock","unit":"unit.supply","on":15,"off":14,"initial":false}],"root":"high",
+     "dwell":{"numerator":2,"denominator":1,"unit":"minute"},"cooldown":{"numerator":4,"denominator":1,"unit":"minute"},
+     "when_true":{"enabled":true,"target":16,"unit":"unit.supply"},"when_false":{"enabled":true,"target":12,"unit":"unit.supply"}}
+  ]
+}

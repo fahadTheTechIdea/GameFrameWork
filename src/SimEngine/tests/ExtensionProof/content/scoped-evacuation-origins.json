@@ -1,0 +1,127 @@
+{
+  "resource_pools": [
+    {
+      "id": "evac.first",
+      "identity": 9000000005,
+      "owner": 0,
+      "public": true,
+      "evacuate": true,
+      "capacity_policy": "haul.store",
+      "resources": [
+        "steel"
+      ]
+    },
+    {
+      "id": "evac.second",
+      "identity": 9000000006,
+      "owner": 0,
+      "public": true,
+      "evacuate": true,
+      "capacity_policy": "haul.store",
+      "resources": [
+        "steel"
+      ]
+    },
+    {
+      "id": "evac.private",
+      "identity": 9000000007,
+      "owner": 0,
+      "public": false,
+      "evacuate": true,
+      "capacity_policy": "haul.store",
+      "resources": [
+        "steel"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "id": "evac.origins",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "pool_port": [
+          {
+            "id": "a-first",
+            "pool": "evac.first",
+            "alternatives": [
+              "evac.second"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "z-alias",
+            "pool": "evac.first",
+            "alternatives": [
+              "evac.second"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "other",
+            "pool": "evac.second",
+            "alternatives": [
+              "evac.first"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "private",
+            "pool": "evac.private",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          }
+        ]
+      }
+    }
+  ],
+  "world_setup_profiles": [{"id":"evac.origins-start","entries":["source.warehouse-start","evac.origins-entry","recovery.far-start","source.machine-start"],"includes":[]}],
+  "entity_setups": [
+    {
+      "id": "evac.origins-entry",
+      "after": [],
+      "entity": "evac.origins",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 18,
+        "y": 10
+      },
+      "home": null
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "scoped-evacuation-origins",
+      "game_mode": "haul.resource-only",
+      "mode_overrides": {},
+      "time": "haul.minute",
+      "space": "haul.tiles",
+      "seats": 2,
+      "default_seats": 2,
+      "modules": [
+        "proof.output-ports",
+        "sim.logistics",
+        "sim.tile-navigation",
+        "sim.logistics-recovery"
+      ],
+      "settings": {
+        "sim.world-setup": {
+          "profile": "evac.origins-start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.logistics-recovery": {
+          "profile": "scoped.recovery"
+        }
+      }
+    }
+  ]
+}

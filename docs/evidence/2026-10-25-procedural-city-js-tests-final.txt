@@ -1,0 +1,13 @@
+✔ grid: JavaScript preserves every engine coordinate, footprint and road width (20.6301ms)
+✔ subdivision: JavaScript preserves every engine coordinate, footprint and road width (16.8919ms)
+✔ mixed: JavaScript preserves every engine coordinate, footprint and road width (15.9197ms)
+✔ different city geometry is supplied by the C# engine, not introduced by JavaScript (10.5939ms)
+✔ corrupt engine geometry is rejected rather than replaced by diagram packing (21.6951ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 183.5306

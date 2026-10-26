@@ -1,0 +1,8 @@
+{
+  "knowledge_facts": [
+    {"id":"field.observed","fresh_for":null,"value":{"classification":"sampled","layers":["surface","subsurface"]}},
+    {"id":"field.second","fresh_for":null,"value":{"classification":"second-reading"}},
+    {"id":"field.unobserved","fresh_for":null,"value":{"classification":"unobserved-water"}}
+  ],
+  "knowledge_effects": [{"id":"field.learn","subject":"field.observed"},{"id":"field.learn-second","subject":"field.second"}]
+}

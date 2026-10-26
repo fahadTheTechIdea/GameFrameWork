@@ -1,0 +1,9 @@
+{
+  "point_readings":[{"id":"reading.point","layer":"point.terrain","position":0,"retention":"latest","fresh_for":null}],
+  "knowledge_effects":[{"id":"reading.point-observe","subject":"reading.point"}],
+  "target_resource_requirements":[{"id":"reading.point-inputs","port":null,"use":"consume","quantities":{"supply":8}}],
+  "activities":[
+    {"id":"reading.point-sample","priority":60,"player_orderable":true,"automatic_supply":false,"on_complete":"reading.point-observe","nodes":[{"id":"sample","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":3,"denominator":10,"unit":"hour"},"requirement":"reading.point-inputs"}]},
+    {"id":"reading.point-refresh","priority":60,"player_orderable":true,"automatic_supply":false,"on_complete":"reading.point-observe","nodes":[{"id":"sample","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"}}]}
+  ]
+}

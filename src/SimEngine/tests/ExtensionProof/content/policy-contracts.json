@@ -1,0 +1,21 @@
+{
+  "independent_work_policies": [{
+    "id":"contract.worker", "enabled":false, "priority":7,
+    "allowed_roles":["haul","inspect","contract.inspect"], "area":null,
+    "interruptible":true, "emergency_eligible":true, "assignment_mode":"all",
+    "states":{"disabled":"blocked","standby":"blocked"}
+  }],
+  "independent_retry_policies": [{
+    "id":"contract.retry",
+    "initial_delay":{"numerator":2,"denominator":1,"unit":"minute"},
+    "maximum_delay":{"numerator":8,"denominator":1,"unit":"minute"},
+    "multiplier":2,
+    "retry_blockers":["blocker.unreachable","work.worker-unavailable","haul.stock-wait","haul.capacity-wait"]
+  }],
+  "independent_dispatch_policies": [{
+    "id":"contract.dispatch", "ordering":"starvation-first",
+    "preempt_emergencies":true,
+    "starvation_after":{"numerator":5,"denominator":1,"unit":"minute"},
+    "scopes":["sim.work","sim.logistics"]
+  }]
+}

@@ -1,0 +1,471 @@
+{
+  "world_setup_profiles": [{"id":"acceptance.start","entries":["colony.lake","colony.island","colony.lane","colony.company-0.depot","colony.company-0.factory","colony.company-0.crane","colony.company-0.truck-a","colony.company-0.truck-b","colony.company-1.depot","colony.company-1.factory","colony.company-1.crane","colony.company-1.truck-a","colony.company-1.truck-b","acceptance.machine-own","acceptance.machine-foreign"],"includes":[]}],
+  "entity_setups": [
+    {
+      "id": "acceptance.machine-own",
+      "after": [
+        "colony.company-0.truck-b"
+      ],
+      "entity": "acceptance.machine",
+      "company": 0,
+      "placement": {
+        "space": "colony.tiles",
+        "x": 16,
+        "y": 18
+      },
+      "home": null
+    },
+    {
+      "id": "acceptance.machine-foreign",
+      "after": [
+        "colony.company-1.truck-b"
+      ],
+      "entity": "acceptance.machine",
+      "company": 1,
+      "placement": {
+        "space": "colony.tiles",
+        "x": 22,
+        "y": 18
+      },
+      "home": null
+    }
+  ],
+  "entities": [
+  {
+    "id": "acceptance.machine",
+    "kind": "structure",
+    "components": {
+      "tile_presence": {
+        "space": "colony.tiles",
+        "width": 1,
+        "height": 1,
+        "blocks": true,
+        "movable": false
+      },
+      "storage": {
+        "capacity_policy": "fixture.count.40",
+        "public": false,
+        "initial_stock": {
+          "steel": 10
+        }
+      },
+      "work_permit": {
+        "enabled": false
+      },
+      "incident": {
+        "id": "acceptance.leak",
+        "workflow": "acceptance.leak",
+        "states": {
+          "active": "stopped"
+        }
+      },
+      "incident_signal": {
+        "id": "incident-state",
+        "source": "acceptance.leak",
+        "workflow": "acceptance.leak",
+        "phase": "repair"
+      },
+      "inventory_port": {
+        "id": "disposition.input"
+      }
+    }
+  }
+],
+  "units": [
+    {
+      "id": "unit.boolean",
+      "dimension": "classification",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    }
+  ],
+  "signals": [
+    {
+      "id": "acceptance.active",
+      "kind": "boolean",
+      "metric": "incident.active",
+      "unit": "unit.boolean",
+      "providers": [
+        {
+          "component": "incident_signal",
+          "schema": 1
+        }
+      ]
+    }
+  ],
+  "response_effects": [
+    {
+      "id": "acceptance.resolve",
+      "bound_response": true
+    }
+  ],
+  "inventory_effects": [
+  {
+    "id": "acceptance.isolate",
+    "kind": "consumed",
+    "quantities": {
+      "steel": 1
+    },
+    "ports": {
+      "steel": "disposition.input"
+    }
+  }
+],
+  "target_resource_requirements": [
+    {"port":null,
+      "id": "acceptance.materials",
+      "use": "consume",
+      "quantities": {
+        "steel": 3
+      }
+    },
+    {"port":null,
+      "id": "acceptance.tools",
+      "use": "hold",
+      "quantities": {
+        "steel": 2
+      }
+    }
+  ],
+  "work_permits": [
+    {
+      "id": "acceptance.cleanup-permit",
+      "blocker": "acceptance.cleanup-disabled",
+      "missing": "acceptance.missing-permit"
+    }
+  ],
+  "work_requirement_groups": [
+    {
+      "id": "acceptance.repair-ready",
+      "mode": "all",
+      "entries": [
+        {
+          "id": "materials",
+          "requirement": "acceptance.materials"
+        },
+        {
+          "id": "tools",
+          "requirement": "acceptance.tools"
+        }
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "id": "acceptance.response",
+      "priority": 90,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "executor": "work.timed",
+          "id": "detect",
+          "duration": {
+            "numerator": 2,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        },
+        {
+          "executor": "work.staffed",
+          "id": "isolate",
+          "roles": [
+            "crane"
+          ],
+          "duration": {
+            "numerator": 3,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "after": [
+            "detect"
+          ],
+          "effect": "acceptance.isolate"
+        },
+        {
+          "executor": "work.staffed",
+          "id": "repair",
+          "roles": [
+            "crane"
+          ],
+          "duration": {
+            "numerator": 8,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "after": [
+            "isolate"
+          ],
+          "requirement": "acceptance.repair-ready"
+        },
+        {
+          "executor": "work.staffed",
+          "id": "cleanup",
+          "roles": [
+            "haul"
+          ],
+          "duration": {
+            "numerator": 6,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "after": [
+            "isolate"
+          ],
+          "requirement": "acceptance.cleanup-permit"
+        },
+        {
+          "executor": "work.staffed",
+          "id": "restart",
+          "roles": [
+            "crane"
+          ],
+          "duration": {
+            "numerator": 2,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "after": [
+            "repair",
+            "cleanup"
+          ]
+        }
+      ],
+      "on_complete": "acceptance.resolve"
+    }
+  ],
+  "incident_workflows": [
+    {
+      "id": "acceptance.leak",
+      "kind": "acceptance.leak",
+      "response": "acceptance.response",
+      "phases": [
+        {
+          "id": "detection",
+          "nodes": [
+            "detect"
+          ]
+        },
+        {
+          "id": "isolation",
+          "nodes": [
+            "isolate"
+          ]
+        },
+        {
+          "id": "repair",
+          "nodes": [
+            "repair"
+          ]
+        },
+        {
+          "id": "cleanup",
+          "nodes": [
+            "cleanup"
+          ]
+        },
+        {
+          "id": "restart",
+          "nodes": [
+            "restart"
+          ]
+        }
+      ]
+    }
+  ],
+  "scenario_pressure_profiles": [
+    {
+      "id": "acceptance.pressure",
+      "capacity": 1,
+      "initial": 1,
+      "refill": 0,
+      "refill_period": {
+        "numerator": 20,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "cadence": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "cooldown": {
+        "numerator": 60,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "sources": [
+        "acceptance.pressure-leak"
+      ]
+    }
+  ],
+  "incident_pressure_sources": [
+    {
+      "id": "acceptance.pressure-leak",
+      "cost": 1,
+      "priority": 10,
+      "entity": "acceptance.machine",
+      "source": "acceptance.leak",
+      "kind": "acceptance.leak",
+      "conditions": []
+    }
+  ],
+  "signal_conditions": [
+    {
+      "id": "acceptance.detected",
+      "entity": "acceptance.machine",
+      "mode": "any",
+      "conditions": [
+        {
+          "id": "active",
+          "source": "incident-state",
+          "signal": "acceptance.active",
+          "expected": true,
+          "blocker": "acceptance.incident-state"
+        }
+      ]
+    },
+    {
+      "id": "acceptance.recovered",
+      "entity": "acceptance.machine",
+      "mode": "any",
+      "conditions": [
+        {
+          "id": "active",
+          "source": "incident-state",
+          "signal": "acceptance.active",
+          "expected": false,
+          "blocker": "acceptance.incident-state"
+        }
+      ]
+    }
+  ],
+  "condition_objective_predicates": [
+    {
+      "id": "acceptance.detected-predicate",
+      "condition": "acceptance.detected"
+    },
+    {
+      "id": "acceptance.recovered-predicate",
+      "condition": "acceptance.recovered"
+    }
+  ],
+  "entity_objective_predicates": [
+    {
+      "id": "acceptance.fleet-predicate",
+      "prototype": "truck",
+      "minimum": 4
+    },
+    {
+      "id": "acceptance.build-predicate",
+      "prototype": "tower",
+      "minimum": 1
+    }
+  ],
+  "outcome_objective_effects": [
+    {
+      "id": "acceptance.win-effect",
+      "outcome": "acceptance.colony-secured"
+    }
+  ],
+  "objectives": [
+    {
+      "id": "acceptance.fleet",
+      "prerequisites": [],
+      "predicate": "acceptance.fleet-predicate",
+      "deadline": null,
+      "on_complete": null,
+      "on_failure": null
+    },
+    {
+      "id": "acceptance.build",
+      "prerequisites": [
+        "acceptance.fleet"
+      ],
+      "predicate": "acceptance.build-predicate",
+      "deadline": null,
+      "on_complete": null,
+      "on_failure": null
+    },
+    {
+      "id": "acceptance.detected",
+      "prerequisites": [
+        "acceptance.build"
+      ],
+      "predicate": "acceptance.detected-predicate",
+      "deadline": null,
+      "on_complete": null,
+      "on_failure": null
+    },
+    {
+      "id": "acceptance.recovered",
+      "prerequisites": [
+        "acceptance.detected"
+      ],
+      "predicate": "acceptance.recovered-predicate",
+      "deadline": null,
+      "on_complete": "acceptance.win-effect",
+      "on_failure": null
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "colony-acceptance",
+      "game_mode": "colony.survival",
+      "mode_overrides": {},
+      "time": "test.minute",
+      "space": "colony.tiles",
+      "modules": [
+        "sim.work",
+        "sim.transformations",
+        "colony",
+        "sim.world-setup",
+        "sim.tile-construction-rules",
+        "sim.tile-conditions",
+        "sim.incidents",
+        "sim.objectives",
+        "sim.conditions",
+        "sim.scenario-pressure"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.construction": {
+          "recovery": "colony.recovery"
+        },
+        "sim.world-setup": {
+          "profile": "acceptance.start"
+        },
+        "sim.tile-construction-rules": {
+          "profile": "colony.placement"
+        },
+        "sim.objectives": {
+          "companies": [
+            {
+              "company": 0,
+              "objectives": [
+                "acceptance.fleet",
+                "acceptance.build",
+                "acceptance.detected",
+                "acceptance.recovered"
+              ]
+            }
+          ]
+        },
+        "sim.scenario-pressure": {
+          "companies": [
+            {
+              "company": 0,
+              "profile": "acceptance.pressure"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

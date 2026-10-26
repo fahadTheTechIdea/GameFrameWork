@@ -1,0 +1,26 @@
+{
+  "spatial_layers": [
+    {
+      "id": "survey.screen",
+      "space": "survey.tiles",
+      "type": "optical.density",
+      "value_type": "byte",
+      "visibility": "public",
+      "unit": "survey.count"
+    }
+  ],
+  "world_setup_profiles": [{"id":"occlusion.start","entries":["start.deposit","start.terrain","start.class","start.site","start.machine","start.foreign","start.screen"],"includes":[]}],
+  "tile_layer_setups": [
+    {
+      "id": "start.screen",
+      "after": [],
+      "layer": "survey.screen",
+      "x": 8,
+      "y": 10,
+      "value": 2,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    }
+  ]
+}

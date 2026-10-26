@@ -1,0 +1,9 @@
+{
+  "world_setup_profiles":[{"id":"dock.start","entries":["dock.site.start","dock.machine.a","dock.machine.b","dock.machine.c"],"includes":[]}],
+  "entity_setups":[
+    {"id":"dock.site.start","after":[],"entity":"dock.site","company":0,"placement":{"space":"survey.tiles","x":16,"y":10},"home":null},
+    {"id":"dock.machine.a","after":["dock.site.start"],"entity":"survey.machine","company":0,"placement":{"space":"survey.tiles","x":2,"y":10},"home":"dock.site.start"},
+    {"id":"dock.machine.b","after":["dock.site.start"],"entity":"survey.machine","company":0,"placement":{"space":"survey.tiles","x":2,"y":12},"home":"dock.site.start"},
+    {"id":"dock.machine.c","after":["dock.site.start"],"entity":"survey.machine","company":0,"placement":{"space":"survey.tiles","x":2,"y":14},"home":"dock.site.start"}
+  ]
+}

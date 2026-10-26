@@ -1,0 +1,34 @@
+{
+  "game_modes": [{ "id": "fixed-executor-world.resource-only", "name": "Resource-only physical simulation", "properties": {} }],
+  "time_definitions":[{"id":"survey.minute","quantum":{"numerator":60,"denominator":1,"unit":"second"},"frame_ticks":1,"ticks_per_second":30,"horizon":null}],
+  "entity_states":[
+    {"id":"survey.idle","state":"idle","priority":0,"default":true},
+    {"id":"survey.working","state":"working","priority":20},
+    {"id":"survey.loading","state":"loading","priority":30},
+    {"id":"survey.moving","state":"moving","priority":40},
+    {"id":"survey.stopped","state":"stopped","priority":60}
+  ],
+  "units":[{"id":"survey.count","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true}],
+  "resources":[{"id":"steel","unit":"survey.count","category":"material","phase":"solid","traits":[],"capacity":{"survey.count":1}}],
+  "capacity_policies":[{"id":"survey.storage","limits":{"survey.count":100}}],
+  "tile_spaces":[{"id":"survey.tiles","width":48,"height":32}],
+  "spatial_layers":[
+    {"id":"survey.deposit","space":"survey.tiles","type":"resource.deposit","value_type":"fixed","visibility":"company_private","unit":"survey.count","resource":"steel","resource_measure":"quantity"},
+    {"id":"survey.terrain","space":"survey.tiles","type":"terrain.classification","value_type":"byte","visibility":"public","unit":"survey.count"},
+    {"id":"survey.class","space":"survey.tiles","type":"geology.classification","value_type":"int","visibility":"public","unit":"survey.count"}
+  ],
+  "entities":[
+    {"id":"survey.site","kind":"vehicle","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":true},
+      "mover":{"classes": ["survey.route"], "class":"survey.route","speed":30,"states":{"moving":"survey.moving","stopped":"survey.stopped"}},
+      "storage":{"capacity_policy":"survey.storage","public":false,"initial_stock":{"steel":20}}
+    }},
+    {"id":"survey.machine","kind":"structure","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "worker":{"work_rate":1,"roles":["survey"],"states":{"working":"survey.working","loading":"survey.loading","stopped":"survey.stopped"}},
+      "work_policy":{"profile":"survey.enabled"}
+    }}
+  ],
+  "scenarios":[{"id":"native-survey", "game_mode": "fixed-executor-world.resource-only", "mode_overrides": {},"time":"survey.minute","space":"survey.tiles","modules":["sim.world-setup","sim.work","sim.tile-navigation","sim.knowledge"],"seats":2,"default_seats":2,
+    "settings":{"sim.work":{"retry":"proof.retry"},"sim.world-setup":{"profile":"survey.start"}}}]
+}

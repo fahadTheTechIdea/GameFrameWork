@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Checkpoint storage, replay segments and receipt retention proposed definition",
+  "description": "Standalone design contract; current ScenarioEngine loading support is not implemented.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "definitionVersion",
+    "checkpointEverySteps",
+    "maxSegmentBytes",
+    "retainedCheckpoints",
+    "receiptPolicy"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+      "maxLength": 64
+    },
+    "definitionVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "checkpointEverySteps": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100000,
+      "description": "Explicit policy boundary, not a claim of measured cost."
+    },
+    "maxSegmentBytes": {
+      "type": "integer",
+      "minimum": 65536,
+      "maximum": 67108864,
+      "description": "Hard configured storage bound."
+    },
+    "retainedCheckpoints": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 16,
+      "description": "Keep current and previous acknowledged generations."
+    },
+    "receiptPolicy": {
+      "type": "string",
+      "enum": [
+        "bounded_epoch",
+        "bounded_session"
+      ],
+      "description": "Retired epochs are refused; never evict IDs and allow re-execution."
+    }
+  }
+}

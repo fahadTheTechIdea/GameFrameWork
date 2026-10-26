@@ -1,0 +1,5 @@
+{
+  "id":"proof.reading-spatial-admission",
+  "version":"1.0.0",
+  "documents":["reading-spatial-point.json"]
+}

@@ -1,0 +1,5 @@
+{
+  "proof_prior_activity_requirements": [
+    {"id":"proof.bootstrap-ready","plan":"activity:prior.prepare","company_scope":false,"blocker":"proof.prepare-incomplete"}
+  ]
+}

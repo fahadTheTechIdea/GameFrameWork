@@ -1,0 +1,23 @@
+{
+  "SchemaVersion": 1,
+  "Id": "town",
+  "GameProfile": "town-game",
+  "CatalogId": "town-catalog",
+  "RootArchetypeId": "root",
+  "Scale": "town",
+  "Coverage": "CompleteDeclaredScope",
+  "RemainingScopes": [],
+  "Parameters": {
+    "districts": 3,
+    "sites": 5
+  },
+  "Space": {
+    "Axes": [],
+    "Unit": "none"
+  },
+  "Origin": null,
+  "RequireAllPositions": false,
+  "MaximumNodes": 10000,
+  "MaximumConnections": 50000,
+  "AdditionalConnections": []
+}

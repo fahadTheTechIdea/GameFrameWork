@@ -1,0 +1,112 @@
+{
+  "RecordedAtUtc": "2026-10-25T18:14:31.8336996Z",
+  "BaseRevision": "b4c789d5db1ce87ac1d9687986799253acf584fe",
+  "Branch": "main",
+  "WorkingTree": "Dirty; prior work preserved, no commit",
+  "Node": "v24.19.0",
+  "DotnetSdk": "10.0.402",
+  "Checks": [
+    {
+      "Command": "dotnet build GameFrameWork.slnx -c Release --warnaserror",
+      "Exit": 0,
+      "Log": "docs/evidence/2026-10-25-js-schematic-solution-build-final.txt"
+    },
+    {
+      "Command": "node.exe --test tests/javascript/world-schematic.test.cjs",
+      "Exit": 0,
+      "Log": "docs/evidence/2026-10-25-js-schematic-node-tests-final.txt"
+    },
+    {
+      "Command": "dotnet tests/WorldCreator.Tests/bin/Release/net10.0/WorldCreator.Tests.dll --metadata src/WorldCreator/WorldCreator.Cli/bin/Release/net10.0/WorldCreator.Cli.dll",
+      "Exit": 0,
+      "Log": "docs/evidence/2026-10-25-js-schematic-metadata-tests-final.txt"
+    }
+  ],
+  "Browser": {
+    "Url": "http://127.0.0.1:8774/schematic.html",
+    "Nodes": 35,
+    "Connections": 33,
+    "Districts": 6,
+    "Scope": "PartialScope",
+    "Observed": [
+      "JavaScript SVG rendering",
+      "Mouse Workshop selection",
+      "Keyboard Admin/Factory campus selection",
+      "Zoom viewBox changed and fit restored",
+      "Pan viewBox changed from 0 0 1698 912 to -33.96 -47.69874476987449 1698 912",
+      "Roads and Connections toggles",
+      "Invalid JSON reports error and retains city",
+      "Space metadata loads 9 nodes and 7 relationships",
+      "SVG download and parsed source/session provenance"
+    ],
+    "Limitations": [
+      "file: navigation blocked by browser URL policy; not bypassed",
+      "No full accessibility/mobile/RTL qualification",
+      "No fresh independent agent evaluation",
+      "Prior full harness not rerun for this scoped JS change",
+      "Diagram layout is not physical road connectivity or game placement"
+    ]
+  },
+  "Hashes": [
+    {
+      "Path": "src/WorldCreator/WorldCreator.Core/Schematic/world-schematic.js",
+      "Sha256": "281278a012ced63538932f45f987ae042faa21c75043ef26a14516edc5a81499"
+    },
+    {
+      "Path": "src/WorldCreator/WorldCreator.Core/Schematic/schematic.html",
+      "Sha256": "f4d7cf6d62f99312799bc0f4e47952aba2166efd9cb03e38755fdff4e36be5d3"
+    },
+    {
+      "Path": "src/WorldCreator/WorldCreator.Core/WorldMetadataSchematicExporter.cs",
+      "Sha256": "e57ecafa6d5920b207b05abfdbf9ca95b4bb463b9d31475ef364df63fbad5a7b"
+    },
+    {
+      "Path": "src/WorldCreator/WorldCreator.Core/WorldMetadataGenerator.Files.cs",
+      "Sha256": "86a0678c660b97541760242bedd9e27b6ce24db18ba2d8166a33960f7fa85d08"
+    },
+    {
+      "Path": "src/WorldCreator/WorldCreator.Core/WorldCreator.Core.csproj",
+      "Sha256": "68967f14a31561a63d327dd445285772481bc5d7fe13a416fd2e475edb83f28a"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests/WorldMetadataTests.cs",
+      "Sha256": "a65cbf151c2c1567c995e85fcd17fcc79644eb3e1b848368d6c3df7eacd05831"
+    },
+    {
+      "Path": "tests/javascript/world-schematic.test.cjs",
+      "Sha256": "feb153e799097c4abccbd2a98232d4b6e029a22ce0e917b2bca52a5b32912e2f"
+    },
+    {
+      "Path": "examples/metadata/city.catalog.json",
+      "Sha256": "9dc037d963a61dde63890f6bb88d09fc054218ec0a011e73c261843c09789e76"
+    },
+    {
+      "Path": "examples/metadata/city.recipe.json",
+      "Sha256": "478af0b3433a216576e8221445c591fe0794af615573135cbaa7cc031ee52bd9"
+    },
+    {
+      "Path": ".agents/skills/world-generator/SKILL.md",
+      "Sha256": "c5247cabd12196ad7748eacc1507f788fe83a9f95f28b81f86b65a97ff1666bf"
+    },
+    {
+      "Path": "generated/city-schematic/schematic.html",
+      "Sha256": "662f9504b6510bca49591969a65ca4ed125c8e8502f8671d47e454c862051cc3"
+    },
+    {
+      "Path": "generated/city-schematic/schematic.js",
+      "Sha256": "281278a012ced63538932f45f987ae042faa21c75043ef26a14516edc5a81499"
+    },
+    {
+      "Path": "generated/city-schematic/world-metadata.json",
+      "Sha256": "2b1da1a5c27dc6cd953ce007fb6a06f55316433390410904edd95c43293affef"
+    },
+    {
+      "Path": "generated/city-schematic/city-schematic.svg",
+      "Sha256": "91b761fe26d066f1849f700ed0ad2eafd600a6c5266c2941fdd204c67abf5c70"
+    },
+    {
+      "Path": "docs/evidence/2026-10-25-js-schematic-browser.png",
+      "Sha256": "c0a731ba628ef60c0e3addcd1e425d2e766428c427cfb6ece8051a9d00c59275"
+    }
+  ]
+}

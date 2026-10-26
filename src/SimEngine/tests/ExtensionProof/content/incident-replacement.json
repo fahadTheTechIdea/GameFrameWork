@@ -1,0 +1,13 @@
+{
+  "worker_roles": [{"id":"inspect"}],
+  "entity_replacement_effects": [{"id":"propagation.replace","source":"propagation.target","target":"propagation.next"}],
+  "activities": [{"id":"propagation.upgrade","player_orderable":true,"automatic_supply":false,"priority":100,"target_tags":[],"on_complete":"propagation.replace","nodes":[
+    {"id":"upgrade","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"after":[],"requirement":null,"effect":null}
+  ]}],
+  "world_setup_profiles": [{"id":"propagation.start","entries":["propagation.source","propagation.target","propagation.crew"],"includes":[]}],
+  "entity_setups": [
+    {"id":"propagation.source","after":[],"entity":"spreading-machine","company":0,"placement":{"space":"colony.tiles","x":16,"y":28},"home":null},
+    {"id":"propagation.target","after":["propagation.source"],"entity":"propagation.target","company":0,"placement":{"space":"colony.tiles","x":18,"y":28},"home":null},
+    {"id":"propagation.crew","after":["propagation.target"],"entity":"propagation.crew","company":0,"placement":{"space":"colony.tiles","x":22,"y":28},"home":null}
+  ]
+}

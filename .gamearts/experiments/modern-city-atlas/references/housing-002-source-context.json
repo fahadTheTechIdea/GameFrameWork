@@ -1,0 +1,23 @@
+{
+  "purpose": "Unmodified source-pixel analysis/reference excerpt for owner-authorized provisional trial, not an approved reference packet.",
+  "source": ".gamearts/outputs/mockups/generated/modern_city_mockup.png",
+  "sourceSha256": "49d037170001e1bc3158a74f8eb8e5182a6831920febfb9be31c8c5380be5b2a",
+  "captureFeatureId": "detail-housing-roof-002",
+  "cropBoundsSourcePixels": [
+    55,
+    420,
+    45,
+    56
+  ],
+  "roofBoundsSourcePixels": [
+    63,
+    430,
+    24,
+    23
+  ],
+  "note": "Context includes visible walls below the roof plus neighboring ground. Roof bounds alone are not a complete house silhouette.",
+  "image": "housing-002-source-context.png",
+  "imageSha256": "ac320b5bea49a69b25d6bdfcc410901c85165934f26dc7cc7857412018d9998e",
+  "sourcePixelsPreserved": true,
+  "approval": "not_granted"
+}

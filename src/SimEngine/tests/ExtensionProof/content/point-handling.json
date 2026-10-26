@@ -1,0 +1,5 @@
+{
+  "handling_profiles": [
+    {"id":"points.handling","resources":[{"resource":"supply","quantity":1,"loading":{"numerator":1,"denominator":1,"unit":"minute"},"unloading":{"numerator":2,"denominator":1,"unit":"minute"}}]}
+  ]
+}

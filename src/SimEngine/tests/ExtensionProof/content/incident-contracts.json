@@ -1,0 +1,7 @@
+{
+  "independent_incident_completions": [{"id":"pressure.resolve","bound_response":true}],
+  "independent_incident_workflows": [{
+    "id":"pressure.leak","kind":"pressure.leak","response":"pressure.response",
+    "phases":[{"id":"detection","nodes":["detect"]},{"id":"repair","nodes":["repair"]}]
+  }]
+}

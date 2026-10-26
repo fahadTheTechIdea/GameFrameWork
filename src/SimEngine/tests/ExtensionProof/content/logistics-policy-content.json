@@ -1,0 +1,7 @@
+{
+  "logistics_policies": [
+    {"id":"policy.source","stock":{},"outlet":{"enabled":true,"reserve":{"supply":16},"reserve_access":"protected","export_priority":100,"allowed_destinations":["destination"]},"states":{"disabled":"blocked"}},
+    {"id":"policy.destination","stock":{"supply":{"enabled":true,"minimum":1,"desired":8,"maximum":8,"priority":100,"reserve_access":"protected"}},"outlet":{"enabled":true,"reserve":{},"reserve_access":"protected","export_priority":0,"allowed_destinations":null},"states":{"disabled":"blocked"}},
+    {"id":"policy.unused","stock":{"supply":{"enabled":true,"minimum":1,"desired":4,"maximum":8,"priority":0,"reserve_access":"protected"}},"outlet":{"enabled":true,"reserve":{"supply":1},"reserve_access":"protected","export_priority":0,"allowed_destinations":null},"states":{"disabled":"blocked"}}
+  ]
+}

@@ -1,0 +1,746 @@
+{
+  "catalogFormat": 1,
+  "status": "proposed_design",
+  "updatedDate": "2026-10-25",
+  "scope": "14 researched game layers and 14 shared extensions; implementation not added",
+  "packages": [
+    {
+      "id": "capability-profiles",
+      "title": "Capability profiles and layer composition",
+      "kind": "extension",
+      "requirementPrefix": "CAP",
+      "owner": "GameProfileCatalog",
+      "path": "capability-profiles",
+      "dependencies": [],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "logical-time",
+      "title": "Logical time and advancement policies",
+      "kind": "extension",
+      "requirementPrefix": "TIME",
+      "owner": "SimulationTimeOwner",
+      "path": "logical-time",
+      "dependencies": [
+        "capability-profiles"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "world-requests",
+      "title": "Acknowledged world requests and transitions",
+      "kind": "extension",
+      "requirementPrefix": "WORLDREQ",
+      "owner": "WorldRequestOwner",
+      "path": "world-requests",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "persistent-world",
+      "title": "Persistent worlds, regions and stable identities",
+      "kind": "extension",
+      "requirementPrefix": "PERSIST",
+      "owner": "PersistentWorldOwner",
+      "path": "persistent-world",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time",
+        "world-requests"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "player-queries",
+      "title": "Controller views and pure action previews",
+      "kind": "extension",
+      "requirementPrefix": "QUERY",
+      "owner": "GameQueryOwner",
+      "path": "player-queries",
+      "dependencies": [
+        "capability-profiles"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "progression-scopes",
+      "title": "Campaign, run and profile progression",
+      "kind": "extension",
+      "requirementPrefix": "PROGRESS",
+      "owner": "GameProgressionOwner",
+      "path": "progression-scopes",
+      "dependencies": [
+        "capability-profiles",
+        "checkpoint-history"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "narrative-interactions",
+      "title": "Narrative and interaction runtime",
+      "kind": "extension",
+      "requirementPrefix": "NARR",
+      "owner": "NarrativeOwner",
+      "path": "narrative-interactions",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time",
+        "player-queries",
+        "resource-transactions"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "activity-instances",
+      "title": "Repeatable jobs, quests and incidents",
+      "kind": "extension",
+      "requirementPrefix": "ACT",
+      "owner": "ActivityOwner",
+      "path": "activity-instances",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time",
+        "resource-transactions"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "resource-transactions",
+      "title": "Resources, inventory and reservations",
+      "kind": "extension",
+      "requirementPrefix": "RESOURCE",
+      "owner": "ResourceOwner",
+      "path": "resource-transactions",
+      "dependencies": [
+        "capability-profiles"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "checkpoint-history",
+      "title": "Checkpoint storage, replay segments and receipt retention",
+      "kind": "extension",
+      "requirementPrefix": "HISTORY",
+      "owner": "ScenarioHistoryOwner",
+      "path": "checkpoint-history",
+      "dependencies": [
+        "capability-profiles"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "generation-scale",
+      "title": "Reproducible generation and measured scale profiles",
+      "kind": "extension",
+      "requirementPrefix": "GEN",
+      "owner": "GenerationOwner",
+      "path": "generation-scale",
+      "dependencies": [
+        "capability-profiles"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "multiplayer-authority",
+      "title": "Optional multiplayer authority and scoped replication",
+      "kind": "extension",
+      "requirementPrefix": "NET",
+      "owner": "MultiplayerAuthorityOwner",
+      "path": "multiplayer-authority",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time",
+        "player-queries",
+        "world-requests"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "play-contexts",
+      "title": "Play contexts and encounter rulesets",
+      "kind": "extension",
+      "requirementPrefix": "CONTEXT",
+      "owner": "PlayContextOwner",
+      "path": "play-contexts",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time",
+        "world-requests"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "native-godot-host",
+      "title": "Godot native runtime host",
+      "kind": "extension",
+      "requirementPrefix": "HOST",
+      "owner": "ScenarioGameHost",
+      "path": "native-godot-host",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time",
+        "world-requests",
+        "player-queries"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "adventure-layer",
+      "title": "Narrative adventure layer",
+      "kind": "layer",
+      "requirementPrefix": "ADV",
+      "owner": "AdventureLayer",
+      "path": "adventure-layer",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time",
+        "world-requests",
+        "persistent-world",
+        "player-queries",
+        "narrative-interactions",
+        "activity-instances"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "party-rpg-layer",
+      "title": "Party RPG layer",
+      "kind": "layer",
+      "requirementPrefix": "PARTY",
+      "owner": "PartyRpgLayer",
+      "path": "party-rpg-layer",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time",
+        "player-queries",
+        "resource-transactions",
+        "progression-scopes",
+        "narrative-interactions",
+        "play-contexts"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "survival-layer",
+      "title": "Survival and crafting layer",
+      "kind": "layer",
+      "requirementPrefix": "SURV",
+      "owner": "SurvivalLayer",
+      "path": "survival-layer",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time",
+        "world-requests",
+        "persistent-world",
+        "resource-transactions",
+        "activity-instances",
+        "player-queries"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "open-world-layer",
+      "title": "Open-world sandbox layer",
+      "kind": "layer",
+      "requirementPrefix": "OPEN",
+      "owner": "OpenWorldLayer",
+      "path": "open-world-layer",
+      "dependencies": [
+        "capability-profiles",
+        "persistent-world",
+        "world-requests",
+        "generation-scale",
+        "checkpoint-history",
+        "player-queries",
+        "activity-instances"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "rts-layer",
+      "title": "RTS and base-defence layer",
+      "kind": "layer",
+      "requirementPrefix": "RTS",
+      "owner": "RtsLayer",
+      "path": "rts-layer",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time",
+        "resource-transactions",
+        "activity-instances",
+        "world-requests",
+        "player-queries",
+        "native-godot-host",
+        "generation-scale"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "turn-tactics-layer",
+      "title": "Turn-based tactics layer",
+      "kind": "layer",
+      "requirementPrefix": "TACT",
+      "owner": "TurnTacticsLayer",
+      "path": "turn-tactics-layer",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time",
+        "player-queries",
+        "play-contexts",
+        "resource-transactions"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "tactical-campaign-layer",
+      "title": "Tactical campaign layer",
+      "kind": "layer",
+      "requirementPrefix": "CAMPAIGN",
+      "owner": "TacticalCampaignLayer",
+      "path": "tactical-campaign-layer",
+      "dependencies": [
+        "capability-profiles",
+        "progression-scopes",
+        "play-contexts",
+        "activity-instances",
+        "persistent-world",
+        "narrative-interactions"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "colony-layer",
+      "title": "Colony and emergent-story layer",
+      "kind": "layer",
+      "requirementPrefix": "COLONY",
+      "owner": "ColonyLayer",
+      "path": "colony-layer",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time",
+        "activity-instances",
+        "persistent-world",
+        "resource-transactions",
+        "generation-scale",
+        "player-queries"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "factory-economy-layer",
+      "title": "Factory and economic simulation layer",
+      "kind": "layer",
+      "requirementPrefix": "FACTORY",
+      "owner": "FactoryEconomyLayer",
+      "path": "factory-economy-layer",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time",
+        "resource-transactions",
+        "activity-instances",
+        "persistent-world",
+        "checkpoint-history",
+        "generation-scale"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "four-x-layer",
+      "title": "4X strategy layer",
+      "kind": "layer",
+      "requirementPrefix": "FOURX",
+      "owner": "FourXLayer",
+      "path": "four-x-layer",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time",
+        "player-queries",
+        "progression-scopes",
+        "activity-instances",
+        "checkpoint-history"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "roguelite-layer",
+      "title": "Roguelite run and meta-progression layer",
+      "kind": "layer",
+      "requirementPrefix": "ROGUE",
+      "owner": "RogueliteLayer",
+      "path": "roguelite-layer",
+      "dependencies": [
+        "capability-profiles",
+        "progression-scopes",
+        "play-contexts",
+        "generation-scale",
+        "resource-transactions"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "deckbuilding-layer",
+      "title": "Deckbuilding and card encounter layer",
+      "kind": "layer",
+      "requirementPrefix": "CARD",
+      "owner": "DeckbuildingLayer",
+      "path": "deckbuilding-layer",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time",
+        "play-contexts",
+        "resource-transactions",
+        "progression-scopes",
+        "generation-scale"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "institution-management-layer",
+      "title": "Institution and life-management layer",
+      "kind": "layer",
+      "requirementPrefix": "LIFE",
+      "owner": "InstitutionLayer",
+      "path": "institution-management-layer",
+      "dependencies": [
+        "capability-profiles",
+        "logical-time",
+        "activity-instances",
+        "persistent-world",
+        "resource-transactions",
+        "progression-scopes",
+        "player-queries"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    },
+    {
+      "id": "campaign-rpg-layer",
+      "title": "Recruitment and headquarters campaign RPG",
+      "kind": "layer",
+      "requirementPrefix": "CRPG",
+      "owner": "CampaignRpgLayer",
+      "path": "campaign-rpg-layer",
+      "dependencies": [
+        "capability-profiles",
+        "progression-scopes",
+        "play-contexts",
+        "logical-time",
+        "narrative-interactions",
+        "resource-transactions",
+        "player-queries",
+        "persistent-world"
+      ],
+      "documents": [
+        "README.md",
+        "01_REQUIREMENTS.md",
+        "02_ARCHITECTURE.md",
+        "03_CONTRACTS_STATE.md",
+        "04_AUTHORING.md",
+        "05_RUNTIME_RECOVERY.md",
+        "06_VERIFICATION_DELIVERY.md"
+      ],
+      "definitionSchema": "contracts/definition.schema.json",
+      "definitionExample": "examples/definition.json",
+      "runtimeStatus": "not_run"
+    }
+  ]
+}

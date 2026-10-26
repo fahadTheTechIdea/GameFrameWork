@@ -1,0 +1,12 @@
+{
+  "id": "persistent_world",
+  "definitionVersion": "1.0.0",
+  "worldId": "frontier",
+  "regionIds": [
+    "village",
+    "forest",
+    "headquarters"
+  ],
+  "inactivePolicy": "event_based",
+  "maxActiveRegions": 2
+}

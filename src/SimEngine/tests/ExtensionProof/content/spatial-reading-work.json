@@ -1,0 +1,9 @@
+{
+  "point_readings": [{"id":"field.reading","layer":"point.terrain","position":0,"retention":"latest","fresh_for":null}],
+  "activities": [
+    {"id":"field.sample","player_orderable":true,"priority":60,"automatic_supply":false,"on_complete":"field.learn",
+     "nodes":[{"executor":"work.staffed","id":"sample","roles":["inspect"],"duration":{"numerator":3,"denominator":10,"unit":"hour"},"requirement":"preempt.ready"}]},
+    {"id":"field.reobserve","player_orderable":true,"priority":60,"automatic_supply":false,"on_complete":"field.learn",
+     "nodes":[{"executor":"work.staffed","id":"sample","roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"}}]}
+  ]
+}

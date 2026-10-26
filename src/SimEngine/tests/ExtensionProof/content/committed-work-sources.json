@@ -1,0 +1,30 @@
+{
+  "units": [
+    {"id":"unit.level","dimension":"ratio","scale":{"numerator":1,"denominator":1},"discrete":false},
+    {"id":"unit.boolean","dimension":"boolean","scale":{"numerator":1,"denominator":1},"discrete":true}
+  ],
+  "resource_pools": [
+    {"id":"commit.first","identity":711,"owner":0,"public":true,"evacuate":false,"capacity_policy":"fixture.count.40","resources":["supply"]},
+    {"id":"commit.second","identity":712,"owner":0,"public":true,"evacuate":false,"capacity_policy":"fixture.count.40","resources":["supply"]}
+  ],
+  "guarded_resource_sources": [
+    {"id":"commit.input","first":"first","second":"second","operation":"work-access","refusal":"proof.source-policy-closed","mode":"blocked","use":"hold","quantities":{"supply":1}}
+  ],
+  "activities": [
+    {"id":"commit.activity","player_orderable":true,"automatic_supply":false,"priority":70,"nodes":[
+      {"id":"work","executor":"work.timed","roles":[],"after":[],"duration":{"numerator":20,"denominator":1,"unit":"minute"},"requirement":"commit.input"}
+    ]}
+  ],
+  "entities": [
+    {"id":"commit.target","kind":"structure","components":{
+      "point_presence":{"space":"field.points","position":10},
+      "pool_port":[
+        {"id":"first","pool":"commit.first","alternatives":[],"endpoint_scope":"proof.pools","original_access":"retained"},
+        {"id":"second","pool":"commit.second","alternatives":[],"endpoint_scope":"proof.pools","original_access":"retained"}
+      ],
+      "source_operation":{"level":0,"operation":{"id":"work-access","enabled":true,"target":1,"minimum":1,"maximum":1,"unit":"unit.level"}}
+    }}
+  ],
+  "entity_setups":[{"id":"commit.target-start","after":[],"entity":"commit.target","company":0,"placement":{"space":"field.points","position":10},"home":null}],
+  "world_setup_profiles":[{"id":"commit.start","entries":["commit.target-start"],"includes":["points.start"]}]
+}

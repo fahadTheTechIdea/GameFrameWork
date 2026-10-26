@@ -1,0 +1,341 @@
+{
+  "work_policies": [
+    {
+      "id": "promotion.blocker",
+      "enabled": true,
+      "priority": 0,
+      "allowed_roles": [],
+      "area": null,
+      "interruptible": true,
+      "emergency_eligible": true,
+      "assignment_mode": "all",
+      "states": {
+        "disabled": "blocked",
+        "standby": "blocked"
+      }
+    },
+    {
+      "id": "promotion.worker",
+      "enabled": true,
+      "priority": 0,
+      "allowed_roles": [
+        "inspect",
+        "haul"
+      ],
+      "area": null,
+      "interruptible": true,
+      "emergency_eligible": true,
+      "assignment_mode": "all",
+      "states": {
+        "disabled": "blocked",
+        "standby": "blocked"
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "destination",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 10
+        },
+        "point_stock": {
+          "resource": "supply",
+          "capacity_policy": "fixture.count.40",
+          "initial": 0
+        },
+        "point_dock": {
+          "work_roles": [
+            "inspect"
+          ],
+          "resources": [
+            "supply"
+          ],
+          "slots": [
+            {
+              "id": "a.far-bay",
+              "kind": "service",
+              "offset": 4
+            },
+            {
+              "id": "z.near-bay",
+              "kind": "service",
+              "offset": 1
+            },
+            {
+              "id": "waiting",
+              "kind": "waiting",
+              "offset": -5
+            },
+            {
+              "id": "exit",
+              "kind": "departure",
+              "offset": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "promotion.blocker.near",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 11
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "roles": [
+            "inspect",
+            "haul"
+          ],
+          "work_rate": 1,
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "work_policy": {
+          "profile": "promotion.blocker"
+        },
+        "storage": {
+          "capacity_policy": "fixture.count.8",
+          "public": false
+        },
+        "transporter": {
+          "handling": "points.handling"
+        }
+      }
+    },
+    {
+      "id": "promotion.blocker.far",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 14
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "roles": [
+            "inspect",
+            "haul"
+          ],
+          "work_rate": 1,
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "work_policy": {
+          "profile": "promotion.blocker"
+        },
+        "storage": {
+          "capacity_policy": "fixture.count.8",
+          "public": false
+        },
+        "transporter": {
+          "handling": "points.handling"
+        }
+      }
+    },
+    {
+      "id": "promotion.near-home",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 18
+        }
+      }
+    },
+    {
+      "id": "promotion.far-home",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 20
+        }
+      }
+    },
+    {
+      "id": "promotion.younger",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 4
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "roles": [
+            "inspect",
+            "haul"
+          ],
+          "work_rate": 1,
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "work_policy": {
+      "profile": "promotion.worker"
+        },
+        "storage": {
+          "capacity_policy": "fixture.count.8",
+          "public": false
+        },
+        "transporter": {
+          "handling": "points.handling"
+        }
+      }
+    },
+    {
+      "id": "promotion.alias",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 20
+        },
+        "point_stock": {
+          "resource": "supply",
+          "capacity_policy": "fixture.count.40",
+          "initial": 0
+        },
+        "point_dock": {
+          "work_roles": [
+            "inspect"
+          ],
+          "resources": [
+            "supply"
+          ],
+          "slots": [
+            {
+              "id": "alias.shared",
+              "kind": "service",
+              "offset": -9
+            },
+            {
+              "id": "alias.wait",
+              "kind": "waiting",
+              "offset": -16
+            },
+            {
+              "id": "alias.exit",
+              "kind": "departure",
+              "offset": -8
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "promotion.blocker.near",
+      "after": [],
+      "entity": "promotion.blocker.near",
+      "company": 0,
+      "placement": {
+        "space": "field.points",
+        "position": 11
+      },
+      "home": null
+    },
+    {
+      "id": "promotion.blocker.far",
+      "after": [],
+      "entity": "promotion.blocker.far",
+      "company": 0,
+      "placement": {
+        "space": "field.points",
+        "position": 14
+      },
+      "home": null
+    },
+    {
+      "id": "promotion.near-home",
+      "after": [],
+      "entity": "promotion.near-home",
+      "company": 0,
+      "placement": {
+        "space": "field.points",
+        "position": 18
+      },
+      "home": null
+    },
+    {
+      "id": "promotion.far-home",
+      "after": [],
+      "entity": "promotion.far-home",
+      "company": 0,
+      "placement": {
+        "space": "field.points",
+        "position": 20
+      },
+      "home": null
+    },
+    {
+      "id": "promotion.younger",
+      "after": [],
+      "entity": "promotion.younger",
+      "company": 1,
+      "placement": {
+        "space": "field.points",
+        "position": 4
+      },
+      "home": null
+    },
+    {
+      "id": "promotion.alias",
+      "after": [],
+      "entity": "promotion.alias",
+      "company": 1,
+      "placement": {
+        "space": "field.points",
+        "position": 20
+      },
+      "home": null
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "promotion.start",
+      "entries": [
+        "promotion.blocker.near",
+        "promotion.blocker.far",
+        "promotion.near-home",
+        "promotion.far-home"
+      ],
+      "includes": [
+        "points.start"
+      ]
+    }
+  ]
+}

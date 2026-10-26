@@ -1,0 +1,21 @@
+{
+  "resources": [{"id":"spare","unit":"unit.supply","category":"general","phase":"solid","traits":[],"capacity":{"unit.supply":1}}],
+  "logistics_policies": [
+    {"id":"reserve.source","stock":{},"outlet":{"enabled":true,"reserve":{"supply":20,"spare":3},"reserve_access": "protected", "export_priority":3,"allowed_destinations":["destination"]},"states":{"disabled":"blocked"}},
+    {"id":"reserve.destination","stock":{"supply":{"enabled":true,"minimum":2,"reserve_access": "protected", "desired":12,"maximum":12,"priority":65}},"outlet":{"enabled":true,"reserve":{},"reserve_access": "protected", "export_priority":0,"allowed_destinations":null},"states":{"disabled":"blocked"}}
+  ],
+  "resource_signals": [
+    {"id":"reserve.stock","kind":"number","metric":"inventory.stored","resource":"supply","unit":"unit.supply","providers":[{"component":"inventory_signal","schema":3}]}
+  ],
+  "control_input_recovery_policies": [{"id":"reserve.suspend","retry_blockers":[]}],
+  "outlet_reserve_control_actions": [
+    {"id":"reserve.supply","command":"sim.configure-outlet-policy","owner":"sim.logistics","resource":"supply","unit":"unit.supply"}
+  ],
+  "control_rules": [
+    {"id":"reserve.band","input_recovery":"reserve.suspend","action_policy":"reserve.supply","arbitration":"exclusive","initial_latch":false,
+     "inputs":[{"id":"stock","signal":"reserve.stock"}],
+     "conditions":[{"id":"high","kind":"above","input":"stock","unit":"unit.supply","on":25,"off":21,"initial":false}],"root":"high",
+     "dwell":{"numerator":2,"denominator":1,"unit":"minute"},"cooldown":{"numerator":4,"denominator":1,"unit":"minute"},
+     "when_true":{"enabled":true,"target":4,"unit":"unit.supply"},"when_false":{"enabled":true,"target":20,"unit":"unit.supply"}}
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "independent_spatial_environmental_metrics":[
+    {"id":"sensor.extension-backlog","unit":"sensor.count","cells":["sensor.spill-cell"]}
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "probe_control_actions":[{"id":"proof.probe-actions","command":"proof.set-automation-level","owner":"proof.automation"}],
+  "operation_control_actions":[{"id":"proof.automation-proof.operation","command":"sim.configure-operation","owner":"sim.operations"}],
+  "conditional_input_recovery_policies":[{"id":"proof.input.conditional","input":"level","signal":"probe.level","blocker":"probe.sensor-offline"}],
+  "control_input_recovery_policies":[{"id":"proof.automation-proof.suspend","retry_blockers":[]}],
+  "entities":[
+    {"id":"sensor","kind":"entity","components":{"automation_probe":{"level":6,"operation":{"id":"probe","enabled":true,"target":1,"minimum":0,"maximum":10,"unit":"unit.work-rate"}}}},
+    {"id":"actuator","kind":"entity","components":{"automation_probe":{"level":0,"operation":{"id":"probe","enabled":true,"target":1,"minimum":0,"maximum":10,"unit":"unit.work-rate"}}}}
+  ],
+  "world_setup_profiles": [{"id":"automation.start","entries":["start","sensor-0","actuator-0","sensor-1","actuator-1"],"includes":[]}],
+  "entity_setups": [{"id":"sensor-0","after":[],"entity":"sensor","company":0,"placement":null,"home":null},{"id":"actuator-0","after":[],"entity":"actuator","company":0,"placement":null,"home":null},{"id":"sensor-1","after":[],"entity":"sensor","company":1,"placement":null,"home":null},{"id":"actuator-1","after":[],"entity":"actuator","company":1,"placement":null,"home":null}],
+  "band_control_rules":[
+    {"id":"mod.band","input_recovery":"proof.automation-proof.suspend","action_policy":"proof.automation-proof.operation","signal":"probe.level","unit":"unit.level","above":false,"on":3,"off":5,"initial":false,"initial_latch":false,"arbitration":"exclusive",
+     "when_true":{"enabled":false,"target":1,"unit":"unit.work-rate"},"when_false":{"enabled":true,"target":1,"unit":"unit.work-rate"},
+     "dwell":{"numerator":0,"denominator":1,"unit":"minute"},"cooldown":{"numerator":0,"denominator":1,"unit":"minute"}}
+  ],
+  "inverse_control_rules":[
+    {"id":"mod.inverse","input_recovery":"proof.automation-proof.suspend","action_policy":"proof.automation-proof.operation","signal":"probe.enabled","initial":false,"initial_latch":false,"arbitration":"exclusive",
+     "when_true":{"enabled":true,"target":2,"unit":"unit.work-rate"},"when_false":{"enabled":false,"target":1,"unit":"unit.work-rate"},
+     "dwell":{"numerator":0,"denominator":1,"unit":"minute"},"cooldown":{"numerator":0,"denominator":1,"unit":"minute"}}
+  ]
+}

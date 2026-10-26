@@ -1,0 +1,83 @@
+{
+  "activities": [{"id": "dock.inspect", "player_orderable": true, "automatic_supply": false,
+    "nodes": [{"id": "inspect", "executor": "work.staffed", "roles": ["haul"],
+      "duration": {"numerator": 1, "denominator": 1, "unit": "minute"}}]}],
+  "entities": [
+    {"id": "competition.parking", "kind": "entity", "components": {
+      "point_presence": {"space": "field.points", "position": 40}
+    }},
+    {
+      "id": "competition.source", "kind": "entity",
+      "components": {
+        "point_presence": {"space": "field.points", "position": 10},
+        "point_stock": {"resource": "supply", "capacity_policy": "source.capacity", "initial": 60},
+        "point_dock": {
+          "resources": ["supply"], "work_roles": ["haul"],
+          "slots": [
+            {"id": "a.work-only", "kind": "service", "offset": 0, "work_role": "haul"},
+            {"id": "service", "kind": "service", "offset": 1, "resource": "supply"},
+            {"id": "wait", "kind": "waiting", "offset": -1},
+            {"id": "exit", "kind": "departure", "offset": 2}
+          ]
+        }
+      }
+    },
+    {
+      "id": "competition.destination", "kind": "entity",
+      "components": {
+        "point_presence": {"space": "field.points", "position": 30},
+        "point_stock": {"resource": "supply", "capacity_policy": "destination.capacity", "initial": 0},
+        "point_dock": {
+          "resources": ["supply"], "work_roles": [],
+          "slots": [
+            {"id": "service", "kind": "service", "offset": 0},
+            {"id": "wait", "kind": "waiting", "offset": -1},
+            {"id": "exit", "kind": "departure", "offset": 1}
+          ]
+        }
+      }
+    }
+  ],
+  "entity_setups": [
+    {"id": "haul.front-parking", "after": [], "entity": "competition.parking", "company": 0,
+     "placement": {"space": "field.points", "position": 50}, "home": null},
+    {"id": "haul.rear-parking", "after": [], "entity": "competition.parking", "company": 0,
+     "placement": {"space": "field.points", "position": 40}, "home": null},
+    {"id": "haul.competition-source", "after": [], "entity": "competition.source", "company": 0,
+     "placement": {"space": "field.points", "position": 10}, "home": null},
+    {"id": "haul.competition-destination", "after": [], "entity": "competition.destination", "company": 0,
+     "placement": {"space": "field.points", "position": 30}, "home": null},
+    {"id": "haul.first-machine", "after": ["haul.front-parking"], "entity": "machine", "company": 0,
+     "placement": {"space": "field.points", "position": 10}, "home": "haul.front-parking"},
+    {
+      "id": "haul.reserve-machine",
+      "after": ["haul.first-machine", "haul.rear-parking"],
+      "entity": "machine",
+      "company": 0,
+      "placement": {"space": "field.points", "position": 0},
+      "home": "haul.rear-parking"
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "haul.competition-start",
+      "entries": ["haul.competition-source", "haul.competition-destination", "haul.front-parking", "haul.rear-parking", "haul.first-machine", "haul.reserve-machine"],
+      "includes": []
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "haul.competition",
+      "game_mode": "haul-quantum.resource-only",
+      "mode_overrides": {},
+      "modules": ["sim.work", "sim.transformations", "points", "sim.world-setup"],
+      "time": "haul.minute",
+      "space": "field.points",
+      "seats": 2,
+      "settings": {
+        "sim.work": {"retry": "proof.retry"},
+        "sim.world-setup": {"profile": "haul.competition-start"}
+      }
+    }
+  ]
+}

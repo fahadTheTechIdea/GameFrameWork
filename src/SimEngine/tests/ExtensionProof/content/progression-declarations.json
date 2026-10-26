@@ -1,0 +1,189 @@
+{
+  "technology_completion_effects": [
+    {
+      "id": "decl.learn"
+    }
+  ],
+  "technology_transformation_unlocks": [
+    {
+      "id": "decl.smelt",
+      "definition": "space.smelt.planetx"
+    }
+  ],
+  "target_resource_requirements": [
+    {
+      "id": "decl.tool",
+      "port": null,
+      "use": "hold",
+      "quantities": {
+        "space.crucible": 1
+      }
+    }
+  ],
+  "independent_technologies": [
+    {
+      "id": "decl.external",
+      "prerequisites": [],
+      "unlocks": [],
+      "player_orderable": true,
+      "priority": 70,
+      "automatic_supply": true,
+      "on_complete": "decl.learn",
+      "nodes": [
+        {
+          "id": "prepare",
+          "executor": "work.timed",
+          "duration": {
+            "numerator": 10,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "id": "research",
+          "after": [
+            "prepare"
+          ],
+          "executor": "work.staffed",
+          "roles": [
+            "haul"
+          ],
+          "duration": {
+            "numerator": 30,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "requirement": "decl.tool"
+        }
+      ]
+    }
+  ],
+  "technologies": [
+    {
+      "id": "decl.native",
+      "prerequisites": [
+        "decl.external"
+      ],
+      "unlocks": [
+        "decl.smelt"
+      ],
+      "player_orderable": true,
+      "priority": 70,
+      "automatic_supply": true,
+      "on_complete": "decl.learn",
+      "nodes": [
+        {
+          "id": "prepare",
+          "executor": "work.timed",
+          "duration": {
+            "numerator": 10,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "id": "research",
+          "after": [
+            "prepare"
+          ],
+          "executor": "work.staffed",
+          "roles": [
+            "haul"
+          ],
+          "duration": {
+            "numerator": 30,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "requirement": "decl.tool"
+        }
+      ]
+    }
+  ],
+  "technology_objective_predicates": [
+    {
+      "id": "decl.external-known",
+      "technology": "decl.external"
+    },
+    {
+      "id": "decl.native-known",
+      "technology": "decl.native"
+    }
+  ],
+  "independent_objectives": [
+    {
+      "id": "decl.external-earned",
+      "prerequisites": [],
+      "predicate": "decl.external-known",
+      "deadline": {
+        "numerator": 900,
+        "denominator": 1,
+        "unit": "second"
+      },
+      "on_complete": null,
+      "on_failure": null
+    }
+  ],
+  "objectives": [
+    {
+      "id": "decl.native-earned",
+      "prerequisites": [
+        "decl.external-earned"
+      ],
+      "predicate": "decl.native-known",
+      "deadline": {
+        "numerator": 900,
+        "denominator": 1,
+        "unit": "second"
+      },
+      "on_complete": null,
+      "on_failure": null
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "progression-declarations",
+      "game_mode": "space.survival",
+      "mode_overrides": {},
+      "time": "space.seconds",
+      "space": "space.points",
+      "modules": [
+        "sim.world-setup",
+        "sim.transformations",
+        "sim.logistics",
+        "points",
+        "sim.technology",
+        "sim.objectives",
+        "proof.progression-declarations"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "space.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.objectives": {
+          "companies": [
+            {
+              "company": 0,
+              "objectives": [
+                "decl.external-earned",
+                "decl.native-earned"
+              ]
+            },
+            {
+              "company": 1,
+              "objectives": [
+                "decl.external-earned",
+                "decl.native-earned"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

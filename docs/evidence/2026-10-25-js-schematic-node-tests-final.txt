@@ -1,0 +1,12 @@
+✔ deterministic city hierarchy, every node retained, no overlapping sibling parcels (3.1209ms)
+✔ non-city metadata uses the same renderer without setting-specific branches (0.4645ms)
+✔ unknown parents, cycles, duplicate IDs, missing endpoints and unsafe layout budgets reject (2.3819ms)
+✔ exported viewer embeds exact metadata and packaged JavaScript, without image/network dependencies (37.5613ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 130.7818

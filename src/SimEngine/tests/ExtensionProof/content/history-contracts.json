@@ -1,0 +1,7 @@
+{
+  "independent_history_policies": [
+    {"id":"contract.history","minimum_age":{"numerator":6,"denominator":1,"unit":"minute"},"minimum_retained_cohorts":1,"cohorts_per_update":1},
+    {"id":"contract.unused-history","minimum_age":{"numerator":0,"denominator":1,"unit":"minute"},"minimum_retained_cohorts":0,"cohorts_per_update":2}
+  ]
+}
+

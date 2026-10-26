@@ -1,0 +1,12 @@
+{
+  "logistics_policies": [
+    {
+      "id": "reserve.materials", "stock": {},
+      "outlet": {
+        "enabled": true, "reserve": { "supply": 20 }, "export_priority": 3,
+        "allowed_destinations": ["destination"], "reserve_access": "emergency_only"
+      },
+      "states": { "disabled": "blocked" }
+    }
+  ]
+}

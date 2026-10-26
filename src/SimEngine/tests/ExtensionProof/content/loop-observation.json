@@ -1,0 +1,1 @@
+{"loop_observations":[{"id":"loop.session","snapshot_fault":"none","snapshot_at":null}],"work_policies":[{"id":"loop.worker","enabled":true,"priority":0,"allowed_roles":["haul","inspect"],"area":null,"interruptible":true,"emergency_eligible":true,"assignment_mode":"all","states":{"disabled":"blocked","standby":"blocked"}}]}

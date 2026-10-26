@@ -1,0 +1,10 @@
+{
+  "knowledge_visibility_policies": [
+    {"id":"tile.discovery","own_entities":true,"unlisted_entities":false,"unlisted_content":true,
+     "rules":["visibility.tile.public","visibility.tile.private"]}
+  ],
+  "layer_knowledge_visibility": [
+    {"id":"visibility.tile.public","definition":"observer.public","mode":"any","facts":["field.observed","field.second"]},
+    {"id":"visibility.tile.private","definition":"observer.private","mode":"all","facts":["field.observed"]}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "units":[{"id":"unit.boolean","dimension":"classification","scale":{"numerator":1,"denominator":1},"discrete":true}],
+  "independent_networks":[{"id":"binding.main","metadata_fault":"none","line":"network.pipe","demand_policy":"provider.reserve-demand","solver":"provider.pulsed","flow_policy":"proof.network-transfers.round-robin","rates":[{"resource":"steel","quantity":4,"period":{"numerator":1,"denominator":1,"unit":"minute"}}],"capacity_policy":"network.shared","public":false}],
+  "limited_network_solvers":[{"id":"provider.pulsed","limits":{"steel":1},"interval":{"numerator":2,"denominator":1,"unit":"minute"}}],
+  "utility_network_demands":[{"id":"provider.reserve-demand","consumers":["reserve"]}],
+  "signals":[{"id":"provider.ready","kind":"boolean","metric":"utility.ready","unit":"unit.boolean","providers":[{"component":"utility_signal","schema":1}]}],
+  "resource_signals":[{"id":"provider.available","kind":"number","metric":"utility.available","resource":"steel","unit":"unit.steel","providers":[{"component":"utility_signal","schema":1}]}],
+  "transformations":[{"id":"provider.manufacture","mode":"batch","cancel_policy":"return_inputs","tools":{},"tool_consumption":{},"tool_ports":{},"inputs":{},"input_ports":{},"outputs":{"steel":1},"output_ports":{"steel":"material.output"},"operating_inputs":[{"resource":"steel","quantity":1,"period":{"numerator":1,"denominator":1,"unit":"minute"}}],"operating_ports":{"steel":"operating.input"},"duration":{"numerator":6,"denominator":1,"unit":"minute"}}],
+  "target_utility_requirements":[{"id":"provider.ready-work","consumer":"reserve"}],
+  "activities":[{"id":"provider.inspect","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.timed","id":"inspect","duration":{"numerator":4,"denominator":1,"unit":"minute"},"requirement":"provider.ready-work"}]}],
+  "operation_control_actions":[{"id":"provider.operation","command":"sim.configure-operation","owner":"sim.operations"}],
+  "control_input_recovery_policies":[{"id":"provider.inputs","retry_blockers":[]}],
+  "control_rules":[{"id":"provider.control","input_recovery":"provider.inputs","action_policy":"provider.operation","arbitration":"exclusive","initial_latch":false,
+    "inputs":[{"id":"ready","signal":"provider.ready"}],"conditions":[{"id":"has-reserve","kind":"boolean","input":"ready","expected":true,"initial":false}],"root":"has-reserve",
+    "dwell":{"numerator":0,"denominator":1,"unit":"minute"},"cooldown":{"numerator":0,"denominator":1,"unit":"minute"},
+    "when_true":{"enabled":true,"target":1,"unit":"unit.work-rate"},"when_false":{"enabled":false,"target":1,"unit":"unit.work-rate"}}]
+}

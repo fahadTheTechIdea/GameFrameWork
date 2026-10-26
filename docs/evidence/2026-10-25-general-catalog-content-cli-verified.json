@@ -1,0 +1,918 @@
+{
+  "Catalog": {
+    "Id": "modern",
+    "Name": "Modern",
+    "ContentSha256": "1558591292e41c3907f32aa41ad1213814c85c370ce73e6120821a397375cf56",
+    "EnabledCapabilities": [
+      "modern.district-policy",
+      "modern.electricity-network",
+      "modern.facility-technology",
+      "modern.motor-road-network",
+      "modern.potable-water-network",
+      "modern.wastewater-network"
+    ],
+    "PolicyId": "modern.siting",
+    "ImplementationIdentities": {
+      "WorldCreator.Core": "sha256:644aa47faf92a4bc0d5ef81d3c37a378f2eb5f354de6232f4564f087e7887f98",
+      "WorldCreator.Catalogs.Modern": "sha256:c6fc2d57ef6081e63f61577a2a0456d5d6af1b6e1ac9d9e5cb8cad34f51c73e4"
+    },
+    "Composition": null,
+    "AuthoredContentDigests": {
+      "user.requested-compounds": "272383d8ffb3e0979f76693747c146dd50734eb749a4f2305180cc5f58dc2f51"
+    }
+  },
+  "Facilities": [
+    {
+      "Id": "modern.factory-campus",
+      "Name": "Factory campus",
+      "WidthMeters": 181,
+      "DepthMeters": 56,
+      "Roads": [
+        {
+          "Id": "entry",
+          "Centerline": {
+            "Points": [
+              {
+                "X": 0,
+                "Y": 8
+              },
+              {
+                "X": 181,
+                "Y": 8
+              }
+            ]
+          },
+          "Class": "Local",
+          "Profile": {
+            "LaneWidthMeters": 4,
+            "LaneCount": 2,
+            "SidewalkLeftMeters": 0,
+            "SidewalkRightMeters": 0,
+            "CurbLeftMeters": 0,
+            "CurbRightMeters": 0,
+            "MedianMeters": 0,
+            "TotalWidthMeters": 8
+          }
+        }
+      ],
+      "Structures": [
+        {
+          "Id": "receiving",
+          "Purpose": "incoming materials storage",
+          "Site": {
+            "Vertices": [
+              {
+                "X": 8,
+                "Y": 8
+              },
+              {
+                "X": 32,
+                "Y": 8
+              },
+              {
+                "X": 32,
+                "Y": 38
+              },
+              {
+                "X": 8,
+                "Y": 38
+              }
+            ]
+          },
+          "FrontagePathId": "entry",
+          "Envelope": {
+            "BuildingType": "warehouse",
+            "FrontSetbackMeters": 8,
+            "RearSetbackMeters": 8,
+            "SideSetbackMeters": 4,
+            "MinimumWidthMeters": 12,
+            "MinimumDepthMeters": 10
+          },
+          "SizeVariantId": "small",
+          "Components": [
+            {
+              "Id": "entrance",
+              "Kind": "door",
+              "Purpose": "enter incoming materials storage",
+              "State": "closed",
+              "AnimationId": "door-open-close"
+            }
+          ]
+        },
+        {
+          "Id": "production",
+          "Purpose": "primary production hall",
+          "Site": {
+            "Vertices": [
+              {
+                "X": 40,
+                "Y": 8
+              },
+              {
+                "X": 78,
+                "Y": 8
+              },
+              {
+                "X": 78,
+                "Y": 48
+              },
+              {
+                "X": 40,
+                "Y": 48
+              }
+            ]
+          },
+          "FrontagePathId": "entry",
+          "Envelope": {
+            "BuildingType": "factory",
+            "FrontSetbackMeters": 8,
+            "RearSetbackMeters": 8,
+            "SideSetbackMeters": 4,
+            "MinimumWidthMeters": 24,
+            "MinimumDepthMeters": 18
+          },
+          "SizeVariantId": "small",
+          "Components": [
+            {
+              "Id": "entrance",
+              "Kind": "door",
+              "Purpose": "enter primary production hall",
+              "State": "closed",
+              "AnimationId": "door-open-close"
+            }
+          ]
+        },
+        {
+          "Id": "dispatch",
+          "Purpose": "finished goods and dispatch storage",
+          "Site": {
+            "Vertices": [
+              {
+                "X": 86,
+                "Y": 8
+              },
+              {
+                "X": 110,
+                "Y": 8
+              },
+              {
+                "X": 110,
+                "Y": 38
+              },
+              {
+                "X": 86,
+                "Y": 38
+              }
+            ]
+          },
+          "FrontagePathId": "entry",
+          "Envelope": {
+            "BuildingType": "warehouse",
+            "FrontSetbackMeters": 8,
+            "RearSetbackMeters": 8,
+            "SideSetbackMeters": 4,
+            "MinimumWidthMeters": 12,
+            "MinimumDepthMeters": 10
+          },
+          "SizeVariantId": "small",
+          "Components": [
+            {
+              "Id": "entrance",
+              "Kind": "door",
+              "Purpose": "enter finished goods and dispatch storage",
+              "State": "closed",
+              "AnimationId": "door-open-close"
+            }
+          ]
+        },
+        {
+          "Id": "maintenance",
+          "Purpose": "production maintenance workshop",
+          "Site": {
+            "Vertices": [
+              {
+                "X": 118,
+                "Y": 8
+              },
+              {
+                "X": 140,
+                "Y": 8
+              },
+              {
+                "X": 140,
+                "Y": 42
+              },
+              {
+                "X": 118,
+                "Y": 42
+              }
+            ]
+          },
+          "FrontagePathId": "entry",
+          "Envelope": {
+            "BuildingType": "workshop",
+            "FrontSetbackMeters": 8,
+            "RearSetbackMeters": 8,
+            "SideSetbackMeters": 4,
+            "MinimumWidthMeters": 12,
+            "MinimumDepthMeters": 16
+          },
+          "SizeVariantId": "small",
+          "Components": [
+            {
+              "Id": "entrance",
+              "Kind": "door",
+              "Purpose": "enter production maintenance workshop",
+              "State": "closed",
+              "AnimationId": "door-open-close"
+            }
+          ]
+        },
+        {
+          "Id": "administration",
+          "Purpose": "factory administration and staff",
+          "Site": {
+            "Vertices": [
+              {
+                "X": 148,
+                "Y": 8
+              },
+              {
+                "X": 173,
+                "Y": 8
+              },
+              {
+                "X": 173,
+                "Y": 46
+              },
+              {
+                "X": 148,
+                "Y": 46
+              }
+            ]
+          },
+          "FrontagePathId": "entry",
+          "Envelope": {
+            "BuildingType": "office-building",
+            "FrontSetbackMeters": 8,
+            "RearSetbackMeters": 8,
+            "SideSetbackMeters": 4,
+            "MinimumWidthMeters": 15,
+            "MinimumDepthMeters": 20
+          },
+          "SizeVariantId": "small",
+          "Components": [
+            {
+              "Id": "entrance",
+              "Kind": "door",
+              "Purpose": "enter factory administration and staff",
+              "State": "closed",
+              "AnimationId": "door-open-close"
+            }
+          ]
+        }
+      ],
+      "Children": []
+    },
+    {
+      "Id": "modern.football-club",
+      "Name": "Football club campus",
+      "WidthMeters": 265,
+      "DepthMeters": 88,
+      "Roads": [
+        {
+          "Id": "entry",
+          "Centerline": {
+            "Points": [
+              {
+                "X": 0,
+                "Y": 8
+              },
+              {
+                "X": 73,
+                "Y": 8
+              }
+            ]
+          },
+          "Class": "Local",
+          "Profile": {
+            "LaneWidthMeters": 4,
+            "LaneCount": 2,
+            "SidewalkLeftMeters": 0,
+            "SidewalkRightMeters": 0,
+            "CurbLeftMeters": 0,
+            "CurbRightMeters": 0,
+            "MedianMeters": 0,
+            "TotalWidthMeters": 8
+          }
+        }
+      ],
+      "Structures": [
+        {
+          "Id": "administration",
+          "Purpose": "club administration and staff",
+          "Site": {
+            "Vertices": [
+              {
+                "X": 8,
+                "Y": 8
+              },
+              {
+                "X": 33,
+                "Y": 8
+              },
+              {
+                "X": 33,
+                "Y": 46
+              },
+              {
+                "X": 8,
+                "Y": 46
+              }
+            ]
+          },
+          "FrontagePathId": "entry",
+          "Envelope": {
+            "BuildingType": "office-building",
+            "FrontSetbackMeters": 8,
+            "RearSetbackMeters": 8,
+            "SideSetbackMeters": 4,
+            "MinimumWidthMeters": 15,
+            "MinimumDepthMeters": 20
+          },
+          "SizeVariantId": "small",
+          "Components": [
+            {
+              "Id": "entrance",
+              "Kind": "door",
+              "Purpose": "enter club administration and staff",
+              "State": "closed",
+              "AnimationId": "door-open-close"
+            }
+          ]
+        },
+        {
+          "Id": "medical",
+          "Purpose": "athlete medical support",
+          "Site": {
+            "Vertices": [
+              {
+                "X": 41,
+                "Y": 8
+              },
+              {
+                "X": 65,
+                "Y": 8
+              },
+              {
+                "X": 65,
+                "Y": 44
+              },
+              {
+                "X": 41,
+                "Y": 44
+              }
+            ]
+          },
+          "FrontagePathId": "entry",
+          "Envelope": {
+            "BuildingType": "clinic",
+            "FrontSetbackMeters": 8,
+            "RearSetbackMeters": 8,
+            "SideSetbackMeters": 4,
+            "MinimumWidthMeters": 16,
+            "MinimumDepthMeters": 20
+          },
+          "SizeVariantId": "local",
+          "Components": [
+            {
+              "Id": "entrance",
+              "Kind": "door",
+              "Purpose": "enter athlete medical support",
+              "State": "closed",
+              "AnimationId": "door-open-close"
+            }
+          ]
+        }
+      ],
+      "Children": [
+        {
+          "Id": "training",
+          "DefinitionId": "modern.training-block",
+          "OffsetMeters": {
+            "X": 73,
+            "Y": 0
+          },
+          "Purpose": "first-team and academy training precinct"
+        }
+      ]
+    },
+    {
+      "Id": "modern.training-block",
+      "Name": "Training grounds",
+      "WidthMeters": 192,
+      "DepthMeters": 88,
+      "Roads": [
+        {
+          "Id": "entry",
+          "Centerline": {
+            "Points": [
+              {
+                "X": 0,
+                "Y": 8
+              },
+              {
+                "X": 192,
+                "Y": 8
+              }
+            ]
+          },
+          "Class": "Local",
+          "Profile": {
+            "LaneWidthMeters": 4,
+            "LaneCount": 2,
+            "SidewalkLeftMeters": 0,
+            "SidewalkRightMeters": 0,
+            "CurbLeftMeters": 0,
+            "CurbRightMeters": 0,
+            "MedianMeters": 0,
+            "TotalWidthMeters": 8
+          }
+        }
+      ],
+      "Structures": [
+        {
+          "Id": "first-team",
+          "Purpose": "first-team training ground",
+          "Site": {
+            "Vertices": [
+              {
+                "X": 8,
+                "Y": 8
+              },
+              {
+                "X": 92,
+                "Y": 8
+              },
+              {
+                "X": 92,
+                "Y": 80
+              },
+              {
+                "X": 8,
+                "Y": 80
+              }
+            ]
+          },
+          "FrontagePathId": "entry",
+          "Envelope": {
+            "BuildingType": "football-training-ground",
+            "FrontSetbackMeters": 8,
+            "RearSetbackMeters": 8,
+            "SideSetbackMeters": 4,
+            "MinimumWidthMeters": 70,
+            "MinimumDepthMeters": 50
+          },
+          "SizeVariantId": "small",
+          "Components": [
+            {
+              "Id": "entrance",
+              "Kind": "door",
+              "Purpose": "enter first-team training ground",
+              "State": "closed",
+              "AnimationId": "door-open-close"
+            }
+          ]
+        },
+        {
+          "Id": "academy",
+          "Purpose": "academy training ground",
+          "Site": {
+            "Vertices": [
+              {
+                "X": 100,
+                "Y": 8
+              },
+              {
+                "X": 184,
+                "Y": 8
+              },
+              {
+                "X": 184,
+                "Y": 80
+              },
+              {
+                "X": 100,
+                "Y": 80
+              }
+            ]
+          },
+          "FrontagePathId": "entry",
+          "Envelope": {
+            "BuildingType": "football-training-ground",
+            "FrontSetbackMeters": 8,
+            "RearSetbackMeters": 8,
+            "SideSetbackMeters": 4,
+            "MinimumWidthMeters": 70,
+            "MinimumDepthMeters": 50
+          },
+          "SizeVariantId": "small",
+          "Components": [
+            {
+              "Id": "entrance",
+              "Kind": "door",
+              "Purpose": "enter academy training ground",
+              "State": "closed",
+              "AnimationId": "door-open-close"
+            }
+          ]
+        }
+      ],
+      "Children": []
+    },
+    {
+      "Id": "user.care-program",
+      "Name": "Requested care site",
+      "WidthMeters": 72,
+      "DepthMeters": 52,
+      "Roads": [
+        {
+          "Id": "entry",
+          "Centerline": {
+            "Points": [
+              {
+                "X": 0,
+                "Y": 8
+              },
+              {
+                "X": 72,
+                "Y": 8
+              }
+            ]
+          },
+          "Class": "Local",
+          "Profile": {
+            "LaneWidthMeters": 4,
+            "LaneCount": 2,
+            "SidewalkLeftMeters": 0,
+            "SidewalkRightMeters": 0,
+            "CurbLeftMeters": 0,
+            "CurbRightMeters": 0,
+            "MedianMeters": 0,
+            "TotalWidthMeters": 8
+          }
+        }
+      ],
+      "Structures": [
+        {
+          "Id": "care-1",
+          "Purpose": "user-authored care",
+          "Site": {
+            "Vertices": [
+              {
+                "X": 8,
+                "Y": 8
+              },
+              {
+                "X": 32,
+                "Y": 8
+              },
+              {
+                "X": 32,
+                "Y": 44
+              },
+              {
+                "X": 8,
+                "Y": 44
+              }
+            ]
+          },
+          "FrontagePathId": "entry",
+          "Envelope": {
+            "BuildingType": "clinic",
+            "FrontSetbackMeters": 8,
+            "RearSetbackMeters": 8,
+            "SideSetbackMeters": 4,
+            "MinimumWidthMeters": 16,
+            "MinimumDepthMeters": 20
+          },
+          "SizeVariantId": "local",
+          "Components": []
+        },
+        {
+          "Id": "care-2",
+          "Purpose": "user-authored care",
+          "Site": {
+            "Vertices": [
+              {
+                "X": 40,
+                "Y": 8
+              },
+              {
+                "X": 64,
+                "Y": 8
+              },
+              {
+                "X": 64,
+                "Y": 44
+              },
+              {
+                "X": 40,
+                "Y": 44
+              }
+            ]
+          },
+          "FrontagePathId": "entry",
+          "Envelope": {
+            "BuildingType": "clinic",
+            "FrontSetbackMeters": 8,
+            "RearSetbackMeters": 8,
+            "SideSetbackMeters": 4,
+            "MinimumWidthMeters": 16,
+            "MinimumDepthMeters": 20
+          },
+          "SizeVariantId": "local",
+          "Components": []
+        }
+      ],
+      "Children": []
+    },
+    {
+      "Id": "user.home-program",
+      "Name": "Requested home with two garden offices",
+      "WidthMeters": 84,
+      "DepthMeters": 46,
+      "Roads": [
+        {
+          "Id": "entry",
+          "Centerline": {
+            "Points": [
+              {
+                "X": 0,
+                "Y": 8
+              },
+              {
+                "X": 84,
+                "Y": 8
+              }
+            ]
+          },
+          "Class": "Local",
+          "Profile": {
+            "LaneWidthMeters": 4,
+            "LaneCount": 2,
+            "SidewalkLeftMeters": 0,
+            "SidewalkRightMeters": 0,
+            "CurbLeftMeters": 0,
+            "CurbRightMeters": 0,
+            "MedianMeters": 0,
+            "TotalWidthMeters": 8
+          }
+        }
+      ],
+      "Structures": [
+        {
+          "Id": "home",
+          "Purpose": "user-authored home",
+          "Site": {
+            "Vertices": [
+              {
+                "X": 8,
+                "Y": 8
+              },
+              {
+                "X": 28,
+                "Y": 8
+              },
+              {
+                "X": 28,
+                "Y": 38
+              },
+              {
+                "X": 8,
+                "Y": 38
+              }
+            ]
+          },
+          "FrontagePathId": "entry",
+          "Envelope": {
+            "BuildingType": "bungalow",
+            "FrontSetbackMeters": 8,
+            "RearSetbackMeters": 8,
+            "SideSetbackMeters": 4,
+            "MinimumWidthMeters": 10,
+            "MinimumDepthMeters": 12
+          },
+          "SizeVariantId": "small",
+          "Components": []
+        },
+        {
+          "Id": "garden-office-1",
+          "Purpose": "requested detached garden office",
+          "Site": {
+            "Vertices": [
+              {
+                "X": 36,
+                "Y": 8
+              },
+              {
+                "X": 52,
+                "Y": 8
+              },
+              {
+                "X": 52,
+                "Y": 34
+              },
+              {
+                "X": 36,
+                "Y": 34
+              }
+            ]
+          },
+          "FrontagePathId": "entry",
+          "Envelope": {
+            "BuildingType": "user.garden-office",
+            "FrontSetbackMeters": 8,
+            "RearSetbackMeters": 8,
+            "SideSetbackMeters": 4,
+            "MinimumWidthMeters": 6,
+            "MinimumDepthMeters": 8
+          },
+          "SizeVariantId": "compact",
+          "Components": []
+        },
+        {
+          "Id": "garden-office-2",
+          "Purpose": "requested detached garden office",
+          "Site": {
+            "Vertices": [
+              {
+                "X": 60,
+                "Y": 8
+              },
+              {
+                "X": 76,
+                "Y": 8
+              },
+              {
+                "X": 76,
+                "Y": 34
+              },
+              {
+                "X": 60,
+                "Y": 34
+              }
+            ]
+          },
+          "FrontagePathId": "entry",
+          "Envelope": {
+            "BuildingType": "user.garden-office",
+            "FrontSetbackMeters": 8,
+            "RearSetbackMeters": 8,
+            "SideSetbackMeters": 4,
+            "MinimumWidthMeters": 6,
+            "MinimumDepthMeters": 8
+          },
+          "SizeVariantId": "compact",
+          "Components": []
+        }
+      ],
+      "Children": []
+    },
+    {
+      "Id": "user.learning-and-care",
+      "Name": "Learning and care site",
+      "WidthMeters": 174,
+      "DepthMeters": 78,
+      "Roads": [],
+      "Structures": [],
+      "Children": [
+        {
+          "Id": "learning",
+          "DefinitionId": "user.school-program",
+          "OffsetMeters": {
+            "X": 0,
+            "Y": 0
+          },
+          "Purpose": "teaching precinct"
+        },
+        {
+          "Id": "care",
+          "DefinitionId": "user.care-program",
+          "OffsetMeters": {
+            "X": 102,
+            "Y": 0
+          },
+          "Purpose": "care precinct"
+        }
+      ]
+    },
+    {
+      "Id": "user.school-program",
+      "Name": "Requested school and library",
+      "WidthMeters": 102,
+      "DepthMeters": 78,
+      "Roads": [
+        {
+          "Id": "entry",
+          "Centerline": {
+            "Points": [
+              {
+                "X": 0,
+                "Y": 8
+              },
+              {
+                "X": 102,
+                "Y": 8
+              }
+            ]
+          },
+          "Class": "Local",
+          "Profile": {
+            "LaneWidthMeters": 4,
+            "LaneCount": 2,
+            "SidewalkLeftMeters": 0,
+            "SidewalkRightMeters": 0,
+            "CurbLeftMeters": 0,
+            "CurbRightMeters": 0,
+            "MedianMeters": 0,
+            "TotalWidthMeters": 8
+          }
+        }
+      ],
+      "Structures": [
+        {
+          "Id": "teaching",
+          "Purpose": "user-authored teaching",
+          "Site": {
+            "Vertices": [
+              {
+                "X": 8,
+                "Y": 8
+              },
+              {
+                "X": 52,
+                "Y": 8
+              },
+              {
+                "X": 52,
+                "Y": 70
+              },
+              {
+                "X": 8,
+                "Y": 70
+              }
+            ]
+          },
+          "FrontagePathId": "entry",
+          "Envelope": {
+            "BuildingType": "primary-school",
+            "FrontSetbackMeters": 8,
+            "RearSetbackMeters": 8,
+            "SideSetbackMeters": 4,
+            "MinimumWidthMeters": 30,
+            "MinimumDepthMeters": 40
+          },
+          "SizeVariantId": "small",
+          "Components": []
+        },
+        {
+          "Id": "library",
+          "Purpose": "user-authored library",
+          "Site": {
+            "Vertices": [
+              {
+                "X": 60,
+                "Y": 8
+              },
+              {
+                "X": 94,
+                "Y": 8
+              },
+              {
+                "X": 94,
+                "Y": 55
+              },
+              {
+                "X": 60,
+                "Y": 55
+              }
+            ]
+          },
+          "FrontagePathId": "entry",
+          "Envelope": {
+            "BuildingType": "library",
+            "FrontSetbackMeters": 8,
+            "RearSetbackMeters": 8,
+            "SideSetbackMeters": 4,
+            "MinimumWidthMeters": 20,
+            "MinimumDepthMeters": 25
+          },
+          "SizeVariantId": "small",
+          "Components": []
+        }
+      ],
+      "Children": []
+    }
+  ]
+}

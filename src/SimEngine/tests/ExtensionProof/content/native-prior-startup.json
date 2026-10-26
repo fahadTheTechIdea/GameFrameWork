@@ -1,0 +1,8 @@
+{
+  "world_setup_profiles":[{"id":"prior.start","entries":["prior.site.a","prior.site.b","prior.machine"],"includes":[]}],
+  "entity_setups":[
+    {"id":"prior.site.a","after":[],"entity":"prior.site","company":0,"placement":{"space":"survey.tiles","x":16,"y":10},"home":null},
+    {"id":"prior.site.b","after":[],"entity":"prior.site","company":0,"placement":{"space":"survey.tiles","x":24,"y":10},"home":null},
+    {"id":"prior.machine","after":["prior.site.a"],"entity":"survey.machine","company":0,"placement":{"space":"survey.tiles","x":2,"y":10},"home":"prior.site.a"}
+  ]
+}

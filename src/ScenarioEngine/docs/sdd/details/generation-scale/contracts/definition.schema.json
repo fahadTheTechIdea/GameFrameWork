@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reproducible generation and measured scale profiles proposed definition",
+  "description": "Standalone design contract; current ScenarioEngine loading support is not implemented.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "definitionVersion",
+    "generatorId",
+    "generatorVersion",
+    "maxAttempts",
+    "activeActorTier"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+      "maxLength": 64
+    },
+    "definitionVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "generatorId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+      "maxLength": 64,
+      "description": "Trusted registered algorithm identity."
+    },
+    "generatorVersion": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+      "maxLength": 64,
+      "description": "Exact algorithm version; changing it changes compatibility."
+    },
+    "maxAttempts": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 8,
+      "description": "A bounded authored policy; no hidden reroll-until-pass loop."
+    },
+    "activeActorTier": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1024,
+      "description": "Proposed test tier, not an established supported ceiling."
+    }
+  }
+}

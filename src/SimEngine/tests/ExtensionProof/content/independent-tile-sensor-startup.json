@@ -1,0 +1,7 @@
+{
+  "world_setup_profiles": [{"id":"sensor.start","entries":["sensor.start-source","sensor.start-target"],"includes":[]}],
+  "entity_setups": [
+    {"id":"sensor.start-source","after":[],"entity":"sensor.source","company":0,"placement":{"space":"sensor.tiles","x":2,"y":10},"home":null},
+    {"id":"sensor.start-target","after":[],"entity":"sensor.target","company":1,"placement":{"space":"sensor.tiles","x":16,"y":10},"home":null}
+  ]
+}

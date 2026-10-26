@@ -1,0 +1,7 @@
+{
+  "knowledge_visibility_policies": [{"id":"discovery.policy","own_entities":true,"unlisted_entities":false,"unlisted_content":true,
+    "rules":["visibility.tower","visibility.activity","visibility.resource"]}],
+  "entity_knowledge_visibility": [{"id":"visibility.tower","definition":"point.tower","mode":"all","facts":["field.observed"]}],
+  "activity_knowledge_visibility": [{"id":"visibility.activity","definition":"research.advanced","mode":"any","facts":["field.observed"]}],
+  "stock_knowledge_visibility": [{"id":"visibility.resource","definition":"supply","minimum":10}]
+}

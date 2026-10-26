@@ -1,0 +1,15 @@
+{
+  "direct_spatial_layers": [
+    {"id":"layer.classification","space":"colony.tiles","type":"terrain.classification","value_type":"byte","visibility":"public","unit":"unit.classification","metadata":{"biome":"industrial","flags":["buildable"]}},
+    {"id":"layer.control","space":"colony.tiles","type":"control.region","value_type":"int","visibility":"public","unit":"unit.classification","metadata":{"controller":"scenario"}},
+    {"id":"layer.lake","space":"colony.tiles","type":"water.level","value_type":"fixed","visibility":"public","unit":"extract.metre","resource":"water","resource_measure":"associated","vertical_domain":"lake.surface","vertical_unit":"extract.metre","vertical_reference":"datum","vertical_offset":0.5,"metadata":{"water_body":"lake","datum":"local"}}
+  ],
+  "tile_layer_setups": [
+    {"id":"layer.start.classification","after":[],"layer":"layer.classification","x":20,"y":20,"width":1,"height":1,"value":3,"owner":-1},
+    {"id":"layer.start.control","after":[],"layer":"layer.control","x":20,"y":20,"width":1,"height":1,"value":7,"owner":-1},
+    {"id":"layer.start.lake","after":[],"layer":"layer.lake","x":20,"y":20,"width":1,"height":1,"value":1.5,"owner":-1}
+  ],
+  "world_setup_profiles": [
+    {"id":"layer.start","entries":["layer.start.classification","layer.start.control","layer.start.lake"],"includes":["extract.start"]}
+  ]
+}

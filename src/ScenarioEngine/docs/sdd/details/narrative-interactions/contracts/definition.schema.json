@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Narrative and interaction runtime proposed definition",
+  "description": "Standalone design contract; current ScenarioEngine loading support is not implemented.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "definitionVersion",
+    "storyId",
+    "checkpointPolicy",
+    "allowedEffectKinds",
+    "maxChoices"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+      "maxLength": 64
+    },
+    "definitionVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "storyId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+      "maxLength": 64,
+      "description": "Registered compiled story/content identity."
+    },
+    "checkpointPolicy": {
+      "type": "string",
+      "enum": [
+        "choice_boundary",
+        "full_cursor"
+      ],
+      "description": "The selected adapter must prove exact restoration at supported boundaries."
+    },
+    "allowedEffectKinds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+        "maxLength": 64
+      },
+      "description": "Game-changing external calls become typed candidate intents."
+    },
+    "maxChoices": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 32,
+      "description": "Bound offered options and UI work."
+    }
+  }
+}

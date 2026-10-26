@@ -1,0 +1,71 @@
+using System.Text.Json;
+using WorldCreator.Core;
+using WorldCreator.Core.Geometry;
+using WorldCreator.Core.Planning;
+
+namespace WorldCreator.Worlds;
+
+/// <summary>Production export from an already coordinated world. Every referenced
+/// production object and surface requires native-bundle verification and approval
+/// by the caller's external authority, including nonvegetation artwork.</summary>
+public sealed record CoordinatedProductionRequest(
+    CoordinatedSettlementResult Composition,
+    ProductionWorldRequest GameArtsRequest);
+
+public sealed class CoordinatedProductionWorldExporter(
+    IApprovedArtRegistry registry, IGameArtsApprovalAuthority approvals)
+{
+    public async Task<ProductionWorldBuildResult> ExportAsync(
+        CoordinatedProductionRequest request, string outputPath,
+        CancellationToken token = default)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+        ArgumentException.ThrowIfNullOrWhiteSpace(outputPath);
+        if (!request.Composition.Valid)
+            return new(null, request.Composition.Issues.Count > 0
+                ? request.Composition.Issues : ["COORDINATED_COMPOSITION_INVALID"]);
+        var document = request.Composition.World!;
+        var art = request.GameArtsRequest;
+        if (art.SemanticWorld != document.SemanticWorld &&
+            JsonSerializer.Serialize(art.SemanticWorld) != JsonSerializer.Serialize(document.SemanticWorld))
+            return new(null, ["PRODUCTION_SEMANTIC_WORLD_MISMATCH"]);
+        if (!art.ZoneVegetation.Plants.SequenceEqual(document.Vegetation) ||
+            art.PathVegetation.Plants.Count != 0)
+            return new(null, ["PRODUCTION_VEGETATION_MISMATCH"]);
+
+        var otherArtIssues = await new GameArtsNonVegetationGate(registry, approvals)
+            .VerifyAsync(document, art.TrustedAssetRoot, art.ProductionBundles, token);
+        if (otherArtIssues.Count != 0)
+            return new(null, otherArtIssues);
+
+        var accepted = await new GameArtsProductionWorldGate(registry, approvals)
+            .AcceptAsync(art.SemanticWorld, art.ZoneVegetation, art.PathVegetation,
+                art.BuildingEnvelopes, art.ProtectedRoutes, art.ProtectedAnchors,
+                art.VegetationFootprints, art.TrustedAssetRoot, art.ProductionBundles, token);
+        if (!accepted.Accepted) return new(null, accepted.Issues);
+
+        var allAssets = WorldArtDependencyInventory.Collect(document)
+            .Concat(document.Vegetation.Select(v => v.SpeciesAssetId));
+        var evidence = await new WorldAssetDependencyManifestBuilder(registry)
+            .BuildAsync(allAssets, token);
+        if (!evidence.Valid) return new(null, evidence.Issues);
+
+        var full = Path.GetFullPath(outputPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(full)!);
+        var json = JsonSerializer.Serialize(document with {
+            ProductionApproved = true, AssetDependencies = evidence.Dependencies
+        },
+            new JsonSerializerOptions { WriteIndented = true });
+        var temporary = full + "." + Guid.NewGuid().ToString("N") + ".tmp";
+        try
+        {
+            await File.WriteAllTextAsync(temporary, json, token);
+            File.Move(temporary, full, overwrite: true);
+        }
+        finally
+        {
+            if (File.Exists(temporary)) File.Delete(temporary);
+        }
+        return new(full, []);
+    }
+}

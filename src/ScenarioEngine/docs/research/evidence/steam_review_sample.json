@@ -1,0 +1,11 @@
+{
+  "retrieved_at_utc": "2026-10-24T11:39:20.476481+00:00",
+  "status": "failed",
+  "method": "Attempted English Steam-purchaser reviews for five games, recent and helpfulness filter=all, positive and negative, two per query. No review data was retrieved.",
+  "attempted_queries": 20,
+  "failed_queries": 20,
+  "error": "Every response failed JSON decoding: Expecting value: line 1 column 1 (char 0). Response bodies and HTTP cause were not captured, so no cause is asserted.",
+  "collected_reviews": 0,
+  "fallback": "Qualitative inspection of linked Steam Community pages using the web tool. This file is not a successful sample or formal SDLC verification record.",
+  "queries": []
+}

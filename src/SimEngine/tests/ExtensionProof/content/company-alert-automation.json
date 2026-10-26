@@ -1,0 +1,28 @@
+{
+  "company_alert_control_actions": [
+    {
+      "id": "automation.alert",
+      "command": "sim.configure-company-alert",
+      "owner": "sim.company-alerts",
+      "enabled": {"profile":"alerts.response","level":"emergency","worker_reserves":[{"role":"inspect","minimum_ready":1}]},
+      "disabled": {"profile":"alerts.response","level":"normal","worker_reserves":[]}
+    }
+  ],
+  "control_input_recovery_policies": [{"id":"automation.alert-inputs","retry_blockers":[]}],
+  "control_rules": [
+    {
+      "id":"automation.incident-alert",
+      "input_recovery":"automation.alert-inputs",
+      "action_policy":"automation.alert",
+      "arbitration":"exclusive",
+      "initial_latch":false,
+      "inputs":[{"id":"incident","signal":"field.incident-active"}],
+      "conditions":[{"id":"active","kind":"boolean","input":"incident","expected":true,"initial":false}],
+      "root":"active",
+      "dwell":{"numerator":2,"denominator":1,"unit":"minute"},
+      "cooldown":{"numerator":3,"denominator":1,"unit":"minute"},
+      "when_true":{"enabled":true,"target":0,"unit":"unit.boolean"},
+      "when_false":{"enabled":false,"target":0,"unit":"unit.boolean"}
+    }
+  ]
+}

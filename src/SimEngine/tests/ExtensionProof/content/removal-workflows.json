@@ -1,0 +1,24 @@
+{
+  "activities":[
+    {"id":"removal.tower.build-work","player_orderable":false,"priority":50,"automatic_supply":true,"nodes":[{"executor":"work.staffed","id":"build","roles":["crane"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"proof.resource-recovery.tower.erect.inputs"}]},
+    {"id":"removal.tower.removal-work","player_orderable":false,"priority":67,"automatic_supply":true,"nodes":[
+          {"executor":"work.staffed","id":"isolate","roles":["crane"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"removal.inputs"},
+          {"executor":"work.staffed","id":"remove","roles":["crane"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"after":["isolate"]}
+        ]}
+  ],
+  "target_resource_requirements": [
+    {"port":null,"id":"removal.inputs","use":"consume","quantities":{"steel":2}}
+  ],
+  "entities": [
+    {"id":"removal.tower","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":2,"height":2,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"recovery.mixed","public":false,"initial_stock":{}},
+      "construction":{"site":"removal.site","activity":"removal.tower.build-work","demolish":{"activity":"removal.tower.removal-work","salvage":{"steel":15}},"states":{"site":"building"}}
+    }},
+    {"id":"removal.site","kind":"structure","category":"site","tags":["site"],"components":{
+      "tile_presence":{"space":"recovery.tiles","width":2,"height":2,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"recovery.site","public":false,"initial_stock":{}},
+      "site":{"target":"removal.tower"}
+    }}
+  ]
+}

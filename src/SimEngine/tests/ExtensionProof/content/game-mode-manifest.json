@@ -1,0 +1,7 @@
+{
+  "schema": 1,
+  "modules": [
+    { "id": "proof.modes", "version": "1.0.0", "documents": ["game-mode-scenarios.json", "game-mode-properties.json", "game-mode-proof-properties.json", "game-modes.json"] },
+    { "id": "sim.tycoon", "version": "1.0.0", "documents": [] }
+  ]
+}

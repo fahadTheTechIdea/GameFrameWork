@@ -1,0 +1,6 @@
+{
+  "metadata_transformations": [
+    {"id":"metadata.batch","fault":"none","mode":"batch","cancel_policy":"return_inputs","tool_consumption":{"supply":1},"operating_ports":{"supply":"operating.input"},"tool_ports":{"supply":"tool.input"},"input_ports":{"supply":"material.input"},"output_ports":{"supply":"material.output"},"operating_inputs":[{"resource":"supply","quantity":1,"period":{"numerator":1,"denominator":1,"unit":"minute"}}],"tools":{"supply":1},"inputs":{"supply":2},"outputs":{"supply":1},"duration":{"numerator":1,"denominator":1,"unit":"minute"},"category":"metadata"},
+    {"id":"metadata.flow","fault":"none","mode":"continuous","cancel_policy":"stop","tool_consumption":[{"resource":"supply","quantity":1,"period":{"numerator":1,"denominator":1,"unit":"minute"}}],"operating_ports":{"supply":"operating.input"},"tool_ports":{"supply":"tool.input"},"input_ports":{"supply":"material.input"},"output_ports":{"supply":"material.output"},"operating_inputs":[{"resource":"supply","quantity":1,"period":{"numerator":1,"denominator":1,"unit":"minute"}}],"tools":{"supply":1},"inputs":[{"resource":"supply","quantity":2,"period":{"numerator":1,"denominator":1,"unit":"minute"}}],"outputs":[{"resource":"supply","quantity":1,"period":{"numerator":1,"denominator":1,"unit":"minute"}}],"duration":null,"category":"metadata"}
+  ]
+}

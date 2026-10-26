@@ -1,0 +1,11 @@
+{
+  "input_resource": {"id":"discovery.inputs","unit":"unit.supply","category":"general","phase":"solid","traits":[],"capacity":{"unit.supply":1}},
+  "source_inventory": {"capacity_policy":"fixture.count.40","public":false,"evacuate":false,"initial_stock":{"supply":20,"discovery.inputs":20},"accepts":["supply","discovery.inputs"],"phases":[]},
+  "target_resource_requirements": [
+    {"id":"discovery.materials","port":null,"use":"consume","quantities":{"discovery.inputs":8}},
+    {"id":"discovery.tools","port":null,"use":"hold","quantities":{"discovery.inputs":2}}
+  ],
+  "work_requirement_groups": [
+    {"id":"discovery.ready","mode":"all","entries":[{"id":"material","requirement":"discovery.materials"},{"id":"tool","requirement":"discovery.tools"}]}
+  ]
+}

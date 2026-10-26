@@ -1,0 +1,68 @@
+{
+  "world_setup_profiles": [{"id":"survey.start","entries":["start.machine","start.site","start.deposit","start.terrain","start.class"],"includes":[]}],
+  "tile_layer_setups": [
+    {
+      "id": "start.deposit",
+      "after": [],
+      "layer": "survey.deposit",
+      "x": 16,
+      "y": 10,
+      "value": 31,
+      "owner": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "start.terrain",
+      "after": [],
+      "layer": "survey.terrain",
+      "x": 16,
+      "y": 10,
+      "value": 42,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "start.class",
+      "after": [],
+      "layer": "survey.class",
+      "x": 16,
+      "y": 10,
+      "value": -7,
+      "owner": -1,
+      "width": 1,
+      "height": 1
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "start.site",
+      "after": [
+        "start.deposit"
+      ],
+      "entity": "survey.site",
+      "company": 0,
+      "placement": {
+        "space": "survey.tiles",
+        "x": 16,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "start.machine",
+      "after": [
+        "start.site"
+      ],
+      "entity": "survey.machine",
+      "company": 0,
+      "placement": {
+        "space": "survey.tiles",
+        "x": 2,
+        "y": 10
+      },
+      "home": "start.site"
+    }
+  ]
+}

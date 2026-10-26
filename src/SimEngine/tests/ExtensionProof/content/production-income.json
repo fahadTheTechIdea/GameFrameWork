@@ -1,0 +1,39 @@
+{
+  "time_definitions": [{ "id": "production.second", "quantum": { "numerator": 1, "denominator": 1, "unit": "second" }, "frame_ticks": 1, "ticks_per_second": 30, "horizon": null }],
+  "entity_states": [
+    { "id": "idle", "state": "production.idle", "priority": 0, "default": true },
+    { "id": "working", "state": "production.working", "priority": 20 },
+    { "id": "blocked", "state": "production.blocked", "priority": 60 }
+  ],
+  "units": [
+    { "id": "unit.gold", "dimension": "count", "scale": { "numerator": 1, "denominator": 1 }, "discrete": true },
+    { "id": "unit.water", "dimension": "volume", "scale": { "numerator": 1, "denominator": 1 }, "discrete": false }
+  ],
+  "resources": [
+    { "id": "gold", "unit": "unit.gold", "category": "mineral", "phase": "solid", "traits": [], "capacity": { "unit.gold": 1, "unit.water": 1 } },
+    { "id": "water", "unit": "unit.water", "category": "fluid", "phase": "liquid", "traits": [], "capacity": { "unit.water": 1 } }
+  ],
+  "capacity_policies": [{ "id": "production.capacity", "limits": { "unit.water": 20 } }],
+  "entities": [
+    { "id": "generator", "kind": "entity", "components": {"inventory_port":[{"id":"material.output"},{"id":"material.input"},{"id":"tool.input"},{"id":"operating.input"}],
+      "storage": { "capacity_policy": "production.capacity", "initial_stock": { "gold": 2, "water": 5 }, "public": false, "evacuate": false, "accepts": ["gold", "water"], "phases": [] },
+      "transformer": { "automatic_supply": false, "wip_capacity": "production.capacity", "transformations": ["gold.generate", "gold.recycle", "gold.flow"],
+        "states": { "working": "working", "stopped": "blocked" },
+        "operation": { "id": "transformation", "enabled": true, "target": 1, "minimum": 1, "maximum": 1, "unit": "unit.work-rate" }
+      }
+    } },
+    { "id": "receiver", "kind": "entity", "components": {
+      "storage": { "capacity_policy": "production.capacity", "initial_stock": {}, "public": false, "evacuate": false, "accepts": ["gold", "water"], "phases": [] }
+    } }
+  ],
+  "transformations": [
+    {"tool_consumption":{},"operating_ports":{},"tool_ports":{},"input_ports":{},"output_ports":{"gold":"material.output","water":"material.output"}, "id": "gold.generate", "mode": "batch", "cancel_policy": "return_inputs", "operating_inputs": [], "tools": {}, "inputs": {}, "outputs": { "gold": 1, "water": 2 }, "duration": { "numerator": 3, "denominator": 1, "unit": "second" } },
+    {"tool_consumption":{},"operating_ports":{},"tool_ports":{},"input_ports":{"gold":"material.input"},"output_ports":{"gold":"material.output"}, "id": "gold.recycle", "mode": "batch", "cancel_policy": "return_inputs", "operating_inputs": [], "tools": {}, "inputs": { "gold": 1 }, "outputs": { "gold": 1 }, "duration": { "numerator": 3, "denominator": 1, "unit": "second" } },
+    {"tool_consumption":[],"operating_ports":{},"tool_ports":{},"input_ports":{},"output_ports":{"gold":"material.output"}, "id": "gold.flow", "mode": "continuous", "cancel_policy": "stop", "operating_inputs": [], "tools": {}, "inputs": [], "outputs": [{ "resource": "gold", "quantity": 1, "period": { "numerator": 1, "denominator": 1, "unit": "second" } }], "duration": null }
+  ],
+  "world_setup_profiles": [{"id":"production.start","entries":["generator.start","receiver.start"],"includes":[]}],
+  "entity_setups": [{"id":"generator.start","after":[],"entity":"generator","company":0,"placement":null,"home":null},{"id":"receiver.start","after":[],"entity":"receiver","company":0,"placement":null,"home":null}],
+  "scenarios": [{ "id": "production", "mode_overrides": {}, "game_mode": "production-income", "time": "production.second", "modules": ["proof.process","proof.modes","sim.tycoon","sim.world-setup"], "seats": 1,
+    "settings": {"sim.tycoon":{"account_policy":"production.accounts","valuation_policy":"production.values","income_policy":"production.primary"},"sim.world-setup":{"profile":"production.start"}}
+  }]
+}

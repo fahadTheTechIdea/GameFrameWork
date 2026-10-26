@@ -1,0 +1,47 @@
+{
+  "environmental_metrics": [
+    { "id": "environment.spilled", "unit": "unit.steel", "rate_unit": "hour", "window": null,
+      "resources": ["steel"], "kinds": ["lost"], "causes": ["leak.spill"] },
+    { "id": "environment.cleaned", "unit": "unit.steel", "rate_unit": "hour", "window": null,
+      "resources": ["steel"], "kinds": ["destroyed"], "causes": ["leak.cleanup"] },
+    { "id": "environment.recent-spill", "unit": "unit.steel", "rate_unit": "minute",
+      "window": { "numerator": 1, "denominator": 1, "unit": "minute" },
+      "resources": ["steel"], "kinds": ["lost"], "causes": ["leak.spill"] }
+  ],
+  "proof_environment_metrics": [
+    { "id": "environment.proof-spill", "unit": "unit.steel", "rate_unit": "hour", "window": null,
+      "resource": "steel", "kind": "lost", "cause": "leak.spill", "fault_mode": 0 }
+  ],
+  "environmental_objective_predicates": [
+    { "id": "environment.cleanup-target", "metric": "environment.cleaned", "unit": "unit.steel", "relation": "at_least", "amount": 5 },
+    { "id": "environment.spill-budget", "metric": "environment.spilled", "unit": "unit.steel", "relation": "at_most", "amount": 6 }
+  ],
+  "objectives": [
+    { "id": "environment.safe-response", "prerequisites": [], "predicate": "environment.spill-budget", "deadline": null,
+      "on_complete": null, "on_failure": null },
+    { "id": "environment.cleanup-goal", "prerequisites": ["environment.safe-response"], "predicate": "environment.cleanup-target", "deadline": null,
+      "on_complete": null, "on_failure": null }
+  ],
+  "inventory_effects": [
+  {
+    "id": "leak.spill",
+    "kind": "lost",
+    "quantities": {
+      "steel": 6
+    },
+    "ports": {
+      "steel": "disposition.input"
+    }
+  },
+  {
+    "id": "leak.cleanup",
+    "kind": "destroyed",
+    "quantities": {
+      "steel": 5
+    },
+    "ports": {
+      "steel": "disposition.input"
+    }
+  }
+]
+}

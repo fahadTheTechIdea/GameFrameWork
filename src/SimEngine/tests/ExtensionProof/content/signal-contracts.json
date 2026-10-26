@@ -1,0 +1,16 @@
+{
+  "independent_signals": [
+    {"id":"contract.incident-active","kind":"boolean","metric":"incident.active","unit":"unit.boolean","providers":[{"component":"incident_signal","schema":1}]},
+    {"id":"contract.sensor-level","kind":"number","metric":"probe.level","unit":"unit.level","providers":[{"component":"automation_probe","schema":1}]}
+  ],
+  "independent_resource_signals": [
+    {"id":"contract.plant-stock","kind":"number","metric":"inventory.available","unit":"unit.supply","resource":"supply","providers":[{"component":"inventory_signal","schema":3}]}
+  ],
+  "target_signal_requirements": [{"id":"contract.repair-signals","conditions":[
+    {"id":"active","source":"incident-state","signal":"contract.incident-active","expected":true,"blocker":"contract.not-incident"},
+    {"id":"stock","source":"feed","signal":"contract.plant-stock","minimum":8,"maximum":20,"unit":"unit.supply","blocker":"contract.no-response-stock"}
+  ]}],
+  "work_requirement_groups": [{"id":"contract.signal-repair","mode":"all","entries":[
+    {"id":"materials","requirement":"pressure.materials"},{"id":"signals","requirement":"contract.repair-signals"}
+  ]}]
+}

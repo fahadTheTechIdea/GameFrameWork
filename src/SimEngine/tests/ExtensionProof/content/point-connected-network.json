@@ -1,0 +1,9 @@
+{
+  "network_round_robin_policies": [{"id":"point.network.round-robin"}],
+  "resource_transfer_network_solvers": [{"id":"point.network.transfer"}],
+  "capacity_network_demands": [{"id":"point.network.capacity"}],
+  "networks": [
+    {"id":"point.network","line":"corridor.point-line","flow_policy":"point.network.round-robin","solver":"point.network.transfer","demand_policy":"point.network.capacity",
+      "rates":[{"resource":"supply","quantity":1,"period":{"numerator":1,"denominator":1,"unit":"minute"}}],"capacity_policy":"fixture.count.4","public":true}
+  ]
+}

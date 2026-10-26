@@ -1,0 +1,179 @@
+{
+  "tile_spaces": [
+    {
+      "id": "haul.tiles",
+      "width": 48,
+      "height": 32
+    }
+  ],
+  "uniform_tile_navigation": [
+    {
+      "id": "haul.route",
+      "space": "haul.tiles",
+      "cost": 10
+    }
+  ],
+  "entities": [
+    {
+      "id": "haul.source",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "haul.store",
+          "public": false,
+          "initial_stock": {
+            "steel": 30
+          }
+        },
+        "inventory_port": {
+          "id": "stock"
+        }
+      }
+    },
+    {
+      "id": "haul.destination",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "haul.store",
+          "public": false,
+          "initial_stock": {}
+        },
+        "inventory_port": {
+          "id": "local"
+        },
+        "pool_port": {
+          "id": "tank",
+          "pool": "haul.first",
+          "alternatives": [
+            "haul.second",
+            "haul.third"
+          ],
+          "endpoint_scope":"proof.pools","original_access": "retained"
+        }
+      }
+    },
+    {
+      "id": "haul.machine",
+      "kind": "vehicle",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "mover": {
+          "classes": [
+            "haul.route"
+          ],
+          "class": "haul.route",
+          "speed": 30,
+          "states": {
+            "moving": "haul.moving",
+            "stopped": "haul.stopped"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "haul.working",
+            "loading": "haul.loading",
+            "stopped": "haul.stopped"
+          }
+        },
+        "storage": {
+          "capacity_policy": "haul.cargo",
+          "public": false,
+          "initial_stock": {}
+        },
+        "transporter": {
+          "handling": "haul.handling"
+        }
+      }
+    }
+  ],
+  "world_setup_profiles": [{"id":"haul.start","entries":["haul.source-start","haul.destination-start","haul.machine-start"],"includes":[]}],
+  "entity_setups": [
+    {
+      "id": "haul.source-start",
+      "after": [],
+      "entity": "haul.source",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 8,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "haul.destination-start",
+      "after": [],
+      "entity": "haul.destination",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 22,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "haul.machine-start",
+      "after": [
+        "haul.source-start"
+      ],
+      "entity": "haul.machine",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 2,
+        "y": 10
+      },
+      "home": "haul.source-start"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "scoped-haul",
+      "game_mode": "haul.resource-only",
+      "mode_overrides": {},
+      "time": "haul.minute",
+      "space": "haul.tiles",
+      "seats": 2,
+      "default_seats": 2,
+      "modules": [
+        "proof.output-ports",
+        "sim.logistics",
+        "sim.tile-navigation"
+      ],
+      "settings": {
+        "sim.world-setup": {
+          "profile": "haul.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        }
+      }
+    }
+  ]
+}

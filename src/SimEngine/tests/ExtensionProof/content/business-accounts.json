@@ -1,0 +1,5 @@
+{
+  "business_accounts": [
+    { "id": "colony.accounts", "currency": "unit.money", "opening_cash": 500000 }
+  ]
+}

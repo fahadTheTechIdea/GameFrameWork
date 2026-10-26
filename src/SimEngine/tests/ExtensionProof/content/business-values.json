@@ -1,0 +1,7 @@
+{
+  "fixed_resource_values": [ { "id": "default-values", "catalog": "defaults", "currency": "unit.money" } ],
+  "resource_values": [
+    { "id": "gold.default", "catalog": "defaults", "resource": "gold", "unit": "unit.gold", "currency": "unit.money", "value": 100000 },
+    { "id": "water.default", "catalog": "defaults", "resource": "water", "unit": "unit.water", "currency": "unit.money", "value": 0 }
+  ]
+}

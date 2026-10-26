@@ -1,0 +1,14 @@
+{
+  "target_signal_requirements":[
+    {"id":"boundary.ready","conditions":[
+      {"id":"enabled","source":"boundary.sensor","signal":"boundary.enabled","expected":true,"blocker":"boundary.disabled"},
+      {"id":"level","source":"boundary.sensor","signal":"boundary.level","minimum":2,"maximum":2,"unit":"unit.level","blocker":"boundary.level-unsafe"}
+    ]}
+  ],
+  "entity_activities":[
+    {"id":"boundary.workflow","target":"boundary.factory","player_orderable":true,"automatic_supply":false,"priority":50,"nodes":[
+      {"id":"prepare","executor":"work.staffed","roles":["survey"],"duration":{"numerator":6,"denominator":1,"unit":"minute"},"requirement":"boundary.ready"},
+      {"id":"verify","executor":"work.staffed","roles":["survey"],"duration":{"numerator":2,"denominator":1,"unit":"minute"},"after":["prepare"],"requirement":"boundary.ready"}
+    ]}
+  ]
+}

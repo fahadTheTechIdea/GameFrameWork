@@ -1,0 +1,6 @@
+{
+  "update_budget": 16,
+  "child_timeout_ms": 4000,
+  "termination_timeout_ms": 3000,
+  "output_chars": 12000
+}

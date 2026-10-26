@@ -1,0 +1,11 @@
+{
+  "id": "narrative_interactions",
+  "definitionVersion": "1.0.0",
+  "storyId": "river_contact",
+  "checkpointPolicy": "choice_boundary",
+  "allowedEffectKinds": [
+    "grant_item",
+    "set_relationship"
+  ],
+  "maxChoices": 8
+}

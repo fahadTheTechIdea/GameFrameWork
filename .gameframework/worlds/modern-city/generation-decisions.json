@@ -131,7 +131,13 @@
     "roadPathCount": 32,
     "plantCount": 44,
     "acceptedResourceAllocations": 174,
-    "output": "generated/modern-city/world.json"
+    "output": "generated/modern-city/world.json",
+    "lastVerifiedAt": "2026-10-25T17:59:21.922937+03:00",
+    "fullWorldCreatorRegression": "Passed",
+    "solutionBuild": "Passed on 10.0.402",
+    "partsReview": ".gameframework/worlds/modern-city/catalog-parts-review.json",
+    "expandedFacilityCount": 0,
+    "browserComparison": "Inspected original source against actual generated geometry; visual details remain partial."
   },
   "compilationScope": {
     "id": "modern-city-roads-facilities-and-greens",
@@ -275,5 +281,22 @@
     "gapMaterialId": "modern.park-paving",
     "policy": "Game-authored visual minimum. Original observed contours are retained separately from adjusted authored masks; tree positions are fixed.",
     "rasterLimit": "Continuous spacing precedes the 2m raster; subcell gaps remain explicit in vector geometry."
+  },
+  "catalogBinding": {
+    "content": ".gameframework/worlds/modern-city/catalogs/modern-city.layout.json",
+    "structureIds": [
+      "detached-house",
+      "factory",
+      "football-stadium",
+      "office-building",
+      "primary-school",
+      "warehouse"
+    ],
+    "sourceRequest": "Named registered catalog references; no duplicate inline definitions",
+    "exportedRequest": "Resolved snapshot materialized for exact build input",
+    "contentDigests": {
+      "modern-city.layout": "b2108ef219904b4911427e6b45968814128a2e3d27af77c3c23b8a0593a40cd6"
+    },
+    "geometryMigration": "All cells, object geometry, roads, site features, vegetation and resource allocations unchanged from pre-migration output."
   }
 }

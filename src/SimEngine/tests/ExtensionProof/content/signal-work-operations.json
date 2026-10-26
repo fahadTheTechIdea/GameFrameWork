@@ -1,0 +1,19 @@
+{
+  "signals":[
+    {"id":"signal.production-backlog","kind":"number","metric":"transformation.backlog","unit":"unit.count","providers":[{"component":"transformer","schema":1}]},
+    {"id":"signal.machine-enabled","kind":"boolean","metric":"operation.enabled","unit":"unit.boolean","providers":[{"component":"transformer","schema":1}]},
+    {"id":"signal.machine-target","kind":"number","metric":"operation.target","unit":"unit.work-rate","providers":[{"component":"transformer","schema":1}]}
+  ],
+  "entities":[
+    {"id":"signal.machine","kind":"vehicle","components":{"inventory_port":[{"id":"material.output"},{"id":"material.input"},{"id":"tool.input"},{"id":"operating.input"}],
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":true},
+      "storage":{"capacity_policy":"survey.storage","public":false,"initial_stock":{"steel":20}},
+      "mover":{"classes": ["survey.route"], "class":"survey.route","speed":30,"states":{"moving":"survey.moving","stopped":"survey.stopped"}},
+      "worker":{"work_rate":1,"roles":["survey"],"states":{"working":"survey.working","loading":"survey.loading","stopped":"survey.stopped"}},
+      "work_policy":{"profile":"survey.enabled"},
+      "transformer":{"transformations":["dispatch.batch"],"automatic_supply":false,"wip_capacity":"survey.storage",
+        "operation":{"id":"signal.machine-permit","enabled":false,"target":1,"minimum":1,"maximum":2,"unit":"unit.work-rate"},
+        "states":{"working":"survey.working","stopped":"survey.stopped"}}
+    }}
+  ]
+}

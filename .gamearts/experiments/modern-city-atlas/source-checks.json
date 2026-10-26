@@ -1,0 +1,157 @@
+{
+  "timestamp": "2026-10-25T18:11:31.148780+03:00",
+  "status": "strict-production-mask-failed",
+  "normalizationAttempt": "Canonical snap_to_pixel_grid refused house-attempt-02: no consistent column grid; no working copy created.",
+  "sources": [
+    {
+      "file": ".gamearts/experiments/modern-city-atlas/frames/house-attempt-01.png",
+      "sha256": "d4411f20675163ceb2daebb09266dae55e7f17f295b05a80fc179da6840369ed",
+      "size": [
+        1353,
+        1162
+      ],
+      "mode": "RGB",
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "exactKeyInkBounds": [
+        0,
+        0,
+        1353,
+        1162
+      ],
+      "keyPolicy": {
+        "opaque": true,
+        "key_pixels": 54,
+        "total_pixels": 1572186,
+        "outside_frames_non_key": 0,
+        "near_key_pixels": 1243903,
+        "tolerance": 24,
+        "issues": [
+          "1243903 near-#FF00FF pixel(s) within 24 of the key (blend fringe or contamination)"
+        ]
+      }
+    },
+    {
+      "file": ".gamearts/experiments/modern-city-atlas/frames/house-attempt-02.png",
+      "sha256": "429f29ae030bb1c9c9bd45a26bf1ddeb3a6983cad1126b0b839ac156a42e1853",
+      "size": [
+        1353,
+        1162
+      ],
+      "mode": "RGB",
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "exactKeyInkBounds": [
+        0,
+        0,
+        1353,
+        1162
+      ],
+      "keyPolicy": {
+        "opaque": true,
+        "key_pixels": 58,
+        "total_pixels": 1572186,
+        "outside_frames_non_key": 0,
+        "near_key_pixels": 1258262,
+        "tolerance": 24,
+        "issues": [
+          "1258262 near-#FF00FF pixel(s) within 24 of the key (blend fringe or contamination)"
+        ]
+      }
+    },
+    {
+      "file": ".gamearts/experiments/modern-city-atlas/frames/house-attempt-03.png",
+      "sha256": "939603b0133179b9f627cc6e662fc52466d9488ed45b8d1400430b88047a2fb6",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "exactKeyInkBounds": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "keyPolicy": {
+        "opaque": false,
+        "key_pixels": 0,
+        "total_pixels": 1572864,
+        "outside_frames_non_key": 0,
+        "near_key_pixels": 0,
+        "tolerance": 24,
+        "issues": [
+          "alpha not fully opaque: (0, 254)"
+        ]
+      }
+    },
+    {
+      "file": ".gamearts/experiments/modern-city-atlas/frames/streetlight-attempt-01.png",
+      "sha256": "49f82bde5fe33b69fd04d87e27e1b7b887bb7791ae4cbd76dfb94bab5fd1a72b",
+      "size": [
+        1353,
+        1162
+      ],
+      "mode": "RGB",
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "exactKeyInkBounds": [
+        0,
+        0,
+        1353,
+        1162
+      ],
+      "keyPolicy": {
+        "opaque": true,
+        "key_pixels": 13,
+        "total_pixels": 1572186,
+        "outside_frames_non_key": 0,
+        "near_key_pixels": 1545754,
+        "tolerance": 24,
+        "issues": [
+          "1545754 near-#FF00FF pixel(s) within 24 of the key (blend fringe or contamination)"
+        ]
+      }
+    },
+    {
+      "file": ".gamearts/experiments/modern-city-atlas/frames/tree-attempt-01.png",
+      "sha256": "218dba3912e99716b45798105c037572dfd31099848dc51624d1cc7169e34427",
+      "size": [
+        1353,
+        1162
+      ],
+      "mode": "RGB",
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "exactKeyInkBounds": [
+        0,
+        0,
+        1353,
+        1162
+      ],
+      "keyPolicy": {
+        "opaque": true,
+        "key_pixels": 44,
+        "total_pixels": 1572186,
+        "outside_frames_non_key": 0,
+        "near_key_pixels": 1303286,
+        "tolerance": 24,
+        "issues": [
+          "1303286 near-#FF00FF pixel(s) within 24 of the key (blend fringe or contamination)"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Survival and crafting layer proposed definition",
+  "description": "Standalone design contract; current ScenarioEngine loading support is not implemented.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "definitionVersion",
+    "needIds",
+    "recipeIds",
+    "startingFood",
+    "restPolicy"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+      "maxLength": 64
+    },
+    "definitionVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "needIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+        "maxLength": 64
+      },
+      "description": "Each need defines integer units, bounds, rates and threshold consequences."
+    },
+    "recipeIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+        "maxLength": 64
+      },
+      "description": "Registered inputs, tools, durations, outputs and interruption policy."
+    },
+    "startingFood": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10000,
+      "description": "Explicit authored stock; not an outage fallback."
+    },
+    "restPolicy": {
+      "type": "string",
+      "enum": [
+        "interrupt_at_event"
+      ],
+      "description": "Rest stops at danger, completion and threshold events."
+    }
+  }
+}

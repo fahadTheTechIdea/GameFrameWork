@@ -1,0 +1,85 @@
+{
+  "dispatch_profiles": [
+    {
+      "id": "dispatch.fair",
+      "preempt_emergencies": false,
+      "scopes": [
+        "sim.work",
+        "sim.logistics",
+        "proof.shipments"
+      ],
+      "starvation_after": {
+        "numerator": 5,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "ordering": "starvation-first"
+    },
+    {
+      "id": "dispatch.work-only",
+      "preempt_emergencies": false,
+      "scopes": [
+        "sim.work"
+      ],
+      "starvation_after": {
+        "numerator": 5,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "ordering": "starvation-first"
+    },
+    {
+      "id": "dispatch.disabled",
+      "preempt_emergencies": false,
+      "scopes": [],
+      "starvation_after": {
+        "numerator": 5,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "ordering": "starvation-first"
+    },
+    {
+      "id": "dispatch.supply",
+      "preempt_emergencies": true,
+      "scopes": [
+        "sim.work",
+        "sim.logistics"
+      ],
+      "starvation_after": {
+        "numerator": 5,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "ordering": "starvation-first"
+    },
+    {
+      "id": "dispatch.preempt",
+      "preempt_emergencies": true,
+      "scopes": [
+        "sim.work"
+      ],
+      "starvation_after": {
+        "numerator": 5,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "ordering": "starvation-first"
+    },
+    {
+      "id": "dispatch.priority",
+      "ordering": "priority-first",
+      "preempt_emergencies": false,
+      "scopes": [
+        "sim.work",
+        "sim.logistics",
+        "proof.shipments"
+      ],
+      "starvation_after": {
+        "numerator": 5,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    }
+  ]
+}

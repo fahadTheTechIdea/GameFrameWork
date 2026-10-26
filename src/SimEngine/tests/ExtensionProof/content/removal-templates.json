@@ -1,0 +1,12 @@
+{
+  "plan_templates": [
+    {"id":"removal.native","space":"recovery.tiles","entries":[
+      {"id":"remove","definition":"demolish:removal.tower","arguments":{"placement":{"space":"recovery.tiles","dx":0,"dy":0}},"priority":70,"paused":true,"after":[]},
+      {"id":"replace","definition":"build:tower","arguments":{"placement":{"space":"recovery.tiles","dx":0,"dy":0}},"priority":60,"paused":true,"after":["remove"]}
+    ]},
+    {"id":"removal.point","space":"field.points","entries":[
+      {"id":"remove","definition":"demolish:point.tower","arguments":{"placement":{"space":"field.points","offset":0}},"priority":70,"paused":true,"after":[]},
+      {"id":"expand","definition":"build:point.tower","arguments":{"placement":{"space":"field.points","offset":4}},"priority":60,"paused":true,"after":["remove"]}
+    ]}
+  ]
+}

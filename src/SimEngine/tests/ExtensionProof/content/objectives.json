@@ -1,0 +1,19 @@
+{
+  "entity_objective_predicates":[
+    {"id":"objective.has-source","prototype":"source","minimum":1},
+    {"id":"objective.has-tower","prototype":"point.tower","minimum":1},
+    {"id":"objective.has-two-towers","prototype":"point.tower","minimum":2}
+  ],
+  "proof_stock_objective_predicates":[{"id":"objective.has-inputs","prototype":"source","quantities":{"supply":20}}],
+  "logical_objective_predicates":[
+    {"id":"objective.ready","kind":"any","predicates":["objective.has-inputs","objective.has-tower"]},
+    {"id":"objective.established","kind":"all","predicates":["objective.has-source","objective.has-tower"]}
+  ],
+  "proof_gated_objective_effects":[{"id":"objective.wait-two","gate":"objective.has-two-towers"}],
+  "outcome_objective_effects":[{"id":"objective.win","outcome":"proof.colony-established"}],
+  "objectives":[
+    {"id":"field.win","prerequisites":["field.build"],"predicate":"objective.has-two-towers","deadline":null,"on_complete":"objective.win","on_failure":null},
+    {"id":"field.build","prerequisites":["field.ready"],"predicate":"objective.established","deadline":{"numerator":24,"denominator":1,"unit":"hour"},"on_complete":"objective.wait-two","on_failure":null},
+    {"id":"field.ready","prerequisites":[],"predicate":"objective.ready","deadline":null,"on_complete":null,"on_failure":null}
+  ]
+}

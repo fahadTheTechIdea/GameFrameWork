@@ -1,0 +1,6 @@
+{
+  "independent_recovery_containers": [
+    { "id": "container.contract", "space": "field.points", "container": "point.recovery-container" },
+    { "id": "container.unused", "space": "field.points", "container": "point.recovery-container" }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "work_policies": [{"id":"docks.worker","enabled":true,"priority":0,"allowed_roles":["haul","inspect"],"area":null,"interruptible":true,"emergency_eligible":true,"assignment_mode":"all","states":{"disabled":"blocked","standby":"blocked"}}],
+  "entities": [
+    {"id":"source","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":0},
+      "point_stock":{"resource":"supply","capacity_policy":"fixture.count.40","initial":32},
+      "point_dock":{"work_roles":[],"resources":["supply"],"slots":[{"id":"load.bay","kind":"service","offset":1},{"id":"load.wait.a","kind":"waiting","offset":3},{"id":"load.wait.b","kind":"waiting","offset":4},{"id":"load.exit","kind":"departure","offset":7}]}
+    }},
+    {"id":"destination","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":10},
+      "point_stock":{"resource":"supply","capacity_policy":"fixture.count.40","initial":0},
+      "point_dock":{"work_roles":[],"resources":["supply"],"slots":[{"id":"unload.bay","kind":"service","offset":1},{"id":"unload.wait.a","kind":"waiting","offset":-2},{"id":"unload.wait.b","kind":"waiting","offset":-3},{"id":"unload.exit.a","kind":"departure","offset":2},{"id":"unload.exit.b","kind":"departure","offset":5},{"id":"unload.exit.c","kind":"departure","offset":6},{"id":"unload.exit.d","kind":"departure","offset":7}]}
+    }},
+    {"id":"machine.a","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":0},
+      "point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},
+      "worker":{"roles":["inspect","haul"],"work_rate":1,"states":{"working":"processing","loading":"transfer","stopped":"blocked"}},
+      "work_policy":{"profile":"docks.worker"},
+      "storage":{"capacity_policy":"fixture.count.8","public":false},"transporter":{"handling":"points.handling"}
+    }},
+    {"id":"machine.b","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":2},
+      "point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},
+      "worker":{"roles":["inspect","haul"],"work_rate":1,"states":{"working":"processing","loading":"transfer","stopped":"blocked"}},
+      "work_policy":{"profile":"docks.worker"},
+      "storage":{"capacity_policy":"fixture.count.8","public":false},"transporter":{"handling":"points.handling"}
+    }},
+    {"id":"machine.c","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":5},
+      "point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},
+      "worker":{"roles":["inspect","haul"],"work_rate":1,"states":{"working":"processing","loading":"transfer","stopped":"blocked"}},
+      "work_policy":{"profile":"docks.worker"},
+      "storage":{"capacity_policy":"fixture.count.8","public":false},"transporter":{"handling":"points.handling"}
+    }},
+    {"id":"machine.d","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":6},
+      "point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},
+      "worker":{"roles":["inspect","haul"],"work_rate":1,"states":{"working":"processing","loading":"transfer","stopped":"blocked"}},
+      "work_policy":{"profile":"docks.worker"},
+      "storage":{"capacity_policy":"fixture.count.8","public":false},"transporter":{"handling":"points.handling"}
+    }}
+  ],
+  "entity_setups": [
+  {
+    "id": "source",
+    "after": [],
+    "entity": "source",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  },
+  {
+    "id": "destination",
+    "after": [],
+    "entity": "destination",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 10
+    },
+    "home": null
+  },
+  {
+    "id": "machine.a",
+    "after": [],
+    "entity": "machine.a",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  },
+  {
+    "id": "machine.b",
+    "after": [],
+    "entity": "machine.b",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 2
+    },
+    "home": null
+  },
+  {
+    "id": "machine.c",
+    "after": [],
+    "entity": "machine.c",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 5
+    },
+    "home": null
+  },
+  {
+    "id": "machine.d",
+    "after": [],
+    "entity": "machine.d",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 6
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "point-docks.start",
+    "entries": [
+      "source",
+      "destination",
+      "machine.a",
+      "machine.b",
+      "machine.c",
+      "machine.d"
+    ],
+    "includes": []
+  }
+]
+}

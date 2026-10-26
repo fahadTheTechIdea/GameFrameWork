@@ -1,0 +1,14 @@
+{
+  "rounds": 2,
+  "entities": [
+    {"id":"topology.cut.a","kind":"structure","components":{"point_presence":{"space":"field.points","position":5}}},
+    {"id":"topology.cut.b","kind":"structure","components":{"point_presence":{"space":"field.points","position":5}}},
+    {"id":"topology.cut.c","kind":"structure","components":{"point_presence":{"space":"field.points","position":5}}}
+  ],
+  "entity_setups": [
+    {"id":"topology.cut.a.start","after":["machine"],"entity":"topology.cut.a","company":0,"placement":{"space":"field.points","position":5},"home":null},
+    {"id":"topology.cut.b.start","after":["machine"],"entity":"topology.cut.b","company":0,"placement":{"space":"field.points","position":5},"home":null},
+    {"id":"topology.cut.c.start","after":["machine"],"entity":"topology.cut.c","company":0,"placement":{"space":"field.points","position":5},"home":null}
+  ],
+  "reconnect": {"space":"field.points","path":[{"space":"field.points","position":5}]}
+}

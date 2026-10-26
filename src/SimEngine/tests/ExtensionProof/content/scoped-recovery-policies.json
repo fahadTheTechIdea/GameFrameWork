@@ -1,0 +1,46 @@
+{
+  "resource_pools": [
+    {
+      "evacuate": false,
+      "id": "recovery.fourth",
+      "identity": 9000000004,
+      "public": true,
+      "owner": 0,
+      "capacity_policy": "haul.store",
+      "resources": [
+        "steel"
+      ]
+    }
+  ],
+  "recovery_destination_policies": [
+    {
+      "id": "scoped.demand-only",
+      "mode": "demand_only"
+    }
+  ],
+  "logistics_recovery_profiles": [
+    {
+      "id": "scoped.recovery",
+      "evacuation": {
+        "enabled": true,
+        "priority": 200,
+        "attempts_per_pass": 1,
+        "reroute_blockers": [
+          "blocker.unreachable",
+          "core.not-found"
+        ],
+        "destination_policy": "scoped.demand-only"
+      },
+      "cargo_return": {
+        "enabled": true,
+        "priority": 200,
+        "attempts_per_pass": 1,
+        "reroute_blockers": [
+          "blocker.unreachable",
+          "core.not-found"
+        ],
+        "destination_policy": "scoped.demand-only"
+      }
+    }
+  ]
+}

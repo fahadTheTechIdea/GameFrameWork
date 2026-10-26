@@ -1,0 +1,12 @@
+{
+  "staffed_activity_executors": [
+    {"id":"proof.delayed-staffed","travel":"sim.work.travel","work":"proof.work.delayed","departure":"sim.work.departure"}
+  ],
+  "activities": [{
+    "id":"proof.authored-executor","player_orderable":true,"priority":60,"automatic_supply":false,
+    "nodes": [
+      {"id":"settle","executor":"work.timed","roles":[],"duration":{"numerator":5,"denominator":1,"unit":"minute"},"after":["operate"]},
+      {"id":"operate","executor":"proof.delayed-staffed","roles":["survey"],"duration":{"numerator":1,"denominator":2,"unit":"hour"},"requirement":"survey.inputs"}
+    ]
+  }]
+}

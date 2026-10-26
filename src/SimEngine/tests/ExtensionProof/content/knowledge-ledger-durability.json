@@ -1,0 +1,6 @@
+{
+  "ledger_failures":[{"id":"ledger.failure","mode":"clock-throw","phase":"share","read_after":{"numerator":100,"denominator":1,"unit":"minute"}}],
+  "ledger_sharing_probes":[{"id":"ledger.share","failure":"ledger.failure","subjects":[{"provider":"sim.knowledge.facts","subject":"field.stock-reading"},{"provider":"sim.knowledge.facts","subject":"field.method"}],"directions":[{"sender":0,"recipient":1}]}],
+  "ledger_forgetting_probes":[{"id":"ledger.forget","failure":"ledger.failure","subjects":[{"provider":"sim.knowledge.facts","subject":"field.stock-reading"}],"companies":[0,1]}],
+  "ledger_subject_probes":[{"id":"ledger.method","failure":"ledger.failure","value":{"method":"physical-sampling"}}]
+}

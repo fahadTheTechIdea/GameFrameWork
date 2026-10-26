@@ -1,0 +1,46 @@
+{
+  "completion_effects": [
+    {"id":"proof.complete","mode":"wait","quantities":{"supply":1}},
+    {"id":"proof.fail","mode":"fail","quantities":{"supply":1}},
+    {"id":"proof.claim","mode":"post_claim","quantities":{"supply":1}},
+    {"id":"proof.external","mode":"admission_wait","quantities":{"supply":1}}
+  ],
+  "entity_replacement_effects": [
+    {"id":"proof.refurbish","source":"point.tower","target":"point.tower"},
+    {"id":"proof.upgrade","source":"point.tower","target":"point.enhanced"}
+  ],
+  "target_resource_requirements": [
+    {"port":null,"id":"proof.upgrade-materials","use":"consume","quantities":{"supply":2}}
+  ],
+  "entities": [
+    {"id":"point.enhanced","kind":"structure","components":{
+      "point_presence":{"space":"field.points","position":99},
+      "storage":{"capacity_policy":"fixture.count.60","public":false,"initial_stock":{}}}}
+  ],
+  "entity_activities": [
+    {"id":"proof.upgrade","target":"point.tower","player_orderable":true,"priority":80,
+      "automatic_supply":true,"on_complete":"proof.upgrade","nodes":[
+        {"executor":"work.staffed","id":"prepare","roles":["inspect"],"duration":{"numerator":1,"denominator":20,"unit":"hour"}},
+        {"executor":"work.staffed","id":"upgrade","after":["prepare"],"roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"proof.upgrade-materials"}]},
+    {"id":"proof.process","target":"point.tower","player_orderable":true,"priority":60,
+      "automatic_supply":false,"on_complete":"proof.external","nodes":[{"executor":"work.staffed","id":"process","roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"}}]}
+  ],
+  "plan_templates": [
+    {"id":"proof.upgrade-template","space":"field.points","entries":[
+      {"id":"upgrade","definition":"activity:proof.upgrade","priority":80,"paused":true,"after":[],
+        "arguments":{"placement":{"space":"field.points","offset":0}}}]}
+  ],
+  "activities": [
+    {"id":"proof.system-refurbish","player_orderable":false,"automatic_supply":false,"on_complete":"proof.refurbish","nodes":[
+      {"executor":"work.staffed","id":"work","roles":["inspect"],"duration":{"numerator":1,"denominator":20,"unit":"hour"}}]},
+    {"id":"proof.node","player_orderable":true,"automatic_supply":false,"nodes":[
+      {"executor":"work.staffed","id":"work","roles":["inspect"],"duration":{"numerator":1,"denominator":20,"unit":"hour"},"effect":"proof.complete"},
+      {"executor":"work.timed","id":"next","after":["work"],"duration":{"numerator":1,"denominator":100,"unit":"hour"}}]},
+    {"id":"proof.order","player_orderable":true,"automatic_supply":false,"on_complete":"proof.complete","nodes":[
+      {"executor":"work.staffed","id":"work","roles":["inspect"],"duration":{"numerator":1,"denominator":20,"unit":"hour"}}]},
+    {"id":"proof.failed","player_orderable":true,"automatic_supply":false,"nodes":[
+      {"executor":"work.staffed","id":"work","roles":["inspect"],"duration":{"numerator":1,"denominator":20,"unit":"hour"},"effect":"proof.fail"}]},
+    {"id":"proof.replace","player_orderable":true,"automatic_supply":false,"on_complete":"proof.refurbish","nodes":[
+      {"executor":"work.staffed","id":"work","roles":["inspect"],"duration":{"numerator":1,"denominator":20,"unit":"hour"},"effect":"proof.claim"}]}
+  ]
+}

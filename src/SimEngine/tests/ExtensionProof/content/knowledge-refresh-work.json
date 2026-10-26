@@ -1,0 +1,21 @@
+{
+  "stock_knowledge_subjects": [
+    {"id":"source.reading","resource":"supply","retention":"latest"},
+    {"id":"source.permanent","resource":"supply","retention":"first"}
+  ],
+  "stock_knowledge_effects": [
+    {"id":"stock.observe","subject":"source.reading"},
+    {"id":"stock.remember","subject":"source.permanent"}
+  ],
+  "activities": [
+    {"id":"field.discover","player_orderable":true,"priority":60,"automatic_supply":false,"on_complete":"field.learn",
+      "nodes":[
+        {"executor":"work.staffed","id":"sample","roles":["inspect"],"duration":{"numerator":3,"denominator":10,"unit":"hour"},"requirement":"preempt.ready","effect":"stock.observe"},
+        {"executor":"work.staffed","id":"remember","after":["sample"],"roles":["inspect"],"duration":{"numerator":1,"denominator":20,"unit":"hour"},"effect":"stock.remember"}
+      ]},
+    {"id":"field.refresh","player_orderable":true,"priority":60,"automatic_supply":false,"on_complete":"field.learn",
+      "nodes":[{"executor":"work.staffed","id":"sample","roles":["inspect"],"duration":{"numerator":3,"denominator":10,"unit":"hour"},"requirement":"preempt.ready","effect":"stock.observe"}]},
+    {"id":"field.reobserve","player_orderable":true,"priority":60,"automatic_supply":false,
+      "nodes":[{"executor":"work.staffed","id":"sample","roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"effect":"stock.observe"}]}
+  ]
+}

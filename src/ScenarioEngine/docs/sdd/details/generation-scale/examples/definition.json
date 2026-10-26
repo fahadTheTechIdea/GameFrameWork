@@ -1,0 +1,8 @@
+{
+  "id": "generation_scale",
+  "definitionVersion": "1.0.0",
+  "generatorId": "authored_variants",
+  "generatorVersion": "v1",
+  "maxAttempts": 1,
+  "activeActorTier": 64
+}

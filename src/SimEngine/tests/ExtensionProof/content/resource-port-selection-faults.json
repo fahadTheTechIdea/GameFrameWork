@@ -1,0 +1,9 @@
+{"selection_fault_profiles":[
+ {"id":"selection.reserve","mode":"reserve","resource":"steel"},
+ {"id":"selection.throw","mode":"throw","resource":"steel"},
+ {"id":"selection.clock","mode":"clock","resource":"steel"},
+ {"id":"selection.duplicate","mode":"duplicate","resource":"steel"},
+ {"id":"selection.scope","mode":"scope","resource":"steel"},
+ {"id":"selection.initial-missing","mode":"initial-missing","resource":"steel"},
+ {"id":"selection.initial-undeclared","mode":"initial-undeclared","resource":"steel"}
+]}

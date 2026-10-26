@@ -1,0 +1,14 @@
+{
+  "id": "capability_profiles",
+  "definitionVersion": "1.0.0",
+  "layerId": "adventure",
+  "requiredCapabilities": [
+    "world.native2d",
+    "queries.actions"
+  ],
+  "moduleIds": [
+    "inventory",
+    "interactions"
+  ],
+  "writerPolicy": "single_owner"
+}

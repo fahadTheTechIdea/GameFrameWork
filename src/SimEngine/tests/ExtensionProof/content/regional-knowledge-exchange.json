@@ -1,0 +1,29 @@
+{
+  "knowledge_sharing_policies": [
+    {
+      "id": "regional.share-both",
+      "subjects": [
+        { "provider": "sim.knowledge.facts", "subject": "field.observed" },
+        { "provider": "sim.knowledge.facts", "subject": "field.second" }
+      ],
+      "directions": [ { "sender": 0, "recipient": 1 } ]
+    },
+    {
+      "id": "regional.return-first",
+      "subjects": [ { "provider": "sim.knowledge.facts", "subject": "field.observed" } ],
+      "directions": [ { "sender": 1, "recipient": 0 } ]
+    }
+  ],
+  "knowledge_forgetting_policies": [
+    {
+      "id": "regional.forget-first",
+      "subjects": [ { "provider": "sim.knowledge.facts", "subject": "field.observed" } ],
+      "companies": [0]
+    },
+    {
+      "id": "regional.forget-second",
+      "subjects": [ { "provider": "sim.knowledge.facts", "subject": "field.second" } ],
+      "companies": [1]
+    }
+  ]
+}

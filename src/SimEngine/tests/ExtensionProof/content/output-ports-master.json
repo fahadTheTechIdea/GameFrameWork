@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "modules": [
+    {
+      "id": "sim.access",
+      "version": "1.0.0",
+      "documents": [
+        "open-access.json"
+      ]
+    },
+    {
+      "id": "sim.inventory",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.resource-flows",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "endpoints-flows.json"
+      ]
+    },
+    {
+      "id": "sim.operations",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.transformations",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.access",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.operations",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "sim.world-setup",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "proof.pools",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.resource-flows",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "proof.output-ports",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "proof.pools",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.transformations",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.world-setup",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "resource-port-common.json",
+        "output-ports.json"
+      ]
+    }
+  ]
+}

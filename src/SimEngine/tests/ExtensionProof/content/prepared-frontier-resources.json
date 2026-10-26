@@ -1,0 +1,15 @@
+{
+  "target_resource_requirements":[
+    {"port":null,"id":"prepared.inputs","use":"consume","quantities":{"supply":4}}
+  ],
+  "activities":[{"id":"prepared.response","priority":10,"automatic_supply":false,"nodes":[
+    {"id":"a.flex","executor":"work.staffed","roles":["haul","inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"prepared.inputs"},
+    {"id":"b.inspect","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"prepared.inputs"},
+    {"id":"restart","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"after":["a.flex","b.inspect"]}
+  ],"on_complete":"preempt.restart"}],
+  "incident_workflows":[{"id":"prepared.workflow","kind":"proof.failure","response":"prepared.response","phases":[
+    {"id":"stabilize","nodes":["a.flex"]},
+    {"id":"repair","nodes":["b.inspect"]},
+    {"id":"restart","nodes":["restart"]}
+  ]}]
+}

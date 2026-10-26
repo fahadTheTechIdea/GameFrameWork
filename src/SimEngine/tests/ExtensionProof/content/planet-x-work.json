@@ -1,0 +1,25 @@
+{
+  "worker_roles": [
+    {
+      "id": "haul"
+    }
+  ],
+  "work_policies": [
+    {
+      "id": "space.worker",
+      "enabled": true,
+      "priority": 1,
+      "allowed_roles": [
+        "haul"
+      ],
+      "area": null,
+      "interruptible": true,
+      "emergency_eligible": false,
+      "assignment_mode": "all",
+      "states": {
+        "disabled": "space.stopped",
+        "standby": "space.stopped"
+      }
+    }
+  ]
+}

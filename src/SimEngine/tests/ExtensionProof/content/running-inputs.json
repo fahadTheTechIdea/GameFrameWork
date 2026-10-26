@@ -1,0 +1,39 @@
+{
+  "transformations": [
+    {"tool_consumption":{},"operating_ports":{"supply":"operating.input"},"tool_ports":{"supply":"tool.input"},"input_ports":{"supply":"material.input"},"output_ports":{},"id":"running.make","mode":"batch","cancel_policy":"return_inputs","tools":{"supply":1},"inputs":{"supply":3},
+      "operating_inputs":[{"resource":"supply","quantity":1,"period":{"numerator":3,"denominator":1,"unit":"minute"}}],
+      "outputs":{},"entity_output":"running.result", "output_home": "unassigned","duration":{"numerator":12,"denominator":1,"unit":"minute"}}
+  ],
+  "entities": [
+    {"id":"running.result","kind":"entity","components":{}},
+    {"id":"running.factory","kind":"entity","components":{"inventory_port":[{"id":"material.output"},{"id":"material.input"},{"id":"tool.input"},{"id":"operating.input"}],
+      "point_presence":{"space":"field.points","position":60},
+      "storage":{"capacity_policy":"fixture.count.40","initial_stock":{"supply":20},"public":false},
+      "transformer":{"automatic_supply":false,"wip_capacity":"fixture.count.40","transformations":["running.make"],
+        "states":{"working":"processing","stopped":"blocked"},
+        "operation":{"id":"process","enabled":true,"target":1,"minimum":0.25,"maximum":2,"unit":"unit.work-rate"}}
+    }}
+  ],
+  "entity_setups": [
+  {
+    "id": "running.factory",
+    "after": [],
+    "entity": "running.factory",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 60
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "running-inputs.start",
+    "entries": [
+      "running.factory"
+    ],
+    "includes": []
+  }
+]
+}

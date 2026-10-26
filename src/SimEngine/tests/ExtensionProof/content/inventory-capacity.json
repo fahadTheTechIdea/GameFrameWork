@@ -1,0 +1,6 @@
+{
+  "inventory_capacity_policies": [
+    {"id":"inventory.capacity.source","limits":{"unit.capacity.count":40},"fault":"none","query_only":true},
+    {"id":"inventory.capacity.destination","limits":{"unit.capacity.count":10},"fault":"none","query_only":true}
+  ]
+}

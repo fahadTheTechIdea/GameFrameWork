@@ -1,0 +1,1 @@
+Generated procedural city: 3 districts, 27 streets, 24 blocks, 240 parcels, 272 structure instances; connected street graph.

@@ -1,0 +1,179 @@
+{
+  "resources": [
+    { "id": "network.spare", "unit": "unit.steel", "category": "material", "phase": "solid", "traits": [], "capacity": { "unit.storage": 1 } }
+  ],
+  "signals": [
+    { "id": "network.incident.active", "kind": "boolean", "metric": "incident.active", "unit": "unit.boolean", "providers": [{ "component": "incident_signal", "schema": 1 }] },
+    { "id": "network.incident.hold", "kind": "boolean", "metric": "incident.phase-hold", "unit": "unit.boolean", "providers": [{ "component": "incident_signal", "schema": 1 }] }
+  ],
+  "response_effects": [{ "id": "network.resolve", "bound_response": true }],
+  "inventory_effects": [
+  {
+    "id": "network.isolate",
+    "kind": "consumed",
+    "quantities": {
+      "network.spare": 1
+    },
+    "ports": {
+      "network.spare": "disposition.input"
+    }
+  }
+],
+  "target_resource_requirements": [{"port":null, "id": "network.repair-inputs", "use": "consume", "quantities": { "network.spare": 3 } }],
+  "work_permits": [{ "id": "network.cleanup-permit", "blocker": "network.cleanup-disabled", "missing": "network.missing-permit" }],
+  "activities": [{ "id": "network.response", "priority": 90, "automatic_supply": false, "nodes": [
+    {"executor":"work.staffed", "id": "isolate", "roles": ["crane"], "duration":{"numerator":1,"denominator":5,"unit":"hour"}, "effect": "network.isolate" },
+    {"executor":"work.staffed", "id": "repair", "roles": ["crane"], "duration":{"numerator":3,"denominator":10,"unit":"hour"}, "after": ["isolate"], "requirement": "network.repair-inputs" },
+    {"executor":"work.staffed", "id": "cleanup", "roles": ["haul"], "duration":{"numerator":1,"denominator":5,"unit":"hour"}, "after": ["isolate"], "requirement": "network.cleanup-permit" },
+    {"executor":"work.staffed", "id": "restart", "roles": ["crane"], "duration":{"numerator":1,"denominator":10,"unit":"hour"}, "after": ["repair", "cleanup"] }
+  ], "on_complete": "network.resolve" }],
+  "incident_workflows": [{ "id": "network.leak", "kind": "network.leak", "response": "network.response", "phases": [
+    { "id": "isolation", "nodes": ["isolate"] },
+    { "id": "repair", "nodes": ["repair"] },
+    { "id": "cleanup", "nodes": ["cleanup"] },
+    { "id": "restart", "nodes": ["restart"] }
+  ] }],
+  "entities": [
+  {
+    "id": "network.isolated-source",
+    "kind": "structure",
+    "components": {
+      "tile_presence": {
+        "space": "recovery.tiles",
+        "width": 1,
+        "height": 1,
+        "blocks": true,
+        "movable": false
+      },
+      "storage": {
+        "capacity_policy": "recovery.mixed",
+        "public": false,
+        "initial_stock": {
+          "steel": 100,
+          "network.spare": 10
+        }
+      },
+      "ports": {
+        "list": [
+          {
+            "network": "network.main",
+            "push": [
+              "steel"
+            ]
+          },
+          {
+            "network": "network.public",
+            "push": [
+              "steel"
+            ]
+          }
+        ]
+      },
+      "incident": {
+        "id": "leak",
+        "workflow": "network.leak",
+        "states": {
+          "active": "stopped"
+        }
+      },
+      "incident_signal": {
+        "id": "sensor",
+        "source": "leak",
+        "workflow": "network.leak",
+        "phase": "isolation"
+      },
+      "signal_network_gate": {
+        "id": "safety",
+        "networks": [
+          "network.main"
+        ],
+        "conditions": [
+          {
+            "id": "isolation",
+            "source": "sensor",
+            "signal": "network.incident.hold",
+            "expected": false,
+            "blocker": "network.isolated"
+          }
+        ]
+      },
+      "work_permit": {
+        "enabled": false
+      },
+      "inventory_port": {
+        "id": "disposition.input"
+      }
+    }
+  },
+  {
+    "id": "network.isolated-receiver",
+    "kind": "structure",
+    "components": {
+      "tile_presence": {
+        "space": "recovery.tiles",
+        "width": 1,
+        "height": 1,
+        "blocks": true,
+        "movable": false
+      },
+      "storage": {
+        "capacity_policy": "recovery.mixed",
+        "public": false,
+        "initial_stock": {
+          "network.spare": 10
+        }
+      },
+      "proof_network_ports": {
+        "list": [
+          {
+            "network": "network.main",
+            "pull": [
+              "steel"
+            ]
+          },
+          {
+            "network": "network.public",
+            "pull": [
+              "steel"
+            ]
+          }
+        ]
+      },
+      "incident": {
+        "id": "leak",
+        "workflow": "network.leak",
+        "states": {
+          "active": "stopped"
+        }
+      },
+      "incident_signal": {
+        "id": "sensor",
+        "source": "leak",
+        "workflow": "network.leak",
+        "phase": "isolation"
+      },
+      "signal_network_gate": {
+        "id": "safety",
+        "networks": [
+          "network.main"
+        ],
+        "conditions": [
+          {
+            "id": "isolation",
+            "source": "sensor",
+            "signal": "network.incident.hold",
+            "expected": false,
+            "blocker": "network.isolated"
+          }
+        ]
+      },
+      "work_permit": {
+        "enabled": false
+      },
+      "inventory_port": {
+        "id": "disposition.input"
+      }
+    }
+  }
+]
+}

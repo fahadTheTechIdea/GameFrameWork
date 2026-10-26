@@ -1,0 +1,694 @@
+{
+  "RecordedAtUtc": "2026-10-25T17:50:04.6093556Z",
+  "BaseRevision": "b4c789d5db1ce87ac1d9687986799253acf584fe",
+  "Branch": "main",
+  "WorkingTree": "Dirty, including preserved pre-existing relocation and pipeline work; not a committed snapshot",
+  "Sdk": "10.0.402",
+  "Sources": [
+    {
+      "Path": ".agents/skills/world-generator/SKILL.md",
+      "Sha256": "ab8cbf61a343e7ca077aaa6ff0d07fd2eff71168c5b539c4d94adcb5bc304532"
+    },
+    {
+      "Path": ".claude/skills/world-generator/SKILL.md",
+      "Sha256": "d4801a683793d4ee9932018e2bef31f3f4212ecb842a193aed4c9e246244ba5f"
+    },
+    {
+      "Path": "AGENTS.md",
+      "Sha256": "4ddb148a50ab40707390196150dc207f8d39f547357f790c73e232ca5c698890"
+    },
+    {
+      "Path": "CLAUDE.md",
+      "Sha256": "401624f328207fe4727b60e1ae321a665135f75794f38ebff6a33197118c7013"
+    },
+    {
+      "Path": "evals/game-intent-routing.cases.json",
+      "Sha256": "38b4ff93fb9dc8e12fb88d44ec71d8c033ab7e47341b7722bf7062091a4c0e95"
+    },
+    {
+      "Path": "examples/metadata\\dungeon.catalog.json",
+      "Sha256": "fb6d58ce798cac87c708e1ea779cb4f7827b259f740c557f24577e08fa28e785"
+    },
+    {
+      "Path": "examples/metadata\\dungeon.recipe.json",
+      "Sha256": "5a2e08e7c0fd92013d2d31cc189e7839c84f62497cfe8a754cdc6bb09a72f6cf"
+    },
+    {
+      "Path": "examples/metadata\\platformer.catalog.json",
+      "Sha256": "ba6b3a14b8d9a153a075bee71260821aaddd9345b2a3c5b3bd821c265e49cce4"
+    },
+    {
+      "Path": "examples/metadata\\platformer.recipe.json",
+      "Sha256": "f50eea519d7d12122eb49fae953925e5dcec1c16bb73af4669bc3f09feafad80"
+    },
+    {
+      "Path": "examples/metadata\\space.catalog.json",
+      "Sha256": "54a176969216e15a708c10c4072ca2940770f29cae7b85ec5c089b3687fa4338"
+    },
+    {
+      "Path": "examples/metadata\\space.recipe.json",
+      "Sha256": "7ab4218ccb3c20d86c94ca0287814be88ee3154f803e05ab08f0312cfa129c0e"
+    },
+    {
+      "Path": "examples/metadata\\town.catalog.json",
+      "Sha256": "da11dc89f6c64ecd4a9d5918190f940889a2958bc9d05494ee6d87b5de9b80a2"
+    },
+    {
+      "Path": "examples/metadata\\town.recipe.json",
+      "Sha256": "e20b03ea11ac7cf8dd6999d370763b5e727795706fc0f68308979c5bb753b875"
+    },
+    {
+      "Path": "GameFrameWork.slnx",
+      "Sha256": "da6c84ba30e3ac600cb9471ecfce59e9ed6b61df33e5201321386cf4bce7df45"
+    },
+    {
+      "Path": "global.json",
+      "Sha256": "ea7bdf1ad68f4d227d427a7e557eb77f87c21ee79ea17d77d7ca4861c1faf72b"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Catalogs.Modern\\ModernCatalog.cs",
+      "Sha256": "6a823b4bfc79d1e9854f0e9225338e2921bc6fa5df91c2085c5b65807496f830"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Catalogs.Modern\\ModernCompositionProfiles.cs",
+      "Sha256": "f1dbffd7d192bca4a12c180337f0a7b7e8f7999cbc0bf92af8d1ad389c500597"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Catalogs.Modern\\ModernDemandPolicy.cs",
+      "Sha256": "0c977597c52d85ebfb51438e199d6b45865bbf3925e918efa015616b6bb7e714"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Catalogs.Modern\\ModernExpandedStructures.cs",
+      "Sha256": "4d1e10956faaae8c44b2c0f0b3116150bb1128bf79bf3b3dfa56d2c75f4135b7"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Catalogs.Modern\\ModernFacilities.cs",
+      "Sha256": "8f55cc4da9d41d77c7c442d2cbf11f9fcca22e04593b8db781e24fa3a8738e75"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Catalogs.Modern\\ModernInfrastructureDesignStrategy.cs",
+      "Sha256": "a0c2eb4cfb32ceab37410f82c2c09e5efede8d86dc7645c1ee4c51b255388f39"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Catalogs.Modern\\ModernSitingProfiles.cs",
+      "Sha256": "3be7ec29b15cd9ae44d7567dfd99e078d27dcaf685d98502d99887d6924b624f"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Catalogs.Modern\\ModernStructures.cs",
+      "Sha256": "81554fccdf78de954be27b2bf9be8c9c2a1269320aadc20d4812c6074c574ec0"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Catalogs.Modern\\ModernVocabulary.cs",
+      "Sha256": "7f64b40888dc310f80037ce7b49b50f72f98287db3bbb8a2745b4098cf3c852a"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Catalogs.Modern\\WorldCreator.Catalogs.Modern.csproj",
+      "Sha256": "2d82bada5a5c87fb3e16eb3d72fb8f0833e4b3278878c73a60baa6e90b50ae68"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Cli\\Program.cs",
+      "Sha256": "31cad02af5e58440af04fcb80f5714177004859d143ef6dc4c0f2b082e069cd1"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Cli\\StructureFirstCommand.cs",
+      "Sha256": "e5595568c2e7182c69d1a326ab12613d7377b79eb546478b5cba0b16a171f726"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Cli\\WorldCreator.Cli.csproj",
+      "Sha256": "00f13901d7e0c29039e4734d6760241ee952ab9d8148bf7cc473c8b54f20a750"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\ApprovedArtValidator.cs",
+      "Sha256": "74fbd357fa866e691abd1e44c6a98020a17f392b53a6dcca981908f6cad1d741"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\ArtContracts.cs",
+      "Sha256": "968847c0358f2077fc1e51e32d34c61df63206c53e3c615feb0089923be07c16"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\BuildingEntranceAccessValidator.cs",
+      "Sha256": "7473aeba0b0bd21f9131b7b0942f3a040920c6331caddaf861c99f4fac264576"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\BuildingEnvelopes.cs",
+      "Sha256": "ab30ccc88ad791550f9392fbf4a69c429b7569ec7c02d88dcd1f3345b778c36e"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\BuildingPrograms.cs",
+      "Sha256": "e9dcaa85d1ccfc6e462f5b53d34857de57482be2a8cd8f3b42324f3b90df9267"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\BuildingSitePlanner.cs",
+      "Sha256": "f0dd672f8b758276b18fb668ced9dee0a028e427648a9376188477952b6b7f79"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\BuildingSizePlanner.cs",
+      "Sha256": "488cb488900e45c956a00873fa5cdf034282d2412578a69ae11e8ef5f519b20d"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\CaptureWorldPreview.cs",
+      "Sha256": "45d403d1ad4f6484165007b35d3fb28d54349f3710a77ec4855a1e41716fe3d0"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\CatalogContentAuthoring.cs",
+      "Sha256": "2af10704b4d3efc9f9647bce76c7ecaf2c6c430f0af6e99e98bfe83aac7de4c3"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\CatalogStructureComposition.cs",
+      "Sha256": "f4cbbd8ed2379c0838eda8822ff89ad6b72e8bae29378f3fc79438a5ea3007bd"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\ContinuousGeometry.cs",
+      "Sha256": "999784233ed749df12ad272e77a36bbf0626c35a1e44cb2d41fdaca65ec2dfce"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\ControlledPedestrianReachability.cs",
+      "Sha256": "7649679f38caaae9bc15d507b801398b5e051c711dc47c94b0f27a8261261adf"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\ConvexLandscapeInsetComposer.cs",
+      "Sha256": "67e379553ba8c5fe6702c3cbb1942f2538eee9ad5eb2a44f761d8313232afe4c"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\ConvexParcelGeometry.cs",
+      "Sha256": "3620a5c70ffa6c4bcd6846b3a5c78a3c641485d1ae9e8bb47c1c55d65928d838"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\CrossingApproachValidator.cs",
+      "Sha256": "ab6093d8ea499d12a854d1e114a62595f4817b98be11a6dca4d4d90b3d6833c8"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\CrossingRoadProfileValidator.cs",
+      "Sha256": "c331397719e41efae7d26cff20904402dd81a695943ca23d79ce3ab9706f500f"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\DummyVillageAssemblyFixture.cs",
+      "Sha256": "5758bceb562e86152e085d518c091c2621fbef63477c66b7a48757c0490b0f03"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\DummyVillageWorldExporter.cs",
+      "Sha256": "44e59b9aa9efb5c28332ba93d97e98f391cf5a1ffa9782e4ba890e672c107372"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\DummyVillageWorldFixture.cs",
+      "Sha256": "2a94cae78516e033b8870aa090891b65aaf276c7d20924bdefb3f9a5c564c283"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\FacilityComposition.cs",
+      "Sha256": "e91ef8289323ed364d7d5bc2d66d1f840eba7d10df4b213b3ac92902d1e1edbb"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\FileSystemArtRegistry.cs",
+      "Sha256": "a8ef8d7ac998ddaca897e69a16f89c25002580e966f5ca423f1d816fecb955a3"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\GameArtsAtlasValidator.cs",
+      "Sha256": "2f42808f1e74f00bc411e274df2b78747adc282b194acbdf35d8b61a4601340d"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\GameArtsBundleFileValidator.cs",
+      "Sha256": "b8954fa3ec81fe001794debf1e3ce042337663a35991d6e86b7ff7a9190c7a38"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\GameArtsBundleReader.cs",
+      "Sha256": "00a9e5e19804e12620728cbc3530d967ff75d199cad3fd84dd3bd19acf8d321e"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\GameArtsFileVerifier.cs",
+      "Sha256": "3098ea22534282ce2abf3d024f597374846d6a75fe860ee0932ec691c9b77665"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\GameArtsMotionValidator.cs",
+      "Sha256": "1458a5c460655695514dfb16cb2e208a5c5b0014ff9b64e391f9140df15056d9"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\GameArtsNonVegetationGate.cs",
+      "Sha256": "0b2df8aa68029cbe8f3901e7cdb62b4a2207b05a3606ac34150ff092feb0cb8b"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\GameArtsProductionGate.cs",
+      "Sha256": "d73eafde0f7285957b0f40cacb68d830b3bfd416d7c476a1fd5876bff80835e9"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\GameArtsProductionWorldGate.cs",
+      "Sha256": "57f8322835bcb3db34f202146af03b46c259f847bcf047c49ca183a90144e312"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\GameArtsSemanticWorldPipeline.cs",
+      "Sha256": "f9fb6700b44e5ea39b40edee98302875cee20769da06673818cd7498de7ce97a"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\GameArtsVegetationProfileResolver.cs",
+      "Sha256": "d26b431d9f9a5fce9892d2a2a94951879eb958188e3732fc1bf6853ceee7ffe3"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\InfrastructureContracts.cs",
+      "Sha256": "c882d416cbff539518ffa718af652221a837a03e6516a44eaadfa5c7b0752556"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\LandscapeBandComposer.cs",
+      "Sha256": "6e12fd5e9c3660fd43f6f2dda30b6331298424150463e3c06987fb70492b3726"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\LandscapePolygonTriangulator.cs",
+      "Sha256": "ea61b523ee773ebd1eaf7a47688d1bb9fd3f1003ef4157c27e7e4f17688a2b05"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\LandscapeWorldPlanner.cs",
+      "Sha256": "761e62757850490332cdd717f62efb3833e0c3e44ab420c293dd7c89c484e5dd"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\MockupCapture.cs",
+      "Sha256": "5aebd17176a399f69596ce483d8e51ada39d02bd756a528e8493da41c924deab"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\MockupCapturePipeline.cs",
+      "Sha256": "90f22a0affda787efcb8639a88e6852f863e0941b8271b17cc5d3cc7dac99292"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\MockupCaptureValidator.cs",
+      "Sha256": "4e7170dd092cd1b76c2fd912313d4f96cebcc5f2adfeb028db7fab904877611b"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\MockupDesignValidator.cs",
+      "Sha256": "a94731890cdc52341ceaedcd35bfef4d9d9017c2bcd11604f15e97dc40d233a9"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\MockupTerrainQuery.cs",
+      "Sha256": "eae774b84aabf3309198e9682393bacba6e029c4d054611a9cea3fefbeb884b9"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\MockupWorldDesign.cs",
+      "Sha256": "a27281a2b0ebb88f7cbe4f806fd8275603fd9b1309dd0a694b9a5dd65b271bb6"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\OperationalServices.cs",
+      "Sha256": "c52aae4f141db0acb596e6c2fe9abc6e7c901f7b2898709c638fdf1588e404ef"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\ParcelGeometry.cs",
+      "Sha256": "39d54a3c128463e56ec15a3bc791d0df1db1fc9efd2efd2c245ffca6cc930ad3"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\PathVegetationComposer.cs",
+      "Sha256": "413ac8fcd370a4a9fa40368ca58a36b9ff98cc7028f25e63344edaee8c0014c5"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\PedestrianAccessNetworkValidator.cs",
+      "Sha256": "328f1db0f3b14e12afe20e7485e4c0fc3dba6b6c6ef09659f7f5284c55b2bb82"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\PedestrianCrossingSpanValidator.cs",
+      "Sha256": "5c4c8708e6a2ba11df6ef137b7e689a5c6af07ad7ef5e37f42576c304f1adfd4"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\PedestrianReachabilityValidator.cs",
+      "Sha256": "af04824219501db17d57541c839311b3661923adad329769b55153a25ed2af07"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\PedestrianRoadCrossingValidator.cs",
+      "Sha256": "e21d1ba15f92279e74f126e88540caa344b2ece4faa2dc9a2d0fe94ee3f232b6"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\PortableWorldPackageVerifier.cs",
+      "Sha256": "4e83fad953326fc84df4ebeaa5888bc30f2d4b1bbff430bb987aded353906575"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\ProductionWorldBuilder.cs",
+      "Sha256": "9c760c508bf69188c53f20863603c8db6d44405f270baa7907fc94067855f227"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\PublicRealmPlanner.cs",
+      "Sha256": "66347f34f9fdfeabfbb669d132d330ea1047bebfccb727b84910a93146bc4f9c"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\SemanticWorldAcceptanceGate.cs",
+      "Sha256": "0e09d4533360e1472dfb87035e8674b84fa15ef050fe703b638378217dc66282"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\SemanticWorldPackage.cs",
+      "Sha256": "6b80718cea93dff7503eed560621d522562cee674e1cec57ef28199aba6590aa"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\SettlementCatalogComposition.cs",
+      "Sha256": "9334ea525b6e8957bbf56c7e5cd7ff5059062a10fa067ad84bfbbf550741355a"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\SettlementCatalogPlugin.cs",
+      "Sha256": "a5478f64d4b636ae608c74ac7d2b0fa5839d492b081582361fe2b1bfe122b139"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\SettlementCatalogs.cs",
+      "Sha256": "c8818bc31a1321ba9326c0dd5b0b2049cd986e183b3ee9a767c4e3a0ddadbf02"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\SettlementCrossingPlanner.cs",
+      "Sha256": "a0e47e10313eb8c1c984e23a758b8676cbca17a1d9341c4b8beb0d1d25e7e2c0"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\SpatialPlanning.cs",
+      "Sha256": "005f7a6efcba34c00267501b87cd2ccd881575f748c63cb3559bf53f177228b3"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\SpatialValidation.cs",
+      "Sha256": "c796938be20c24efd992d2a7bc1beeb8a83dc90782ed8ac01706b745ed9373d5"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\SpeciesAwareSemanticWorldGate.cs",
+      "Sha256": "ff4819e4ee5505ddbc7f5f4b0593504cb9d5db361ad4608039f96cf2228c8df2"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\StreetIntersections.cs",
+      "Sha256": "54aa6fbd4e42f40db0f01113a3b667dc85cd1b94bf88e9b6c671f92ea2067b37"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\StreetSurfaces.cs",
+      "Sha256": "a82d6ab760540a74cc7c33ba4f195d456e39e177f30e11dae60639649bda3127"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\StreetTopology.cs",
+      "Sha256": "7ea4ee242194f2870808ebc1b20a3842cb1a0a9a2fb4006f27ec0729031c5c00"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\StructureFirstContracts.cs",
+      "Sha256": "47537aa2602e810ae5d9f650952e9c37487c72a5584cdb65abbd7d159ca93a30"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\StructureFirstPipeline.cs",
+      "Sha256": "d3876fa53d4d5dd265e581939aaaeb5cced27e7daa013aa38cd1dec7565f26fd"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\StructureFirstPipeline.Files.cs",
+      "Sha256": "e856e7d10e4cb081029c973c918cddfd10098634a6af82935fc5b7a178f8da35"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\StructureFirstPipeline.Production.cs",
+      "Sha256": "1f8b786d793b782117c82e11cff55e5b819785d0ca1aefc280cc9b6ae944741e"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\StructureSiting.cs",
+      "Sha256": "06357c488bdd08b936f92289ceb21d0575c456c8fe15e0a2b12dfb70f236f1ba"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\StructureSitingPlanner.cs",
+      "Sha256": "613d3bcbac382490d8e8db936025852386a4049085d0170cfb8772deec700c2e"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\StructureSitingValidator.cs",
+      "Sha256": "9f894184798be48f8c3c72863dbecde266af03d390fc8bf856104f3382b612ff"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\StyledTerrainComposer.cs",
+      "Sha256": "cc13fbcb910c812a5a15a50f4e8f53112dcca84c3360c0ee9307fb3e7ba84ced"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\SurfaceClearanceValidator.cs",
+      "Sha256": "43e15d79358d938a9960607d6a5d9f1c0107a01e0f45f9fbb6090d8e87ba729b"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\TerrainArtAssembler.cs",
+      "Sha256": "78f4523d6f54839536c8a87ed86b5449710b857fdfb96bd22ead7d7f2b218b7f"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\TerrainCoverageTopology.cs",
+      "Sha256": "c91df12e708ace704639b9d1ea2c5be2908f46cdc87d1aa69029fd9053428a41"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\UrbanBlocks.cs",
+      "Sha256": "d352642ea9632e179b41bf93d70bf7ad8cce94d3196b044958f9b32f55dcd112"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\VegetationClearanceValidator.cs",
+      "Sha256": "08c1a11dc7edd923529daf0a22dcc8c15520205dbd55be6970098e663630068d"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\VegetationCompositionPlanner.cs",
+      "Sha256": "11868fb0ca92b3d1e355d7b1fab0626820e3f9cb14dce9a685214036fb2b54ad"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\VegetationWorldAcceptanceGate.cs",
+      "Sha256": "daf7429b395689ce6264d8eed434470e07d4d426b8c1e54c49e9af14f0d2c345"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\VisualCompositionGenerator.cs",
+      "Sha256": "4e495f9b250f381880585ae2e4f29f667fd08cd8b2cc21b4b5c5d71bf9aad511"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\VisualPathPatterns.cs",
+      "Sha256": "7b4275acdb5fc5220adf4d2f6a6937339656015c5945f7459376dfae60e5ae99"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\VisualRegionPatterns.cs",
+      "Sha256": "ae1856f13913e307b74d722418c6542b8227a5e596bcb93a5a4b66ddfe692531"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\VisualWorldPlanning.cs",
+      "Sha256": "9d870e8677f95d92cc1da64f6e05e7bb7f1d3019f2f2e95da1fdf36bcbd116cf"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\WorldArtAssembly.cs",
+      "Sha256": "4ddee989a151a72f7a349ccd4723ab2211c9a772eb6307b2aa10030b9c4da397"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\WorldAssemblyPackage.cs",
+      "Sha256": "e021fd6683a5605563698ad371501cd0e0934b8d64e560f640903b80b28460ab"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\WorldAssetDependencyManifest.cs",
+      "Sha256": "1ce760a3a6c02b3f52b463ad8a10ae6c236846d96f4d0722b9cba1649259fb6e"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\WorldBuildGate.cs",
+      "Sha256": "c095e886d0b6c401f86254a2644f8c4dc951079f9cdacdd915d6430d43bab1d7"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\WorldCreator.Core.csproj",
+      "Sha256": "8378be293fdba9ebdac0b7a05288c59c06b885340d077fca8d2d451d13ec90ef"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\WorldDesignPlanning.cs",
+      "Sha256": "d66c03a83f2f8f829f448da600c058b39565ab6b2f0fc72f44fb88f9d85e85b0"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\WorldJson.cs",
+      "Sha256": "17c037cf3bb73ff13da56f04e04b786befb00c85ba5722fd9ddefb0b65cdce55"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\WorldMetadataContracts.cs",
+      "Sha256": "f0763d7f9730d339bdaa3be765215e685dd32a026f272e3b24a1628563aa7c01"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\WorldMetadataGenerator.cs",
+      "Sha256": "1b6811eacbab57ad7463372e54b4ebc503815601df72e1605a676e9b4362946d"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\WorldMetadataGenerator.Files.cs",
+      "Sha256": "6457ee50529aea30999e1e527938e96c4a2a92fffd7729a735d2fe1f4fdd6949"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\WorldModel.cs",
+      "Sha256": "8dae8cfd292688310fb124fce0b376d9884a1737ef8e493e7c8abd5dc380f1f1"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\WorldPlanCoordinator.cs",
+      "Sha256": "d4290ca46bf40544e0e885d4013d2a8c8e2caa656dc5fbb2be42d1ebd578ef13"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\WorldPlanRenderer.cs",
+      "Sha256": "8911d2bd6eba6f351d55b9855e826ccd4a6af5acabb49378a2a599231218855d"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Core\\WorldQualityAnalyzer.cs",
+      "Sha256": "62a79ed81fa4d412523abc6651267d3f57bd42157be602f99121004d0404f4e0"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Godot\\DummyVillageAssembler.cs",
+      "Sha256": "979ce9a15d7bcbd2130138ff21ff7327c2f512fefad059e6df8867d9c3e400df"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Godot\\GodotStructureLayerExporter.cs",
+      "Sha256": "19e37fa71195e4854caf3653411a3cea474280b6900045746ad03e1639317e7d"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Godot\\GodotWorldExporter.cs",
+      "Sha256": "81b413f790e71df4153af3a940790a80c617a7581d70ccc190372bbd1eef9f81"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Godot\\WorldCreator.Godot.csproj",
+      "Sha256": "e04b9b04b91b000f97ad3b90fc45b56f9d10d7d683d5c1f141155fb28fde541d"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Worlds\\CoordinatedProductionWorldExporter.cs",
+      "Sha256": "c2ca789a8d52a46e5debe40e975107aaa016373fe70395bd4c30a9462c13996d"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Worlds\\CoordinatedSettlementWorldBuilder.cs",
+      "Sha256": "33ec20776b076f1fdeebb47a0b933e6b60b63a015417e43ae7c647268385cf5f"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Worlds\\DesertWorldGenerator.cs",
+      "Sha256": "381e2d17d226009a245d322320cebdba5902d6a8c5dfaa0d491cf93a38585dc7"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Worlds\\MockupTerrainComposer.cs",
+      "Sha256": "a1d3fcb891860c873cdc06ed232f9eab9187a7e6600799dbd08b9a54c44b1996"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Worlds\\ParcelSuitability.cs",
+      "Sha256": "5ad03958121d58fdd715b8da700ac0b626199f5a6ae20c24fe41f5e16f1cdfb2"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Worlds\\SettlementCrossingIntegration.cs",
+      "Sha256": "12a29f619344bd212fa9a19493556a83d672c8d4e880794dc84df8b1f0f41daa"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Worlds\\SettlementDesignGate.cs",
+      "Sha256": "e5901883fc65045515110e3a9bcbb3664a53367c6ed33777d971accba73b763b"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Worlds\\SettlementDesignPipeline.cs",
+      "Sha256": "b6c7401fbebabb5bcf1c3b9287e760c257fc989ca751fa80c05fcafbcd3fd6cd"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Worlds\\SettlementPlanner.cs",
+      "Sha256": "a09ad98a94a5a052a339683c0f245c8bfd166736aec15456be5ffae034729321"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Worlds\\SettlementTransportCrossingCoordinator.cs",
+      "Sha256": "3c77a4a43c61574a378f1c69ac19ac1010ca9e102759a8514f3db7f37668ae75"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Worlds\\SettlementTransportDesignBuilder.cs",
+      "Sha256": "8ac995ad4df6976e73ffcba5047ec79631577f53cee685c2789ab3bb49711ba8"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Worlds\\SettlementTransportWorldAssembler.cs",
+      "Sha256": "2e717abed9cc51dee158743c77063c578f4952636825d2e52b9ff73c8f81ed8f"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Worlds\\WorldCreator.Worlds.csproj",
+      "Sha256": "e04b9b04b91b000f97ad3b90fc45b56f9d10d7d683d5c1f141155fb28fde541d"
+    },
+    {
+      "Path": "src/WorldCreator\\WorldCreator.Worlds\\WorldRasterGeometry.cs",
+      "Sha256": "aaa749285d27eb3624a76fe7305b48feef9e4ed1728d20132543ae95efad352b"
+    },
+    {
+      "Path": "tests/WorldCreator.TestCatalog\\ArcaneTestCatalog.cs",
+      "Sha256": "7609e0399c45ac4ffbcb184c39a577b49766fe2a35a1bda054f75355fa0b0e8a"
+    },
+    {
+      "Path": "tests/WorldCreator.TestCatalog\\WorldCreator.TestCatalog.csproj",
+      "Sha256": "eddd2772bf50e76e48188b6cad45007eaf30f2f58eb2fca8dbc537659c130180"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\CatalogContentAuthoringTests.cs",
+      "Sha256": "30a7c1b414e6bed6f8164f01ad7ff4c65d7e353d3f1635bf79a9d4ed53eca554"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\CatalogContractTests.cs",
+      "Sha256": "3f31aea654d94cfc8b9d2421ff687b9a2890337761cb2baf13f4d9603749c55a"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\CatalogExpansionTests.cs",
+      "Sha256": "0bc4658275fabe6589595363b99210d0bf1ab74cffaef0fd746bac57e3d09fdf"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\CliIntegrityTests.cs",
+      "Sha256": "7e2f2ec4ce0ba82a997894c4eaf9b2ca3bdb1f803ff92618026be586dbca1d6a"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\CurvedRoadTests.cs",
+      "Sha256": "14a18955c81dac8a4390e4dc454b920b9e53b22b40fc69c7b9c06cec6ba5a988"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\FacilityCompositionTests.cs",
+      "Sha256": "60558291ad7f56ea9e7f05b9a520f3171acb43c5577827bd8c0346b333ad330a"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\InfrastructureAlgorithmTests.cs",
+      "Sha256": "001481107ff178fa5ead6e5b9bdea7208e25ff292f5bb92f2af638a469d4ff02"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\MockupAlgorithmTests.cs",
+      "Sha256": "8739f560494cad15972af35e10ea99ccc3319843790de0cacf1050bf2f2c4160"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\MockupCaptureTests.cs",
+      "Sha256": "693abd390cfc02a5f49c7442cc345d14c6297974e77a087a7a29dd35e303d86d"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\MockupGenerationFixture.cs",
+      "Sha256": "f5528f2e3a5c57e4f8e9f268b67ec00fd7c6c284f11a0da8fdf2974645f16647"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\ProductionIntegrityTests.cs",
+      "Sha256": "7d87fb511ff15e93767538071ba09e6d29e438dac8cf212a30383fa59ba48689"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\Program.cs",
+      "Sha256": "1eed8b16b9d8c5b228e75fe386e5de2b81b7efee7001991903a0be3179ddbd89"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\SitingAlgorithmTests.cs",
+      "Sha256": "5bc3de4abf45847b8c0f73aad3a91e9ee53efa003d203a8823f99e6e18e132ad"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\StructureFirstPipelineTests.cs",
+      "Sha256": "eb113685140f8c5216a6d4a7fe45092cce0b02d6bd0f9e3ab8a810a8d95f4fed"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\TestCatalogs.cs",
+      "Sha256": "217b832cfeeb3f8c50f5c74f00299a0881ed502f64dfcdacf52325fdef0965ce"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\WorldCreator.Tests.csproj",
+      "Sha256": "1a281827d830687b94b3ef9e5418f9cbcb8b42867227575196872f6d1085d1e6"
+    },
+    {
+      "Path": "tests/WorldCreator.Tests\\WorldMetadataTests.cs",
+      "Sha256": "9f26cc4450b95c77d8799df6192ae4b3a95730c987d35e6df6e6a5133d08ed3f"
+    }
+  ],
+  "Demonstrations": [
+    {
+      "Id": "town",
+      "Nodes": 19,
+      "Connections": 14,
+      "Coverage": "CompleteDeclaredScope",
+      "RecipeSha256": "a2845725b683c0268ac0af1928b02ba92a2b29f22299f9d93df7803c991eda2c",
+      "CatalogSha256": "6e1f3030c2870b471591d26cfffcd6aa18b86905f72ab4372509b6d06801e4b8",
+      "OutputSha256": "07a03fd68fb473be355eedd11241991f149b79c9b907bd5cfde3436c0fc1a926"
+    },
+    {
+      "Id": "dungeon",
+      "Nodes": 15,
+      "Connections": 12,
+      "Coverage": "CompleteDeclaredScope",
+      "RecipeSha256": "edd0e3a8db19de400bbbb2461432bd24da11a0acb9c1076fdad40d9a4adaf6ec",
+      "CatalogSha256": "070cab5a4014afacdf477fe71c3853d619c072913d1a29abc92363ade4402937",
+      "OutputSha256": "bd8cb8eb3e9dfaf73f0ee77cbd9417064e32a4eba44263c924d18b5efdedb32d"
+    },
+    {
+      "Id": "platformer",
+      "Nodes": 17,
+      "Connections": 11,
+      "Coverage": "CompleteDeclaredScope",
+      "RecipeSha256": "bb03fbaf9d95573fef036b8f805db88f41b830bdb24aa88e09e25de00be207e6",
+      "CatalogSha256": "87274d09d5004dd4a04e2f6b548d3d9a88211d30d804cdd20b1a0fdeb53324bb",
+      "OutputSha256": "91196c8e281c4c135c78b0a17529f9138c94e5b56dba6a78870424dd98f3dd56"
+    },
+    {
+      "Id": "space",
+      "Nodes": 9,
+      "Connections": 7,
+      "Coverage": "CompleteDeclaredScope",
+      "RecipeSha256": "9f31b12888c9a02b02e576e3941d217f5dbdbdec1ebc72377912adbc124fcc40",
+      "CatalogSha256": "ad226fefaaa7fa35381aee796737fcfed2c9b05226d4ee5678e04a6f22892eed",
+      "OutputSha256": "11994facef4ed159a31d650e2130b9245080b031c22d6ee429b199e05ba06bc7"
+    }
+  ],
+  "AgentEvaluations": "NOT RUN",
+  "GodotMetadataRuntime": "Not applicable: metadata route exports no Godot scene or gameplay",
+  "ArtReadiness": "Not applicable to metadata; no artwork created or approved"
+}

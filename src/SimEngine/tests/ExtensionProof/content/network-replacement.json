@@ -1,0 +1,5 @@
+{
+  "entity_replacement_effects": [{"id":"network.replace","source":"source","target":"source.next"}],
+  "activities": [{"id":"network.upgrade","player_orderable":true,"automatic_supply":false,"priority":80,"target_tags":[],
+    "on_complete":"network.replace","nodes":[{"id":"replace","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"after":[],"requirement":null,"effect":null}]}]
+}

@@ -1,0 +1,342 @@
+{
+  "game_modes": [{ "id": "resource-workflow.resource-only", "name": "Resource-only physical simulation", "properties": {} }],
+  "time_definitions": [
+    {
+      "id": "resource.minute",
+      "quantum": {
+        "numerator": 60,
+        "denominator": 1,
+        "unit": "second"
+      },
+      "frame_ticks": 1,
+      "ticks_per_second": 30,
+      "horizon": null
+    }
+  ],
+  "entity_states": [
+    {
+      "id": "idle",
+      "state": "resource.idle",
+      "priority": 0,
+      "default": true
+    }
+  ],
+  "units": [
+    {
+      "id": "unit.capacity.count",
+      "dimension": "count",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    },
+    {
+      "id": "unit.capacity.volume",
+      "dimension": "volume",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": false
+    },
+    {
+      "id": "unit.capacity.mass",
+      "dimension": "mass",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": false
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "fixture.count.1",
+      "limits": {
+        "unit.capacity.count": 1
+      }
+    },
+    {
+      "id": "fixture.count.4",
+      "limits": {
+        "unit.capacity.count": 4
+      }
+    },
+    {
+      "id": "fixture.count.5",
+      "limits": {
+        "unit.capacity.count": 5
+      }
+    },
+    {
+      "id": "fixture.count.8",
+      "limits": {
+        "unit.capacity.count": 8
+      }
+    },
+    {
+      "id": "fixture.count.10",
+      "limits": {
+        "unit.capacity.count": 10
+      }
+    },
+    {
+      "id": "fixture.count.20",
+      "limits": {
+        "unit.capacity.count": 20
+      }
+    },
+    {
+      "id": "fixture.count.40",
+      "limits": {
+        "unit.capacity.count": 40
+      }
+    },
+    {
+      "id": "fixture.count.60",
+      "limits": {
+        "unit.capacity.count": 60
+      }
+    },
+    {
+      "id": "fixture.count.80",
+      "limits": {
+        "unit.capacity.count": 80
+      }
+    },
+    {
+      "id": "fixture.count.100",
+      "limits": {
+        "unit.capacity.count": 100
+      }
+    },
+    {
+      "id": "fixture.count.200",
+      "limits": {
+        "unit.capacity.count": 200
+      }
+    },
+    {
+      "id": "fixture.count.1000",
+      "limits": {
+        "unit.capacity.count": 1000
+      }
+    },
+    {
+      "id": "fixture.volume.1",
+      "limits": {
+        "unit.capacity.volume": 1
+      }
+    },
+    {
+      "id": "fixture.volume.4",
+      "limits": {
+        "unit.capacity.volume": 4
+      }
+    },
+    {
+      "id": "fixture.volume.5",
+      "limits": {
+        "unit.capacity.volume": 5
+      }
+    },
+    {
+      "id": "fixture.volume.8",
+      "limits": {
+        "unit.capacity.volume": 8
+      }
+    },
+    {
+      "id": "fixture.volume.10",
+      "limits": {
+        "unit.capacity.volume": 10
+      }
+    },
+    {
+      "id": "fixture.volume.20",
+      "limits": {
+        "unit.capacity.volume": 20
+      }
+    },
+    {
+      "id": "fixture.volume.40",
+      "limits": {
+        "unit.capacity.volume": 40
+      }
+    },
+    {
+      "id": "fixture.volume.60",
+      "limits": {
+        "unit.capacity.volume": 60
+      }
+    },
+    {
+      "id": "fixture.volume.80",
+      "limits": {
+        "unit.capacity.volume": 80
+      }
+    },
+    {
+      "id": "fixture.volume.100",
+      "limits": {
+        "unit.capacity.volume": 100
+      }
+    },
+    {
+      "id": "fixture.volume.200",
+      "limits": {
+        "unit.capacity.volume": 200
+      }
+    },
+    {
+      "id": "fixture.volume.1000",
+      "limits": {
+        "unit.capacity.volume": 1000
+      }
+    },
+    {
+      "id": "fixture.mass.1",
+      "limits": {
+        "unit.capacity.mass": 1
+      }
+    },
+    {
+      "id": "fixture.mass.4",
+      "limits": {
+        "unit.capacity.mass": 4
+      }
+    },
+    {
+      "id": "fixture.mass.5",
+      "limits": {
+        "unit.capacity.mass": 5
+      }
+    },
+    {
+      "id": "fixture.mass.8",
+      "limits": {
+        "unit.capacity.mass": 8
+      }
+    },
+    {
+      "id": "fixture.mass.10",
+      "limits": {
+        "unit.capacity.mass": 10
+      }
+    },
+    {
+      "id": "fixture.mass.20",
+      "limits": {
+        "unit.capacity.mass": 20
+      }
+    },
+    {
+      "id": "fixture.mass.40",
+      "limits": {
+        "unit.capacity.mass": 40
+      }
+    },
+    {
+      "id": "fixture.mass.60",
+      "limits": {
+        "unit.capacity.mass": 60
+      }
+    },
+    {
+      "id": "fixture.mass.80",
+      "limits": {
+        "unit.capacity.mass": 80
+      }
+    },
+    {
+      "id": "fixture.mass.100",
+      "limits": {
+        "unit.capacity.mass": 100
+      }
+    },
+    {
+      "id": "fixture.mass.200",
+      "limits": {
+        "unit.capacity.mass": 200
+      }
+    },
+    {
+      "id": "fixture.mass.1000",
+      "limits": {
+        "unit.capacity.mass": 1000
+      }
+    }
+  ],
+  "resources": [
+    {
+      "id": "kit",
+      "unit": "unit.count",
+      "phase": "solid",
+      "category": "tool",
+      "traits": [],
+      "capacity": {
+        "unit.count": 1
+      }
+    },
+    {
+      "id": "coolant",
+      "unit": "unit.litre",
+      "phase": "liquid",
+      "category": "fluid",
+      "traits": [
+        "handling.fluid"
+      ],
+      "capacity": {
+        "unit.litre": 1
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "ore-bin",
+      "kind": "entity",
+      "components": {
+        "ore_stock": {
+          "resource": "planetx.ore",
+          "capacity_policy": "fixture.mass.10",
+          "initial": 3
+        }
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "refine",
+      "automatic_supply": false,
+      "player_orderable": true,
+      "nodes": [
+        {"executor":"work.timed",
+          "id": "settle",
+          "duration":{"numerator":1,"denominator":10,"unit":"hour"},
+          "requirement": "proof.resource-workflow.refine.settle.inputs"
+        }
+      ]
+    }
+  ],
+  "world_setup_profiles": [{"id":"resource.start","entries":["bin-start"],"includes":[]}],
+  "entity_setups": [{"id":"bin-start","after":[],"entity":"ore-bin","company":0,"placement":null,"home":null}],
+  "scenarios": [
+    {
+      "id": "resource-work", "game_mode": "resource-workflow.resource-only", "mode_overrides": {},
+      "settings": {"sim.work":{"retry":"proof.retry"},"sim.world-setup":{"profile":"resource.start"}},
+      "time": "resource.minute",
+      "modules": ["proof.resources","sim.world-setup"],
+      "seats": 1
+    }
+  ],
+  "target_resource_requirements": [
+    {"port":null,
+      "id": "proof.resource-workflow.refine.settle.inputs",
+      "use": "consume",
+      "quantities": {
+        "planetx.ore": 0.5
+      }
+    }
+  ]
+}

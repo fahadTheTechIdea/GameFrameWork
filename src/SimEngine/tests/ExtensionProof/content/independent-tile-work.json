@@ -1,0 +1,23 @@
+{
+  "entity_states":[
+    {"id":"sensor.working","state":"working","priority":20},
+    {"id":"sensor.loading","state":"loading","priority":30}
+  ],
+  "worker_roles":[{"id":"sensor.inspect"}],
+  "work_policies":[{"id":"sensor.worker-policy","enabled":true,"priority":1,"allowed_roles":["sensor.inspect"],"area":null,
+    "interruptible":true,"emergency_eligible":false,"assignment_mode":"all","states":{"disabled":"sensor.stopped","standby":"sensor.stopped"}}],
+  "dock_work_requirements":[{"id":"sensor.dock-ready"}],
+  "activities":[{"id":"sensor.inspection","priority":10,"player_orderable":true,"automatic_supply":false,"on_complete":null,
+    "nodes":[{"executor":"work.staffed","id":"inspect","roles":["sensor.inspect"],"duration":{"numerator":6,"denominator":1,"unit":"minute"},"requirement":"sensor.dock-ready"}]}],
+  "entities":[{"id":"sensor.worksite","kind":"structure","components":{
+    "tile_presence":{"space":"sensor.tiles","width":1,"height":1,"blocks":true,"movable":false},
+    "tile_work_dock":{"work_roles":["sensor.inspect"],"resources":[],"slots":[
+      {"id":"bay","kind":"service","x":-1,"y":0},
+      {"id":"wait","kind":"waiting","x":-2,"y":1},
+      {"id":"exit","kind":"departure","x":-1,"y":1}
+    ]}
+  }}],
+  "world_setup_profiles":[{"id":"sensor.work-start","entries":["sensor.start-worksite"],"includes":["sensor.navigation-start"]}],
+  "entity_setups":[{"id":"sensor.start-worksite","after":[],"entity":"sensor.worksite","company":0,
+    "placement":{"space":"sensor.tiles","x":14,"y":20},"home":null}]
+}

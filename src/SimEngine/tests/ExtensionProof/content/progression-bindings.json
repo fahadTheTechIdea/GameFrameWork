@@ -1,0 +1,8 @@
+{
+  "progression_binding_predicates": [
+    {"id":"binding.unused-predicate","minimum":0,"maximum":1,"mode":"valid"}
+  ],
+  "progression_binding_effects": [
+    {"id":"binding.unused-effect","minimum":0,"maximum":1,"mode":"valid"}
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "broken_tile_cells":[
+    {"id":"sensor.spill-cell","identity":2,"layer":"sensor.spilled-oil","x":14,"y":20,"capacity_policy":"sensor.stock","public":false,"mode":"site-probe"}
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "step_budget": 7,
+  "batch_size": 3,
+  "physical_budget": 200,
+  "child_timeout_ms": 2000,
+  "observation_timeout_ms": 20000,
+  "termination_timeout_ms": 3000,
+  "output_chars": 16384
+}

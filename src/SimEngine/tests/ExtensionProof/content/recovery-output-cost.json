@@ -1,0 +1,86 @@
+{
+  "worker_roles": [{"id":"cost.inspect"}],
+  "target_resource_requirements": [{"port":null,"id":"cost.consume-forty","use":"consume","quantities":{"supply":40}}],
+  "activities": [{"id":"cost.consume-stock","automatic_supply":false,"player_orderable":true,
+    "nodes":[{"executor":"work.staffed","id":"consume","roles":["cost.inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"cost.consume-forty"}]}],
+  "entities": [
+    {"id":"cost.docked","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":10},
+      "point_stock":{"resource":"supply","capacity_policy":"fixture.count.40","initial":0},
+      "point_dock":{"work_roles":[],"resources":["supply"],"slots":[
+        {"id":"unload.bay","kind":"service","offset":5},
+        {"id":"unload.exit","kind":"departure","offset":6}
+      ]}
+    }},
+    {"id":"alternate","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":12},
+      "point_stock":{"resource":"supply","capacity_policy":"fixture.count.40","initial":0}
+    }},
+    {"id":"later","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":13},
+      "point_stock":{"resource":"supply","capacity_policy":"fixture.count.40","initial":40}
+    }},
+    {"id":"cost.inspector","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":13},
+      "worker":{"work_rate":1,"roles":["cost.inspect"],"states":{"working":"processing","loading":"transfer","stopped":"blocked"}}
+    }}
+  ],
+  "entity_setups": [
+  {
+    "id": "cost.docked",
+    "after": [],
+    "entity": "cost.docked",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 10
+    },
+    "home": null
+  },
+  {
+    "id": "alternate",
+    "after": [],
+    "entity": "alternate",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 12
+    },
+    "home": null
+  },
+  {
+    "id": "later",
+    "after": [],
+    "entity": "later",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 13
+    },
+    "home": null
+  },
+  {
+    "id": "cost.inspector",
+    "after": [],
+    "entity": "cost.inspector",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 13
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "recovery-output-cost.start",
+    "entries": [
+      "cost.docked",
+      "alternate",
+      "later",
+      "cost.inspector"
+    ],
+    "includes": []
+  }
+]
+}

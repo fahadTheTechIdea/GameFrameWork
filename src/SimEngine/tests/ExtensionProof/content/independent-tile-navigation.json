@@ -1,0 +1,4 @@
+{
+  "layered_tile_navigation":[{"id":"sensor.route","space":"sensor.tiles","base_cost":10,
+    "rules":[{"id":"screen.blocked","priority":100,"cost":0,"conditions":["sensor.opaque"]}]}]
+}

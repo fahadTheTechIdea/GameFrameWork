@@ -1,0 +1,329 @@
+{
+  "tile_line_placement_policies": [{"id":"start.placement","space":"recovery.tiles","blocker":"line.placement-blocked","footprint":{"match":"all","conditions":[]}}],
+  "target_resource_requirements": [
+    {
+      "port": null,
+      "id": "start.materials",
+      "use": "consume",
+      "quantities": {
+        "steel": 2
+      }
+    },
+    {
+      "port": null,
+      "id": "start.electrical",
+      "use": "consume",
+      "quantities": {
+        "steel": 3
+      }
+    }
+  ],
+  "work_cost_requirements": [
+    {
+      "id": "start.cost",
+      "amount": 5,
+      "credit": false,
+      "category": "construction"
+    },
+    {
+      "id": "start.cost.a",
+      "amount": 6,
+      "credit": false,
+      "category": "construction"
+    },
+    {
+      "id": "start.cost.b",
+      "amount": 6,
+      "credit": false,
+      "category": "construction"
+    },
+    {
+      "id": "start.credit",
+      "amount": 7,
+      "credit": true,
+      "category": "construction"
+    }
+  ],
+  "work_requirement_groups": [
+    {
+      "id": "start.ready",
+      "mode": "all",
+      "entries": [
+        {
+          "id": "materials",
+          "requirement": "start.materials"
+        },
+        {
+          "id": "tools",
+          "requirement": "requirements.tools"
+        },
+        {
+          "id": "cost",
+          "requirement": "start.cost"
+        }
+      ]
+    },
+    {
+      "id": "start.scaled-ready",
+      "mode": "all",
+      "entries": [
+        {
+          "id": "materials",
+          "requirement": "start.materials"
+        },
+        {
+          "id": "cost",
+          "requirement": "start.cost"
+        }
+      ]
+    },
+    {
+      "id": "start.line-ready",
+      "mode": "all",
+      "entries": [
+        {
+          "id": "materials",
+          "requirement": "colony.road.inputs"
+        },
+        {
+          "id": "cost",
+          "requirement": "start.cost"
+        }
+      ]
+    },
+    {
+      "id": "start.expensive",
+      "mode": "all",
+      "entries": [
+        {
+          "id": "materials",
+          "requirement": "start.materials"
+        },
+        {
+          "id": "tools",
+          "requirement": "requirements.tools"
+        },
+        {
+          "id": "cost.a",
+          "requirement": "start.cost.a"
+        },
+        {
+          "id": "cost.b",
+          "requirement": "start.cost.b"
+        }
+      ]
+    },
+    {
+      "id": "start.credit-ready",
+      "mode": "all",
+      "entries": [
+        {
+          "id": "materials",
+          "requirement": "start.materials"
+        },
+        {
+          "id": "cost",
+          "requirement": "start.cost"
+        },
+        {
+          "id": "credit",
+          "requirement": "start.credit"
+        }
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "id": "start.road.segment-work",
+      "player_orderable": false,
+      "automatic_supply": true,
+      "nodes": [
+        {
+          "id": "install",
+          "executor": "work.staffed",
+          "roles": [
+            "crane"
+          ],
+          "duration": {
+            "numerator": 360,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "effect": "sim.line.segment",
+          "requirement": "start.line-ready"
+        }
+      ]
+    },
+    {
+      "id": "start.work",
+      "player_orderable": true,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "executor": "work.staffed",
+          "id": "work",
+          "roles": [
+            "resource.builder"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 5,
+            "unit": "hour"
+          },
+          "requirement": "start.ready"
+        }
+      ]
+    },
+    {
+      "id": "start.expensive-work",
+      "player_orderable": true,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "executor": "work.staffed",
+          "id": "work",
+          "roles": [
+            "resource.builder"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 5,
+            "unit": "hour"
+          },
+          "requirement": "start.expensive"
+        }
+      ]
+    },
+    {
+      "id": "start.scaled",
+      "player_orderable": true,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "executor": "work.staffed",
+          "id": "work",
+          "roles": [
+            "resource.builder"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 5,
+            "unit": "hour"
+          },
+          "requirement": "start.scaled-ready",
+          "requirement_multiplier": 2
+        }
+      ]
+    },
+    {
+      "id": "start.credit-work",
+      "player_orderable": true,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "executor": "work.staffed",
+          "id": "work",
+          "roles": [
+            "resource.builder"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 5,
+            "unit": "hour"
+          },
+          "requirement": "start.credit-ready"
+        }
+      ]
+    },
+    {
+      "id": "start.supplied",
+      "player_orderable": true,
+      "automatic_supply": true,
+      "nodes": [
+        {
+          "executor": "work.staffed",
+          "id": "foundation",
+          "roles": [
+            "resource.builder"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 5,
+            "unit": "hour"
+          },
+          "requirement": "start.materials"
+        },
+        {
+          "executor": "work.staffed",
+          "id": "electrical",
+          "roles": [
+            "resource.builder"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 5,
+            "unit": "hour"
+          },
+          "requirement": "start.electrical"
+        }
+      ]
+    }
+  ],
+  "lines": [
+    {"value":1,
+      "id": "start.road",
+      "layer": "road",
+      "placement_policy": "start.placement",
+      "owned": false,
+      "finish_effect": "sim.line.finish",
+      "activity": "start.road.segment-work",
+      "segment_node": "install",
+      "work_marker": "sim.line-work.start.road"
+    }
+  ],
+  "entities": [
+    {
+      "id": "start.empty",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 2,
+          "height": 2,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "recovery.site",
+          "public": false
+        },
+        "activity_record": {}
+      }
+    },
+    {
+      "id": "sim.line-work.start.road",
+      "kind": "marker",
+      "tags": [
+        "line-work"
+      ],
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": false,
+          "movable": true
+        },
+        "storage": {
+          "capacity_policy": "recovery.site",
+          "public": false,
+          "evacuate": false,
+          "accepts": [],
+          "phases": [],
+          "initial_stock": {}
+        },
+        "line_work": {}
+      }
+    }
+  ]
+}

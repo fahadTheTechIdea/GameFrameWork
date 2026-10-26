@@ -1,0 +1,172 @@
+{
+  "entities": [
+    {
+      "id": "restore.target",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "pool_port": [
+          {
+            "id": "alias",
+            "pool": "source.first",
+            "alternatives": [
+              "source.second"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "current_only"
+          },
+          {
+            "id": "queue",
+            "pool": "source.second",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          }
+        ],
+        "tile_work_dock": {
+          "work_roles": [],
+          "resources": [
+            "steel"
+          ],
+          "slots": [
+            {
+              "id": "bay",
+              "kind": "service",
+              "x": -1,
+              "y": 0
+            },
+            {
+              "id": "wait",
+              "kind": "waiting",
+              "x": -2,
+              "y": 2
+            },
+            {
+              "id": "exit",
+              "kind": "departure",
+              "x": -8,
+              "y": 0
+            },
+            {
+              "id": "exit-alt",
+              "kind": "departure",
+              "x": 3,
+              "y": -10
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "world_setup_profiles": [{"id":"restore.start","entries":["restore.warehouse-entry","restore.target-entry","restore.sink-entry","restore.far-entry","restore.machine-entry","restore.queue-entry"],"includes":[]}],
+  "entity_setups": [
+    {
+      "id": "restore.warehouse-entry",
+      "after": [],
+      "entity": "source.warehouse",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 8,
+        "y": 6
+      },
+      "home": null
+    },
+    {
+      "id": "restore.target-entry",
+      "after": [],
+      "entity": "restore.target",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 22,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "restore.sink-entry",
+      "after": [],
+      "entity": "source.sink",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 28,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "restore.far-entry",
+      "after": [],
+      "entity": "recovery.far",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 35,
+        "y": 20
+      },
+      "home": null
+    },
+    {
+      "id": "restore.machine-entry",
+      "after": [
+        "restore.warehouse-entry"
+      ],
+      "entity": "dock.machine",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 2,
+        "y": 10
+      },
+      "home": "restore.warehouse-entry"
+    },
+    {
+      "id": "restore.queue-entry",
+      "after": [
+        "restore.warehouse-entry"
+      ],
+      "entity": "dock.queue",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 2,
+        "y": 16
+      },
+      "home": "restore.warehouse-entry"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "scoped-dock-restoration",
+      "game_mode": "haul.resource-only",
+      "mode_overrides": {},
+      "time": "haul.minute",
+      "space": "haul.tiles",
+      "seats": 2,
+      "default_seats": 2,
+      "modules": [
+        "proof.output-ports",
+        "sim.logistics",
+        "sim.tile-navigation",
+        "sim.logistics-recovery"
+      ],
+      "settings": {
+        "sim.world-setup": {
+          "profile": "restore.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.logistics-recovery": {
+          "profile": "binding.recovery"
+        }
+      }
+    }
+  ]
+}

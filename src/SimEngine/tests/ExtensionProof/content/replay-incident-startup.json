@@ -1,0 +1,10 @@
+{
+  "world_setup_profiles": [{"id":"replay.incident.start","entries":["colony.lake","colony.island","colony.lane","colony.company-0.depot","colony.company-0.factory","colony.company-0.crane","colony.company-0.truck-a","colony.company-0.truck-b","colony.company-1.depot","colony.company-1.factory","colony.company-1.crane","colony.company-1.truck-a","colony.company-1.truck-b","replay.incident.target"],"includes":[]}],
+  "entity_setups": [{
+    "id": "replay.incident.target",
+    "after": ["colony.company-0.depot"],
+    "entity": "leaking-machine", "company": 0,
+    "placement": { "space": "colony.tiles", "x": 16, "y": 18 },
+    "home": null
+  }]
+}

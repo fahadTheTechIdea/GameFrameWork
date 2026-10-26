@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Optional multiplayer authority and scoped replication proposed definition",
+  "description": "Standalone design contract; current ScenarioEngine loading support is not implemented.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "definitionVersion",
+    "authorityMode",
+    "maxPeers",
+    "reconnectPolicy",
+    "maxQueuedPerPeer"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+      "maxLength": 64
+    },
+    "definitionVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "authorityMode": {
+      "type": "string",
+      "enum": [
+        "host"
+      ],
+      "description": "One authority validates orders and world results."
+    },
+    "maxPeers": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 16,
+      "description": "Profile admission bound, not current network support."
+    },
+    "reconnectPolicy": {
+      "type": "string",
+      "enum": [
+        "checkpoint_resync"
+      ],
+      "description": "Reconnect from an authoritative revision."
+    },
+    "maxQueuedPerPeer": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 128,
+      "description": "Bound per-peer work before core admission."
+    }
+  }
+}

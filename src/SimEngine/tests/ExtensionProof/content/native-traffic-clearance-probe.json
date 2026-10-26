@@ -1,0 +1,9 @@
+{
+  "world_setup_profiles": [{ "id": "traffic.probe.start", "entries": ["traffic.start.probe"], "includes": ["traffic.start"] }],
+  "entities": [{ "id": "traffic.probe", "kind": "vehicle", "components": {
+    "tile_presence": { "space": "survey.tiles", "width": 1, "height": 1, "blocks": true, "movable": true },
+    "traffic_clearance_probe": { "x": 9, "y": 7, "width": 1, "height": 2 }
+  } }],
+  "entity_setups": [{ "id": "traffic.start.probe", "after": [], "entity": "traffic.probe", "company": 0,
+    "placement": { "space": "survey.tiles", "x": 9, "y": 7 }, "home": null }]
+}

@@ -1,0 +1,135 @@
+{
+  "plan_playbooks": [
+    {
+      "id": "recovery.controller",
+      "cadence": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "commands_per_decision": 1,
+      "steps": [
+        {
+          "id": "claim",
+          "template": "recovery.tower",
+          "group": "recovery.claim",
+          "sites": "recovery.sites",
+          "after": [],
+          "priority": 80,
+          "conditions": [],
+          "recovery": "recovery.blocked"
+        }
+      ]
+    }
+  ],
+  "pending_plan_recovery_policies": [
+    {
+      "id": "recovery.blocked",
+      "delay": {
+        "numerator": 3,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "maximum_recoveries": 1,
+      "blockers": [
+        "core.blocked"
+      ]
+    }
+  ],
+  "recovery_relays": [
+    {
+      "id": "recovery.external",
+      "policy": "recovery.blocked",
+      "mode": "normal"
+    }
+  ],
+  "plan_site_sets": [
+    {
+      "id": "recovery.sites",
+      "sites": [
+        {
+          "id": "primary",
+          "priority": 100,
+          "anchor": {
+            "space": "field.points",
+            "position": 30
+          },
+          "conditions": []
+        },
+        {
+          "id": "alternative",
+          "priority": 80,
+          "anchor": {
+            "space": "field.points",
+            "position": 42
+          },
+          "conditions": []
+        },
+        {
+          "id": "last",
+          "priority": 70,
+          "anchor": {
+            "space": "field.points",
+            "position": 24
+          },
+          "conditions": []
+        }
+      ]
+    }
+  ],
+  "plan_templates": [
+    {
+      "id": "recovery.tower",
+      "space": "field.points",
+      "entries": [
+        {
+          "id": "tower",
+          "definition": "build:point.tower",
+          "arguments": {
+            "placement": {
+              "space": "field.points",
+              "offset": 0
+            }
+          },
+          "priority": 70,
+          "paused": false,
+          "after": []
+        }
+      ]
+    }
+  ],
+  "entity_setups": [
+  {
+    "id": "rival.source",
+    "after": [],
+    "entity": "source",
+    "company": 1,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  },
+  {
+    "id": "rival.machine",
+    "after": [],
+    "entity": "machine",
+    "company": 1,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "playbook-recovery.start",
+    "entries": [
+      "rival.source",
+      "rival.machine"
+    ],
+    "includes": []
+  }
+]
+}

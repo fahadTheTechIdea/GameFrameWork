@@ -1,0 +1,18 @@
+{
+  "independent_event_dispatch_policies": [
+    { "id": "events.independent", "maximum_events_per_dispatch": 2000000 }
+  ],
+  "event_burst_effects": [
+    { "id": "events.burst", "count": 1048584, "mode": "bulk" }
+  ],
+  "activities": [
+    {
+      "id": "events.inspect", "player_orderable": true, "automatic_supply": false,
+      "on_complete": "events.burst",
+      "nodes": [
+        { "id": "check", "executor": "work.staffed", "roles": ["inspect"],
+          "duration": { "numerator": 6, "denominator": 1, "unit": "minute" } }
+      ]
+    }
+  ]
+}

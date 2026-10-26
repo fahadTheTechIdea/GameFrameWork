@@ -1,0 +1,31 @@
+{
+  "entity_removal_effects": [
+    {"id":"retire.worker","source":"lifecycle.a"},
+    {"id":"retire.source","source":"source"},
+    {"id":"retire.destination","source":"destination"}
+  ],
+  "resource_recovery_effects": [{"id":"retire.pack"}],
+  "entity_activities": [
+    {"id":"retire.worker-plan","target":"lifecycle.a","player_orderable":true,"automatic_supply":false,
+      "on_complete":"retire.worker","nodes":[
+        {"id":"retire","executor":"extension.staffed","roles":["extension.builder"],"duration":{"numerator":3,"denominator":1,"unit":"minute"}}
+      ]},
+    {"id":"retire.source-plan","target":"source","player_orderable":true,"automatic_supply":false,
+      "on_complete":"retire.source","nodes":[
+        {"id":"pack","executor":"extension.staffed","roles":["extension.builder"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"effect":"retire.pack"},
+        {"id":"retire","after":["pack"],"executor":"extension.staffed","roles":["extension.builder"],"duration":{"numerator":2,"denominator":1,"unit":"minute"}}
+      ]},
+    {"id":"retire.destination-plan","target":"destination","player_orderable":true,"automatic_supply":false,
+      "on_complete":"retire.destination","nodes":[
+        {"id":"pack","executor":"extension.staffed","roles":["extension.builder"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"effect":"retire.pack"},
+        {"id":"retire","after":["pack"],"executor":"extension.staffed","roles":["extension.builder"],"duration":{"numerator":2,"denominator":1,"unit":"minute"}}
+      ]}
+  ],
+  "entities": [{"id":"retire.receiver","kind":"structure","components":{
+    "point_presence":{"space":"field.points","position":20},
+    "storage":{"capacity_policy":"fixture.count.40","public":true,"initial_stock":{}}
+  }}],
+  "entity_setups": [{"id":"retire.receiver","after":[],"entity":"retire.receiver","company":0,
+    "placement":{"space":"field.points","position":20},"home":null}],
+  "world_setup_profiles": [{"id":"retire.start","entries":["retire.receiver"],"includes":[]}]
+}

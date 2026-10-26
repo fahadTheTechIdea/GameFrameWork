@@ -1,0 +1,62 @@
+{
+  "response_effects": [{"id":"pressure.resolve","bound_response":true}],
+  "target_resource_requirements": [{"port":null,"id":"pressure.materials","use":"consume","quantities":{"supply":8}}],
+  "activities": [{"id":"pressure.response","priority":90,"automatic_supply":false,"nodes":[
+    {"executor":"work.timed","id":"detect","duration":{"numerator":1,"denominator":20,"unit":"hour"}},
+    {"executor":"work.staffed","id":"repair","after":["detect"],"roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"pressure.materials"}
+  ],"on_complete":"pressure.resolve"}],
+  "incident_workflows": [{"id":"pressure.leak","kind":"pressure.leak","response":"pressure.response","phases":[
+    {"id":"detection","nodes":["detect"]},{"id":"repair","nodes":["repair"]}
+  ]}],
+  "entities": [{"id":"pressure.machine","kind":"structure","components":{
+    "point_presence":{"space":"field.points","position":20},
+    "storage":{"capacity_policy":"fixture.count.40","public":false,"initial_stock":{"supply":20}},
+    "incident":{"id":"pressure.leak","workflow":"pressure.leak","states":{"active":"blocked"}}
+  }}],
+  "entity_setups": [
+  {
+    "id": "pressure.first",
+    "after": [],
+    "entity": "pressure.machine",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 20
+    },
+    "home": null
+  },
+  {
+    "id": "pressure.second",
+    "after": [],
+    "entity": "pressure.machine",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 20
+    },
+    "home": null
+  },
+  {
+    "id": "pressure.foreign",
+    "after": [],
+    "entity": "pressure.machine",
+    "company": 1,
+    "placement": {
+      "space": "field.points",
+      "position": 20
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "pressure-response.start",
+    "entries": [
+      "pressure.first",
+      "pressure.second",
+      "pressure.foreign"
+    ],
+    "includes": []
+  }
+]
+}

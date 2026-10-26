@@ -1,0 +1,13 @@
+PASS city profile rectilinear-grid, 1200x800, variation 0: 17 streets, 24 blocks, 258 parcels, 282 structures, 4 parks.
+PASS city profile rectilinear-grid, 1200x800, variation 2: 17 streets, 24 blocks, 254 parcels, 274 structures, 4 parks.
+PASS city profile rectilinear-grid, 900x700, variation 4: 14 streets, 16 blocks, 180 parcels, 192 structures, 3 parks.
+PASS city profile recursive-neighborhoods, 1200x800, variation 0: 27 streets, 24 blocks, 266 parcels, 290 structures, 4 parks.
+PASS city profile recursive-neighborhoods, 1200x800, variation 2: 31 streets, 28 blocks, 236 parcels, 244 structures, 6 parks.
+PASS city profile recursive-neighborhoods, 900x700, variation 4: 19 streets, 16 blocks, 190 parcels, 206 structures, 3 parks.
+PASS: procedural engine city generation, two layout strategies, dimensions/variation/density, nested structures, actual street/parcel geometry, constraints, source catalog, negatives, cancellation, persistence and CLI/audit.
+PASS four-frontage orientation 0: 176 parcels, 8 courtyards, 8 reserved passages.
+PASS four-frontage orientation 1: 184 parcels, 8 courtyards, 8 reserved passages.
+PASS four-frontage orientation 2: 176 parcels, 8 courtyards, 8 reserved passages.
+PASS four-frontage orientation 3: 184 parcels, 8 courtyards, 8 reserved passages.
+PASS: four-sided frontages, bounded depths, complete land allocation, reserved swept-width interior access, recursive rotations, corrupt/missing geometry rejection and persistence.
+PASS: city package manifests, byte hashes, regenerated geometry/metadata/viewer, forged hashes, path traversal, engine identity, cancellation and read-only verification.

@@ -1,0 +1,11 @@
+{
+  "id": "turn_tactics_layer",
+  "definitionVersion": "1.0.0",
+  "turnPolicy": "alternating_factions",
+  "actionPoints": 2,
+  "gridRole": "tactical_grid",
+  "missionIds": [
+    "rescue",
+    "withdrawal"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "contract_world_setup_profiles": [{"id":"admission.contract-root","include":"points.start"}],
+  "entity_setups": [{"id":"admission.unselected-company","after":[],"entity":"source","company":99,"placement":{"space":"field.points","position":55},"home":null}],
+  "startup_admission_probes": [
+    {
+      "id": "admission.check",
+      "after": [
+        "source"
+      ],
+      "refuse": false
+    }
+  ],
+  "world_setup_profiles": [
+    {"id":"admission.unselected","entries":["admission.unselected-company"],"includes":[]},
+    {
+      "id": "admission.extra",
+      "entries": [
+        "source",
+        "admission.check"
+      ],
+      "includes": []
+    }
+  ]
+}

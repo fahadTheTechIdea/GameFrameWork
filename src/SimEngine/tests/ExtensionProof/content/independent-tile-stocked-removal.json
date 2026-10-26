@@ -1,0 +1,25 @@
+{
+  "line_effects":[{"id":"sensor.remove-pipe","operation":"remove","line":"sensor.pipe"}],
+  "activities":[{"id":"sensor.dismantle","player_orderable":true,"automatic_supply":false,"target_tags":["sensor.pipe-worksite"],"priority":100,
+    "nodes":[{"id":"cut","executor":"work.staffed","roles":["sensor.inspect"],"duration":{"numerator":6,"denominator":1,"unit":"minute"}}],"on_complete":"sensor.remove-pipe"}],
+  "entities":[
+    {"id":"sensor.network-feed","kind":"structure","components":{
+      "tile_presence":{"space":"sensor.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"sensor.stock","public":false,"initial_stock":{"steel":6}},
+      "ports":{"list":[{"network":"sensor.network","push":["steel"],"pull":[]}]}}},
+    {"id":"sensor.pipe-middle","kind":"structure","tags":["sensor.pipe-worksite"],"components":{"tile_presence":{"space":"sensor.tiles","width":1,"height":1,"blocks":false,"movable":false}}},
+    {"id":"sensor.pipe-left","kind":"structure","tags":["sensor.pipe-worksite"],"components":{"tile_presence":{"space":"sensor.tiles","width":1,"height":1,"blocks":false,"movable":false}}},
+    {"id":"sensor.pipe-right","kind":"structure","tags":["sensor.pipe-worksite"],"components":{"tile_presence":{"space":"sensor.tiles","width":1,"height":1,"blocks":false,"movable":false}}}
+  ],
+  "world_setup_profiles":[{"id":"sensor.stocked-removal-start","entries":["sensor.initial-pipe","sensor.initial-pipe-owner","sensor.feed-start","sensor.middle-start","sensor.left-start","sensor.right-start"],"includes":["sensor.line-startup"]}],
+  "tile_layer_setups":[
+    {"id":"sensor.initial-pipe","after":[],"layer":"sensor.pipeline","x":14,"y":16,"width":3,"height":1,"value":1,"owner":-1},
+    {"id":"sensor.initial-pipe-owner","after":["sensor.line-owner"],"layer":"sensor.pipeline-owners","x":14,"y":16,"width":3,"height":1,"value":1,"owner":0}
+  ],
+  "entity_setups":[
+    {"id":"sensor.feed-start","after":[],"entity":"sensor.network-feed","company":0,"placement":{"space":"sensor.tiles","x":13,"y":15},"home":null},
+    {"id":"sensor.middle-start","after":[],"entity":"sensor.pipe-middle","company":0,"placement":{"space":"sensor.tiles","x":15,"y":16},"home":null},
+    {"id":"sensor.left-start","after":[],"entity":"sensor.pipe-left","company":0,"placement":{"space":"sensor.tiles","x":14,"y":16},"home":null},
+    {"id":"sensor.right-start","after":[],"entity":"sensor.pipe-right","company":0,"placement":{"space":"sensor.tiles","x":16,"y":16},"home":null}
+  ]
+}

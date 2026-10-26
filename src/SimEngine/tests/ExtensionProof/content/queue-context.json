@@ -1,0 +1,10 @@
+{
+  "entities":[
+    {"id":"queue.context.emitter","kind":"entity","components":{
+      "pulse_transformer":{"queue_fault":"cancel-pause","transformations":["pulse"],"states":{"working":"working","stopped":"blocked"},
+        "operation":{"id":"pulse","enabled":false,"target":1,"minimum":1,"maximum":2,"unit":"unit.work-rate"}}
+    }}
+  ],
+  "entity_setups":[{"id":"queue.context.emitter-start","after":[],"entity":"queue.context.emitter","company":0,"placement":null,"home":null}],
+  "world_setup_profiles":[{"id":"queue.context.start","entries":["queue.context.emitter-start"],"includes":["transformer.start"]}]
+}

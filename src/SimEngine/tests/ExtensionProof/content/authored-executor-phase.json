@@ -1,0 +1,7 @@
+{
+  "delayed_work_phases":[{
+    "id":"proof.work.delayed",
+    "delay":{"numerator":90,"denominator":1,"unit":"minute"},
+    "blocker":"proof.phase-wait"
+  }]
+}

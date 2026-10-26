@@ -1,0 +1,29 @@
+{
+  "target_resource_requirements":[
+    {"port":null,"id":"continuous.fluid","use":"continuous","quantities":{"water":6}},
+    {"port":null,"id":"continuous.discrete","use":"continuous","quantities":{"steel":2}},
+    {"port":null,"id":"continuous.competing.a","use":"continuous","quantities":{"water":48}},
+    {"port":null,"id":"continuous.competing.b","use":"continuous","quantities":{"water":48}}
+  ],
+  "worker_resource_requirements":[{"port":null,"id":"continuous.worker-tool","use":"continuous","quantities":{"wrench":1}}],
+  "connected_resource_requirements":[{"id":"continuous.connected","use":"continuous","quantities":{"water":3}}],
+  "work_requirement_groups":[
+    {"id":"continuous.ready","mode":"all","entries":[{"id":"fluid","requirement":"continuous.fluid"},{"id":"discrete","requirement":"continuous.discrete"},{"id":"startup","requirement":"start.materials"},{"id":"cost","requirement":"start.cost"},{"id":"tool","requirement":"requirements.tools"}]},
+    {"id":"continuous.choice","mode":"any","entries":[{"id":"a.chosen","requirement":"continuous.ready"},{"id":"z.alternative","requirement":"start.materials"}]},
+    {"id":"continuous.competing","mode":"all","entries":[{"id":"a","requirement":"continuous.competing.a"},{"id":"b","requirement":"continuous.competing.b"}]}
+  ],
+  "activities":[
+    {"id":"continuous.work","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"work","roles":["resource.builder"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"continuous.choice"}]},
+    {"id":"continuous.supplied","player_orderable":true,"automatic_supply":true,"nodes":[{"executor":"work.staffed","id":"work","roles":["resource.builder"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"continuous.ready"}]},
+    {"id":"continuous.competing-work","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"work","roles":["resource.builder"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"continuous.competing"}]},
+    {"id":"continuous.parallel","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"a","roles":["resource.builder"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"continuous.competing.a"},{"executor":"work.staffed","id":"b","roles":["resource.builder"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"continuous.competing.b"}]},
+    {"id":"continuous.timed","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.timed","id":"work","roles":[],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"continuous.fluid"}]},
+    {"id":"continuous.scaled","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.timed","id":"work","roles":[],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"continuous.fluid","requirement_multiplier":2}]},
+    {"id":"continuous.worker-work","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"work","roles":["resource.builder"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"continuous.worker-tool"}]},
+    {"id":"continuous.connected-work","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"work","roles":["resource.builder"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"continuous.connected"}]}
+  ],
+  "entities":[
+    {"id":"continuous.target","kind":"structure","components":{"tile_presence":{"space":"recovery.tiles","width":2,"height":2,"blocks":true,"movable":false},"storage":{"capacity_policy":"recovery.site","public":true,"initial_stock":{"steel":10,"water":2}},"activity_record":{}}},
+    {"id":"continuous.slow","kind":"vehicle","components":{"tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":true},"mover":{"classes": ["land"], "class":"land","speed":5,"states":{"moving":"moving","stopped":"stopped"}},"worker":{"roles":["resource.builder"],"work_rate":0.5,"states":{"working":"working","loading":"loading","stopped":"stopped"}},"storage":{"capacity_policy":"recovery.cargo","public":false,"initial_stock":{"wrench":1}}}}
+  ]
+}

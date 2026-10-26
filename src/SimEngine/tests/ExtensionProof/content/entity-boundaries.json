@@ -1,0 +1,24 @@
+{
+  "entity_states": [
+    { "id": "alpha", "state": "phase.alpha", "priority": 40 },
+    { "id": "beta", "state": "phase.beta", "priority": 40 },
+    { "id": "low", "state": "phase.low", "priority": 10 }
+  ],
+  "entities": [
+    {
+      "id": "actor", "kind": "entity",
+      "components": {
+        "entity_probe": [
+          { "id": "a", "active": true, "mode": "healthy", "state": "beta" },
+          { "id": "b", "active": true, "mode": "healthy", "state": "alpha" },
+          { "id": "z", "active": true, "mode": "healthy", "state": "low" }
+        ]
+      }
+    },
+    {
+      "id": "later", "kind": "entity",
+      "components": { "entity_probe": [ { "id": "z", "active": true, "mode": "healthy", "state": "alpha" } ] }
+    },
+    { "id": "broken", "kind": "entity", "components": { "entity_broken": {} } }
+  ]
+}

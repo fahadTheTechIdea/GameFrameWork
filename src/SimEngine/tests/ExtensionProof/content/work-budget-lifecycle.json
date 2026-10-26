@@ -1,0 +1,8 @@
+{
+  "work_cost_requirements": [{"id":"budget.upkeep-cost","amount":150,"credit":true,"category":"running"}],
+  "activities": [{"id":"budget.upkeep","automatic_supply":false,"player_orderable":true,
+    "nodes":[{"executor":"work.timed","id":"upkeep","duration":{"numerator":1,"denominator":20,"unit":"hour"},"requirement":"budget.upkeep-cost"}]}],
+  "transformations": [{"tool_consumption":{},"operating_ports":{},"tool_ports":{},"input_ports":{},"output_ports":{"support":"material.output"},"id":"budget.fund","mode":"batch","cancel_policy":"return_inputs",
+    "operating_inputs":[],"tools":{},"inputs":{},"outputs":{"support":40},
+    "duration":{"numerator":3,"denominator":1,"unit":"minute"}}]
+}

@@ -1,0 +1,26 @@
+{
+  "colony_inputs": [
+    {
+      "id": "extension.materials",
+      "port": null,
+      "use": "consume",
+      "quantities": {
+        "supply": 8
+      }
+    }
+  ],
+  "colony_precedents": [
+    {
+      "id": "extension.calibrated",
+      "plan": "activity:extension.calibrate",
+      "company_scope": true,
+      "blocker": "work.extension-calibration"
+    },
+    {
+      "id": "extension.built",
+      "plan": "build:extension.facility",
+      "company_scope": true,
+      "blocker": "work.extension-built"
+    }
+  ]
+}

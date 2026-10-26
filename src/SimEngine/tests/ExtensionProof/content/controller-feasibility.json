@@ -1,0 +1,24 @@
+{
+  "entities": [
+    {"id":"recovery.generator","kind":"structure","components":{
+      "point_presence":{"space":"field.points","position":70},
+      "inventory_port":[{"id":"fund.output"}],
+      "storage":{"capacity_policy":"fixture.count.40","public":false,"initial_stock":{},"accepts":["supply"],"phases":[]},
+      "transformer":{"automatic_supply":false,"wip_capacity":"fixture.count.40","transformations":["recovery.fund"],
+        "states":{"working":"processing","stopped":"blocked"},
+        "operation":{"id":"transformation","enabled":true,"target":1,"minimum":1,"maximum":1,"unit":"unit.work-rate"}}
+    }}
+  ],
+  "transformations": [
+    {"id":"recovery.fund","mode":"batch","cancel_policy":"return_inputs","inputs":{},"outputs":{"supply":20},
+      "tools":{},"operating_inputs":[],"tool_consumption":{},"input_ports":{},"tool_ports":{},"operating_ports":{},
+      "output_ports":{"supply":"fund.output"},"duration":{"numerator":3,"denominator":1,"unit":"minute"}}
+  ],
+  "entity_setups": [
+    {"id":"recovery.generator.start","after":[],"entity":"recovery.generator","company":1,
+      "placement":{"space":"field.points","position":70},"home":null}
+  ],
+  "world_setup_profiles": [
+    {"id":"recovery.feasibility.start","entries":["recovery.generator.start"],"includes":[]}
+  ]
+}

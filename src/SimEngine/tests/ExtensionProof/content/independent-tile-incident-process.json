@@ -1,0 +1,22 @@
+{
+  "incident_process_profiles":[{"id":"sensor.leak-process","source":"leak","workflow":"sensor.cleanup-workflow",
+    "until_phases_complete":["repair"],"interval":{"numerator":2,"denominator":1,"unit":"minute"},"ineligible_progress":"reset","effect":"sensor.leak-unit"}],
+  "spatial_resource_transfer_effects":[
+    {"id":"sensor.leak-unit","operation":"deposit","cell":"sensor.spill-cell","quantities":{"oil":1}},
+    {"id":"sensor.recover-one","operation":"withdraw","cell":"sensor.spill-cell","quantities":{"oil":1}}
+  ],
+  "activities":[{"id":"sensor.pressure-recover-one","player_orderable":true,"automatic_supply":false,
+    "nodes":[{"id":"recover","executor":"work.staffed","roles":["sensor.inspect"],"duration":{"numerator":2,"denominator":1,"unit":"minute"},"effect":"sensor.recover-one"}]}],
+  "entities":[{"id":"sensor.leaking-site","kind":"structure","components":{
+    "tile_presence":{"space":"sensor.tiles","width":2,"height":1,"blocks":true,"movable":false},
+    "storage":{"capacity_policy":"sensor.stock","public":false,"initial_stock":{"oil":5}},
+    "incident":{"id":"leak","workflow":"sensor.cleanup-workflow","states":{"active":"sensor.stopped"}},
+    "incident_process":{"id":"leak-flow","profile":"sensor.leak-process"},
+    "tile_work_dock":{"work_roles":["sensor.inspect"],"resources":["steel","oil"],"slots":[
+      {"id":"bay","kind":"service","x":-1,"y":0},{"id":"wait","kind":"waiting","x":-2,"y":1},{"id":"exit","kind":"departure","x":-1,"y":1}
+    ]}
+  }}],
+  "world_setup_profiles":[{"id":"sensor.pressure-start","entries":["sensor.start-depot","sensor.spill-owner","sensor.leaking-site-start"],"includes":["sensor.navigation-start"]}],
+  "entity_setups":[{"id":"sensor.leaking-site-start","after":[],"entity":"sensor.leaking-site","company":0,
+    "placement":{"space":"sensor.tiles","x":14,"y":20},"home":null}]
+}

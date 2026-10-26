@@ -1,0 +1,12 @@
+{
+  "haul_load_profiles": [
+    { "id": "load.batch", "enabled": true, "minimum_load": { "supply": 4 }, "maximum_wait": { "numerator": 100, "denominator": 1, "unit": "minute" }, "emergency_bypass": false },
+    { "id": "load.immediate", "enabled": true, "minimum_load": { "supply": 4 }, "maximum_wait": { "numerator": 0, "denominator": 1, "unit": "minute" }, "emergency_bypass": false },
+    { "id": "load.off", "enabled": false, "minimum_load": { "supply": 4 }, "maximum_wait": { "numerator": 100, "denominator": 1, "unit": "minute" }, "emergency_bypass": true },
+    { "id": "load.emergency", "enabled": true, "minimum_load": { "supply": 4 }, "maximum_wait": { "numerator": 100, "denominator": 1, "unit": "minute" }, "emergency_bypass": true },
+    { "id": "load.too-large", "enabled": true, "minimum_load": { "supply": 9 }, "maximum_wait": { "numerator": 100, "denominator": 1, "unit": "minute" }, "emergency_bypass": false }
+  ],
+  "contract_haul_load_profiles": [
+    { "id": "load.odd", "enabled": true, "minimum_load": { "supply": 3 }, "maximum_wait": { "numerator": 100, "denominator": 1, "unit": "minute" }, "emergency_bypass": true }
+  ]
+}

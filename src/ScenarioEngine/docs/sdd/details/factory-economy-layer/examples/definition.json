@@ -1,0 +1,15 @@
+{
+  "id": "factory_economy_layer",
+  "definitionVersion": "1.0.0",
+  "resourceIds": [
+    "ore",
+    "metal",
+    "components"
+  ],
+  "recipeIds": [
+    "smelt",
+    "assemble"
+  ],
+  "networkPolicy": "directed_ports",
+  "maximumMachines": 64
+}

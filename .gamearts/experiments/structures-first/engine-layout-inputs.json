@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-10-25T19:31:26.683003+03:00",
+  "purpose": "ImageGen engine-layout conditioning test; no world/art approval or engine mutation",
+  "files": {
+    "generated/modern-city/plan.svg": "477b736d1340d94acf257235dbab757b2f9644fc23e6756958e1fbcc5f363114",
+    "generated/modern-city/world.json": "14ce289822086c31d66f971e305bab5d49a34c918b9ebc5b37a81014f4638395",
+    ".gamearts/experiments/structures-first/engine-layout-reference.png": "e2cb3a76cf1555bc85f6f722cf87850038d8df7be7938197337b7d95939e8519",
+    ".gamearts/experiments/structures-first/reference-board/structures-reference-board.png": "415779d23051ab58e17d8866e82dce806eb10d620e44bbee3b5884341939b2f6",
+    ".gamearts/experiments/structures-first/city-from-structures.png": "d30ebc331a6169f2b51771c2f02f2e82ea495c8b8394b8bf49a8f42a120ca8b6"
+  },
+  "referenceRender": {
+    "source": "generated/modern-city/plan.svg",
+    "html": "generated/modern-city/layout-reference.html",
+    "method": "CUA screenshot of fit-to-window SVG in the in-app browser; browser margins retained",
+    "size": [
+      1280,
+      720
+    ],
+    "worldSizeMeters": [
+      1072,
+      970
+    ]
+  },
+  "expectedBuildingShells": 43,
+  "expectedFamilyCounts": {
+    "detached-house": 35,
+    "factory": 1,
+    "football-stadium": 1,
+    "office-building": 4,
+    "primary-school": 1,
+    "warehouse": 1
+  },
+  "provenance": "Existing generated C# world is layout authority; generated image is a provisional visual response to it."
+}

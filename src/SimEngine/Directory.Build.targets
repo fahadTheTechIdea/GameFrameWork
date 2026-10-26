@@ -1,0 +1,19 @@
+<Project>
+  <!--
+    DefaultItemExcludes prevents accidental discovery. This target is the second line of
+    defence: even an explicitly packed file fails the build when it comes from generated
+    state. It runs before NuGet writes the package manifest, so a bad package is never made.
+  -->
+  <Target Name="RejectGeneratedPackageContent"
+          BeforeTargets="GenerateNuspec"
+          Condition="'$(IsPackable)' == 'true'">
+    <ItemGroup>
+      <_GeneratedPackageContent Include="@(None)"
+        Condition="'%(None.Pack)' == 'true' and $([System.Text.RegularExpressions.Regex]::IsMatch('%(None.FullPath)', '[/\\](\.vs|bin|obj|artifacts)[/\\]', System.Text.RegularExpressions.RegexOptions.IgnoreCase))" />
+      <_GeneratedPackageContent Include="@(Content)"
+        Condition="'%(Content.Pack)' == 'true' and $([System.Text.RegularExpressions.Regex]::IsMatch('%(Content.FullPath)', '[/\\](\.vs|bin|obj|artifacts)[/\\]', System.Text.RegularExpressions.RegexOptions.IgnoreCase))" />
+    </ItemGroup>
+    <Error Condition="'@(_GeneratedPackageContent)' != ''"
+           Text="Generated files cannot be packed: @(_GeneratedPackageContent, ', ')" />
+  </Target>
+</Project>

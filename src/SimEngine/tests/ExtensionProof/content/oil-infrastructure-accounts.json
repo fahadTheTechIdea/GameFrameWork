@@ -1,0 +1,4 @@
+{
+  "units": [{"id":"proof.infrastructure.currency","dimension":"currency","scale":{"numerator":1,"denominator":1},"discrete":false}],
+  "business_accounts": [{"id":"proof.infrastructure.accounts","currency":"proof.infrastructure.currency","opening_cash":5000}]
+}

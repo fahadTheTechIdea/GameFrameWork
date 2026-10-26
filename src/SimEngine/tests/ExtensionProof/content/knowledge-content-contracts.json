@@ -1,0 +1,10 @@
+{
+  "independent_stock_subjects":[{"id":"field.stock-reading","resource":"supply","retention":"latest","fresh_for":{"numerator":3,"denominator":1,"unit":"minute"}}],
+  "knowledge_facts":[{"id":"field.method","fresh_for":null,"value":{"method":"physical-sampling"}}],
+  "knowledge_effects":[{"id":"field.stock-learn","subject":"field.stock-reading"},{"id":"field.method-learn","subject":"field.method"}],
+  "independent_sharing_policies":[{"id":"field.share","subjects":[{"provider":"sim.knowledge.facts","subject":"field.stock-reading"},{"provider":"sim.knowledge.facts","subject":"field.method"}],"directions":[{"sender":0,"recipient":1}]}],
+  "independent_forgetting_policies":[{"id":"field.forget","subjects":[{"provider":"sim.knowledge.facts","subject":"field.stock-reading"}],"companies":[0,1]}],
+  "target_resource_requirements":[{"id":"field.sample-input","use":"consume","quantities":{"supply":2},"port":null}],
+  "activities":[{"id":"field.observe","player_orderable":true,"priority":70,"automatic_supply":false,"on_complete":"field.method-learn",
+    "nodes":[{"id":"sample","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":8,"denominator":1,"unit":"minute"},"requirement":"field.sample-input","effect":"field.stock-learn"}]}]
+}

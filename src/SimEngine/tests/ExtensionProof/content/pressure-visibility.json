@@ -1,0 +1,6 @@
+{
+  "knowledge_visibility_policies": [
+    {"id":"pressure.hide-entities","own_entities":false,"unlisted_entities":false,"unlisted_content":true,"rules":[]},
+    {"id":"pressure.hide-signals","own_entities":true,"unlisted_entities":true,"unlisted_content":false,"rules":[]}
+  ]
+}

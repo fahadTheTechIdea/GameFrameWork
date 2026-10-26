@@ -1,0 +1,3 @@
+{
+  "tile_layer_band_conditions":[{"id":"sensor.opaque","space":"sensor.tiles","layer":"sensor.screen","minimum":2,"maximum":null}]
+}

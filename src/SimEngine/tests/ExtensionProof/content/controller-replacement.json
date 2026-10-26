@@ -1,0 +1,24 @@
+{
+  "replacement_controllers": [
+    {
+      "id": "replacement.controller",
+      "cadence": {"numerator": 7, "denominator": 1, "unit": "minute"},
+      "commands_per_decision": 1,
+      "target": "source",
+      "replacement": "source.next",
+      "worker": "machine",
+      "activity": "inspect",
+      "mode": "normal"
+    },
+    {
+      "id": "replacement.foreign-controller",
+      "cadence": {"numerator": 7, "denominator": 1, "unit": "minute"},
+      "commands_per_decision": 1,
+      "target": "source",
+      "replacement": "source.next",
+      "worker": "machine",
+      "activity": "inspect",
+      "mode": "foreign-trap"
+    }
+  ]
+}

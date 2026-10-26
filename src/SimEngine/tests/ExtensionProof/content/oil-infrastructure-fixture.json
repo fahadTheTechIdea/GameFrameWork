@@ -1,0 +1,525 @@
+{
+  "open_content_access": [
+    {
+      "id": "proof.infrastructure.open"
+    }
+  ],
+  "game_modes": [
+    {
+      "id": "proof.infrastructure.mode",
+      "name": "Resource-only native Oil infrastructure",
+      "properties": {}
+    }
+  ],
+  "time_definitions": [
+    {
+      "id": "proof.infrastructure.time",
+      "quantum": {
+        "numerator": 60,
+        "denominator": 1,
+        "unit": "second"
+      },
+      "frame_ticks": 1,
+      "ticks_per_second": 30,
+      "horizon": null
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "proof.infrastructure.capacity",
+      "limits": {
+        "unit.storage-slot": 100
+      }
+    }
+  ],
+  "work_retry_profiles": [
+    {
+      "id": "proof.infrastructure.retry",
+      "initial_delay": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "maximum_delay": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "hour"
+      },
+      "multiplier": 2,
+      "retry_blockers": [
+        "blocker.unreachable",
+        "work.worker-unavailable",
+        "haul.payment-wait",
+        "haul.stock-wait",
+        "haul.capacity-wait"
+      ]
+    }
+  ],
+  "handling_profiles": [
+    {
+      "id": "proof.infrastructure.handling",
+      "resources": [
+        {
+          "resource": "cement",
+          "quantity": 1,
+          "loading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "unloading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "id": "proof.infrastructure.source",
+      "kind": "structure",
+      "components": {
+        "inventory_port": [{ "id": "proof.source.stock" }],
+        "tile_presence": {
+          "space": "oil.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "proof.infrastructure.capacity",
+          "initial_stock": {
+            "cement": 10
+          },
+          "accepts": [],
+          "phases": [],
+          "public": true,
+          "evacuate": false
+        }
+      }
+    },
+    {
+      "id": "proof.infrastructure.builder",
+      "kind": "vehicle",
+      "components": {
+        "tile_presence": {
+          "space": "oil.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": false,
+          "movable": true
+        },
+        "mover": {
+          "class": "land",
+          "classes": [
+            "land"
+          ],
+          "speed": 30,
+          "states": {
+            "moving": "moving",
+            "stopped": "stopped"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "bulldozer"
+          ],
+          "states": {
+            "working": "working",
+            "loading": "loading",
+            "stopped": "stopped"
+          }
+        },
+        "storage": {
+          "capacity_policy": "proof.infrastructure.capacity",
+          "initial_stock": {},
+          "accepts": [],
+          "phases": [],
+          "public": true,
+          "evacuate": false
+        }
+      }
+    },
+    {
+      "id": "proof.infrastructure.truck",
+      "kind": "vehicle",
+      "components": {
+        "tile_presence": {
+          "space": "oil.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": false,
+          "movable": true
+        },
+        "mover": {
+          "class": "land",
+          "classes": [
+            "land"
+          ],
+          "speed": 30,
+          "states": {
+            "moving": "moving",
+            "stopped": "stopped"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "working",
+            "loading": "loading",
+            "stopped": "stopped"
+          }
+        },
+        "storage": {
+          "capacity_policy": "proof.infrastructure.capacity",
+          "initial_stock": {},
+          "accepts": [],
+          "phases": [],
+          "public": true,
+          "evacuate": false
+        },
+        "transporter": {
+          "handling": "proof.infrastructure.handling"
+        }
+      }
+    },
+    {
+      "id": "proof.infrastructure.power-a",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "oil.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "ports": {
+          "list": [
+            {
+              "network": "power",
+              "push": [],
+              "pull": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "proof.infrastructure.power-b",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "oil.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "ports": {
+          "list": [
+            {
+              "network": "power",
+              "push": [],
+              "pull": []
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "proof.infrastructure.start",
+      "entries": [
+        "start.source",
+        "start.builder",
+        "start.truck",
+        "start.power-a",
+        "start.power-b",
+        "setup.mountain",
+        "setup.wet-mountain",
+        "setup.wet",
+        "setup.power",
+        "setup.power-owner"
+      ],
+      "includes": []
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "start.source",
+      "after": [],
+      "entity": "proof.infrastructure.source",
+      "company": 0,
+      "placement": {
+        "space": "oil.tiles",
+        "x": 5,
+        "y": 5
+      },
+      "home": null
+    },
+    {
+      "id": "start.builder",
+      "after": [
+        "start.source"
+      ],
+      "entity": "proof.infrastructure.builder",
+      "company": 0,
+      "placement": {
+        "space": "oil.tiles",
+        "x": 6,
+        "y": 5
+      },
+      "home": "start.source"
+    },
+    {
+      "id": "start.truck",
+      "after": [
+        "start.source"
+      ],
+      "entity": "proof.infrastructure.truck",
+      "company": 0,
+      "placement": {
+        "space": "oil.tiles",
+        "x": 6,
+        "y": 6
+      },
+      "home": "start.source"
+    },
+    {
+      "id": "start.power-a",
+      "after": [],
+      "entity": "proof.infrastructure.power-a",
+      "company": 0,
+      "placement": {
+        "space": "oil.tiles",
+        "x": 9,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "start.power-b",
+      "after": [],
+      "entity": "proof.infrastructure.power-b",
+      "company": 0,
+      "placement": {
+        "space": "oil.tiles",
+        "x": 13,
+        "y": 10
+      },
+      "home": null
+    }
+  ],
+  "tile_layer_setups": [
+    {
+      "id": "setup.mountain",
+      "after": [],
+      "layer": "terrain",
+      "x": 3,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 5,
+      "owner": -1
+    },
+    {
+      "id": "setup.wet-mountain",
+      "after": [],
+      "layer": "terrain",
+      "x": 4,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 5,
+      "owner": -1
+    },
+    {
+      "id": "setup.wet",
+      "after": [],
+      "layer": "water",
+      "x": 4,
+      "y": 1,
+      "width": 2,
+      "height": 1,
+      "value": 2,
+      "owner": -1
+    },
+    {
+      "id": "setup.power",
+      "after": [],
+      "layer": "power",
+      "x": 10,
+      "y": 10,
+      "width": 3,
+      "height": 1,
+      "value": 1,
+      "owner": -1
+    },
+    {
+      "id": "setup.power-owner",
+      "after": [],
+      "layer": "power.owner",
+      "x": 10,
+      "y": 10,
+      "width": 3,
+      "height": 1,
+      "value": 1,
+      "owner": -1
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "frontier",
+      "game_mode": "proof.infrastructure.mode",
+      "mode_overrides": {},
+      "time": "proof.infrastructure.time",
+      "space": "oil.tiles",
+      "modules": [
+        "proof.oil-infrastructure",
+        "sim.tile-navigation",
+        "sim.tile-conditions",
+        "sim.logistics",
+        "sim.world-setup"
+      ],
+      "seats": 1,
+      "default_seats": 1,
+      "settings": {
+        "sim.work": {
+          "retry": "proof.infrastructure.retry"
+        },
+        "sim.world-setup": {
+          "profile": "proof.infrastructure.start"
+        }
+      }
+    },
+    {
+      "id": "adventure",
+      "game_mode": "proof.infrastructure.mode",
+      "mode_overrides": {},
+      "time": "proof.infrastructure.time",
+      "space": "oil.tiles",
+      "modules": [
+        "proof.oil-infrastructure",
+        "sim.tile-navigation",
+        "sim.tile-conditions",
+        "sim.logistics",
+        "sim.world-setup"
+      ],
+      "seats": 1,
+      "default_seats": 1,
+      "settings": {
+        "sim.work": {
+          "retry": "proof.infrastructure.retry"
+        },
+        "sim.world-setup": {
+          "profile": "proof.infrastructure.start"
+        }
+      }
+    },
+    {
+      "id": "continent",
+      "game_mode": "proof.infrastructure.mode",
+      "mode_overrides": {},
+      "time": "proof.infrastructure.time",
+      "space": "oil.tiles",
+      "modules": [
+        "proof.oil-infrastructure",
+        "sim.tile-navigation",
+        "sim.tile-conditions",
+        "sim.logistics",
+        "sim.world-setup"
+      ],
+      "seats": 1,
+      "default_seats": 1,
+      "settings": {
+        "sim.work": {
+          "retry": "proof.infrastructure.retry"
+        },
+        "sim.world-setup": {
+          "profile": "proof.infrastructure.start"
+        }
+      }
+    },
+    {
+      "id": "sandbox",
+      "game_mode": "proof.infrastructure.mode",
+      "mode_overrides": {},
+      "time": "proof.infrastructure.time",
+      "space": "oil.tiles",
+      "modules": [
+        "proof.oil-infrastructure",
+        "sim.tile-navigation",
+        "sim.tile-conditions",
+        "sim.logistics",
+        "sim.world-setup"
+      ],
+      "seats": 1,
+      "default_seats": 1,
+      "settings": {
+        "sim.work": {
+          "retry": "proof.infrastructure.retry"
+        },
+        "sim.world-setup": {
+          "profile": "proof.infrastructure.start"
+        }
+      }
+    },
+    {
+      "id": "showcase",
+      "game_mode": "proof.infrastructure.mode",
+      "mode_overrides": {},
+      "time": "proof.infrastructure.time",
+      "space": "oil.tiles",
+      "modules": [
+        "proof.oil-infrastructure",
+        "sim.tile-navigation",
+        "sim.tile-conditions",
+        "sim.logistics",
+        "sim.world-setup"
+      ],
+      "seats": 1,
+      "default_seats": 1,
+      "settings": {
+        "sim.work": {
+          "retry": "proof.infrastructure.retry"
+        },
+        "sim.world-setup": {
+          "profile": "proof.infrastructure.start"
+        }
+      }
+    },
+    {
+      "id": "gulf",
+      "game_mode": "proof.infrastructure.mode",
+      "mode_overrides": {},
+      "time": "proof.infrastructure.time",
+      "space": "oil.tiles",
+      "modules": [
+        "proof.oil-infrastructure",
+        "sim.tile-navigation",
+        "sim.tile-conditions",
+        "sim.logistics",
+        "sim.world-setup"
+      ],
+      "seats": 1,
+      "default_seats": 1,
+      "settings": {
+        "sim.work": {
+          "retry": "proof.infrastructure.retry"
+        },
+        "sim.world-setup": {
+          "profile": "proof.infrastructure.start"
+        }
+      }
+    }
+  ]
+}

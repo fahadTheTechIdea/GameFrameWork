@@ -1,0 +1,7 @@
+{
+  "game_mode_properties": [
+    { "id": "proof.pressure", "kind": "number", "minimum": 0, "maximum": 10, "default": 1, "capability": "proof.modes", "overridable": true },
+    { "id": "proof.strategy", "kind": "text", "allowed": ["careful", "rapid"], "default": "careful", "capability": "proof.modes", "overridable": true },
+    { "id": "proof.locked", "kind": "boolean", "default": false, "capability": "proof.modes", "overridable": false, "requires_when_true": [] }
+  ]
+}

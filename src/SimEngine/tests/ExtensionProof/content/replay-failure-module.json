@@ -1,0 +1,6 @@
+{
+  "id": "proof.replay-failure",
+  "version": "1.0.0",
+  "requires": [{ "id": "sim.transformations", "version": "1.0.0" }],
+  "documents": ["replay-failure-probe.json"]
+}

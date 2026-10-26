@@ -1,0 +1,7 @@
+{
+  "world_setup_profiles":[{"id":"state.start","entries":["start.deposit","start.terrain","start.class","state.site.start","state.machine.start"],"includes":[]}],
+  "entity_setups":[
+    {"id":"state.site.start","after":["start.deposit"],"entity":"state.site","company":0,"placement":{"space":"survey.tiles","x":16,"y":10},"home":null},
+    {"id":"state.machine.start","after":["state.site.start"],"entity":"survey.machine","company":0,"placement":{"space":"survey.tiles","x":2,"y":10},"home":"state.site.start"}
+  ]
+}

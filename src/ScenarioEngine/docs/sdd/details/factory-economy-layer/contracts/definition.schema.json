@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Factory and economic simulation layer proposed definition",
+  "description": "Standalone design contract; current ScenarioEngine loading support is not implemented.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "definitionVersion",
+    "resourceIds",
+    "recipeIds",
+    "networkPolicy",
+    "maximumMachines"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+      "maxLength": 64
+    },
+    "definitionVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "resourceIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+        "maxLength": 64
+      },
+      "description": "Explicit quantity units and capacities."
+    },
+    "recipeIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+        "maxLength": 64
+      },
+      "description": "Input/output/tool/time definitions."
+    },
+    "networkPolicy": {
+      "type": "string",
+      "enum": [
+        "directed_ports"
+      ],
+      "description": "Registered connectivity and transfer rules."
+    },
+    "maximumMachines": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4096,
+      "description": "Proposed workload budget to qualify, not an established engine limit."
+    }
+  }
+}

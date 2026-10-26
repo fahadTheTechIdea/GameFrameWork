@@ -1,0 +1,20 @@
+{
+  "work_policies": [
+    {"id":"shared.machine","enabled":false,"priority":0,"allowed_roles":["haul","inspect"],"area":null,"interruptible":true,"emergency_eligible":true,"assignment_mode":"all","states":{"disabled":"blocked","standby":"blocked"}}
+  ],
+  "target_resource_requirements": [
+    {"port":null,"id":"preempt.materials","use":"consume","quantities":{"supply":8}},
+    {"port":null,"id":"preempt.tools","use":"hold","quantities":{"supply":2}},
+    {"port":null,"id":"preempt.response-input","use":"consume","quantities":{"supply":8}}
+  ],
+  "work_requirement_groups": [
+    {"id":"preempt.ready","mode":"all","entries":[{"id":"material","requirement":"preempt.materials"},{"id":"tool","requirement":"preempt.tools"}]}
+  ],
+  "response_effects": [{"id":"preempt.restart","bound_response":true}],
+  "activities": [
+    {"id":"preempt.work","priority":100,"player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"work","roles":["inspect"],"duration":{"numerator":1,"denominator":2,"unit":"hour"},"requirement":"preempt.ready"}]},
+    {"id":"preempt.travel","priority":100,"player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"work","roles":["inspect"],"duration":{"numerator":1,"denominator":2,"unit":"hour"}}]},
+    {"id":"shared.dry-response","priority":1,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"repair","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"}}],"on_complete":"preempt.restart"},
+    {"id":"preempt.supplied-response","priority":1,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"repair","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"preempt.response-input"}],"on_complete":"preempt.restart"}
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "point_interval_regions": [
+    {"id":"dock.all","space":"field.points","minimum":0,"maximum":40},
+    {"id":"dock.endpoints","space":"field.points","minimum":0,"maximum":0},
+    {"id":"dock.no-exit","space":"field.points","minimum":0,"maximum":4},
+    {"id":"dock.no-delivery-bay","space":"field.points","minimum":0,"maximum":10},
+    {"id":"dock.alternate-exit","space":"field.points","minimum":0,"maximum":16}
+  ]
+}

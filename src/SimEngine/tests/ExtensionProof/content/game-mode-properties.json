@@ -1,0 +1,12 @@
+{
+  "game_mode_properties": [
+    { "id": "business.values.enabled", "kind": "boolean", "default": false, "capability": "sim.tycoon", "overridable": true, "requires_when_true": [] },
+    { "id": "business.money.enabled", "kind": "boolean", "default": false, "capability": "sim.tycoon", "overridable": true, "requires_when_true": [] },
+    { "id": "business.production_income.enabled", "kind": "boolean", "default": false, "capability": "sim.tycoon", "overridable": true, "requires_when_true": ["business.money.enabled", "business.values.enabled"] },
+    { "id": "business.construction_costs.enabled", "kind": "boolean", "default": false, "capability": "sim.tycoon", "overridable": true, "requires_when_true": ["business.money.enabled"] },
+    { "id": "business.manufacturing_costs.enabled", "kind": "boolean", "default": false, "capability": "sim.tycoon", "overridable": true, "requires_when_true": ["business.money.enabled"] },
+    { "id": "business.running_costs.enabled", "kind": "boolean", "default": false, "capability": "sim.tycoon", "overridable": true, "requires_when_true": ["business.money.enabled"] },
+    { "id": "business.trading.enabled", "kind": "boolean", "default": false, "capability": "sim.tycoon", "overridable": true, "requires_when_true": ["business.money.enabled"] },
+    { "id": "business.tycoon.enabled", "kind": "boolean", "default": false, "capability": "sim.tycoon", "overridable": true, "requires_when_true": ["business.money.enabled", "business.values.enabled"] }
+  ]
+}

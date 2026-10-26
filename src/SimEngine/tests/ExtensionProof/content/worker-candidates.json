@@ -1,0 +1,33 @@
+{
+"worker_roles": [
+  {"id":"loader"}
+],
+"work_worker_rates": [
+  {"id":"candidates.fast","minimum":2,"blocker":"candidates.too-slow"},
+  {"id":"candidates.safe","minimum":1,"blocker":"candidates.cannot-work"}
+],
+"work_permits": [
+  {"id":"candidates.permit","blocker":"candidates.disabled","missing":"candidates.no-permit"}
+],
+"work_requirement_groups": [
+  {"id":"candidates.root","mode":"all","entries":[{"id":"worker","requirement":"candidates.choice"}]},
+  {"id":"candidates.choice","mode":"any","entries":[{"id":"z.safe","requirement":"candidates.safe"},{"id":"a.preferred","requirement":"candidates.preferred"}]},
+  {"id":"candidates.preferred","mode":"all","entries":[{"id":"rate","requirement":"candidates.fast"},{"id":"permit","requirement":"candidates.permit"}]},
+  {"id":"proof.worker-candidates.candidates.work.work.requirements","mode":"all","entries":[{"id":"guard","requirement":"candidates.root"},{"id":"inputs","requirement":"proof.worker-candidates.candidates.work.work.inputs"},{"id":"cost","requirement":"proof.worker-candidates.candidates.work.work.cost"}]}
+],
+"activities": [
+  {"id":"candidates.work","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"work","roles":["loader","crane"],"duration":{"numerator":1,"denominator":1,"unit":"hour"},"requirement":"proof.worker-candidates.candidates.work.work.requirements"}]},
+  {"id":"candidates.strict","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"work","roles":["loader","crane"],"duration":{"numerator":1,"denominator":1,"unit":"hour"},"requirement":"candidates.fast"}]}
+],
+"entities": [
+  {"id":"candidates.target","kind":"structure","components":{"tile_presence":{"space":"recovery.tiles","width":2,"height":2,"blocks":true,"movable":false},"storage":{"capacity_policy":"recovery.site","public":false,"initial_stock":{"steel":10}},"work_permit":{"enabled":true},"activity_record":{}}},
+  {"id":"candidates.loader","kind":"vehicle","components":{"tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":true},"mover":{"classes": ["land"], "class":"land","speed":20,"states":{"moving":"moving","stopped":"stopped"}},"contract_worker":{"role":"loader","rate":2,"states":{"working":"working","stopped":"stopped"}}}},
+  {"id":"candidates.crane","kind":"vehicle","components":{"tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":true},"mover":{"classes": ["land"], "class":"land","speed":20,"states":{"moving":"moving","stopped":"stopped"}},"worker":{"roles":["crane"],"work_rate":3,"states":{"working":"working","loading":"loading","stopped":"stopped"}}}}
+],
+"target_resource_requirements": [
+  {"port":null,"id":"proof.worker-candidates.candidates.work.work.inputs","use":"consume","quantities":{"steel":2}}
+],
+"work_cost_requirements": [
+  {"id":"proof.worker-candidates.candidates.work.work.cost","amount":5,"credit":false, "category": "construction"}
+]
+}

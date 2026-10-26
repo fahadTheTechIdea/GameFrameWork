@@ -1,0 +1,148 @@
+{
+  "game_modes": [
+    {
+      "id": "haul.resource-only",
+      "name": "Physical scoped stores without money",
+      "properties": {}
+    }
+  ],
+  "time_definitions": [
+    {
+      "id": "haul.minute",
+      "quantum": {
+        "numerator": 60,
+        "denominator": 1,
+        "unit": "second"
+      },
+      "frame_ticks": 1,
+      "ticks_per_second": 30,
+      "horizon": null
+    }
+  ],
+  "entity_states": [
+    {
+      "id": "haul.idle",
+      "state": "idle",
+      "priority": 0,
+      "default": true
+    },
+    {
+      "id": "haul.moving",
+      "state": "moving",
+      "priority": 40
+    },
+    {
+      "id": "haul.loading",
+      "state": "loading",
+      "priority": 30
+    },
+    {
+      "id": "haul.working",
+      "state": "working",
+      "priority": 20
+    },
+    {
+      "id": "haul.stopped",
+      "state": "stopped",
+      "priority": 60
+    }
+  ],
+  "units": [
+    {
+      "id": "haul.each",
+      "dimension": "count",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    }
+  ],
+  "resources": [
+    {
+      "id": "steel",
+      "unit": "haul.each",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "haul.each": 1
+      }
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "haul.store",
+      "limits": {
+        "haul.each": 100
+      }
+    },
+    {
+      "id": "haul.cargo",
+      "limits": {
+        "haul.each": 8
+      }
+    }
+  ],
+  "resource_pools": [
+    {
+      "evacuate": false,
+      "id": "haul.first",
+      "identity": 5000000001,
+      "public": false,
+      "owner": 0,
+      "capacity_policy": "haul.store",
+      "resources": [
+        "steel"
+      ]
+    },
+    {
+      "evacuate": false,
+      "id": "haul.second",
+      "identity": 5000000002,
+      "public": false,
+      "owner": 0,
+      "capacity_policy": "haul.store",
+      "resources": [
+        "steel"
+      ]
+    },
+    {
+      "evacuate": false,
+      "id": "haul.third",
+      "identity": 5000000003,
+      "public": false,
+      "owner": 0,
+      "capacity_policy": "haul.store",
+      "resources": [
+        "steel"
+      ]
+    }
+  ],
+  "worker_roles": [
+    {
+      "id": "haul"
+    }
+  ],
+  "handling_profiles": [
+    {
+      "id": "haul.handling",
+      "resources": [
+        {
+          "resource": "steel",
+          "quantity": 1,
+          "loading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "unloading": {
+            "numerator": 2,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    }
+  ]
+}

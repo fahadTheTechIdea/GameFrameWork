@@ -1,0 +1,32 @@
+{
+  "tile_layer_band_conditions": [
+    {
+      "id": "route.condition.road",
+      "space": "survey.tiles",
+      "layer": "route.surface",
+      "minimum": 2,
+      "maximum": 3
+    },
+    {
+      "id": "route.condition.flood",
+      "space": "survey.tiles",
+      "layer": "route.water",
+      "minimum": 0.5,
+      "maximum": null
+    },
+    {
+      "id": "route.condition.block",
+      "space": "survey.tiles",
+      "layer": "route.surface",
+      "minimum": 1,
+      "maximum": 2
+    },
+    {
+      "id": "route.condition.shallow",
+      "space": "survey.tiles",
+      "layer": "route.water",
+      "minimum": null,
+      "maximum": 0.5
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk"><ItemGroup>
+<ProjectReference Include="../../src/ScenarioEngine.Contracts/ScenarioEngine.Contracts.csproj" />
+<ProjectReference Include="../../src/ScenarioEngine.Core/ScenarioEngine.Core.csproj" />
+<Content Include="counter.json" CopyToOutputDirectory="PreserveNewest" />
+</ItemGroup></Project>

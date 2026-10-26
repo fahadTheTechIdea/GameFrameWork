@@ -1,0 +1,11 @@
+{
+  "schema":1,
+  "id":"navigation.entry-contexts",
+  "iterations":512,
+  "warmup":64,
+  "repeats":3,
+  "contexts":[
+    {"fixture":"native-layered","scenario":"native-survey","actor":"survey.machine","navigation":"terrain.route","condition":"route.condition.road","x":8,"y":8,"condition_matches":true,"entry_cost":1},
+    {"fixture":"independent-work","scenario":"independent-sensor","actor":"sensor.cart","navigation":"sensor.route","condition":"sensor.opaque","x":8,"y":10,"condition_matches":true,"entry_cost":0}
+  ]
+}

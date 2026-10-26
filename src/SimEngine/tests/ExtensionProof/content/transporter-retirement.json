@@ -1,0 +1,28 @@
+{
+  "entity_removal_effects": [{"id":"carrier.remove","source":"machine"}],
+  "entity_activities": [
+    {"id":"carrier.retire","target":"machine","player_orderable":true,"automatic_supply":false,
+      "on_complete":"carrier.remove","nodes":[
+        {"id":"retire","executor":"extension.staffed","roles":["extension.builder"],"duration":{"numerator":3,"denominator":1,"unit":"minute"}}
+      ]},
+    {"id":"carrier.pack-retire","target":"machine","player_orderable":true,"automatic_supply":false,
+      "on_complete":"carrier.remove","nodes":[
+        {"id":"pack","executor":"extension.staffed","roles":["extension.builder"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"effect":"retire.pack"},
+        {"id":"retire","after":["pack"],"executor":"extension.staffed","roles":["extension.builder"],"duration":{"numerator":2,"denominator":1,"unit":"minute"}}
+      ]},
+    {"id":"carrier.pack-container","target":"cargo.container","player_orderable":true,"automatic_supply":false,
+      "nodes":[{"id":"pack","executor":"extension.staffed","roles":["extension.builder"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"effect":"retire.pack"}]}
+  ],
+  "entities": [{"id":"cargo.container","kind":"structure","components":{
+    "point_presence":{"space":"field.points","position":75},
+    "storage":{"capacity_policy":"fixture.count.8","public":false,"initial_stock":{}},
+    "point_dock":{"work_roles":["extension.builder"],"resources":["supply"],"slots":[
+      {"id":"container.service","kind":"service","offset":1},
+      {"id":"container.exit","kind":"departure","offset":2},
+      {"id":"container.wait","kind":"waiting","offset":3}
+    ]}
+  }}],
+  "entity_setups": [{"id":"cargo.container","after":[],"entity":"cargo.container","company":0,
+    "placement":{"space":"field.points","position":75},"home":null}],
+  "world_setup_profiles": [{"id":"carrier.start","entries":["cargo.container"],"includes":[]}]
+}

@@ -1,0 +1,20 @@
+{
+  "work_policies": [
+    {
+      "id": "dock.worker",
+      "enabled": true,
+      "priority": 0,
+      "allowed_roles": [
+        "haul"
+      ],
+      "area": null,
+      "interruptible": true,
+      "emergency_eligible": true,
+      "assignment_mode": "all",
+      "states": {
+        "disabled": "haul.stopped",
+        "standby": "haul.stopped"
+      }
+    }
+  ]
+}

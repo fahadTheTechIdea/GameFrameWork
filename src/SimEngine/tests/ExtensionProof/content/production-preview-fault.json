@@ -1,0 +1,28 @@
+{
+  "scenarios": [
+    {
+      "id": "production-preview-fault",
+      "game_mode": "space.survival",
+      "mode_overrides": {},
+      "time": "space.seconds",
+      "space": "space.points",
+      "modules": [
+        "sim.world-setup",
+        "sim.transformations",
+        "sim.logistics",
+        "points",
+        "proof.prior-activity"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "space.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        }
+      }
+    }
+  ]
+}

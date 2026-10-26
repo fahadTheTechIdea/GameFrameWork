@@ -1,0 +1,52 @@
+# Narrative and interaction runtime: architecture
+
+Status: detailed proposed design; runtime implementation and all package-specific acceptance cases are not_run. Updated 25 October 2026, Asia/Kuwait.
+
+This is one chapter of the [Narrative and interaction runtime SDD](README.md). [Shared baseline](../ENGINE_BASELINE.md) defines existing-versus-proposed status, units, trust, operational services and compatibility.
+
+## Reuse before additions
+
+| Existing seam | Authoritative source | How this package builds on it |
+| --- | --- | --- |
+| Game lifecycle | [IGame / IGameLayer / ILayerRuntime](../../../../src/ScenarioEngine.Contracts/Simulation.cs) | Register one exact game layer; keep Init/Update/Submit/Restore and candidate-state ownership. |
+| Composition | [GameBase](../../../../src/ScenarioEngine.Core/GameBase.cs) | The base owns lifecycle. Domain/extension behavior does not override commit ownership. |
+| Definitions | [Definitions and capabilities](../../../../src/ScenarioEngine.Contracts/Definitions.cs) | Reuse conditions, facts, schemas, objectives and exact layer identities. |
+| Content | [IScenarioContentService](../../../../src/ScenarioEngine.Contracts/Infrastructure.cs) | Reuse pack/schema/catalog ownership. New definition documents need explicit loader/schema support. |
+| Persistence/reporting | [Save/reporting interfaces](../../../../src/ScenarioEngine.Contracts/Infrastructure.cs) | Keep codec/store/recovery and IEngineReporter boundaries; no private parallel save/log service. |
+| Rule replay | [Replay contracts](../../../../src/ScenarioEngine.Contracts/Replay.cs) | Record accepted inputs, explicit observations and compatible state/output identities. |
+
+## Responsible owner and dependencies
+
+NarrativeOwner owns this capability's policy, registration/configuration and follow-up work. Large implementations may use partial files, retaining one owner/registration. Variant algorithms or providers get separate implementations of the shared capability contract; generic callers see the contract. Thin Godot adapters carry no duplicate domain policy.
+
+Required packages: [capability-profiles](../capability-profiles/README.md), [logical-time](../logical-time/README.md), [player-queries](../player-queries/README.md), [resource-transactions](../resource-transactions/README.md)
+
+Expose the capability through a focused contract only when the complete consumer needs it. Do not expand every IGameLayer implementation with unrelated mandatory methods.
+
+~~~mermaid
+flowchart TD
+    Host[Trusted host or authoring consumer] --> Game[GameBase and session boundary]
+    Game --> Core[Generic commit owner]
+    Core --> Owner[NarrativeOwner]
+    Owner --> State[Owned candidate state]
+    Owner --> Contracts[Registered schemas and required capabilities]
+    Host --> Native[Native Godot adapters when spatial or interactive]
+~~~
+
+## State and side-effect ownership
+
+| Owned state | Fields | Responsibility/invariant |
+| --- | --- | --- |
+| NarrativeCheckpoint | runtime identity/version, contentDigest, cursor, variables, offeredChoiceIds | Complete resumable state, not variables alone. |
+| InteractionInstance | interactionId, actor/target, status, checkpointRef | One authoritative interaction owner. |
+| NarrativeEffectIntent | instance/choice identity, effect kind, arguments | Applied in the same candidate transaction as dialogue progress. |
+
+The owner may read other kit views and request typed mutations, but it does not keep a second authoritative copy. File/network/UI/native work happens after a committed request or outside rule resolution through the owning adapter. If one collaborator fails, the candidate is discarded; a layer may not partially commit its own result.
+
+## Native integration
+
+Use [the Godot host design](../native-godot-host/README.md) and [native service inventory](../../06_GODOT_RUNTIME.md). Physics/collision, navigation/AStar, Resources/PackedScene/ResourceLoader, Timer/signals, InputMap, animation and Control UI retain their native owners. Pure C# owns this package's game-specific rules and saved logical state. Headless synthetic observations prove rule behavior only.
+
+## Alternative and boundary decision
+
+Putting this capability into genre branches in Core would couple unrelated games; duplicating its state in scenes would break saves/replay. The proposed owner composes through current boundaries and the declared extension contracts. Implement the minimum complete consumer first, then promote genuinely reused variants after substitution checks.

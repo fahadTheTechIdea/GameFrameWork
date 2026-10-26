@@ -1,0 +1,14 @@
+{
+  "outlet_reserve_control_actions": [
+    {"id":"reserve.combined-supply","command":"sim.configure-outlet-policy","owner":"sim.logistics","resource":"supply","unit":"unit.supply"}
+  ],
+  "control_rules": [
+    {
+      "id":"reserve.combined","input_recovery":"stock.suspend","action_policy":"reserve.combined-supply","arbitration":"exclusive","initial_latch":false,
+      "inputs":[{"id":"stock","signal":"stock.source"}],
+      "conditions":[{"id":"high","kind":"above","input":"stock","unit":"unit.supply","on":15,"off":14,"initial":false}],
+      "root":"high","dwell":{"numerator":2,"denominator":1,"unit":"minute"},"cooldown":{"numerator":4,"denominator":1,"unit":"minute"},
+      "when_true":{"enabled":true,"target":20,"unit":"unit.supply"},"when_false":{"enabled":true,"target":4,"unit":"unit.supply"}
+    }
+  ]
+}

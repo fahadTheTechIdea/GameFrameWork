@@ -1,0 +1,17 @@
+{
+  "schema":1,
+  "modules":[
+    {"id":"sim.access","version":"1.0.0","documents":["open-access.json"]},
+    {"id":"sim.inventory","version":"1.0.0","documents":[]},
+    {"id":"sim.operations","version":"1.0.0","documents":[]},
+    {"id":"sim.motion","version":"1.0.0","documents":[]},
+    {"id":"sim.tile-navigation","version":"1.0.0","requires":[{"id":"sim.motion","version":"1.0.0"}],"documents":[]},
+    {"id":"sim.work","version":"1.0.0","requires":[{"id":"sim.access","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"},{"id":"sim.motion","version":"1.0.0"}],"documents":["work-retry.json"]},
+    {"id":"sim.logistics","version":"1.0.0","requires":[{"id":"sim.work","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"}],"documents":[]},
+    {"id":"sim.construction","version":"1.0.0","requires":[{"id":"sim.work","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"}],"documents":[]},
+    {"id":"sim.infrastructure","version":"1.0.0","requires":[{"id":"sim.work","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"}],"documents":[]},
+    {"id":"sim.world-setup","version":"1.0.0","documents":[]},
+    {"id":"sim.resource-flows","version":"1.0.0","requires":[{"id":"sim.inventory","version":"1.0.0"}],"documents":["flows.json"]},
+    {"id":"proof.network-signal-bindings","version":"1.0.0","requires":[{"id":"sim.infrastructure","version":"1.0.0"},{"id":"sim.tile-navigation","version":"1.0.0"}],"documents":["resource-recovery.json","network-transfers.json","network-signal-bindings.json"]}
+  ]
+}

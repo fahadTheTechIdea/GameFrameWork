@@ -1,0 +1,18 @@
+{
+  "target_resource_requirements": [
+    {"port":null,"id":"timed.frontier.inputs","use":"consume","quantities":{"kit":4}},
+    {"port":null,"id":"timed.frontier.tool","use":"hold","quantities":{"kit":6}}
+  ],
+  "activities": [
+    {"id":"timed.frontier","player_orderable":true,"automatic_supply":false,"nodes":[
+      {"id":"a","executor":"work.timed","roles":[],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"timed.frontier.inputs"},
+      {"id":"b","executor":"work.timed","roles":[],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"timed.frontier.inputs"},
+      {"id":"finish","executor":"work.timed","roles":[],"duration":{"numerator":1,"denominator":1,"unit":"minute"},"after":["a","b"]}
+    ]},
+    {"id":"timed.tools","player_orderable":true,"automatic_supply":false,"nodes":[
+      {"id":"a","executor":"work.timed","roles":[],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"timed.frontier.tool"},
+      {"id":"b","executor":"work.timed","roles":[],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"timed.frontier.tool"},
+      {"id":"finish","executor":"work.timed","roles":[],"duration":{"numerator":1,"denominator":1,"unit":"minute"},"after":["a","b"]}
+    ]}
+  ]
+}

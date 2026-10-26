@@ -1,0 +1,11 @@
+{
+  "plan_templates": [
+    {"id":"dependency.diamond","space":"field.points","entries":[
+      {"id":"finish","definition":"build:point.tower","arguments":{"placement":{"space":"field.points","offset":12}},"priority":2147483647,"paused":false,"after":["left","right"]},
+      {"id":"left","definition":"build:point.tower","arguments":{"placement":{"space":"field.points","offset":4}},"priority":1000,"paused":false,"after":["prepare"]},
+      {"id":"right","definition":"build:point.tower","arguments":{"placement":{"space":"field.points","offset":8}},"priority":2000,"paused":false,"after":["prepare"]},
+      {"id":"prepare","definition":"build:point.tower","arguments":{"placement":{"space":"field.points","offset":0}},"priority":1,"paused":true,"after":[]}
+    ]}
+  ],
+  "completion_effects": [{"id":"dependency.fail","mode":"fail","quantities":{"supply":1}}]
+}

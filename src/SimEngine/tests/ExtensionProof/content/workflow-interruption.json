@@ -1,0 +1,184 @@
+{
+  "entities": [
+    {
+      "id": "lifecycle.a",
+      "kind": "vehicle",
+      "tags": [
+        "extension.worker"
+      ],
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 40
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "roles": [
+            "extension.builder"
+          ],
+          "work_rate": 1,
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "worker_execution": {
+          "operation": {
+            "id": "availability",
+            "enabled": true,
+            "target": 1,
+            "minimum": 0,
+            "maximum": 2,
+            "unit": "unit.work-rate"
+          },
+          "conditions": [],
+          "states": {
+            "disabled": "blocked"
+          }
+        },
+        "work_policy": {
+          "profile": "extension.machine-policy"
+        }
+      }
+    },
+    {
+      "id": "lifecycle.b",
+      "kind": "vehicle",
+      "tags": [
+        "extension.worker"
+      ],
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 50
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "roles": [
+            "extension.builder"
+          ],
+          "work_rate": 1,
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "worker_execution": {
+          "operation": {
+            "id": "availability",
+            "enabled": true,
+            "target": 1,
+            "minimum": 0,
+            "maximum": 2,
+            "unit": "unit.work-rate"
+          },
+          "conditions": [],
+          "states": {
+            "disabled": "blocked"
+          }
+        },
+        "work_policy": {
+          "profile": "extension.machine-policy"
+        }
+      }
+    },
+    {
+      "id": "lifecycle.home",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 20
+        }
+      }
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "lifecycle.a",
+      "after": [],
+      "entity": "lifecycle.a",
+      "company": 0,
+      "placement": {
+        "space": "field.points",
+        "position": 40
+      },
+      "home": null
+    },
+    {
+      "id": "lifecycle.b",
+      "after": [],
+      "entity": "lifecycle.b",
+      "company": 0,
+      "placement": {
+        "space": "field.points",
+        "position": 50
+      },
+      "home": null
+    },
+    {
+      "id": "lifecycle.home",
+      "after": [],
+      "entity": "lifecycle.home",
+      "company": 0,
+      "placement": {
+        "space": "field.points",
+        "position": 20
+      },
+      "home": null
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "lifecycle.start",
+      "entries": [
+        "lifecycle.a",
+        "lifecycle.b",
+        "lifecycle.home"
+      ],
+      "includes": []
+    }
+  ],
+  "recovery_destination_policies": [
+    {
+      "id": "lifecycle.demand",
+      "mode": "demand_only"
+    }
+  ],
+  "logistics_recovery_profiles": [
+    {
+      "id": "lifecycle.recovery",
+      "evacuation": {
+        "enabled": false,
+        "priority": 300,
+        "attempts_per_pass": 1,
+        "reroute_blockers": [],
+        "destination_policy": "lifecycle.demand"
+      },
+      "cargo_return": {
+        "enabled": true,
+        "priority": 300,
+        "attempts_per_pass": 1,
+        "reroute_blockers": [
+          "blocker.unreachable",
+          "core.not-found"
+        ],
+        "destination_policy": "lifecycle.demand"
+      }
+    }
+  ]
+}

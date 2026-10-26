@@ -1,0 +1,16 @@
+{
+  "game_modes": [
+    { "id": "survival", "name": "Survival", "properties": {
+      "business.values.enabled": false,
+      "business.money.enabled": false,
+      "business.production_income.enabled": false,
+      "business.construction_costs.enabled": false,
+      "business.manufacturing_costs.enabled": false,
+      "business.running_costs.enabled": false,
+      "business.trading.enabled": false,
+      "business.tycoon.enabled": false
+    } },
+    { "id": "expedition", "name": "Expedition", "properties": { "proof.pressure": 3, "proof.strategy": "rapid" } },
+    { "id": "authored-defaults", "name": "Authored defaults", "properties": {} }
+  ]
+}

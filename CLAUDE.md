@@ -6,6 +6,10 @@ For world-specific work, read `.claude/skills/world-generator/SKILL.md` and the 
 
 ## Natural-language game start
 
+For engine procedural city requests, follow the canonical skill's **Engine procedural city generation** route and `docs/PROCEDURAL_CITY.md`. The C# engine owns geometry generation from rules; JavaScript renders its spatial output. Do not satisfy this request with only metadata expansion or a hand-arranged schematic.
+
+For metadata-only requests, first use the mockup-free catalog/recipe route in `.agents/skills/world-generator/SKILL.md`. WorldCreator's reusable metadata core supports arbitrary game kinds, hierarchy, connections, constraints and optional coordinates. Do not require either visual wizard, GameArts, mockups or Godot for this scope. The visual rules below apply when visual production/integration is requested. This follows the owner's 2026-10-25 clarification recorded in `AGENTS.md`.
+
 Recognize ordinary requests such as **"Let's start building a game"**, "I want to make a city-building game", and "Continue my game" without requiring `/sdlc-orch`, `/world-generator`, or an exact trigger phrase. Follow the routing rules in `AGENTS.md` and the canonical SDLC orchestrator. For a new or partly configured game, coordinate the **canonical GameArts wizard** and **GameFrameWork wizard** in either order, resuming existing settings; for an existing game, do not restart setup. The agent performs authorized technical setup internally, not the user. Respect discussion-only or plan-only requests.
 
 

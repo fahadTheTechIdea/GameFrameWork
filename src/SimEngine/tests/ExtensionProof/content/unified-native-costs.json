@@ -1,0 +1,7 @@
+{
+  "activities":[{"id":"unified.funded","player_orderable":true,"automatic_supply":false,"nodes":[
+    {"id":"a.timer","executor":"frontier.timed","roles":[],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"budget.ready"},
+    {"id":"b.inspect","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"budget.ready"},
+    {"id":"finish","executor":"frontier.timed","roles":[],"duration":{"numerator":1,"denominator":1,"unit":"minute"},"after":["a.timer","b.inspect"]}
+  ]}]
+}

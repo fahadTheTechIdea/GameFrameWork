@@ -1,0 +1,21 @@
+{
+  "entity_states":[{"id":"powered.sampling","state":"powered.scanning","priority":25}],
+  "point_interval_regions":[{"id":"powered.remote-region","space":"field.points","minimum":6,"maximum":7}],
+  "knowledge_facts":[
+    {"id":"powered.reset-known","fresh_for":null,"value":{"region":"powered.remote-region","branch":"reset"}},
+    {"id":"powered.retain-known","fresh_for":null,"value":{"region":"powered.remote-region","branch":"retain"}}
+  ],
+  "sensor_region_exploration_requirements":[{"id":"powered.whole-region"}],
+  "exploration_profiles":[{"id":"powered.remote-profile","states":{"sampling":"powered.sampling"},"entries":[
+    {"id":"a.reset","requirement":"powered.whole-region","region":"powered.remote-region","subject":"powered.reset-known","duration":{"numerator":3,"denominator":1,"unit":"minute"},"interruption":"reset"},
+    {"id":"b.retain","requirement":"powered.whole-region","region":"powered.remote-region","subject":"powered.retain-known","duration":{"numerator":3,"denominator":1,"unit":"minute"},"interruption":"retain"}
+  ]}],
+  "knowledge_sharing_policies":[{"id":"powered.share","subjects":[
+    {"provider":"sim.knowledge.facts","subject":"powered.reset-known"},
+    {"provider":"sim.knowledge.facts","subject":"powered.retain-known"}
+  ],"directions":[{"sender":0,"recipient":1}]}],
+  "knowledge_forgetting_policies":[{"id":"powered.forget","subjects":[
+    {"provider":"sim.knowledge.facts","subject":"powered.reset-known"},
+    {"provider":"sim.knowledge.facts","subject":"powered.retain-known"}
+  ],"companies":[0]}]
+}

@@ -1,0 +1,31 @@
+{
+  "activities": [{
+    "id": "field.routine-work", "player_orderable": true, "priority": 40, "automatic_supply": false,
+    "nodes": [
+      {"id":"prepare","executor":"work.timed","duration":{"numerator":3,"denominator":1,"unit":"minute"}},
+      {"id":"service","executor":"work.staffed","after":["prepare"],"roles":["inspect"],
+       "duration":{"numerator":12,"denominator":1,"unit":"minute"},"requirement":"pressure.materials"}
+    ]
+  }],
+  "entities": [{
+    "id":"field.routine", "kind":"structure",
+    "components":{
+      "point_presence":{"space":"field.points","position":25},
+      "storage":{"capacity_policy":"fixture.count.40","public":false,"initial_stock":{"supply":20}},
+      "inventory_signal":{"id":"feed","inventory":"storage","quantities":null},
+      "recurring_private_probe":{},
+      "independent_recurring":{
+        "id":"routine","plan":"activity:field.routine-work","template":null,
+        "enabled":false,"priority":40,"interval":{"numerator":6,"denominator":1,"unit":"minute"},
+        "facility_policy":null,"cadence":"successful_completion","trigger":"schedule","dispatch_mode":"compete",
+        "target":"self","worker_nodes":[],"reserve_use":"none","arguments":null,
+        "group":"field.service","operation_policy":null,"conditions":[
+          {"id":"stock","source":"feed","signal":"field.stock","unit":"unit.supply","minimum":8,"maximum":20,"blocker":"routine.reserve"}
+        ],"metadata_fault":"none"
+      }
+    }
+  }],
+  "entity_setups":[{"id":"field.routine.start","after":[],"entity":"field.routine","company":0,
+    "placement":{"space":"field.points","position":25},"home":null}],
+  "world_setup_profiles":[{"id":"contract.routine-start","entries":["field.routine.start"],"includes":[]}]
+}

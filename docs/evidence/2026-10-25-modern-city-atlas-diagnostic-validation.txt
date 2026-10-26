@@ -1,0 +1,1 @@
+PASS geometry, exact-key and contamination checks. Visual correctness and engine behavior NOT assessed.

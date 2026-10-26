@@ -1,0 +1,25 @@
+{
+  "tile_layer_band_conditions": [
+    {
+      "id": "colony.condition.wet",
+      "space": "colony.tiles",
+      "layer": "water",
+      "minimum": 1,
+      "maximum": null
+    },
+    {
+      "id": "colony.condition.lane",
+      "space": "colony.tiles",
+      "layer": "colony.lanes",
+      "minimum": 1,
+      "maximum": 2
+    },
+    {
+      "id": "colony.condition.dry",
+      "space": "colony.tiles",
+      "layer": "water",
+      "minimum": 0,
+      "maximum": 1
+    }
+  ]
+}

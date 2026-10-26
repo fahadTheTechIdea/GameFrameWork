@@ -1,0 +1,533 @@
+{
+  "work_policies": [
+    {
+      "id": "docks.worker",
+      "enabled": true,
+      "priority": 0,
+      "allowed_roles": [
+        "haul",
+        "inspect"
+      ],
+      "area": null,
+      "interruptible": true,
+      "emergency_eligible": true,
+      "assignment_mode": "all",
+      "states": {
+        "disabled": "blocked",
+        "standby": "blocked"
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "source",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 0
+        },
+        "point_stock": {
+          "resource": "supply",
+          "capacity_policy": "fixture.count.40",
+          "initial": 32
+        },
+        "point_dock": {
+          "work_roles": [
+            "inspect"
+          ],
+          "resources": [
+            "supply"
+          ],
+          "slots": [
+            {
+              "id": "load.bay",
+              "kind": "service",
+              "offset": 1
+            },
+            {
+              "id": "load.wait.a",
+              "kind": "waiting",
+              "offset": 3
+            },
+            {
+              "id": "load.wait.b",
+              "kind": "waiting",
+              "offset": 4
+            },
+            {
+              "id": "load.exit",
+              "kind": "departure",
+              "offset": 7
+            },
+            {
+              "id": "load.exit.b",
+              "kind": "departure",
+              "offset": 9
+            },
+            {
+              "id": "load.exit.c",
+              "kind": "departure",
+              "offset": 20
+            }
+          ]
+        },
+        "work_load_signal": [
+          {
+            "id": "fleet",
+            "scope": "fleet",
+            "role": null
+          },
+          {
+            "id": "haulers",
+            "scope": "fleet",
+            "role": "haul"
+          },
+          {
+            "id": "backlog",
+            "scope": "company"
+          }
+        ]
+      }
+    },
+    {
+      "id": "destination",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 10
+        },
+        "point_stock": {
+          "resource": "supply",
+          "capacity_policy": "fixture.count.40",
+          "initial": 0
+        },
+        "point_dock": {
+          "work_roles": [
+            "inspect"
+          ],
+          "resources": [
+            "supply"
+          ],
+          "slots": [
+            {
+              "id": "unload.bay",
+              "kind": "service",
+              "offset": 1
+            },
+            {
+              "id": "unload.wait.a",
+              "kind": "waiting",
+              "offset": -2
+            },
+            {
+              "id": "unload.wait.b",
+              "kind": "waiting",
+              "offset": -3
+            },
+            {
+              "id": "unload.exit.a",
+              "kind": "departure",
+              "offset": 2
+            },
+            {
+              "id": "unload.exit.b",
+              "kind": "departure",
+              "offset": 5
+            },
+            {
+              "id": "unload.exit.c",
+              "kind": "departure",
+              "offset": 6
+            },
+            {
+              "id": "unload.exit.d",
+              "kind": "departure",
+              "offset": 7
+            }
+          ]
+        },
+        "work_load_signal": {
+          "id": "fleet",
+          "scope": "fleet",
+          "role": null
+        }
+      }
+    },
+    {
+      "id": "machine.a",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 0
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "roles": [
+            "inspect",
+            "haul"
+          ],
+          "work_rate": 1,
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "work_policy": {
+          "profile": "docks.worker"
+        },
+        "storage": {
+          "capacity_policy": "fixture.count.8",
+          "public": false
+        },
+        "transporter": {
+          "handling": "points.handling"
+        },
+        "worker_execution": {
+          "operation": {
+            "id": "availability",
+            "enabled": true,
+            "target": 1,
+            "minimum": 0,
+            "maximum": 2,
+            "unit": "unit.work-rate"
+          },
+          "conditions": [],
+          "states": {
+            "disabled": "blocked"
+          }
+        },
+        "work_load_signal": {
+          "id": "fleet",
+          "scope": "fleet_worker",
+          "role": null
+        }
+      }
+    },
+    {
+      "id": "machine.b",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 2
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "work_policy": {
+          "profile": "docks.worker"
+        },
+        "storage": {
+          "capacity_policy": "fixture.count.8",
+          "public": false
+        },
+        "transporter": {
+          "handling": "points.handling"
+        },
+        "contract_worker": {
+          "role": "inspect",
+          "rate": 1,
+          "states": {
+            "working": "processing",
+            "stopped": "blocked"
+          }
+        },
+        "worker_execution": {
+          "operation": {
+            "id": "availability",
+            "enabled": true,
+            "target": 1,
+            "minimum": 0,
+            "maximum": 2,
+            "unit": "unit.work-rate"
+          },
+          "conditions": [],
+          "states": {
+            "disabled": "blocked"
+          }
+        },
+        "work_load_signal": {
+          "id": "fleet",
+          "scope": "fleet_worker",
+          "role": null
+        }
+      }
+    },
+    {
+      "id": "machine.c",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 5
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "roles": [
+            "inspect",
+            "haul"
+          ],
+          "work_rate": 1,
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "work_policy": {
+          "profile": "docks.worker"
+        },
+        "storage": {
+          "capacity_policy": "fixture.count.8",
+          "public": false
+        },
+        "transporter": {
+          "handling": "points.handling"
+        },
+        "worker_execution": {
+          "operation": {
+            "id": "availability",
+            "enabled": true,
+            "target": 1,
+            "minimum": 0,
+            "maximum": 2,
+            "unit": "unit.work-rate"
+          },
+          "conditions": [],
+          "states": {
+            "disabled": "blocked"
+          }
+        },
+        "work_load_signal": {
+          "id": "fleet",
+          "scope": "fleet_worker",
+          "role": null
+        }
+      }
+    },
+    {
+      "id": "machine.d",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 6
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "roles": [
+            "inspect",
+            "haul"
+          ],
+          "work_rate": 1,
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "work_policy": {
+          "profile": "docks.worker"
+        },
+        "storage": {
+          "capacity_policy": "fixture.count.8",
+          "public": false
+        },
+        "transporter": {
+          "handling": "points.handling"
+        },
+        "worker_execution": {
+          "operation": {
+            "id": "availability",
+            "enabled": true,
+            "target": 1,
+            "minimum": 0,
+            "maximum": 2,
+            "unit": "unit.work-rate"
+          },
+          "conditions": [],
+          "states": {
+            "disabled": "blocked"
+          }
+        },
+        "work_load_signal": {
+          "id": "fleet",
+          "scope": "fleet_worker",
+          "role": null
+        }
+      }
+    }
+  ],
+  "signals": [
+    {
+      "id": "fleet.total",
+      "kind": "number",
+      "metric": "work.workers-total",
+      "unit": "unit.count",
+      "providers": [
+        {
+          "component": "work_load_signal",
+          "schema": 2
+        }
+      ]
+    },
+    {
+      "id": "fleet.busy",
+      "kind": "number",
+      "metric": "work.workers-busy",
+      "unit": "unit.count",
+      "providers": [
+        {
+          "component": "work_load_signal",
+          "schema": 2
+        }
+      ]
+    },
+    {
+      "id": "fleet.held",
+      "kind": "number",
+      "metric": "work.workers-held",
+      "unit": "unit.count",
+      "providers": [
+        {
+          "component": "work_load_signal",
+          "schema": 2
+        }
+      ]
+    },
+    {
+      "id": "fleet.idle",
+      "kind": "number",
+      "metric": "work.workers-idle",
+      "unit": "unit.count",
+      "providers": [
+        {
+          "component": "work_load_signal",
+          "schema": 2
+        }
+      ]
+    },
+    {
+      "id": "fleet.ordinary-ready",
+      "kind": "number",
+      "metric": "work.workers-ordinary-ready",
+      "unit": "unit.count",
+      "providers": [
+        {
+          "component": "work_load_signal",
+          "schema": 2
+        }
+      ]
+    },
+    {
+      "id": "fleet.emergency-ready",
+      "kind": "number",
+      "metric": "work.workers-emergency-ready",
+      "unit": "unit.count",
+      "providers": [
+        {
+          "component": "work_load_signal",
+          "schema": 2
+        }
+      ]
+    },
+    {
+      "id": "fleet.jobs",
+      "kind": "number",
+      "metric": "work.live-jobs",
+      "unit": "unit.count",
+      "providers": [
+        {
+          "component": "work_load_signal",
+          "schema": 2
+        }
+      ]
+    }
+  ],
+  "operation_control_actions": [
+    {
+      "id": "fleet.operation",
+      "command": "sim.configure-operation",
+      "owner": "sim.operations"
+    }
+  ],
+  "control_input_recovery_policies": [
+    {
+      "id": "fleet.suspend",
+      "retry_blockers": []
+    }
+  ],
+  "control_rules": [
+    {
+      "id": "fleet.balance",
+      "input_recovery": "fleet.suspend",
+      "action_policy": "fleet.operation",
+      "arbitration": "exclusive",
+      "initial_latch": false,
+      "inputs": [
+        {
+          "id": "idle",
+          "signal": "fleet.idle"
+        }
+      ],
+      "conditions": [
+        {
+          "id": "spare",
+          "kind": "above",
+          "input": "idle",
+          "unit": "unit.count",
+          "on": 2,
+          "off": 2,
+          "initial": false
+        }
+      ],
+      "root": "spare",
+      "dwell": {
+        "numerator": 0,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "cooldown": {
+        "numerator": 0,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "when_true": {
+        "enabled": true,
+        "target": 1,
+        "unit": "unit.work-rate"
+      },
+      "when_false": {
+        "enabled": false,
+        "target": 1,
+        "unit": "unit.work-rate"
+      }
+    }
+  ]
+}

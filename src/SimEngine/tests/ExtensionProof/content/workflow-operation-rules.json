@@ -1,0 +1,3 @@
+{
+  "proof_access_rules": [{"id":"proof.access.b","entity":"contract.result","enabled":false},{"id":"proof.access.a","entity":"contract.result","enabled":false}]
+}

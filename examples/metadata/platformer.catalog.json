@@ -1,0 +1,100 @@
+{
+  "SchemaVersion": 1,
+  "Id": "platformer-catalog",
+  "Archetypes": [
+    {
+      "Id": "root",
+      "Kind": "campaign",
+      "Purpose": "Game-authored campaign program",
+      "Properties": {},
+      "Parts": [
+        {
+          "Id": "levels",
+          "ArchetypeId": "level",
+          "Count": 0,
+          "Purpose": "Authored level progression",
+          "CountParameter": "levels",
+          "Layout": {
+            "Origin": [
+              0,
+              0
+            ],
+            "Step": [
+              200,
+              0
+            ]
+          }
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "progression",
+          "Kind": "next-level",
+          "Pattern": "Chain",
+          "FromPart": "levels",
+          "ToPart": null,
+          "Bidirectional": false,
+          "Properties": null
+        }
+      ],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "level",
+      "Kind": "level",
+      "Purpose": "Game-authored level program",
+      "Properties": {},
+      "Parts": [
+        {
+          "Id": "sections",
+          "ArchetypeId": "section",
+          "Count": 3,
+          "Purpose": "Side-scrolling sections",
+          "CountParameter": null,
+          "Layout": {
+            "Origin": [
+              0,
+              0
+            ],
+            "Step": [
+              40,
+              0
+            ]
+          }
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "jumps",
+          "Kind": "jump-path",
+          "Pattern": "Chain",
+          "FromPart": "sections",
+          "ToPart": null,
+          "Bidirectional": false,
+          "Properties": {
+            "minimum_jump_meters": 2.5
+          }
+        }
+      ],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "section",
+      "Kind": "section",
+      "Purpose": "Game-authored section program",
+      "Properties": {
+        "camera": "side-scrolling",
+        "theme": "game-defined"
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    }
+  ]
+}

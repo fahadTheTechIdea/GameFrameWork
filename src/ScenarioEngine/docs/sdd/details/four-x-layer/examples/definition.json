@@ -1,0 +1,18 @@
+{
+  "id": "four_x_layer",
+  "definitionVersion": "1.0.0",
+  "factionIds": [
+    "north",
+    "south",
+    "coast"
+  ],
+  "turnPolicy": "sequential_factions",
+  "researchIds": [
+    "logistics",
+    "engineering"
+  ],
+  "victoryIds": [
+    "diplomatic",
+    "territorial"
+  ]
+}

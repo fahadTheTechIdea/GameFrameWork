@@ -1,0 +1,8 @@
+{
+  "knowledge_forgetting_policies": [
+    {"id":"forget.region","subjects":[{"provider":"sim.knowledge.facts","subject":"contact.north.known"}],"companies":[0]},
+    {"id":"forget.reading","subjects":[{"provider":"sim.knowledge.facts","subject":"survey.reading"}],"companies":[0]},
+    {"id":"forget.protected","subjects":[{"provider":"sim.knowledge.facts","subject":"contact.north.known"},{"provider":"proof.retention","subject":"retention.base"}],"companies":[0]},
+    {"id":"forget.complete","subjects":[{"provider":"sim.knowledge.facts","subject":"contact.north.known"},{"provider":"proof.retention","subject":"retention.child"},{"provider":"proof.retention","subject":"retention.base"}],"companies":[0]}
+  ]
+}

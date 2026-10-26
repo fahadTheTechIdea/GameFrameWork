@@ -1,0 +1,27 @@
+{
+  "SchemaVersion": 1,
+  "Catalogs": [
+    {
+      "Id": "modern.campuses",
+      "Name": "Modern campus composition",
+      "Imports": [
+        {
+          "CatalogId": "modern",
+          "StructureIds": [
+            "office-building",
+            "clinic",
+            "football-training-ground",
+            "factory",
+            "warehouse",
+            "workshop"
+          ],
+          "FacilityIds": [
+            "modern.football-club",
+            "modern.training-block",
+            "modern.factory-campus"
+          ]
+        }
+      ]
+    }
+  ]
+}

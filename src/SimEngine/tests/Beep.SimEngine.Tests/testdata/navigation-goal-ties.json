@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "navigation.goal-ties",
+  "width": 96,
+  "height": 96,
+  "cost": 10,
+  "maximum_reads": 600,
+  "maximum_expanded": 80,
+  "expected_steps": 80,
+  "expected_cost": 960,
+  "journeys": [
+    { "from_x": 1, "from_y": 1, "to_x": 81, "to_y": 41 },
+    { "from_x": 81, "from_y": 41, "to_x": 1, "to_y": 1 },
+    { "from_x": 1, "from_y": 41, "to_x": 81, "to_y": 1 },
+    { "from_x": 81, "from_y": 1, "to_x": 1, "to_y": 41 }
+  ]
+}

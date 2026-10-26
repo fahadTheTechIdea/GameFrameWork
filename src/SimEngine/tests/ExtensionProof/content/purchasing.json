@@ -1,0 +1,13 @@
+{
+  "units": [{"id":"unit.money","dimension":"currency","scale":{"numerator":1,"denominator":1},"discrete":false}],
+  "business_accounts": [{"id":"purchase.accounts","currency":"unit.money","opening_cash":100}],
+  "entities": [
+    {"id":"vendor-a","kind":"entity","components":{"supplier":{"sells":{"kit":3}}}},
+    {"id":"vendor-b","kind":"entity","components":{"supplier":{"sells":{"kit":4}}}},
+    {"id":"finite-vendor","kind":"entity","components":{"local_stock":{"resource":"kit","capacity_policy":"fixture.count.20","initial":10},"purchase_finite":{"resource":"kit","price":2}}},
+    {"id":"receiver","kind":"entity","components":{"local_stock":{"resource":"kit","capacity_policy":"fixture.count.20","initial":0}}},
+    {"id":"other-receiver","kind":"entity","components":{"local_stock":{"resource":"kit","capacity_policy":"fixture.count.20","initial":0}}}
+  ],
+  "world_setup_profiles": [{"id":"purchasing.start","entries":["local-start","vendor-a-start","vendor-b-start","finite-start","receiver-start","other-start"],"includes":[]}],
+  "entity_setups": [{"id":"vendor-a-start","after":[],"entity":"vendor-a","company":1,"placement":null,"home":null},{"id":"vendor-b-start","after":[],"entity":"vendor-b","company":1,"placement":null,"home":null},{"id":"finite-start","after":[],"entity":"finite-vendor","company":1,"placement":null,"home":null},{"id":"receiver-start","after":[],"entity":"receiver","company":0,"placement":null,"home":null},{"id":"other-start","after":[],"entity":"other-receiver","company":1,"placement":null,"home":null}]
+}

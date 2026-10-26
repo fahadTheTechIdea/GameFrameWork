@@ -1,0 +1,13 @@
+{
+  "line_effects": [{"id":"removal.cut","operation":"remove","line":"network.pipe"}],
+  "activities": [
+    {"id":"removal.work","player_orderable":true,"automatic_supply":false,"target_tags":["network-worksite"],"priority":100,"on_complete":"removal.cut","nodes":[{"id":"cut","executor":"work.staffed","roles":["crane"],"duration":{"numerator":6,"denominator":1,"unit":"minute"}}]}
+  ],
+  "entities": [
+    {"id":"removal.site","kind":"structure","tags":["network-worksite"],"components":{"tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":false,"movable":false}}}
+  ],
+  "entity_setups": [
+    {"id":"removal.site.start","after":["binding.truck.start"],"entity":"removal.site","company":0,"placement":{"space":"recovery.tiles","x":11,"y":28},"home":null},
+    {"id":"removal.crane.start","after":["removal.site.start"],"entity":"crane","company":0,"placement":{"space":"recovery.tiles","x":6,"y":28},"home":null}
+  ]
+}

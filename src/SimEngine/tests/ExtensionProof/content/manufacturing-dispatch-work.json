@@ -1,0 +1,10 @@
+{
+  "entity_activities":[
+    {"id":"dispatch.prepare","target":"dispatch.factory","player_orderable":true,"automatic_supply":false,"priority":50,"on_complete":"dispatch.enqueue",
+      "nodes":[
+        {"id":"finish","executor":"work.staffed","roles":["survey"],"duration":{"numerator":2,"denominator":1,"unit":"minute"},"after":["inspect","prepare"],"requirement":"segment.material"},
+        {"id":"prepare","executor":"work.staffed","roles":["survey"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"segment.tool"},
+        {"id":"inspect","executor":"work.staffed","roles":["survey"],"duration":{"numerator":4,"denominator":1,"unit":"minute"}}
+      ]}
+  ]
+}

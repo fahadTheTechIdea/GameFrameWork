@@ -1,0 +1,10 @@
+{
+  "independent_networks": [{
+    "id":"binding.main", "metadata_fault":"none", "line":"network.pipe",
+    "capacity_policy":"network.shared", "public":false,
+    "flow_policy":"proof.network-transfers.round-robin",
+    "solver":"proof.network-transfers.transfer",
+    "demand_policy":"proof.network-transfers.capacity-demand",
+    "rates":[{"resource":"steel","quantity":4,"period":{"numerator":1,"denominator":1,"unit":"minute"}}]
+  }]
+}

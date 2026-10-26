@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "module": {
+    "id": "proof.navigation-observation",
+    "version": "1.0.0",
+    "requires": [{ "id": "sim.tile-navigation", "version": "1.0.0" }],
+    "documents": ["navigation-observation.json"]
+  },
+  "content": {
+    "navigation_observation_probes": [{
+      "id": "probe.navigation.cost",
+      "space": "stress.tiles",
+      "minimum": 10,
+      "fault": "none",
+      "raw": false,
+      "layer": "probe.navigation.layer"
+    }],
+    "spatial_layers": [{
+      "id": "probe.navigation.layer",
+      "space": "stress.tiles",
+      "type": "terrain.observation-probe",
+      "value_type": "int",
+      "visibility": "public",
+      "unit": "unit.supply"
+    }]
+  }
+}

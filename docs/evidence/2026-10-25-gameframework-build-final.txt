@@ -1,0 +1,31 @@
+  Determining projects to restore...
+  Restored H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\SimEngine\tests\Beep.SimEngine.Tests\Beep.SimEngine.Tests.csproj (in 104 ms).
+  Restored H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\SimEngine\help\quickstart\Game.Module\QuickGame.Module.csproj (in 99 ms).
+  19 of 21 projects are up-to-date for restore.
+  WorldCreator.Core -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Core\bin\Release\net10.0\WorldCreator.Core.dll
+  WorldCreator.TestCatalog -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.TestCatalog\bin\Release\net10.0\WorldCreator.TestCatalog.dll
+  WorldCreator.Worlds -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\bin\Release\net10.0\WorldCreator.Worlds.dll
+  WorldCreator.Godot -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Godot\bin\Release\net10.0\WorldCreator.Godot.dll
+  WorldCreator.Catalogs.Modern -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Catalogs.Modern\bin\Release\net10.0\WorldCreator.Catalogs.Modern.dll
+  ScenarioEngine.Contracts -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\src\ScenarioEngine.Contracts\bin\Release\net8.0\ScenarioEngine.Contracts.dll
+  ScenarioEngine.Replay -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\src\ScenarioEngine.Replay\bin\Release\net8.0\ScenarioEngine.Replay.dll
+  ScenarioEngine.Persistence -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\src\ScenarioEngine.Persistence\bin\Release\net8.0\ScenarioEngine.Persistence.dll
+  ScenarioEngine.Core -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\src\ScenarioEngine.Core\bin\Release\net8.0\ScenarioEngine.Core.dll
+  ScenarioEngine.Content -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\src\ScenarioEngine.Content\bin\Release\net8.0\ScenarioEngine.Content.dll
+  ScenarioEngine.Diagnostics -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\src\ScenarioEngine.Diagnostics\bin\Release\net8.0\ScenarioEngine.Diagnostics.dll
+  WorldCreator.Tests -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\bin\Release\net10.0\WorldCreator.Tests.dll
+  WorldCreator.Cli -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Cli\bin\Release\net10.0\WorldCreator.Cli.dll
+  Counter.GameLayer -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\samples\Counter.GameLayer\bin\Release\net8.0\Counter.GameLayer.dll
+  ScenarioEngine.Tests -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\tests\ScenarioEngine.Tests\bin\Release\net10.0\ScenarioEngine.Tests.dll
+  Beep.SimEngine -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\SimEngine\src\Beep.SimEngine\bin\Release\netstandard2.1\Beep.SimEngine.dll
+  ScenarioSimulator -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\tools\ScenarioSimulator\bin\Release\net10.0\ScenarioSimulator.dll
+  Beep.SimEngine.Testing -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\SimEngine\tests\Beep.SimEngine.Testing\bin\Release\net8.0\Beep.SimEngine.Testing.dll
+CSC : error CS1566: Error reading resource 'proof.oil-vehicle-handling.json' -- 'Could not find a part of the path 'H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\Beep.OilFieldDays\src\oilCo-engine\src\SimEngine\content\oil\vehicle-handling.json'.' [H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\SimEngine\tests\ExtensionProof\ExtensionProof.csproj]
+
+Build FAILED.
+
+CSC : error CS1566: Error reading resource 'proof.oil-vehicle-handling.json' -- 'Could not find a part of the path 'H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\Beep.OilFieldDays\src\oilCo-engine\src\SimEngine\content\oil\vehicle-handling.json'.' [H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\SimEngine\tests\ExtensionProof\ExtensionProof.csproj]
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:08.36

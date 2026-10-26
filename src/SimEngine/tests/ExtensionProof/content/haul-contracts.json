@@ -1,0 +1,9 @@
+{
+  "independent_haul_load_profiles": [
+    {"id":"contract.load","enabled":true,"minimum_load":{"supply":8},"maximum_wait":{"numerator":5,"denominator":1,"unit":"minute"},"emergency_bypass":false}
+  ],
+  "independent_haul_trip_profiles": [
+    {"id":"contract.trip","enabled":true,"preserve_outlet_reserve":true,"service_sources":[]},
+    {"id":"contract.trip-no-floor","enabled":true,"preserve_outlet_reserve":false,"service_sources":[]}
+  ]
+}

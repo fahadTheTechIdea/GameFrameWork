@@ -1,0 +1,13 @@
+{
+  "capacity_policies":[{"id":"gate.pool","limits":{"unit.storage":30}}],
+  "resource_signals":[{"id":"gate.supply","kind":"number","metric":"inventory.available","resource":"steel","unit":"unit.steel","providers":[{"component":"inventory_signal","schema":3}]}],
+  "entities":[{"id":"binding.source","kind":"structure","components":{
+    "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":false},
+    "storage":{"capacity_policy":"recovery.mixed","public":false,"initial_stock":{"steel":30}},
+    "ports":{"list":[{"network":"binding.main","push":["steel"]},{"network":"network.secondary","pull":[]}]},
+    "independent_network_signal":{"id":"pool","network":"binding.main","metadata_fault":"none"},
+    "inventory_signal":{"id":"supply","inventory":"storage","quantities":null},
+    "network_signal_private_probe":{},
+    "independent_network_gate":{"id":"safety","networks":["binding.main"],"metadata_fault":"none","conditions":[{"id":"reserve","source":"supply","signal":"gate.supply","minimum":25,"maximum":30,"unit":"unit.steel","blocker":"gate.reserve"}]}
+  }}]
+}

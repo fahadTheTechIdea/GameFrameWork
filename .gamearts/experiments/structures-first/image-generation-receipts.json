@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "structures-first-city-experiment",
+  "authorization": "Owner: why not let image gen do the opposite, first create the structures one by one. then create the city.? try it",
+  "status": "generated-provisional-not-approved",
+  "order": [
+    "house",
+    "office",
+    "school",
+    "warehouse",
+    "factory",
+    "stadium",
+    "reference-board",
+    "city"
+  ],
+  "successfulImageCalls": 7,
+  "rejectedBeforeInvocation": {
+    "reason": "referenced_image_paths accepts at most 5 paths; seven-path city request rejected before generation",
+    "resolution": "Canonical atlas builder assembled all six originals into one reference-only board. Final city request used the board and original layout (2 paths)."
+  },
+  "referenceBoardScope": "Actual source pixels packed without resampling or cleanup, allow_near_key:true for reference presentation only; not production atlas/mask acceptance",
+  "records": [
+    {
+      "id": "house",
+      "file": "structures/house.png",
+      "prompt": "STRUCTURES-FIRST CITY DESIGN EXPERIMENT — building 1 of 6. Create ONE compact detached urban villa seen from a HIGH CITY-MAP CAMERA, looking almost straight down at about 80 degrees above the ground. This is a map building viewed from the sky, NOT a front elevation or a building portrait. The attached city is ONLY the art-style/camera reference. Keep orthogonal roof edges parallel to the image, roof plan dominant, only a SHORT strip of south wall visible. Cream stucco, a terracotta tiled roof with a small asymmetric flat roof terrace, understated dark blue window marks, two-storey city house with compact nearly square footprint. Preserve a small-scale warm desert-city game look, crisp controlled pixel-art clusters. No oversized thick outlines. One full building, no neighbours, gardens, roads, trees, people, vehicles, plot or ground shadow. Generous solid opaque #FF00FF background. Do not draw a sheet, grid, labels, alternate views or text. Prioritise the overhead city camera and compact massing over facade detail. The building will later be reused as an architectural identity reference in a complete city image.",
+      "referenceImages": [
+        ".gamearts/outputs/mockups/generated/modern_city_mockup.png"
+      ],
+      "tool": "image_gen.imagegen",
+      "originalOutput": "C:\\Users\\f_ald\\.codex\\generated_images\\01a17318-77d0-76e0-87aa-8ae94518ef18\\exec-993ef866-17e9-4312-81f1-1d2a5e33ca2c.png",
+      "transparentBackground": false
+    },
+    {
+      "id": "office",
+      "file": "structures/office.png",
+      "prompt": "STRUCTURES-FIRST CITY DESIGN EXPERIMENT — building 2 of 6. Make ONE six-storey modern office building, a compact rectangular cream-stone frame with deep blue glazing and a flat roof carrying a few static grey HVAC boxes. View it from the SAME HIGH ORTHOGRAPHIC CITY-MAP camera as reference 1 (full city); reference 2 (house) establishes the warm palette and rendering family. This is an overhead urban-map building, NOT an eye-level architectural portrait or isometric diamond. Roof edges aligned with image axes; dominant visible roof plan with short south-facing elevation. Restrained detailed pixel-art clusters, warm sun from upper left, cream/beige masonry, blue glass, muted grey metal. Keep the whole single office building centered with generous opaque solid #FF00FF margins. No grounds, roads, vegetation, cars, signs, people, outdoor furniture or cast ground shadow. No other building, sheet, text, grid or alternate view. This isolated architectural identity will later be used as a reference in the city; do not draw the house.",
+      "referenceImages": [
+        ".gamearts/outputs/mockups/generated/modern_city_mockup.png",
+        ".gamearts/experiments/structures-first/structures/house.png"
+      ],
+      "tool": "image_gen.imagegen",
+      "originalOutput": "C:\\Users\\f_ald\\.codex\\generated_images\\01a17318-77d0-76e0-87aa-8ae94518ef18\\exec-5cf05105-2ea3-410a-b90b-b9b3c4cabfd3.png",
+      "transparentBackground": false
+    },
+    {
+      "id": "school",
+      "file": "structures/school.png",
+      "prompt": "STRUCTURES-FIRST CITY EXPERIMENT — building 3 of 6. ONE compact two-storey L-shaped primary-school building, cream stucco walls, blue window bands and terracotta tiled roofs. The long teaching wing runs horizontally and the short wing returns downward at the right. Match the HIGH orthographic elevated city-map camera and detailed warm city-game pixel-art family of the attached original city and house. Roof plan readable; do not make an eye-level portrait or a symmetrical castle. Looking down from the sky, roof edges parallel to the image axes. Only the school architecture, no sports fields, courts, playground furniture, people, vehicles, trees, roads, campus boundary, signs, text or cast ground shadow. Center the complete L-shaped building, generously surrounded by fully opaque solid #FF00FF. No other assets, grid, atlas, multiple views or labels. Static architectural draft to be used as a distinctive reusable reference in the later city composition.",
+      "referenceImages": [
+        ".gamearts/outputs/mockups/generated/modern_city_mockup.png",
+        ".gamearts/experiments/structures-first/structures/house.png"
+      ],
+      "tool": "image_gen.imagegen",
+      "originalOutput": "C:\\Users\\f_ald\\.codex\\generated_images\\01a17318-77d0-76e0-87aa-8ae94518ef18\\exec-96e7a30e-e9b6-400d-bbed-e280ea70937a.png",
+      "transparentBackground": false
+    },
+    {
+      "id": "warehouse",
+      "file": "structures/warehouse.png",
+      "prompt": "STRUCTURES-FIRST CITY EXPERIMENT — building 4 of 6. ONE large low-rise rectangular logistics WAREHOUSE: light grey ribbed metal flat/shallow roof, blue-grey industrial wall panels, a row of four closed loading-bay doors along the south side, tiny static roof vents. Match the HIGH elevated orthographic CITY-MAP camera and warm detailed city-game pixel-art style of the attached full city and house. The visible roof plan occupies most of the building; walls are short. Roof edges aligned with image axes; no isometric diamond, no eye-level facade portrait. Whole isolated building only, no trucks, loading-yard pavement, pallets, fences, trees, people, roads, signage, text or cast ground shadow. Generous fully opaque solid #FF00FF background outside the complete silhouette. One view, one building, no atlas, grid, other structures or labels. This is an architectural reference draft for the later city image.",
+      "referenceImages": [
+        ".gamearts/outputs/mockups/generated/modern_city_mockup.png",
+        ".gamearts/experiments/structures-first/structures/house.png"
+      ],
+      "tool": "image_gen.imagegen",
+      "originalOutput": "C:\\Users\\f_ald\\.codex\\generated_images\\01a17318-77d0-76e0-87aa-8ae94518ef18\\exec-e138fc81-4b97-4f93-9990-bc0be0960db2.png",
+      "transparentBackground": false
+    },
+    {
+      "id": "factory",
+      "file": "structures/factory.png",
+      "prompt": "STRUCTURES-FIRST CITY EXPERIMENT — building 5 of 6. ONE large modern industrial FACTORY BUILDING GROUP: broad main hall with five parallel grey sawtooth roof bays, cream concrete/blue-grey lower walls, a small attached control room, two tall white chimneys with red bands on the east side, and three attached static vertical process tanks. A single coherent factory architectural identity, not an industrial district. Match reference 1 original city's HIGH elevated ORTHOGRAPHIC CITY-MAP camera, warm upper-left daylight, restrained detailed pixel-art look; reference 2 house is the same art family. Roof plan prominent; no eye-level factory portrait or isometric diamond. Preserve complete silhouette including chimney tips; enough blank margin. No vehicles, movable machinery, people, loading yards, roads, pallets, fences, vegetation, signs, smoke plume or cast ground shadow. Fully opaque solid #FF00FF outside the isolated buildings. No text, labels, atlas grid, alternative view or other assets. This static concept will be supplied as the factory reference for the later city composition.",
+      "referenceImages": [
+        ".gamearts/outputs/mockups/generated/modern_city_mockup.png",
+        ".gamearts/experiments/structures-first/structures/house.png"
+      ],
+      "tool": "image_gen.imagegen",
+      "originalOutput": "C:\\Users\\f_ald\\.codex\\generated_images\\01a17318-77d0-76e0-87aa-8ae94518ef18\\exec-172fefb9-3a08-428e-894e-b8fb48bcc7e6.png",
+      "transparentBackground": false
+    },
+    {
+      "id": "stadium",
+      "file": "structures/stadium.png",
+      "prompt": "STRUCTURES-FIRST CITY EXPERIMENT — building 6 of 6. ONE regional FOOTBALL STADIUM viewed from a HIGH NEAR-OVERHEAD orthographic CITY-MAP CAMERA. Broad rounded-rectangle footprint, white covered outer stands, dark-blue seating inside, a green football pitch with restrained clear white lines and two goals; low cream/blue outer walls with one main entrance on the south. Preserve the distinctive open central pitch and continuous white roof ring. Camera matches attached original city; detailed warm game pixel-art family matches attached house. Roof edges/pitch aligned to image axes, no perspective vanishing point or isometric diamond, no low-angle stadium portrait. Complete stadium only, no grounds, carparks, roads, lawns, trees, crowds, parked cars, detached lamps, people, signs, lettering or cast ground shadow. Fully opaque solid #FF00FF generous background outside the entire silhouette, no grid, labels, multiple views or other structures. This is the isolated architectural reference for a later complete city image; not a sprite sheet.",
+      "referenceImages": [
+        ".gamearts/outputs/mockups/generated/modern_city_mockup.png",
+        ".gamearts/experiments/structures-first/structures/house.png"
+      ],
+      "tool": "image_gen.imagegen",
+      "originalOutput": "C:\\Users\\f_ald\\.codex\\generated_images\\01a17318-77d0-76e0-87aa-8ae94518ef18\\exec-412c2d12-16d9-4a22-a1fc-f13fa0624a7b.png",
+      "transparentBackground": false
+    },
+    {
+      "id": "city",
+      "file": "city-from-structures.png",
+      "prompt": "STRUCTURES-FIRST CITY EXPERIMENT — FINAL CITY COMPOSITION. Create one complete cohesive city concept USING THE SIX BUILDING DESIGNS IN REFERENCE IMAGE 1, which were generated individually FIRST and then put into this reference-only board. Reading the board LEFT TO RIGHT, TOP ROW: compact cream villa with terracotta roof and asymmetric roof terrace; cream-frame blue-glass six-storey office with flat HVAC roof; L-shaped terracotta-roof school. BOTTOM ROW: grey ribbed-roof warehouse with four loading bays; five-bay sawtooth-roof factory with two red-white chimneys and east-side tanks; white-roof-ring football stadium with blue seating and open green pitch. Reuse these recognisable architectural identities and roof forms; do not invent a different set of buildings. Their reference-board CANVASES DO NOT INDICATE relative world scale. Remove ALL MAGENTA backgrounds; no magenta in the city. Reference IMAGE 2 is the old city used ONLY for district/road-layout guidance and warm desert-edge landscape. Replace its generic buildings with the six supplied building identities, preserving their recognisable architecture. Prioritise the supplied structures over copying the old city. Do not draw a catalogue or comparison board.\n\nComposition: wide landscape city overview, high near-overhead orthographic city-game camera with north at top, coherent camera for every building, no horizon, no isometric diamond, no perspective vanishing point, detailed restrained pixel-art look, warm daylight from upper left. Stadium in the northwest on a large coherent precinct with entrance plaza, parking and connected pedestrian approaches. Repeated small villas in deliberate street-fronted residential blocks across the west and south, about 35 homes, each much smaller than the stadium and factory. Four medium office buildings grouped around purposeful civic streets in the northeast; repeat the attached office identity at small city-map scale. Place the L-shaped school southwest of the central park, with a separate football field and basketball court and clear paths. A substantial central green park has independent green beds, trees, paths and two sport surfaces; tree crowns do not replace grass boundaries or cover roads. Southeast industrial district: one large attached-reference factory, with exactly two principal red-white chimneys, and the separate supplied warehouse southwest of it, connected loading yards and freight circulation. Existing district positions should remain recognisable from reference 7.\n\nKeep roads continuous, with connected intersections, sidewalks, crossings, curb edges and useful building entrances. Retain the main west-east boulevard above the park/industry, north-south distributors and curving southern/eastern bypass as a coherent design. Add deliberate small streetlights, a few vehicles and restrained vegetation at intentional sidewalk/park/precinct positions, not random filler. Housing, factory freight yards and public sports space remain distinct. Stadium and factory are the two dominant large structures; villas are small; school and warehouse intermediate. Every building sits on connected ground with space around it, no collisions or roofs merging with one another. Fill the entire canvas with the designed city and warm desert outskirts. NO pink/magenta backdrop, collage panels, floating isolated buildings, asset catalogue, atlas grid, text, legend, labels, UI, logos or border. Deliver one finished DRAFT city illustration as the result of this six-structures-first workflow. This is a visual concept experiment, not proof of engine geometry or exact pixel-copy assembly.",
+      "referenceImages": [
+        "H:/Source/Repos/fahadTheTechIdea/GameFrameWork/.gamearts/experiments/structures-first/reference-board/structures-reference-board.png",
+        "H:/Source/Repos/fahadTheTechIdea/GameFrameWork/.gamearts/outputs/mockups/generated/modern_city_mockup.png"
+      ],
+      "tool": "image_gen.imagegen",
+      "originalOutput": "C:\\Users\\f_ald\\.codex\\generated_images\\01a17318-77d0-76e0-87aa-8ae94518ef18\\exec-5a3fe131-c3be-4691-be04-a2a6a90873d0.png",
+      "transparentBackground": false
+    }
+  ]
+}

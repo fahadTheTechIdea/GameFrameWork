@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-10-25T17:52:42.819300+03:00",
+  "checks": {
+    "all_cells_unchanged": true,
+    "all_object_geometry_unchanged": true,
+    "roads_unchanged": true,
+    "site_features_unchanged": true,
+    "vegetation_unchanged": true,
+    "allocations_unchanged": true,
+    "source_unchanged": true,
+    "catalog_content_loaded": true
+  },
+  "buildings": 43,
+  "parkTrees": 44,
+  "roads": 32,
+  "allocations": 174,
+  "catalogContentDigests": {
+    "modern-city.layout": "b2108ef219904b4911427e6b45968814128a2e3d27af77c3c23b8a0593a40cd6"
+  }
+}

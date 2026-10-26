@@ -1,0 +1,9 @@
+{
+  "work_retry_profiles": [{
+    "id": "proof.retry",
+    "initial_delay": {"numerator": 2, "denominator": 1, "unit": "minute"},
+    "maximum_delay": {"numerator": 8, "denominator": 1, "unit": "minute"},
+    "multiplier": 2,
+    "retry_blockers": ["blocker.unreachable", "work.worker-unavailable", "haul.payment-wait", "haul.stock-wait", "haul.capacity-wait"]
+  }]
+}

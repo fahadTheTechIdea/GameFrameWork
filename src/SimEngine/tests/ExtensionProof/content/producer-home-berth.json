@@ -1,0 +1,45 @@
+{
+  "worker_roles": [{"id":"haul"}],
+  "work_policies": [{"id":"berth.haul","enabled":true,"priority":100,"allowed_roles":["haul"],"area":null,"interruptible":true,"emergency_eligible":false,"assignment_mode":"all","states":{"disabled":"survey.stopped","standby":"survey.stopped"}}],
+  "handling_profiles": [{"id":"berth.handling","resources":[{"resource":"steel","quantity":1,"loading":{"numerator":1,"denominator":2,"unit":"minute"},"unloading":{"numerator":1,"denominator":2,"unit":"minute"}}]}],
+  "spatial_layers": [{"id":"berth.channel","space":"survey.tiles","type":"route.channel","value_type":"int","visibility":"public","unit":"survey.count"}],
+  "tile_layer_band_conditions": [{"id":"berth.allowed","space":"survey.tiles","layer":"berth.channel","minimum":1,"maximum":2}],
+  "layered_tile_navigation": [{"id":"berth.route","space":"survey.tiles","base_cost":0,"rules":[{"id":"berth.pass","priority":1,"cost":10,"conditions":["berth.allowed"]}]}],
+  "transformations": [
+    {"id":"berth.worker","mode":"batch","cancel_policy":"return_inputs","inputs":{},"tools":{},"tool_consumption":{},"operating_inputs":[],"outputs":{},"input_ports":{},"output_ports":{},"tool_ports":{},"operating_ports":{},"duration":{"numerator":5,"denominator":1,"unit":"minute"},"entity_output":"berth.observer", "output_home": "producer"},
+    {"id":"berth.product","mode":"batch","cancel_policy":"return_inputs","inputs":{"steel":4},"tools":{},"tool_consumption":{},"operating_inputs":[],"outputs":{"steel":1},"input_ports":{"steel":"stock"},"output_ports":{"steel":"stock"},"tool_ports":{},"operating_ports":{},"duration":{"numerator":5,"denominator":1,"unit":"minute"},"entity_output":null}
+  ],
+  "entities": [
+    {"id":"berth.producer","kind":"structure","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"survey.storage","public":false,"initial_stock":{}},"inventory_port":[{"id":"stock"}],
+      "tile_work_dock":{"work_roles":[],"resources":["steel"],"slots":[{"id":"service","kind":"service","x":0,"y":1},{"id":"departure","kind":"departure","x":0,"y":2},{"id":"parking","kind":"parking","x":-1,"y":2,"work_role":"survey"}],"rollouts":[{"id":"workers","outputs":["berth.observer"],"starts":["service"],"exits":["departure"],"max_expanded":1024}]},
+      "transformer":{"transformations":["berth.worker","berth.product"],"automatic_supply":true,"wip_capacity":"survey.storage","operation":{"id":"production","enabled":true,"target":1,"minimum":1,"maximum":1,"unit":"unit.work-rate"},"states":{"working":"survey.working","stopped":"survey.stopped"}}
+    }},
+    {"id":"berth.source","kind":"structure","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"survey.storage","public":true,"initial_stock":{"steel":20}},"inventory_port":[{"id":"stock"}]
+    }},
+    {"id":"berth.observer","kind":"vehicle","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":true},
+      "mover":{"class":"berth.route","classes":["berth.route"],"speed":30,"states":{"moving":"survey.moving","stopped":"survey.stopped"}},
+      "worker":{"work_rate":1,"roles":["survey"],"states":{"working":"survey.working","loading":"survey.loading","stopped":"survey.stopped"}},"work_policy":{"profile":"survey.enabled"}
+    }},
+    {"id":"berth.carrier","kind":"vehicle","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":true},
+      "mover":{"class":"berth.route","classes":["berth.route"],"speed":30,"states":{"moving":"survey.moving","stopped":"survey.stopped"}},
+      "worker":{"work_rate":1,"roles":["haul"],"states":{"working":"survey.working","loading":"survey.loading","stopped":"survey.stopped"}},"work_policy":{"profile":"berth.haul"},
+      "storage":{"capacity_policy":"survey.storage","public":false,"initial_stock":{}},"transporter":{"handling":"berth.handling"}
+    }}
+  ],
+  "world_setup_profiles": [{"id":"berth.start","entries":["berth.channel.start","berth.parking.start","berth.producer.start","berth.source.start","berth.carrier.start"],"includes":[]}],
+  "tile_layer_setups": [
+    {"id":"berth.channel.start","after":[],"layer":"berth.channel","x":8,"y":5,"width":1,"height":3,"value":1,"owner":-1},
+    {"id":"berth.parking.start","after":[],"layer":"berth.channel","x":7,"y":6,"width":1,"height":1,"value":1,"owner":-1}
+  ],
+  "entity_setups": [
+    {"id":"berth.producer.start","after":["berth.channel.start","berth.parking.start"],"entity":"berth.producer","company":0,"placement":{"space":"survey.tiles","x":8,"y":4},"home":null},
+    {"id":"berth.source.start","after":["berth.producer.start"],"entity":"berth.source","company":0,"placement":{"space":"survey.tiles","x":8,"y":8},"home":null},
+    {"id":"berth.carrier.start","after":["berth.source.start"],"entity":"berth.carrier","company":0,"placement":{"space":"survey.tiles","x":8,"y":7},"home":"berth.source.start"}
+  ]
+}

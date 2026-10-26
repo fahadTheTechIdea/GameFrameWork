@@ -1,0 +1,12 @@
+{
+  "id": "resource_transactions",
+  "definitionVersion": "1.0.0",
+  "resourceIds": [
+    "food",
+    "medicine",
+    "parts"
+  ],
+  "maxContainers": 32,
+  "reservationPolicy": "explicit",
+  "overflowPolicy": "refuse"
+}

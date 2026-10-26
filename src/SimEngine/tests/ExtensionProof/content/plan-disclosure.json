@@ -1,0 +1,172 @@
+{
+  "entity_activities": [
+    {
+      "id": "plans.inspect.receiver",
+      "target": "space.receiver",
+      "player_orderable": true,
+      "priority": 70,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "inspect",
+          "executor": "work.staffed",
+          "roles": [
+            "haul"
+          ],
+          "duration": {
+            "numerator": 20,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ]
+    },
+    {
+      "id": "plans.inspect.smelter",
+      "target": "space.smelter",
+      "player_orderable": true,
+      "priority": 70,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "inspect",
+          "executor": "work.staffed",
+          "roles": [
+            "haul"
+          ],
+          "duration": {
+            "numerator": 20,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ]
+    }
+  ],
+  "activity_knowledge_visibility": [
+    {
+      "id": "plans.hide-activity",
+      "definition": "plans.inspect.receiver",
+      "mode": "all",
+      "facts": [
+        "disclose.tech"
+      ]
+    }
+  ],
+  "entity_knowledge_visibility": [
+    {
+      "id": "plans.hide-prototype",
+      "definition": "space.receiver",
+      "mode": "all",
+      "facts": [
+        "disclose.predicate"
+      ]
+    }
+  ],
+  "knowledge_visibility_policies": [
+    {
+      "id": "plans.disclosure-policy",
+      "own_entities": true,
+      "unlisted_entities": true,
+      "unlisted_content": true,
+      "rules": [
+        "disclose.hide-tech",
+        "disclose.hide-predicate",
+        "disclose.hide-objective",
+        "activity.disclosure-hide",
+        "plans.hide-activity",
+        "plans.hide-prototype"
+      ]
+    }
+  ],
+  "plan_templates": [
+    {
+      "id": "plans.disclosure.pair",
+      "space": "space.points",
+      "entries": [
+        {
+          "id": "receiver",
+          "definition": "activity:plans.inspect.receiver",
+          "arguments": {
+            "placement": {
+              "space": "space.points",
+              "offset": 60
+            }
+          },
+          "priority": 70,
+          "paused": true,
+          "after": []
+        },
+        {
+          "id": "smelter",
+          "definition": "activity:plans.inspect.smelter",
+          "arguments": {
+            "placement": {
+              "space": "space.points",
+              "offset": 12
+            }
+          },
+          "priority": 70,
+          "paused": true,
+          "after": [
+            "receiver"
+          ]
+        }
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "plan-disclosure",
+      "game_mode": "space.survival",
+      "mode_overrides": {},
+      "time": "space.seconds",
+      "space": "space.points",
+      "modules": [
+        "sim.world-setup",
+        "sim.transformations",
+        "sim.logistics",
+        "points",
+        "sim.technology",
+        "sim.objectives",
+        "proof.progression-declarations",
+        "sim.knowledge-visibility",
+        "proof.progression-disclosure",
+        "proof.activity-disclosure"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "space.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.objectives": {
+          "companies": [
+            {
+              "company": 0,
+              "objectives": [
+                "decl.external-earned",
+                "decl.native-earned",
+                "disclose.forward-earned"
+              ]
+            },
+            {
+              "company": 1,
+              "objectives": [
+                "decl.external-earned",
+                "decl.native-earned",
+                "disclose.forward-earned"
+              ]
+            }
+          ]
+        },
+        "sim.knowledge-visibility": {
+          "policy": "plans.disclosure-policy"
+        }
+      }
+    }
+  ]
+}

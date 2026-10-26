@@ -1,0 +1,7 @@
+{
+  "independent_recovery_destinations":[{"id":"contract.demand-only","mode":"demand_only"}],
+  "independent_recovery_profiles":[{"id":"contract.recovery",
+    "evacuation":{"enabled":false,"priority":0,"attempts_per_pass":2,"reroute_blockers":[],"destination_policy":"contract.demand-only"},
+    "cargo_return":{"enabled":true,"priority":100,"attempts_per_pass":2,"reroute_blockers":[],"destination_policy":"contract.demand-only"}
+  }]
+}

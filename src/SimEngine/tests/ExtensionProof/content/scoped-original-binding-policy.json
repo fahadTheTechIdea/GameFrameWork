@@ -1,0 +1,27 @@
+{
+  "logistics_recovery_profiles": [
+    {
+      "id": "binding.recovery",
+      "evacuation": {
+        "enabled": true,
+        "priority": 200,
+        "attempts_per_pass": 1,
+        "reroute_blockers": [
+          "haul.original-destination-binding-lost",
+          "core.not-found"
+        ],
+        "destination_policy": "scoped.demand-only"
+      },
+      "cargo_return": {
+        "enabled": true,
+        "priority": 200,
+        "attempts_per_pass": 1,
+        "reroute_blockers": [
+          "haul.original-destination-binding-lost",
+          "core.not-found"
+        ],
+        "destination_policy": "scoped.demand-only"
+      }
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "4X strategy layer proposed definition",
+  "description": "Standalone design contract; current ScenarioEngine loading support is not implemented.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "definitionVersion",
+    "factionIds",
+    "turnPolicy",
+    "researchIds",
+    "victoryIds"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+      "maxLength": 64
+    },
+    "definitionVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "factionIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+        "maxLength": 64
+      },
+      "description": "Stable owners and diplomacy participants."
+    },
+    "turnPolicy": {
+      "type": "string",
+      "enum": [
+        "sequential_factions",
+        "planned_resolution"
+      ],
+      "description": "Explicit conflict-resolution rules for the chosen mode."
+    },
+    "researchIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+        "maxLength": 64
+      },
+      "description": "Validated unlock/prerequisite graph."
+    },
+    "victoryIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+        "maxLength": 64
+      },
+      "description": "Authored closing conditions and tie resolution."
+    }
+  }
+}

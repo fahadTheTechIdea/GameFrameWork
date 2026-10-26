@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Institution and life-management layer proposed definition",
+  "description": "Standalone design contract; current ScenarioEngine loading support is not implemented.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "definitionVersion",
+    "facilityIds",
+    "scheduleIds",
+    "peopleCapacity",
+    "periodPolicy"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+      "maxLength": 64
+    },
+    "definitionVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "facilityIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+        "maxLength": 64
+      },
+      "description": "Registered capacity, service and native role definitions."
+    },
+    "scheduleIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+        "maxLength": 64
+      },
+      "description": "Calendar-bound activity definitions with explicit priorities."
+    },
+    "peopleCapacity": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 512,
+      "description": "Logical roster budget; native active population is separately qualified."
+    },
+    "periodPolicy": {
+      "type": "string",
+      "enum": [
+        "day",
+        "week",
+        "term"
+      ],
+      "description": "Declared summary/progression boundary."
+    }
+  }
+}

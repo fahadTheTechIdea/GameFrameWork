@@ -1,0 +1,4 @@
+Unhandled exception. System.Exception: Unknown field accepted
+   at WorldMetadataTests.RunAsync(String cli) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\WorldMetadataTests.cs:line 152
+   at Program.<Main>$(String[] args) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\Program.cs:line 9
+   at Program.<Main>(String[] args)

@@ -1,0 +1,117 @@
+{
+  "signal_conditions": [
+    {
+      "id": "strategy.risk",
+      "entity": "strategy.beacon",
+      "mode": "any",
+      "conditions": [
+        {
+          "id": "enabled",
+          "source": "risk-dial",
+          "signal": "strategy.enabled",
+          "expected": true,
+          "blocker": "controller.risk-disabled"
+        }
+      ]
+    },
+    {
+      "id": "strategy.reserve",
+      "entity": "strategy.beacon",
+      "mode": "all",
+      "conditions": [
+        {
+          "id": "reserve",
+          "source": "feed",
+          "signal": "strategy.stock",
+          "minimum": 8,
+          "maximum": 40,
+          "unit": "unit.supply",
+          "blocker": "controller.reserve"
+        }
+      ]
+    }
+  ],
+  "elapsed_conditions": [
+    {
+      "id": "strategy.wait",
+      "after": {
+        "numerator": 5,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    }
+  ],
+  "composite_conditions": [
+    {
+      "id": "policy.a.all",
+      "mode": "all",
+      "conditions": [
+        "strategy.reserve",
+        "policy.b.any"
+      ]
+    },
+    {
+      "id": "policy.b.any",
+      "mode": "any",
+      "conditions": [
+        "strategy.wait",
+        "strategy.risk"
+      ]
+    },
+    {
+      "id": "policy.z.strict",
+      "mode": "all",
+      "conditions": [
+        "strategy.wait",
+        "strategy.risk"
+      ]
+    }
+  ],
+  "condition_call_probes": [
+    {
+      "id": "probe.repeat",
+      "mode": "repeat",
+      "target": "policy.a.all"
+    },
+    {
+      "id": "probe.alias",
+      "mode": "alias",
+      "target": "policy.a.all"
+    },
+    {
+      "id": "probe.self",
+      "mode": "forward",
+      "target": "probe.self"
+    },
+    {
+      "id": "probe.alias-loop",
+      "mode": "alias",
+      "target": "probe.alias-loop"
+    },
+    {
+      "id": "probe.pair.a",
+      "mode": "forward",
+      "target": "probe.pair.b"
+    },
+    {
+      "id": "probe.pair.b",
+      "mode": "forward",
+      "target": "probe.pair.a"
+    },
+    {
+      "id": "probe.swallow",
+      "mode": "swallow",
+      "target": "probe.swallow"
+    },
+    {
+      "id": "probe.throw",
+      "mode": "throw",
+      "target": "strategy.risk"
+    },
+    {
+      "id": "probe.bad-code",
+      "mode": "bad-code",
+      "target": "strategy.risk"
+    }
+  ]
+}

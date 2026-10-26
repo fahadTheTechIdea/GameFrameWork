@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "timestamp": "2026-10-25T18:13:13.467547+03:00",
+  "status": "diagnostic-atlas-contains-owner-rejected-house; correction-in-progress",
+  "referenceApproval": "not_granted; no lifecycle/profile modifications",
+  "actualImageCalls": 5,
+  "selectedFrames": 3,
+  "imageSize": [
+    4091,
+    1170
+  ],
+  "image": ".gamearts/experiments/modern-city-atlas/diagnostic-built/modern-city-diagnostic.png",
+  "atlas": ".gamearts/experiments/modern-city-atlas/diagnostic-built/modern-city-diagnostic.atlas.json",
+  "scope": "Owner-requested experiment with generated artwork; not approved source crops or production assets. No city/world/Godot replacement.",
+  "checks": {
+    "strictBuild": {
+      "exitCode": 1,
+      "status": "failed",
+      "log": "docs/evidence/2026-10-25-modern-city-atlas-strict-build.txt",
+      "reason": "Generated background pixels are near #FF00FF rather than exact; first source is rejected."
+    },
+    "diagnosticBuild": {
+      "exitCode": 0,
+      "status": "passed under explicit diagnostic exception",
+      "log": "docs/evidence/2026-10-25-modern-city-atlas-diagnostic-build.txt",
+      "exception": "allow_near_key:true retains unmodified generator images for a rectangular-cell packing experiment only. This does not pass strict source masking."
+    },
+    "diagnosticValidation": {
+      "exitCode": 0,
+      "status": "passed under the same explicit exception",
+      "log": "docs/evidence/2026-10-25-modern-city-atlas-diagnostic-validation.txt"
+    },
+    "sourceRoundtrip": [
+      {
+        "frame": "house-shell",
+        "pixelsPreserved": true,
+        "sourceHashVerified": true,
+        "rect": [
+          0,
+          0,
+          1361,
+          1170
+        ],
+        "sourceOffset": [
+          4,
+          4
+        ]
+      },
+      {
+        "frame": "park-tree",
+        "pixelsPreserved": true,
+        "sourceHashVerified": true,
+        "rect": [
+          1365,
+          0,
+          1361,
+          1170
+        ],
+        "sourceOffset": [
+          4,
+          4
+        ]
+      },
+      {
+        "frame": "streetlight",
+        "pixelsPreserved": true,
+        "sourceHashVerified": true,
+        "rect": [
+          2730,
+          0,
+          1361,
+          1170
+        ],
+        "sourceOffset": [
+          4,
+          4
+        ]
+      }
+    ],
+    "sourcePixelCleanup": "not performed; original pixels preserved",
+    "gridRecovery": "canonical snap_to_pixel_grid refused: no consistent column grid; no output created"
+  },
+  "visualReview": {
+    "reviewer": "Codex author self-review; no owner acceptance",
+    "observations": [
+      "House attempt 1 was too front-facing; attempt 2 increased the roof proportion and is selected for the diagnostic atlas.",
+      "Tree and streetlight retain too much frontal presentation relative to the source city camera.",
+      "All three selected sources contain near-magenta background noise; measured exact-key ink bounds span the whole source. Trimmed packing would therefore be misleading.",
+      "Native pixel size and relative scale are not consistently controlled. Tree and streetlight are too large compared with the house if used unscaled.",
+      "The transparent house retry has partial opacity and visible halo; not selected.",
+      "Packing improves organisation and gives real frame rectangles and source hashes, but does not improve the artwork or resolve scene fidelity."
+    ],
+    "acceptance": "not approved",
+    "groundPivots": "not measured; atlas uses geometric canvas-bottom default, not gameplay placement data",
+    "pixelsPerMeter": null
+  },
+  "environment": {
+    "python": "3.14.4 (tags/v3.14.4:23116f9, Apr  7 2026, 14:10:54) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "Pillow": "12.2.0"
+  },
+  "baseRevision": "b4c789d5db1ce87ac1d9687986799253acf584fe",
+  "workingTree": "dirty; prior work preserved",
+  "canonicalGameArtsRevision": "17963c482d749b3644791346771ee40cea5464b0",
+  "canonicalTools": {
+    "build_sheet_atlas.py": "e051f8fe6af6c4394d9b782eea588a1f09c73506bdd42d46b3b20557fa0c9fa5",
+    "validate_sheet_atlas.py": "20150a864b0a7e4428c926d7a79656830454d13c0057ff94c8557e554f1ddd14",
+    "snap_to_pixel_grid.py": "fa610a6a692c6e0b349e4ccdc390527183e0d2f0c4acd10ae5bdfceb0803bab1",
+    "gamearts_common.py": "e053f6c9b2ddc908b64c69872cad29781cc236ee6f3716d3987954d4e16708de"
+  },
+  "remaining": [
+    "Exact key masks or an explicitly chosen approved alpha workflow.",
+    "Consistent overhead camera, native pixel grid and relative scale.",
+    "Owner-confirmed GameArts profile and explicit concept/master/asset approvals before production.",
+    "Ground pivots, component separation/cleanup, runtime export and Godot acceptance."
+  ],
+  "ownerFeedback": {
+    "timestamp": "2026-10-25T19:02:09.613478+03:00",
+    "file": "frames/house-attempt-02.png",
+    "message": "wrong",
+    "status": "rejected_by_owner",
+    "scope": "Generated house attempt 02 only; original city concept approval remains unchanged."
+  }
+}

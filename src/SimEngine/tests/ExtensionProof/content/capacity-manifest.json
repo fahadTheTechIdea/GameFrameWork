@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "modules": [
+    {"id":"sim.world-setup","version":"1.0.0","documents":[]},
+    { "id": "sim.access", "version": "1.0.0", "documents": ["framework/access.json"] },
+    { "id": "sim.inventory", "version": "1.0.0", "documents": [] },
+    { "id": "sim.motion", "version": "1.0.0", "documents": [] },
+    { "id": "sim.work", "version": "1.0.0", "requires": [
+      { "id": "sim.access", "version": "1.0.0" }, { "id": "sim.inventory", "version": "1.0.0" }, { "id": "sim.motion", "version": "1.0.0" }
+    ], "documents": ["work-retry.json"] },
+    { "id": "proof.resources", "version": "1.0.0", "requires": [{ "id": "sim.work", "version": "1.0.0" }],
+      "documents": ["units.json", "ore.json", "workflow.json"] },
+    { "id": "proof.capacity", "version": "1.0.0", "requires": [{ "id": "proof.resources", "version": "1.0.0" }],
+      "documents": ["capacity.json", "capacity-binding.json"] }
+  ]
+}

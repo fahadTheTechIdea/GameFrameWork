@@ -1,0 +1,21 @@
+{
+  "world_setup_profiles": [{"id":"endpoint.start","entries":["source.start","destination.start"],"includes":[]}],
+  "entity_setups": [
+    {
+      "id": "source.start",
+      "after": [],
+      "entity": "source",
+      "company": 0,
+      "placement": null,
+      "home": null
+    },
+    {
+      "id": "destination.start",
+      "after": [],
+      "entity": "destination",
+      "company": 0,
+      "placement": null,
+      "home": null
+    }
+  ]
+}

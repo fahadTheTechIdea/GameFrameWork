@@ -1,0 +1,9 @@
+{
+  "contact_exploration_requirements":[{"id":"exploration.contact"}],
+  "exploration_profiles": [
+    {"id":"contact.profile","states":{"sampling":"contact.sampling"},"entries":[
+      {"id":"a.reset","requirement":"exploration.contact","region":"contact.north","subject":"contact.north.known","duration":{"numerator":150,"denominator":1,"unit":"second"},"interruption":"reset"},
+      {"id":"b.retain","requirement":"exploration.contact","region":"contact.east","subject":"contact.east.known","duration":{"numerator":5,"denominator":1,"unit":"minute"},"interruption":"retain"}
+    ]}
+  ]
+}

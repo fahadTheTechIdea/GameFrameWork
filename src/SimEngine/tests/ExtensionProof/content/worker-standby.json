@@ -1,0 +1,16 @@
+{
+  "entity_states": [
+    { "id": "reserve.standby", "state": "state.standby", "priority": 10 }
+  ],
+  "point_interval_regions": [
+    { "id": "reserve.home", "space": "field.points", "minimum": 0, "maximum": 1 },
+    { "id": "reserve.all", "space": "field.points", "minimum": 0, "maximum": 30 }
+  ],
+  "work_policies": [
+    { "id": "reserve.machine", "enabled": true, "priority": 100,
+      "allowed_roles": ["haul", "inspect"], "area": null, "interruptible": true,
+      "emergency_eligible": true, "assignment_mode": "emergency_only",
+      "states": { "disabled": "blocked", "standby": "reserve.standby" }
+    }
+  ]
+}

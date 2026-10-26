@@ -1,0 +1,5 @@
+{
+  "fixed_activity_executors":[{"id":"proof.fixed","work":"sim.work.productive","access_blocker":"proof.fixed-access"}],
+  "activities":[{"id":"proof.fixed-service","player_orderable":true,"priority":60,"automatic_supply":false,
+    "nodes":[{"id":"service","executor":"proof.fixed","roles":["survey"],"duration":{"numerator":1,"denominator":1,"unit":"hour"},"requirement":"survey.inputs"}]}]
+}

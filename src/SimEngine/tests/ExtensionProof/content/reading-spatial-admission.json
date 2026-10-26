@@ -1,0 +1,10 @@
+{
+  "game_modes":[{"id":"reading.resource-only","name":"Spatial reading without economy","properties":{}}],
+  "time_definitions":[{"id":"reading.minute","quantum":{"numerator":60,"denominator":1,"unit":"second"},"frame_ticks":1,"ticks_per_second":30,"horizon":null}],
+  "units":[{"id":"reading.unit","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":false}],
+  "tile_spaces":[{"id":"reading.tiles","width":12,"height":8}],
+  "spatial_layers":[{"id":"reading.layer","space":"reading.tiles","type":"terrain","value_type":"fixed","visibility":"public","unit":"reading.unit"}],
+  "tile_readings":[{"id":"reading.unused","layer":"reading.layer","x":1,"y":2,"retention":"latest","fresh_for":null}],
+  "world_setup_profiles":[{"id":"reading.empty","entries":[],"includes":[]}],
+  "scenarios":[{"id":"reading-admission","game_mode":"reading.resource-only","mode_overrides":{},"time":"reading.minute","space":"reading.tiles","modules":["sim.world-setup","sim.knowledge","proof.reading-spatial-admission"],"seats":1,"default_seats":1,"settings":{"sim.world-setup":{"profile":"reading.empty"}}}]
+}

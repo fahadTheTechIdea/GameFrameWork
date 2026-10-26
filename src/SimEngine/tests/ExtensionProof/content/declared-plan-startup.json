@@ -1,0 +1,8 @@
+{
+  "world_setup_profiles":[{"id":"survey.start","entries":["declared.site","segment.first","segment.second"],"includes":[]}],
+  "entity_setups":[
+    {"id":"declared.site","after":[],"entity":"survey.site","company":0,"placement":{"space":"survey.tiles","x":16,"y":10},"home":null},
+    {"id":"segment.first","after":["declared.site"],"entity":"segment.machine","company":0,"placement":{"space":"survey.tiles","x":2,"y":10},"home":"declared.site"},
+    {"id":"segment.second","after":["declared.site"],"entity":"segment.machine","company":0,"placement":{"space":"survey.tiles","x":3,"y":12},"home":"declared.site"}
+  ]
+}

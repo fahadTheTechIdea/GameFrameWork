@@ -1,0 +1,29 @@
+{
+  "resource_pools": [
+    {"id":"recovery.original-book","identity":9100000001,"owner":0,"public":true,"evacuate":false,"capacity_policy":"fixture.count.8","resources":["steel"]},
+    {"id":"recovery.alternate-book","identity":9100000002,"owner":0,"public":true,"evacuate":false,"capacity_policy":"fixture.count.8","resources":["steel"]}
+  ],
+  "logistics_policies": [{"id":"recovery.nonrecipient","stock":{"steel":{"enabled":false,"minimum":0,"desired":0,"maximum":0,"priority":0,"reserve_access":"protected"}},"outlet":{"enabled":true,"reserve":{},"reserve_access":"protected","export_priority":0,"allowed_destinations":null},"states":{"disabled":"stopped"}}],
+  "activities": [
+    {"id":"recovery.endpoint-build","player_orderable":false,"automatic_supply":false,"nodes":[{"id":"install","executor":"work.staffed","roles":["crane"],"duration":{"numerator":6,"denominator":1,"unit":"minute"}}]},
+    {"id":"recovery.endpoint-remove","player_orderable":false,"automatic_supply":false,"nodes":[{"id":"remove","executor":"work.staffed","roles":["crane"],"duration":{"numerator":6,"denominator":1,"unit":"minute"}}]}
+  ],
+  "entities": [
+    {"id":"recovery.funding-sink","kind":"structure","components":{
+      "tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"fixture.count.40","public":false,"initial_stock":{}},
+      "tile_work_dock":{"work_roles":["haul"],"resources":["steel"],"slots":[{"id":"bay","kind":"service","x":0,"y":1},{"id":"wait","kind":"waiting","x":-1,"y":1},{"id":"exit","kind":"departure","x":1,"y":1}]}
+    }},
+    {"id":"recovery.destination-site","kind":"structure","components":{"tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":true,"movable":false},"storage":{"capacity_policy":"fixture.count.40","public":false,"initial_stock":{}},"site":{"target":"recovery.destination"}}},
+    {"id":"recovery.alternate","kind":"structure","components":{
+      "tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "pool_port":{"id":"alternate","pool":"recovery.alternate-book","alternatives":["recovery.original-book"],"endpoint_scope":"colony.pools","original_access":"retained"},
+      "logistics_policy":{"profiles":[{"port":"alternate","profile":"recovery.nonrecipient"}]},
+      "tile_work_dock":{"work_roles":["haul"],"resources":["steel"],"slots":[{"id":"bay","kind":"service","x":-1,"y":1},{"id":"wait","kind":"waiting","x":-2,"y":1},{"id":"exit","kind":"departure","x":0,"y":1}]}
+    }}
+  ],
+  "entity_setups": [
+    {"id":"recovery.alternate-start","after":["recovery.crane-start"],"entity":"recovery.alternate","company":0,"placement":{"space":"colony.tiles","x":32,"y":11},"home":null},
+    {"id":"recovery.funding-sink-start","after":["recovery.alternate-start"],"entity":"recovery.funding-sink","company":0,"placement":{"space":"colony.tiles","x":6,"y":11},"home":null}
+  ]
+}

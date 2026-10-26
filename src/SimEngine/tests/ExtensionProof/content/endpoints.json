@@ -1,0 +1,188 @@
+{
+  "game_modes": [
+    {
+      "id": "endpoints.resource-only",
+      "name": "Resource-only physical simulation",
+      "properties": {}
+    }
+  ],
+  "time_definitions": [
+    {
+      "id": "endpoint.minute",
+      "quantum": {
+        "numerator": 60,
+        "denominator": 1,
+        "unit": "second"
+      },
+      "frame_ticks": 1,
+      "ticks_per_second": 30,
+      "horizon": null
+    }
+  ],
+  "entity_states": [
+    {
+      "id": "idle",
+      "state": "endpoint.idle",
+      "priority": 0,
+      "default": true
+    }
+  ],
+  "units": [
+    {
+      "id": "unit.storage",
+      "dimension": "mass",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": false
+    },
+    {
+      "id": "unit.steel",
+      "dimension": "count",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    },
+    {
+      "id": "unit.water",
+      "dimension": "volume",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": false
+    }
+  ],
+  "resources": [
+    {
+      "id": "steel",
+      "unit": "unit.steel",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "unit.storage": 1
+      }
+    },
+    {
+      "id": "water",
+      "unit": "unit.water",
+      "category": "fluid",
+      "phase": "liquid",
+      "traits": [],
+      "capacity": {
+        "unit.storage": 1
+      }
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "endpoint.stock",
+      "limits": {
+        "unit.storage": 100
+      }
+    },
+    {
+      "id": "endpoint.pool",
+      "limits": {
+        "unit.storage": 10
+      }
+    }
+  ],
+  "resource_pools": [
+    {
+      "evacuate": false,
+      "id": "first",
+      "identity": 1,
+      "public": false,
+      "owner": 0,
+      "capacity_policy": "endpoint.pool",
+      "resources": [
+        "steel",
+        "water"
+      ]
+    },
+    {
+      "evacuate": false,
+      "id": "second",
+      "identity": 2,
+      "public": false,
+      "owner": 0,
+      "capacity_policy": "endpoint.pool",
+      "resources": [
+        "steel",
+        "water"
+      ]
+    },
+    {
+      "evacuate": false,
+      "id": "foreign",
+      "identity": 3,
+      "public": false,
+      "owner": 1,
+      "capacity_policy": "endpoint.pool",
+      "resources": [
+        "steel",
+        "water"
+      ]
+    },
+    {
+      "evacuate": false,
+      "id": "wide",
+      "identity": 5000000000,
+      "public": false,
+      "owner": 0,
+      "capacity_policy": "endpoint.pool",
+      "resources": [
+        "steel",
+        "water"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "id": "source",
+      "kind": "entity",
+      "components": {
+        "storage": {
+          "capacity_policy": "endpoint.stock",
+          "initial_stock": {
+            "steel": 30,
+            "water": 5
+          }
+        }
+      }
+    },
+    {
+      "id": "destination",
+      "kind": "entity",
+      "components": {
+        "storage": {
+          "capacity_policy": "endpoint.stock"
+        }
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "endpoints",
+      "game_mode": "endpoints.resource-only",
+      "mode_overrides": {},
+      "time": "endpoint.minute",
+      "modules": [
+        "proof.pools",
+        "sim.world-setup"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "endpoint.start"
+        }
+      }
+    }
+  ]
+}

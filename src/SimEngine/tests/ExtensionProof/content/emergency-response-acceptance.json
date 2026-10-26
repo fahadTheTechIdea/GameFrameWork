@@ -1,0 +1,250 @@
+{
+  "time_definitions": [{"id":"response.half-minute","quantum":{"numerator":30,"denominator":1,"unit":"second"},"frame_ticks":1,"ticks_per_second":30,"calendar":"test.calendar","horizon":null}],
+  "capacity_policies": [{"id":"response.store","limits":{"unit.capacity.count":100,"unit.capacity.volume":100}}],
+  "resources": [
+    {"id":"response.spare","unit":"unit.capacity.count","category":"material","phase":"solid","traits":[],"capacity":{"unit.capacity.count":1,"unit.capacity.volume":1}},
+    {"id":"response.kit","unit":"unit.capacity.count","category":"material","phase":"solid","traits":[],"capacity":{"unit.capacity.count":1,"unit.capacity.volume":1}},
+    {"id":"response.waste","unit":"unit.capacity.count","category":"material","phase":"solid","traits":[],"capacity":{"unit.capacity.count":1,"unit.capacity.volume":1}},
+    {"id":"response.product","unit":"unit.capacity.count","category":"material","phase":"solid","traits":[],"capacity":{"unit.capacity.count":1,"unit.capacity.volume":1}},
+    {"id":"response.suppressant","unit":"unit.water","category":"material","phase":"liquid","traits":[],"capacity":{"unit.capacity.count":1,"unit.capacity.volume":1}}
+  ],
+  "handling_profiles": [{"id":"response.handling","resources":[
+    {"resource":"response.spare","quantity":1,"loading":{"numerator":1,"denominator":1,"unit":"minute"},"unloading":{"numerator":1,"denominator":1,"unit":"minute"}},
+    {"resource":"response.suppressant","quantity":1,"loading":{"numerator":1,"denominator":1,"unit":"minute"},"unloading":{"numerator":1,"denominator":1,"unit":"minute"}},
+    {"resource":"response.kit","quantity":1,"loading":{"numerator":1,"denominator":1,"unit":"minute"},"unloading":{"numerator":1,"denominator":1,"unit":"minute"}}
+  ]}],
+  "signals": [{"id":"response.isolation-hold","kind":"boolean","metric":"incident.phase-hold","unit":"unit.boolean","providers":[{"component":"incident_signal","schema":1}]}],
+  "logistics_policies": [{"id":"response.service-fuel","stock":{},"outlet":{"enabled":true,"reserve":{"recovery.fuel":64},"reserve_access":"protected","export_priority":0,"allowed_destinations":null},"states":{"disabled":"stopped"}}],
+  "target_resource_requirements": [
+    {"id":"response.suppress","port":null,"use":"consume","quantities":{"response.suppressant":2}},
+    {"id":"response.spares","port":null,"use":"consume","quantities":{"response.spare":2}},
+    {"id":"response.tool","port":null,"use":"hold","quantities":{"steel":1}},
+    {"id":"response.cleanup","port":null,"use":"consume","quantities":{"response.waste":1}},
+    {"id":"response.readiness","port":null,"use":"hold","quantities":{"response.kit":1}}
+  ],
+  "worker_resource_requirements": [
+    {"id":"response.fuel-one","port":null,"use":"consume","quantities":{"recovery.fuel":1}},
+    {"id":"response.fuel-two","port":null,"use":"consume","quantities":{"recovery.fuel":2}}
+  ],
+  "work_requirement_groups": [
+    {"id":"response.stabilize-ready","mode":"all","entries":[{"id":"suppress","requirement":"response.suppress"},{"id":"fuel","requirement":"response.fuel-one"}]},
+    {"id":"response.repair-ready","mode":"all","entries":[{"id":"spares","requirement":"response.spares"},{"id":"tool","requirement":"response.tool"},{"id":"fuel","requirement":"response.fuel-two"}]},
+    {"id":"response.cleanup-ready","mode":"all","entries":[{"id":"waste","requirement":"response.cleanup"},{"id":"fuel","requirement":"response.fuel-one"}]},
+    {"id":"response.restart-ready","mode":"all","entries":[{"id":"kit","requirement":"response.readiness"},{"id":"fuel","requirement":"response.fuel-one"}]}
+  ],
+  "response_effects": [{"id":"response.finish","bound_response":true}],
+  "activities": [{"id":"response.workflow","player_orderable":false,"automatic_supply":false,"priority":200,"nodes":[
+    {"id":"detect","executor":"work.timed","duration":{"numerator":2,"denominator":1,"unit":"minute"}},
+    {"id":"isolate","executor":"work.staffed","roles":["crane"],"after":["detect"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"response.fuel-one"},
+    {"id":"stabilize","executor":"work.staffed","roles":["crane"],"after":["isolate"],"duration":{"numerator":4,"denominator":1,"unit":"minute"},"requirement":"response.stabilize-ready"},
+    {"id":"repair","executor":"work.staffed","roles":["crane"],"after":["stabilize"],"duration":{"numerator":12,"denominator":1,"unit":"minute"},"requirement":"response.repair-ready"},
+    {"id":"cleanup","executor":"work.staffed","roles":["haul"],"after":["stabilize"],"duration":{"numerator":20,"denominator":1,"unit":"minute"},"requirement":"response.cleanup-ready"},
+    {"id":"restart","executor":"work.staffed","roles":["crane"],"after":["repair","cleanup"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"response.restart-ready"}
+  ],"on_complete":"response.finish"}],
+  "incident_workflows": [{"id":"response.incident","kind":"response.failure","response":"response.workflow","phases":[{"id":"detection","nodes":["detect"]},{"id":"isolation","nodes":["isolate"]},{"id":"response","nodes":["stabilize","repair"]},{"id":"cleanup","nodes":["cleanup"]},{"id":"restart","nodes":["restart"]}]}],
+  "transformations": [{"id":"response.batch","mode":"batch","cancel_policy":"return_inputs","tool_consumption":{},"operating_ports":{},"tool_ports":{"steel":"tool.input"},"input_ports":{"steel":"material.input"},"output_ports":{"response.product":"material.output"},"operating_inputs":[],"tools":{"steel":1},"inputs":{"steel":2},"outputs":{"response.product":1},"duration":{"numerator":120,"denominator":1,"unit":"minute"}}],
+  "entities": [
+  {
+    "id": "response.station",
+    "kind": "structure",
+    "components": {
+      "tile_presence": {
+        "space": "colony.tiles",
+        "width": 1,
+        "height": 1,
+        "blocks": true,
+        "movable": false
+      },
+      "storage": {
+        "capacity_policy": "response.store",
+        "public": false,
+        "initial_stock": {
+          "steel": 10,
+          "response.waste": 1
+        }
+      },
+      "inventory_port": [
+        {
+          "id": "material.input"
+        },
+        {
+          "id": "material.output"
+        },
+        {
+          "id": "tool.input"
+        },
+        {
+          "id": "disposition.input"
+        }
+      ],
+      "incident": {
+        "id": "failure",
+        "workflow": "response.incident",
+        "states": {
+          "active": "stopped"
+        }
+      },
+      "incident_signal": {
+        "id": "safety",
+        "source": "failure",
+        "workflow": "response.incident",
+        "phase": "isolation"
+      },
+      "transformer": {
+        "automatic_supply": false,
+        "wip_capacity": "response.store",
+        "transformations": [
+          "response.batch"
+        ],
+        "states": {
+          "working": "working",
+          "stopped": "stopped"
+        },
+        "operation": {
+          "id": "process",
+          "enabled": true,
+          "target": 1,
+          "minimum": 1,
+          "maximum": 1,
+          "unit": "unit.work-rate"
+        }
+      },
+      "signal_transformation_gate": {
+        "id": "isolation",
+        "transformations": [
+          "response.batch"
+        ],
+        "conditions": [
+          {
+            "id": "safe",
+            "source": "safety",
+            "signal": "response.isolation-hold",
+            "expected": false,
+            "blocker": "response.isolated"
+          }
+        ]
+      },
+      "tile_work_dock": {
+        "work_roles": [
+          "crane",
+          "haul"
+        ],
+        "resources": [
+          "response.spare",
+          "response.suppressant",
+          "response.kit"
+        ],
+        "slots": [
+          {
+            "id": "crane-bay",
+            "kind": "service",
+            "x": -1,
+            "y": 1
+          },
+          {
+            "id": "road-bay",
+            "kind": "service",
+            "x": -1,
+            "y": -2
+          },
+          {
+            "id": "land-bay",
+            "kind": "service",
+            "x": 1,
+            "y": -1
+          },
+          {
+            "id": "wait",
+            "kind": "waiting",
+            "x": 2,
+            "y": 1
+          },
+          {
+            "id": "crane-exit",
+            "kind": "departure",
+            "x": -1,
+            "y": 2
+          },
+          {
+            "id": "road-exit",
+            "kind": "departure",
+            "x": 0,
+            "y": -2
+          },
+          {
+            "id": "land-exit",
+            "kind": "departure",
+            "x": 2,
+            "y": -1
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "response.depot",
+    "kind": "structure",
+    "components": {
+      "tile_presence": {
+        "space": "colony.tiles",
+        "width": 1,
+        "height": 1,
+        "blocks": true,
+        "movable": false
+      },
+      "storage": {
+        "capacity_policy": "response.store",
+        "public": false,
+        "initial_stock": {
+          "response.spare": 2,
+          "response.suppressant": 2,
+          "response.kit": 1
+        }
+      },
+      "tile_work_dock": {
+        "work_roles": [
+          "haul"
+        ],
+        "resources": [
+          "response.spare",
+          "response.suppressant",
+          "response.kit"
+        ],
+        "slots": [
+          {
+            "id": "bay",
+            "kind": "service",
+            "x": 1,
+            "y": 1
+          },
+          {
+            "id": "wait",
+            "kind": "waiting",
+            "x": 0,
+            "y": 2
+          },
+          {
+            "id": "road-exit",
+            "kind": "departure",
+            "x": 2,
+            "y": 1
+          },
+          {
+            "id": "land-exit",
+            "kind": "departure",
+            "x": 3,
+            "y": 2
+          }
+        ]
+      },
+      "inventory_port": {
+        "id": "disposition.input"
+      }
+    }
+  }
+],
+  "entity_setups": [
+    {"id":"response.station-start","after":["recovery.crane-start"],"entity":"response.station","company":0,"placement":{"space":"colony.tiles","x":24,"y":14},"home":null},
+    {"id":"response.depot-start","after":["response.station-start"],"entity":"response.depot","company":0,"placement":{"space":"colony.tiles","x":7,"y":11},"home":null}
+  ]
+}

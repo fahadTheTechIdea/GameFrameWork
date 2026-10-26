@@ -1,0 +1,44 @@
+{
+  "time_definitions": [
+    {
+      "id": "quick.time",
+      "quantum": { "numerator": 60, "denominator": 1, "unit": "second" },
+      "frame_ticks": 1,
+      "ticks_per_second": 30,
+      "calendar": null,
+      "horizon": null
+    }
+  ],
+  "entity_states": [
+    {
+      "id": "quick.idle",
+      "state": "state.quick.idle",
+      "priority": 0,
+      "default": true
+    }
+  ],
+  "entities": [
+    {
+      "id": "quick.marker",
+      "kind": "marker",
+      "components": {}
+    }
+  ],
+  "game_modes": [{ "id": "quick.resource-only", "name": "Resource-only simulation", "properties": {} }],
+  "scenarios": [
+    {
+      "id": "quick",
+      "name": "Quick setup",
+      "modules": [
+        "quick"
+      ],
+      "space": null,
+      "game_mode": "quick.resource-only",
+      "mode_overrides": {},
+      "settings": { "sim.world-setup": { "profile": "quick.start" } },
+      "seats": 1,
+      "default_seats": 1,
+      "time": "quick.time"
+    }
+  ]
+}

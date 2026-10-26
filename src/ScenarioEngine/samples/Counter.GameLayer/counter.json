@@ -1,0 +1,133 @@
+{
+  "manifest": {
+    "contentApiVersion": 1,
+    "packId": "examples.counter",
+    "packVersion": "1.0.0",
+    "gameLayerId": "test_counter",
+    "gameLayerVersion": "1.0.0",
+    "trustTier": "data_only",
+    "entryScenarioIds": [
+      "counter_demo"
+    ],
+    "dependencies": [],
+    "files": [
+      {
+        "path": "scenario.json",
+        "kind": "scenario"
+      },
+      {
+        "path": "zone.json",
+        "kind": "zone"
+      },
+      {
+        "path": "objective.json",
+        "kind": "objective"
+      },
+      {
+        "path": "ending.json",
+        "kind": "ending"
+      },
+      {
+        "path": "localization.json",
+        "kind": "localization"
+      }
+    ]
+  },
+  "documents": {
+    "scenario.json": {
+      "kind": "scenario",
+      "contentApiVersion": 1,
+      "id": "counter_demo",
+      "titleKey": "counter.title",
+      "startZoneId": "sandbox",
+      "zoneIds": [
+        "sandbox"
+      ],
+      "objectiveIds": [
+        "count_three"
+      ],
+      "endingIds": [
+        "goal_reached"
+      ],
+      "closingCondition": {
+        "fact": "test_counter.value",
+        "op": "gte",
+        "value": 3
+      },
+      "layerData": {
+        "initialValue": 0
+      }
+    },
+    "zone.json": {
+      "kind": "zone",
+      "contentApiVersion": 1,
+      "id": "sandbox",
+      "titleKey": "zone.title",
+      "sceneRole": "counter_zone",
+      "anchors": [
+        {
+          "id": "entry",
+          "positionMm": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "exits": []
+    },
+    "objective.json": {
+      "kind": "objective",
+      "contentApiVersion": 1,
+      "id": "count_three",
+      "titleKey": "objective.title",
+      "dependencies": [],
+      "activateWhen": {
+        "fact": "core.tick",
+        "op": "gte",
+        "value": 0
+      },
+      "completeWhen": {
+        "fact": "test_counter.value",
+        "op": "gte",
+        "value": 3
+      },
+      "failWhen": {
+        "fact": "test_counter.value",
+        "op": "lt",
+        "value": 0
+      },
+      "successEffects": [],
+      "failureEffects": []
+    },
+    "ending.json": {
+      "kind": "ending",
+      "contentApiVersion": 1,
+      "id": "goal_reached",
+      "titleKey": "ending.title",
+      "summaryKey": "ending.summary",
+      "priority": 100,
+      "condition": {
+        "fact": "test_counter.value",
+        "op": "gte",
+        "value": 3
+      },
+      "outcomeTags": [
+        "counted_three"
+      ]
+    },
+    "localization.json": {
+      "kind": "localization",
+      "contentApiVersion": 1,
+      "id": "english",
+      "locale": "en",
+      "entries": {
+        "counter.title": "Counter Demo",
+        "zone.title": "Sandbox",
+        "objective.title": "Count to three",
+        "ending.title": "Goal Reached",
+        "ending.summary": "The registered counter layer completed through the shared engine."
+      }
+    }
+  }
+}

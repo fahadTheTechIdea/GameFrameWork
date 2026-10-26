@@ -1,0 +1,10 @@
+{
+  "retention_subjects": [
+    {"id":"retention.base","requires":[],"value":{"kind":"foundation"}},
+    {"id":"retention.child","requires":["retention.base"],"value":{"kind":"dependent"}}
+  ],
+  "retention_observations": [
+    {"id":"retention.capture.base","subject":"retention.base"},
+    {"id":"retention.capture.child","subject":"retention.child"}
+  ]
+}

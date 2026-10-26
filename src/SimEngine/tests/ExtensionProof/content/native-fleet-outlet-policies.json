@@ -1,0 +1,154 @@
+{
+  "entities": [
+    {
+      "id": "fleet.trip-native",
+      "kind": "vehicle",
+      "components": {
+        "tile_presence": {
+          "space": "survey.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "mover": {
+          "classes": [
+            "survey.route",
+            "terrain.route"
+          ],
+          "class": "survey.route",
+          "speed": 30,
+          "states": {
+            "moving": "survey.moving",
+            "stopped": "survey.stopped"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "survey.working",
+            "loading": "survey.loading",
+            "stopped": "survey.stopped"
+          }
+        },
+        "work_policy": {
+          "profile": "fleet.enabled"
+        },
+        "storage": {
+          "capacity_policy": "fleet.trip-cargo",
+          "public": false,
+          "initial_stock": {
+            "fleet.fuel": 30
+          }
+        },
+        "transporter": {
+          "handling": "fleet.handling"
+        },
+        "haul_trip_policy": {
+          "profile": "fleet.trip-unrestricted"
+        },
+        "logistics_policy": {"profiles":[{"port":null,"profile":"fleet.trip-outlet"}]},
+        "operating_inputs": {
+          "id": "propulsion",
+          "phase": "movement",
+          "inputs": [
+            {
+              "resource": "fleet.fuel",
+              "quantity": 1,
+              "period": {
+                "numerator": 10,
+                "denominator": 1,
+                "unit": "minute"
+              }
+            }
+          ],
+          "states": {
+            "disabled": "survey.stopped"
+          }
+        }
+      }
+    }
+  ],
+  "haul_trip_profiles": [
+    {
+      "id": "fleet.trip-funded",
+      "enabled": true,
+      "preserve_outlet_reserve": true,
+      "service_sources": []
+    },
+    {
+      "id": "fleet.trip-unrestricted",
+      "enabled": true,
+      "preserve_outlet_reserve": false,
+      "service_sources": []
+    },
+    {
+      "id": "fleet.trip-veto",
+      "enabled": true,
+      "preserve_outlet_reserve": false,
+      "service_sources": []
+    }
+  ],
+  "resources": [
+    {
+      "id": "fleet.fuel",
+      "unit": "survey.count",
+      "category": "energy",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "survey.count": 1
+      }
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "fleet.trip-cargo",
+      "limits": {
+        "survey.count": 64
+      }
+    }
+  ],
+  "logistics_policies": [
+    {
+      "id": "fleet.trip-outlet",
+      "stock": {},
+      "outlet": {
+        "enabled": true,
+        "reserve": {
+          "fleet.fuel": 30,
+          "steel": 2
+        },
+        "reserve_access": "protected",
+        "export_priority": 100,
+        "allowed_destinations": null
+      },
+      "states": {
+        "disabled": "survey.stopped"
+      }
+    },
+    {
+      "id": "fleet.outlet-public",
+      "stock": {},
+      "outlet": {
+        "enabled": true,
+        "reserve": {
+          "fleet.fuel": 30,
+          "steel": 3
+        },
+        "reserve_access": "emergency_only",
+        "export_priority": 133,
+        "allowed_destinations": [
+          "survey.site",
+          "fleet.destination"
+        ]
+      },
+      "states": {
+        "disabled": "survey.stopped"
+      }
+    }
+  ]
+}

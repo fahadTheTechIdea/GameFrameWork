@@ -1,0 +1,5 @@
+{
+  "topology_capacity_policies": [
+    {"id":"topology.capacity.tile","limits":{"unit.storage":10},"fault":"none"}
+  ]
+}

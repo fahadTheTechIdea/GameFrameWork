@@ -1,0 +1,83 @@
+{
+  "resource_pools": [
+    {
+      "id": "physical.port.pool",
+      "identity": 703,
+      "owner": 0,
+      "public": true,
+      "evacuate": false,
+      "capacity_policy": "fixture.count.40",
+      "resources": [
+        "supply"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "id": "receiving.site",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 10
+        },
+        "receiving_only": {
+          "resource": "supply",
+          "capacity_policy": "fixture.count.40",
+          "public": true
+        }
+      }
+    },
+    {
+      "id": "unavailable.site",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 10
+        },
+        "physical_availability_probe": {
+          "id": "stock",
+          "pool": "physical.port.pool",
+          "mode": "unavailable"
+        }
+      }
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "receiving.site",
+      "after": [],
+      "entity": "receiving.site",
+      "company": 0,
+      "placement": {
+        "space": "field.points",
+        "position": 10
+      },
+      "home": null
+    },
+    {
+      "id": "unavailable.site",
+      "after": [],
+      "entity": "unavailable.site",
+      "company": 0,
+      "placement": {
+        "space": "field.points",
+        "position": 10
+      },
+      "home": null
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "physical.port.start",
+      "entries": [
+        "receiving.site",
+        "unavailable.site"
+      ],
+      "includes": [
+        "points.start"
+      ]
+    }
+  ]
+}

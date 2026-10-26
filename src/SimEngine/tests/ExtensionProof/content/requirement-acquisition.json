@@ -1,0 +1,32 @@
+{
+  "resources":[{"id":"acquisition.wrench","unit":"unit.supply","category":"tool","phase":"solid","traits":["tool"],"capacity":{"unit.supply":1}}],
+  "independent_worker_roles":[{"id":"acquisition.inspect"}],
+  "independent_staffed_executors":[{"id":"acquisition.staffed","travel":"sim.work.travel","work":"sim.work.productive","departure":"sim.work.departure"}],
+  "independent_worker_guards":[{"id":"acquisition.role","role":"acquisition.inspect","blocker":"work.acquisition-role"}],
+  "independent_target_resources":[
+    {"id":"acquisition.large-material","port":null,"use":"consume","quantities":{"supply":2}},
+    {"id":"acquisition.large-tool","port":null,"use":"hold","quantities":{"supply":2}},
+    {"id":"acquisition.small-material","port":null,"use":"consume","quantities":{"supply":1}},
+    {"id":"acquisition.small-tool","port":null,"use":"hold","quantities":{"supply":1}}
+  ],
+  "worker_resource_requirements":[{"id":"acquisition.worker-tool","port":null,"use":"hold","quantities":{"acquisition.wrench":1}}],
+  "independent_requirement_groups":[
+    {"id":"acquisition.large","mode":"all","entries":[{"id":"guard","requirement":"acquisition.role"},{"id":"material","requirement":"acquisition.large-material"},{"id":"target-tool","requirement":"acquisition.large-tool"},{"id":"worker-tool","requirement":"acquisition.worker-tool"}]},
+    {"id":"acquisition.small","mode":"all","entries":[{"id":"guard","requirement":"acquisition.role"},{"id":"material","requirement":"acquisition.small-material"},{"id":"target-tool","requirement":"acquisition.small-tool"},{"id":"worker-tool","requirement":"acquisition.worker-tool"}]},
+    {"id":"acquisition.choice","mode":"any","entries":[{"id":"a.preferred","requirement":"acquisition.large"},{"id":"z.feasible","requirement":"acquisition.small"}]}
+  ],
+  "activities":[
+    {"id":"acquisition.parallel","player_orderable":true,"automatic_supply":false,"nodes":[
+      {"id":"alpha","executor":"acquisition.staffed","roles":["inspect","acquisition.inspect"],"duration":{"numerator":12,"denominator":1,"unit":"minute"},"requirement":"acquisition.choice"},
+      {"id":"beta","executor":"acquisition.staffed","roles":["inspect","acquisition.inspect"],"duration":{"numerator":12,"denominator":1,"unit":"minute"},"requirement":"acquisition.choice"},
+      {"id":"join","after":["alpha","beta"],"executor":"work.timed","duration":{"numerator":2,"denominator":1,"unit":"minute"}}
+    ]},
+    {"id":"acquisition.single","player_orderable":true,"automatic_supply":false,"nodes":[{"id":"work","executor":"acquisition.staffed","roles":["inspect","acquisition.inspect"],"duration":{"numerator":4,"denominator":1,"unit":"minute"},"requirement":"acquisition.choice"}]}
+  ],
+  "entities":[
+    {"id":"acquisition.second","kind":"entity","components":{"point_presence":{"space":"field.points","position":6},"point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},"worker":{"work_rate":1,"roles":["inspect","haul","acquisition.inspect"],"states":{"working":"processing","loading":"transfer","stopped":"blocked"}},"storage":{"capacity_policy":"fixture.count.8","public":false,"initial_stock":{"acquisition.wrench":1}},"work_policy":{"profile":"shared.machine"}}},
+    {"id":"acquisition.third","kind":"entity","components":{"point_presence":{"space":"field.points","position":8},"point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},"worker":{"work_rate":1,"roles":["inspect","haul","acquisition.inspect"],"states":{"working":"processing","loading":"transfer","stopped":"blocked"}},"storage":{"capacity_policy":"fixture.count.8","public":false,"initial_stock":{"acquisition.wrench":1}},"work_policy":{"profile":"shared.machine"}}}
+  ],
+  "entity_setups":[{"id":"acquisition.second","after":[],"entity":"acquisition.second","company":0,"placement":{"space":"field.points","position":6},"home":null},{"id":"acquisition.third","after":[],"entity":"acquisition.third","company":0,"placement":{"space":"field.points","position":8},"home":null}],
+  "world_setup_profiles":[{"id":"acquisition.start","entries":["acquisition.second","acquisition.third"],"includes":[]}]
+}

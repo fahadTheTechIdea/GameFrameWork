@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Godot native runtime host proposed definition",
+  "description": "Standalone design contract; current ScenarioEngine loading support is not implemented.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "definitionVersion",
+    "dimension",
+    "sceneRoles",
+    "ruleStepMilliseconds",
+    "readinessPolicy"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+      "maxLength": 64
+    },
+    "definitionVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "dimension": {
+      "type": "string",
+      "enum": [
+        "2d",
+        "3d"
+      ],
+      "description": "Select matching native adapter variants without changing Core."
+    },
+    "sceneRoles": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+        "maxLength": 64
+      },
+      "description": "Approved PackedScene roles; data never supplies executable paths."
+    },
+    "ruleStepMilliseconds": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000,
+      "description": "Fixed-mode host configuration must match the time profile."
+    },
+    "readinessPolicy": {
+      "type": "string",
+      "enum": [
+        "bindings_and_navigation"
+      ],
+      "description": "Loaded resource alone is not a ready native world."
+    }
+  }
+}

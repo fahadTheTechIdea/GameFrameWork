@@ -1,0 +1,10 @@
+{
+  "snapshot_units": [
+    {"id":"unit.snapshot.quantity","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true},
+    {"id":"unit.snapshot.measure","dimension":"mass","scale":{"numerator":1,"denominator":1},"discrete":false}
+  ],
+  "resources": [
+    {"id":"snapshot.resource","unit":"unit.snapshot.quantity","category":"material","phase":"solid","traits":["snapshot.trait"],"capacity":{"unit.snapshot.measure":2}},
+    {"id":"snapshot.hidden","unit":"unit.snapshot.quantity","category":"material","phase":"solid","traits":[],"capacity":{"unit.snapshot.measure":1}}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-10-25T17:38:27.907982+03:00",
+  "recoveredFrom": ".gameframework/worlds/modern-city/capture-review/index.html",
+  "reviewFileSha256": "959bc74463fd04218732515a3eb13b1459d04c688e8e84fef57cd69635789395",
+  "restoredPath": "H:\\Source\\Repos\\fahadTheTechIdea\\GameFrameWork\\.gamearts\\outputs\\mockups\\generated\\modern_city_mockup.png",
+  "sha256": "49d037170001e1bc3158a74f8eb8e5182a6831920febfb9be31c8c5380be5b2a",
+  "width": 1536,
+  "height": 1024,
+  "byteCount": 4102877,
+  "method": "Extracted exact embedded PNG bytes; no image generation or editing",
+  "approval": "unchanged: not granted"
+}

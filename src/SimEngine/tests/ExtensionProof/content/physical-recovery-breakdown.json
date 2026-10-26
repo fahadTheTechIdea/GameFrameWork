@@ -1,0 +1,9 @@
+{
+  "units": [{"id":"unit.recovery-parts","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true}],
+  "resources": [{"id":"recovery.parts","category":"material","unit":"unit.recovery-parts","phase":"solid","traits":[],"capacity":{"unit.recovery-parts":1}}],
+  "signals": [{"id":"recovery.damage-active","kind":"boolean","metric":"incident.active","unit":"unit.boolean","providers":[{"component":"incident_signal","schema":1}]}],
+  "target_resource_requirements": [{"id":"recovery.repair-parts","port":null,"use":"consume","quantities":{"recovery.parts":1}}],
+  "response_effects": [{"id":"recovery.repair-finish","bound_response":true}],
+  "activities": [{"id":"recovery.repair","player_orderable":false,"automatic_supply":false,"priority":200,"nodes":[{"id":"repair","executor":"work.staffed","roles":["crane"],"duration":{"numerator":6,"denominator":1,"unit":"minute"},"requirement":"recovery.repair-parts"}],"on_complete":"recovery.repair-finish"}],
+  "incident_workflows": [{"id":"recovery.breakdown","kind":"recovery.breakdown","response":"recovery.repair","phases":[{"id":"repair","nodes":["repair"]}]}]
+}

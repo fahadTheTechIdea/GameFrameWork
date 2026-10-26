@@ -1,0 +1,32 @@
+{
+  "entities":[{"id":"state.site","kind":"structure","components":{
+    "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":false},
+    "storage":{"capacity_policy":"survey.storage","public":false,"initial_stock":{"steel":20}},
+    "tile_sensor":{"space":"survey.tiles","occlusion":[],"operation":{"id":"state.site-control","enabled":false,"target":1,"minimum":0,"maximum":32,"unit":"unit.tile-distance"},"conditions":[],"states":{"disabled":"survey.stopped"}}
+  }}],
+  "target_state_requirements":[
+    {"id":"state.site-ready","states":["survey.idle"],"blocker":"state.site-not-ready"},
+    {"id":"state.site-shutdown","states":["survey.stopped"],"blocker":"state.site-not-shutdown"}
+  ],
+  "worker_state_requirements":[
+    {"id":"state.machine-ready","states":["survey.working","survey.idle","survey.moving"],"blocker":"state.machine-not-ready"}
+  ],
+  "work_requirement_groups":[
+    {"id":"state.sample-ready","mode":"all","entries":[
+      {"id":"site","requirement":"state.site-ready"},
+      {"id":"materials","requirement":"survey.inputs"}
+    ]},
+    {"id":"state.either","mode":"any","entries":[
+      {"id":"a.ready","requirement":"state.site-ready"},
+      {"id":"b.shutdown","requirement":"state.site-shutdown"}
+    ]}
+  ],
+  "activities":[
+    {"id":"state.sample","priority":60,"player_orderable":true,"automatic_supply":false,"on_complete":"survey.observe",
+      "nodes":[{"executor":"work.staffed","id":"sample","roles":["survey"],"duration":{"numerator":1,"denominator":2,"unit":"hour"},"requirement":"state.sample-ready"}]},
+    {"id":"state.inspect","priority":10,"player_orderable":true,"automatic_supply":false,
+      "nodes":[{"executor":"work.staffed","id":"inspect","roles":["survey"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"state.either"}]},
+    {"id":"state.worker-inspect","priority":10,"player_orderable":true,"automatic_supply":false,
+      "nodes":[{"executor":"work.staffed","id":"inspect","roles":["survey"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"state.machine-ready"}]}
+  ]
+}

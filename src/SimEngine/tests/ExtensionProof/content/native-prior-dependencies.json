@@ -1,0 +1,22 @@
+{
+  "prior_activity_requirements":[
+    {"id":"dependency.dependent-ready","plan":"activity:dependency.dependent","scope":"target","blocker":"dependency.dependent-incomplete"},
+    {"id":"dependency.bootstrap-ready","plan":"activity:dependency.bootstrap","scope":"target","blocker":"dependency.bootstrap-incomplete"},
+    {"id":"dependency.optional-self-ready","plan":"activity:dependency.optional","scope":"target","blocker":"dependency.optional-incomplete"}
+  ],
+  "work_requirement_groups":[
+    {"id":"dependency.bootstrap-options","mode":"any","entries":[{"id":"loop","requirement":"dependency.dependent-ready"},{"id":"materials","requirement":"survey.inputs"}]},
+    {"id":"dependency.dependent-conditions","mode":"all","entries":[{"id":"native","requirement":"dependency.bootstrap-ready"},{"id":"public","requirement":"proof.bootstrap-ready"}]},
+    {"id":"dependency.optional-options","mode":"any","entries":[{"id":"self","requirement":"dependency.optional-self-ready"},{"id":"starter","requirement":"prior.target-ready"}]}
+  ],
+  "activities":[
+    {"id":"dependency.bootstrap","priority":60,"player_orderable":true,"automatic_supply":false,
+      "nodes":[{"executor":"work.staffed","id":"prepare","roles":["survey"],"duration":{"numerator":3,"denominator":10,"unit":"hour"},"requirement":"dependency.bootstrap-options"}]},
+    {"id":"dependency.dependent","priority":60,"player_orderable":true,"automatic_supply":false,
+      "nodes":[
+        {"executor":"work.staffed","id":"finish","after":["first"],"roles":["survey"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"proof.bootstrap-ready"},
+        {"executor":"work.staffed","id":"first","roles":["survey"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"dependency.dependent-conditions"}]},
+    {"id":"dependency.optional","priority":60,"player_orderable":true,"automatic_supply":false,
+      "nodes":[{"executor":"work.staffed","id":"inspect","roles":["survey"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"dependency.optional-options"}]}
+  ]
+}

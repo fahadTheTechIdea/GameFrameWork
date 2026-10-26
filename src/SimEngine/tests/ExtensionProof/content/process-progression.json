@@ -1,0 +1,30 @@
+{
+  "technology_completion_effects":[{"id":"process.qualify.complete"}],
+  "technology_transformation_unlocks":[{"id":"process.unlock.build","definition":"build"}],
+  "target_resource_requirements":[{"id":"process.research.inputs","port":null,"use":"consume","quantities":{"supply":2}}],
+  "technologies":[{
+    "id":"process.qualification","prerequisites":[],"unlocks":["process.unlock.build"],
+    "player_orderable":true,"priority":30,"automatic_supply":false,"on_complete":"process.qualify.complete",
+    "nodes":[
+      {"id":"prepare","executor":"work.timed","duration":{"numerator":2,"denominator":1,"unit":"minute"},"requirement":"process.research.inputs"},
+      {"id":"qualify","after":["prepare"],"executor":"work.timed","duration":{"numerator":4,"denominator":1,"unit":"minute"}}
+    ]
+  }],
+  "technology_objective_predicates":[{"id":"process.qualified","technology":"process.qualification"}],
+  "entity_objective_predicates":[{"id":"process.two-results","prototype":"token","minimum":2}],
+  "outcome_objective_effects":[{"id":"process.finish","outcome":"process.completed"}],
+  "objectives":[
+    {"id":"process.research","prerequisites":[],"predicate":"process.qualified","deadline":null,"on_complete":null,"on_failure":null},
+    {"id":"process.production","prerequisites":["process.research"],"predicate":"process.two-results","deadline":null,"on_complete":"process.finish","on_failure":null}
+  ],
+  "scenarios":[{
+    "id":"process-progression","game_mode":"process.resource-only","mode_overrides":{},
+    "time":"process.minute","modules":["sim.access","sim.inventory","sim.operations","sim.motion","sim.work","sim.transformations","sim.world-setup","sim.knowledge","sim.technology","sim.objectives","proof.process"],
+    "seats":2,"default_seats":2,
+    "settings":{
+      "sim.world-setup":{"profile":"process.start"},
+      "sim.work":{"retry":"proof.retry"},
+      "sim.objectives":{"companies":[{"company":0,"objectives":["process.research","process.production"]}]}
+    }
+  }]
+}

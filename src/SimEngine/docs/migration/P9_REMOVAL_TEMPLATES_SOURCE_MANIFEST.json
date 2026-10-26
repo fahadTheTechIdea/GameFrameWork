@@ -1,0 +1,468 @@
+{
+  "stage": "P9-A7",
+  "build": "beep-simengine-2.175.0",
+  "saveFormat": 95,
+  "workBoardSchema": 28,
+  "workSystemSchema": 30,
+  "workViewSchema": 55,
+  "constructionViewSchema": 4,
+  "scope": "Portable removal templates, typed actor-aware callbacks, selected placement serialization, actual target query and recurring membership precedence. Includes 81 mechanical build identity files, mostly compile only, and unchanged ownership references. Historical scoped checkpoint, not full working tree or regression proof.",
+  "files": [
+    {
+      "path": "src/Beep.SimEngine/Hosting/GameClock.cs",
+      "sha256": "339A39F516BF392C7AA6549ACE1AA05AF97ABA49B719FE5E7507323376056E31"
+    },
+    {
+      "path": "src/Beep.SimEngine/Kernel/EntityObservation.cs",
+      "sha256": "C39951B149F99FFD18904ADF7C3B32DB87332DADC392DA8986BE46CBEC411431"
+    },
+    {
+      "path": "src/Beep.SimEngine/Kernel/EntityPlacementTargets.cs",
+      "sha256": "D978D7ACD77749BAB0CCD5E2F1B4EBCBDC12E35BC7EF18C93384A75419B65E28"
+    },
+    {
+      "path": "src/Beep.SimEngine/Kernel/SaveGame.cs",
+      "sha256": "A5A23F9D60F7FA7F03C2397389DBE6CF4AB18102EB69CE875F962EA9A6573616"
+    },
+    {
+      "path": "src/Beep.SimEngine/Kernel/SpatialPlacement.cs",
+      "sha256": "E9AC4833C92BAD4862972498ED610934C876AE71747844C536EEC88BF6CE5563"
+    },
+    {
+      "path": "src/Beep.SimEngine/Kernel/World.cs",
+      "sha256": "434C4BAEB5E7BE6DC014653635568F030F1FACCB469B2B26B9463D97FEE383E0"
+    },
+    {
+      "path": "src/Beep.SimEngine/Map/TileMap.cs",
+      "sha256": "9B15CC88DB1803CE33431D54A232B7978244A90B92934408469080A757625CC4"
+    },
+    {
+      "path": "src/Beep.SimEngine/Standard/Construction.cs",
+      "sha256": "90DA0D36D969B319765E575356EDBFF7CDA2B1A1C398E793A896487F850C81F5"
+    },
+    {
+      "path": "src/Beep.SimEngine/Standard/ConstructionContracts.cs",
+      "sha256": "78D593AAD06766E7078174396A4F42D85414C0D14F14ABAFF4A9AECE954D596D"
+    },
+    {
+      "path": "src/Beep.SimEngine/Standard/ConstructionModule.cs",
+      "sha256": "F0160BDA6B257D4773AE7E5BECD92E03BACDF46E99582156B7EC77C3DBC73719"
+    },
+    {
+      "path": "src/Beep.SimEngine/Standard/InfrastructurePlans.cs",
+      "sha256": "3E56C56D6178243012EAFEDC6DD11869A12972B749B96DF86D37D78526531887"
+    },
+    {
+      "path": "src/Beep.SimEngine/Standard/PlanContracts.cs",
+      "sha256": "2F21C8A663DB79CDBB017098B2A3977B08D1D4CB3D52585AE1D7E02D7A634B5C"
+    },
+    {
+      "path": "src/Beep.SimEngine/Standard/PlanTemplates.cs",
+      "sha256": "8B4312397C8CB345FB25EE94337B06E3412899692CCC3D41FE26E50F877EFE69"
+    },
+    {
+      "path": "src/Beep.SimEngine/Standard/RecurringPlans.cs",
+      "sha256": "1A90E752D235C5B9FBCC74DE42D54037DCA65C834115B1F1668F95E7B3669951"
+    },
+    {
+      "path": "src/Beep.SimEngine/Standard/Work.cs",
+      "sha256": "DE3B33144D4F1597105A7C610D088692D4F6EAE8E06B39A02A8F97F3A88E2CA2"
+    },
+    {
+      "path": "src/Beep.SimEngine/Standard/WorkModule.cs",
+      "sha256": "0F7A7EC097CA06D6D4DE4180DDF2CDE3AB360964A32FC348E4054D364EA90B52"
+    },
+    {
+      "path": "src/Beep.SimEngine/Standard/WorkPlanTemplates.cs",
+      "sha256": "9D9AD288541B050B607D58D468DEC3A4B7AB3D292D144C2DD1D696E1BC98C36B"
+    },
+    {
+      "path": "src/Beep.SimEngine/Standard/WorkPlans.cs",
+      "sha256": "36E737744B11383EFC6E695452E376951CBD6A1E02AC0E7CD67FD151FC75968A"
+    },
+    {
+      "path": "src/Beep.SimEngine/Standard/WorkRecurringPlans.cs",
+      "sha256": "EAF25033283262E3468CFD09EDBBA00253389E195AD9559F182EF41D5484FC77"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/ActivityPlanTests.cs",
+      "sha256": "5454454DA657ED5A444DED9211054F365090B1078BDFB5520315156A76072144"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/AutomationTests.cs",
+      "sha256": "FACFD0C12E49AB0D36D0D0EFCBB5BAF665C002AD61CAD87A13B4BF39D99A8719"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/CompanyAlertTests.cs",
+      "sha256": "5C564D36AB583616CA1DEB8B33C5CA67A3BDA140BD53D126565951BF3DDA13C3"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/CompanyWorkerReserveTests.cs",
+      "sha256": "0F01D8CF1BE193374D950F2387DADC9D9C4565EEE20C1CBA3EE473EB0168BE52"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/ConditionWearTests.cs",
+      "sha256": "CA49B60F61BB1B733496B056C9CEF61A337ACC4947E982D7BFA3D57832C6C817"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/ConstructionPlanTests.cs",
+      "sha256": "D9F19C4654EB352B8190C0FE3EF09C17C5214A1A79B0DED5A413D9303405F8AC"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/ContentLifecycleTests.cs",
+      "sha256": "353C546980710F839716513E42CF2C92F4D4AFC2D81CB613C5FA0AEC21A81A9B"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/ContinuousTransformationTests.cs",
+      "sha256": "9770196A25C17DF6388A1780497C8094ABE7D6F1639539EC0A56CC359816E200"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/DispatchAgingTests.cs",
+      "sha256": "23999D9A2BBA0B2E67C29F8F031AC53A2E3CC86F3E50F69D9EDC71B705ED0879"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/DistinctDispatchTests.cs",
+      "sha256": "8D9FC00716037808508E20BF756996BA4FF80BC320DB4B3F33665E03FF409D9D"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/DistinctWorkerReserveTests.cs",
+      "sha256": "C0085F0A9A18FE2F79DB3F7A866D26A9D78DCC19B939DE8B0563C5E22883E7DE"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/DockGeometryClaimTests.cs",
+      "sha256": "071FB7A96978F8EE18491EA144895A9B35CA1122079C0558E9B9712E71DD33BD"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/DockOperatingAreaTests.cs",
+      "sha256": "53A5FCBFB24412DFEC2CDE2E972CB28256B2D426A26DDB51D54F4FC285459937"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/DockReplanningTests.cs",
+      "sha256": "8750B28A7E77E5A151A8ECF222BCD1F44F9339DE8E0C5441F9F2E060B4052B87"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/EditableFacilityPolicyTests.cs",
+      "sha256": "7A4E116768BC29C00BB3186757DA0A075B6EEAED4347D0C674D93947F03B4022"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/EmergencyMaterialReserveTests.cs",
+      "sha256": "AA4BAEA7DA59374858EEB7F78ED53D27BC8E4347227FFE555A4C279F74B270FE"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/EmergencyPreemptionTests.cs",
+      "sha256": "1D9A94F7613CC61697C50749B0CA8428D5B4AF404DD1A1182F41CCA6F0BFD8BF"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/EntityBoundaryTests.cs",
+      "sha256": "7BA4CE0A95F726467274C4AF2F707B1AD90FA2B89D23E4ED987B6687B6AB4DD4"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/EntityConversionTests.cs",
+      "sha256": "3CB076DAADC94D4EB5745BD71D33BD3F196A51E3633340D71534C1F708C62C85"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/EnvironmentAccountingTests.cs",
+      "sha256": "2FBEB13BBE538A3686E244068C6CB580EB3E0EA4D32EF723F330ED1F6E12F194"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/EquipmentConditionTests.cs",
+      "sha256": "5F13486DDDD16BAE4CCB42DBA1CE3A3B5973059B784DC03002668902291EEB62"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/FacilitySelectionTests.cs",
+      "sha256": "31917F6143996D175F5CA3120D32765729823F8CAED9997A50F8BAB4715452FA"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/HaulDockTests.cs",
+      "sha256": "2B9367CF7A9FB9BD4DC48A9CAF2180BC21AEB222A71F336F13B1BCAD37CC1597"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/HaulLoadPolicyTests.cs",
+      "sha256": "7257409044F1F7073D897C93F3D5EE4B0EAD18788DFD821CF26D4A109A54C03F"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/HaulRetryTests.cs",
+      "sha256": "72269F6321845CB8594B9AC5B36C9D1AB54CFED60D6AE02D1BC5A5FE22A87046"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/HomeServiceTests.cs",
+      "sha256": "D4F0EBBF8E3CC298875CE388E8DAA59B91DD098BD05B27FC9B6971F0082F62B0"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/IncidentIsolationTests.cs",
+      "sha256": "183490C9EDB4210396E04227D64D7560C420F47FC42529C4710E8A7E776B0C34"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/IncidentPhaseTests.cs",
+      "sha256": "FBBD6141D6FA6A23F7C653C5EAC5511F05623113C7638E2F176594027CD42070"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/IncidentPreparednessTests.cs",
+      "sha256": "2FEFEF7C4B2579E616EBDF20E6DD11EE76B284F97A76742C3A1FD9FD389111B5"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/IncidentPropagationTests.cs",
+      "sha256": "12F9B789C68E5AB342C2C75A68642963F934570F12893A4D815E62FF1048FB00"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/InventorySignalTests.cs",
+      "sha256": "6EE530D877CC4EBD0982748E25BB1F218EB7F27AB63208B3F9E569C287491931"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/ItineraryAdmissionTests.cs",
+      "sha256": "4C8421AD21B99942C59402AD8008A36A109B375DA11E7885E89B27C72A9E84C5"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/KnowledgeVisibilityTests.cs",
+      "sha256": "8EF8C4B3D83F2A5066A85C6BED7FE2AD3F411322E95D4EABAAE83994E10C0D74"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/LineSegmentTests.cs",
+      "sha256": "0F4B2CFDA283B8C93F21AD44CDA05F7D075010FA73D0248678B8539754CAE53C"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/MotionArrivalTests.cs",
+      "sha256": "AEB4168A56157E9DCE5797075EEB9A43AB80B3E63FF295C1EDEC227014EFD6B0"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/MotionCheckpointTests.cs",
+      "sha256": "AF3126C604C00212A7F8208F939191E7D51BA924BEA28BB1774F58B0338D752C"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/MotionExecutionTests.cs",
+      "sha256": "EA9695C956D400347B172722A2A98571D65DB1F581F3B00272803A12F57E76EA"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/NetworkArbitrationTests.cs",
+      "sha256": "62E0DD26A6FFED7654F35E117BC819AD88029E9DDD2CE871C7B0C2B2FA0BAA91"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/NetworkIsolationTests.cs",
+      "sha256": "624939977FCBA23384446EA67920841A8F0FBFBABAC771A024B6ACFA9D4CF553"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/NetworkRateTests.cs",
+      "sha256": "0B8963EAB5D16AE7F1B0F729158285F8BFAD0FF6809C513F8B0DBF4B7CB81124"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/NetworkSolverTests.cs",
+      "sha256": "CD1197A81A96485B8986F0848284A6D3E03CEB5FC81E80FC47C2852E2198E542"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/ObjectiveTests.cs",
+      "sha256": "6C30D2ADCF8AF432DE51FF12B0D03F447D00C616972A62BA5286B7E7E1F6DE67"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/OperatingInputsTests.cs",
+      "sha256": "9967E14FB630D12CBE6870BFEC4414629BA1E869E161CE750EB64C5C2C71CB5E"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/OperationPolicyTests.cs",
+      "sha256": "B94C6651D9536DC361A16F6C2EEC8C2CE6834D50402A2A2F3AA47C2BC61F71D9"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/PartialReceiptTests.cs",
+      "sha256": "E0BB98D698D6745EFB81BE1000E70EF3526B747165553B20A840362C7D02851C"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/PlanGroupTests.cs",
+      "sha256": "966F61CAC3D4AEEDB124F252DA663DF86553A2D9891C141C790DFEACF00E275A"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/PlanTemplateTests.cs",
+      "sha256": "979B27EC23698A321903BEFFA9AE735B7706B2784001F273BFC9C94C2ABDEECE"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/PlayerControllerTests.cs",
+      "sha256": "7A224233E0408655CDF689864FEA442B94833CC29C9AE7339ED6E72E47FC157C"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/PointRecoveryTests.cs",
+      "sha256": "9A953033C74B18D2BFC07D3B4692EB2F1AE04648CB43320908A5745BD9D03DBE"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/RecurringPlanTests.cs",
+      "sha256": "54965C4DF905F02EF1B3270F9B19C8DA946803E47608DCAB380EBE9A53276451"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/RecurringTemplateTests.cs",
+      "sha256": "2C3CFB0FE8A499874CCAE7F7F9BBD66640D0A276BF40558E8C6BAC0497B27E62"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/RemovalTemplateTests.cs",
+      "sha256": "02C5F6131BCC866F378B373CDD06339D5DB48CDEEC695CBB76AA2D02A5839F60"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/ReserveReplenishmentTests.cs",
+      "sha256": "398D672BF616A1761BE00455155DBBE1F6A5BEC88F01A79977427855835FEBAF"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/ReservedSelfServiceTests.cs",
+      "sha256": "E0638B3A77D2783FAF174E444531AFF56C0BD8D9E766F4D8CA6FA0DFB1DC596D"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/ResourceConversionTests.cs",
+      "sha256": "ECFD48737735B6DE636357891107835269D80657FE9CFF4C3E942DA70853A951"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/ResourceTransferBatchTests.cs",
+      "sha256": "802DB1FF774F9936047474758FCA18BBFE52BABE644BDCC68C57223B21CB6288"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/RouteOperatingAreaTests.cs",
+      "sha256": "8274F90519F099421A90A94CEEA71E8C7CABC4B934A08A2518D0AC6F1147C310"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/SelectedWorkerTests.cs",
+      "sha256": "FFF9226A565DBF64EB631754127BEC85E91AE0F4CA508F9E98895705E55FAED2"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/ServiceDockTests.cs",
+      "sha256": "BBF314A6AC6FFE062C204ACAD81561FB6F66EC24B0A1FC2B623A0AA85F30F802"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/SharedDockQueueTests.cs",
+      "sha256": "DFD954A968FB728864B3F830A4F2BE4C08AFC2BE1294BE97DECFCF7080AA8E91"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/SharedMachineDispatchTests.cs",
+      "sha256": "9FDC083DB6929845FFFE3DCCC386A849D0363E6F7661FAE42AFF034556C0F749"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/SpatialExtractionTests.cs",
+      "sha256": "8DE99644FC3203B7651A43EC4109D9E495EC7EAD96521F0E00A355188A35A7AC"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/SpatialLayerTests.cs",
+      "sha256": "EDBC2C1BD8262A12242416C4AD23D8F8CE97BE0BA673B7E158E7098715E77C2E"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/SpatialResourceDepletionTests.cs",
+      "sha256": "E2CCB72B5E7B78D5904CD30D7AD47C04CA06B76033E583158BEA851485B052EE"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/SpatialResourceValueTests.cs",
+      "sha256": "4D25335BF8DC55E08E4918A46416548707B6B81ED1E4827EEC0D93F76B5BE51D"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/TechnologyTests.cs",
+      "sha256": "D8F2A5700476A905D7C7A0B8EF5938A41B20B4DB9D43DE3C02E2C70E34751B99"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/TileServiceDockTests.cs",
+      "sha256": "D4EC584FD2D5C089525AC9A73B95526422851C503C77A19F9D9D968F16CAD1D7"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/TimedHandlingTests.cs",
+      "sha256": "096433E6F50845691B26665E09AA2F1F2CE7A951A55079D5438E9D2AE49F8F08"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/TransformationGateTests.cs",
+      "sha256": "DAA9EF0726EE45FAB9082F161288ECD52BB6FD90751E8F10FFFBCA2A2B15DE67"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/TransformationRunningTests.cs",
+      "sha256": "261D90FF0A12C4DC4D4002EE834B24222D87E5AEFE8FDE34535AC8881DB145BE"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/TransformationSupplyTests.cs",
+      "sha256": "0A68F1C94F52CF88002ECBE88E661F9068C68814FD932EECC803BFE72F2FB56B"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/TransformerTests.cs",
+      "sha256": "63F611F9A5D1991B7FF60C6E0A74503F7C07EF8F21753ED59929FD6591C9F01A"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/TransformerToolTests.cs",
+      "sha256": "0F2B359C2F306386514F87D825B3D0DE7D3B7E7194A8284307F8BAD57A09F91D"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/TransformerWipTests.cs",
+      "sha256": "2E4AF632D83C808ABAA3AFF8FB980CF7F229E47DA1F84B4F937171E94BFCDDD2"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/TransporterReserveTests.cs",
+      "sha256": "C91F60F6309414F06E2827B31D1B59EEA0F6706548500C33B5118ABA3DB28313"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/UtilityWorkTests.cs",
+      "sha256": "D0E99587F25BCE6294D3FA6FE8354EFAC115F817A5D10B123A4B484A58843583"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/WorkLoadSignalTests.cs",
+      "sha256": "2FA75F3A91F9F5830211FDA057D1605F3725A7D7909C7B68BDC175CF6071115F"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/WorkerCapacityTests.cs",
+      "sha256": "CBA1F342FF66E1D048C0E56C0F3C01ABBCBF19D487BFCB7EDBB25728DE84FDF2"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/WorkerExecutionTests.cs",
+      "sha256": "F34754DA0ABEFBA17875BF8125EC4CAEBA05548CE31B448428ED142713CF8DBE"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/WorkerHomeTests.cs",
+      "sha256": "143DB9B8BF477E61D65B6C966A637AB2053B091472CBC6AAAF47BFD34C3ED214"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/WorkerServiceTests.cs",
+      "sha256": "A961586B10235C750789E4EE9AC277028CB930BEB011DC97F92DD30B6341B452"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/WorkerSpecificationTests.cs",
+      "sha256": "BA0BC511219F2CFB8E529E8AD3969EBE049B2F9D8F9A62F69348DC64D49C9B8D"
+    },
+    {
+      "path": "tests/Beep.SimEngine.Tests/WorkerStandbyTests.cs",
+      "sha256": "EB5407A6681D01A6CA8568DD90A2244AC7A152C5FAF78C0FE308179972BAA69C"
+    },
+    {
+      "path": "tests/ExtensionProof/ColonyGame.cs",
+      "sha256": "37CC7203E8E18BD95669284FFF3AE3D353FF474717C516F87FDA0B88A7A5E2DB"
+    },
+    {
+      "path": "tests/ExtensionProof/ExtensionProof.csproj",
+      "sha256": "87CB3CB62D489D964443D5CB59A0A6180CC32C1974D46F4DC845290F2430AC68"
+    },
+    {
+      "path": "tests/ExtensionProof/PlanProof.cs",
+      "sha256": "069B5D8711FECC7C2ECE03F81FD30D8394A78B4D59848FE8EBACFC096783D720"
+    },
+    {
+      "path": "tests/ExtensionProof/PointSpaceProof.cs",
+      "sha256": "AED9D601D1B6CEEF5C703F6486BC8D73BC2400382D28D45923D19653F4639A30"
+    },
+    {
+      "path": "tests/ExtensionProof/content/point-construction.json",
+      "sha256": "9BD0C43C291783548400DB6B014A1E5A654490AC01870B7C5850FBF40E0E9BC6"
+    },
+    {
+      "path": "tests/ExtensionProof/content/recurring-templates.json",
+      "sha256": "FB533312E6AB9D8C51AACC064137239461B7F9478C9445A7D92AA2F1E6269946"
+    },
+    {
+      "path": "tests/ExtensionProof/content/removal-recurring-templates.json",
+      "sha256": "68CCD73FF8FC196DD7A7FAB45BC49E398D1E6C507269DD0BC2E404BB84CD8AC4"
+    },
+    {
+      "path": "tests/ExtensionProof/content/removal-templates.json",
+      "sha256": "01D96C35366D645C05D3751DE926B4554EC9087FDBC7C2C1D56EB6AA5139B200"
+    },
+    {
+      "path": "tests/ExtensionProof/content/removal-workflows.json",
+      "sha256": "491CF17EF0B8E0C0B0BD35266EFFCE4009259E6E938DE09D966EB43F00BF337C"
+    }
+  ],
+  "docsPaths": [
+    "AGENTS.md",
+    "README.md",
+    "help/index.html",
+    "plans/enhancements/MASTER_TRACKER.md",
+    "plans/enhancements/P9_PLANS_POLICIES_LOGISTICS_DESIGN.md",
+    "plans/enhancements/P9_REMOVAL_TEMPLATES_DESIGN.md",
+    "plans/enhancements/P12_INCIDENTS_ENVIRONMENT_DESIGN.md",
+    "plans/enhancements/P9_REMOVAL_PLANS_DESIGN.md",
+    "docs/migration/P9_REMOVAL_PLANS_VERIFICATION.md",
+    "docs/migration/P9_REMOVAL_TEMPLATES_VERIFICATION.md"
+  ]
+}

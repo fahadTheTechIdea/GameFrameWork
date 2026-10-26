@@ -1,0 +1,44 @@
+{
+  "point_readings": [
+    {
+      "id": "reading.point", "layer": "point.terrain", "position": 0,
+      "retention": "latest", "fresh_for": { "numerator": 150, "denominator": 1, "unit": "second" }
+    }
+  ],
+  "knowledge_visibility_policies": [
+    {
+      "id": "reading.point-sight", "own_entities": true,
+      "unlisted_entities": false, "unlisted_content": true, "rules": ["reading.point-fresh"]
+    },
+    {
+      "id": "reading.point-region-sight", "own_entities": true,
+      "unlisted_entities": false, "unlisted_content": true, "rules": ["reading.point-region"]
+    }
+  ],
+  "layer_fresh_knowledge_visibility": [
+    { "id": "reading.point-fresh", "definition": "point.terrain", "readings": ["reading.point"] }
+  ],
+  "point_interval_regions": [
+    { "id": "reading.point-exact", "space": "field.points", "minimum": 0, "maximum": 0 }
+  ],
+  "layer_region_knowledge_visibility": [
+    {
+      "id": "reading.point-region", "definition": "point.terrain",
+      "regions": [ { "region": "reading.point-exact", "mode": "all", "facts": ["reading.point"] } ]
+    }
+  ],
+  "knowledge_sharing_policies": [
+    {
+      "id": "reading.point-share",
+      "subjects": [ { "provider": "sim.knowledge.facts", "subject": "reading.point" } ],
+      "directions": [ { "sender": 0, "recipient": 1 } ]
+    }
+  ],
+  "knowledge_forgetting_policies": [
+    {
+      "id": "reading.point-forget",
+      "subjects": [ { "provider": "sim.knowledge.facts", "subject": "reading.point" } ],
+      "companies": [0]
+    }
+  ]
+}

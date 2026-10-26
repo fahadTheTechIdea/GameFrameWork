@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "experiment": "modern-city-atlas",
+  "status": "draft-not-approved",
+  "authorization": "Owner: Proceed try with atlas maybe we get better results. Built-in image generator selected in the preceding conversation.",
+  "tool": "image_gen.imagegen",
+  "receiptScope": "Observed calls and returned local outputs, not cryptographic provider-attention proof",
+  "mockupApproval": "not_granted",
+  "projectProfile": "not configured; no owner-confirmed profile invented",
+  "plan": "Three assets plus targeted house retries; actual calls: five. Canonical plan card proposed a production mockup plus three pictures; owner requested a provisional experiment using existing concept instead.",
+  "records": [
+    {
+      "output": "frames/house-attempt-01.png",
+      "prompt": "Create ONE isolated static small detached HOUSE SHELL sprite for a provisional city-game atlas trial. The attached full-city image is the visual reference, not an edit target: use the cream stucco, terracotta roof, warm desert-city palette and elevated near-overhead orthographic camera of the small houses in its lower-left neighborhoods. Recreate a SINGLE modest rectangular two-storey dwelling, roof ridge horizontal across the image, narrow south-facing wall visible, crisp intentionally pixelled game-art clusters, daylight from upper left. Only permanent building shell: terracotta roof, cream walls and fixed windows. No separate doors, people, vegetation, vehicles, furniture, garden, fence, street, ground tile, foundation plot or cast shadow. The south doorway can be a plain empty dark opening for future separate components. Preserve the reference's restrained city overview proportions; do not use an exaggerated isometric diamond, perspective vanishing point, photorealism or illustration. Draw the entire building completely inside the frame with generous blank margins. Aim for a compact sprite about 256 pixels wide and 220 pixels high within the output canvas, sharp pixel edges at native resolution, no enlargement of artificial pixels. Background is a perfectly uniform, fully opaque EXACT RGB(255,0,255) #FF00FF mask everywhere outside the silhouette, with hard binary edges and absolutely no antialiasing, glow, gradient, texture, near-magenta fringe or shadow. Magenta must not appear inside the building. No text, labels, palette swatches, border, tilesheet, atlas grid, repeated object, alternate angle or other asset. This is one draft reference-conditioned sprite, not an approved master.",
+      "originalOutput": "C:/Users/f_ald/.codex/generated_images/01a17318-77d0-76e0-87aa-8ae94518ef18/exec-29064dc3-4913-4f39-99d1-efd01caa2628.png",
+      "referenceImages": [
+        ".gamearts/outputs/mockups/generated/modern_city_mockup.png"
+      ],
+      "transparentBackground": false
+    },
+    {
+      "output": "frames/house-attempt-02.png",
+      "prompt": "ONE isolated house sprite, DRAFT CITY ATLAS TEST. The first attached image is the authoritative visual reference for CAMERA and STYLE. The second attached image is a failed attempt to correct. It is MUCH TOO FRONT-FACING: REPLACE that facade-heavy view with the same HIGH, NEAR-TOP-DOWN camera as the small neighborhood houses in the first city image. The roof must occupy about 80 percent of the projected building silhouette; show only a short south wall below it, less than 20 percent, and no tall two-storey facade. Roof edges parallel to image edges: rectangular terracotta hipped roof, warm cream stucco walls, tiny dark blue fixed windows, plain south doorway opening. Looking down about 70 degrees, orthographic, NO isometric diamond, no vanishing point. Pixel-art sprite with genuinely discrete flat-colour pixel clusters and clean deliberate colour steps, NOT smoothed enlarged pixel painting. Keep entire house comfortably in the middle of the canvas. Only permanent building shell; omit vegetation, grounds, cars, props, fences, separate doors and cast ground shadow. Crucial export: all unused background must be ONE FLAT SOLID fully opaque EXACT HEX #FF00FF RGB(255,0,255), not a close magenta. NO grain, paper, gradients, dithering, noise, compression-like variation, antialiasing or semitransparent edge. Hard clean silhouette against mathematically solid magenta. No text, no labels, no grid, no extra views. Correct the failed camera and exact solid mask only; preserve the source city's house material palette.",
+      "originalOutput": "C:/Users/f_ald/.codex/generated_images/01a17318-77d0-76e0-87aa-8ae94518ef18/exec-531f82d8-0dfc-4282-a7c8-eafd2d13d872.png",
+      "referenceImages": [
+        ".gamearts/outputs/mockups/generated/modern_city_mockup.png",
+        ".gamearts/experiments/modern-city-atlas/frames/house-attempt-01.png"
+      ],
+      "transparentBackground": false
+    },
+    {
+      "output": "frames/house-attempt-03.png",
+      "prompt": "Create ONE compact detached-house game sprite using the attached CITY image as the camera/style reference. This is a DRAFT atlas experiment. Near-top-down orthographic camera looking down about 70 degrees, roof takes 80 percent of visible silhouette, only a very short south-facing cream wall (20 percent), no sides facing vanishing points, no isometric diamond. Terracotta hipped roof, warm cream wall, a couple of tiny fixed dark-blue windows, plain dark empty doorway. A SINGLE small neighborhood house, no other objects. Crisp controlled small pixel-art colour clusters, sharp hard pixel boundaries, simple city overview details; no photographic texture or smooth painterly enlargement. Center completely visible on a TRANSPARENT background, true alpha channel, no magenta, no white backdrop, no checkerboard drawn into the image, no floor, ground, plot, vegetation, garden, fence, people, vehicles, detached doors or cast shadow. Keep generous transparent margins. Hard binary silhouette edges: fully opaque art pixels or fully transparent empty pixels, no semitransparent halo, glow, fringe or antialiasing. No text, labels, tile grid or extra views. The only deliverable is one isolated roof-dominant house shell with true transparency.",
+      "originalOutput": "C:/Users/f_ald/.codex/generated_images/01a17318-77d0-76e0-87aa-8ae94518ef18/exec-2120fe49-12dc-4d36-8158-d17dd7e70d84.png",
+      "referenceImages": [
+        ".gamearts/outputs/mockups/generated/modern_city_mockup.png"
+      ],
+      "transparentBackground": true
+    },
+    {
+      "output": "frames/tree-attempt-01.png",
+      "prompt": "Generate ONE isolated mature broadleaf park TREE for a DRAFT city-game atlas test. The attached full-city scene is the visual reference: use the trees in its central park. Match its elevated near-overhead orthographic camera, warm sun from upper left, lush olive and bright green foliage with deep warm green shadows and warm brown trunk. A compact round irregular leafy crown viewed mainly from above, short trunk only slightly visible below, in crisp deliberate pixel-art colour clusters. This is a small city overview sprite, not a character portrait or realistic tree painting. ONE tree only, entire crown and trunk in frame, with large empty margins. Use a perfectly flat, FULLY OPAQUE solid exact #FF00FF RGB(255,0,255) background outside the tree. No ground, grass, soil mound, planter, roots extending over ground, cast shadow, other trees, accessories, people, labels, text, palette, borders or tile grid. Hard-edged silhouette, no transparency, no background noise, no antialiasing, glow, blur or near-magenta fringe. Do not turn this into an atlas sheet. One isolated tree sprite only. The second attached house draft is a secondary warm-palette/style consistency example; do not draw the house or copy its near-magenta background defects. Background must be exactly solid #FF00FF.",
+      "originalOutput": "C:/Users/f_ald/.codex/generated_images/01a17318-77d0-76e0-87aa-8ae94518ef18/exec-a14031bc-de73-45f7-9c37-2565c48e1f5d.png",
+      "referenceImages": [
+        ".gamearts/outputs/mockups/generated/modern_city_mockup.png",
+        ".gamearts/experiments/modern-city-atlas/frames/house-attempt-02.png"
+      ],
+      "transparentBackground": false
+    },
+    {
+      "output": "frames/streetlight-attempt-01.png",
+      "prompt": "Create ONE isolated modern city STREETLIGHT sprite for a DRAFT city-game atlas experiment. Reference image 1 is the original city concept: match its high elevated near-overhead orthographic camera, warm daylight from upper left, restrained blue-grey urban metal palette and crisp small pixel-art colour clusters. Reference image 2 is the draft house for the same trial: keep a compatible pixel-art treatment but do not draw the house. SINGLE slender grey metal streetlight on a tiny mounting foot, slightly visible pole rising vertically on screen and a short curved arm pointing to screen right with one compact horizontal pale lamp housing. Show a high overhead city-game viewpoint; not a low eye-level object illustration, not a decorative Victorian lamp, no glowing light cone. Entire pole and lamp must fit with large blank margins. Static daytime streetlight, no ground shadow, pavement, grass, traffic lights, signage, wires, people, other lamps, backgrounds or accessories. Opaque perfectly uniform mathematically EXACT #FF00FF RGB(255,0,255) outside the pole silhouette, never a textured or close magenta. Hard clean pixel-step silhouette, no glow, blur, grain, gradient, antialiasing, fringe or transparency. Only one streetlight, no text, labels, palette, border, grid or extra views. This is one draft source sprite, not an atlas sheet.",
+      "originalOutput": "C:/Users/f_ald/.codex/generated_images/01a17318-77d0-76e0-87aa-8ae94518ef18/exec-ec15bbd5-b597-4fe2-8078-378f21d3fcc7.png",
+      "referenceImages": [
+        ".gamearts/outputs/mockups/generated/modern_city_mockup.png",
+        ".gamearts/experiments/modern-city-atlas/frames/house-attempt-02.png"
+      ],
+      "transparentBackground": false
+    }
+  ]
+}

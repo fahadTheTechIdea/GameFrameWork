@@ -1,0 +1,13 @@
+{
+ "units":[{"id":"unit.work-rate","dimension":"work-rate","scale":{"numerator":1,"denominator":1},"discrete":false}],
+ "transformations":[{"id":"connected.batch","mode":"batch","cancel_policy":"return_inputs","inputs":{"supply":8},"tools":{"supply":1},"tool_consumption":{},"input_ports":{"supply":"shared"},"tool_ports":{"supply":"shared"},"operating_inputs":[{"resource":"supply","quantity":1,"period":{"numerator":8,"denominator":1,"unit":"minute"}}],"operating_ports":{"supply":"shared"},"outputs":{"supply":8},"output_ports":{"supply":"shared"},"duration":{"numerator":4,"denominator":1,"unit":"minute"}}],
+ "target_resource_requirements":[{"id":"connected.tool","port":"shared","use":"hold","quantities":{"supply":2}}],
+ "activities":[{"id":"connected.inspect","player_orderable":true,"automatic_supply":false,"nodes":[{"id":"check","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":12,"denominator":1,"unit":"minute"},"requirement":"connected.tool"}]}],
+ "entities":[{"id":"connected.factory","kind":"structure","components":{
+   "point_presence":{"space":"field.points","position":3},
+   "ports":{"list":[{"network":"point.network","push":[],"pull":[]}]},
+   "network_resource_port":{"id":"shared","network":"point.network","minimum_members":3},
+   "transformer":{"automatic_supply":false,"wip_capacity":"fixture.count.8","transformations":["connected.batch"],"states":{"working":"processing","stopped":"blocked"},"operation":{"id":"process","enabled":true,"target":1,"minimum":1,"maximum":1,"unit":"unit.work-rate"}}
+ }}],
+ "entity_setups":[{"id":"connected.factory-start","after":[],"entity":"connected.factory","company":0,"placement":{"space":"field.points","position":3},"home":null}]
+}

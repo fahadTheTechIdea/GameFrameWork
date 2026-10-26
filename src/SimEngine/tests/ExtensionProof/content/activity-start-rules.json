@@ -1,0 +1,11 @@
+{
+  "independent_start_rules": [
+    { "id": "start.settle", "activity": "settle", "alternate": "settle.alternate" }
+  ],
+  "activities": [
+    {
+      "id": "settle.alternate", "automatic_supply": false, "player_orderable": true,
+      "nodes": [{ "id": "wait", "executor": "work.timed", "duration": { "numerator": 2, "denominator": 1, "unit": "minute" } }]
+    }
+  ]
+}

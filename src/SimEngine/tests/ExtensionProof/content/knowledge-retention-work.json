@@ -1,0 +1,6 @@
+{
+  "activities": [
+    {"id":"retention.learn.base","priority":60,"player_orderable":true,"automatic_supply":false,"on_complete":"retention.capture.base","nodes":[{"executor":"work.staffed","id":"sample","roles":["survey"],"duration":{"numerator":2,"denominator":1,"unit":"minute"}}]},
+    {"id":"retention.learn.child","priority":60,"player_orderable":true,"automatic_supply":false,"on_complete":"retention.capture.child","nodes":[{"executor":"work.staffed","id":"sample","roles":["survey"],"duration":{"numerator":2,"denominator":1,"unit":"minute"}}]}
+  ]
+}

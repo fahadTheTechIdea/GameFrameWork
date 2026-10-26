@@ -1,0 +1,7 @@
+{
+  "fleet_policies": [
+    {"id":"fleet.haul","allowed_roles":["haul"],"navigation_classes":["survey.route","terrain.route"]},
+    {"id":"fleet.road","allowed_roles":["haul"],"navigation_classes":["terrain.route"]},
+    {"id":"fleet.survey","allowed_roles":["survey"],"navigation_classes":["survey.route"]}
+  ]
+}

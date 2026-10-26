@@ -1,0 +1,24 @@
+{
+  "point_interval_regions": [
+    {"id":"lab.research-area","space":"field.points","minimum":0,"maximum":12},
+    {"id":"lab.carrier-area","space":"field.points","minimum":12,"maximum":100}
+  ],
+  "target_utility_requirements": [{"id":"lab.native-ready","consumer":"contract.process"}],
+  "independent_utility_requirements": [{"id":"lab.independent-ready","source":"lab.utility"}],
+  "work_requirement_groups": [
+    {"id":"lab.native-resources","mode":"all","entries":[{"id":"inputs","requirement":"preempt.ready"},{"id":"utility","requirement":"lab.native-ready"}]},
+    {"id":"lab.independent-resources","mode":"all","entries":[{"id":"inputs","requirement":"preempt.ready"},{"id":"utility","requirement":"lab.independent-ready"}]}
+  ],
+  "entities": [
+    {"id":"lab.carrier","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":20},
+      "point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},
+      "worker":{"roles":["haul"],"work_rate":1,"states":{"working":"processing","loading":"transfer","stopped":"blocked"}},
+      "work_policy":{"profile":"shared.machine"},
+      "storage":{"capacity_policy":"contract.carrier","public":false},
+      "transporter":{"handling":"points.handling"}
+    }}
+  ],
+  "entity_setups":[{"id":"lab.carrier","after":[],"entity":"lab.carrier","company":0,"placement":{"space":"field.points","position":20},"home":null}],
+  "world_setup_profiles":[{"id":"lab.carrier-start","entries":["lab.carrier"],"includes":[]}]
+}

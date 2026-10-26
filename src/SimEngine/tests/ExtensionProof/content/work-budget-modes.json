@@ -1,0 +1,8 @@
+{
+  "game_modes": [
+    {"id":"budget-economic","name":"Work with optional held money","properties":{
+      "business.money.enabled":true,"business.trading.enabled":true,
+      "business.construction_costs.enabled":true,"business.manufacturing_costs.enabled":true}},
+    {"id":"budget-survival","name":"Physical work without money","properties":{}}
+  ]
+}

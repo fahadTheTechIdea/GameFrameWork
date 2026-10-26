@@ -1,0 +1,13 @@
+{
+  "independent_controller_profiles":[
+    {"id":"contract.controller","profile":"recovery.controller","factory":"delegate","cadence":{"numerator":2,"denominator":1,"unit":"minute"},"commands_per_decision":1}
+  ],
+  "independent_plan_templates":[
+    {"id":"recovery.tower","space":"field.points","entries":[
+      {"id":"tower","definition":"build:point.tower","arguments":{"placement":{"space":"field.points","offset":0}},"priority":70,"paused":false,"after":[]}
+    ]}
+  ],
+  "delayed_plan_sites":[
+    {"id":"contract.sites","site_set":"recovery.sites","after":{"numerator":1,"denominator":1,"unit":"minute"}}
+  ]
+}

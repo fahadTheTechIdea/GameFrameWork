@@ -1,0 +1,1 @@
+{"id":"proof.external-response","version":"1.0.0","requires":[{"id":"sim.incidents","version":"1.0.0"},{"id":"sim.environment-metrics","version":"1.0.0"}],"documents":["external-response.json","external-environment.json"]}

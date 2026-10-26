@@ -1,0 +1,488 @@
+{
+  "units": [
+    {
+      "id": "unit.boolean",
+      "dimension": "classification",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    }
+  ],
+  "signals": [
+    {
+      "id": "planet.safety-ready",
+      "kind": "boolean",
+      "metric": "planet.safety-ready",
+      "unit": "unit.boolean",
+      "providers": [
+        {
+          "component": "planet_safety_signal",
+          "schema": 1
+        }
+      ]
+    }
+  ],
+  "technology_completion_effects": [
+    {
+      "id": "planet.tech.complete"
+    }
+  ],
+  "technology_transformation_unlocks": [
+    {
+      "id": "planet.unlock-assemble",
+      "definition": "planet.assemble"
+    }
+  ],
+  "technology_entity_unlocks": [
+    {
+      "id": "planet.unlock-beacon",
+      "definition": "planet.beacon"
+    }
+  ],
+  "technologies": [
+    {
+      "id": "planet.safety",
+      "prerequisites": [],
+      "unlocks": [
+        "planet.unlock-assemble",
+        "planet.unlock-beacon"
+      ],
+      "player_orderable": true,
+      "priority": 80,
+      "automatic_supply": false,
+      "on_complete": "planet.tech.complete",
+      "nodes": [
+        {
+          "id": "qualification",
+          "executor": "work.staffed",
+          "roles": [
+            "planet.extractor"
+          ],
+          "duration": {
+            "numerator": 2,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "planet.research-spare"
+        }
+      ]
+    }
+  ],
+  "target_resource_requirements": [
+    {"port":null,
+      "id": "planet.research-spare",
+      "use": "consume",
+      "quantities": {
+        "planet.alloy": 1
+      }
+    },
+    {"port":null,
+      "id": "planet.repair-spare",
+      "use": "consume",
+      "quantities": {
+        "planet.alloy": 1
+      }
+    }
+  ],
+  "technology_requirements": [
+    {
+      "id": "planet.qualified",
+      "technology": "planet.safety"
+    }
+  ],
+  "work_requirement_groups": [
+    {
+      "id": "planet.qualified-repair",
+      "mode": "all",
+      "entries": [
+        {
+          "id": "technology",
+          "requirement": "planet.qualified"
+        },
+        {
+          "id": "spare",
+          "requirement": "planet.repair-spare"
+        }
+      ]
+    }
+  ],
+  "operation_control_actions": [
+    {
+      "id": "planet.control-operation",
+      "command": "sim.configure-operation",
+      "owner": "sim.operations"
+    }
+  ],
+  "control_input_recovery_policies": [
+    {
+      "id": "planet.control-suspend",
+      "retry_blockers": []
+    }
+  ],
+  "control_rules": [
+    {
+      "id": "planet.safety-control",
+      "input_recovery": "planet.control-suspend",
+      "action_policy": "planet.control-operation",
+      "arbitration": "exclusive",
+      "initial_latch": false,
+      "inputs": [
+        {
+          "id": "ready",
+          "signal": "planet.safety-ready"
+        }
+      ],
+      "conditions": [
+        {
+          "id": "safe",
+          "kind": "boolean",
+          "input": "ready",
+          "expected": true,
+          "initial": false
+        }
+      ],
+      "root": "safe",
+      "dwell": {
+        "numerator": 0,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "cooldown": {
+        "numerator": 2,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "when_true": {
+        "enabled": true,
+        "target": 1,
+        "unit": "unit.work-rate"
+      },
+      "when_false": {
+        "enabled": false,
+        "target": 1,
+        "unit": "unit.work-rate"
+      }
+    }
+  ],
+  "response_effects": [
+    {
+      "id": "planet.control-resolve",
+      "bound_response": true
+    }
+  ],
+  "activities": [
+    {
+      "id": "planet.control-response",
+      "player_orderable": false,
+      "automatic_supply": false,
+      "priority": 400,
+      "on_complete": "planet.control-resolve",
+      "nodes": [
+        {
+          "id": "detect",
+          "executor": "work.staffed",
+          "roles": [
+            "planet.extractor"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        },
+        {
+          "id": "repair",
+          "after": [
+            "detect"
+          ],
+          "executor": "work.staffed",
+          "roles": [
+            "planet.extractor"
+          ],
+          "duration": {
+            "numerator": 3,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "planet.qualified-repair"
+        },
+        {
+          "id": "restart",
+          "after": [
+            "repair"
+          ],
+          "executor": "work.staffed",
+          "roles": [
+            "planet.extractor"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    }
+  ],
+  "incident_workflows": [
+    {
+      "id": "planet.control-fault",
+      "kind": "planet.coolant-leak",
+      "response": "planet.control-response",
+      "phases": [
+        {
+          "id": "detection",
+          "nodes": [
+            "detect"
+          ]
+        },
+        {
+          "id": "repair",
+          "nodes": [
+            "repair"
+          ]
+        },
+        {
+          "id": "restart",
+          "nodes": [
+            "restart"
+          ]
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "id": "planet.parking",
+      "kind": "structure",
+      "components": {"point_presence":{"space":"planet.space","position":100}}
+    },
+    {
+      "id": "planet.lab",
+      "kind": "structure",
+      "components": {
+        "point_presence": {
+          "space": "planet.space",
+          "position": 60
+        },
+        "storage": {
+          "capacity_policy": "planet.capacity.4",
+          "public": false,
+          "initial_stock": {
+            "planet.alloy": 1
+          }
+        },
+        "point_dock": {
+          "resources": [],
+          "work_roles": [
+            "planet.extractor"
+          ],
+          "slots": [
+            {
+              "id": "service",
+              "kind": "service",
+              "offset": -1
+            },
+            {
+              "id": "wait",
+              "kind": "waiting",
+              "offset": 1
+            },
+            {
+              "id": "departure",
+              "kind": "departure",
+              "offset": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "planet.watch-station",
+      "kind": "structure",
+      "components": {
+        "point_presence": {
+          "space": "planet.space",
+          "position": 70
+        },
+        "storage": {
+          "capacity_policy": "planet.capacity.4",
+          "public": false,
+          "initial_stock": {
+            "planet.alloy": 1
+          }
+        },
+        "point_dock": {
+          "resources": [],
+          "work_roles": [
+            "planet.extractor"
+          ],
+          "slots": [
+            {
+              "id": "service",
+              "kind": "service",
+              "offset": -1
+            },
+            {
+              "id": "wait",
+              "kind": "waiting",
+              "offset": 1
+            },
+            {
+              "id": "departure",
+              "kind": "departure",
+              "offset": 2
+            }
+          ]
+        },
+        "incident": {
+          "id": "planet.fault",
+          "workflow": "planet.control-fault",
+          "states": {
+            "active": "blocked"
+          }
+        },
+        "planet_safety_signal": {
+          "id": "safety",
+          "source": "planet.fault",
+          "technology": "planet.safety"
+        }
+      }
+    }
+  ],
+  "world_setup_profiles": [{"id":"planet.control.start","entries":["planet.start.deposit","planet.start.mine","planet.start.refinery","planet.start.digger","planet.control.start.parking","planet.control.start.carrier","planet.control.start.lab","planet.control.start.watch"],"includes":[]}],
+  "entity_setups": [
+    {
+      "id":"planet.control.start.parking",
+      "after":[],
+      "entity":"planet.parking",
+      "company":0,
+      "placement":{"space":"planet.space","position":100},
+      "home":null
+    },
+    {
+      "id":"planet.control.start.carrier",
+      "after":["planet.control.start.parking"],
+      "entity":"planet.carrier",
+      "company":0,
+      "placement":{"space":"planet.space","position":100},
+      "home":"planet.control.start.parking"
+    },
+    {
+      "id": "planet.control.start.lab",
+      "after": [
+        "planet.start.refinery"
+      ],
+      "entity": "planet.lab",
+      "company": 0,
+      "placement": {
+        "space": "planet.space",
+        "position": 60
+      },
+      "home": null
+    },
+    {
+      "id": "planet.control.start.watch",
+      "after": [
+        "planet.start.refinery"
+      ],
+      "entity": "planet.watch-station",
+      "company": 0,
+      "placement": {
+        "space": "planet.space",
+        "position": 70
+      },
+      "home": null
+    }
+  ],
+  "scenario_pressure_profiles": [
+    {
+      "id": "planet.control.pressure",
+      "capacity": 1,
+      "initial": 1,
+      "refill": 0,
+      "refill_period": {
+        "numerator": 20,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "cadence": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "cooldown": {
+        "numerator": 20,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "sources": [
+        "planet.control.leak-pressure"
+      ]
+    }
+  ],
+  "incident_pressure_sources": [
+    {
+      "id": "planet.control.leak-pressure",
+      "cost": 1,
+      "priority": 10,
+      "entity": "planet.watch-station",
+      "source": "planet.fault",
+      "kind": "planet.coolant-leak",
+      "conditions": []
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "planet-x-control",
+      "game_mode": "planet.resource-only",
+      "mode_overrides": {},
+      "time": "planet.clock",
+      "space": "planet.space",
+      "modules": [
+        "sim.access",
+        "sim.inventory",
+        "sim.resource-flows",
+        "sim.operations",
+        "sim.transformations",
+        "sim.motion",
+        "sim.work",
+        "sim.logistics",
+        "sim.construction",
+        "points",
+        "sim.world-setup",
+        "sim.spatial-resources",
+        "planet-x",
+        "sim.knowledge",
+        "sim.technology",
+        "sim.automation",
+        "sim.incidents",
+        "sim.scenario-pressure",
+        "planet-x-control"
+      ],
+      "settings": {
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.construction": {
+          "recovery": "planet.recovery"
+        },
+        "sim.world-setup": {
+          "profile": "planet.control.start"
+        },
+        "sim.scenario-pressure": {
+          "companies": [
+            {
+              "company": 0,
+              "profile": "planet.control.pressure"
+            }
+          ]
+        }
+      },
+      "seats": 2,
+      "default_seats": 2
+    }
+  ]
+}

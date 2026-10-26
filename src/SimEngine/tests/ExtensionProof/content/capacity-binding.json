@@ -1,0 +1,3 @@
+{
+  "capacity_bindings": [{ "id": "mine.cargo", "policy": "cargo.minerals" }]
+}

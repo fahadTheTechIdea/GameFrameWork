@@ -1,0 +1,24 @@
+{
+  "scenario_pressure_profiles": [
+    {"id":"pressure.incidents","capacity":1,"initial":1,"refill":0.25,
+     "refill_period":{"numerator":20,"denominator":1,"unit":"minute"},
+     "cadence":{"numerator":1,"denominator":1,"unit":"minute"},
+     "cooldown":{"numerator":60,"denominator":1,"unit":"minute"},
+     "sources":["pressure.z-leak","pressure.a-leak"]},
+    {"id":"pressure.policy","capacity":1,"initial":1,"refill":0,
+     "refill_period":{"numerator":20,"denominator":1,"unit":"minute"},
+     "cadence":{"numerator":1,"denominator":1,"unit":"minute"},
+     "cooldown":{"numerator":0,"denominator":1,"unit":"minute"},
+     "sources":["pressure.worker"]}
+  ],
+  "incident_pressure_sources": [
+    {"id":"pressure.z-leak","cost":1,"priority":10,"entity":"pressure.machine","source":"pressure.leak","kind":"pressure.leak","conditions":[]},
+    {"id":"pressure.a-leak","cost":1,"priority":10,"entity":"pressure.machine","source":"pressure.leak","kind":"pressure.leak","conditions":[]}
+  ],
+  "worker_policy_pressure_sources": [
+    {"id":"pressure.worker","cost":0.5,"priority":1,"worker":"machine",
+     "after":{"numerator":5,"denominator":1,"unit":"minute"},
+     "settings":{"enabled":true,"priority":0,"allowed_roles":["inspect","haul"],"area":null,"interruptible":true,
+                 "emergency_eligible":true,"assignment_mode":"all"}}
+  ]
+}

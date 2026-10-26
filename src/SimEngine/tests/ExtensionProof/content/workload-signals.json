@@ -1,0 +1,26 @@
+{
+  "signals": [
+    {"id":"load.live","kind":"number","metric":"work.live-jobs","unit":"unit.count","providers":[{"component":"work_load_signal","schema":2}]},
+    {"id":"load.activity","kind":"number","metric":"work.activity-jobs","unit":"unit.count","providers":[{"component":"work_load_signal","schema":2}]},
+    {"id":"load.haul","kind":"number","metric":"work.haul-jobs","unit":"unit.count","providers":[{"component":"work_load_signal","schema":2}]},
+    {"id":"load.open","kind":"number","metric":"work.open-jobs","unit":"unit.count","providers":[{"component":"work_load_signal","schema":2}]},
+    {"id":"load.assigned","kind":"number","metric":"work.assigned-jobs","unit":"unit.count","providers":[{"component":"work_load_signal","schema":2}]},
+    {"id":"load.paused","kind":"number","metric":"work.paused-jobs","unit":"unit.count","providers":[{"component":"work_load_signal","schema":2}]},
+    {"id":"load.waiting","kind":"number","metric":"work.dock-waiting","unit":"unit.count","providers":[{"component":"work_load_signal","schema":2}]},
+    {"id":"load.arrived","kind":"number","metric":"work.dock-arrived-waiting","unit":"unit.count","providers":[{"component":"work_load_signal","schema":2}]}
+  ],
+  "operation_control_actions":[{"id":"load.operation","command":"sim.configure-operation","owner":"sim.operations"}],
+  "control_input_recovery_policies":[{"id":"load.suspend","retry_blockers":[]}],
+  "control_rules":[
+    {"id":"load.dispatch","input_recovery":"load.suspend","action_policy":"load.operation","arbitration":"exclusive","initial_latch":false,
+     "inputs":[{"id":"jobs","signal":"load.live"}],
+     "conditions":[{"id":"has-jobs","kind":"above","input":"jobs","unit":"unit.count","on":0,"off":0,"initial":false}],"root":"has-jobs",
+     "dwell":{"numerator":0,"denominator":1,"unit":"minute"},"cooldown":{"numerator":0,"denominator":1,"unit":"minute"},
+     "when_true":{"enabled":true,"target":1,"unit":"unit.work-rate"},"when_false":{"enabled":false,"target":1,"unit":"unit.work-rate"}},
+    {"id":"load.queue","input_recovery":"load.suspend","action_policy":"load.operation","arbitration":"exclusive","initial_latch":false,
+     "inputs":[{"id":"jobs","signal":"load.arrived"}],
+     "conditions":[{"id":"queued","kind":"above","input":"jobs","unit":"unit.count","on":0,"off":0,"initial":false}],"root":"queued",
+     "dwell":{"numerator":1,"denominator":1,"unit":"minute"},"cooldown":{"numerator":2,"denominator":1,"unit":"minute"},
+     "when_true":{"enabled":true,"target":1,"unit":"unit.work-rate"},"when_false":{"enabled":false,"target":1,"unit":"unit.work-rate"}}
+  ]
+}

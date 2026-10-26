@@ -1,0 +1,3 @@
+{
+  "slot_handling_profiles": [{"id":"proof.slots","resource":"supply","batch":4,"loading":{"numerator":5,"denominator":1,"unit":"minute"},"unloading":{"numerator":3,"denominator":1,"unit":"minute"}}]
+}

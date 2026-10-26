@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "modules": [
+    {"id":"sim.construction","version":"1.0.0","requires":[{"id":"sim.work","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"}],"documents":[]},
+    {"id":"sim.operations","version":"1.0.0","documents":[]},
+    {"id":"sim.transformations","version":"1.0.0","requires":[{"id":"sim.access","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"},{"id":"sim.operations","version":"1.0.0"}],"documents":[]},
+    {
+      "id": "sim.access",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.inventory",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.motion",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.tile-navigation",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.motion",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "sim.tile-conditions",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.work",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.access",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.motion",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "sim.infrastructure",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.work",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "sim.logistics",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.work",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "sim.world-setup",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.tycoon",
+      "version": "1.0.0",
+      "documents": ["oil-business-accounts.json", "oil-business-costs.json", "oil-infrastructure-accounts.json"]
+    },
+    {
+      "id": "proof.oil-infrastructure",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.infrastructure",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "oil-infrastructure-fixture.json",
+        "oil-game-modes.json",
+        "oil-items.json",
+        "oil-spatial-world.json",
+        "oil-navigation.json",
+        "oil-networks.json",
+        "oil-worker-roles.json",
+        "oil-states.json"
+      ]
+    }
+  ]
+}

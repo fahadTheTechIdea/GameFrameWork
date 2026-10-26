@@ -1,0 +1,4 @@
+{
+  "world_setup_profiles":[{"id":"survey.start","entries":["start.builder"],"includes":[]}],
+  "entity_setups":[{"id":"start.builder","after":[],"entity":"proof.builder","company":0,"placement":{"space":"survey.tiles","x":17,"y":10},"home":null}]
+}

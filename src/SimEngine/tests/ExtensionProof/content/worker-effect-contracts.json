@@ -1,0 +1,19 @@
+{
+  "units":[{"id":"unit.condition","dimension":"equipment-integrity","scale":{"numerator":1,"denominator":1},"discrete":false}],
+  "worker_condition_effects":[
+    {"id":"worker.damage","source":"integrity","kind":"damage","unit":"unit.condition","amount":6},
+    {"id":"worker.repair","source":"integrity","kind":"repair","unit":"unit.condition","amount":6}
+  ],
+  "worker_resource_requirements":[
+    {"id":"worker.consumed","use":"consume","quantities":{"supply":2},"port":null},
+    {"id":"worker.tool","use":"hold","quantities":{"supply":1},"port":null}
+  ],
+  "work_requirement_groups":[{"id":"worker.damage-inputs","mode":"all","entries":[
+    {"id":"materials","requirement":"worker.consumed"},{"id":"tool","requirement":"worker.tool"}]}],
+  "activities":[
+    {"id":"worker.damage-work","player_orderable":true,"priority":70,"automatic_supply":false,
+      "nodes":[{"id":"damage","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":8,"denominator":1,"unit":"minute"},"requirement":"worker.damage-inputs","effect":"worker.damage"}]},
+    {"id":"worker.repair-work","player_orderable":true,"priority":70,"automatic_supply":false,
+      "nodes":[{"id":"repair","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":8,"denominator":1,"unit":"minute"},"requirement":"worker.tool","effect":"worker.repair"}]}
+  ]
+}

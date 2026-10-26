@@ -1,0 +1,15 @@
+{
+  "id": "institution_management_layer",
+  "definitionVersion": "1.0.0",
+  "facilityIds": [
+    "classroom",
+    "clinic",
+    "canteen"
+  ],
+  "scheduleIds": [
+    "weekday",
+    "weekend"
+  ],
+  "peopleCapacity": 32,
+  "periodPolicy": "term"
+}

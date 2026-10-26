@@ -1,0 +1,19 @@
+{
+  "resource_flow_journals":[{"id":"sensor.spill-flows","retained_records_per_company":2}],
+  "environmental_metrics":[
+    {"id":"sensor.spilled-total","unit":"sensor.count","rate_unit":"minute","window":null,"resources":["oil"],"kinds":["stock_transfer"],"causes":[],
+      "transfer":{"cell":"sensor.spill-cell","direction":"deposit"}},
+    {"id":"sensor.recovered-total","unit":"sensor.count","rate_unit":"minute","window":null,"resources":["oil"],"kinds":["stock_transfer"],"causes":[],
+      "transfer":{"cell":"sensor.spill-cell","direction":"withdraw"}},
+    {"id":"sensor.recent-spilled","unit":"sensor.count","rate_unit":"minute","window":{"numerator":1000,"denominator":1,"unit":"minute"},
+      "resources":["oil"],"kinds":["stock_transfer"],"causes":[],"transfer":{"cell":"sensor.spill-cell","direction":"deposit"}},
+    {"id":"sensor.quiet-spilled","unit":"sensor.count","rate_unit":"minute","window":{"numerator":1,"denominator":1,"unit":"minute"},
+      "resources":["oil"],"kinds":["stock_transfer"],"causes":[],"transfer":{"cell":"sensor.spill-cell","direction":"deposit"}}
+  ],
+  "environmental_objective_predicates":[
+    {"id":"sensor.deposit-accounted","metric":"sensor.spilled-total","unit":"sensor.count","relation":"at_least","amount":3},
+    {"id":"sensor.recovery-accounted","metric":"sensor.recovered-total","unit":"sensor.count","relation":"at_least","amount":3}
+  ],
+  "logical_objective_predicates":[{"id":"sensor.spill-accounting-ready","kind":"all","predicates":["sensor.deposit-accounted","sensor.recovery-accounted"]}],
+  "objectives":[{"id":"sensor.spill-accounted","prerequisites":["sensor.spill-treated"],"predicate":"sensor.spill-accounting-ready","deadline":null,"on_complete":null,"on_failure":null}]
+}

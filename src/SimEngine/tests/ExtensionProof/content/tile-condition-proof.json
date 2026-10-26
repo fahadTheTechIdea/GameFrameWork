@@ -1,0 +1,10 @@
+{
+  "proof_tile_columns": [
+    {
+      "id": "proof.closed-columns",
+      "space": "colony.tiles",
+      "minimum_x": 34,
+      "maximum_x": 38
+    }
+  ]
+}

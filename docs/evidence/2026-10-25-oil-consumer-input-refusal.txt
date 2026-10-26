@@ -1,0 +1,12 @@
+  Determining projects to restore...
+  Restored H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\SimEngine.OilFieldDays\SimEngine.OilFieldDays.csproj (in 148 ms).
+  4 of 5 projects are up-to-date for restore.
+H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\SimEngine.OilFieldDays\SimEngine.OilFieldDays.csproj(51,5): error : Consumer integration requires -p:OilFieldDaysContentRoot pointing to authentic OilFieldDays content. SimEngine builds independently without this suite.
+
+Build FAILED.
+
+H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\SimEngine.OilFieldDays\SimEngine.OilFieldDays.csproj(51,5): error : Consumer integration requires -p:OilFieldDaysContentRoot pointing to authentic OilFieldDays content. SimEngine builds independently without this suite.
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:01.45

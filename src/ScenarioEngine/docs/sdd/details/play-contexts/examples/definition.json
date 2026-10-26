@@ -1,0 +1,13 @@
+{
+  "id": "play_contexts",
+  "definitionVersion": "1.0.0",
+  "contextKinds": [
+    "exploration",
+    "party_battle",
+    "duel",
+    "army_battle"
+  ],
+  "initialContext": "exploration",
+  "maxDepth": 2,
+  "parentClockPolicy": "freeze"
+}

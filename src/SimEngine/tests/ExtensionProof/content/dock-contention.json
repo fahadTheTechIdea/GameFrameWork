@@ -1,0 +1,18 @@
+{
+  "carriers": 4,
+  "destination": "stress.destination.0",
+  "dock": {
+    "work_roles": [],
+    "resources": ["supply"],
+    "slots": [
+      {"id":"bay","kind":"service","x":-1,"y":0},
+      {"id":"wait.a","kind":"waiting","x":-1,"y":1},
+      {"id":"wait.b","kind":"waiting","x":-1,"y":2},
+      {"id":"wait.c","kind":"waiting","x":-1,"y":3},
+      {"id":"exit.a","kind":"departure","x":-1,"y":4},
+      {"id":"exit.b","kind":"departure","x":-2,"y":4},
+      {"id":"exit.c","kind":"departure","x":0,"y":4},
+      {"id":"exit.d","kind":"departure","x":1,"y":4}
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "resources": [
+    {"id":"accounting.product","unit":"unit.capacity.count","category":"material","phase":"solid","traits":[],"capacity":{"unit.capacity.count":1}}
+  ],
+  "capacity_policies": [
+    {"id":"accounting.factory.5","limits":{"unit.capacity.count":5}}
+  ],
+  "recipe": {
+    "id":"supply.first","mode":"batch","cancel_policy":"return_inputs",
+    "inputs":{"supply":3},"tools":{"supply":2},"tool_consumption":{"supply":1},
+    "outputs":{"accounting.product":2},"entity_output":null,"output_home":null,
+    "input_ports":{"supply":"material.input"},"tool_ports":{"supply":"tool.input"},
+    "output_ports":{"accounting.product":"material.output"},"operating_ports":{},"operating_inputs":[],
+    "duration":{"numerator":30,"denominator":1,"unit":"minute"}
+  }
+}

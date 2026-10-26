@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dependencies": {
+    "net8.0": {
+      "scenarioengine.contracts": {
+        "type": "Project"
+      },
+      "scenarioengine.core": {
+        "type": "Project",
+        "dependencies": {
+          "ScenarioEngine.Contracts": "[1.0.0, )"
+        }
+      }
+    }
+  }
+}

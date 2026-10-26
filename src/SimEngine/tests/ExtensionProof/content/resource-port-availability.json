@@ -1,0 +1,16 @@
+{
+ "transformations":[
+  {"id":"availability.batch","mode":"batch","cancel_policy":"return_inputs","inputs":{"steel":1},"tools":{"steel":1},"tool_consumption":{},"input_ports":{"steel":"raw"},"tool_ports":{"steel":"tool"},"operating_inputs":[{"resource":"steel","quantity":1,"period":{"numerator":4,"denominator":1,"unit":"minute"}}],"operating_ports":{"steel":"operating"},"outputs":{"steel":1},"output_ports":{"steel":"output"},"duration":{"numerator":12,"denominator":1,"unit":"minute"}},
+  {"id":"availability.flow","mode":"continuous","cancel_policy":"stop","duration":null,"inputs":[{"resource":"steel","quantity":1,"period":{"numerator":4,"denominator":1,"unit":"minute"}}],"tools":{"steel":1},"tool_consumption":[],"input_ports":{"steel":"raw"},"tool_ports":{"steel":"tool"},"operating_inputs":[{"resource":"steel","quantity":1,"period":{"numerator":4,"denominator":1,"unit":"minute"}}],"operating_ports":{"steel":"operating"},"outputs":[{"resource":"steel","quantity":1,"period":{"numerator":4,"denominator":1,"unit":"minute"}}],"output_ports":{"steel":"output"}}
+ ],
+ "entities":[{"id":"availability.factory","kind":"structure","components":{
+  "tile_presence":{"space":"haul.tiles","width":1,"height":1,"blocks":true,"movable":false},
+  "pool_port":[
+   {"id":"raw","pool":"source.first","alternatives":["source.second"],"endpoint_scope":"proof.pools","original_access":"current_only"},
+   {"id":"tool","pool":"source.first","alternatives":["source.second"],"endpoint_scope":"proof.pools","original_access":"current_only"},
+   {"id":"operating","pool":"source.first","alternatives":["source.second"],"endpoint_scope":"proof.pools","original_access":"retained"},
+   {"id":"output","pool":"source.second","alternatives":[],"endpoint_scope":"proof.pools","original_access":"retained"}],
+  "transformer":{"automatic_supply":false,"wip_capacity":"haul.store","transformations":["availability.batch","availability.flow"],"states":{"working":"haul.working","stopped":"haul.idle"},"operation":{"id":"process","enabled":true,"target":1,"minimum":1,"maximum":1,"unit":"unit.work-rate"}}
+ }}],
+ "entity_setups":[{"id":"availability.factory-start","after":[],"entity":"availability.factory","company":0,"placement":{"space":"haul.tiles","x":16,"y":20},"home":null}]
+}

@@ -1,0 +1,33 @@
+{
+  "independent_staffed_executors": [
+    { "id": "executor.staffed", "travel": "sim.work.travel", "work": "sim.work.productive", "departure": "sim.work.departure" }
+  ],
+  "independent_fixed_executors": [
+    { "id": "executor.fixed", "work": "sim.work.productive", "access_blocker": "executor.fixed-access" }
+  ],
+  "independent_timed_executors": [
+    { "id": "executor.timed", "rate": 1 }
+  ],
+  "activities": [
+    { "id": "executor.chain", "player_orderable": true, "priority": 60, "automatic_supply": false,
+      "nodes": [
+        { "id": "finish", "executor": "executor.fixed", "roles": ["survey"], "after": ["operate", "settle"], "duration": { "numerator": 6, "denominator": 1, "unit": "minute" } },
+        { "id": "operate", "executor": "executor.staffed", "roles": ["survey"], "duration": { "numerator": 12, "denominator": 1, "unit": "minute" }, "requirement": "survey.inputs" },
+        { "id": "settle", "executor": "executor.timed", "duration": { "numerator": 4, "denominator": 1, "unit": "minute" } }
+      ] }
+  ],
+  "entities": [
+    { "id": "survey.site", "kind": "structure", "components": {
+      "tile_presence": { "space": "survey.tiles", "width": 1, "height": 1, "blocks": true, "movable": false },
+      "storage": { "capacity_policy": "survey.storage", "public": false, "initial_stock": { "steel": 20 } },
+      "executor_private_probe": {}
+    } },
+    { "id": "survey.machine", "kind": "vehicle", "components": {
+      "tile_presence": { "space": "survey.tiles", "width": 1, "height": 1, "blocks": true, "movable": true },
+      "mover": { "classes": ["survey.route"], "class": "survey.route", "speed": 30, "states": { "moving": "survey.moving", "stopped": "survey.stopped" } },
+      "worker": { "work_rate": 1, "roles": ["survey"], "states": { "working": "survey.working", "loading": "survey.loading", "stopped": "survey.stopped" } },
+      "work_policy": { "profile": "survey.enabled" },
+      "executor_private_probe": {}
+    } }
+  ]
+}

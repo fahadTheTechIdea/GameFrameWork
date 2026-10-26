@@ -1,0 +1,30 @@
+{
+  "resource_signals": [{"id":"point.pool-stock","kind":"number","metric":"network.stored","resource":"supply","unit":"unit.supply","providers":[{"component":"network_signal","schema":2}]}],
+  "utility_network_demands": [{"id":"point.utility-demand","consumers":["point.process"]}],
+  "target_utility_requirements": [{"id":"point.utility-ready","consumer":"point.process"}],
+  "activities": [{
+    "id":"point.utility-service","player_orderable":true,"automatic_supply":false,
+    "nodes":[{"id":"service","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":30,"denominator":1,"unit":"minute"},"requirement":"point.utility-ready"}]
+  }],
+  "transformations": [{
+    "id":"point.utility-recipe","mode":"batch","cancel_policy":"return_inputs",
+    "tools":{},"tool_consumption":{},"tool_ports":{},"inputs":{},"input_ports":{},
+    "outputs":{"supply":1},"output_ports":{"supply":"point.output"},
+    "operating_inputs":[{"resource":"supply","quantity":1,"period":{"numerator":2,"denominator":1,"unit":"minute"}}],
+    "operating_ports":{"supply":"point.input"},"duration":{"numerator":24,"denominator":1,"unit":"minute"}
+  }],
+  "entities": [{
+    "id":"point.utility-plant","kind":"structure","components":{
+      "point_presence":{"space":"field.points","position":10},
+      "storage":{"capacity_policy":"fixture.count.20","public":false,"initial_stock":{}},
+      "inventory_port":[{"id":"point.input"},{"id":"point.output"}],
+      "ports":{"list":[{"network":"point.network","push":[],"pull":["supply"]}]},
+      "transformer":{
+        "automatic_supply":false,"wip_capacity":"fixture.count.4","transformations":["point.utility-recipe"],
+        "states":{"working":"processing","stopped":"blocked"},
+        "operation":{"id":"point.process","enabled":true,"target":1,"minimum":1,"maximum":1,"unit":"unit.work-rate"}
+      }
+    }
+  }],
+  "entity_setups":[{"id":"point.utility-plant.start","after":[],"entity":"point.utility-plant","company":0,"placement":{"space":"field.points","position":10},"home":null}]
+}

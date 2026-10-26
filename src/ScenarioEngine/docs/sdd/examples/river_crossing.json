@@ -1,0 +1,1032 @@
+{
+  "manifest": {
+    "contentApiVersion": 1,
+    "packId": "lostline.example.river-crossing",
+    "packVersion": "1.0.0",
+    "gameLayerId": "lost_soldier",
+    "gameLayerVersion": "1.0.0",
+    "trustTier": "data_only",
+    "entryScenarioIds": [
+      "river_crossing"
+    ],
+    "dependencies": [],
+    "files": [
+      {
+        "path": "scenario.json",
+        "kind": "scenario"
+      },
+      {
+        "path": "data/zones/orchard.json",
+        "kind": "zone"
+      },
+      {
+        "path": "data/zones/farm.json",
+        "kind": "zone"
+      },
+      {
+        "path": "data/zones/river.json",
+        "kind": "zone"
+      },
+      {
+        "path": "data/zones/friendly_lines.json",
+        "kind": "zone"
+      },
+      {
+        "path": "data/objectives/recover_radio.json",
+        "kind": "objective"
+      },
+      {
+        "path": "data/objectives/deliver_report.json",
+        "kind": "objective"
+      },
+      {
+        "path": "data/endings/clean_return.json",
+        "kind": "ending"
+      },
+      {
+        "path": "data/endings/costly_return.json",
+        "kind": "ending"
+      },
+      {
+        "path": "data/endings/mission_without_return.json",
+        "kind": "ending"
+      },
+      {
+        "path": "data/endings/failure.json",
+        "kind": "ending"
+      },
+      {
+        "path": "data/localization/en.json",
+        "kind": "localization"
+      }
+    ]
+  },
+  "documents": {
+    "scenario.json": {
+      "kind": "scenario",
+      "contentApiVersion": 1,
+      "id": "river_crossing",
+      "titleKey": "scenario.river_crossing.title",
+      "startZoneId": "orchard",
+      "zoneIds": [
+        "orchard",
+        "farm",
+        "river",
+        "friendly_lines"
+      ],
+      "objectiveIds": [
+        "recover_radio",
+        "deliver_report"
+      ],
+      "endingIds": [
+        "clean_return",
+        "costly_return",
+        "mission_without_return",
+        "failure"
+      ],
+      "closingCondition": {
+        "any": [
+          {
+            "fact": "lost_soldier.atFriendly",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "fact": "lost_soldier.leadDead",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "fact": "lost_soldier.leadCaptured",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "fact": "lost_soldier.returnWindowClosed",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      },
+      "layerData": {
+        "startingParty": [
+          "lead"
+        ],
+        "startingHeat": 0,
+        "resources": {
+          "ammunition": 8,
+          "medical": 2,
+          "sustainment": 3,
+          "tools": 2
+        },
+        "actors": [
+          {
+            "id": "lead",
+            "role": "lead",
+            "zoneId": "orchard",
+            "spawnAnchorId": "entry",
+            "condition": 100,
+            "aiProfileId": null,
+            "weaponProfile": "rifle"
+          },
+          {
+            "id": "farm_host",
+            "role": "civilian",
+            "zoneId": "farm",
+            "spawnAnchorId": "contact",
+            "condition": 100,
+            "aiProfileId": null,
+            "weaponProfile": "none"
+          },
+          {
+            "id": "orchard_patrol",
+            "role": "patrol",
+            "zoneId": "orchard",
+            "spawnAnchorId": "patrol_start",
+            "condition": 100,
+            "aiProfileId": "orchard_patrol_ai",
+            "weaponProfile": "rifle"
+          },
+          {
+            "id": "river_sentry",
+            "role": "sentry",
+            "zoneId": "river",
+            "spawnAnchorId": "guard_post",
+            "condition": 100,
+            "aiProfileId": "river_sentry_ai",
+            "weaponProfile": "rifle"
+          },
+          {
+            "id": "farm_officer",
+            "role": "officer",
+            "zoneId": "farm",
+            "spawnAnchorId": "officer_post",
+            "condition": 100,
+            "aiProfileId": "farm_officer_ai",
+            "weaponProfile": "pistol"
+          }
+        ],
+        "contacts": [
+          {
+            "id": "farm_contact",
+            "actorId": "farm_host",
+            "trust": 50
+          }
+        ],
+        "initialRoutes": {
+          "boat": false,
+          "ferry": false
+        },
+        "capturePolicy": "terminal",
+        "deadlineTicks": 12000,
+        "interactions": [
+          {
+            "id": "recover_radio",
+            "zoneId": "orchard",
+            "targetAnchorId": "wreck",
+            "actionType": "recover",
+            "durationTicks": 40,
+            "costs": {
+              "ammunition": 0,
+              "medical": 0,
+              "sustainment": 0,
+              "tools": 0
+            },
+            "requires": [],
+            "completionResult": "radio_recovered"
+          },
+          {
+            "id": "repair_boat",
+            "zoneId": "river",
+            "targetAnchorId": "boat",
+            "actionType": "repair",
+            "durationTicks": 60,
+            "costs": {
+              "ammunition": 0,
+              "medical": 0,
+              "sustainment": 0,
+              "tools": 1
+            },
+            "requires": [],
+            "completionResult": "boat_ready"
+          },
+          {
+            "id": "trade_ferry",
+            "zoneId": "farm",
+            "targetAnchorId": "contact",
+            "actionType": "trade",
+            "durationTicks": 20,
+            "costs": {
+              "ammunition": 0,
+              "medical": 0,
+              "sustainment": 1,
+              "tools": 0
+            },
+            "requires": [],
+            "completionResult": "ferry_ready"
+          },
+          {
+            "id": "transmit_report",
+            "zoneId": "river",
+            "targetAnchorId": "radio",
+            "actionType": "report",
+            "durationTicks": 20,
+            "costs": {
+              "ammunition": 0,
+              "medical": 0,
+              "sustainment": 0,
+              "tools": 0
+            },
+            "requires": [
+              "lost_soldier.radioRecovered"
+            ],
+            "completionResult": "mission_delivered"
+          }
+        ],
+        "aiProfiles": [
+          {
+            "id": "orchard_patrol_ai",
+            "zoneId": "orchard",
+            "initialState": "patrol",
+            "patrolAnchorIds": [
+              "patrol_start",
+              "patrol_end"
+            ],
+            "sightRangeMm": 18000,
+            "reportDelayTicks": 40,
+            "memoryTicks": 600,
+            "communicationGroup": "local_search",
+            "ammoUnits": 12
+          },
+          {
+            "id": "river_sentry_ai",
+            "zoneId": "river",
+            "initialState": "guard",
+            "patrolAnchorIds": [
+              "guard_post"
+            ],
+            "sightRangeMm": 18000,
+            "reportDelayTicks": 40,
+            "memoryTicks": 600,
+            "communicationGroup": "local_search",
+            "ammoUnits": 12
+          },
+          {
+            "id": "farm_officer_ai",
+            "zoneId": "farm",
+            "initialState": "guard",
+            "patrolAnchorIds": [
+              "officer_post"
+            ],
+            "sightRangeMm": 18000,
+            "reportDelayTicks": 40,
+            "memoryTicks": 600,
+            "communicationGroup": "local_search",
+            "ammoUnits": 12
+          }
+        ]
+      }
+    },
+    "data/zones/orchard.json": {
+      "kind": "zone",
+      "contentApiVersion": 1,
+      "id": "orchard",
+      "titleKey": "zone.orchard.title",
+      "sceneRole": "zone_orchard",
+      "anchors": [
+        {
+          "id": "entry",
+          "positionMm": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "exit",
+          "positionMm": [
+            10000,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "wreck",
+          "positionMm": [
+            2000,
+            2000,
+            0
+          ]
+        },
+        {
+          "id": "patrol_start",
+          "positionMm": [
+            22000,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "patrol_end",
+          "positionMm": [
+            28000,
+            3000,
+            0
+          ]
+        }
+      ],
+      "exits": [
+        {
+          "id": "to_farm",
+          "targetZoneId": "farm",
+          "anchorId": "exit",
+          "condition": {
+            "fact": "core.tick",
+            "op": "gte",
+            "value": 0
+          },
+          "durationTicks": 0
+        },
+        {
+          "id": "to_river",
+          "targetZoneId": "river",
+          "anchorId": "exit",
+          "condition": {
+            "fact": "core.tick",
+            "op": "gte",
+            "value": 0
+          },
+          "durationTicks": 0
+        }
+      ]
+    },
+    "data/zones/farm.json": {
+      "kind": "zone",
+      "contentApiVersion": 1,
+      "id": "farm",
+      "titleKey": "zone.farm.title",
+      "sceneRole": "zone_farm",
+      "anchors": [
+        {
+          "id": "entry",
+          "positionMm": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "exit",
+          "positionMm": [
+            10000,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "contact",
+          "positionMm": [
+            2000,
+            2000,
+            0
+          ]
+        },
+        {
+          "id": "officer_post",
+          "positionMm": [
+            22000,
+            0,
+            0
+          ]
+        }
+      ],
+      "exits": [
+        {
+          "id": "to_river",
+          "targetZoneId": "river",
+          "anchorId": "exit",
+          "condition": {
+            "fact": "core.tick",
+            "op": "gte",
+            "value": 0
+          },
+          "durationTicks": 0
+        }
+      ]
+    },
+    "data/zones/river.json": {
+      "kind": "zone",
+      "contentApiVersion": 1,
+      "id": "river",
+      "titleKey": "zone.river.title",
+      "sceneRole": "zone_river",
+      "anchors": [
+        {
+          "id": "entry",
+          "positionMm": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "exit",
+          "positionMm": [
+            10000,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "boat",
+          "positionMm": [
+            2000,
+            2000,
+            0
+          ]
+        },
+        {
+          "id": "radio",
+          "positionMm": [
+            4000,
+            2000,
+            0
+          ]
+        },
+        {
+          "id": "guard_post",
+          "positionMm": [
+            22000,
+            0,
+            0
+          ]
+        }
+      ],
+      "exits": [
+        {
+          "id": "boat_exit",
+          "targetZoneId": "friendly_lines",
+          "anchorId": "exit",
+          "condition": {
+            "fact": "lost_soldier.boatReady",
+            "op": "eq",
+            "value": true
+          },
+          "durationTicks": 20
+        },
+        {
+          "id": "ferry_exit",
+          "targetZoneId": "friendly_lines",
+          "anchorId": "exit",
+          "condition": {
+            "fact": "lost_soldier.ferryReady",
+            "op": "eq",
+            "value": true
+          },
+          "durationTicks": 60
+        }
+      ]
+    },
+    "data/zones/friendly_lines.json": {
+      "kind": "zone",
+      "contentApiVersion": 1,
+      "id": "friendly_lines",
+      "titleKey": "zone.friendly_lines.title",
+      "sceneRole": "zone_friendly_lines",
+      "anchors": [
+        {
+          "id": "entry",
+          "positionMm": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "exit",
+          "positionMm": [
+            10000,
+            0,
+            0
+          ]
+        }
+      ],
+      "exits": []
+    },
+    "data/objectives/recover_radio.json": {
+      "kind": "objective",
+      "contentApiVersion": 1,
+      "id": "recover_radio",
+      "titleKey": "objective.recover_radio.title",
+      "dependencies": [],
+      "activateWhen": {
+        "fact": "core.tick",
+        "op": "gte",
+        "value": 0
+      },
+      "completeWhen": {
+        "fact": "lost_soldier.radioRecovered",
+        "op": "eq",
+        "value": true
+      },
+      "failWhen": {
+        "all": [
+          {
+            "any": [
+              {
+                "fact": "lost_soldier.atFriendly",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "fact": "lost_soldier.leadDead",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "fact": "lost_soldier.leadCaptured",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "fact": "lost_soldier.returnWindowClosed",
+                "op": "eq",
+                "value": true
+              }
+            ]
+          },
+          {
+            "fact": "lost_soldier.radioRecovered",
+            "op": "eq",
+            "value": false
+          }
+        ]
+      },
+      "successEffects": [],
+      "failureEffects": []
+    },
+    "data/objectives/deliver_report.json": {
+      "kind": "objective",
+      "contentApiVersion": 1,
+      "id": "deliver_report",
+      "titleKey": "objective.deliver_report.title",
+      "dependencies": [
+        {
+          "objectiveId": "recover_radio",
+          "acceptedStatuses": [
+            "Completed"
+          ]
+        }
+      ],
+      "activateWhen": {
+        "fact": "core.tick",
+        "op": "gte",
+        "value": 0
+      },
+      "completeWhen": {
+        "fact": "lost_soldier.missionDelivered",
+        "op": "eq",
+        "value": true
+      },
+      "failWhen": {
+        "all": [
+          {
+            "any": [
+              {
+                "fact": "lost_soldier.atFriendly",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "fact": "lost_soldier.leadDead",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "fact": "lost_soldier.leadCaptured",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "fact": "lost_soldier.returnWindowClosed",
+                "op": "eq",
+                "value": true
+              }
+            ]
+          },
+          {
+            "fact": "lost_soldier.missionDelivered",
+            "op": "eq",
+            "value": false
+          }
+        ]
+      },
+      "successEffects": [
+        {
+          "type": "lost_soldier.recordOutcome",
+          "key": "delivered_once",
+          "arguments": {
+            "tag": "mission_delivered"
+          }
+        }
+      ],
+      "failureEffects": []
+    },
+    "data/endings/clean_return.json": {
+      "kind": "ending",
+      "contentApiVersion": 1,
+      "id": "clean_return",
+      "titleKey": "ending.clean_return.title",
+      "summaryKey": "ending.clean_return.summary",
+      "priority": 400,
+      "condition": {
+        "all": [
+          {
+            "fact": "lost_soldier.atFriendly",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "fact": "lost_soldier.missionDelivered",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "fact": "lost_soldier.heat",
+            "op": "lte",
+            "value": 30
+          },
+          {
+            "fact": "lost_soldier.companionLost",
+            "op": "eq",
+            "value": false
+          }
+        ]
+      },
+      "outcomeTags": [
+        "mission_delivered",
+        "lead_returned",
+        "network_preserved"
+      ]
+    },
+    "data/endings/costly_return.json": {
+      "kind": "ending",
+      "contentApiVersion": 1,
+      "id": "costly_return",
+      "titleKey": "ending.costly_return.title",
+      "summaryKey": "ending.costly_return.summary",
+      "priority": 300,
+      "condition": {
+        "all": [
+          {
+            "fact": "lost_soldier.atFriendly",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "fact": "lost_soldier.missionDelivered",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "any": [
+              {
+                "fact": "lost_soldier.heat",
+                "op": "gt",
+                "value": 30
+              },
+              {
+                "fact": "lost_soldier.companionLost",
+                "op": "eq",
+                "value": true
+              }
+            ]
+          }
+        ]
+      },
+      "outcomeTags": [
+        "mission_delivered",
+        "lead_returned",
+        "network_at_risk"
+      ]
+    },
+    "data/endings/mission_without_return.json": {
+      "kind": "ending",
+      "contentApiVersion": 1,
+      "id": "mission_without_return",
+      "titleKey": "ending.mission_without_return.title",
+      "summaryKey": "ending.mission_without_return.summary",
+      "priority": 200,
+      "condition": {
+        "all": [
+          {
+            "fact": "lost_soldier.missionDelivered",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "fact": "lost_soldier.atFriendly",
+            "op": "eq",
+            "value": false
+          },
+          {
+            "any": [
+              {
+                "fact": "lost_soldier.leadDead",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "fact": "lost_soldier.leadCaptured",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "fact": "lost_soldier.returnWindowClosed",
+                "op": "eq",
+                "value": true
+              }
+            ]
+          }
+        ]
+      },
+      "outcomeTags": [
+        "mission_delivered",
+        "lead_not_returned"
+      ]
+    },
+    "data/endings/failure.json": {
+      "kind": "ending",
+      "contentApiVersion": 1,
+      "id": "failure",
+      "titleKey": "ending.failure.title",
+      "summaryKey": "ending.failure.summary",
+      "priority": 100,
+      "condition": {
+        "all": [
+          {
+            "any": [
+              {
+                "fact": "lost_soldier.atFriendly",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "fact": "lost_soldier.leadDead",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "fact": "lost_soldier.leadCaptured",
+                "op": "eq",
+                "value": true
+              },
+              {
+                "fact": "lost_soldier.returnWindowClosed",
+                "op": "eq",
+                "value": true
+              }
+            ]
+          },
+          {
+            "fact": "lost_soldier.missionDelivered",
+            "op": "eq",
+            "value": false
+          }
+        ]
+      },
+      "outcomeTags": [
+        "mission_failed"
+      ]
+    },
+    "data/localization/en.json": {
+      "kind": "localization",
+      "contentApiVersion": 1,
+      "id": "english",
+      "locale": "en",
+      "entries": {
+        "scenario.river_crossing.title": "River Crossing",
+        "zone.orchard.title": "Orchard",
+        "zone.farm.title": "Farm",
+        "zone.river.title": "River Bank",
+        "zone.friendly_lines.title": "Friendly Lines",
+        "objective.recover_radio.title": "Recover the radio component",
+        "objective.deliver_report.title": "Deliver the report",
+        "ending.clean_return.title": "Clean Return",
+        "ending.clean_return.summary": "The report reaches command and the soldier returns without a major loss.",
+        "ending.costly_return.title": "Costly Return",
+        "ending.costly_return.summary": "The report and soldier return, but attention or companion loss leaves a lasting cost.",
+        "ending.mission_without_return.title": "Mission Without Return",
+        "ending.mission_without_return.summary": "The report arrives, but the soldier cannot return before loss or closure.",
+        "ending.failure.title": "Mission Failure",
+        "ending.failure.summary": "The journey closes without the report delivered."
+      }
+    }
+  },
+  "abstractCases": [
+    {
+      "id": "boat_clean",
+      "facts": {
+        "core.tick": 1000,
+        "lost_soldier.heat": 0,
+        "lost_soldier.radioRecovered": true,
+        "lost_soldier.missionDelivered": true,
+        "lost_soldier.atFriendly": true,
+        "lost_soldier.leadDead": false,
+        "lost_soldier.leadCaptured": false,
+        "lost_soldier.returnWindowClosed": false,
+        "lost_soldier.companionLost": false,
+        "lost_soldier.boatReady": true,
+        "lost_soldier.ferryReady": false
+      },
+      "expectedEnding": "clean_return"
+    },
+    {
+      "id": "ferry_clean",
+      "facts": {
+        "core.tick": 1000,
+        "lost_soldier.heat": 0,
+        "lost_soldier.radioRecovered": true,
+        "lost_soldier.missionDelivered": true,
+        "lost_soldier.atFriendly": true,
+        "lost_soldier.leadDead": false,
+        "lost_soldier.leadCaptured": false,
+        "lost_soldier.returnWindowClosed": false,
+        "lost_soldier.companionLost": false,
+        "lost_soldier.boatReady": false,
+        "lost_soldier.ferryReady": true
+      },
+      "expectedEnding": "clean_return"
+    },
+    {
+      "id": "heat_return",
+      "facts": {
+        "core.tick": 1000,
+        "lost_soldier.heat": 50,
+        "lost_soldier.radioRecovered": true,
+        "lost_soldier.missionDelivered": true,
+        "lost_soldier.atFriendly": true,
+        "lost_soldier.leadDead": false,
+        "lost_soldier.leadCaptured": false,
+        "lost_soldier.returnWindowClosed": false,
+        "lost_soldier.companionLost": false,
+        "lost_soldier.boatReady": false,
+        "lost_soldier.ferryReady": false
+      },
+      "expectedEnding": "costly_return"
+    },
+    {
+      "id": "companion_loss",
+      "facts": {
+        "core.tick": 1000,
+        "lost_soldier.heat": 0,
+        "lost_soldier.radioRecovered": true,
+        "lost_soldier.missionDelivered": true,
+        "lost_soldier.atFriendly": true,
+        "lost_soldier.leadDead": false,
+        "lost_soldier.leadCaptured": false,
+        "lost_soldier.returnWindowClosed": false,
+        "lost_soldier.companionLost": true,
+        "lost_soldier.boatReady": false,
+        "lost_soldier.ferryReady": false
+      },
+      "expectedEnding": "costly_return"
+    },
+    {
+      "id": "transmit_then_capture",
+      "facts": {
+        "core.tick": 1000,
+        "lost_soldier.heat": 0,
+        "lost_soldier.radioRecovered": true,
+        "lost_soldier.missionDelivered": true,
+        "lost_soldier.atFriendly": false,
+        "lost_soldier.leadDead": false,
+        "lost_soldier.leadCaptured": true,
+        "lost_soldier.returnWindowClosed": false,
+        "lost_soldier.companionLost": false,
+        "lost_soldier.boatReady": false,
+        "lost_soldier.ferryReady": false
+      },
+      "expectedEnding": "mission_without_return"
+    },
+    {
+      "id": "transmit_then_dead",
+      "facts": {
+        "core.tick": 1000,
+        "lost_soldier.heat": 0,
+        "lost_soldier.radioRecovered": true,
+        "lost_soldier.missionDelivered": true,
+        "lost_soldier.atFriendly": false,
+        "lost_soldier.leadDead": true,
+        "lost_soldier.leadCaptured": false,
+        "lost_soldier.returnWindowClosed": false,
+        "lost_soldier.companionLost": false,
+        "lost_soldier.boatReady": false,
+        "lost_soldier.ferryReady": false
+      },
+      "expectedEnding": "mission_without_return"
+    },
+    {
+      "id": "transmit_window_closed",
+      "facts": {
+        "core.tick": 12000,
+        "lost_soldier.heat": 0,
+        "lost_soldier.radioRecovered": true,
+        "lost_soldier.missionDelivered": true,
+        "lost_soldier.atFriendly": false,
+        "lost_soldier.leadDead": false,
+        "lost_soldier.leadCaptured": false,
+        "lost_soldier.returnWindowClosed": true,
+        "lost_soldier.companionLost": false,
+        "lost_soldier.boatReady": false,
+        "lost_soldier.ferryReady": false
+      },
+      "expectedEnding": "mission_without_return"
+    },
+    {
+      "id": "no_proof_return",
+      "facts": {
+        "core.tick": 1000,
+        "lost_soldier.heat": 0,
+        "lost_soldier.radioRecovered": false,
+        "lost_soldier.missionDelivered": false,
+        "lost_soldier.atFriendly": true,
+        "lost_soldier.leadDead": false,
+        "lost_soldier.leadCaptured": false,
+        "lost_soldier.returnWindowClosed": false,
+        "lost_soldier.companionLost": false,
+        "lost_soldier.boatReady": false,
+        "lost_soldier.ferryReady": false
+      },
+      "expectedEnding": "failure"
+    },
+    {
+      "id": "dead_before_delivery",
+      "facts": {
+        "core.tick": 1000,
+        "lost_soldier.heat": 0,
+        "lost_soldier.radioRecovered": false,
+        "lost_soldier.missionDelivered": false,
+        "lost_soldier.atFriendly": false,
+        "lost_soldier.leadDead": true,
+        "lost_soldier.leadCaptured": false,
+        "lost_soldier.returnWindowClosed": false,
+        "lost_soldier.companionLost": false,
+        "lost_soldier.boatReady": false,
+        "lost_soldier.ferryReady": false
+      },
+      "expectedEnding": "failure"
+    },
+    {
+      "id": "deadline_failure",
+      "facts": {
+        "core.tick": 12000,
+        "lost_soldier.heat": 0,
+        "lost_soldier.radioRecovered": false,
+        "lost_soldier.missionDelivered": false,
+        "lost_soldier.atFriendly": false,
+        "lost_soldier.leadDead": false,
+        "lost_soldier.leadCaptured": false,
+        "lost_soldier.returnWindowClosed": true,
+        "lost_soldier.companionLost": false,
+        "lost_soldier.boatReady": false,
+        "lost_soldier.ferryReady": false
+      },
+      "expectedEnding": "failure"
+    },
+    {
+      "id": "ongoing_transmission",
+      "facts": {
+        "core.tick": 1000,
+        "lost_soldier.heat": 0,
+        "lost_soldier.radioRecovered": true,
+        "lost_soldier.missionDelivered": true,
+        "lost_soldier.atFriendly": false,
+        "lost_soldier.leadDead": false,
+        "lost_soldier.leadCaptured": false,
+        "lost_soldier.returnWindowClosed": false,
+        "lost_soldier.companionLost": false,
+        "lost_soldier.boatReady": false,
+        "lost_soldier.ferryReady": false
+      },
+      "expectedEnding": null
+    },
+    {
+      "id": "ongoing_start",
+      "facts": {
+        "core.tick": 1000,
+        "lost_soldier.heat": 0,
+        "lost_soldier.radioRecovered": false,
+        "lost_soldier.missionDelivered": false,
+        "lost_soldier.atFriendly": false,
+        "lost_soldier.leadDead": false,
+        "lost_soldier.leadCaptured": false,
+        "lost_soldier.returnWindowClosed": false,
+        "lost_soldier.companionLost": false,
+        "lost_soldier.boatReady": false,
+        "lost_soldier.ferryReady": false
+      },
+      "expectedEnding": null
+    }
+  ]
+}

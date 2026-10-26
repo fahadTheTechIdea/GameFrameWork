@@ -1,0 +1,624 @@
+{
+  "game_modes": [
+    {
+      "id": "proof.navigation.mode",
+      "name": "Resource-only authored navigation proof",
+      "properties": {}
+    }
+  ],
+  "time_definitions": [
+    {
+      "id": "proof.navigation.time",
+      "quantum": {
+        "numerator": 60,
+        "denominator": 1,
+        "unit": "second"
+      },
+      "frame_ticks": 1,
+      "ticks_per_second": 30,
+      "horizon": null
+    }
+  ],
+  "entity_states": [
+    {
+      "id": "proof.navigation.idle",
+      "state": "idle",
+      "priority": 0,
+      "default": true
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "proof.navigation.start",
+      "entries": [
+        "probe.plain.terrain",
+        "probe.plain.water",
+        "probe.plain.road",
+        "probe.forest.terrain",
+        "probe.forest.water",
+        "probe.forest.road",
+        "probe.marsh.terrain",
+        "probe.marsh.water",
+        "probe.marsh.road",
+        "probe.desert.terrain",
+        "probe.desert.water",
+        "probe.desert.road",
+        "probe.tundra.terrain",
+        "probe.tundra.water",
+        "probe.tundra.road",
+        "probe.mountain.terrain",
+        "probe.mountain.water",
+        "probe.mountain.road",
+        "probe.wet.terrain",
+        "probe.wet.water",
+        "probe.wet.road",
+        "probe.sea.terrain",
+        "probe.sea.water",
+        "probe.sea.road",
+        "probe.lake.terrain",
+        "probe.lake.water",
+        "probe.lake.road",
+        "probe.paved.terrain",
+        "probe.paved.water",
+        "probe.paved.road",
+        "probe.dirt.terrain",
+        "probe.dirt.water",
+        "probe.dirt.road",
+        "probe.unsupported.terrain",
+        "probe.unsupported.water",
+        "probe.unsupported.road",
+        "probe.deep-water-code.terrain",
+        "probe.deep-water-code.water",
+        "probe.deep-water-code.road"
+      ],
+      "includes": []
+    }
+  ],
+  "tile_layer_setups": [
+    {
+      "id": "probe.plain.terrain",
+      "after": [],
+      "layer": "terrain",
+      "x": 1,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.plain.water",
+      "after": [],
+      "layer": "water",
+      "x": 1,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.plain.road",
+      "after": [],
+      "layer": "road",
+      "x": 1,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.forest.terrain",
+      "after": [],
+      "layer": "terrain",
+      "x": 2,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 1,
+      "owner": -1
+    },
+    {
+      "id": "probe.forest.water",
+      "after": [],
+      "layer": "water",
+      "x": 2,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.forest.road",
+      "after": [],
+      "layer": "road",
+      "x": 2,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.marsh.terrain",
+      "after": [],
+      "layer": "terrain",
+      "x": 3,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 2,
+      "owner": -1
+    },
+    {
+      "id": "probe.marsh.water",
+      "after": [],
+      "layer": "water",
+      "x": 3,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.marsh.road",
+      "after": [],
+      "layer": "road",
+      "x": 3,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.desert.terrain",
+      "after": [],
+      "layer": "terrain",
+      "x": 4,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 3,
+      "owner": -1
+    },
+    {
+      "id": "probe.desert.water",
+      "after": [],
+      "layer": "water",
+      "x": 4,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.desert.road",
+      "after": [],
+      "layer": "road",
+      "x": 4,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.tundra.terrain",
+      "after": [],
+      "layer": "terrain",
+      "x": 5,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 4,
+      "owner": -1
+    },
+    {
+      "id": "probe.tundra.water",
+      "after": [],
+      "layer": "water",
+      "x": 5,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.tundra.road",
+      "after": [],
+      "layer": "road",
+      "x": 5,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.mountain.terrain",
+      "after": [],
+      "layer": "terrain",
+      "x": 6,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 5,
+      "owner": -1
+    },
+    {
+      "id": "probe.mountain.water",
+      "after": [],
+      "layer": "water",
+      "x": 6,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.mountain.road",
+      "after": [],
+      "layer": "road",
+      "x": 6,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.wet.terrain",
+      "after": [],
+      "layer": "terrain",
+      "x": 7,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.wet.water",
+      "after": [],
+      "layer": "water",
+      "x": 7,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 1,
+      "owner": -1
+    },
+    {
+      "id": "probe.wet.road",
+      "after": [],
+      "layer": "road",
+      "x": 7,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.sea.terrain",
+      "after": [],
+      "layer": "terrain",
+      "x": 8,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.sea.water",
+      "after": [],
+      "layer": "water",
+      "x": 8,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 2,
+      "owner": -1
+    },
+    {
+      "id": "probe.sea.road",
+      "after": [],
+      "layer": "road",
+      "x": 8,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.lake.terrain",
+      "after": [],
+      "layer": "terrain",
+      "x": 9,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.lake.water",
+      "after": [],
+      "layer": "water",
+      "x": 9,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 3,
+      "owner": -1
+    },
+    {
+      "id": "probe.lake.road",
+      "after": [],
+      "layer": "road",
+      "x": 9,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.paved.terrain",
+      "after": [],
+      "layer": "terrain",
+      "x": 10,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 5,
+      "owner": -1
+    },
+    {
+      "id": "probe.paved.water",
+      "after": [],
+      "layer": "water",
+      "x": 10,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 2,
+      "owner": -1
+    },
+    {
+      "id": "probe.paved.road",
+      "after": [],
+      "layer": "road",
+      "x": 10,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 2,
+      "owner": -1
+    },
+    {
+      "id": "probe.dirt.terrain",
+      "after": [],
+      "layer": "terrain",
+      "x": 11,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.dirt.water",
+      "after": [],
+      "layer": "water",
+      "x": 11,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 1,
+      "owner": -1
+    },
+    {
+      "id": "probe.dirt.road",
+      "after": [],
+      "layer": "road",
+      "x": 11,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 1,
+      "owner": -1
+    },
+    {
+      "id": "probe.unsupported.terrain",
+      "after": [],
+      "layer": "terrain",
+      "x": 12,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 6,
+      "owner": -1
+    },
+    {
+      "id": "probe.unsupported.water",
+      "after": [],
+      "layer": "water",
+      "x": 12,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.unsupported.road",
+      "after": [],
+      "layer": "road",
+      "x": 12,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.deep-water-code.terrain",
+      "after": [],
+      "layer": "terrain",
+      "x": 13,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    },
+    {
+      "id": "probe.deep-water-code.water",
+      "after": [],
+      "layer": "water",
+      "x": 13,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 4,
+      "owner": -1
+    },
+    {
+      "id": "probe.deep-water-code.road",
+      "after": [],
+      "layer": "road",
+      "x": 13,
+      "y": 1,
+      "width": 1,
+      "height": 1,
+      "value": 0,
+      "owner": -1
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "frontier",
+      "game_mode": "proof.navigation.mode",
+      "mode_overrides": {},
+      "time": "proof.navigation.time",
+      "space": "oil.tiles",
+      "modules": [
+        "sim.tile-conditions",
+        "sim.world-setup",
+        "proof.oil-navigation"
+      ],
+      "seats": 1,
+      "default_seats": 1,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "proof.navigation.start"
+        }
+      }
+    },
+    {
+      "id": "adventure",
+      "game_mode": "proof.navigation.mode",
+      "mode_overrides": {},
+      "time": "proof.navigation.time",
+      "space": "oil.tiles",
+      "modules": [
+        "sim.tile-conditions",
+        "sim.world-setup",
+        "proof.oil-navigation"
+      ],
+      "seats": 1,
+      "default_seats": 1,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "proof.navigation.start"
+        }
+      }
+    },
+    {
+      "id": "continent",
+      "game_mode": "proof.navigation.mode",
+      "mode_overrides": {},
+      "time": "proof.navigation.time",
+      "space": "oil.tiles",
+      "modules": [
+        "sim.tile-conditions",
+        "sim.world-setup",
+        "proof.oil-navigation"
+      ],
+      "seats": 1,
+      "default_seats": 1,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "proof.navigation.start"
+        }
+      }
+    },
+    {
+      "id": "sandbox",
+      "game_mode": "proof.navigation.mode",
+      "mode_overrides": {},
+      "time": "proof.navigation.time",
+      "space": "oil.tiles",
+      "modules": [
+        "sim.tile-conditions",
+        "sim.world-setup",
+        "proof.oil-navigation"
+      ],
+      "seats": 1,
+      "default_seats": 1,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "proof.navigation.start"
+        }
+      }
+    },
+    {
+      "id": "showcase",
+      "game_mode": "proof.navigation.mode",
+      "mode_overrides": {},
+      "time": "proof.navigation.time",
+      "space": "oil.tiles",
+      "modules": [
+        "sim.tile-conditions",
+        "sim.world-setup",
+        "proof.oil-navigation"
+      ],
+      "seats": 1,
+      "default_seats": 1,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "proof.navigation.start"
+        }
+      }
+    },
+    {
+      "id": "gulf",
+      "game_mode": "proof.navigation.mode",
+      "mode_overrides": {},
+      "time": "proof.navigation.time",
+      "space": "oil.tiles",
+      "modules": [
+        "sim.tile-conditions",
+        "sim.world-setup",
+        "proof.oil-navigation"
+      ],
+      "seats": 1,
+      "default_seats": 1,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "proof.navigation.start"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "handling_profiles": [
+    {
+      "id": "space.handling",
+      "resources": [
+        {
+          "resource": "space.planetx.ore",
+          "quantity": 1,
+          "loading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "unloading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "space.alloy",
+          "quantity": 1,
+          "loading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "unloading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "space.slag",
+          "quantity": 1,
+          "loading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "unloading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "space.blank",
+          "quantity": 1,
+          "loading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "unloading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "space.crucible",
+          "quantity": 1,
+          "loading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "unloading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "space.fixture",
+          "quantity": 1,
+          "loading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "unloading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "space.finished",
+          "quantity": 1,
+          "loading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "unloading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ]
+    }
+  ]
+}

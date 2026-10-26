@@ -1,0 +1,184 @@
+{
+  "target_resource_requirements": [
+    {"port":null,
+      "id": "prepared.inputs",
+      "use": "consume",
+      "quantities": {
+        "supply": 4
+      }
+    },
+    {"port":null,
+      "id": "mixed.running",
+      "use": "elapsed",
+      "rates": [
+        {
+          "resource": "supply",
+          "quantity": 1,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "id": "mixed.pair",
+      "player_orderable": true,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "machine",
+          "executor": "work.staffed",
+          "roles": [
+            "inspect"
+          ],
+          "duration": {
+            "numerator": 4,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "mixed.running"
+        },
+        {
+          "id": "timer",
+          "executor": "work.timed",
+          "roles": [],
+          "duration": {
+            "numerator": 4,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "mixed.running"
+        },
+        {
+          "id": "finish",
+          "executor": "work.timed",
+          "roles": [],
+          "duration": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "after": [
+            "machine",
+            "timer"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixed.machine",
+      "player_orderable": true,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "machine",
+          "executor": "work.staffed",
+          "roles": [
+            "inspect"
+          ],
+          "duration": {
+            "numerator": 4,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "mixed.running"
+        }
+      ]
+    },
+    {
+      "id": "mixed.timer",
+      "player_orderable": true,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "timer",
+          "executor": "work.timed",
+          "roles": [],
+          "duration": {
+            "numerator": 4,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "mixed.running"
+        }
+      ]
+    },
+    {
+      "id": "prepared.response",
+      "priority": 10,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "a.timer",
+          "executor": "work.timed",
+          "roles": [],
+          "duration": {
+            "numerator": 3,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "prepared.inputs"
+        },
+        {
+          "id": "b.inspect",
+          "executor": "work.staffed",
+          "roles": [
+            "inspect"
+          ],
+          "duration": {
+            "numerator": 3,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "prepared.inputs"
+        },
+        {
+          "id": "restart",
+          "executor": "work.timed",
+          "roles": [],
+          "duration": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "after": [
+            "a.timer",
+            "b.inspect"
+          ]
+        }
+      ],
+      "on_complete": "preempt.restart"
+    }
+  ],
+  "incident_workflows": [
+    {
+      "id": "prepared.workflow",
+      "kind": "proof.failure",
+      "response": "prepared.response",
+      "phases": [
+        {
+          "id": "stabilize",
+          "nodes": [
+            "a.timer"
+          ]
+        },
+        {
+          "id": "repair",
+          "nodes": [
+            "b.inspect"
+          ]
+        },
+        {
+          "id": "restart",
+          "nodes": [
+            "restart"
+          ]
+        }
+      ]
+    }
+  ]
+}

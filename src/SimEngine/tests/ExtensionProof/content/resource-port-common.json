@@ -1,0 +1,151 @@
+{
+  "game_modes": [
+    {
+      "id": "ports.resource-only",
+      "name": "Resource-only internal process vessels",
+      "properties": {}
+    }
+  ],
+  "time_definitions": [
+    {
+      "id": "ports.second",
+      "quantum": {
+        "numerator": 1,
+        "denominator": 1,
+        "unit": "second"
+      },
+      "frame_ticks": 1,
+      "ticks_per_second": 30,
+      "horizon": null,
+      "calendar": null
+    }
+  ],
+  "entity_states": [
+    {
+      "id": "ports.idle",
+      "state": "ports.idle",
+      "priority": 0,
+      "default": true
+    },
+    {
+      "id": "ports.working",
+      "state": "ports.working",
+      "priority": 20
+    },
+    {
+      "id": "ports.stopped",
+      "state": "ports.stopped",
+      "priority": 60
+    }
+  ],
+  "units": [
+    {
+      "id": "ports.kg",
+      "dimension": "mass",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": false
+    },
+    {
+      "id": "ports.litre",
+      "dimension": "volume",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": false
+    },
+    {
+      "id": "ports.each",
+      "dimension": "count",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    }
+  ],
+  "resources": [
+    {
+      "id": "ports.ore",
+      "unit": "ports.kg",
+      "category": "feed",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "ports.kg": 1,
+        "ports.litre": 1
+      }
+    },
+    {
+      "id": "ports.alloy",
+      "unit": "ports.kg",
+      "category": "product",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "ports.kg": 1,
+        "ports.litre": 1
+      }
+    },
+    {
+      "id": "ports.water",
+      "unit": "ports.litre",
+      "category": "waste",
+      "phase": "liquid",
+      "traits": [],
+      "capacity": {
+        "ports.kg": 1,
+        "ports.litre": 1
+      }
+    },
+    {
+      "id": "ports.jig",
+      "unit": "ports.each",
+      "category": "tool",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "ports.kg": 1,
+        "ports.litre": 1,
+        "ports.each": 1
+      }
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "ports.feed",
+      "limits": {
+        "ports.kg": 40
+      }
+    },
+    {
+      "id": "ports.product",
+      "limits": {
+        "ports.kg": 2
+      }
+    },
+    {
+      "id": "ports.waste",
+      "limits": {
+        "ports.litre": 1
+      }
+    },
+    {
+      "id": "ports.shared",
+      "limits": {
+        "ports.kg": 3,
+        "ports.litre": 3
+      }
+    },
+    {
+      "id": "ports.sink",
+      "limits": {
+        "ports.kg": 100,
+        "ports.litre": 100
+      }
+    }
+  ]
+}

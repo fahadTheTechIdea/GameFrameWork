@@ -1,0 +1,5 @@
+{
+  "resources": [
+    { "id": "stone", "unit": "unit.gold", "category": "mineral", "phase": "solid", "traits": [], "capacity": { "unit.gold": 1 } }
+  ]
+}

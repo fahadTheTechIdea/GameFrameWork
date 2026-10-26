@@ -1,0 +1,47 @@
+{
+  "units": [{"id":"binding.pair","dimension":"count","scale":{"numerator":2,"denominator":1},"discrete":false}],
+  "networks": [{"id":"binding.main","line":"network.pipe","demand_policy":"proof.network-transfers.capacity-demand","solver":"proof.network-transfers.transfer","flow_policy":"proof.network-transfers.round-robin","rates":[{"resource":"steel","quantity":4,"period":{"numerator":1,"denominator":1,"unit":"minute"}}],"capacity_policy":"network.shared","public":false}],
+  "resource_signals": [
+    {"id":"binding.stored","kind":"number","metric":"network.stored","resource":"steel","unit":"unit.steel","providers":[{"component":"independent_network_signal","schema":2}]},
+    {"id":"binding.available","kind":"number","metric":"network.available","resource":"steel","unit":"unit.steel","providers":[{"component":"independent_network_signal","schema":2}]},
+    {"id":"binding.inbound","kind":"number","metric":"network.inbound","resource":"steel","unit":"unit.steel","providers":[{"component":"independent_network_signal","schema":2}]},
+    {"id":"binding.outbound","kind":"number","metric":"network.outbound","resource":"steel","unit":"unit.steel","providers":[{"component":"independent_network_signal","schema":2}]},
+    {"id":"binding.room","kind":"number","metric":"network.receiving-room","resource":"steel","unit":"unit.steel","providers":[{"component":"independent_network_signal","schema":2}]},
+    {"id":"binding.pairs","kind":"number","metric":"network.stored","resource":"steel","unit":"binding.pair","providers":[{"component":"independent_network_signal","schema":2}]},
+    {"id":"binding.water","kind":"number","metric":"network.stored","resource":"water","unit":"unit.water","providers":[{"component":"independent_network_signal","schema":2}]}
+  ],
+  "entities": [
+    {"id":"binding.source","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"recovery.mixed","public":false,"initial_stock":{"steel":30}},
+      "ports":{"list":[{"network":"binding.main","push":["steel"]}]},
+      "independent_network_signal":{"id":"pool","network":"binding.main","metadata_fault":"none"},
+      "network_signal_private_probe":{},
+      "signal_network_gate":{"id":"safety","networks":["binding.main"],"conditions":[{"id":"room","source":"pool","signal":"binding.room","minimum":4,"maximum":10,"unit":"unit.steel","blocker":"binding.backpressure"}]}
+    }},
+    {"id":"binding.watcher","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"recovery.mixed","public":false},
+      "ports":{"list":[{"network":"binding.main","pull":[]}]},
+      "independent_network_signal":{"id":"pool","network":"binding.main","metadata_fault":"none"}
+    }},
+    {"id":"binding.remote","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"recovery.mixed","public":false},
+      "ports":{"list":[{"network":"binding.main","pull":[]}]},
+      "independent_network_signal":{"id":"pool","network":"binding.main","metadata_fault":"none"}
+    }}
+  ],
+  "world_setup_profiles": [{"id":"binding.start","includes":[],"entries":["binding.geometry","binding.owner","binding.source.start","binding.watcher.start","binding.remote.start","binding.depot.start","binding.truck.start"]}],
+  "tile_layer_setups": [
+    {"id":"binding.geometry","after":[],"layer":"network.line","x":10,"y":28,"width":1,"height":1,"value":1,"owner":-1},
+    {"id":"binding.owner","after":["binding.geometry"],"layer":"network.owner","x":10,"y":28,"width":1,"height":1,"value":1,"owner":0}
+  ],
+  "entity_setups": [
+    {"id":"binding.source.start","after":["binding.owner"],"entity":"binding.source","company":0,"placement":{"space":"recovery.tiles","x":9,"y":28},"home":null},
+    {"id":"binding.watcher.start","after":["binding.source.start"],"entity":"binding.watcher","company":0,"placement":{"space":"recovery.tiles","x":11,"y":28},"home":null},
+    {"id":"binding.remote.start","after":["binding.watcher.start"],"entity":"binding.remote","company":0,"placement":{"space":"recovery.tiles","x":20,"y":28},"home":null},
+    {"id":"binding.depot.start","after":["binding.remote.start"],"entity":"depot","company":0,"placement":{"space":"recovery.tiles","x":3,"y":24},"home":null},
+    {"id":"binding.truck.start","after":["binding.depot.start"],"entity":"truck","company":0,"placement":{"space":"recovery.tiles","x":4,"y":28},"home":"binding.depot.start"}
+  ]
+}

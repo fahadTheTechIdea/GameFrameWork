@@ -1,0 +1,22 @@
+{
+  "game_modes":[{"id":"dock.resource-only","name":"Dock admission without economy","properties":{}}],
+  "time_definitions":[{"id":"dock.minute","quantum":{"numerator":60,"denominator":1,"unit":"second"},"frame_ticks":1,"ticks_per_second":30,"horizon":null}],
+  "entity_states":[{"id":"dock.idle","state":"dock.idle","priority":0,"default":true}],
+  "worker_roles":[{"id":"dock.inspect"}],
+  "open_content_access":[{"id":"dock.open"}],
+  "work_retry_profiles":[{"id":"dock.retry","initial_delay":{"numerator":1,"denominator":1,"unit":"minute"},"maximum_delay":{"numerator":4,"denominator":1,"unit":"minute"},"multiplier":2,"retry_blockers":["blocker.unreachable"]}],
+  "tile_spaces":[{"id":"dock.tiles","width":12,"height":8}],
+  "unavailable_tile_spaces":[{"id":"dock.space","width":12,"height":8,"mode":"without-overlap"}],
+  "entities":[
+    {"id":"dock.unused","kind":"entity","components":{
+      "dock_admission_presence":{"space":"dock.space"},
+      "dock_admission":{"slots":[{"id":"service","kind":"service"},{"id":"departure","kind":"departure"}]}
+    }},
+    {"id":"dock.tile-unused","kind":"entity","components":{
+      "tile_presence":{"space":"dock.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "tile_work_dock":{"work_roles":["dock.inspect"],"resources":[],"slots":[{"id":"service","kind":"service","x":1,"y":0},{"id":"departure","kind":"departure","x":2,"y":0}]}
+    }}
+  ],
+  "world_setup_profiles":[{"id":"dock.empty","entries":[],"includes":[]}],
+  "scenarios":[{"id":"dock-admission","game_mode":"dock.resource-only","mode_overrides":{},"time":"dock.minute","space":"dock.space","modules":["sim.inventory","sim.access","sim.motion","sim.work","sim.world-setup","proof.dock-spatial-admission"],"seats":1,"default_seats":1,"settings":{"sim.work":{"retry":"dock.retry"},"sim.world-setup":{"profile":"dock.empty"}}}]
+}

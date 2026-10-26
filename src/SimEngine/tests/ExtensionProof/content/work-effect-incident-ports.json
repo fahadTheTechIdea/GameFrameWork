@@ -1,0 +1,22 @@
+{
+  "response_effects": [{"id":"disposition.restart","bound_response":true}],
+  "work_retry_profiles": [{
+    "id":"disposition.incident.retry",
+    "initial_delay":{"numerator":1,"denominator":1,"unit":"minute"},
+    "maximum_delay":{"numerator":4,"denominator":1,"unit":"minute"},
+    "multiplier":2,
+    "retry_blockers":["work.effect-no-stock","blocker.unreachable","work.worker-unavailable"]
+  }],
+  "activities": [{
+    "id":"disposition.response","player_orderable":false,"automatic_supply":false,"priority":95,
+    "on_complete":"disposition.restart",
+    "nodes":[
+      {"id":"cleanup","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":4,"denominator":1,"unit":"minute"},"effect":"port.dispose"},
+      {"id":"restart","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"after":["cleanup"]}
+    ]
+  }],
+  "incident_workflows": [{
+    "id":"disposition.incident","kind":"proof.disposition","response":"disposition.response",
+    "phases":[{"id":"cleanup","nodes":["cleanup"]},{"id":"restart","nodes":["restart"]}]
+  }]
+}

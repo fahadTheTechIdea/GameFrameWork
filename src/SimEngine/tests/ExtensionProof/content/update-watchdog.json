@@ -1,0 +1,174 @@
+{
+  "update_watchdog_profiles": [
+    {
+      "id": "watchdog.healthy",
+      "behavior": "healthy",
+      "at_step": 1
+    },
+    {
+      "id": "watchdog.throw",
+      "behavior": "throw",
+      "at_step": 1
+    },
+    {
+      "id": "watchdog.block",
+      "behavior": "block",
+      "at_step": 1
+    },
+    {
+      "id": "watchdog.noisy-block",
+      "behavior": "noisy-block",
+      "at_step": 1
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "watchdog-healthy",
+      "game_mode": "planet.resource-only",
+      "mode_overrides": {},
+      "time": "planet.clock",
+      "space": "planet.space",
+      "modules": [
+        "planet-x",
+        "sim.resource-flows",
+        "sim.operations",
+        "sim.transformations",
+        "sim.motion",
+        "sim.work",
+        "sim.logistics",
+        "sim.construction",
+        "points",
+        "sim.world-setup",
+        "sim.spatial-resources",
+        "proof.update-watchdog"
+      ],
+      "settings": {
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.construction": {
+          "recovery": "planet.recovery"
+        },
+        "sim.world-setup": {
+          "profile": "planet.start"
+        },
+        "proof.update-watchdog": {
+          "profile": "watchdog.healthy"
+        }
+      },
+      "seats": 2,
+      "default_seats": 2
+    },
+    {
+      "id": "watchdog-throw",
+      "game_mode": "planet.resource-only",
+      "mode_overrides": {},
+      "time": "planet.clock",
+      "space": "planet.space",
+      "modules": [
+        "planet-x",
+        "sim.resource-flows",
+        "sim.operations",
+        "sim.transformations",
+        "sim.motion",
+        "sim.work",
+        "sim.logistics",
+        "sim.construction",
+        "points",
+        "sim.world-setup",
+        "sim.spatial-resources",
+        "proof.update-watchdog"
+      ],
+      "settings": {
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.construction": {
+          "recovery": "planet.recovery"
+        },
+        "sim.world-setup": {
+          "profile": "planet.start"
+        },
+        "proof.update-watchdog": {
+          "profile": "watchdog.throw"
+        }
+      },
+      "seats": 2,
+      "default_seats": 2
+    },
+    {
+      "id": "watchdog-block",
+      "game_mode": "planet.resource-only",
+      "mode_overrides": {},
+      "time": "planet.clock",
+      "space": "planet.space",
+      "modules": [
+        "planet-x",
+        "sim.resource-flows",
+        "sim.operations",
+        "sim.transformations",
+        "sim.motion",
+        "sim.work",
+        "sim.logistics",
+        "sim.construction",
+        "points",
+        "sim.world-setup",
+        "sim.spatial-resources",
+        "proof.update-watchdog"
+      ],
+      "settings": {
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.construction": {
+          "recovery": "planet.recovery"
+        },
+        "sim.world-setup": {
+          "profile": "planet.start"
+        },
+        "proof.update-watchdog": {
+          "profile": "watchdog.block"
+        }
+      },
+      "seats": 2,
+      "default_seats": 2
+    },
+    {
+      "id": "watchdog-noisy-block",
+      "game_mode": "planet.resource-only",
+      "mode_overrides": {},
+      "time": "planet.clock",
+      "space": "planet.space",
+      "modules": [
+        "planet-x",
+        "sim.resource-flows",
+        "sim.operations",
+        "sim.transformations",
+        "sim.motion",
+        "sim.work",
+        "sim.logistics",
+        "sim.construction",
+        "points",
+        "sim.world-setup",
+        "sim.spatial-resources",
+        "proof.update-watchdog"
+      ],
+      "settings": {
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.construction": {
+          "recovery": "planet.recovery"
+        },
+        "sim.world-setup": {
+          "profile": "planet.start"
+        },
+        "proof.update-watchdog": {
+          "profile": "watchdog.noisy-block"
+        }
+      },
+      "seats": 2,
+      "default_seats": 2
+    }
+  ]
+}

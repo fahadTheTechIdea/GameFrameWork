@@ -1,0 +1,258 @@
+{
+  "transformations": [
+    {
+      "id": "source.batch",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "inputs": {
+        "steel": 2
+      },
+      "tools": {},
+      "tool_consumption": {},
+      "operating_inputs": [],
+      "outputs": {
+        "steel": 2
+      },
+      "input_ports": {
+        "steel": "local"
+      },
+      "tool_ports": {},
+      "operating_ports": {},
+      "output_ports": {
+        "steel": "local"
+      },
+      "duration": {
+        "numerator": 8,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "source.warehouse",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "haul.store",
+          "public": false,
+          "initial_stock": {
+            "steel": 30
+          }
+        },
+        "inventory_port": {
+          "id": "stock"
+        }
+      }
+    },
+    {
+      "id": "source.store",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "pool_port": [
+          {
+            "id": "z-stock",
+            "pool": "source.first",
+            "alternatives": [
+              "source.second"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "a-stock",
+            "pool": "source.first",
+            "alternatives": [
+              "source.second"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "other",
+            "pool": "source.second",
+            "alternatives": [
+              "source.first"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          }
+        ]
+      }
+    },
+    {
+      "id": "source.sink",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "pool_port": {
+          "id": "tank",
+          "pool": "source.third",
+          "alternatives": [
+            "source.first",
+            "source.second"
+          ],
+          "endpoint_scope":"proof.pools","original_access": "retained"
+        }
+      }
+    },
+    {
+      "id": "source.factory",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "haul.store",
+          "public": false,
+          "initial_stock": {}
+        },
+        "inventory_port": {
+          "id": "local"
+        },
+        "transformer": {
+          "transformations": [
+            "source.batch"
+          ],
+          "automatic_supply": true,
+          "wip_capacity": "haul.store",
+          "operation": {
+            "id": "process",
+            "enabled": true,
+            "target": 1,
+            "minimum": 0.5,
+            "maximum": 2,
+            "unit": "unit.work-rate"
+          },
+          "states": {
+            "working": "haul.working",
+            "stopped": "haul.stopped"
+          }
+        }
+      }
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "source.start",
+      "entries": [
+        "source.warehouse-start",
+        "source.store-start",
+        "source.sink-start",
+        "source.factory-start",
+        "source.machine-start"
+      ],
+      "includes": []
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "source.warehouse-start",
+      "after": [],
+      "entity": "source.warehouse",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 8,
+        "y": 6
+      },
+      "home": null
+    },
+    {
+      "id": "source.store-start",
+      "after": [],
+      "entity": "source.store",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 8,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "source.sink-start",
+      "after": [],
+      "entity": "source.sink",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 28,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "source.factory-start",
+      "after": [],
+      "entity": "source.factory",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 22,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "source.machine-start",
+      "after": [
+        "source.warehouse-start"
+      ],
+      "entity": "haul.machine",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 2,
+        "y": 10
+      },
+      "home": "source.warehouse-start"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "scoped-sources",
+      "game_mode": "haul.resource-only",
+      "mode_overrides": {},
+      "time": "haul.minute",
+      "space": "haul.tiles",
+      "seats": 2,
+      "default_seats": 2,
+      "modules": [
+        "proof.output-ports",
+        "sim.logistics",
+        "sim.tile-navigation"
+      ],
+      "settings": {
+        "sim.world-setup": {
+          "profile": "source.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        }
+      }
+    }
+  ]
+}

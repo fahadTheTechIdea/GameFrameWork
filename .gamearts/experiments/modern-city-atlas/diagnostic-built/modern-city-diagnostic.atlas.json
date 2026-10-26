@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0",
+  "generator": "GameArtsSkills/build_sheet_atlas.py",
+  "asset_id": "modern-city-atlas-experiment",
+  "name": "modern-city-diagnostic",
+  "image": "modern-city-diagnostic.png",
+  "image_size": [
+    4091,
+    1170
+  ],
+  "cell_size": [
+    1361,
+    1170
+  ],
+  "columns": 3,
+  "rows": 1,
+  "mask_color": "#FF00FF",
+  "background_alpha": 255,
+  "coordinate_system": "top_left_pixels_exclusive_bounds",
+  "pivot_coordinate_space": "frame_cell_local",
+  "pixels_per_meter": null,
+  "component": null,
+  "parent_attachment": null,
+  "attachment_tracks": {},
+  "source_mockups": [],
+  "frames": [
+    {
+      "index": 0,
+      "name": "house-shell",
+      "direction": "fixed",
+      "action": null,
+      "rect": [
+        0,
+        0,
+        1361,
+        1170
+      ],
+      "source_size": [
+        1353,
+        1162
+      ],
+      "source_ink_bounds": [
+        0,
+        0,
+        1353,
+        1162
+      ],
+      "source_offset_in_cell": [
+        4,
+        4
+      ],
+      "pivot": [
+        680,
+        1165
+      ],
+      "anchors": {},
+      "duration_ms": 125,
+      "source_file": "frames/house-attempt-02.png",
+      "source_sha256": "429f29ae030bb1c9c9bd45a26bf1ddeb3a6983cad1126b0b839ac156a42e1853"
+    },
+    {
+      "index": 1,
+      "name": "park-tree",
+      "direction": "fixed",
+      "action": null,
+      "rect": [
+        1365,
+        0,
+        1361,
+        1170
+      ],
+      "source_size": [
+        1353,
+        1162
+      ],
+      "source_ink_bounds": [
+        0,
+        0,
+        1353,
+        1162
+      ],
+      "source_offset_in_cell": [
+        4,
+        4
+      ],
+      "pivot": [
+        680,
+        1165
+      ],
+      "anchors": {},
+      "duration_ms": 125,
+      "source_file": "frames/tree-attempt-01.png",
+      "source_sha256": "218dba3912e99716b45798105c037572dfd31099848dc51624d1cc7169e34427"
+    },
+    {
+      "index": 2,
+      "name": "streetlight",
+      "direction": "fixed",
+      "action": null,
+      "rect": [
+        2730,
+        0,
+        1361,
+        1170
+      ],
+      "source_size": [
+        1353,
+        1162
+      ],
+      "source_ink_bounds": [
+        0,
+        0,
+        1353,
+        1162
+      ],
+      "source_offset_in_cell": [
+        4,
+        4
+      ],
+      "pivot": [
+        680,
+        1165
+      ],
+      "anchors": {},
+      "duration_ms": 125,
+      "source_file": "frames/streetlight-attempt-01.png",
+      "source_sha256": "49f82bde5fe33b69fd04d87e27e1b7b887bb7791ae4cbd76dfb94bab5fd1a72b"
+    }
+  ],
+  "validation": {
+    "geometry": "generated_from_source_pixels",
+    "key_policy": "passed",
+    "visual_review": "not_performed",
+    "engine_validation": "not_tested"
+  },
+  "allow_near_key": true
+}

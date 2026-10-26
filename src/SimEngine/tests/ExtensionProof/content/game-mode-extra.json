@@ -1,0 +1,11 @@
+{
+  "game_mode_properties": [
+    { "id": "proof.new-rule", "kind": "boolean", "default": true, "capability": "proof.modes", "overridable": true, "requires_when_true": [] }
+  ],
+  "game_modes": [
+    { "id": "community-mode", "name": "Community authored mode", "properties": { "proof.pressure": 4 } }
+  ],
+  "scenarios": [
+    { "id": "community", "mode_overrides": {}, "game_mode": "community-mode", "time": "modes.second", "modules": ["proof.modes"], "seats": 1, "default_seats": 1 }
+  ]
+}

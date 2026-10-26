@@ -1,0 +1,34 @@
+{
+  "rectangular_tile_regions": [
+    {"id":"sensor.query-first-region","space":"sensor.tiles","x":1,"y":1,"width":1,"height":1},
+    {"id":"sensor.query-second-region","space":"sensor.tiles","x":2,"y":1,"width":1,"height":1}
+  ],
+  "knowledge_facts": [
+    {"id":"sensor.query-first-known","fresh_for":null,"value":{"region":"first"}},
+    {"id":"sensor.query-second-known","fresh_for":null,"value":{"region":"second"}}
+  ],
+  "layer_region_knowledge_visibility": [
+    {"id":"sensor.query-regions","definition":"sensor.query-byte","regions":[
+      {"region":"sensor.query-first-region","mode":"all","facts":["sensor.query-first-known"]},
+      {"region":"sensor.query-second-region","mode":"all","facts":["sensor.query-second-known"]}
+    ]}
+  ],
+  "knowledge_forgetting_policies": [
+    {"id":"sensor.query-forget-first","subjects":[{"provider":"sim.knowledge.facts","subject":"sensor.query-first-known"}],"companies":[0]}
+  ],
+  "spatial_layers": [
+    {"id":"sensor.query-byte","space":"sensor.tiles","type":"diagnostic.classification","value_type":"byte","visibility":"public","unit":"sensor.count"},
+    {"id":"sensor.query-int","space":"sensor.tiles","type":"diagnostic.signed-classification","value_type":"int","visibility":"company_private","unit":"sensor.count"}
+  ],
+  "tile_layer_setups": [
+    {"id":"query.byte.first","after":[],"layer":"sensor.query-byte","x":1,"y":1,"width":1,"height":1,"value":255,"owner":-1},
+    {"id":"query.byte.second","after":[],"layer":"sensor.query-byte","x":2,"y":1,"width":1,"height":1,"value":17,"owner":-1},
+    {"id":"query.int.minimum","after":[],"layer":"sensor.query-int","x":1,"y":1,"width":1,"height":1,"value":-2147483648,"owner":0},
+    {"id":"query.int.maximum","after":[],"layer":"sensor.query-int","x":2,"y":1,"width":1,"height":1,"value":2147483647,"owner":0},
+    {"id":"query.int.large","after":[],"layer":"sensor.query-int","x":1,"y":2,"width":1,"height":1,"value":120000,"owner":0},
+    {"id":"query.int.negative","after":[],"layer":"sensor.query-int","x":2,"y":2,"width":1,"height":1,"value":-70000,"owner":0}
+  ],
+  "world_setup_profiles": [
+    {"id":"sensor.query-values","entries":["query.byte.first","query.byte.second","query.int.minimum","query.int.maximum","query.int.large","query.int.negative"],"includes":[]}
+  ]
+}

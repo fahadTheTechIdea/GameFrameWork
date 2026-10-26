@@ -1,0 +1,15 @@
+{
+  "game_modes": [{ "id": "spatial-observer.resource-only", "name": "Resource-only physical simulation", "properties": {} }],
+  "time_definitions": [{"id":"observer.minute","quantum":{"numerator":60,"denominator":1,"unit":"second"},"frame_ticks":1,"ticks_per_second":30,"horizon":null}],
+  "entity_states": [{"id":"idle","state":"idle","priority":0,"default":true}],
+  "tile_spaces": [{"id":"observer.tiles","width":70000,"height":70000}],
+  "rectangular_tile_regions": [{"id":"tile.first","space":"observer.tiles","x":69996,"y":69996,"width":1,"height":1}],
+  "painted_tile_regions": [{"id":"tile.second","space":"observer.tiles","tiles":[{"x":69999,"y":69996},{"x":69999,"y":69999}]}],
+  "units": [{"id":"observer.count","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true}],
+  "resources": [{"id":"observer.ore","unit":"observer.count","category":"mineral","phase":"solid","traits":[],"capacity":{"observer.count":1}}],
+  "spatial_layers": [
+    {"id":"observer.public","space":"observer.tiles","type":"surface.classification","value_type":"int","visibility":"public","unit":"observer.count"},
+    {"id":"observer.private","space":"observer.tiles","type":"subsurface.deposit","value_type":"fixed","visibility":"company_private","unit":"observer.count","resource":"observer.ore","resource_measure":"quantity","metadata":{"provenance":"private-survey"}}
+  ],
+  "scenarios": [{"id":"layers", "game_mode": "spatial-observer.resource-only", "mode_overrides": {},"time":"observer.minute","space":"observer.tiles","modules":["layers"],"seats":2,"default_seats":2}]
+}

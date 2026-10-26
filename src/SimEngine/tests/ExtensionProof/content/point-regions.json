@@ -1,0 +1,5 @@
+{
+  "point_interval_regions": [{"id":"area.interval","space":"field.points","minimum":8,"maximum":12}],
+  "target_region_requirements": [{"id":"area.in-interval","region":"area.interval"}],
+  "activities": [{"id":"area.point-work","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"work","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"area.in-interval"}]}]
+}

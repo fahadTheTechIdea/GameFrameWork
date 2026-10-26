@@ -1,0 +1,63 @@
+{
+  "response_effects": [
+    {
+      "id": "pressure.resolve",
+      "bound_response": true
+    }
+  ],
+  "target_resource_requirements": [
+    {"port":null,
+      "id": "pressure.materials",
+      "use": "consume",
+      "quantities": {
+        "supply": 8
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "pressure.response",
+      "priority": 90,
+      "automatic_supply": false,
+      "nodes": [
+        {"executor":"work.timed",
+          "id": "detect",
+          "duration":{"numerator":1,"denominator":20,"unit":"hour"}
+        },
+        {"executor":"work.staffed",
+          "id": "repair",
+          "after": [
+            "detect"
+          ],
+          "roles": [
+            "inspect"
+          ],
+          "duration":{"numerator":1,"denominator":5,"unit":"hour"},
+          "requirement": "pressure.materials"
+        }
+      ],
+      "on_complete": "pressure.resolve"
+    }
+  ],
+  "incident_workflows": [
+    {
+      "id": "pressure.leak",
+      "kind": "pressure.leak",
+      "response": "pressure.response",
+      "phases": [
+        {
+          "id": "detection",
+          "nodes": [
+            "detect"
+          ]
+        },
+        {
+          "id": "repair",
+          "nodes": [
+            "repair"
+          ]
+        }
+      ]
+    }
+  ]
+}

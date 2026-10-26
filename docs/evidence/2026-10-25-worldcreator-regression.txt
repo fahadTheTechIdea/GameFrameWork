@@ -1,0 +1,18 @@
+PASS: CLI integrity JSON, exit codes and log/audit/notification process checks.
+PASS: production integrity regressions (synthetic GameArts fixtures).
+[world.validation.failed] Invalid placement rejected. (correlation: correlation-test)
+PASS: mockup-driven CLI generation and rejected-output preservation.
+PASS: mockup generation, contextual building sizes, surroundings, green zoning and negative algorithm cases.
+PASS: catalog CLI inventory, category filter, invalid input and audit checks.
+PASS: catalog coverage: 197 families / 585 variants / 15 categories; 555 frontage variants sized/site-checked; 10 infrastructure families explicitly guarded; 14 complete generation cases.
+PASS: infrastructure algorithms: 10 families / 30 variant worlds, contextual sizes, connected passage, reserved surroundings, terrain layers, JSON, invalid designs and cancellation.
+PASS: siting: 197 catalog profiles / 216 technology resolutions; 22 building + 10 infrastructure + 2 mixed/provider contextual worlds; typed supplies, capacity, districts, provider cycles, nuclear cooling, surroundings, JSON, negatives and cancellation.
+PASS: catalog contracts: Modern 197/585; explicit capability flags; independent dynamic plugin with custom vocabulary, fixed demand/siting code and actual world; no implicit catalog or legacy schema; CLI/plugin failures and audit.
+PASS: mockup source capture, geometry/calibration/topology/review gates, prompt drafts, schema, engine handoff, canonical atlas fixture; CLI PASS (synthetic inputs; no visual approval).
+Unhandled exception. System.ArgumentException: CAPTURE_SOURCE_PATH_INVALID
+   at WorldCreator.Core.Capture.MockupCapturePipeline.ResolveSourcePath(String trustedRoot, String relative) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator.Core\MockupCapturePipeline.cs:line 48
+   at WorldCreator.Core.Capture.MockupCapturePipeline.ReadSourceAsync(MockupCaptureDocument capture, String trustedRoot, CancellationToken token) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator.Core\MockupCapturePipeline.cs:line 24
+   at CurvedRoadTests.CityAcceptance(String cliPath) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\CurvedRoadTests.cs:line 61
+   at CurvedRoadTests.RunAsync(String cliPath) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\CurvedRoadTests.cs:line 50
+   at Program.<Main>$(String[] args) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\Program.cs:line 1809
+   at Program.<Main>(String[] args)

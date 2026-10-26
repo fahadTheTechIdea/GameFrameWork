@@ -1,0 +1,13 @@
+{
+  "entities": [
+    {"id":"cleanup.result","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":50},
+      "creation_probe":{"mode":"observe","participant":"source"},
+      "creation_tail":{}
+    }},
+    {"id":"cleanup.child","kind":"entity","components":{"creation_tail":{}}},
+    {"id":"cleanup.failure","kind":"entity","components":{
+      "creation_probe":{"mode":"throw-initialize","participant":"source"}
+    }}
+  ]
+}

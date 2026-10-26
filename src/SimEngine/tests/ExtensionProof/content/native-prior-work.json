@@ -1,0 +1,18 @@
+{
+  "entities":[{"id":"prior.site","kind":"structure","components":{
+    "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":false},
+    "storage":{"capacity_policy":"survey.storage","public":false,"initial_stock":{"steel":32}}
+  }}],
+  "prior_activity_requirements":[
+    {"id":"prior.target-ready","plan":"activity:prior.prepare","scope":"target","blocker":"prior.target-unprepared"},
+    {"id":"prior.company-ready","plan":"activity:prior.prepare","scope":"company","blocker":"prior.company-unprepared"}
+  ],
+  "activities":[
+    {"id":"prior.prepare","priority":60,"player_orderable":true,"automatic_supply":false,
+      "nodes":[{"executor":"work.staffed","id":"prepare","roles":["survey"],"duration":{"numerator":3,"denominator":10,"unit":"hour"},"requirement":"survey.inputs"}]},
+    {"id":"prior.target","priority":60,"player_orderable":true,"automatic_supply":false,
+      "nodes":[{"executor":"work.staffed","id":"inspect","roles":["survey"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"prior.target-ready"}]},
+    {"id":"prior.company","priority":60,"player_orderable":true,"automatic_supply":false,
+      "nodes":[{"executor":"work.staffed","id":"inspect","roles":["survey"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"prior.company-ready"}]}
+  ]
+}

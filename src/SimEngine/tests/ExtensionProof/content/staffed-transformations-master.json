@@ -1,0 +1,15 @@
+{
+  "schema":1,
+  "modules":[
+    {"id":"sim.access","version":"1.0.0","documents":["open-access.json"]},
+    {"id":"sim.inventory","version":"1.0.0","documents":[]},
+    {"id":"sim.motion","version":"1.0.0","documents":[]},
+    {"id":"sim.tile-navigation","version":"1.0.0","requires":[{"id":"sim.motion","version":"1.0.0"}],"documents":["native-survey-navigation.json"]},
+    {"id":"sim.work","version":"1.0.0","requires":[{"id":"sim.access","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"},{"id":"sim.motion","version":"1.0.0"}],"documents":["native-survey-work.json","work-retry.json"]},
+    {"id":"sim.knowledge","version":"1.0.0","documents":["native-survey-knowledge.json"]},
+    {"id":"sim.operations","version":"1.0.0","documents":[]},
+    {"id":"sim.resource-flows","version":"1.0.0","requires":[{"id":"sim.inventory","version":"1.0.0"}],"documents":["endpoints-flows.json"]},
+    {"id":"sim.transformations","version":"1.0.0","requires":[{"id":"sim.access","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"},{"id":"sim.operations","version":"1.0.0"}],"documents":["staffed-transformations.json"]},
+    {"id":"sim.world-setup","version":"1.0.0","documents":["native-survey-world.json","native-survey-startup.json"]}
+  ]
+}

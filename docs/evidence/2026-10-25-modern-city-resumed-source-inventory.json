@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-10-25T18:00:34.610488+03:00",
+  "baseRevision": "b4c789d5db1ce87ac1d9687986799253acf584fe",
+  "branch": "main",
+  "workingTree": "dirty; preserved prior work",
+  "sdk": "10.0.402",
+  "postGenerationArtifactChecks": "Passed",
+  "files": {
+    "src/WorldCreator/WorldCreator.Core/MockupWorldDesign.cs": "a27281a2b0ebb88f7cbe4f806fd8275603fd9b1309dd0a694b9a5dd65b271bb6",
+    "src/WorldCreator/WorldCreator.Core/CatalogContentAuthoring.cs": "2af10704b4d3efc9f9647bce76c7ecaf2c6c430f0af6e99e98bfe83aac7de4c3",
+    "src/WorldCreator/WorldCreator.Core/FacilityComposition.cs": "e91ef8289323ed364d7d5bc2d66d1f840eba7d10df4b213b3ac92902d1e1edbb",
+    "src/WorldCreator/WorldCreator.Core/StructureSitingPlanner.cs": "613d3bcbac382490d8e8db936025852386a4049085d0170cfb8772deec700c2e",
+    "src/WorldCreator/WorldCreator.Core/StructureSitingValidator.cs": "9f894184798be48f8c3c72863dbecde266af03d390fc8bf856104f3382b612ff",
+    "tests/WorldCreator.Tests/CatalogContentAuthoringTests.cs": "30a7c1b414e6bed6f8164f01ad7ff4c65d7e353d3f1635bf79a9d4ed53eca554",
+    "tests/WorldCreator.Tests/CurvedRoadTests.cs": "14a18955c81dac8a4390e4dc454b920b9e53b22b40fc69c7b9c06cec6ba5a988",
+    ".gameframework/worlds/modern-city/catalog-parts-review.json": "3e2f1fc107e4ea3d59cd11c2b09ed9890fbbfeb0137ea3cf3a12b6458d5a8bfc",
+    ".gameframework/worlds/modern-city/city-design.json": "d545dced2c5c47a4853fa7296f3e1f5e3b88befab275272ef1390f7abc8dde34",
+    ".gameframework/worlds/modern-city/generation-decisions.json": "eb21bc30253fca6cdb09cbbbfe24cf450a0a2301f0d3765f3d75c5b7806e68da",
+    ".gameframework/worlds/modern-city/mockup-capture.json": "9de6fd5f21a48e9538bde5eeda932a0a26487cf4f5f33b19b572353d658a8428",
+    ".gameframework/worlds/modern-city/world-request.json": "0835c0c09e93af2cf6a0c7ded6a966a1afc2ef0a1788e9f84932a4d61bcd73ed",
+    ".gameframework/worlds/modern-city/catalogs/modern-city.layout.json": "0a9e6ec1df15477879209222097a9b5ca74e165f3c24174d469a24b4ea61fd17",
+    "generated/modern-city/world.json": "14ce289822086c31d66f971e305bab5d49a34c918b9ebc5b37a81014f4638395",
+    "generated/modern-city/capture-review.html": "13e2069d618670579292ad8b38a6d86c897f3d47c88e67f76aa19b14954924d4",
+    "docs/evidence/2026-10-25-modern-city-comparison-browser.png": "b09a82d0e173abaecfc51522560fc9746d74f676b44353ab0b6481a89d00be81",
+    "docs/evidence/2026-10-25-modern-city-resumed-full-regression.txt": "8796183d564146a0c7a9d4b85a4cb09e7de5417987b2760bea7ff859363b0f19"
+  }
+}

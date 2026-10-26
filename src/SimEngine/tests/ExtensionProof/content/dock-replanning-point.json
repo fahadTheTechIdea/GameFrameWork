@@ -1,0 +1,5 @@
+{
+  "point_interval_regions": [
+    { "id": "replan.point.exit", "space": "field.points", "minimum": 0, "maximum": 11.5 }
+  ]
+}

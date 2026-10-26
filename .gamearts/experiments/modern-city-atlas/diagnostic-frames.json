@@ -1,0 +1,25 @@
+{
+  "name": "modern-city-diagnostic",
+  "asset_id": "modern-city-atlas-experiment",
+  "columns": 3,
+  "padding": 4,
+  "spacing": 4,
+  "frames": [
+    {
+      "name": "house-shell",
+      "file": "frames/house-attempt-02.png",
+      "direction": "fixed"
+    },
+    {
+      "name": "park-tree",
+      "file": "frames/tree-attempt-01.png",
+      "direction": "fixed"
+    },
+    {
+      "name": "streetlight",
+      "file": "frames/streetlight-attempt-01.png",
+      "direction": "fixed"
+    }
+  ],
+  "allow_near_key": true
+}

@@ -1,0 +1,10 @@
+{
+  "knowledge_visibility_policies": [{"id":"bulk.visibility","own_entities":true,"unlisted_entities":false,"unlisted_content":true,
+    "rules":["bulk.byte.regions","bulk.int.regions","bulk.fixed.regions","bulk.private.regions"]}],
+  "layer_region_knowledge_visibility": [
+    {"id":"bulk.byte.regions","definition":"bulk.byte","regions":[{"region":"bulk.first","mode":"all","facts":["field.observed"]},{"region":"bulk.second","mode":"all","facts":["field.second"]}]},
+    {"id":"bulk.int.regions","definition":"bulk.int","regions":[{"region":"bulk.first","mode":"all","facts":["field.observed"]},{"region":"bulk.second","mode":"all","facts":["field.second"]}]},
+    {"id":"bulk.fixed.regions","definition":"bulk.fixed","regions":[{"region":"bulk.first","mode":"all","facts":["field.observed"]},{"region":"bulk.second","mode":"all","facts":["field.second"]}]},
+    {"id":"bulk.private.regions","definition":"bulk.private","regions":[{"region":"bulk.first","mode":"all","facts":["field.observed"]},{"region":"bulk.second","mode":"all","facts":["field.second"]}]}
+  ]
+}

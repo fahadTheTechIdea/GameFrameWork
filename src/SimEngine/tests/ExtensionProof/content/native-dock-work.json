@@ -1,0 +1,25 @@
+{
+  "entities":[{"id":"dock.site","kind":"structure","components":{
+    "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":false},
+    "storage":{"capacity_policy":"survey.storage","public":false,"initial_stock":{"steel":20}},
+    "tile_work_dock":{"work_roles":["survey"],"resources":[],"slots":[
+      {"id":"bay","kind":"service","x":-1,"y":0},
+      {"id":"wait","kind":"waiting","x":-2,"y":1},
+      {"id":"exit","kind":"departure","x":-1,"y":1}
+    ]}
+  }}],
+  "dock_work_requirements":[{"id":"dock.admission"}],
+  "work_requirement_groups":[{"id":"dock.ready","mode":"all","entries":[
+    {"id":"dock","requirement":"dock.admission"},
+    {"id":"materials","requirement":"survey.inputs"}
+  ]}],
+  "activities":[
+    {"id":"dock.parallel","priority":60,"player_orderable":true,"automatic_supply":false,
+      "nodes":[
+        {"executor":"work.staffed","id":"a","roles":["survey"],"duration":{"numerator":1,"denominator":2,"unit":"hour"},"requirement":"dock.ready"},
+        {"executor":"work.staffed","id":"b","roles":["survey"],"duration":{"numerator":1,"denominator":2,"unit":"hour"},"requirement":"dock.ready"}
+      ]},
+    {"id":"dock.inspect","priority":10,"player_orderable":true,"automatic_supply":false,
+      "nodes":[{"executor":"work.staffed","id":"inspect","roles":["survey"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"dock.admission"}]}
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "rectangular_tile_regions": [
+    {"id":"fleet.all","space":"survey.tiles","x":0,"y":0,"width":48,"height":32},
+    {"id":"fleet.source-only","space":"survey.tiles","x":0,"y":0,"width":22,"height":32}
+  ],
+  "work_policies": [
+    {"id":"fleet.controls","enabled":true,"priority":77,"allowed_roles":["haul"],"area":"fleet.source-only","interruptible":false,"emergency_eligible":true,"assignment_mode":"all","states":{"disabled":"survey.stopped","standby":"survey.stopped"}}
+  ]
+}

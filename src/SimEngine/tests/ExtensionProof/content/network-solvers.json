@@ -1,0 +1,7 @@
+{
+  "limited_network_solvers": [
+    {"id":"solver.limited","limits":{"steel":1},"interval":{"numerator":1,"denominator":1,"unit":"minute"}},
+    {"id":"solver.pulsed","limits":{"steel":1},"interval":{"numerator":2,"denominator":1,"unit":"minute"}}
+  ],
+  "probe_network_solvers": [{"id":"solver.probe"}]
+}

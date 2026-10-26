@@ -1,0 +1,30 @@
+{
+  "entity_states":[{"id":"sensor.constructing","state":"constructing","priority":10}],
+  "resources":[{"id":"steel","unit":"sensor.count","category":"material","phase":"solid","traits":[],"capacity":{"sensor.count":1}}],
+  "capacity_policies":[{"id":"sensor.stock","limits":{"sensor.count":100}}],
+  "worker_roles":[{"id":"haul"},{"id":"sensor.fabricator"}],
+  "handling_profiles":[{"id":"sensor.handling","resources":[{"resource":"steel","quantity":1,
+    "loading":{"numerator":1,"denominator":1,"unit":"minute"},"unloading":{"numerator":1,"denominator":1,"unit":"minute"}}]}],
+  "construction_effects":[{"id":"sim.construction.finish","operation":"finish"}],
+  "target_resource_requirements":[{"id":"sensor.build-materials","port":null,"use":"consume","quantities":{"steel":8}}],
+  "activities":[{"id":"sensor.build-work","priority":10,"player_orderable":false,"automatic_supply":true,
+    "nodes":[{"executor":"work.staffed","id":"build","roles":["sensor.inspect","sensor.fabricator"],"duration":{"numerator":4,"denominator":1,"unit":"minute"},"requirement":"sensor.build-materials"}]}],
+  "entities":[
+    {"id":"sensor.depot","kind":"structure","components":{
+      "tile_presence":{"space":"sensor.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"sensor.stock","public":true,"initial_stock":{"steel":12}}
+    }},
+    {"id":"sensor.build-site","kind":"structure","components":{
+      "tile_presence":{"space":"sensor.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"sensor.stock","public":false,"initial_stock":{}},
+      "site":{"target":"sensor.facility"}
+    }},
+    {"id":"sensor.facility","kind":"structure","components":{
+      "tile_presence":{"space":"sensor.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "construction":{"site":"sensor.build-site","activity":"sensor.build-work","states":{"site":"sensor.constructing"}}
+    }}
+  ],
+  "world_setup_profiles":[{"id":"sensor.construction-start","entries":["sensor.start-depot"],"includes":["sensor.work-start"]}],
+  "entity_setups":[{"id":"sensor.start-depot","after":[],"entity":"sensor.depot","company":0,
+    "placement":{"space":"sensor.tiles","x":3,"y":16},"home":null}]
+}

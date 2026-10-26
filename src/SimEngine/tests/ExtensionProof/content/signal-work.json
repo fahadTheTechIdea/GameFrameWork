@@ -1,0 +1,31 @@
+{
+  "timed_activity_executors":[{"id":"signal.timer","rate":1}],
+  "target_signal_requirements":[
+    {"id":"signal.queue-idle","conditions":[{"id":"backlog","source":"dispatch.production","signal":"signal.production-backlog","minimum":0,"maximum":0,"unit":"unit.count","blocker":"signal.wait-production"}]},
+    {"id":"signal.no-target-source","conditions":[{"id":"permit","source":"signal.machine-permit","signal":"signal.machine-enabled","expected":true,"blocker":"signal.wait-machine"}]}
+  ],
+  "worker_signal_requirements":[
+    {"id":"signal.worker-enabled","conditions":[
+      {"id":"enabled","source":"signal.machine-permit","signal":"signal.machine-enabled","expected":true,"blocker":"signal.wait-machine"},
+      {"id":"target","source":"signal.machine-permit","signal":"signal.machine-target","minimum":1,"maximum":2,"unit":"unit.work-rate","blocker":"signal.wait-setting"}
+    ]},
+    {"id":"signal.worker-high-setting","conditions":[{"id":"target","source":"signal.machine-permit","signal":"signal.machine-target","minimum":2,"maximum":2,"unit":"unit.work-rate","blocker":"signal.wait-setting"}]}
+  ],
+  "work_requirement_groups":[
+    {"id":"signal.worker-choice","mode":"any","entries":[{"id":"a.enabled","requirement":"signal.worker-enabled"},{"id":"b.setting","requirement":"signal.worker-high-setting"}]},
+    {"id":"signal.prepare","mode":"all","entries":[{"id":"machine","requirement":"signal.worker-choice"},{"id":"tool","requirement":"segment.tool"}]},
+    {"id":"signal.finish","mode":"all","entries":[{"id":"machine","requirement":"signal.worker-choice"},{"id":"material","requirement":"segment.material"}]}
+  ],
+  "entity_activities":[
+    {"id":"signal.workflow","target":"dispatch.factory","player_orderable":true,"automatic_supply":false,"priority":50,"nodes":[
+      {"id":"verify","executor":"work.staffed","roles":["survey"],"duration":{"numerator":2,"denominator":1,"unit":"minute"},"after":["wait"],"requirement":"signal.worker-choice"},
+      {"id":"wait","executor":"signal.timer","roles":[],"duration":{"numerator":0,"denominator":1,"unit":"minute"},"after":["finish"],"requirement":"signal.queue-idle"},
+      {"id":"finish","executor":"work.staffed","roles":["survey"],"duration":{"numerator":2,"denominator":1,"unit":"minute"},"after":["inspect","prepare"],"requirement":"signal.finish","effect":"dispatch.enqueue"},
+      {"id":"prepare","executor":"work.staffed","roles":["survey"],"duration":{"numerator":6,"denominator":1,"unit":"minute"},"requirement":"signal.prepare"},
+      {"id":"inspect","executor":"work.staffed","roles":["survey"],"duration":{"numerator":4,"denominator":1,"unit":"minute"}}
+    ]},
+    {"id":"signal.absent","target":"dispatch.factory","player_orderable":true,"automatic_supply":false,"nodes":[
+      {"id":"wait","executor":"signal.timer","roles":[],"duration":{"numerator":1,"denominator":1,"unit":"minute"},"requirement":"signal.no-target-source"}
+    ]}
+  ]
+}

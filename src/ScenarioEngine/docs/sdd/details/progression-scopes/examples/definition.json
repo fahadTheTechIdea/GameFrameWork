@@ -1,0 +1,15 @@
+{
+  "id": "progression_scopes",
+  "definitionVersion": "1.0.0",
+  "scope": "campaign",
+  "allowedDeltaKinds": [
+    "supplies",
+    "roster",
+    "unlock"
+  ],
+  "nextScenarioIds": [
+    "crossing",
+    "rescue"
+  ],
+  "resetPolicy": "explicit_new_lineage"
+}

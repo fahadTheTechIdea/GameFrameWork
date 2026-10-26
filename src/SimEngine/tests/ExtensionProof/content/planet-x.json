@@ -1,0 +1,786 @@
+{
+  "game_modes": [
+    {
+      "id": "planet.resource-only",
+      "name": "Planet X resource-only colony",
+      "properties": {}
+    }
+  ],
+  "time_definitions": [
+    {
+      "id": "planet.clock",
+      "quantum": {
+        "numerator": 30,
+        "denominator": 1,
+        "unit": "second"
+      },
+      "frame_ticks": 1,
+      "ticks_per_second": 30,
+      "calendar": null,
+      "horizon": null
+    }
+  ],
+  "entity_states": [
+    {
+      "id": "idle",
+      "state": "planet.idle",
+      "priority": 0,
+      "default": true
+    },
+    {
+      "id": "working",
+      "state": "planet.working",
+      "priority": 20
+    },
+    {
+      "id": "loading",
+      "state": "planet.loading",
+      "priority": 30
+    },
+    {
+      "id": "travel",
+      "state": "planet.travel",
+      "priority": 40
+    },
+    {
+      "id": "blocked",
+      "state": "planet.blocked",
+      "priority": 60
+    },
+    {
+      "id": "site",
+      "state": "planet.site",
+      "priority": 80
+    }
+  ],
+  "units": [
+    {
+      "id": "planet.unit.count",
+      "dimension": "count",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    },
+    {
+      "id": "planet.unit.ore",
+      "dimension": "count",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    },
+    {
+      "id": "planet.unit.alloy",
+      "dimension": "count",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    },
+    {
+      "id": "planet.unit.metre",
+      "dimension": "length",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": false
+    },
+    {
+      "id": "unit.work-rate",
+      "dimension": "work-rate",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": false
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "planet.capacity.4",
+      "limits": {
+        "planet.unit.count": 4
+      }
+    },
+    {
+      "id": "planet.capacity.20",
+      "limits": {
+        "planet.unit.count": 20
+      }
+    },
+    {
+      "id": "planet.capacity.40",
+      "limits": {
+        "planet.unit.count": 40
+      }
+    }
+  ],
+  "planet_ores": [
+    {
+      "id": "planet.ore",
+      "unit": "planet.unit.ore",
+      "category": "mineral",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "planet.unit.count": 1
+      },
+      "composition": "ferrite"
+    }
+  ],
+  "resources": [
+    {
+      "id": "planet.alloy",
+      "unit": "planet.unit.alloy",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "planet.unit.count": 1
+      }
+    }
+  ],
+  "point_spaces": [
+    {
+      "id": "planet.space",
+      "extent": 100,
+      "access_open": true,
+      "rollout_offset": 1
+    }
+  ],
+  "spatial_layers": [
+    {
+      "id": "planet.deposit",
+      "space": "planet.space",
+      "type": "resource.deposit",
+      "value_type": "fixed",
+      "visibility": "company_private",
+      "unit": "planet.unit.ore",
+      "resource": "planet.ore",
+      "resource_measure": "quantity",
+      "vertical_domain": "underground",
+      "vertical_unit": "planet.unit.metre",
+      "vertical_reference": "surface",
+      "vertical_offset": -5,
+      "metadata": {
+        "formation": "ferrite"
+      }
+    }
+  ],
+  "point_resource_cells": [
+    {
+      "id": "planet.deposit-cell",
+      "identity": 1,
+      "layer": "planet.deposit",
+      "point": 20,
+      "capacity_policy": "planet.capacity.40",
+      "public": false
+    }
+  ],
+  "spatial_resource_transfer_effects": [
+    {
+      "id": "planet.extract-stock",
+      "operation": "withdraw",
+      "cell": "planet.deposit-cell",
+      "quantities": {
+        "planet.ore": 2
+      }
+    }
+  ],
+  "resource_flow_journals": [
+    {
+      "id": "planet.flows",
+      "retained_records_per_company": 1000
+    }
+  ],
+  "worker_roles": [
+    {
+      "id": "planet.extractor"
+    },
+    {
+      "id": "planet.builder"
+    },
+    {
+      "id": "haul"
+    }
+  ],
+  "handling_profiles": [
+    {
+      "id": "planet.handling",
+      "resources": [
+        {
+          "resource": "planet.ore",
+          "quantity": 1,
+          "loading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "unloading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        },
+        {
+          "resource": "planet.alloy",
+          "quantity": 1,
+          "loading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "unloading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "id": "planet.extract",
+      "player_orderable": true,
+      "automatic_supply": false,
+      "priority": 60,
+      "nodes": [
+        {
+          "id": "operate",
+          "executor": "work.staffed",
+          "roles": [
+            "planet.extractor"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "effect": "planet.extract-stock"
+        }
+      ]
+    },
+    {
+      "id": "planet.build",
+      "player_orderable": false,
+      "automatic_supply": true,
+      "priority": 50,
+      "nodes": [
+        {
+          "id": "prepare",
+          "executor": "work.staffed",
+          "roles": [
+            "planet.builder"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        },
+        {
+          "id": "build",
+          "after": [
+            "prepare"
+          ],
+          "executor": "work.staffed",
+          "roles": [
+            "planet.builder"
+          ],
+          "duration": {
+            "numerator": 2,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "planet.build-inputs"
+        }
+      ]
+    },
+    {
+      "id": "planet.remove",
+      "player_orderable": false,
+      "automatic_supply": false,
+      "priority": 40,
+      "nodes": [
+        {
+          "id": "remove",
+          "executor": "work.staffed",
+          "roles": [
+            "planet.builder"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    }
+  ],
+  "target_resource_requirements": [
+    {"port":null,
+      "id": "planet.build-inputs",
+      "use": "consume",
+      "quantities": {
+        "planet.alloy": 2
+      }
+    }
+  ],
+  "transformations": [
+    {"tool_consumption":{},"operating_ports":{},"tool_ports":{},"input_ports":{"planet.ore":"material.input"},"output_ports":{"planet.alloy":"material.output"},
+      "id": "planet.refine",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "operating_inputs": [],
+      "tools": {},
+      "inputs": {
+        "planet.ore": 2
+      },
+      "outputs": {
+        "planet.alloy": 1
+      },
+      "duration": {
+        "numerator": 2,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    },
+    {"tool_consumption":{},"operating_ports":{},"tool_ports":{},"input_ports":{"planet.alloy":"material.input"},"output_ports":{},
+      "id": "planet.assemble",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "operating_inputs": [],
+      "tools": {},
+      "inputs": {
+        "planet.alloy": 4
+      },
+      "entity_output": "planet.rover", "output_home": "producer",
+      "duration": {
+        "numerator": 3,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    }
+  ],
+  "construction_effects": [
+    {
+      "id": "sim.construction.finish",
+      "operation": "finish"
+    },
+    {
+      "id": "sim.construction.demolish",
+      "operation": "demolish"
+    }
+  ],
+  "resource_recovery_profiles": [
+    {
+      "id": "planet.recovery",
+      "space": "planet.space",
+      "container": "planet.recovery-container"
+    }
+  ],
+  "entities": [
+    {
+      "id": "planet.mine",
+      "kind": "structure",
+      "components": {
+        "point_presence": {
+          "space": "planet.space",
+          "position": 20
+        },
+        "point_stock": {
+          "resource": "planet.ore",
+          "capacity_policy": "planet.capacity.20",
+          "initial": 0
+        },
+        "point_dock": {
+          "resources": [
+            "planet.ore"
+          ],
+          "work_roles": [
+            "planet.extractor"
+          ],
+          "slots": [
+            {
+              "id": "extract",
+              "kind": "service",
+              "offset": -1,
+              "work_role": "planet.extractor"
+            },
+            {
+              "id": "load",
+              "kind": "service",
+              "offset": 1,
+              "resource": "planet.ore"
+            },
+            {
+              "id": "extract-wait",
+              "kind": "waiting",
+              "offset": -3,
+              "work_role": "planet.extractor"
+            },
+            {
+              "id": "load-wait",
+              "kind": "waiting",
+              "offset": 3,
+              "resource": "planet.ore"
+            },
+            {
+              "id": "extract-exit",
+              "kind": "departure",
+              "offset": -2,
+              "work_role": "planet.extractor"
+            },
+            {
+              "id": "load-exit",
+              "kind": "departure",
+              "offset": 2,
+              "resource": "planet.ore"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "planet.refinery",
+      "kind": "structure",
+      "components": {"inventory_port":[{"id":"material.output"},{"id":"material.input"},{"id":"tool.input"},{"id":"operating.input"}],
+        "point_presence": {
+          "space": "planet.space",
+          "position": 40
+        },
+        "storage": {
+          "capacity_policy": "planet.capacity.40",
+          "public": true,
+          "initial_stock": {}
+        },
+        "point_dock": {
+          "resources": [
+            "planet.ore",
+            "planet.alloy"
+          ],
+          "work_roles": [],
+          "rollouts": [{"id":"rovers","outputs":["planet.rover"],"starts":["launch"],"exits":["launch.exit"],"max_expanded":1024}],
+          "slots": [
+            {
+              "id": "service",
+              "kind": "service",
+              "offset": -1
+            },
+            {
+              "id": "wait",
+              "kind": "waiting",
+              "offset": 1
+            },
+            {
+              "id": "departure",
+              "kind": "departure",
+              "offset": 2
+            },
+            {"id":"launch","kind":"rollout","offset":3},
+            {"id":"launch.exit","kind":"departure","offset":4}
+          ]
+        },
+        "transformer": {
+          "automatic_supply": true,
+          "wip_capacity": "planet.capacity.40",
+          "transformations": [
+            "planet.refine",
+            "planet.assemble"
+          ],
+          "states": {
+            "working": "working",
+            "stopped": "blocked"
+          },
+          "operation": {
+            "id": "transformation",
+            "enabled": true,
+            "target": 1,
+            "minimum": 1,
+            "maximum": 1,
+            "unit": "unit.work-rate"
+          }
+        }
+      }
+    },
+    {
+      "id": "planet.digger",
+      "kind": "vehicle",
+      "components": {
+        "point_presence": {
+          "space": "planet.space",
+          "position": 1
+        },
+        "point_motion": {
+          "rate": 120,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "contract_worker": {
+          "role": "planet.extractor",
+          "rate": 1,
+          "states": {
+            "working": "working",
+            "stopped": "blocked"
+          }
+        }
+      }
+    },
+    {
+      "id": "planet.carrier",
+      "kind": "vehicle",
+      "components": {
+        "point_presence": {
+          "space": "planet.space",
+          "position": 4
+        },
+        "point_motion": {
+          "rate": 120,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "working",
+            "loading": "loading",
+            "stopped": "blocked"
+          }
+        },
+        "storage": {
+          "capacity_policy": "planet.capacity.4",
+          "public": false,
+          "initial_stock": {}
+        },
+        "transporter": {
+          "handling": "planet.handling"
+        }
+      }
+    },
+    {
+      "id": "planet.rover",
+      "kind": "vehicle",
+      "components": {
+        "point_presence": {
+          "space": "planet.space",
+          "position": 0
+        },
+        "point_motion": {
+          "rate": 120,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "contract_worker": {
+          "role": "planet.builder",
+          "rate": 1,
+          "states": {
+            "working": "working",
+            "stopped": "blocked"
+          }
+        }
+      }
+    },
+    {
+      "id": "planet.beacon",
+      "kind": "structure",
+      "components": {
+        "point_presence": {
+          "space": "planet.space",
+          "position": 30
+        },
+        "point_dock": {
+          "work_roles": ["planet.builder"],
+          "resources": ["planet.alloy"],
+          "slots": [
+            {"id":"build","kind":"service","offset":-1,"work_role":"planet.builder"},
+            {"id":"unload","kind":"service","offset":1,"resource":"planet.alloy"},
+            {"id":"build-wait","kind":"waiting","offset":-3,"work_role":"planet.builder"},
+            {"id":"unload-wait","kind":"waiting","offset":3,"resource":"planet.alloy"},
+            {"id":"build-exit","kind":"departure","offset":-2,"work_role":"planet.builder"},
+            {"id":"unload-exit","kind":"departure","offset":2,"resource":"planet.alloy"}
+          ]
+        },
+        "storage": {
+          "capacity_policy": "planet.capacity.40",
+          "public": false,
+          "initial_stock": {}
+        },
+        "construction": {
+          "site": "planet.beacon-site",
+          "activity": "planet.build",
+          "demolish": {
+            "activity": "planet.remove",
+            "salvage": {}
+          },
+          "states": {
+            "site": "site"
+          }
+        }
+      }
+    },
+    {
+      "id": "planet.beacon-site",
+      "kind": "structure",
+      "tags": [
+        "site"
+      ],
+      "components": {
+        "point_presence": {
+          "space": "planet.space",
+          "position": 30
+        },
+        "point_dock": {
+          "work_roles": ["planet.builder"],
+          "resources": ["planet.alloy"],
+          "slots": [
+            {"id":"build","kind":"service","offset":-1,"work_role":"planet.builder"},
+            {"id":"unload","kind":"service","offset":1,"resource":"planet.alloy"},
+            {"id":"build-wait","kind":"waiting","offset":-3,"work_role":"planet.builder"},
+            {"id":"unload-wait","kind":"waiting","offset":3,"resource":"planet.alloy"},
+            {"id":"build-exit","kind":"departure","offset":-2,"work_role":"planet.builder"},
+            {"id":"unload-exit","kind":"departure","offset":2,"resource":"planet.alloy"}
+          ]
+        },
+        "storage": {
+          "capacity_policy": "planet.capacity.40",
+          "public": false,
+          "initial_stock": {}
+        },
+        "site": {
+          "target": "planet.beacon"
+        }
+      }
+    },
+    {
+      "id": "planet.recovery-container",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "planet.space",
+          "position": 0
+        },
+        "storage": {
+          "capacity_policy": "planet.capacity.4",
+          "public": true,
+          "initial_stock": {},
+          "evacuate": true
+        }
+      }
+    }
+  ],
+  "point_layer_setups": [
+    {
+      "id": "planet.start.deposit",
+      "after": [],
+      "layer": "planet.deposit",
+      "point": 20,
+      "value": 12,
+      "owner": 0
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "planet.start.mine",
+      "after": [
+        "planet.start.deposit"
+      ],
+      "entity": "planet.mine",
+      "company": 0,
+      "placement": {
+        "space": "planet.space",
+        "position": 20
+      },
+      "home": null
+    },
+    {
+      "id": "planet.start.refinery",
+      "after": [
+        "planet.start.deposit"
+      ],
+      "entity": "planet.refinery",
+      "company": 0,
+      "placement": {
+        "space": "planet.space",
+        "position": 40
+      },
+      "home": null
+    },
+    {
+      "id": "planet.start.digger",
+      "after": [
+        "planet.start.mine"
+      ],
+      "entity": "planet.digger",
+      "company": 0,
+      "placement": {
+        "space": "planet.space",
+        "position": 1
+      },
+      "home": "planet.start.mine"
+    },
+    {
+      "id": "planet.start.carrier",
+      "after": [
+        "planet.start.refinery"
+      ],
+      "entity": "planet.carrier",
+      "company": 0,
+      "placement": {
+        "space": "planet.space",
+        "position": 4
+      },
+      "home": "planet.start.refinery"
+    }
+  ],
+  "world_setup_profiles": [{"id":"planet.start","entries":["planet.start.deposit","planet.start.mine","planet.start.refinery","planet.start.digger","planet.start.carrier"],"includes":[]}],
+  "scenarios": [
+    {
+      "id": "planet-x",
+      "game_mode": "planet.resource-only",
+      "mode_overrides": {},
+      "time": "planet.clock",
+      "space": "planet.space",
+      "modules": [
+        "planet-x",
+        "sim.resource-flows",
+        "sim.operations",
+        "sim.transformations",
+        "sim.motion",
+        "sim.work",
+        "sim.logistics",
+        "sim.construction",
+        "points",
+        "sim.world-setup",
+        "sim.spatial-resources"
+      ],
+      "settings": {
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.construction": {
+          "recovery": "planet.recovery"
+        },
+        "sim.world-setup": {
+          "profile": "planet.start"
+        }
+      },
+      "seats": 2,
+      "default_seats": 2
+    }
+  ]
+}

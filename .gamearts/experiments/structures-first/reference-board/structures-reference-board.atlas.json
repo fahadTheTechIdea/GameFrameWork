@@ -1,0 +1,239 @@
+{
+  "schema_version": "1.0",
+  "generator": "GameArtsSkills/build_sheet_atlas.py",
+  "asset_id": "structures-first-reference-board-not-production",
+  "name": "structures-reference-board",
+  "image": "structures-reference-board.png",
+  "image_size": [
+    4672,
+    2088
+  ],
+  "cell_size": [
+    1552,
+    1040
+  ],
+  "columns": 3,
+  "rows": 2,
+  "mask_color": "#FF00FF",
+  "background_alpha": 255,
+  "coordinate_system": "top_left_pixels_exclusive_bounds",
+  "pivot_coordinate_space": "frame_cell_local",
+  "pixels_per_meter": null,
+  "component": null,
+  "parent_attachment": null,
+  "attachment_tracks": {},
+  "source_mockups": [],
+  "frames": [
+    {
+      "index": 0,
+      "name": "house",
+      "direction": null,
+      "action": null,
+      "rect": [
+        0,
+        0,
+        1552,
+        1040
+      ],
+      "source_size": [
+        1536,
+        1024
+      ],
+      "source_ink_bounds": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "source_offset_in_cell": [
+        8,
+        8
+      ],
+      "pivot": [
+        776,
+        1031
+      ],
+      "anchors": {},
+      "duration_ms": 125,
+      "source_file": "structures/house.png",
+      "source_sha256": "62ebac984264280d4fc27e2baa5fca7dce9d841ee13f6f9f682f87bfaf7fe846"
+    },
+    {
+      "index": 1,
+      "name": "office",
+      "direction": null,
+      "action": null,
+      "rect": [
+        1560,
+        0,
+        1552,
+        1040
+      ],
+      "source_size": [
+        1536,
+        1024
+      ],
+      "source_ink_bounds": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "source_offset_in_cell": [
+        8,
+        8
+      ],
+      "pivot": [
+        776,
+        1031
+      ],
+      "anchors": {},
+      "duration_ms": 125,
+      "source_file": "structures/office.png",
+      "source_sha256": "f5c265889871e4725b5ddd6a9237906a9d5e62606430f93ae54429aabed58711"
+    },
+    {
+      "index": 2,
+      "name": "school",
+      "direction": null,
+      "action": null,
+      "rect": [
+        3120,
+        0,
+        1552,
+        1040
+      ],
+      "source_size": [
+        1536,
+        1024
+      ],
+      "source_ink_bounds": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "source_offset_in_cell": [
+        8,
+        8
+      ],
+      "pivot": [
+        776,
+        1031
+      ],
+      "anchors": {},
+      "duration_ms": 125,
+      "source_file": "structures/school.png",
+      "source_sha256": "29c4c95efb2cab039ce387067735329b09d0b4bd89be4018221c5f5a7fb5ec2c"
+    },
+    {
+      "index": 3,
+      "name": "warehouse",
+      "direction": null,
+      "action": null,
+      "rect": [
+        0,
+        1048,
+        1552,
+        1040
+      ],
+      "source_size": [
+        1536,
+        1024
+      ],
+      "source_ink_bounds": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "source_offset_in_cell": [
+        8,
+        8
+      ],
+      "pivot": [
+        776,
+        1031
+      ],
+      "anchors": {},
+      "duration_ms": 125,
+      "source_file": "structures/warehouse.png",
+      "source_sha256": "7caca8c5f178a91309529c381d1ea54843a9a36176eb31eef5599dce217e4e49"
+    },
+    {
+      "index": 4,
+      "name": "factory",
+      "direction": null,
+      "action": null,
+      "rect": [
+        1560,
+        1048,
+        1552,
+        1040
+      ],
+      "source_size": [
+        1536,
+        1024
+      ],
+      "source_ink_bounds": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "source_offset_in_cell": [
+        8,
+        8
+      ],
+      "pivot": [
+        776,
+        1031
+      ],
+      "anchors": {},
+      "duration_ms": 125,
+      "source_file": "structures/factory.png",
+      "source_sha256": "a31482b8de84a216a67b741ede8b918ddabb91ab89d11a2d6d627164376a2c77"
+    },
+    {
+      "index": 5,
+      "name": "stadium",
+      "direction": null,
+      "action": null,
+      "rect": [
+        3120,
+        1048,
+        1552,
+        1040
+      ],
+      "source_size": [
+        1536,
+        1024
+      ],
+      "source_ink_bounds": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "source_offset_in_cell": [
+        8,
+        8
+      ],
+      "pivot": [
+        776,
+        1031
+      ],
+      "anchors": {},
+      "duration_ms": 125,
+      "source_file": "structures/stadium.png",
+      "source_sha256": "5d5d53100a89f8584b853f409e439f3798bf74e3b70fb3af42f9c3512258df12"
+    }
+  ],
+  "validation": {
+    "geometry": "generated_from_source_pixels",
+    "key_policy": "passed",
+    "visual_review": "not_performed",
+    "engine_validation": "not_tested"
+  },
+  "allow_near_key": true
+}

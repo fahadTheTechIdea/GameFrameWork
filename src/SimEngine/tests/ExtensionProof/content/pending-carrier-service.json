@@ -1,0 +1,10 @@
+{
+  "activities": [
+    {"id":"trip.pending-service","automatic_supply":false,"player_orderable":true,"target_tags":[],"nodes":[
+      {"id":"service","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":6,"denominator":1,"unit":"minute"}}
+    ]}
+  ],
+  "haul_trip_profiles": [
+    {"id":"trip.pending","enabled":true,"preserve_outlet_reserve":false,"service_sources":["service.pending"]}
+  ]
+}

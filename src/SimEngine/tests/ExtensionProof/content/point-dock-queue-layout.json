@@ -1,0 +1,24 @@
+{
+  "entities": [
+    {"id":"queue.home.a","kind":"entity","components":{"point_presence":{"space":"field.points","position":40}}},
+    {"id":"queue.home.b","kind":"entity","components":{"point_presence":{"space":"field.points","position":39}}},
+    {"id":"queue.home.c","kind":"entity","components":{"point_presence":{"space":"field.points","position":38}}}
+  ],
+  "source_slots": [
+    {"id":"load.bay","kind":"service","offset":1},
+    {"id":"load.wait.a","kind":"waiting","offset":-1},
+    {"id":"load.wait.b","kind":"waiting","offset":-2},
+    {"id":"load.exit","kind":"departure","offset":7}
+  ],
+  "entity_setups": [
+    {"id":"source","after":[],"entity":"source","company":0,"placement":{"space":"field.points","position":10},"home":null},
+    {"id":"destination","after":[],"entity":"destination","company":0,"placement":{"space":"field.points","position":30},"home":null},
+    {"id":"queue.home.a","after":[],"entity":"queue.home.a","company":0,"placement":{"space":"field.points","position":40},"home":null},
+    {"id":"queue.home.b","after":[],"entity":"queue.home.b","company":0,"placement":{"space":"field.points","position":39},"home":null},
+    {"id":"queue.home.c","after":[],"entity":"queue.home.c","company":0,"placement":{"space":"field.points","position":38},"home":null},
+    {"id":"machine.a","after":["queue.home.a"],"entity":"machine.a","company":0,"placement":{"space":"field.points","position":10},"home":"queue.home.a"},
+    {"id":"machine.b","after":["queue.home.b"],"entity":"machine.b","company":0,"placement":{"space":"field.points","position":9},"home":"queue.home.b"},
+    {"id":"machine.c","after":["queue.home.c"],"entity":"machine.c","company":0,"placement":{"space":"field.points","position":8},"home":"queue.home.c"},
+    {"id":"machine.d","after":[],"entity":"machine.d","company":0,"placement":{"space":"field.points","position":7},"home":null}
+  ]
+}

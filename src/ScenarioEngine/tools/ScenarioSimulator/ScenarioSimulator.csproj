@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+<PropertyGroup><TargetFramework>net10.0</TargetFramework><OutputType>Exe</OutputType></PropertyGroup>
+<ItemGroup>
+<ProjectReference Include="../../src/ScenarioEngine.Core/ScenarioEngine.Core.csproj" />
+<ProjectReference Include="../../src/ScenarioEngine.Content/ScenarioEngine.Content.csproj" />
+<ProjectReference Include="../../src/ScenarioEngine.Persistence/ScenarioEngine.Persistence.csproj" />
+<ProjectReference Include="../../src/ScenarioEngine.Diagnostics/ScenarioEngine.Diagnostics.csproj" />
+<ProjectReference Include="../../src/ScenarioEngine.Replay/ScenarioEngine.Replay.csproj" />
+<ProjectReference Include="../../samples/Counter.GameLayer/Counter.GameLayer.csproj" />
+</ItemGroup></Project>

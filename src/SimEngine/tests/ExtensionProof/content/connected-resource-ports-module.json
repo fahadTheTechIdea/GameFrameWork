@@ -1,0 +1,1 @@
+{"id":"proof.connected-ports","version":"1.0.0","requires":[{"id":"sim.infrastructure","version":"1.0.0"},{"id":"sim.transformations","version":"1.0.0"}],"documents":["connected-resource-ports.json"]}

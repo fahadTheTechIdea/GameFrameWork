@@ -1,0 +1,24 @@
+{
+  "resources": [{"id":"mixed.byproduct","unit":"unit.capacity.count","category":"material","phase":"solid","traits":[],"capacity":{"unit.capacity.count":1}}],
+  "recipe": {
+    "id":"supply.first","mode":"batch","cancel_policy":"return_inputs","inputs":{"supply":3},"tools":{"supply":1},"tool_consumption":{"supply":1},
+    "input_ports":{"supply":"material.input"},"tool_ports":{"supply":"tool.input"},"operating_inputs":[],"operating_ports":{},
+    "outputs":{"mixed.byproduct":2},"output_ports":{"mixed.byproduct":"material.output"},
+    "entity_output":"supply.result","output_home":"unassigned","duration":{"numerator":30,"denominator":1,"unit":"minute"}
+  },
+  "result": {"id":"supply.result","kind":"entity","components":{
+    "point_presence":{"space":"field.points","position":0},
+    "point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},
+    "worker":{"work_rate":1,"roles":["haul"],"states":{"working":"processing","loading":"transfer","stopped":"blocked"}},
+    "storage":{"capacity_policy":"fixture.count.8","public":false,"initial_stock":{}},
+    "transporter":{"handling":"points.handling"},"inventory_port":{"id":"cargo"}
+  }},
+  "dock": {
+    "work_roles":["haul"],"resources":["supply"],
+    "slots":[
+      {"id":"service","kind":"service","offset":-1},{"id":"wait","kind":"waiting","offset":-2},{"id":"depart","kind":"departure","offset":-3},
+      {"id":"launch","kind":"rollout","offset":1},{"id":"exit","kind":"departure","offset":2}
+    ],
+    "rollouts":[{"id":"machines","outputs":["supply.result"],"starts":["launch"],"exits":["exit"],"max_expanded":1024}]
+  }
+}

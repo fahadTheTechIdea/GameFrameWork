@@ -1,0 +1,73 @@
+{
+  "entities": [
+    {"id":"frontier.sink","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":20},
+      "point_stock":{"resource":"supply","capacity_policy":"fixture.count.40","initial":0}}},
+    {"id":"frontier.inspector","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":0},
+      "point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},
+      "worker":{"work_rate":1,"roles":["inspect"],"states":{"working":"processing","loading":"transfer","stopped":"blocked"}},
+      "work_policy":{"profile":"shared.machine"}}},
+    {"id":"frontier.courier","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":0},
+      "point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},
+      "worker":{"work_rate":1,"roles":["haul"],"states":{"working":"processing","loading":"transfer","stopped":"blocked"}},
+      "storage":{"capacity_policy":"fixture.count.8","public":false},
+      "transporter":{"handling":"points.handling"},
+      "work_policy":{"profile":"shared.machine"}}}
+  ],
+  "entity_setups": [
+  {
+    "id": "frontier.sink",
+    "after": [],
+    "entity": "frontier.sink",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 20
+    },
+    "home": null
+  },
+  {
+    "id": "frontier.inspector",
+    "after": [],
+    "entity": "frontier.inspector",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  },
+  {
+    "id": "frontier.courier",
+    "after": [],
+    "entity": "frontier.courier",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "dispatch-frontier.start",
+    "entries": [
+      "frontier.sink",
+      "frontier.inspector",
+      "frontier.courier"
+    ],
+    "includes": []
+  }
+],
+  "activities": [
+    {"id":"frontier.timer-low","priority":1,"player_orderable":true,"automatic_supply":false,
+      "nodes":[{"id":"work","executor":"work.timed","roles":[],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"shared.input"}]}
+  ],
+  "proof_shipments": [
+    {"id":"proof.shipment","enabled":true,"identity":2147483652,"company":0,"from":"source","to":"frontier.sink",
+      "resource":"supply","desired":8,"priority":100,"interval":{"numerator":10,"denominator":1,"unit":"minute"}}
+  ]
+}

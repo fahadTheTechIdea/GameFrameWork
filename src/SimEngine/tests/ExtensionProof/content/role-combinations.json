@@ -1,0 +1,290 @@
+{
+  "worker_roles": [
+    {
+      "id": "roles.alpha"
+    },
+    {
+      "id": "roles.beta"
+    },
+    {
+      "id": "roles.fixed"
+    }
+  ],
+  "work_policies": [
+    {
+      "id": "roles.machine",
+      "enabled": false,
+      "priority": 0,
+      "allowed_roles": [
+        "roles.alpha",
+        "roles.beta",
+        "roles.fixed"
+      ],
+      "area": null,
+      "interruptible": true,
+      "emergency_eligible": true,
+      "assignment_mode": "all",
+      "states": {
+        "disabled": "blocked",
+        "standby": "blocked"
+      }
+    }
+  ],
+  "proof_role_input_requirements": [
+    {"port":null,
+      "id": "roles.input",
+      "use": "consume",
+      "quantities": {
+        "supply": 8
+      },
+      "role_sources": [
+        {
+          "role": "roles.alpha",
+          "source": "target"
+        },
+        {
+          "role": "roles.beta",
+          "source": "worker"
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "id": "prefix.first",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 10
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "roles.alpha",
+            "roles.beta"
+          ],
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "storage": {
+          "capacity_policy": "fixture.count.8",
+          "public": false,
+          "initial_stock": {
+            "supply": 8
+          }
+        },
+        "work_policy": {
+          "profile": "roles.machine"
+        }
+      }
+    },
+    {
+      "id": "prefix.second",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 30
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "roles.fixed"
+          ],
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "work_policy": {
+          "profile": "roles.machine"
+        }
+      }
+    },
+    {
+      "id": "prefix.incident",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 0
+        },
+        "storage": {
+          "capacity_policy": "fixture.count.40",
+          "public": false,
+          "initial_stock": {
+            "supply": 8
+          }
+        },
+        "contract_incident": {
+          "id": "damage",
+          "kind": "proof.failure",
+          "response": "roles.response"
+        }
+      }
+    }
+  ],
+  "entity_setups": [
+  {
+    "id": "prefix.first",
+    "after": [],
+    "entity": "prefix.first",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 10
+    },
+    "home": null
+  },
+  {
+    "id": "prefix.second",
+    "after": [],
+    "entity": "prefix.second",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 30
+    },
+    "home": null
+  },
+  {
+    "id": "prefix.incident",
+    "after": [],
+    "entity": "prefix.incident",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "role-combinations.start",
+    "entries": [
+      "prefix.first",
+      "prefix.second",
+      "prefix.incident"
+    ],
+    "includes": []
+  }
+],
+  "activities": [
+    {
+      "id": "roles.flexible",
+      "priority": 1000,
+      "player_orderable": true,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "work",
+          "executor": "work.staffed",
+          "roles": [
+            "roles.alpha",
+            "roles.beta"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 5,
+            "unit": "hour"
+          },
+          "requirement": "roles.input"
+        }
+      ]
+    },
+    {
+      "id": "roles.fixed",
+      "priority": 100,
+      "player_orderable": true,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "work",
+          "executor": "work.staffed",
+          "roles": [
+            "roles.fixed"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 5,
+            "unit": "hour"
+          },
+          "requirement": "shared.input"
+        }
+      ]
+    },
+    {
+      "id": "roles.response",
+      "priority": 1000,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "flexible",
+          "executor": "work.staffed",
+          "roles": [
+            "roles.alpha",
+            "roles.beta"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 5,
+            "unit": "hour"
+          },
+          "requirement": "roles.input"
+        },
+        {
+          "id": "fixed",
+          "executor": "work.staffed",
+          "roles": [
+            "roles.fixed"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 5,
+            "unit": "hour"
+          },
+          "requirement": "shared.input"
+        }
+      ],
+      "on_complete": "shared.restart"
+    }
+  ],
+  "proof_shipments": [
+    {
+      "id": "proof.shipment",
+      "enabled": false,
+      "identity": 2147483652,
+      "company": 0,
+      "from": "source",
+      "to": "destination",
+      "resource": "supply",
+      "desired": 8,
+      "priority": 100,
+      "interval": {
+        "numerator": 10,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    }
+  ]
+}

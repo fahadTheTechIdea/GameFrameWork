@@ -1,0 +1,15 @@
+{
+  "id": "tactical_campaign_layer",
+  "definitionVersion": "1.0.0",
+  "operationIds": [
+    "crossing",
+    "rescue",
+    "supply_raid"
+  ],
+  "strategicActivityIds": [
+    "research_radio",
+    "recover_wounded"
+  ],
+  "rosterCapacity": 24,
+  "failurePolicy": "authored_fail_forward"
+}

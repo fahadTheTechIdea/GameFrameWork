@@ -1,0 +1,8 @@
+{ 
+  "time_definitions": [{ "id": "test.minute", "quantum": { "numerator": 60, "denominator": 1, "unit": "second" }, "frame_ticks": 1, "ticks_per_second": 30, "calendar": "test.calendar", "horizon": null }],
+  "calendars": [{ "id": "test.calendar", "fields": [
+    { "id": "minute", "duration": { "numerator": 1, "denominator": 1, "unit": "minute" }, "radix": 60, "origin": 0 },
+    { "id": "hour", "duration": { "numerator": 1, "denominator": 1, "unit": "hour" }, "radix": 24, "origin": 0 },
+    { "id": "day", "duration": { "numerator": 1, "denominator": 1, "unit": "day" }, "radix": 365, "origin": 1 },
+    { "id": "year", "duration": { "numerator": 365, "denominator": 1, "unit": "day" }, "radix": 0, "origin": 1 }
+  ] }], "entity_states": [{ "id": "idle", "state": "state.idle", "priority": 0, "default": true }], "game_modes": [{ "id": "probe.resource-only", "name": "Composition proof game", "properties": {} }], "scenarios": [ { "id": "probe", "game_mode": "probe.resource-only", "mode_overrides": {}, "time": "test.minute", "modules": ["probe"], "seats": 1 } ] }

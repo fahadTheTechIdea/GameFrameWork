@@ -1,0 +1,1 @@
+{"id":"proof.network-sources","version":"1.0.0","requires":[{"id":"sim.infrastructure","version":"1.0.0"}],"documents":["network-source-work.json"]}

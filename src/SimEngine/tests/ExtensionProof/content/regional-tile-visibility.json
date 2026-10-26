@@ -1,0 +1,14 @@
+{
+  "knowledge_visibility_policies": [
+    {"id":"tile.discovery","own_entities":true,"unlisted_entities":false,"unlisted_content":true,
+     "rules":["visibility.tile-regional-public","visibility.tile-regional-private"]}
+  ],
+  "layer_region_knowledge_visibility": [
+    {"id":"visibility.tile-regional-public","definition":"observer.public","regions":[
+      {"region":"tile.first","mode":"any","facts":["field.observed"]},
+      {"region":"tile.second","mode":"all","facts":["field.second"]}]},
+    {"id":"visibility.tile-regional-private","definition":"observer.private","regions":[
+      {"region":"tile.first","mode":"all","facts":["field.observed"]},
+      {"region":"tile.second","mode":"all","facts":["field.observed","field.second"]}]}
+  ]
+}

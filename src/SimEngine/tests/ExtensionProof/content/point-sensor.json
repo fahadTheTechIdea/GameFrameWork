@@ -1,0 +1,60 @@
+{
+  "entities": [
+    {"id":"sensor.machine","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":5},
+      "point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},
+      "worker":{"work_rate":1,"roles":["inspect"],"states":{"working":"processing","loading":"transfer","stopped":"blocked"}},
+      "storage":{"capacity_policy":"fixture.count.8","public":false,"initial_stock":{}},
+      "inventory_signal":{"id":"sensor.stock","inventory":"storage","quantities":{"supply":1}},
+      "point_sensor":{"space":"field.points",
+        "operation":{"id":"sensor.sight","enabled":true,"target":2.5,"minimum":0,"maximum":20,"unit":"point.metre"},
+        "states":{"disabled":"blocked"},
+        "conditions":[{"id":"sensor.supplied","source":"sensor.stock","signal":"sensor.material.ready","expected":true,"blocker":"sensor.unsupplied"}]}
+    }},
+    {"id":"sensor.contact","kind":"entity","components":{"point_presence":{"space":"field.points","position":12.5}}}
+  ],
+  "entity_setups": [
+  {
+    "id": "sensor.machine.start",
+    "after": [],
+    "entity": "sensor.machine",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 5
+    },
+    "home": null
+  },
+  {
+    "id": "sensor.contact.start",
+    "after": [],
+    "entity": "sensor.contact",
+    "company": 1,
+    "placement": {
+      "space": "field.points",
+      "position": 12.5
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "point-sensor.start",
+    "entries": [
+      "sensor.machine.start",
+      "sensor.contact.start"
+    ],
+    "includes": []
+  }
+],
+  "signals":[{"id":"sensor.material.ready","kind":"boolean","metric":"inventory.stock-ready","unit":"unit.boolean","providers":[{"component":"inventory_signal","schema":3}]}],
+  "point_readings":[{"id":"sensor.reading","layer":"point.terrain","position":10,"retention":"latest","fresh_for":null}],
+  "knowledge_effects":[{"id":"sensor.learn","subject":"sensor.reading"}],
+  "target_resource_requirements":[{"port":null,"id":"sensor.sample.inputs","use":"consume","quantities":{"supply":8}}],
+  "activities":[{"id":"sensor.sample","player_orderable":true,"priority":60,"automatic_supply":false,"on_complete":"sensor.learn",
+    "nodes":[{"id":"sample","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"sensor.sample.inputs"}]}],
+  "knowledge_visibility_policies":[{"id":"sensor.sight.policy","own_entities":true,"unlisted_entities":false,"unlisted_content":true,
+    "rules":["sensor.terrain.sight","sensor.contact.sight"]}],
+  "layer_sensor_visibility":[{"id":"sensor.terrain.sight","definition":"point.terrain","sensors":["sensor.sight"]}],
+  "entity_sensor_visibility":[{"id":"sensor.contact.sight","definition":"sensor.contact","sensors":["sensor.sight"]}]
+}

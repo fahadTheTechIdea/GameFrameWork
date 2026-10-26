@@ -1,0 +1,236 @@
+{
+  "game_modes": [
+    {
+      "id": "startup.physical",
+      "name": "Composed physical startup",
+      "properties": {}
+    }
+  ],
+  "time_definitions": [
+    {
+      "id": "startup.minute",
+      "quantum": {
+        "numerator": 60,
+        "denominator": 1,
+        "unit": "second"
+      },
+      "frame_ticks": 1,
+      "ticks_per_second": 30,
+      "horizon": null
+    }
+  ],
+  "entity_states": [
+    {
+      "id": "startup.idle",
+      "state": "startup.idle",
+      "priority": 0,
+      "default": true
+    },
+    {
+      "id": "startup.travel",
+      "state": "startup.travel",
+      "priority": 40
+    },
+    {
+      "id": "startup.work",
+      "state": "startup.work",
+      "priority": 20
+    },
+    {
+      "id": "startup.transfer",
+      "state": "startup.transfer",
+      "priority": 30
+    },
+    {
+      "id": "startup.blocked",
+      "state": "startup.blocked",
+      "priority": 60
+    }
+  ],
+  "units": [
+    {
+      "id": "startup.unit.kit",
+      "dimension": "count",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    }
+  ],
+  "resources": [
+    {
+      "id": "startup.kit",
+      "unit": "startup.unit.kit",
+      "category": "general",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "startup.unit.kit": 1
+      }
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "startup.store",
+      "limits": {
+        "startup.unit.kit": 40
+      }
+    },
+    {
+      "id": "startup.cargo",
+      "limits": {
+        "startup.unit.kit": 8
+      }
+    }
+  ],
+  "worker_roles": [
+    {
+      "id": "startup.inspector"
+    },
+    {
+      "id": "haul"
+    }
+  ],
+  "handling_profiles": [
+    {
+      "id": "startup.handling",
+      "resources": [
+        {
+          "resource": "startup.kit",
+          "quantity": 1,
+          "loading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "unloading": {
+            "numerator": 2,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    }
+  ],
+  "point_spaces": [
+    {
+      "id": "startup.points",
+      "extent": 64,
+      "access_open": true,
+      "rollout_offset": 1
+    }
+  ],
+  "entities": [
+    {
+      "id": "startup.source",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "startup.points",
+          "position": 0
+        },
+        "point_stock": {
+          "resource": "startup.kit",
+          "capacity_policy": "startup.store",
+          "initial": 20
+        }
+      }
+    },
+    {
+      "id": "startup.destination",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "startup.points",
+          "position": 0
+        },
+        "point_stock": {
+          "resource": "startup.kit",
+          "capacity_policy": "startup.store",
+          "initial": 0
+        }
+      }
+    },
+    {
+      "id": "startup.machine",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "startup.points",
+          "position": 0
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "startup.travel",
+            "stopped": "startup.blocked"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "startup.inspector",
+            "haul"
+          ],
+          "states": {
+            "working": "startup.work",
+            "loading": "startup.transfer",
+            "stopped": "startup.blocked"
+          }
+        },
+        "storage": {
+          "capacity_policy": "startup.cargo",
+          "public": false
+        },
+        "transporter": {
+          "handling": "startup.handling"
+        }
+      }
+    }
+  ],
+  "activities": [
+    {
+      "id": "startup.inspect",
+      "player_orderable": true,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "inspect",
+          "executor": "work.staffed",
+          "roles": [
+            "startup.inspector"
+          ],
+          "duration": {
+            "numerator": 3,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "composed-startup",
+      "game_mode": "startup.physical",
+      "mode_overrides": {},
+      "modules": [
+        "points",
+        "sim.world-setup",
+        "proof.startup"
+      ],
+      "space": "startup.points",
+      "time": "startup.minute",
+      "seats": 1,
+      "settings": {
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.world-setup": {
+          "profile": "startup.root"
+        }
+      }
+    }
+  ]
+}

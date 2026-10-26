@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "scope": "Two correction calls after owner rejected house-attempt-02 and before owner changed to structures-first workflow",
+  "status": "superseded-by-structures-first-experiment",
+  "records": [
+    {
+      "output": "frames/house-attempt-04.png",
+      "prompt": "Correct a rejected city-house sprite by faithfully reconstructing ONE SPECIFIC HOUSE from the reference crop. This is an owner-requested DRAFT trial, not approved production. IMAGE 1 is the authoritative full city for camera, palette and art treatment. IMAGE 2 is an unchanged nearest-neighbour 10x inspection enlargement of source pixel rectangle x99..146,y425..475; each 10x block is one original source pixel, not a design grid to reproduce. Reconstruct ONLY the main cream-and-terracotta two-storey villa in the TOP/CENTRE of image 2. Exclude the little roof clipped at bottom, all trees, garden, pavement and boundary walls. Follow this actual house's compact approximately square massing, asymmetric roof: pale flat roof terrace on upper left with a dark square recess, terracotta hip roof over the main wing, raised small cream-walled upper room at the rear, shorter return roof to the right. The cream walls show dark blue windows and a projecting upper verandah/balcony; at ground level a shaded recessed entrance/porch with pale columns. Keep the reference's HIGH ELEVATED ORTHOGRAPHIC CITY CAMERA and the exact relative roof-versus-wall proportions seen in the close-up. Do NOT convert it into a long rectangular barn, a single symmetric pyramidal roof, a generic frontal RPG cottage, or an isometric diamond. Both the roof layout and the TWO-STOREY facade must follow the actual crop. Do not invent extra wings, props or details hidden by foliage: ambiguous areas use simple plain cream surfaces. Carefully retain silhouette, roof terrace, balconies and the short facade of THIS house. Clean restrained warm city-game pixel art, intentional small colour clusters, NOT chunky toy pixels or oversaturated glossy painting. The complete building alone, centered with generous blank margins. No ground, cast shadow, vegetation, people, parked objects, doors drawn detached, foundation plot, labels or atlas grid. Outside the whole house use perfectly uniform FULLY OPAQUE exact #FF00FF RGB(255,0,255), hard clean non-antialiased silhouette, no texture, noise, magenta glow, fringe or background variation. Deliver ONE isolated villa master candidate only. Do not reuse any previous generated house. Main priority: faithful architecture and camera of the selected original house, not a new generic design.",
+      "tool": "image_gen.imagegen",
+      "references": [
+        ".gamearts/outputs/mockups/generated/modern_city_mockup.png",
+        ".gamearts/experiments/modern-city-atlas/references/housing-003-inspection-10x.png"
+      ],
+      "review": "Author rejected for remaining front-facing; no owner acceptance."
+    },
+    {
+      "output": "frames/house-attempt-05.png",
+      "prompt": "BACKGROUND REMOVAL / ISOLATION EDIT ONLY. Edit the FIRST attached image, a 470x500 nearest-neighbour enlargement of a tiny city-map crop. Do not redraw or redesign it. The SECOND image is only context for the original city. Keep the exact same high-angle view, silhouette, roof-to-wall proportions, coarse original pixels and colours of the main house in the upper-middle of the first crop. The target is the cream two-storey villa with terracotta roofs and the pale flat terrace at upper left. Its visible building extends roughly x25..380, y60..355 in this 470x500 crop. Preserve the complete actual building including its short visible walls, roof terrace, balcony and shaded entrance; DO NOT invent high-resolution details, smooth it, rotate it, lower the camera, enlarge the facade, create a different roof, turn it into a portrait, or produce a new generic house. Retain its intentionally low-resolution city-map pixel structure. Remove everything outside this house: trees, hedge, garden, path, street, boundary walls and the cropped other house at the bottom. Fill all removed regions with ONE solid exact fully opaque #FF00FF RGB(255,0,255). Do not put magenta inside the existing house. Keep the house at its existing position and pixel size within the same 470x500 frame, same camera, same native pixel arrangement. This is a source-extraction draft, NOT a higher-resolution house illustration. Do not add extra visible facade, large windows, roof tile textures, ornament, outlines, cast shadow, furniture, text, labels or grid. Output just the isolated ORIGINAL pixelated house, on opaque solid magenta, with the existing view completely unchanged. Preserve the artwork rather than recreating architecture from a verbal description.",
+      "tool": "image_gen.imagegen",
+      "references": [
+        ".gamearts/experiments/modern-city-atlas/references/housing-003-inspection-10x.png",
+        ".gamearts/outputs/mockups/generated/modern_city_mockup.png"
+      ],
+      "review": "Source-isolation draft, not exact unchanged source pixels; canonical native-grid recovery refused (no consistent column grid). No approved/strict atlas generated."
+    }
+  ],
+  "continuation": "Owner then explicitly requested six structures generated individually, followed by a city image. New artifacts and receipts live in ../structures-first/."
+}

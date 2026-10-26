@@ -1,0 +1,17 @@
+{
+  "fixed_activity_executors":[{"id":"proof.builder-fixed","work":"sim.work.productive","access_blocker":"proof.builder-access"}],
+  "worker_resource_requirements":[
+    {"port":null,"id":"proof.builder-tool","use":"hold","quantities":{"steel":1}},
+    {"port":null,"id":"proof.builder-material","use":"consume","quantities":{"steel":8}}
+  ],
+  "activities":[
+    {"id":"proof.shared-build","player_orderable":false,"priority":50,"automatic_supply":false,"nodes":[
+      {"id":"erect","executor":"proof.builder-fixed","roles":["survey"],"duration":{"numerator":4,"denominator":1,"unit":"minute"},"after":["prepare"],"requirement":"proof.builder-material"},
+      {"id":"prepare","executor":"proof.builder-fixed","roles":["survey"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"proof.builder-tool"}
+    ]},
+    {"id":"proof.shared-remove","player_orderable":false,"priority":67,"automatic_supply":false,"nodes":[
+      {"id":"remove","executor":"proof.builder-fixed","roles":["survey"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"after":["isolate"]},
+      {"id":"isolate","executor":"proof.builder-fixed","roles":["survey"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"proof.builder-tool"}
+    ]}
+  ]
+}

@@ -124,7 +124,7 @@
     "factorySupply": "HeavyProcess; do not invent river/coast cooling requirements unless the selected process actually needs them",
     "separation": "Authored sensitive-neighbor policy and district boundaries; numeric game clearance to be checked against exact approved geometry"
   },
-  "nextGate": "Review actual engine/source comparison and original concept; production artwork/atlas and Godot runtime retain separate approval/verification gates.",
+  "nextGate": "Use the source-linked parts review to reconcile constituent ground footprints and catalog programs across the city; concept approval, production artwork/atlases and Godot runtime remain separate gates.",
   "verification": {
     "engineWorldGenerated": true,
     "mockupApproved": false,
@@ -136,7 +136,15 @@
     "annotatedTreeLayoutCount": 432,
     "compiledParkSurfaceCount": 8,
     "minimumPlantingGapMeters": 1,
-    "surfaceClearanceRules": 6
+    "surfaceClearanceRules": 6,
+    "lastVerifiedAt": "2026-10-25T17:59:21.922937+03:00",
+    "sourceRecoveredFromSavedReview": true,
+    "fullWorldCreatorRegression": "Passed",
+    "solutionBuild": "Passed; SDK 10.0.402; 0 warnings/errors",
+    "catalogReferencesResolved": true,
+    "layoutInvariantsPreserved": true,
+    "expandedFacilityCount": 0,
+    "fullVisualInventory": "Partial"
   },
   "capture": ".gameframework/worlds/modern-city/mockup-capture.json",
   "schematicReview": {
@@ -147,5 +155,15 @@
   "engineRequest": ".gameframework/worlds/modern-city/world-request.json",
   "generatedWorld": "generated/modern-city/world.json",
   "generatedPreview": "generated/modern-city/capture-review.html",
-  "detailedSourceReview": "generated/modern-city/source-details.html"
+  "detailedSourceReview": "generated/modern-city/source-details.html",
+  "catalogContent": ".gameframework/worlds/modern-city/catalogs/modern-city.layout.json",
+  "catalogStructureIds": [
+    "detached-house",
+    "factory",
+    "football-stadium",
+    "office-building",
+    "primary-school",
+    "warehouse"
+  ],
+  "catalogPartsReview": ".gameframework/worlds/modern-city/catalog-parts-review.json"
 }

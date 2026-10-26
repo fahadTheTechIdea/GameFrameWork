@@ -1,0 +1,5 @@
+{
+  "independent_dispatch_effects":[
+    {"id":"dispatch.enqueue","transformation":"dispatch.batch","capability":"dispatch.production","count":2,"repeat":false,"home":"none"}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "entities": [
+    {
+      "id": "composition.unused",
+      "kind": "entity",
+      "components": {
+        "point_presence": { "space": "field.points", "position": 0 },
+        "composition_requirements": {
+          "space": "field.points",
+          "requires": ["layers", "placement", "resources"],
+          "required_services": [],
+          "fault": "none"
+        },
+        "composition_audit": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+== Modules: independent extension and scoped public views
+   9 passed, 0 failed (319 ms)
+=== 9 passed, 0 failed in 1 suites (0.3 s) ===
+bounded case: Exited, pid=45868, exit=0, elapsed-ms=543, stdout-truncated=False, stderr-truncated=False, observer=

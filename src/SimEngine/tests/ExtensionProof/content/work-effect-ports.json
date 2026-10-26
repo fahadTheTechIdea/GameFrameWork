@@ -1,0 +1,17 @@
+{
+  "resources": [{"id":"spare","unit":"unit.supply","category":"general","phase":"solid","traits":[],"capacity":{"unit.supply":1}}],
+  "handling_profiles": [{"id":"disposition.handling","resources":[
+    {"resource":"supply","quantity":1,"loading":{"numerator":1,"denominator":1,"unit":"minute"},"unloading":{"numerator":2,"denominator":1,"unit":"minute"}},
+    {"resource":"spare","quantity":1,"loading":{"numerator":1,"denominator":1,"unit":"minute"},"unloading":{"numerator":2,"denominator":1,"unit":"minute"}}
+  ]}],
+  "resource_pools": [
+    {"id":"disposition.feed","identity":1,"owner":0,"public":false,"evacuate":false,"capacity_policy":"fixture.count.40","resources":["supply"]},
+    {"id":"disposition.parts","identity":2,"owner":0,"public":false,"evacuate":false,"capacity_policy":"fixture.count.40","resources":["spare"]}
+  ],
+  "inventory_effects": [{"id":"port.dispose","kind":"destroyed","quantities":{"supply":2,"spare":1},"ports":{"supply":"feed","spare":"parts"}}],
+  "independent_inventory_effects": [{"id":"port.dispose-independent","kind":"destroyed","quantities":{"supply":2,"spare":1},"ports":{"supply":"feed","spare":"parts"}}],
+  "activities": [
+    {"id":"port.dispose","player_orderable":true,"automatic_supply":false,"priority":60,"on_complete":"port.dispose","nodes":[{"id":"work","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":4,"denominator":1,"unit":"minute"}}]},
+    {"id":"port.dispose-independent","player_orderable":true,"automatic_supply":false,"priority":60,"on_complete":"port.dispose-independent","nodes":[{"id":"work","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":4,"denominator":1,"unit":"minute"}}]}
+  ]
+}

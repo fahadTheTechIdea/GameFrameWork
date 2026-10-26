@@ -1,0 +1,86 @@
+{
+  "SchemaVersion": 1,
+  "Id": "dungeon-catalog",
+  "Archetypes": [
+    {
+      "Id": "root",
+      "Kind": "dungeon",
+      "Purpose": "Game-authored dungeon program",
+      "Properties": {},
+      "Parts": [
+        {
+          "Id": "floors",
+          "ArchetypeId": "floor",
+          "Count": 0,
+          "Purpose": "Exploration floors",
+          "CountParameter": "floors",
+          "Layout": null
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "stairs",
+          "Kind": "floor-transition",
+          "Pattern": "Chain",
+          "FromPart": "floors",
+          "ToPart": null,
+          "Bidirectional": true,
+          "Properties": null
+        }
+      ],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "floor",
+      "Kind": "floor",
+      "Purpose": "Game-authored floor program",
+      "Properties": {},
+      "Parts": [
+        {
+          "Id": "rooms",
+          "ArchetypeId": "room",
+          "Count": 0,
+          "Purpose": "Connected encounter rooms",
+          "CountParameter": "rooms",
+          "Layout": null
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "corridors",
+          "Kind": "corridor",
+          "Pattern": "Chain",
+          "FromPart": "rooms",
+          "ToPart": null,
+          "Bidirectional": true,
+          "Properties": null
+        }
+      ],
+      "ChildRequirements": [
+        {
+          "Kind": "room",
+          "Minimum": 2,
+          "Maximum": 64
+        }
+      ],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "room",
+      "Kind": "room",
+      "Purpose": "Game-authored room program",
+      "Properties": {
+        "encounter_budget": 3,
+        "visibility": "unexplored"
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    }
+  ]
+}

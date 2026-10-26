@@ -1,0 +1,554 @@
+{
+  "resources": [
+    {
+      "id": "block.fuel",
+      "unit": "space.kg",
+      "category": "material",
+      "phase": "liquid",
+      "traits": [],
+      "capacity": {
+        "space.kg": 1
+      }
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "block.feed",
+      "limits": {
+        "space.kg": 60
+      }
+    },
+    {
+      "id": "block.product",
+      "limits": {
+        "space.kg": 6
+      }
+    },
+    {
+      "id": "block.waste",
+      "limits": {
+        "space.kg": 4
+      }
+    }
+  ],
+  "worker_roles": [
+    {
+      "id": "block.operator"
+    }
+  ],
+  "work_policies": [
+    {
+      "id": "block.operator",
+      "enabled": true,
+      "priority": 10,
+      "allowed_roles": [
+        "block.operator"
+      ],
+      "area": null,
+      "interruptible": true,
+      "emergency_eligible": false,
+      "assignment_mode": "all",
+      "states": {
+        "disabled": "space.stopped",
+        "standby": "space.stopped"
+      }
+    }
+  ],
+  "handling_profiles": [
+    {
+      "id": "block.handling",
+      "resources": [
+        {
+          "resource": "space.planetx.ore",
+          "quantity": 1,
+          "loading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "unloading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "space.crucible",
+          "quantity": 1,
+          "loading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "unloading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "space.alloy",
+          "quantity": 1,
+          "loading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "unloading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "space.slag",
+          "quantity": 1,
+          "loading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "unloading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "block.fuel",
+          "quantity": 1,
+          "loading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "unloading": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "id": "block.staff",
+      "player_orderable": true,
+      "priority": 60,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "operator",
+          "executor": "work.staffed",
+          "roles": [
+            "block.operator"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    }
+  ],
+  "resource_pools": [
+    {
+      "id": "block.product",
+      "identity": 1,
+      "public": false,
+      "owner": 0,
+      "evacuate": false,
+      "capacity_policy": "block.product",
+      "resources": [
+        "space.alloy"
+      ]
+    },
+    {
+      "id": "block.waste",
+      "identity": 2,
+      "public": false,
+      "owner": 0,
+      "evacuate": false,
+      "capacity_policy": "block.waste",
+      "resources": [
+        "space.slag"
+      ]
+    }
+  ],
+  "transformations": [
+    {
+      "id": "block.smelt",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "category": "manufacturing",
+      "inputs": {
+        "space.planetx.ore": 10
+      },
+      "tools": {
+        "space.crucible": 1
+      },
+      "tool_consumption": {},
+      "outputs": {
+        "space.alloy": 6,
+        "space.slag": 4
+      },
+      "operating_inputs": [
+        {
+          "resource": "block.fuel",
+          "quantity": 1,
+          "period": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ],
+      "input_ports": {
+        "space.planetx.ore": "space.feed"
+      },
+      "tool_ports": {
+        "space.crucible": "space.tool"
+      },
+      "output_ports": {
+        "space.alloy": "space.product",
+        "space.slag": "space.waste"
+      },
+      "operating_ports": {
+        "block.fuel": "block.fuel"
+      },
+      "duration": {
+        "numerator": 60,
+        "denominator": 1,
+        "unit": "second"
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "block.source",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "block.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "block.feed",
+          "public": false,
+          "initial_stock": {
+            "space.planetx.ore": 20,
+            "space.crucible": 1,
+            "block.fuel": 24
+          }
+        }
+      }
+    },
+    {
+      "id": "block.factory",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "block.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "block.feed",
+          "public": false,
+          "initial_stock": {}
+        },
+        "inventory_port": [
+          {
+            "id": "space.feed"
+          },
+          {
+            "id": "space.tool"
+          },
+          {
+            "id": "block.fuel"
+          }
+        ],
+        "pool_port": [
+          {
+            "id": "space.product",
+            "pool": "block.product",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "space.waste",
+            "pool": "block.waste",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          }
+        ],
+        "transformer": {
+          "automatic_supply": false,
+          "wip_capacity": "space.mass-wip",
+          "transformations": [
+            "block.smelt"
+          ],
+          "states": {
+            "working": "space.working",
+            "stopped": "space.stopped"
+          },
+          "operation": {
+            "id": "space.operation",
+            "enabled": true,
+            "target": 1,
+            "minimum": 1,
+            "maximum": 1,
+            "unit": "unit.work-rate"
+          }
+        },
+        "staffed_transformation_gate": {
+          "id": "block.staffing",
+          "mode": "process",
+          "processes": [
+            "space.operation"
+          ],
+          "orders_per_update": 1,
+          "transformations": [
+            "block.smelt"
+          ],
+          "requirements": [
+            {
+              "id": "operator",
+              "activity": "block.staff",
+              "node": "operator",
+              "roles": [
+                "block.operator"
+              ],
+              "count": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "block.receiver",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "block.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "block.feed",
+          "public": false,
+          "initial_stock": {}
+        }
+      }
+    },
+    {
+      "id": "block.carrier",
+      "kind": "vehicle",
+      "components": {
+        "tile_presence": {
+          "space": "block.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "storage": {
+          "capacity_policy": "space.cargo",
+          "public": false,
+          "initial_stock": {}
+        },
+        "mover": {
+          "classes": [
+            "block.route"
+          ],
+          "class": "block.route",
+          "speed": 120,
+          "states": {
+            "moving": "space.moving",
+            "stopped": "space.stopped"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "space.working",
+            "loading": "space.loading",
+            "stopped": "space.stopped"
+          }
+        },
+        "work_policy": {
+          "profile": "space.worker"
+        },
+        "transporter": {
+          "handling": "block.handling"
+        }
+      }
+    },
+    {
+      "id": "block.operator",
+      "kind": "vehicle",
+      "components": {
+        "tile_presence": {
+          "space": "block.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "mover": {
+          "classes": [
+            "block.route"
+          ],
+          "class": "block.route",
+          "speed": 120,
+          "states": {
+            "moving": "space.moving",
+            "stopped": "space.stopped"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "block.operator"
+          ],
+          "states": {
+            "working": "space.working",
+            "loading": "space.loading",
+            "stopped": "space.stopped"
+          }
+        },
+        "work_policy": {
+          "profile": "block.operator"
+        }
+      }
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "block.source",
+      "after": [],
+      "entity": "block.source",
+      "company": 0,
+      "placement": {
+        "space": "block.tiles",
+        "x": 4,
+        "y": 8
+      },
+      "home": null
+    },
+    {
+      "id": "block.factory",
+      "after": [],
+      "entity": "block.factory",
+      "company": 0,
+      "placement": {
+        "space": "block.tiles",
+        "x": 12,
+        "y": 8
+      },
+      "home": null
+    },
+    {
+      "id": "block.receiver",
+      "after": [],
+      "entity": "block.receiver",
+      "company": 0,
+      "placement": {
+        "space": "block.tiles",
+        "x": 24,
+        "y": 8
+      },
+      "home": null
+    },
+    {
+      "id": "block.carrier",
+      "after": [],
+      "entity": "block.carrier",
+      "company": 0,
+      "placement": {
+        "space": "block.tiles",
+        "x": 2,
+        "y": 8
+      },
+      "home": null
+    },
+    {
+      "id": "block.operator",
+      "after": [],
+      "entity": "block.operator",
+      "company": 0,
+      "placement": {
+        "space": "block.tiles",
+        "x": 12,
+        "y": 3
+      },
+      "home": null
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "block.start",
+      "entries": [
+        "block.source",
+        "block.factory",
+        "block.receiver",
+        "block.carrier",
+        "block.operator"
+      ],
+      "includes": []
+    }
+  ],
+  "tile_spaces": [
+    {
+      "id": "block.tiles",
+      "width": 32,
+      "height": 20
+    }
+  ],
+  "uniform_tile_navigation": [
+    {
+      "id": "block.route",
+      "space": "block.tiles",
+      "cost": 10
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "production-blockers",
+      "game_mode": "space.survival",
+      "mode_overrides": {},
+      "time": "space.seconds",
+      "space": "block.tiles",
+      "modules": [
+        "sim.world-setup",
+        "sim.transformations",
+        "sim.logistics",
+        "points",
+        "sim.tile-navigation",
+        "proof.output-ports"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "block.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        }
+      }
+    }
+  ]
+}

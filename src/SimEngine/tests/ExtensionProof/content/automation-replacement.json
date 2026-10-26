@@ -1,0 +1,18 @@
+{
+  "signals": [{"id":"replacement.level","kind":"number","metric":"probe.level","unit":"unit.level","providers":[{"component":"automation_probe","schema":1}]}],
+  "control_input_recovery_policies": [{"id":"replacement.inputs","retry_blockers":["probe.sensor-offline"]}],
+  "operation_control_actions": [{"id":"replacement.operation","command":"sim.configure-operation","owner":"sim.operations"}],
+  "stock_control_actions": [{"id":"replacement.stock","command":"sim.configure-stock-policy","owner":"sim.logistics","resource":"supply","unit":"unit.supply","level":"desired"}],
+  "outlet_reserve_control_actions": [{"id":"replacement.reserve","command":"sim.configure-outlet-policy","owner":"sim.logistics","resource":"supply","unit":"unit.supply"}],
+  "control_rules": [{
+    "id":"replacement.rule","input_recovery":"replacement.inputs","action_policy":"replacement.operation","arbitration":"exclusive","initial_latch":false,
+    "inputs":[{"id":"level","signal":"replacement.level"}],
+    "conditions":[{"id":"high","kind":"above","input":"level","unit":"unit.level","on":5,"off":3,"initial":false}],"root":"high",
+    "dwell":{"numerator":60,"denominator":1,"unit":"minute"},"cooldown":{"numerator":60,"denominator":1,"unit":"minute"},
+    "when_true":{"enabled":true,"target":7,"unit":"unit.work-rate"},"when_false":{"enabled":true,"target":1,"unit":"unit.work-rate"}
+  }],
+  "logistics_policies": [{
+    "id":"replacement.policy","stock":{"supply":{"enabled":false,"minimum":0,"desired":3,"maximum":30,"priority":47,"reserve_access":"protected"}},
+    "outlet":{"enabled":true,"reserve":{"supply":2},"export_priority":13,"allowed_destinations":null,"reserve_access":"protected"},"states":{"disabled":"blocked"}
+  }]
+}

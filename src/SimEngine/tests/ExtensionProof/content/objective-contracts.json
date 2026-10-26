@@ -1,0 +1,7 @@
+{
+  "independent_objectives":[
+    {"id":"field.build","prerequisites":["field.ready"],"predicate":"objective.established","deadline":{"numerator":24,"denominator":1,"unit":"hour"},"on_complete":"objective.wait-two","on_failure":null}
+  ],
+  "forward_objective_predicates":[{"id":"objective.forward-tower","child":"objective.has-tower"}],
+  "independent_objective_effects":[{"id":"objective.wait-two","gate":"objective.has-two-towers"}]
+}

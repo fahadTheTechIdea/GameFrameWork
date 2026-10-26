@@ -1,0 +1,10 @@
+Unhandled exception. System.ArgumentException: CITY_COMPOUND_PARTS_DO_NOT_FIT:compound
+   at WorldCreator.Worlds.ProceduralCityGenerator.<>c__DisplayClass3_0.<Generate>g__Place|4(CityStructureType type, String id, String parent, String parcelId, CityRectangle bounds, WorldPolyline access, String purpose, Int32 depth) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\ProceduralCityGenerator.cs:line 141
+   at WorldCreator.Worlds.ProceduralCityGenerator.<>c__DisplayClass3_0.<Generate>g__District|3(CityRegion region, CityDistrictRule rule) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\ProceduralCityGenerator.cs:line 125
+   at WorldCreator.Worlds.ProceduralCityGenerator.<>c__DisplayClass3_0.<Generate>g__PartitionDistricts|2(CityRegion region, CityDistrictRule[] rules) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\ProceduralCityGenerator.cs:line 64
+   at WorldCreator.Worlds.ProceduralCityGenerator.<>c__DisplayClass3_0.<Generate>g__PartitionDistricts|2(CityRegion region, CityDistrictRule[] rules) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\ProceduralCityGenerator.cs:line 77
+   at WorldCreator.Worlds.ProceduralCityGenerator.<>c__DisplayClass3_0.<Generate>g__PartitionDistricts|2(CityRegion region, CityDistrictRule[] rules) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\ProceduralCityGenerator.cs:line 71
+   at WorldCreator.Worlds.ProceduralCityGenerator.Generate(ProceduralCityRequest request, ProceduralCityCatalog catalog, CancellationToken token) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\ProceduralCityGenerator.cs:line 51
+   at ProceduralCityTests.RunAsync(String cli) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\ProceduralCityTests.cs:line 43
+   at Program.<Main>$(String[] args) in H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\Program.cs:line 9
+   at Program.<Main>(String[] args)

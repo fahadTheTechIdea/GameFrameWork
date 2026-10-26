@@ -1,0 +1,81 @@
+{
+  "inventory_effects":[
+  {
+    "id": "sensor.dispose-oil",
+    "kind": "destroyed",
+    "quantities": {
+      "oil": 3
+    },
+    "ports": {
+      "oil": "disposition.input"
+    }
+  }
+],
+  "entity_activities":[{"id":"sensor.dispose-work","target":"sensor.disposal","priority":90,"player_orderable":true,"automatic_supply":false,
+    "on_complete":"sensor.dispose-oil","nodes":[{"id":"dispose","executor":"work.staffed","roles":["sensor.inspect"],
+      "duration":{"numerator":4,"denominator":1,"unit":"minute"}}]}],
+  "environmental_metrics":[{"id":"sensor.disposed-total","unit":"sensor.count","rate_unit":"minute","window":null,
+    "resources":["oil"],"kinds":["destroyed"],"causes":["sensor.dispose-oil","sensor.dispose-oil-independent"]}],
+  "environmental_objective_predicates":[{"id":"sensor.disposal-accounted","metric":"sensor.disposed-total","unit":"sensor.count","relation":"at_least","amount":3}],
+  "objectives":[{"id":"sensor.spill-disposed","prerequisites":["sensor.spill-recovered"],"predicate":"sensor.disposal-accounted","deadline":null,"on_complete":null,"on_failure":null}],
+  "entities":[
+  {
+    "id": "sensor.disposal",
+    "kind": "structure",
+    "components": {
+      "tile_presence": {
+        "space": "sensor.tiles",
+        "width": 1,
+        "height": 1,
+        "blocks": true,
+        "movable": false
+      },
+      "storage": {
+        "capacity_policy": "sensor.stock",
+        "public": false,
+        "initial_stock": {}
+      },
+      "inventory_port": [
+        {
+          "id": "material"
+        },
+        {
+          "id": "disposition.input"
+        }
+      ],
+      "tile_work_dock": {
+        "work_roles": [
+          "sensor.inspect"
+        ],
+        "resources": [
+          "oil",
+          "steel"
+        ],
+        "slots": [
+          {
+            "id": "bay",
+            "kind": "service",
+            "x": -1,
+            "y": 0
+          },
+          {
+            "id": "wait",
+            "kind": "waiting",
+            "x": -2,
+            "y": 1
+          },
+          {
+            "id": "exit",
+            "kind": "departure",
+            "x": -1,
+            "y": 1
+          }
+        ]
+      }
+    }
+  }
+],
+  "world_setup_profiles":[{"id":"sensor.disposal-start","entries":["sensor.disposal-start-site"],"includes":["sensor.spill-start"]}],
+  "entity_setups":[{"id":"sensor.disposal-start-site","after":[],"entity":"sensor.disposal","company":0,
+    "placement":{"space":"sensor.tiles","x":24,"y":20},"home":null}]
+}

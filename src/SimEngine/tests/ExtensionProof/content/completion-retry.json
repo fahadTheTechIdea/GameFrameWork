@@ -1,0 +1,9 @@
+{
+  "staffed_activity_executors": [{"id":"work.staffed","travel":"sim.work.travel","work":"sim.work.productive","departure":"sim.work.departure"}],
+  "timed_activity_executors": [{"id":"work.timed","rate":1}],
+  "work_retry_profiles": [{"id":"proof.retry",
+    "initial_delay":{"numerator":2,"denominator":1,"unit":"minute"},
+    "maximum_delay":{"numerator":8,"denominator":1,"unit":"minute"},
+    "multiplier":2,
+    "retry_blockers":["blocker.unreachable","sim.resource.active-promises","core.replacement-inventory-reserved","proof.completion-rejected"]}]
+}

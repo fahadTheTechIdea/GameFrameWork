@@ -1,0 +1,1 @@
+{ "schema": 1, "modules": [ { "id": "test", "version": "1.0.0", "documents": ["test/defs.json"] }, { "id": "extra", "version": "1.0.0", "requires": [{ "id": "test", "version": "1.0.0" }], "documents": ["extra/defs.json"] } ] }

@@ -1,0 +1,13 @@
+{
+  "target_resource_requirements":[{"port":null,"id":"productive.funded-flow","use":"elapsed","rates":[
+    {"resource":"supply","quantity":1,"period":{"numerator":3,"denominator":1,"unit":"minute"}}
+  ]}],
+  "work_requirement_groups":[{"id":"productive.funded-ready","mode":"all","entries":[
+    {"id":"start","requirement":"budget.ready"},{"id":"running","requirement":"productive.funded-flow"}
+  ]}],
+  "activities":[{"id":"productive.funded","player_orderable":true,"automatic_supply":false,"nodes":[
+    {"id":"a","executor":"frontier.timed","roles":[],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"productive.funded-ready"},
+    {"id":"b","executor":"frontier.timed","roles":[],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"productive.funded-ready"},
+    {"id":"finish","executor":"frontier.timed","roles":[],"duration":{"numerator":1,"denominator":1,"unit":"minute"},"after":["a","b"]}
+  ]}]
+}

@@ -1,0 +1,8 @@
+{
+  "recovery_destination_policies": [{"id":"spill.demand-only","mode":"demand_only"}],
+  "logistics_recovery_profiles": [{
+    "id":"spill.cargo-recovery",
+    "evacuation":{"enabled":false,"priority":100,"attempts_per_pass":2,"destination_policy":"spill.demand-only","reroute_blockers":[]},
+    "cargo_return":{"enabled":true,"priority":100,"attempts_per_pass":2,"destination_policy":"spill.demand-only","reroute_blockers":[]}
+  }]
+}

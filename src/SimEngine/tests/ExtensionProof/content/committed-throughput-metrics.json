@@ -1,0 +1,5 @@
+{
+  "environmental_metrics": [
+    {"id":"throughput.quiet-environment","unit":"unit.steel","rate_unit":"hour","window":null,"resources":["steel"],"kinds":["lost"],"causes":["throughput.spill"]}
+  ]
+}

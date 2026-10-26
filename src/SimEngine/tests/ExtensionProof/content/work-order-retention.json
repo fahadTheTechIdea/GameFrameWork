@@ -1,0 +1,29 @@
+{
+  "entity_states": [
+    { "id": "stopped", "state": "retention.stopped", "priority": 60 }
+  ],
+  "entities": [
+    {
+      "id": "retention.site",
+      "kind": "structure",
+      "components": {
+        "point_presence": { "space": "field.points", "position": 20 },
+        "work_permit": { "enabled": true },
+        "activity_record": {}
+      }
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "retention.site-start",
+      "after": [],
+      "entity": "retention.site",
+      "company": 0,
+      "placement": { "space": "field.points", "position": 20 },
+      "home": null
+    }
+  ],
+  "world_setup_profiles": [
+    { "id": "retention.start", "entries": [ "retention.site-start" ], "includes": [] }
+  ]
+}

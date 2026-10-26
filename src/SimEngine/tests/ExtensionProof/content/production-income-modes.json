@@ -1,0 +1,11 @@
+{
+  "game_modes": [
+    { "id": "production-income", "name": "Primary generation income", "properties": {
+      "business.values.enabled": true, "business.money.enabled": true, "business.production_income.enabled": true
+    } },
+    { "id": "production-no-income", "name": "Accounts without income", "properties": {
+      "business.values.enabled": true, "business.money.enabled": true, "business.production_income.enabled": false
+    } },
+    { "id": "production-survival", "name": "Physical generation only", "properties": {} }
+  ]
+}

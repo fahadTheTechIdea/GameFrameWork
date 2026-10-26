@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <DefaultItemExcludes>$(DefaultItemExcludes);**/.vs/**;**/bin/**;**/obj/**;**/artifacts/**</DefaultItemExcludes>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+</Project>

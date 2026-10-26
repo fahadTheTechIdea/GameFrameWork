@@ -1,0 +1,11 @@
+{
+  "time_definitions": [
+    { "id": "modes.second", "quantum": { "numerator": 1, "denominator": 1, "unit": "second" }, "frame_ticks": 1, "ticks_per_second": 30, "horizon": null }
+  ],
+  "scenarios": [
+    { "id": "survival", "game_mode": "survival", "mode_overrides": {}, "time": "modes.second", "modules": ["proof.modes"], "seats": 1, "default_seats": 1 },
+    { "id": "expedition", "mode_overrides": {}, "game_mode": "expedition", "time": "modes.second", "modules": ["proof.modes"], "seats": 1, "default_seats": 1 },
+    { "id": "custom", "game_mode": "expedition", "mode_overrides": { "proof.pressure": 2, "proof.strategy": "careful" }, "time": "modes.second", "modules": ["proof.modes"], "seats": 1, "default_seats": 1 },
+    { "id": "defaults", "mode_overrides": {}, "game_mode": "authored-defaults", "time": "modes.second", "modules": ["proof.modes"], "seats": 1, "default_seats": 1 }
+  ]
+}

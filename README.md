@@ -1,8 +1,28 @@
 # GameFrameWork
 
-**Advanced 2D world generation for C#/.NET and Godot, with integrated Claude/Codex workflows and GameArtsSkills.**
+**Procedural city and world generation in C#/.NET, with reusable catalogs, Claude/Codex orchestration and optional visual adapters.**
 
-## Get started — just talk to Claude or Codex
+The engine now includes a **procedural city generator**: district allocation → connected streets → blocks → frontage parcels → buildings, nested compound sites and parks. It calculates meter-based geometry from rules, without mockups or per-object coordinate lists. Grid and recursive-neighborhood street strategies can be combined within one city. JavaScript displays the exact generated geometry.
+
+See [procedural city API, scope and limits](docs/PROCEDURAL_CITY.md) and [grid, subdivision and mixed examples](examples/procedural-city/README.md).
+
+City parcels now support all four street frontages, depth limits, rotated compound structures and explicit connected block interiors. New exports include a package manifest; `verify-city` checks file integrity and reproduces city geometry, metadata and viewer sources with the matching engine build.
+
+WorldCreator's mockup-free core expands reusable **catalogs + recipes** into hierarchical world metadata: nested locations/structures, parameterized counts, typed connections, constraints, scope and optional coordinates. Game-specific kinds are data. The same compiler is tested with a town, dungeon, platformer and space setting. Images, sprites and a Godot project are not prerequisites for this route.
+
+See [World metadata API and usage](docs/WORLD_METADATA.md) and [reusable example recipes/catalogs](examples/metadata/README.md). Artwork and playable engine integration are separate downstream work; the existing specialized visual generators remain available.
+
+Metadata exports also include a **JavaScript city/world schematic** (`schematic.html` + `schematic.js`): districts, nested structures, green spaces, diagram road corridors, selectable metadata, layers, pan/zoom and SVG export. The city recipe demonstrates six districts and compound facilities without mockups; its scope is explicitly partial.
+
+## Source components
+
+- `src/WorldCreator/`: world generation, catalogs, CLI and Godot export (`WorldCreator.*`).
+- `src/ScenarioEngine/`: scenario lifecycle, content, persistence, replay and diagnostics (`ScenarioEngine.*`), copied from the SimpleRTS workspace.
+- `src/SimEngine/`: simulation engine (`Beep.SimEngine`), copied from its standalone repository.
+
+All three belong to GameFrameWork. Open `GameFrameWork.slnx` or build it with `dotnet build GameFrameWork.slnx -c Release`. Each copied engine retains its tests, examples, documentation and build settings; their original source workspaces are preserved. This organization does not introduce runtime coupling between the engines. SimEngine builds and tests independently of OilFieldDays. Game-specific consumer checks are preserved separately in [tests/SimEngine.OilFieldDays](tests/SimEngine.OilFieldDays/README.md), with explicit external inputs.
+
+## Get started â€” just talk to Claude or Codex
 Open your game project in Claude Code or Codex and say:
 
 > **"Set up GameFrameWork for my game."**
@@ -14,10 +34,22 @@ Next, simply say **"Generate a desert industrial town"**, **"Create a coastal ci
 The agent must follow the [conversational world-generation skill](.agents/skills/world-generator/SKILL.md), [SDLC engineering guidelines](https://github.com/fahadTheTechIdea/agentic-sdlc-framework), [GameArtsSkills](https://github.com/fahadTheTechIdea/GameArtsSkills), and the [advanced master plan](docs/ADVANCED_WORLD_GENERATION_MASTER_PLAN.md). GameArts mockup and production asset approvals remain distinct. All object placement is rules-driven; separately animated moving parts and measured atlas metadata are mandatory when applicable.
 
 ## Two-part product
-1. **Claude/Codex framework** — natural-language planning, setup, approvals, production orchestration, engineering SDLC and validation.
-2. **C# world engine** — independent domain/world generation libraries, assets, CLI and Godot adapter.
+1. **Claude/Codex framework** â€” natural-language planning, setup, approvals, production orchestration, engineering SDLC and validation.
+2. **WorldCreator C# engine** â€” independent domain/world generation libraries, assets, CLI and Godot adapter.
 
 **Implementation status:** the C# engine generates terrain masks/elevations, authored road corridors, region-based parcels, physically sized buildings, surrounding site zones and deliberate planting/public props from a structured mockup design. Building catalogs support custom types and size variants, settlement demand, access widths and site programs. GameArts bundle/file gates, coordinated crossings and portable-package auditing remain available. Local checks use synthetic layouts/artwork and approval authorities. Godot world export still creates a scene skeleton; the separate dummy village is a vector-art test project. Real artwork fidelity, Godot runtime acceptance and live wizard behavior remain unverified. See the [current roadmap](docs/ROADMAP.md) and [verification record](docs/SDLC_VERIFICATION.md).
+
+The engine projects and C# namespaces use `WorldCreator.*`: `Core`, `Worlds`, `Catalogs.Modern`, `Godot` and `Cli`. Consumers and external catalog plugins must update references from `GameFrameWork.*` and rebuild. The repository, agent framework and `.gameframework` configuration keep their existing names.
+
+## General catalog authoring and composition
+
+Any requested structure can own constituent structures when the game program calls for them. The workflow inspects reusable entries, adds missing part definitions, authors repeated/nested parts and layout constraints, persists the catalog content, then generates through the same C# site/resource/clearance pipeline. A single-building archetype can be extended into a compound program; there is no fixed parent-type list in the authoring compiler.
+
+All [197 Modern families have a composition review](docs/CATALOG_COMPOSITION_REVIEW.md): single structures, context-dependent sites, compound sites and infrastructure assemblies. Reviews distinguish buildings from grounds, infrastructure, equipment and interiors. Suggested parts are design guidance, not generated assets or universal requirements.
+
+`CatalogContentAuthoring` loads/saves validated structure definitions and parameterized facility programs. Project content in `.gameframework/catalogs/*.json` reloads automatically; `--catalog-content <manifest>` loads an explicit file. Catalog changes have manifest digests and require explicit replacement IDs. The CLI's `save-catalog-content` validates before saving; agents perform this through the canonical workflow without making users edit JSON or run commands. Compatible source packs retain their policies; cross-pack composition uses explicit imports afterwards.
+
+[Contracts and limits](docs/SETTLEMENT_IDENTITY_AND_BUILDING_RULES.md#general-catalog-content-authoring-from-requested-parts) describe the API. Existing club/factory programs are regression examples using the common compiler. Tests also exercise every frontage family and unrelated housing/education/care programs, new part definitions, persistence and fresh-process generation. Equipment/interior/ground compilation, artwork approval, live-agent evaluations and playable Godot export remain separate gates.
 
 ## Engine generation
 
@@ -37,12 +69,12 @@ The existing inventory lives in the separate **Modern** pack. Shared provider/re
 
 The shared source-pixel capture contract records road polylines, widths/levels/junctions, building roofs versus ground footprints, green/water regions, access points, uncertainty and incomplete coverage. The engine handoff applies reviewed calibrated geometry to the existing design JSON and retains source lineage; it does not require a city-specific C# class. A review viewer overlays annotations on the exact PNG and can toggle the original image.
 
-[Capture, Codex prompts and atlas procedure](docs/GAMEARTS_INTEGRATION_CONTRACT.md) covers actual image references, topology-derived road kits, isolated component frames and the canonical GameArts deterministic atlas builder. `review-capture`, `compile-capture` and `capture-schema` are internal agent/CLI entry points. [Current city design](.gameframework/worlds/modern-city/world-request.json) compiles 99 selected capture features, with authored ground calibration and 49 at-grade junction records resolving all 51 crossings. The actual engine generates 43 buildings, including a 180×140m stadium and 140×90m factory, plus 32 road paths and 44 source-anchored park trees. `generate-world` accepts `--capture` with `--asset-root` and exports a generated geometry map and source comparison. Artwork approval and Godot runtime remain separate gates.
+[Capture, Codex prompts and atlas procedure](docs/GAMEARTS_INTEGRATION_CONTRACT.md) covers actual image references, topology-derived road kits, isolated component frames and the canonical GameArts deterministic atlas builder. `review-capture`, `compile-capture` and `capture-schema` are internal agent/CLI entry points. [Current city design](.gameframework/worlds/modern-city/world-request.json) compiles 99 selected capture features, with authored ground calibration and 49 at-grade junction records resolving all 51 crossings. The actual engine generates 43 buildings, including a 180Ã—140m stadium and 140Ã—90m factory, plus 32 road paths and 44 source-anchored park trees. `generate-world` accepts `--capture` with `--asset-root` and exports a generated geometry map and source comparison. Artwork approval and Godot runtime remain separate gates.
 
 ## Audit a coordinated production package
 
 ```text
-dotnet run --project src/GameFrameWork.Cli -c Release -- verify-world <world.json> <manifest-directory> <trusted-asset-root>
+dotnet run --project src/WorldCreator/WorldCreator.Cli -c Release -- verify-world <world.json> <manifest-directory> <trusted-asset-root>
 ```
 
 This audits the coordinated portable production-document format, not the design-only `WorldDocument` emitted by `generate-world`. The manifest directory contains one `<asset-id>.json` approved-art manifest per dependency. The command returns JSON with `Valid` and `Issues`, exits with 0 on integrity success or 1 on rejection/error, and records correlated log, audit and notification events under `.gameframework/operations` in the current directory. Ctrl+C requests cancellation (exit 130). A successful audit checks declared dependency revisions and file hashes; lifecycle approval, visual fidelity and gameplay readiness require their separate gates.

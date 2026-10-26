@@ -1,0 +1,6 @@
+{
+  "world_setup_profiles": [{"id":"recovery.supplier","entries":["recovery.market"],"includes":["recovery.physical"]}],
+  "entity_setups": [
+    {"id":"recovery.market","after":[],"entity":"market","company":0,"placement":{"space":"recovery.tiles","x":24,"y":4},"home":null}
+  ]
+}

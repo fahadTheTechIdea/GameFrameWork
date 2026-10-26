@@ -1,0 +1,28 @@
+{
+  "rectangular_tile_regions": [
+    {"id":"area.field","space":"recovery.tiles","x":18,"y":18,"width":8,"height":8}
+  ],
+  "painted_tile_regions": [
+    {"id":"area.pad","space":"recovery.tiles","tiles":[{"x":21,"y":21},{"x":20,"y":20},{"x":20,"y":21},{"x":21,"y":20}]}
+  ],
+  "target_region_requirements": [
+    {"id":"area.in-field","region":"area.field"},
+    {"id":"area.on-pad","region":"area.pad"}
+  ],
+  "work_requirement_groups": [
+    {"id":"area.ready","mode":"all","entries":[{"id":"region","requirement":"area.in-field"},{"id":"inputs","requirement":"area.inputs"}]},
+    {"id":"area.choice","mode":"any","entries":[{"id":"pad","requirement":"area.on-pad"},{"id":"field","requirement":"area.in-field"}]}
+  ],
+  "target_resource_requirements": [{"port":null,"id":"area.inputs","use":"consume","quantities":{"steel":2}}],
+  "activities": [
+    {"id":"area.work","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"work","roles":["crane"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"area.ready"}]},
+    {"id":"area.timed","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.timed","id":"work","duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"area.choice"}]},
+    {"id":"area.paint","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.timed","id":"work","duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"area.on-pad"}]}
+  ],
+  "entities": [
+    {"id":"area.nonspatial","kind":"entity","components":{"activity_record":{}}},
+    {"id":"area.target","kind":"structure","components":{"tile_presence":{"space":"recovery.tiles","width":2,"height":2,"blocks":true,"movable":false},"storage":{"capacity_policy":"recovery.site","public":false,"initial_stock":{"steel":10}},"activity_record":{}}},
+    {"id":"area.mobile","kind":"vehicle","components":{"tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":true},"mover":{"classes": ["land"], "class":"land","speed":20,"states":{"moving":"moving","stopped":"stopped"}},"storage":{"capacity_policy":"recovery.site","public":false,"initial_stock":{"steel":10}},"activity_record":{}}},
+    {"id":"area.machine","kind":"vehicle","components":{"tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":true},"mover":{"classes": ["land"], "class":"land","speed":20,"states":{"moving":"moving","stopped":"stopped"}},"worker":{"roles":["crane"],"work_rate":1,"states":{"working":"working","loading":"loading","stopped":"stopped"}}}}
+  ]
+}

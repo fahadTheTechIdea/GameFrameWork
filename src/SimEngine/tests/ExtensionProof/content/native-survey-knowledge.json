@@ -1,0 +1,4 @@
+{
+  "tile_readings":[{"id":"survey.reading","layer":"survey.deposit","x":16,"y":10,"retention":"latest","fresh_for":null}],
+  "knowledge_effects":[{"id":"survey.observe","subject":"survey.reading"}]
+}

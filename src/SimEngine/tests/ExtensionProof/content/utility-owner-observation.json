@@ -1,0 +1,5 @@
+{
+  "utility_owner_failures": [
+    {"id":"utility.owner-failure","mode":"demand","phase":"view","read_after":{"numerator":2,"denominator":1,"unit":"minute"}}
+  ]
+}

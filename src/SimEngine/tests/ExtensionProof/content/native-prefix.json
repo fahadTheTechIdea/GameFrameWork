@@ -1,0 +1,62 @@
+{
+  "worker_roles":[{"id":"prefix.first"},{"id":"prefix.second"}],
+  "work_policies":[{"id":"prefix.machine","enabled":false,"priority":0,"allowed_roles":["prefix.first","prefix.second"],"area":null,"interruptible":true,"emergency_eligible":true,"assignment_mode":"all","states":{"disabled":"blocked","standby":"blocked"}}],
+  "proof_dual_input_requirements":[{"id":"prefix.alternatives","use":"consume","quantities":{"supply":8},"target_cost":0,"worker_cost":1}],
+  "entities":[
+    {"id":"prefix.first","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":10},
+      "point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},
+      "worker":{"work_rate":1,"roles":["prefix.first"],"states":{"working":"processing","loading":"transfer","stopped":"blocked"}},
+      "storage":{"capacity_policy":"fixture.count.8","public":false,"initial_stock":{"supply":8}},
+      "work_policy":{"profile":"prefix.machine"}}},
+    {"id":"prefix.second","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":20},
+      "point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},
+      "worker":{"work_rate":1,"roles":["prefix.second"],"states":{"working":"processing","loading":"transfer","stopped":"blocked"}},
+      "work_policy":{"profile":"prefix.machine"}}}
+  ],
+  "entity_setups": [
+  {
+    "id": "prefix.first",
+    "after": [],
+    "entity": "prefix.first",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 10
+    },
+    "home": null
+  },
+  {
+    "id": "prefix.second",
+    "after": [],
+    "entity": "prefix.second",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 20
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "native-prefix.start",
+    "entries": [
+      "prefix.first",
+      "prefix.second"
+    ],
+    "includes": []
+  }
+],
+  "activities":[
+    {"id":"prefix.flexible","priority":1000,"player_orderable":true,"automatic_supply":false,
+      "nodes":[{"id":"work","executor":"work.staffed","roles":["prefix.first"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"prefix.alternatives"}]},
+    {"id":"prefix.fixed","priority":100,"player_orderable":true,"automatic_supply":false,
+      "nodes":[{"id":"work","executor":"work.staffed","roles":["prefix.second"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"shared.input"}]},
+    {"id":"prefix.timer","priority":1,"player_orderable":true,"automatic_supply":false,
+      "nodes":[{"id":"work","executor":"work.timed","roles":[],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"shared.input"}]}
+  ],
+  "proof_shipments":[{"id":"proof.shipment","enabled":false,"identity":2147483652,"company":0,"from":"source","to":"destination",
+    "resource":"supply","desired":8,"priority":100,"interval":{"numerator":10,"denominator":1,"unit":"minute"}}]
+}

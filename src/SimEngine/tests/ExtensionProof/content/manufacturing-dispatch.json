@@ -1,0 +1,100 @@
+{
+  "transformations": [
+    {
+      "tool_consumption": {},
+      "operating_ports": {},
+      "tool_ports": {
+        "steel": "tool.input"
+      },
+      "input_ports": {
+        "steel": "material.input"
+      },
+      "output_ports": {
+        "steel": "material.output"
+      },
+      "id": "dispatch.batch",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "tools": {
+        "steel": 1
+      },
+      "inputs": {
+        "steel": 3
+      },
+      "outputs": {
+        "steel": 1
+      },
+      "operating_inputs": [],
+      "duration": {
+        "numerator": 10,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    }
+  ],
+  "transformation_dispatch_effects": [
+    {
+      "id": "dispatch.enqueue",
+      "transformation": "dispatch.batch",
+      "capability": "dispatch.production",
+      "count": 2,
+      "repeat": false,
+      "home": "none"
+    }
+  ],
+  "entities": [
+    {
+      "id": "dispatch.factory",
+      "kind": "structure",
+      "components": {
+        "inventory_port": [
+          {
+            "id": "material.output"
+          },
+          {
+            "id": "material.input"
+          },
+          {
+            "id": "tool.input"
+          },
+          {
+            "id": "operating.input"
+          }
+        ],
+        "tile_presence": {
+          "space": "survey.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "survey.storage",
+          "public": false,
+          "initial_stock": {
+            "steel": 20
+          }
+        },
+        "transformer": {
+          "transformations": [
+            "dispatch.batch"
+          ],
+          "automatic_supply": false,
+          "wip_capacity": "survey.storage",
+          "operation": {
+            "id": "dispatch.production",
+            "enabled": false,
+            "target": 1,
+            "minimum": 1,
+            "maximum": 2,
+            "unit": "unit.work-rate"
+          },
+          "states": {
+            "working": "survey.working",
+            "stopped": "survey.stopped"
+          }
+        }
+      }
+    }
+  ]
+}

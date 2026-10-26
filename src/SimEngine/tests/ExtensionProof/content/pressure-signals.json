@@ -1,0 +1,88 @@
+{
+  "entity_states": [
+    {"id":"working","state":"proof.pressure.working","priority":25},
+    {"id":"stopped","state":"proof.pressure.stopped","priority":35}
+  ],
+  "signals": [
+    {"id":"pressure.risk-enabled","kind":"boolean","metric":"operation.enabled","unit":"unit.boolean",
+     "providers":[{"component":"pressure_dial","schema":1}]},
+    {"id":"pressure.stock-ready","kind":"boolean","metric":"inventory.stock-ready","unit":"unit.boolean",
+     "providers":[{"component":"inventory_signal","schema":3}]}
+  ],
+  "resource_signals": [
+    {"id":"pressure.stock","kind":"number","metric":"inventory.stored","resource":"supply","unit":"unit.supply",
+     "providers":[{"component":"inventory_signal","schema":3}]}
+  ],
+  "scenario_pressure_profiles": [
+    {"id":"pressure.plant","capacity":2,"initial":2,"refill":0,
+     "refill_period":{"numerator":20,"denominator":1,"unit":"minute"},
+     "cadence":{"numerator":1,"denominator":1,"unit":"minute"},
+     "cooldown":{"numerator":60,"denominator":1,"unit":"minute"},"sources":["pressure.plant-leak"]},
+    {"id":"pressure.unavailable","capacity":2,"initial":2,"refill":0,
+     "refill_period":{"numerator":20,"denominator":1,"unit":"minute"},
+     "cadence":{"numerator":1,"denominator":1,"unit":"minute"},
+     "cooldown":{"numerator":0,"denominator":1,"unit":"minute"},"sources":["pressure.missing-threshold"]}
+  ],
+  "incident_pressure_sources": [
+    {"id":"pressure.plant-leak","cost":1,"priority":10,"entity":"pressure.signal-machine","source":"pressure.leak","kind":"pressure.leak",
+     "conditions":[
+       {"id":"stock","source":"feed","signal":"pressure.stock","minimum":13,"maximum":40,"unit":"unit.supply","blocker":"pressure.stock-band"},
+       {"id":"risk","source":"risk-dial","signal":"pressure.risk-enabled","expected":true,"blocker":"pressure.safe-operation"}
+     ]},
+    {"id":"pressure.missing-threshold","cost":1,"priority":10,"entity":"pressure.signal-machine","source":"pressure.leak","kind":"pressure.leak",
+     "conditions":[{"id":"ready","source":"feed","signal":"pressure.stock-ready","expected":true,"blocker":"pressure.stock-band"}]}
+  ],
+  "entities": [{"id":"pressure.signal-machine","kind":"structure","components":{
+    "point_presence":{"space":"field.points","position":20},
+    "storage":{"capacity_policy":"fixture.count.40","public":false,"initial_stock":{"supply":20}},
+    "incident":{"id":"pressure.leak","workflow":"pressure.leak","states":{"active":"blocked"}},
+    "inventory_signal":{"id":"feed","inventory":"storage","quantities":null},
+    "pressure_dial":{"operation":{"id":"risk-dial","enabled":false,"target":0,"minimum":0,"maximum":1,"unit":"unit.units"}}
+  }}],
+  "entity_setups": [
+  {
+    "id": "pressure.signal-first",
+    "after": [],
+    "entity": "pressure.signal-machine",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 20
+    },
+    "home": null
+  },
+  {
+    "id": "pressure.signal-second",
+    "after": [],
+    "entity": "pressure.signal-machine",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 20
+    },
+    "home": null
+  },
+  {
+    "id": "pressure.signal-foreign",
+    "after": [],
+    "entity": "pressure.signal-machine",
+    "company": 1,
+    "placement": {
+      "space": "field.points",
+      "position": 20
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "pressure-signals.start",
+    "entries": [
+      "pressure.signal-first",
+      "pressure.signal-second",
+      "pressure.signal-foreign"
+    ],
+    "includes": []
+  }
+]
+}

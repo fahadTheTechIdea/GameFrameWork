@@ -1,0 +1,36 @@
+{
+  "transformations": [
+    {
+      "id": "process.make",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "category": "manufacturing",
+      "inputs": {
+        "process.input": 3
+      },
+      "tools": {
+        "process.input": 1
+      },
+      "tool_consumption": {},
+      "outputs": {
+        "process.output": 2
+      },
+      "operating_inputs": [],
+      "input_ports": {
+        "process.input": "process.material"
+      },
+      "tool_ports": {
+        "process.input": "process.tool"
+      },
+      "output_ports": {
+        "process.output": "process.product"
+      },
+      "operating_ports": {},
+      "duration": {
+        "numerator": 30,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    }
+  ]
+}

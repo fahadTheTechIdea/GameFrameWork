@@ -1,0 +1,16 @@
+{
+  "work_policies": [
+    {"id":"emergency.carrier","enabled":false,"priority":0,"allowed_roles":["haul"],"area":null,"interruptible":true,"emergency_eligible":true,"assignment_mode":"all","states":{"disabled":"blocked","standby":"blocked"}},
+    {"id":"emergency.ordinary","enabled":false,"priority":100,"allowed_roles":["haul"],"area":null,"interruptible":true,"emergency_eligible":false,"assignment_mode":"all","states":{"disabled":"blocked","standby":"blocked"}},
+    {"id":"emergency.responder","enabled":true,"priority":0,"allowed_roles":["inspect"],"area":null,"interruptible":true,"emergency_eligible":true,"assignment_mode":"all","states":{"disabled":"blocked","standby":"blocked"}}
+  ],
+  "target_resource_requirements": [
+    {"port":null,"id":"emergency.input","use":"consume","quantities":{"supply":8}}
+  ],
+  "response_effects": [
+    {"id":"emergency.restart","bound_response":true}
+  ],
+  "activities": [
+    {"id":"emergency.response","priority":1,"automatic_supply":true,"nodes":[{"executor":"work.staffed","id":"repair","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"emergency.input"}],"on_complete":"emergency.restart"}
+  ]
+}

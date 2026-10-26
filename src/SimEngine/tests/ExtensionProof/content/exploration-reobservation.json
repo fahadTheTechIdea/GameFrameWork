@@ -1,0 +1,8 @@
+{
+  "point_readings": [
+    { "id": "binding.reset-known", "layer": "point.terrain", "position": 10,
+      "retention": "latest", "fresh_for": { "numerator": 10, "denominator": 1, "unit": "minute" } },
+    { "id": "binding.retain-known", "layer": "point.terrain", "position": 10,
+      "retention": "latest", "fresh_for": { "numerator": 10, "denominator": 1, "unit": "minute" } }
+  ]
+}

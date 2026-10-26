@@ -1,0 +1,25 @@
+{
+  "activities":[{"id":"staff.service","player_orderable":true,"priority":60,"automatic_supply":false,
+    "nodes":[
+      {"id":"primary","executor":"work.staffed","roles":["survey","staff.technician"],"duration":{"numerator":1,"denominator":1,"unit":"minute"}},
+      {"id":"secondary","executor":"work.staffed","roles":["survey"],"duration":{"numerator":1,"denominator":1,"unit":"minute"}}
+    ]}],
+  "entities":[{"id":"staff.process-factory","kind":"structure","components":{
+    "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":false},
+    "storage":{"capacity_policy":"survey.storage","public":false,"initial_stock":{"steel":20}},
+    "inventory_port":{"id":"stock"},
+    "transformer":[
+      {"transformations":["staff.batch","staff.flow"],"automatic_supply":false,"wip_capacity":"survey.storage",
+        "operation":{"id":"process","enabled":true,"target":1,"minimum":0.5,"maximum":2,"unit":"unit.work-rate"},
+        "states":{"working":"survey.working","stopped":"survey.stopped"}},
+      {"transformations":["staff.batch","staff.flow"],"automatic_supply":false,"wip_capacity":"survey.storage",
+        "operation":{"id":"process.b","enabled":true,"target":1,"minimum":0.5,"maximum":2,"unit":"unit.work-rate"},
+        "states":{"working":"survey.working","stopped":"survey.stopped"}}
+    ],
+    "staffed_transformation_gate":{"id":"staffing","mode":"process","processes":["process","process.b"],"orders_per_update":1,
+      "transformations":["staff.batch","staff.flow"],"requirements":[
+        {"id":"primary","activity":"staff.service","node":"primary","roles":["survey","staff.technician"],"count":1},
+        {"id":"secondary","activity":"staff.service","node":"secondary","roles":["survey"],"count":1}
+      ]}
+  }}]
+}

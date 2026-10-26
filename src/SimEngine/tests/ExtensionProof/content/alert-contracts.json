@@ -1,0 +1,7 @@
+{
+  "independent_alert_profiles": [
+    {"id":"contract.alert-response","normal":[{"scope":"sim.work","emergency":false,"priority_adjustment":7}],"urgent":[{"scope":"sim.work","emergency":false,"priority_adjustment":11},{"scope":"sim.work","emergency":true,"priority_adjustment":17}],"emergency":[{"scope":null,"emergency":true,"priority_adjustment":200},{"scope":"sim.work","emergency":true,"priority_adjustment":300}]},
+    {"id":"contract.alert-other","normal":[],"urgent":[],"emergency":[]},
+    {"id":"contract.alert-unused","normal":[],"urgent":[],"emergency":[]}
+  ]
+}

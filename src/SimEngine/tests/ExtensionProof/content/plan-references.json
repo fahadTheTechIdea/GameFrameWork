@@ -1,0 +1,10 @@
+{
+  "plan_reference_profiles": [
+    {"id":"reference.service","group":"reference.service","enabled":true},
+    {"id":"reference.system","group":"reference.system","enabled":true}
+  ],
+  "plan_reference_controllers": [
+    {"id":"reference.controller","group":"reference.controller","enabled":true,
+      "cadence":{"numerator":3,"denominator":1,"unit":"minute"},"commands_per_decision":1}
+  ]
+}

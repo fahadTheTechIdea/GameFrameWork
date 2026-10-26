@@ -1,0 +1,12 @@
+{
+  "id": "open_world_layer",
+  "definitionVersion": "1.0.0",
+  "worldDefinition": "borderlands",
+  "regionIds": [
+    "village",
+    "forest",
+    "pass"
+  ],
+  "streamRadiusRegions": 1,
+  "completionPolicy": "ongoing_world"
+}

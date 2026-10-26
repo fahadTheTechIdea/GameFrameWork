@@ -1,0 +1,88 @@
+{
+  "work_cost_requirements": [
+    {"id":"budget.foundation","amount":40,"credit":false,"category":"construction"},
+    {"id":"budget.completion","amount":40,"credit":false,"category":"construction"}
+  ],
+  "target_resource_requirements": [{"port":null,"id":"budget.materials","use":"consume","quantities":{"supply":2}}],
+  "work_requirement_groups": [{"id":"budget.ready","mode":"all","entries":[
+    {"id":"materials","requirement":"budget.materials"},
+    {"id":"foundation","requirement":"budget.foundation"},
+    {"id":"completion","requirement":"budget.completion"}
+  ]}],
+  "activities": [{"id":"budget.build","automatic_supply":false,"player_orderable":true,
+    "nodes":[{"executor":"work.staffed","id":"construct","roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"budget.ready"}]}],
+  "entities": [
+    {"id":"budget.site-a","kind":"entity","components":{
+      "point_presence":{"space":"purchase.points","position":20},
+      "storage":{"capacity_policy":"purchase.store","initial_stock":{"supply":8},"public":false,"evacuate":false,"accepts":["supply"],"phases":[]}}},
+    {"id":"budget.site-b","kind":"entity","components":{
+      "point_presence":{"space":"purchase.points","position":25},
+      "storage":{"capacity_policy":"purchase.store","initial_stock":{"supply":8},"public":false,"evacuate":false,"accepts":["supply"],"phases":[]}}},
+    {"id":"budget.worker-a","kind":"entity","components":{
+      "point_presence":{"space":"purchase.points","position":0},
+      "point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},
+      "worker":{"work_rate":1,"roles":["inspect"],"states":{"working":"processing","loading":"transfer","stopped":"blocked"}}}},
+    {"id":"budget.worker-b","kind":"entity","components":{
+      "point_presence":{"space":"purchase.points","position":0},
+      "point_motion":{"rate":60,"states":{"moving":"travel","stopped":"blocked"}},
+      "worker":{"work_rate":1,"roles":["inspect"],"states":{"working":"processing","loading":"transfer","stopped":"blocked"}}}}
+  ],
+  "entity_setups": [
+  {
+    "id": "budget.site-a.start",
+    "after": [],
+    "entity": "budget.site-a",
+    "company": 0,
+    "placement": {
+      "space": "purchase.points",
+      "position": 20
+    },
+    "home": null
+  },
+  {
+    "id": "budget.site-b.start",
+    "after": [],
+    "entity": "budget.site-b",
+    "company": 0,
+    "placement": {
+      "space": "purchase.points",
+      "position": 25
+    },
+    "home": null
+  },
+  {
+    "id": "budget.worker-a.start",
+    "after": [],
+    "entity": "budget.worker-a",
+    "company": 0,
+    "placement": {
+      "space": "purchase.points",
+      "position": 0
+    },
+    "home": null
+  },
+  {
+    "id": "budget.worker-b.start",
+    "after": [],
+    "entity": "budget.worker-b",
+    "company": 0,
+    "placement": {
+      "space": "purchase.points",
+      "position": 60
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "work-budgets.start",
+    "entries": [
+      "budget.site-a.start",
+      "budget.site-b.start",
+      "budget.worker-a.start",
+      "budget.worker-b.start"
+    ],
+    "includes": []
+  }
+]
+}

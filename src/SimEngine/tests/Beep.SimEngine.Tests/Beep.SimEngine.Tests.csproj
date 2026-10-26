@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="testdata/random-observation-profile.json" LogicalName="tests.random-observation-profile.json" />
+    <EmbeddedResource Include="testdata/current-engine-protocol.json" LogicalName="tests.current-engine-protocol.json" />
+    <EmbeddedResource Include="testdata/state-hash-vectors.json" LogicalName="tests.state-hash-vectors.json" />
+    <EmbeddedResource Include="testdata/diagonal-route-costs.json" LogicalName="tests.diagonal-route-costs.json" />
+    <EmbeddedResource Include="testdata/navigation-goal-ties.json" LogicalName="tests.navigation-goal-ties.json" />
+    <EmbeddedResource Include="testdata/navigation-entry-read-profile.json" LogicalName="tests.navigation-entry-read-profile.json" />
+    <EmbeddedResource Include="testdata/capacity-logistics-stress-profile.json" LogicalName="tests.capacity-logistics-stress-profile.json" />
+    <EmbeddedResource Include="testdata/watchdog-profile.json" LogicalName="tests.watchdog-profile.json" />
+    <EmbeddedResource Include="testdata/wait-boundary-profile.json" LogicalName="tests.wait-boundary-profile.json" />
+    <EmbeddedResource Include="testdata/physical-failure-profile.json" LogicalName="tests.physical-failure-profile.json" />
+    <ProjectReference Include="../../src/Beep.SimEngine/Beep.SimEngine.csproj" />
+    <ProjectReference Include="../Beep.SimEngine.Testing/Beep.SimEngine.Testing.csproj" />
+    <ProjectReference Include="../ExtensionProof/ExtensionProof.csproj" />
+    <ProjectReference Include="../../help/quickstart/Game.Module/QuickGame.Module.csproj" />
+    <None Include="../../help/quickstart/Content/**/*.json" Link="QuickstartContent/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

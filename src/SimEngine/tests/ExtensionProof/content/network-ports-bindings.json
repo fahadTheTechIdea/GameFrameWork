@@ -1,0 +1,127 @@
+{
+  "tile_spaces": [
+    {
+      "id": "ports.other",
+      "width": 48,
+      "height": 32
+    }
+  ],
+  "entities": [
+    {
+      "id": "binding.source",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "recovery.mixed",
+          "public": false,
+          "initial_stock": {
+            "steel": 30
+          }
+        },
+        "independent_network_signal": {
+          "id": "pool",
+          "network": "binding.main",
+          "metadata_fault": "none"
+        },
+        "network_signal_private_probe": {},
+        "signal_network_gate": {
+          "id": "safety",
+          "networks": [
+            "binding.main"
+          ],
+          "conditions": [
+            {
+              "id": "room",
+              "source": "pool",
+              "signal": "binding.room",
+              "minimum": 4,
+              "maximum": 10,
+              "unit": "unit.steel",
+              "blocker": "binding.backpressure"
+            }
+          ]
+        },
+        "independent_network_ports": {
+          "list": [
+            {
+              "network": "binding.main",
+              "push": [
+                "steel"
+              ]
+            }
+          ],
+          "metadata_fault": "none"
+        }
+      }
+    },
+    {
+      "id": "binding.watcher",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "recovery.mixed",
+          "public": false
+        },
+        "independent_network_signal": {
+          "id": "pool",
+          "network": "binding.main",
+          "metadata_fault": "none"
+        },
+        "independent_network_ports": {
+          "list": [
+            {
+              "network": "binding.main",
+              "pull": []
+            }
+          ],
+          "metadata_fault": "none"
+        }
+      }
+    },
+    {
+      "id": "binding.remote",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "recovery.mixed",
+          "public": false
+        },
+        "independent_network_signal": {
+          "id": "pool",
+          "network": "binding.main",
+          "metadata_fault": "none"
+        },
+        "independent_network_ports": {
+          "list": [
+            {
+              "network": "binding.main",
+              "pull": []
+            }
+          ],
+          "metadata_fault": "none"
+        }
+      }
+    }
+  ]
+}

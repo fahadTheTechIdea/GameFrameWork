@@ -1,0 +1,20 @@
+{
+  "units": [
+    { "id": "partial.currency", "dimension": "currency", "scale": { "numerator": 1, "denominator": 1 }, "discrete": false }
+  ],
+  "business_accounts": [
+    { "id": "partial.accounts", "currency": "partial.currency", "opening_cash": 0 }
+  ],
+  "game_modes": [
+    { "id": "partial.paid", "name": "Explicit paid-supplier protocol proof", "properties": {
+      "business.money.enabled": true,
+      "business.trading.enabled": true
+    } }
+  ],
+  "entities": [
+    { "id": "partial.creation-supplier", "kind": "structure", "components": {
+      "tile_presence": { "space": "colony.tiles", "width": 1, "height": 1, "blocks": true, "movable": false },
+      "supplier": { "sells": { "steel": 10 } }
+    } }
+  ]
+}

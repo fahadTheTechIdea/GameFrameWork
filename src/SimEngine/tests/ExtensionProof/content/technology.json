@@ -1,0 +1,18 @@
+{
+  "technology_completion_effects":[{"id":"research.complete"}],
+  "technology_entity_unlocks":[{"id":"unlock.tower","definition":"point.tower"}],
+  "technology_activity_unlocks":[{"id":"unlock.inspection","definition":"inspect"}],
+  "technology_requirements":[{"id":"knowledge.foundation","technology":"research.foundation"}],
+  "work_requirement_groups":[{"id":"research.resources","mode":"all","entries":[
+    {"id":"knowledge","requirement":"knowledge.foundation"},{"id":"inputs","requirement":"preempt.ready"}]}],
+  "technologies":[
+    {"id":"research.advanced","prerequisites":["research.foundation"],"unlocks":["unlock.inspection"],
+      "player_orderable":true,"priority":50,"automatic_supply":false,"on_complete":"research.complete",
+      "nodes":[{"executor":"work.staffed","id":"research","roles":["inspect"],"duration":{"numerator":3,"denominator":10,"unit":"hour"},"requirement":"research.resources"}]},
+    {"id":"research.foundation","prerequisites":[],"unlocks":["unlock.tower"],
+      "player_orderable":true,"priority":50,"automatic_supply":false,"on_complete":"research.complete",
+      "nodes":[{"executor":"work.timed","id":"prepare","duration":{"numerator":1,"denominator":20,"unit":"hour"}},{"executor":"work.staffed","id":"research","after":["prepare"],"roles":["inspect"],"duration":{"numerator":3,"denominator":10,"unit":"hour"},"requirement":"preempt.ready"}]}
+  ],
+  "activities":[{"id":"point.tower","player_orderable":true,"priority":1,"automatic_supply":false,
+    "nodes":[{"executor":"work.timed","id":"work","duration":{"numerator":1,"denominator":20,"unit":"hour"}}]}]
+}

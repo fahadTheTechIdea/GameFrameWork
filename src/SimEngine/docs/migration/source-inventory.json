@@ -1,0 +1,653 @@
+{
+  "source": "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine",
+  "target": "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine",
+  "sourceHead": "7f9d4761ad0427fc1a199e11d77acb81eac32ca6",
+  "sourceStatus": [
+    " M src/oilCo-engine/src/SimEngine/CLAUDE.md",
+    " M src/oilCo-engine/src/SimEngine/OilCo.Game/Commands.cs",
+    " M src/oilCo-engine/src/SimEngine/OilCo.Game/Operations.cs",
+    " M src/oilCo-engine/src/SimEngine/OilCo.Game/Research.cs",
+    " M src/oilCo-engine/src/SimEngine/OilCo.Tests/FrameworkTests.cs",
+    " M src/oilCo-engine/src/SimEngine/OilCo.Tests/StandardTests.cs",
+    " M src/oilCo-engine/src/SimEngine/OilCo.Tests/TestKit.cs",
+    " M src/oilCo-engine/src/SimEngine/OilCo.Tests/TestRunner.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Content/ContentTypes.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Content/Defs.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Content/ResolvedContent.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Hosting/GameClock.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Hosting/GameFactory.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Hosting/Lockstep.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Hosting/SimGame.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Kernel/Commands.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Kernel/Entities.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Kernel/SaveGame.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Kernel/World.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Standard/Construction.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Standard/Movement.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Standard/Networks.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Standard/Production.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Standard/StandardCommands.cs",
+    " M src/oilCo-engine/src/SimEngine/SimEngine/Standard/Work.cs",
+    " M src/oilCo-engine/src/SimEngine/content/manifest.json",
+    " M src/oilCo-engine/src/SimEngine/plans/V2_ARCHITECTURE.md",
+    " M src/oilCo-engine/src/SimEngine/plans/V2_GUIDE.md",
+    " M src/oilCo-engine/src/SimEngine/plans/V2_REVISION.md",
+    "?? src/oilCo-engine/src/SimEngine/OilCo.Tests/CommandInboxTests.cs",
+    "?? src/oilCo-engine/src/SimEngine/OilCo.Tests/LifecycleTests.cs",
+    "?? src/oilCo-engine/src/SimEngine/SimEngine/Content/EntityStateDef.cs",
+    "?? src/oilCo-engine/src/SimEngine/SimEngine/Hosting/GameCycle.cs",
+    "?? src/oilCo-engine/src/SimEngine/SimEngine/Kernel/CommandInbox.cs",
+    "?? src/oilCo-engine/src/SimEngine/SimEngine/Kernel/EntityLifecycle.cs",
+    "?? src/oilCo-engine/src/SimEngine/content/oil/states.json",
+    "?? src/oilCo-engine/src/SimEngine/plans/R7_LIFECYCLE.md"
+  ],
+  "recoveryArchive": "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\docs\\migration\\source-before-extraction.zip",
+  "recoverySha256": "BE239DDDA0FA318D05483EC988A14AA183B2E99C8C0689FF3A508BB64F655BAE",
+  "files": [
+    {
+      "path": "CLAUDE.md",
+      "sha256": "F69A12968CFEA1123E22A087EDCB51E44BAA0093850F6E834854078CE2BA3636",
+      "bytes": 7238
+    },
+    {
+      "path": "content/fog/fog.json",
+      "sha256": "49E6FEEBF198CA110E49289C57DAF1FE7DB47E90763C4BBB9E3E966630DD932E",
+      "bytes": 202
+    },
+    {
+      "path": "content/manifest.json",
+      "sha256": "E1215A742BCD3F6D5C2F03641B87A6D4F42071FBD52A4D7A49528416B13E4591",
+      "bytes": 895
+    },
+    {
+      "path": "content/oil/campaign.json",
+      "sha256": "2AB0B04E82B5F80CA8F037CD372D4C5B85A135F0E63273A50B8F5FB8F9437A3A",
+      "bytes": 1119
+    },
+    {
+      "path": "content/oil/geology.json",
+      "sha256": "B00F2A0A3E32B1F792733FE8305315B8EF5F0276CC598ED2C0EAE8E4F1732C21",
+      "bytes": 1860
+    },
+    {
+      "path": "content/oil/input.json",
+      "sha256": "54A835D4A427A366009AA0E4DE06608629839E9CBAD18458E54BD358C53D0738",
+      "bytes": 423
+    },
+    {
+      "path": "content/oil/items.json",
+      "sha256": "9A3B6AF25D21829F5D8F7521681403A44A6C61D4FD35FDBF35A66DA55644E256",
+      "bytes": 1651
+    },
+    {
+      "path": "content/oil/networks.json",
+      "sha256": "E4581E7328D853FD7D62FE5AD9CCB26AAA7D1354D72CB0C4D40A81358C5CF5DD",
+      "bytes": 2819
+    },
+    {
+      "path": "content/oil/playbooks.json",
+      "sha256": "17D421018A213C85623FD79E9A3D8AD22DE72408E103067E34F1BC7975A304FB",
+      "bytes": 1340
+    },
+    {
+      "path": "content/oil/production.json",
+      "sha256": "AEF6F8E1E6FF697E98063C324BBBF834AB4C2DBE94D755C49B457C4EAD6FE728",
+      "bytes": 5579
+    },
+    {
+      "path": "content/oil/rules.json",
+      "sha256": "30088A380567E6D49E714ACEB2833AFDFC43F89DB07C8FD90D86E651DAC368EB",
+      "bytes": 1796
+    },
+    {
+      "path": "content/oil/scenarios.json",
+      "sha256": "9113DC723248D1110654B354583B8A03A7D702DA17443D5576AFF39426F2DE71",
+      "bytes": 9194
+    },
+    {
+      "path": "content/oil/states.json",
+      "sha256": "46DF23DD1DA0150410C65BADD4185C180D95F7CF80873D736707F2E386DD5DA6",
+      "bytes": 526
+    },
+    {
+      "path": "content/oil/structures.json",
+      "sha256": "CD4E404FCD2590D88090E88038726396A95D57E19952C0B3576BC968421C9258",
+      "bytes": 33222
+    },
+    {
+      "path": "content/oil/tech.json",
+      "sha256": "084E0B3852535B2064425173123220426B8E1B86FC8E61633C1567172D495A70",
+      "bytes": 3753
+    },
+    {
+      "path": "content/oil/vehicles.json",
+      "sha256": "D7EA3C4907DAC117207448088BEC8B8066940F70A93B9416DEC090F19E079610",
+      "bytes": 9577
+    },
+    {
+      "path": "content/oil/work.json",
+      "sha256": "85480299A80FEF5FF306C429C57B0B9C95B520A8D98B3A518E884F47070BD589",
+      "bytes": 4940
+    },
+    {
+      "path": "content/storyteller/storyteller.json",
+      "sha256": "6A8455591A50ADD6F9C895BC0E24AB2F90465B13632FD4E6086CBBEC4DAF83E5",
+      "bytes": 823
+    },
+    {
+      "path": "Directory.Build.props",
+      "sha256": "194AC0D24846F7BAA7F36606777A03645FEE774BC92451F826B22F5BD8EEB8A4",
+      "bytes": 259
+    },
+    {
+      "path": "Directory.Build.targets",
+      "sha256": "5CEAA750C621DA98FC5E4ED1DEABC30E55CC5129B1512FF5E7C308339D6E2496",
+      "bytes": 1178
+    },
+    {
+      "path": "OilCo.Game/Autopilot.cs",
+      "sha256": "07E3D7CCD906DB4E9F0423C90CBB83178463CD1B0AEA5426104B3ED22DFB0240",
+      "bytes": 15895
+    },
+    {
+      "path": "OilCo.Game/Campaign.cs",
+      "sha256": "0658F222DEF984E055B31F07BA6169459819BC42C13665EB996465AACCA68EC7",
+      "bytes": 9309
+    },
+    {
+      "path": "OilCo.Game/Commands.cs",
+      "sha256": "AB54F9FD6368C662B82A75A50E2BFEDD187F17128ACE6000B61659EB9C903082",
+      "bytes": 12505
+    },
+    {
+      "path": "OilCo.Game/Company.cs",
+      "sha256": "00909A75A88F4D89D3FAEA7E85B45363E320FE9BF10AA31FC2E9C67D4E7CC4AC",
+      "bytes": 6887
+    },
+    {
+      "path": "OilCo.Game/Fog.cs",
+      "sha256": "9F454D24B6F61180F85CB84481BD94B5E470BAC074D64B18FAED0B496EFEA165",
+      "bytes": 5185
+    },
+    {
+      "path": "OilCo.Game/OilCo.Game.csproj",
+      "sha256": "5D83094504CBAFD51004B653261CB79D6E34A771ED3DBDAF8305208EC8BE0010",
+      "bytes": 845
+    },
+    {
+      "path": "OilCo.Game/OilModule.cs",
+      "sha256": "A6B6599BC3F02EAC80C159D85B16B59A7FB4904962D5AA06FDDFC323B6E99602",
+      "bytes": 7596
+    },
+    {
+      "path": "OilCo.Game/Operations.cs",
+      "sha256": "8F817AF73843493D6E2C1032BF188558CD5C24D69465CF19392642F47B1B0E1E",
+      "bytes": 25313
+    },
+    {
+      "path": "OilCo.Game/Research.cs",
+      "sha256": "F8FAA74C62101EABB34DB2F72CB6DDFC266D73B5CE3112998892C384F42A5A0A",
+      "bytes": 10867
+    },
+    {
+      "path": "OilCo.Game/Reservoirs.cs",
+      "sha256": "9F64372E1385EA1002BFF141906FC8CBD338FD6DEA17AA4C880CAF3F56199EB0",
+      "bytes": 9111
+    },
+    {
+      "path": "OilCo.Game/Settings.cs",
+      "sha256": "9E34C9E1B25374B3ADF758E9431184D3B09C9179E48280FE896F7CD9BCF4AD69",
+      "bytes": 9693
+    },
+    {
+      "path": "OilCo.Game/Storyteller.cs",
+      "sha256": "38F7848AD24B81AAE888F1C15C47FBD9915124A713165E94B214117F738B04A2",
+      "bytes": 9822
+    },
+    {
+      "path": "OilCo.Game/Views.cs",
+      "sha256": "122B6CB96CA3411531BF998C7CA3D7ACA0FC9ACB1CE88F724C0531429000C15E",
+      "bytes": 16302
+    },
+    {
+      "path": "OilCo.Game/WorldGen.cs",
+      "sha256": "CC4539FDB29CEA94076B88D04DB5D0769BAA0E2A88CBFA06C8DB8D7C4AA2B1D8",
+      "bytes": 14159
+    },
+    {
+      "path": "OilCo.Harness/OilCo.Harness.csproj",
+      "sha256": "8F0F927E4351D22CCE8C19EA3C4996E440D9946BAB8788BBF752F57C71E7014C",
+      "bytes": 488
+    },
+    {
+      "path": "OilCo.Harness/Program.cs",
+      "sha256": "CC6D7E722654F080E8DA71EACDDB1291FAF404C5D6CD8741FE28AE1B0176ECEA",
+      "bytes": 4607
+    },
+    {
+      "path": "OilCo.Headless/CommandShell.cs",
+      "sha256": "F206D32C2FF5C7EEDFF658FA68922CFEB828A78DA4AA910CB19930DD1CB36B63",
+      "bytes": 12126
+    },
+    {
+      "path": "OilCo.Headless/FieldPlayer.cs",
+      "sha256": "202DDB341C1BA951875FA63A6FF3188DF929E4395E981E4A054485DD119E8E84",
+      "bytes": 14714
+    },
+    {
+      "path": "OilCo.Headless/OilCo.Headless.csproj",
+      "sha256": "091A3537AA3C1916A000EADB7D976FDB4772403FEC9078C1F1A2488EDDBF6A4F",
+      "bytes": 642
+    },
+    {
+      "path": "OilCo.Headless/TextClient.cs",
+      "sha256": "402B50FB088DC50D4095AFFBB1BB54BD9DDAB13742BAAD4F83EE608AAB26CD45",
+      "bytes": 4581
+    },
+    {
+      "path": "OilCo.LiveDemo/OilCo.LiveDemo.csproj",
+      "sha256": "562C2734DD45CCF7BA320845C592626C8B17B8F8BE20482B6587A32A1D2F6BD4",
+      "bytes": 490
+    },
+    {
+      "path": "OilCo.LiveDemo/Program.cs",
+      "sha256": "EA4A9E71F501E3AD378F455A4AD393B160165774E1FCA3E2E80841E619210EBF",
+      "bytes": 2230
+    },
+    {
+      "path": "OilCo.Tests/BudgetTests.cs",
+      "sha256": "52744E76076814B9EAB0BC554DA586196447C95F3E7C11B7DFBB493860DC9E0F",
+      "bytes": 1416
+    },
+    {
+      "path": "OilCo.Tests/ClientTests.cs",
+      "sha256": "58B57FC318392940D1ED98B7C25F36F669F88880A231C60BCC282394DF2B2C74",
+      "bytes": 4051
+    },
+    {
+      "path": "OilCo.Tests/CommandInboxTests.cs",
+      "sha256": "160D7CB2E5967CCBEBAC55191EA9889312FC6E7E46645F6037BA7AACF5C59A52",
+      "bytes": 10676
+    },
+    {
+      "path": "OilCo.Tests/DemoTests.cs",
+      "sha256": "E62683E4DE30034C73A3060C54A920BB7E6F18A68F54F1ED1024BBE21C002FE4",
+      "bytes": 2718
+    },
+    {
+      "path": "OilCo.Tests/FrameworkTests.cs",
+      "sha256": "FB7A57C9349957B36D3B3AFBB86EA0F1CA3DC1D9C2F9F66FBE8B25BF0B6B3D01",
+      "bytes": 25505
+    },
+    {
+      "path": "OilCo.Tests/GameTests.cs",
+      "sha256": "0A1BEC96B76625EE5FEB89035EE438B5ED66B95F11010A2F70B772515D75D61B",
+      "bytes": 15717
+    },
+    {
+      "path": "OilCo.Tests/InputTests.cs",
+      "sha256": "FA039AD8B381554110A7BDEA7FF93E1ED4F3B9AC93B0676AB4C5B8010EB4E5E8",
+      "bytes": 4781
+    },
+    {
+      "path": "OilCo.Tests/LifecycleTests.cs",
+      "sha256": "65A2B2B0F924C537C371D74539F70C69B7E5BEA0BD084E39BF38DF24BE5E6663",
+      "bytes": 16452
+    },
+    {
+      "path": "OilCo.Tests/NetTests.cs",
+      "sha256": "05105B98D4A981B725B1D3381A9F4FDB264EF7F42161858F39EAAD32B6EE8014",
+      "bytes": 6331
+    },
+    {
+      "path": "OilCo.Tests/OffshoreTests.cs",
+      "sha256": "BF55C3005815D5C492F67FC865B950E0CB84CCA6D697E21AD1D930BF3031F744",
+      "bytes": 11114
+    },
+    {
+      "path": "OilCo.Tests/OilCo.Tests.csproj",
+      "sha256": "D4D0C07E49C7E6A98A49A206E4B9F7945CCCB570ECCBF7F40EB38ADD33519853",
+      "bytes": 884
+    },
+    {
+      "path": "OilCo.Tests/OptionalModuleTests.cs",
+      "sha256": "5D9C8BDC03CBEE6D3BC4CA0A7BA3C26C44FB6E75DEEE9B3C7B83832C7F83D9DD",
+      "bytes": 9287
+    },
+    {
+      "path": "OilCo.Tests/PurityTests.cs",
+      "sha256": "7D9866C03513B13746224FF432236BC2903648B41AB20002E8B1020A7529460C",
+      "bytes": 4426
+    },
+    {
+      "path": "OilCo.Tests/StandardTests.cs",
+      "sha256": "F3DE5C84EDFD242803232EA333A2E1277C7275C99F79B30CE135A5EDC6205614",
+      "bytes": 22320
+    },
+    {
+      "path": "OilCo.Tests/TestKit.cs",
+      "sha256": "450D479A0C15510A33AB110695802914E9EFD6CD90A0C590572B75484DBF710A",
+      "bytes": 1596
+    },
+    {
+      "path": "OilCo.Tests/TestRunner.cs",
+      "sha256": "23B6E61BDCEFEA1F933B28433C312725F1A1F08738B73177C0B19F22D22411B8",
+      "bytes": 4345
+    },
+    {
+      "path": "plans/R7_LIFECYCLE.md",
+      "sha256": "124473EADBF2AD2FF6FBEE07212D1672FB40F8EAA55CFB8163ED86BAE5E3223E",
+      "bytes": 4302
+    },
+    {
+      "path": "plans/V2_ARCHITECTURE.md",
+      "sha256": "FA1D03F67D4E289F12D2D49DF9CB543E9488D34452DDACEFD5DA6F26A7084CC2",
+      "bytes": 10634
+    },
+    {
+      "path": "plans/V2_GUIDE.md",
+      "sha256": "315FFD06B3E0C51FF849A34DC653FB270C3886F4AA962917D7D0636B19632F92",
+      "bytes": 14067
+    },
+    {
+      "path": "plans/V2_REVISION.md",
+      "sha256": "329077C7D1AC544F353E31A7E710219937708D73049ED1A097AE67AEDFB02EB5",
+      "bytes": 8402
+    },
+    {
+      "path": "SimEngine.slnx",
+      "sha256": "C0BFEAC6176B1262C5951820F2C0966D70E9E922CA61A8156891A3C730B4DEB1",
+      "bytes": 353
+    },
+    {
+      "path": "SimEngine/App/Coverage.cs",
+      "sha256": "C8114D9C6155B60C225AF17C66C0694D859597195063DCB936FC3A06830D4B15",
+      "bytes": 3378
+    },
+    {
+      "path": "SimEngine/App/InputMapDef.cs",
+      "sha256": "A4C55607DD7AC0A12055E0C7A0E2036BC32C2F7ADC60638A2D7E4C7C1F2D215B",
+      "bytes": 1313
+    },
+    {
+      "path": "SimEngine/App/SimApp.cs",
+      "sha256": "345089349235E88E40384304B544836AF2815FDBF2F561BCD5DE7BA244F9876B",
+      "bytes": 13800
+    },
+    {
+      "path": "SimEngine/App/Standard.cs",
+      "sha256": "96230A462DAF02B66E27B0ED208FF3404B0A670CF2B5C0B85745F05D266509D4",
+      "bytes": 8193
+    },
+    {
+      "path": "SimEngine/Commands/StandardCommands.cs",
+      "sha256": "64AEFEF738E6571CFF4E38202DB76E2392B269F7B562E17EB40238B299E09C15",
+      "bytes": 5589
+    },
+    {
+      "path": "SimEngine/Content/Bill.cs",
+      "sha256": "71A9E2A48BCD371248155E29CA0C05D8CCE0D981B646AF657E110F06CF5D651B",
+      "bytes": 5017
+    },
+    {
+      "path": "SimEngine/Content/ContentTypes.cs",
+      "sha256": "FA3B2E9C9E8C923ECA8CF559DB5AC5F0BBE45071E39F9EED8AEEC502376CEBD3",
+      "bytes": 3595
+    },
+    {
+      "path": "SimEngine/Content/Defs.cs",
+      "sha256": "4C1940AE1CD9821CC677D8AD9AA300E95FF6C2CBEC07E041555C952F57BD33C8",
+      "bytes": 9258
+    },
+    {
+      "path": "SimEngine/Content/EntityStateDef.cs",
+      "sha256": "5EE6E5DD3ED7DACEDC186FBAB936BE3E40DAF4741E025B6E702FDA3293C449CC",
+      "bytes": 697
+    },
+    {
+      "path": "SimEngine/Content/Json.cs",
+      "sha256": "6DB768C6CBE9586927D378FE03F1692FE89E599D0FE048A23D9EC05FB19F986C",
+      "bytes": 16960
+    },
+    {
+      "path": "SimEngine/Content/ResolvedContent.cs",
+      "sha256": "B7E03AFFE141AFA6D3FE341A1C85A691187BB59C63A87FAF6A024C9F68AD3EF3",
+      "bytes": 13415
+    },
+    {
+      "path": "SimEngine/Core/Fault.cs",
+      "sha256": "86343F784CE1412D828DD72C51BBE24F8C046C91FF2CDF43A49E30BA42846DE3",
+      "bytes": 510
+    },
+    {
+      "path": "SimEngine/Core/GameTime.cs",
+      "sha256": "431739867383A4A70D05CC58CD33BF46E0BECD3D160C655CAA0414016FAED82E",
+      "bytes": 1809
+    },
+    {
+      "path": "SimEngine/Core/Ids.cs",
+      "sha256": "D0FCC6A0CE115203519D1C42E468538F47A231ADE84159CFD5E8439880078D8F",
+      "bytes": 3979
+    },
+    {
+      "path": "SimEngine/Core/WorkStates.cs",
+      "sha256": "55D43C37D4DA8009B7FD34211D99CD8000D69BECF0CA0234AB20DEC0734DF65E",
+      "bytes": 360
+    },
+    {
+      "path": "SimEngine/Hosting/ContentSet.cs",
+      "sha256": "03B2288ACB236109E515A87D965877B3BC1655C050D89095423085B84FE26DBD",
+      "bytes": 6636
+    },
+    {
+      "path": "SimEngine/Hosting/DiskFileSource.cs",
+      "sha256": "6C63A4BDF4B40783B578215EE816CCB252AC13C4EC464D90845032382DC2B870",
+      "bytes": 1881
+    },
+    {
+      "path": "SimEngine/Hosting/GameClock.cs",
+      "sha256": "C3CA6201B30AAACF1036DEA578570EBCCDAA5A2A42144CFD1EBD01A82994FA1B",
+      "bytes": 5538
+    },
+    {
+      "path": "SimEngine/Hosting/GameCycle.cs",
+      "sha256": "BE802803743741A6EE5E8E71971F40B22E5E34849E00AC13888FB7CFBB99B579",
+      "bytes": 1323
+    },
+    {
+      "path": "SimEngine/Hosting/GameFactory.cs",
+      "sha256": "F0791340FC65C1A663FD33EA824546CA4ED26FAC9B13B406FFABF24726C07BEC",
+      "bytes": 6459
+    },
+    {
+      "path": "SimEngine/Hosting/Lockstep.cs",
+      "sha256": "4900871DFF9A52243D651D74E32BFE18023236A50CD93B0EE50342E6EC50F025",
+      "bytes": 17458
+    },
+    {
+      "path": "SimEngine/Hosting/PlayerView.cs",
+      "sha256": "49C54AF719CADF7ED42946039CD153C977AA82229424DA938254991369DEC8F7",
+      "bytes": 11368
+    },
+    {
+      "path": "SimEngine/Hosting/RenderSnapshot.cs",
+      "sha256": "F91193A6162975B659132AD4F4A8D578562380D4BCF43D098B91E7CAF45276B9",
+      "bytes": 4063
+    },
+    {
+      "path": "SimEngine/Hosting/SimGame.cs",
+      "sha256": "49FCA61792801729A079A5B95489DB8404779C1BC25077C1C99EBB8E162821BF",
+      "bytes": 18521
+    },
+    {
+      "path": "SimEngine/Kernel/CommandInbox.cs",
+      "sha256": "EFC31CA6D55B021176C44A78B938EC23DB31AE2AB69A3BF5E973B62A8F7D04FD",
+      "bytes": 4025
+    },
+    {
+      "path": "SimEngine/Kernel/Commands.cs",
+      "sha256": "C8019D0A952A90864BB8BCF347259CE33CA00D00433D67658D5764F6E007455D",
+      "bytes": 7346
+    },
+    {
+      "path": "SimEngine/Kernel/Entities.cs",
+      "sha256": "07AA35340FCAFC89A450363128183FDF7A73A5B8A476E359C616C78CC00403FC",
+      "bytes": 17306
+    },
+    {
+      "path": "SimEngine/Kernel/EntityLifecycle.cs",
+      "sha256": "F51D40D27DB79D72A669E887392023E5A9074BCB2D3BD705A4FBC17983815B4A",
+      "bytes": 1043
+    },
+    {
+      "path": "SimEngine/Kernel/Events.cs",
+      "sha256": "450B41E1897E7CA4283FAF8E2A733DE04A1B48AA5DE07C41E23A648EA20A5F8F",
+      "bytes": 3301
+    },
+    {
+      "path": "SimEngine/Kernel/Inspection.cs",
+      "sha256": "F0AFE07DC659722B9B7BB8CE886966C540607D450C411B4F8C062A9416C79E0D",
+      "bytes": 1197
+    },
+    {
+      "path": "SimEngine/Kernel/Modules.cs",
+      "sha256": "07C3D4B6BA65D0CBFF3F8C32D4DBBC58A92110D88EB1C340771621E9321A6BBF",
+      "bytes": 10671
+    },
+    {
+      "path": "SimEngine/Kernel/Players.cs",
+      "sha256": "B4701DF7C689911F9DF9F2EB27FA6F3E8958D2D88073B20E0C00A18704ECD3D6",
+      "bytes": 5061
+    },
+    {
+      "path": "SimEngine/Kernel/SaveGame.cs",
+      "sha256": "B9BBECFD05542FEF42532D5E2D575F01295F0EB5C109E07EE2394C99A6B0F0A8",
+      "bytes": 4602
+    },
+    {
+      "path": "SimEngine/Kernel/Services.cs",
+      "sha256": "C9F7564F5EC03AE344695FBE92E39797755AD8DEEC63E845561F7CAD12967BE5",
+      "bytes": 2399
+    },
+    {
+      "path": "SimEngine/Kernel/StateSync.cs",
+      "sha256": "3649354CE1620B2EACE750C5B110CE0E0ACEC38424930C833A836037354EAE19",
+      "bytes": 10204
+    },
+    {
+      "path": "SimEngine/Kernel/Systems.cs",
+      "sha256": "444329E5E5130C047C48DCB565641C34A5A8EB5573C7AAA1E37BA7A893BAC72A",
+      "bytes": 4206
+    },
+    {
+      "path": "SimEngine/Kernel/Visibility.cs",
+      "sha256": "4E089E46CFC6CB770C433EDD668FCE8205118714F7FF166A76E3E6F439D3D599",
+      "bytes": 548
+    },
+    {
+      "path": "SimEngine/Kernel/World.cs",
+      "sha256": "9EEE6350CE2D6ADAE19E1C0B741B523835684EFD0A6CF5B63562198F42F9EF6E",
+      "bytes": 19809
+    },
+    {
+      "path": "SimEngine/Map/TileMap.cs",
+      "sha256": "FBFD646D2C861561C9A4B66DF6C7C8D9D646FDCBD6CCDCC564C14E011CDBD622",
+      "bytes": 7855
+    },
+    {
+      "path": "SimEngine/Math/DetRandom.cs",
+      "sha256": "F58C2B51F97571C0BF38FA6F572DD77CE3C8C5BD6D50DFCDE50139F5F8D5D7AB",
+      "bytes": 1775
+    },
+    {
+      "path": "SimEngine/Math/Fix.cs",
+      "sha256": "890BF976B595B80C5243266A3D8D397FBD49316E22879BE823935BEC17072143",
+      "bytes": 9969
+    },
+    {
+      "path": "SimEngine/Math/Vectors.cs",
+      "sha256": "7E34C88DB29C8D0ABECCD4A4D8FCC5F841FB73C67360BD1FFE79814997891935",
+      "bytes": 5405
+    },
+    {
+      "path": "SimEngine/Properties/AssemblyInfo.cs",
+      "sha256": "8418831CD7EA1779DE766162AF44FCF03E4ACF5C44EF96C68CC8C7333C35ECAC",
+      "bytes": 281
+    },
+    {
+      "path": "SimEngine/SimEngine.csproj",
+      "sha256": "A7D4C5B164388E991B8BDFD88667BFCFA4C77CAFC4CE6E11DAD115592B28100A",
+      "bytes": 512
+    },
+    {
+      "path": "SimEngine/Standard/Construction.cs",
+      "sha256": "EDF0CAD3F5014E9F319C7DD549973439CDC094EC5633CBF65AC7F069140FF227",
+      "bytes": 15932
+    },
+    {
+      "path": "SimEngine/Standard/Economy.cs",
+      "sha256": "CB62755EF4CC97279DE41DBA94D834E654B45467CA70C2A46101C02AD3C6A56F",
+      "bytes": 1289
+    },
+    {
+      "path": "SimEngine/Standard/Inventory.cs",
+      "sha256": "37FAC2326897BF935966965B41343198856A309B48DDB790B1EFA5518BBA83CE",
+      "bytes": 9571
+    },
+    {
+      "path": "SimEngine/Standard/Logistics.cs",
+      "sha256": "609BFD9A8245E1BBB23C7CCAF003BF986E92D87076F1C8A031640C510957A860",
+      "bytes": 21500
+    },
+    {
+      "path": "SimEngine/Standard/Movement.cs",
+      "sha256": "DEAE952747CE84F611E1BB4E659EA5BE786318032E2241D34D7EC171F4D2BF62",
+      "bytes": 6745
+    },
+    {
+      "path": "SimEngine/Standard/Navigation.cs",
+      "sha256": "11BAA632CEA36E3D6C11BAF0A5082A39AEBE621EDD4F64E1B3C1D2E096EC63F5",
+      "bytes": 12576
+    },
+    {
+      "path": "SimEngine/Standard/Networks.cs",
+      "sha256": "AA505A3633500ED82B1411A4FEAEFF95A3EBC905E7D59DD4AA50C93F63B3948C",
+      "bytes": 30890
+    },
+    {
+      "path": "SimEngine/Standard/Production.cs",
+      "sha256": "9BD6E6D88662F598935C451CC6FBC883933E4D343234347E5C09640EDA14194A",
+      "bytes": 16067
+    },
+    {
+      "path": "SimEngine/Standard/StandardCommands.cs",
+      "sha256": "33D6C513C739DB19F2C4D0DC9307E51C7E05DF67870BC261EDD45A296697680F",
+      "bytes": 9589
+    },
+    {
+      "path": "SimEngine/Standard/StandardModule.cs",
+      "sha256": "E8EA3D3CDA2C6A0040DA21FBA466534F8D9C9ED156FF217A7A77F01FDF71D4AC",
+      "bytes": 6112
+    },
+    {
+      "path": "SimEngine/Standard/Tuning.cs",
+      "sha256": "0CF9EEBEFE91930ECC318DB123B55C7F0744402574E4C0D687CAC8E9CBA5882F",
+      "bytes": 1665
+    },
+    {
+      "path": "SimEngine/Standard/Upgrades.cs",
+      "sha256": "96CE9AF246237D8EDBC1E01EB02B99659B8AE2E076F20CB1038525645C201ED7",
+      "bytes": 2790
+    },
+    {
+      "path": "SimEngine/Standard/Work.cs",
+      "sha256": "DCA0E670BCEB1898E917643537D1CE78AA2DBBBDA9F8DCEB1242EF9F7A93945B",
+      "bytes": 39623
+    },
+    {
+      "path": "SimEngine/Views/WorkView.cs",
+      "sha256": "04FB1A878E123C7EC33ED248E0540B887CA71B6D58084264627621D99C1BFDA3",
+      "bytes": 8494
+    }
+  ]
+}

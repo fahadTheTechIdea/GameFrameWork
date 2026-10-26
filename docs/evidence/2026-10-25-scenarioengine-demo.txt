@@ -1,0 +1,4 @@
+tick=1 value=1 phase=Running hash=c44b2a005bd0d041e881bfe0b75f7f06b2a80a9714d636614a6282174085e3f8
+tick=2 value=2 phase=Running hash=030dada28679ca0e167bf3dd45180657aba30737faf49365e6278212fd4a5368
+tick=3 value=3 phase=Ended hash=5a540b3fff688161a3910f8629a5fb311c77eb6bb59c723f6ab5fbdc8b74f3f4
+PASS: GameBase.Init/Update, game factory, ending, explicit previous-save recovery, continuation and portable replay.

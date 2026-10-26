@@ -1,0 +1,30 @@
+{
+  "units": [
+    { "id": "unit.slot", "dimension": "count", "scale": { "numerator": 1, "denominator": 1 }, "discrete": true },
+    { "id": "unit.doublekg", "dimension": "mass", "scale": { "numerator": 2, "denominator": 1 }, "discrete": false }
+  ],
+  "resources": [
+    { "id": "crate", "unit": "unit.count", "phase": "solid", "category": "tool", "traits": [],
+      "capacity": { "unit.kg": 2, "unit.litre": 1, "unit.slot": 1 } },
+    { "id": "measured.coolant", "unit": "unit.litre", "phase": "liquid", "category": "fluid", "traits": ["handling.fluid"],
+      "capacity": { "unit.kg": 0.5, "unit.litre": 1 } },
+    { "id": "scaled.dust", "unit": "unit.kg", "phase": "solid", "category": "mineral", "traits": ["space.mineral"],
+      "capacity": { "unit.doublekg": 0.5 } },
+    { "id": "fractional.slot", "unit": "unit.kg", "phase": "solid", "category": "mineral", "traits": [],
+      "capacity": { "unit.pair": 0.5 } }
+  ],
+  "capacity_policies": [
+    { "id": "cargo.combined", "limits": { "unit.litre": 4, "unit.kg": 10 } },
+    { "id": "cargo.mass", "limits": { "unit.kg": 10 } },
+    { "id": "cargo.grams", "limits": { "unit.g": 10000 } },
+    { "id": "cargo.volume", "limits": { "unit.litre": 4 } },
+    { "id": "cargo.slots", "limits": { "unit.slot": 3 } },
+    { "id": "cargo.pairs", "limits": { "unit.pair": 2 } },
+    { "id": "cargo.third", "limits": { "unit.third": 10 } },
+    { "id": "cargo.huge", "limits": { "unit.kg": 2000000000 } },
+    { "id": "cargo.closed", "limits": { "unit.kg": 0 } }
+  ],
+  "trait_capacity_policies": [
+    { "id": "cargo.minerals", "limits": { "unit.kg": 8, "unit.litre": 4 }, "required_trait": "space.mineral" }
+  ]
+}

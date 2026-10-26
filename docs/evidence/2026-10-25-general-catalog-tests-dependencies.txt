@@ -1,0 +1,1 @@
+PASS: all 197 family reviews; all 187 frontage families author/register through common grammar; 10 infrastructure families reject building substitution; arbitrary new parts, unrelated/nested requested programs, persistence/automatic reload, explicit updates, cancellation, audit and actual CLI generation.

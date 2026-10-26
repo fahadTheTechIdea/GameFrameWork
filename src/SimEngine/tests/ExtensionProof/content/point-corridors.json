@@ -1,0 +1,39 @@
+{
+  "units": [
+    {"id":"corridor.metre","dimension":"length","scale":{"numerator":1,"denominator":1},"discrete":false}
+  ],
+  "spatial_layers": [
+    {"id":"corridor.depth","space":"field.points","type":"constructed.corridor.depth","value_type":"fixed","visibility":"public","unit":"corridor.metre"}
+  ],
+  "point_line_placement_policies": [
+    {"id":"corridor.placement","space":"field.points"}
+  ],
+  "line_effects": [
+    {"id":"corridor.stamp","operation":"segment"},
+    {"id":"corridor.finish","operation":"finish"}
+  ],
+  "target_resource_requirements": [
+    {"id":"corridor.material","port":null,"use":"consume","quantities":{"supply":2}}
+  ],
+  "activities": [
+    {"id":"corridor.segment","player_orderable":false,"automatic_supply":true,"nodes":[
+      {"id":"install","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":4,"denominator":1,"unit":"minute"},"requirement":"corridor.material","effect":"corridor.stamp"}
+    ]}
+  ],
+  "lines": [
+    {"id":"corridor.point-line","activity":"corridor.segment","segment_node":"install","layer":"corridor.depth","value":1.5,"owned":false,"placement_policy":"corridor.placement","finish_effect":"corridor.finish","work_marker":"corridor.cursor"}
+  ],
+  "entities": [
+    {"id":"corridor.cursor","kind":"marker","tags":["line-work"],"components":{
+      "point_presence":{"space":"field.points","position":0},
+      "storage":{"capacity_policy":"fixture.count.8","public":false,"initial_stock":{}},"line_work":{}
+    }},
+    {"id":"corridor.recovery-container","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":0},
+      "storage":{"capacity_policy":"fixture.count.4","public":true,"evacuate":true,"initial_stock":{}}
+    }}
+  ],
+  "resource_recovery_profiles": [
+    {"id":"corridor.recovery","space":"field.points","container":"corridor.recovery-container"}
+  ]
+}

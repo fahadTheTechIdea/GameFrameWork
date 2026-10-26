@@ -1,0 +1,16 @@
+{
+  "work_requirement_groups": [
+    {"id":"durability.ready","mode":"all","entries":[
+      {"id":"target","requirement":"prior.target-ready"},
+      {"id":"company","requirement":"prior.company-ready"},
+      {"id":"independent","requirement":"proof.bootstrap-ready"}
+    ]}
+  ],
+  "activities": [
+    {"id":"durability.dependent","priority":50,"player_orderable":true,"automatic_supply":false,
+      "nodes":[
+        {"executor":"work.staffed","id":"second","after":["first"],"roles":["survey"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"durability.ready"},
+        {"executor":"work.staffed","id":"first","roles":["survey"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"durability.ready"}
+      ]}
+  ]
+}

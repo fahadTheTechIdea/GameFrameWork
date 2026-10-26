@@ -1,0 +1,53 @@
+{
+  "units": [{ "id": "unit.condition", "dimension": "equipment-integrity", "scale": { "numerator": 1, "denominator": 1 }, "discrete": false }],
+  "signals": [
+    { "id": "equipment.integrity", "kind": "number", "metric": "condition.value", "unit": "unit.condition", "providers": [{ "component": "equipment_condition", "schema": 1 }] },
+    { "id": "equipment.maximum", "kind": "number", "metric": "condition.maximum", "unit": "unit.condition", "providers": [{ "component": "equipment_condition", "schema": 1 }] }
+  ],
+  "condition_effects": [
+    { "id": "equipment.damage", "source": "integrity", "kind": "damage", "unit": "unit.condition", "amount": 6 },
+    { "id": "equipment.repair", "source": "integrity", "kind": "repair", "unit": "unit.condition", "amount": 6 }
+  ],
+  "condition_requirements": [{ "id": "equipment.damaged", "source": "integrity", "unit": "unit.condition", "minimum": 0, "maximum": 4, "blocker": "equipment.not-damaged" }],
+  "target_resource_requirements": [
+    {"port":null, "id": "equipment.spares", "use": "consume", "quantities": { "steel": 3 } },
+    {"port":null, "id": "equipment.tools", "use": "hold", "quantities": { "steel": 2 } }
+  ],
+  "work_permits": [{ "id": "equipment.permit", "blocker": "equipment.service-disabled", "missing": "equipment.no-permit" }],
+  "work_requirement_groups": [{ "id": "equipment.service-ready", "mode": "all", "entries": [
+    { "id": "condition", "requirement": "equipment.damaged" },
+    { "id": "spares", "requirement": "equipment.spares" },
+    { "id": "tools", "requirement": "equipment.tools" },
+    { "id": "permit", "requirement": "equipment.permit" }
+  ] }],
+  "activities": [
+    { "id": "equipment.damage-work", "player_orderable": true, "priority": 60, "automatic_supply": false, "nodes": [
+      {"executor":"work.staffed", "id": "stress", "roles": ["crane"], "duration":{"numerator":1,"denominator":5,"unit":"hour"}, "effect": "equipment.damage" }
+    ] },
+    { "id": "equipment.service", "player_orderable": true, "priority": 70, "automatic_supply": false, "nodes": [
+      {"executor":"work.staffed", "id": "repair", "roles": ["crane"], "duration":{"numerator":1,"denominator":2,"unit":"hour"}, "requirement": "equipment.service-ready", "effect": "equipment.repair" }
+    ] }
+  ],
+  "transformations": [{"tool_consumption":{},"operating_ports":{},"tool_ports":{},"input_ports":{"steel":"material.input"},"output_ports":{"steel":"material.output"}, "id": "equipment.batch", "mode": "batch", "cancel_policy": "return_inputs", "operating_inputs": [], "tools": {},
+    "inputs": { "steel": 2 }, "outputs": { "steel": 1 }, "duration": { "numerator": 10, "denominator": 1, "unit": "hour" } }],
+  "entities": [
+    { "id": "condition-machine", "kind": "structure", "components": {"inventory_port":[{"id":"material.output"},{"id":"material.input"},{"id":"tool.input"},{"id":"operating.input"}],
+      "tile_presence": { "space": "colony.tiles", "width": 1, "height": 1, "blocks": true, "movable": false },
+      "storage": { "capacity_policy": "fixture.count.40", "public": false, "initial_stock": { "steel": 30 } },
+      "work_permit": { "enabled": true },
+      "equipment_condition": { "id": "integrity", "unit": "unit.condition", "maximum": 10, "initial": 10, "wear": null, "states": { "damaged": "stopped", "failed": "stopped" } },
+      "transformer": { "automatic_supply": false, "wip_capacity": "fixture.count.40", "transformations": ["equipment.batch"],
+        "states": { "working": "working", "stopped": "stopped" },
+        "operation": { "id": "process", "enabled": true, "target": 1, "minimum": 1, "maximum": 2, "unit": "unit.work-rate" } },
+      "signal_transformation_gate": { "id": "safe-equipment", "transformations": ["equipment.batch"], "conditions": [
+        { "id": "integrity", "source": "integrity", "signal": "equipment.integrity", "unit": "unit.condition", "minimum": 6, "maximum": 10, "blocker": "equipment.unsafe" }
+      ] }
+    } },
+    { "id": "proof-condition-machine", "kind": "structure", "components": {
+      "tile_presence": { "space": "colony.tiles", "width": 1, "height": 1, "blocks": true, "movable": false },
+      "storage": { "capacity_policy": "fixture.count.40", "public": false, "initial_stock": { "steel": 30 } },
+      "work_permit": { "enabled": true },
+      "proof_condition": { "id": "integrity", "unit": "unit.condition", "maximum": 10, "initial": 4, "fault": 0 }
+    } }
+  ]
+}

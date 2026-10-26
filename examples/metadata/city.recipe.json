@@ -1,0 +1,20 @@
+{
+  "SchemaVersion": 1,
+  "Id": "city-schematic",
+  "GameProfile": "configurable-city-game",
+  "CatalogId": "city-schematic-catalog",
+  "RootArchetypeId": "city",
+  "Scale": "city",
+  "Coverage": "PartialScope",
+  "RemainingScopes": [
+    "outer-neighborhoods",
+    "regional-connections"
+  ],
+  "Parameters": {},
+  "Space": {
+    "Axes": [],
+    "Unit": "none"
+  },
+  "MaximumNodes": 1000,
+  "MaximumConnections": 5000
+}

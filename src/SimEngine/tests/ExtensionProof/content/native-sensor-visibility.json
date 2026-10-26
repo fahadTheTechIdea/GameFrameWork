@@ -1,0 +1,38 @@
+{
+  "knowledge_visibility_policies": [
+    {
+      "id": "survey.sight",
+      "own_entities": true,
+      "unlisted_entities": false,
+      "unlisted_content": true,
+      "rules": [
+        "survey.deposit.sight",
+        "survey.terrain.sight",
+        "survey.class.sight"
+      ]
+    }
+  ],
+  "layer_sensor_visibility": [
+    {
+      "id": "survey.deposit.sight",
+      "definition": "survey.deposit",
+      "sensors": [
+        "survey.sensor"
+      ]
+    },
+    {
+      "id": "survey.terrain.sight",
+      "definition": "survey.terrain",
+      "sensors": [
+        "survey.sensor"
+      ]
+    },
+    {
+      "id": "survey.class.sight",
+      "definition": "survey.class",
+      "sensors": [
+        "survey.sensor"
+      ]
+    }
+  ]
+}

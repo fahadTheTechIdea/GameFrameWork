@@ -1,0 +1,246 @@
+{
+  "knowledge_facts": [
+    {
+      "id": "disclose.tech",
+      "fresh_for": null,
+      "value": {
+        "disclosed": "tech"
+      }
+    },
+    {
+      "id": "disclose.predicate",
+      "fresh_for": null,
+      "value": {
+        "disclosed": "predicate"
+      }
+    },
+    {
+      "id": "disclose.objective",
+      "fresh_for": null,
+      "value": {
+        "disclosed": "objective"
+      }
+    }
+  ],
+  "knowledge_effects": [
+    {
+      "id": "disclose.tech.learn",
+      "subject": "disclose.tech"
+    },
+    {
+      "id": "disclose.predicate.learn",
+      "subject": "disclose.predicate"
+    },
+    {
+      "id": "disclose.objective.learn",
+      "subject": "disclose.objective"
+    }
+  ],
+  "knowledge_forgetting_policies": [
+    {
+      "id": "disclose.forget",
+      "subjects": [
+        {
+          "provider": "sim.knowledge.facts",
+          "subject": "disclose.tech"
+        },
+        {
+          "provider": "sim.knowledge.facts",
+          "subject": "disclose.predicate"
+        },
+        {
+          "provider": "sim.knowledge.facts",
+          "subject": "disclose.objective"
+        }
+      ],
+      "companies": [
+        0,
+        1
+      ]
+    }
+  ],
+  "knowledge_visibility_policies": [
+    {
+      "id": "disclose.policy",
+      "own_entities": true,
+      "unlisted_entities": true,
+      "unlisted_content": true,
+      "rules": [
+        "disclose.hide-tech",
+        "disclose.hide-predicate",
+        "disclose.hide-objective"
+      ]
+    }
+  ],
+  "activity_knowledge_visibility": [
+    {
+      "id": "disclose.hide-tech",
+      "definition": "decl.external",
+      "mode": "all",
+      "facts": [
+        "disclose.tech"
+      ]
+    }
+  ],
+  "objective_predicate_knowledge_visibility": [
+    {
+      "id": "disclose.hide-predicate",
+      "definition": "decl.native-known",
+      "mode": "all",
+      "facts": [
+        "disclose.predicate"
+      ]
+    }
+  ],
+  "objective_knowledge_visibility": [
+    {
+      "id": "disclose.hide-objective",
+      "definition": "decl.external-earned",
+      "mode": "all",
+      "facts": [
+        "disclose.objective"
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "id": "disclose.tech.activity",
+      "player_orderable": true,
+      "priority": 80,
+      "automatic_supply": false,
+      "on_complete": "disclose.tech.learn",
+      "nodes": [
+        {
+          "id": "study",
+          "executor": "work.staffed",
+          "roles": [
+            "haul"
+          ],
+          "duration": {
+            "numerator": 20,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ]
+    },
+    {
+      "id": "disclose.predicate.activity",
+      "player_orderable": true,
+      "priority": 80,
+      "automatic_supply": false,
+      "on_complete": "disclose.predicate.learn",
+      "nodes": [
+        {
+          "id": "study",
+          "executor": "work.staffed",
+          "roles": [
+            "haul"
+          ],
+          "duration": {
+            "numerator": 20,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ]
+    },
+    {
+      "id": "disclose.objective.activity",
+      "player_orderable": true,
+      "priority": 80,
+      "automatic_supply": false,
+      "on_complete": "disclose.objective.learn",
+      "nodes": [
+        {
+          "id": "study",
+          "executor": "work.staffed",
+          "roles": [
+            "haul"
+          ],
+          "duration": {
+            "numerator": 20,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ]
+    }
+  ],
+  "progression_forward_predicates": [
+    {
+      "id": "disclose.forward",
+      "child": "decl.native-known"
+    }
+  ],
+  "objectives": [
+    {
+      "id": "disclose.forward-earned",
+      "prerequisites": [],
+      "predicate": "disclose.forward",
+      "deadline": null,
+      "on_complete": null,
+      "on_failure": null
+    }
+  ],
+  "malformed_disclosure_predicates": [
+    {
+      "id": "disclose.unused",
+      "mode": "empty",
+      "references": []
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "progression-disclosure",
+      "game_mode": "space.survival",
+      "mode_overrides": {},
+      "time": "space.seconds",
+      "space": "space.points",
+      "modules": [
+        "sim.world-setup",
+        "sim.transformations",
+        "sim.logistics",
+        "points",
+        "sim.technology",
+        "sim.objectives",
+        "proof.progression-declarations",
+        "sim.knowledge-visibility",
+        "proof.progression-disclosure"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "space.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.objectives": {
+          "companies": [
+            {
+              "company": 0,
+              "objectives": [
+                "decl.external-earned",
+                "decl.native-earned",
+                "disclose.forward-earned"
+              ]
+            },
+            {
+              "company": 1,
+              "objectives": [
+                "decl.external-earned",
+                "decl.native-earned",
+                "disclose.forward-earned"
+              ]
+            }
+          ]
+        },
+        "sim.knowledge-visibility": {
+          "policy": "disclose.policy"
+        }
+      }
+    }
+  ]
+}

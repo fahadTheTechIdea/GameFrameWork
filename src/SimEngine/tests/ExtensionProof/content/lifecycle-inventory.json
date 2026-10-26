@@ -1,0 +1,57 @@
+{
+  "game_modes": [{ "id": "lifecycle-inventory.resource-only", "name": "Resource-only physical simulation", "properties": {} }],
+  "time_definitions": [{"id":"lifecycle.minute","quantum":{"numerator":60,"denominator":1,"unit":"second"},"frame_ticks":1,"ticks_per_second":30,"horizon":null}],
+  "entity_states": [{"id":"idle","state":"inventory.idle","priority":0,"default":true}],
+  "worker_roles": [{"id":"haul"}],
+  "units": [
+    {"id":"unit.slot","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true},
+    {"id":"unit.alpha","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true},
+    {"id":"unit.beta","dimension":"mass","scale":{"numerator":1,"denominator":1},"discrete":false}
+  ],
+  "resources": [
+    {"id":"alpha","unit":"unit.alpha","category":"kit","phase":"solid","traits":[],"capacity":{"unit.slot":1}},
+    {"id":"beta","unit":"unit.beta","category":"material","phase":"solid","traits":[],"capacity":{"unit.slot":1}}
+  ],
+  "capacity_policies": [{"id":"bin.capacity","limits":{"unit.slot":40}}],
+  "entities": [{"id":"bin","kind":"entity","components":{"storage":{"capacity_policy":"bin.capacity"}}}],
+  "entity_setups": [
+  {
+    "id": "bin.start",
+    "after": [],
+    "entity": "bin",
+    "company": 0,
+    "placement": null,
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "lifecycle-inventory.start",
+    "entries": [
+      "bin.start"
+    ],
+    "includes": []
+  }
+],
+  "scenarios": [
+  {
+    "id": "points",
+    "game_mode": "lifecycle-inventory.resource-only",
+    "mode_overrides": {},
+    "time": "lifecycle.minute",
+    "modules": [
+      "points",
+      "sim.world-setup"
+    ],
+    "seats": 1,
+    "settings": {
+      "sim.work": {
+        "retry": "proof.retry"
+      },
+      "sim.world-setup": {
+        "profile": "lifecycle-inventory.start"
+      }
+    }
+  }
+]
+}

@@ -1,0 +1,10 @@
+{
+  "units": [{ "id": "unit.money", "dimension": "currency", "scale": { "numerator": 1, "denominator": 1 }, "discrete": false }],
+  "business_accounts": [{ "id": "production.accounts", "currency": "unit.money", "opening_cash": 0 }],
+  "fixed_resource_values": [{ "id": "production.values", "catalog": "production", "currency": "unit.money" }],
+  "resource_values": [
+    { "id": "production.gold", "catalog": "production", "resource": "gold", "unit": "unit.gold", "currency": "unit.money", "value": 100000 },
+    { "id": "production.water", "catalog": "production", "resource": "water", "unit": "unit.water", "currency": "unit.money", "value": 0 }
+  ],
+  "primary_production_income": [{ "id": "production.primary", "input_rule": "primary_only", "causes": ["gold.generate", "gold.recycle", "gold.flow", "proof.primary"] }]
+}

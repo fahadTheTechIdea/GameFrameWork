@@ -1,0 +1,29 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Beep.SimEngine -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\SimEngine\src\Beep.SimEngine\bin\Release\netstandard2.1\Beep.SimEngine.dll
+  ScenarioEngine.Contracts -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\src\ScenarioEngine.Contracts\bin\Release\net8.0\ScenarioEngine.Contracts.dll
+  ScenarioEngine.Core -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\src\ScenarioEngine.Core\bin\Release\net8.0\ScenarioEngine.Core.dll
+  ScenarioEngine.Diagnostics -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\src\ScenarioEngine.Diagnostics\bin\Release\net8.0\ScenarioEngine.Diagnostics.dll
+  Counter.GameLayer -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\samples\Counter.GameLayer\bin\Release\net8.0\Counter.GameLayer.dll
+  ScenarioEngine.Persistence -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\src\ScenarioEngine.Persistence\bin\Release\net8.0\ScenarioEngine.Persistence.dll
+  ExtensionProof -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\SimEngine\tests\ExtensionProof\bin\Release\netstandard2.1\Beep.SimEngine.ExtensionProof.dll
+  WorldCreator.Core -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Core\bin\Release\net10.0\WorldCreator.Core.dll
+  ScenarioEngine.Content -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\src\ScenarioEngine.Content\bin\Release\net8.0\ScenarioEngine.Content.dll
+  Beep.SimEngine.Testing -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\SimEngine\tests\Beep.SimEngine.Testing\bin\Release\net8.0\Beep.SimEngine.Testing.dll
+  ScenarioEngine.Replay -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\src\ScenarioEngine.Replay\bin\Release\net8.0\ScenarioEngine.Replay.dll
+  QuickGame.Module -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\SimEngine\help\quickstart\Game.Module\bin\Debug\netstandard2.1\QuickGame.Module.dll
+  WorldCreator.TestCatalog -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.TestCatalog\bin\Release\net10.0\WorldCreator.TestCatalog.dll
+  WorldCreator.Godot -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Godot\bin\Release\net10.0\WorldCreator.Godot.dll
+  Beep.SimEngine.Tests -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\SimEngine\tests\Beep.SimEngine.Tests\bin\Release\net8.0\Beep.SimEngine.Tests.dll
+  WorldCreator.Worlds -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\bin\Release\net10.0\WorldCreator.Worlds.dll
+  WorldCreator.Catalogs.Modern -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Catalogs.Modern\bin\Release\net10.0\WorldCreator.Catalogs.Modern.dll
+  ScenarioSimulator -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\tools\ScenarioSimulator\bin\Release\net10.0\ScenarioSimulator.dll
+  ScenarioEngine.Tests -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\ScenarioEngine\tests\ScenarioEngine.Tests\bin\Release\net10.0\ScenarioEngine.Tests.dll
+  WorldCreator.Cli -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Cli\bin\Release\net10.0\WorldCreator.Cli.dll
+  WorldCreator.Tests -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\bin\Release\net10.0\WorldCreator.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:05.89

@@ -1,0 +1,135 @@
+{
+  "game_modes": [{ "id": "haul-quantum.resource-only", "name": "Resource-only physical simulation", "properties": {} }],
+  "time_definitions": [{ "id": "haul.minute", "quantum": { "numerator": 60, "denominator": 1, "unit": "second" }, "frame_ticks": 1, "ticks_per_second": 30, "horizon": null }],
+  "entity_states": [
+    { "id": "ready", "state": "point.ready", "priority": 0, "default": true },
+    { "id": "travel", "state": "point.travel", "priority": 40 },
+    { "id": "blocked", "state": "point.blocked", "priority": 60 },
+    { "id": "processing", "state": "point.processing", "priority": 20 },
+    { "id": "transfer", "state": "point.transfer", "priority": 30 }
+  ],
+  "worker_roles": [{ "id": "haul" }],
+  "units": [
+    { "id": "unit.supply", "dimension": "mass", "scale": { "numerator": 1, "denominator": 1 }, "discrete": false },
+    { "id": "unit.two", "dimension": "mass", "scale": { "numerator": 2, "denominator": 1 }, "discrete": true },
+    { "id": "unit.three", "dimension": "mass", "scale": { "numerator": 3, "denominator": 1 }, "discrete": true },
+    { "id": "unit.five", "dimension": "mass", "scale": { "numerator": 5, "denominator": 1 }, "discrete": true }
+  ],
+  "capacity_policies": [
+    { "id": "source.capacity", "limits": { "unit.three": 100 } },
+    { "id": "cargo.capacity", "limits": { "unit.two": 20 } },
+    { "id": "destination.capacity", "limits": { "unit.five": 100 } }
+  ],
+  "resources": [{ "id": "supply", "unit": "unit.supply", "category": "mineral", "phase": "solid", "traits": [], "capacity": { "unit.supply": 1 } }],
+  "point_spaces": [{ "id": "field.points", "extent": 100, "access_open": true, "rollout_offset": 1 }],
+  "entities": [
+    { "id": "source", "kind": "entity", "components": {
+      "point_presence": { "space": "field.points", "position": 0 },
+      "point_stock": { "resource": "supply", "capacity_policy": "source.capacity", "initial": 60 }
+    } },
+    { "id": "destination", "kind": "entity", "components": {
+      "point_presence": { "space": "field.points", "position": 10 },
+      "point_stock": { "resource": "supply", "capacity_policy": "destination.capacity", "initial": 0 }
+    } },
+    { "id": "fault.partial", "kind": "entity", "components": {
+      "point_presence": { "space": "field.points", "position": 0 },
+      "point_stock": { "resource": "supply", "capacity_policy": "source.capacity", "initial": 60, "receipt_fault": "partial_take" }
+    } },
+    { "id": "fault.retained", "kind": "entity", "components": {
+      "point_presence": { "space": "field.points", "position": 0 },
+      "point_stock": { "resource": "supply", "capacity_policy": "source.capacity", "initial": 60, "receipt_fault": "retain_take" }
+    } },
+    { "id": "fault.query", "kind": "entity", "components": {
+      "point_presence": { "space": "field.points", "position": 0 },
+      "point_stock": { "resource": "supply", "capacity_policy": "source.capacity", "initial": 60, "receipt_fault": "mutating_check" }
+    } },
+    { "id": "fault.status", "kind": "entity", "components": {
+      "point_presence": { "space": "field.points", "position": 0 },
+      "point_stock": { "resource": "supply", "capacity_policy": "source.capacity", "initial": 60, "receipt_fault": "committed_check" }
+    } },
+    { "id": "fault.version", "kind": "entity", "components": {
+      "point_presence": { "space": "field.points", "position": 0 },
+      "point_stock": { "resource": "supply", "capacity_policy": "source.capacity", "initial": 60, "receipt_fault": "silent_version" }
+    } },
+    { "id": "fault.admission", "kind": "entity", "components": {
+      "point_presence": { "space": "field.points", "position": 10 },
+      "point_stock": { "resource": "supply", "capacity_policy": "destination.capacity", "initial": 0, "receipt_fault": "partial_receive" }
+    } },
+    { "id": "machine", "kind": "entity", "components": {
+      "point_presence": { "space": "field.points", "position": 0 },
+      "point_motion": { "rate": 60, "states": { "moving": "travel", "stopped": "blocked" } },
+      "worker": {"work_rate":1, "roles": ["haul"], "states": { "working": "processing", "loading": "transfer", "stopped": "blocked" } },
+      "storage": { "capacity_policy": "cargo.capacity", "public": false }, "transporter": {"handling":"points.handling"}
+    } }
+  ],
+  "entity_setups": [
+  {
+    "id": "source",
+    "after": [],
+    "entity": "source",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  },
+  {
+    "id": "destination",
+    "after": [],
+    "entity": "destination",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 10
+    },
+    "home": null
+  },
+  {
+    "id": "machine",
+    "after": [],
+    "entity": "machine",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 0
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "haul-quantum.start",
+    "entries": [
+      "source",
+      "destination",
+      "machine"
+    ],
+    "includes": []
+  }
+],
+  "scenarios": [
+  {
+    "id": "points",
+    "game_mode": "haul-quantum.resource-only",
+    "mode_overrides": {},
+    "modules": [
+      "sim.work",
+      "sim.transformations",
+      "points",
+      "sim.world-setup"
+    ],
+    "time": "haul.minute",
+    "space": "field.points",
+    "seats": 1,
+    "settings": {
+      "sim.work": {
+        "retry": "proof.retry"
+      },
+      "sim.world-setup": {
+        "profile": "haul-quantum.start"
+      }
+    }
+  }
+]
+}

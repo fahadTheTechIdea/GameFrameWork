@@ -1,0 +1,14 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  WorldCreator.Core -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Core\bin\Release\net10.0\WorldCreator.Core.dll
+H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\ProceduralCityGenerator.cs(15,22): error CS0246: The type or namespace name 'ISettlementCatalogRegistry' could not be found (are you missing a using directive or an assembly reference?) [H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\WorldCreator.Worlds.csproj]
+H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\ProceduralCityGenerator.cs(16,75): error CS0246: The type or namespace name 'ISettlementCatalogRegistry' could not be found (are you missing a using directive or an assembly reference?) [H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\WorldCreator.Worlds.csproj]
+
+Build FAILED.
+
+H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\ProceduralCityGenerator.cs(15,22): error CS0246: The type or namespace name 'ISettlementCatalogRegistry' could not be found (are you missing a using directive or an assembly reference?) [H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\WorldCreator.Worlds.csproj]
+H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\ProceduralCityGenerator.cs(16,75): error CS0246: The type or namespace name 'ISettlementCatalogRegistry' could not be found (are you missing a using directive or an assembly reference?) [H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\WorldCreator.Worlds.csproj]
+    0 Warning(s)
+    2 Error(s)
+
+Time Elapsed 00:00:03.69

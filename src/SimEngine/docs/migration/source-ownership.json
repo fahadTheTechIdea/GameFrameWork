@@ -1,0 +1,1007 @@
+{
+  "sourceHead": "7f9d4761ad0427fc1a199e11d77acb81eac32ca6",
+  "note": "Original source identities and archive are immutable recovery evidence. Destinations identify actual current owners after deliberately breaking decomposition; they do not promise namespace-only source or gameplay equivalence.",
+  "files": [
+    {
+      "sourcePath": "CLAUDE.md",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\CLAUDE.md"
+      ]
+    },
+    {
+      "sourcePath": "content/fog/fog.json",
+      "disposition": "replaced-by-authored-shared-visibility",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\oil\\visibility.json"
+      ],
+      "reason": "Oil fog content now selects the framework visibility contracts through the explicit oil master."
+    },
+    {
+      "sourcePath": "content/manifest.json",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\manifest.json"
+      ]
+    },
+    {
+      "sourcePath": "content/oil/campaign.json",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\oil\\campaign.json"
+      ]
+    },
+    {
+      "sourcePath": "content/oil/geology.json",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\oil\\geology.json"
+      ]
+    },
+    {
+      "sourcePath": "content/oil/input.json",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\oil\\input.json"
+      ]
+    },
+    {
+      "sourcePath": "content/oil/items.json",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\oil\\items.json"
+      ]
+    },
+    {
+      "sourcePath": "content/oil/networks.json",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\oil\\networks.json"
+      ]
+    },
+    {
+      "sourcePath": "content/oil/playbooks.json",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\oil\\playbooks.json"
+      ]
+    },
+    {
+      "sourcePath": "content/oil/production.json",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\oil\\production.json"
+      ]
+    },
+    {
+      "sourcePath": "content/oil/rules.json",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\oil\\rules.json"
+      ]
+    },
+    {
+      "sourcePath": "content/oil/scenarios.json",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\oil\\scenarios.json"
+      ]
+    },
+    {
+      "sourcePath": "content/oil/states.json",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\oil\\states.json"
+      ]
+    },
+    {
+      "sourcePath": "content/oil/structures.json",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\oil\\structures.json"
+      ]
+    },
+    {
+      "sourcePath": "content/oil/tech.json",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\oil\\tech.json"
+      ]
+    },
+    {
+      "sourcePath": "content/oil/vehicles.json",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\oil\\vehicles.json"
+      ]
+    },
+    {
+      "sourcePath": "content/oil/work.json",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\oil\\work.json"
+      ]
+    },
+    {
+      "sourcePath": "content/storyteller/storyteller.json",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\storyteller\\storyteller.json"
+      ]
+    },
+    {
+      "sourcePath": "Directory.Build.props",
+      "disposition": "shared-build-policy-with-oil-import",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\Directory.Build.props",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\Directory.Build.props"
+      ]
+    },
+    {
+      "sourcePath": "Directory.Build.targets",
+      "disposition": "shared-build-policy-with-oil-import",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\Directory.Build.targets",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\Directory.Build.targets"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Game/Autopilot.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Game\\Autopilot.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Game/Campaign.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Game\\Campaign.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Game/Commands.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Game\\Commands.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Game/Company.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Game\\Company.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Game/Fog.cs",
+      "disposition": "generic-visibility-moved-to-framework-contracts",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\KnowledgeVisibility.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\SensorVisibility.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\content\\oil\\visibility.json"
+      ],
+      "reason": "The duplicate domain fog implementation was removed; shared framework contracts and authored oil policy own disclosure."
+    },
+    {
+      "sourcePath": "OilCo.Game/OilCo.Game.csproj",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Game\\OilCo.Game.csproj"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Game/OilModule.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Game\\OilModule.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Game/Operations.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Game\\Operations.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Game/Research.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Game\\Research.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Game/Reservoirs.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Game\\Reservoirs.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Game/Settings.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Game\\Settings.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Game/Storyteller.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Game\\Storyteller.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Game/Views.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Game\\Views.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Game/WorldGen.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Game\\WorldGen.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Harness/OilCo.Harness.csproj",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Harness\\OilCo.Harness.csproj"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Harness/Program.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Harness\\Program.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Headless/CommandShell.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Headless\\CommandShell.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Headless/FieldPlayer.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Headless\\FieldPlayer.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Headless/OilCo.Headless.csproj",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Headless\\OilCo.Headless.csproj"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Headless/TextClient.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Headless\\TextClient.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.LiveDemo/OilCo.LiveDemo.csproj",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.LiveDemo\\OilCo.LiveDemo.csproj"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.LiveDemo/Program.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.LiveDemo\\Program.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Tests/BudgetTests.cs",
+      "disposition": "moved-to-public-contract-oil-proof",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.PublicProof\\BudgetTests.cs"
+      ],
+      "reason": "The active OilCo.PublicProof project owns this migrated domain proof; no retired OilCo.Tests source is recreated."
+    },
+    {
+      "sourcePath": "OilCo.Tests/ClientTests.cs",
+      "disposition": "moved-to-public-contract-oil-proof",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.PublicProof\\ClientTests.cs"
+      ],
+      "reason": "The active OilCo.PublicProof project owns this migrated domain proof; no retired OilCo.Tests source is recreated."
+    },
+    {
+      "sourcePath": "OilCo.Tests/CommandInboxTests.cs",
+      "disposition": "moved",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\tests\\Beep.SimEngine.Tests\\CommandInboxTests.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Tests/DemoTests.cs",
+      "disposition": "moved-to-public-contract-oil-proof",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.PublicProof\\DemoTests.cs"
+      ],
+      "reason": "The active OilCo.PublicProof project owns this migrated domain proof; no retired OilCo.Tests source is recreated."
+    },
+    {
+      "sourcePath": "OilCo.Tests/FrameworkTests.cs",
+      "disposition": "split-fixture-from-suites",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\tests\\Beep.SimEngine.Tests\\FrameworkTests.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\tests\\ExtensionProof\\TestGame.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Tests/GameTests.cs",
+      "disposition": "moved-to-public-contract-oil-proof",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.PublicProof\\GameTests.cs"
+      ],
+      "reason": "The active OilCo.PublicProof project owns this migrated domain proof; no retired OilCo.Tests source is recreated."
+    },
+    {
+      "sourcePath": "OilCo.Tests/InputTests.cs",
+      "disposition": "split-framework-validation-and-public-oil-proof",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.PublicProof\\InputTests.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\tests\\Beep.SimEngine.Tests\\InputContentTests.cs"
+      ],
+      "reason": "The active OilCo.PublicProof project owns this migrated domain proof; no retired OilCo.Tests source is recreated."
+    },
+    {
+      "sourcePath": "OilCo.Tests/LifecycleTests.cs",
+      "disposition": "moved",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\tests\\Beep.SimEngine.Tests\\LifecycleTests.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Tests/NetTests.cs",
+      "disposition": "moved-to-public-contract-oil-proof",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.PublicProof\\NetTests.cs"
+      ],
+      "reason": "The active OilCo.PublicProof project owns this migrated domain proof; no retired OilCo.Tests source is recreated."
+    },
+    {
+      "sourcePath": "OilCo.Tests/OffshoreTests.cs",
+      "disposition": "moved-to-public-contract-oil-proof",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.PublicProof\\OffshoreTests.cs"
+      ],
+      "reason": "The active OilCo.PublicProof project owns this migrated domain proof; no retired OilCo.Tests source is recreated."
+    },
+    {
+      "sourcePath": "OilCo.Tests/OilCo.Tests.csproj",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Tests\\OilCo.Tests.csproj"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Tests/OptionalModuleTests.cs",
+      "disposition": "moved-to-public-contract-oil-proof",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.PublicProof\\OptionalModuleTests.cs"
+      ],
+      "reason": "The active OilCo.PublicProof project owns this migrated domain proof; no retired OilCo.Tests source is recreated."
+    },
+    {
+      "sourcePath": "OilCo.Tests/PurityTests.cs",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Tests\\PurityTests.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Tests/StandardTests.cs",
+      "disposition": "split-fixture-from-suites",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\tests\\Beep.SimEngine.Tests\\StandardTests.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\tests\\ExtensionProof\\ColonyGame.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Tests/TestKit.cs",
+      "disposition": "moved",
+      "owner": "Beep.SimEngine.Testing",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\tests\\Beep.SimEngine.Testing\\TestKit.cs"
+      ]
+    },
+    {
+      "sourcePath": "OilCo.Tests/TestRunner.cs",
+      "disposition": "split-runner-from-oil-registration",
+      "owner": "Beep.SimEngine.Testing",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\tests\\Beep.SimEngine.Testing\\TestRunner.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\OilCo.Tests\\Program.cs"
+      ]
+    },
+    {
+      "sourcePath": "plans/R7_LIFECYCLE.md",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\plans\\R7_LIFECYCLE.md"
+      ]
+    },
+    {
+      "sourcePath": "plans/V2_ARCHITECTURE.md",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\plans\\V2_ARCHITECTURE.md"
+      ]
+    },
+    {
+      "sourcePath": "plans/V2_GUIDE.md",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\plans\\V2_GUIDE.md"
+      ]
+    },
+    {
+      "sourcePath": "plans/V2_REVISION.md",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\plans\\V2_REVISION.md"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine.slnx",
+      "disposition": "retained",
+      "owner": "OilFieldDays",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.OilFieldDays\\src\\oilCo-engine\\src\\SimEngine\\SimEngine.slnx"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/App/Coverage.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\App\\Coverage.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/App/InputMapDef.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\App\\InputMapDef.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/App/SimApp.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\App\\SimApp.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/App/Standard.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\App\\Standard.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Commands/StandardCommands.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Commands\\StandardCommands.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Content/Bill.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Content\\Bill.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Content/ContentTypes.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Content\\ContentTypes.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Content/Defs.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Content\\Defs.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Content/EntityStateDef.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Content\\EntityStateDef.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Content/Json.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Content\\Json.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Content/ResolvedContent.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Content\\ResolvedContent.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Core/Fault.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Core\\Fault.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Core/GameTime.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Core\\GameTime.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Core/Ids.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Core\\Ids.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Core/WorkStates.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Core\\WorkStates.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Hosting/ContentSet.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Hosting\\ContentSet.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Hosting/DiskFileSource.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Hosting\\DiskFileSource.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Hosting/GameClock.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Hosting\\GameClock.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Hosting/GameCycle.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Hosting\\GameCycle.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Hosting/GameFactory.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Hosting\\GameFactory.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Hosting/Lockstep.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Hosting\\Lockstep.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Hosting/PlayerView.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Hosting\\PlayerView.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Hosting/RenderSnapshot.cs",
+      "disposition": "replaced-by-simulation-only-projections",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Hosting\\GameSnapshot.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Hosting\\PlayerView.cs"
+      ],
+      "reason": "Rendering was removed from the framework; immutable simulation facts and viewer-scoped deltas use the original snapshot/view owners."
+    },
+    {
+      "sourcePath": "SimEngine/Hosting/SimGame.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Hosting\\SimGame.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Kernel/CommandInbox.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Kernel\\CommandInbox.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Kernel/Commands.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Kernel\\Commands.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Kernel/Entities.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Kernel\\Entities.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Kernel/EntityLifecycle.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Kernel\\EntityLifecycle.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Kernel/Events.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Kernel\\Events.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Kernel/Inspection.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Kernel\\Inspection.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Kernel/Modules.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Kernel\\Modules.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Kernel/Players.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Kernel\\Players.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Kernel/SaveGame.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Kernel\\SaveGame.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Kernel/Services.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Kernel\\Services.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Kernel/StateSync.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Kernel\\StateSync.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Kernel/Systems.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Kernel\\Systems.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Kernel/Visibility.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Kernel\\Visibility.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Kernel/World.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Kernel\\World.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Map/TileMap.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Map\\TileMap.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Math/DetRandom.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Math\\DetRandom.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Math/Fix.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Math\\Fix.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Math/Vectors.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Math\\Vectors.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Properties/AssemblyInfo.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Properties\\AssemblyInfo.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/SimEngine.csproj",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Beep.SimEngine.csproj"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Standard/Construction.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\Construction.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Standard/Economy.cs",
+      "disposition": "moved-to-optional-tycoon",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\Tycoon\\Economy.cs"
+      ],
+      "reason": "Monetary contracts belong to the optional Tycoon module, not mandatory physical simulation."
+    },
+    {
+      "sourcePath": "SimEngine/Standard/Inventory.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\Inventory.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Standard/Logistics.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\Logistics.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Standard/Movement.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\Movement.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Standard/Navigation.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\Navigation.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Standard/Networks.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\Networks.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Standard/Production.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\Transformations.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\TransformationContracts.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\TransformationModule.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Views\\TransformationManagementView.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Standard/StandardCommands.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\StandardCommands.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Standard/StandardModule.cs",
+      "disposition": "decomposed-into-explicit-optional-modules",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\InventoryModule.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\WorkModule.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\MotionModule.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\ConstructionModule.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\LogisticsModule.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\InfrastructureModule.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\TransformationModule.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\OperationsModule.cs",
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\Tycoon\\TycoonModule.cs"
+      ],
+      "reason": "The umbrella registration was deleted; current explicit modules own their content/services once."
+    },
+    {
+      "sourcePath": "SimEngine/Standard/Tuning.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\Tuning.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Standard/Upgrades.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\Upgrades.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Standard/Work.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Standard\\Work.cs"
+      ]
+    },
+    {
+      "sourcePath": "SimEngine/Views/WorkView.cs",
+      "disposition": "moved-and-renamed",
+      "owner": "Beep.SimEngine",
+      "destinations": [
+        "C:\\Users\\f_ald\\source\\repos\\The-Tech-Idea\\Beep.SimEngine\\src\\Beep.SimEngine\\Views\\WorkView.cs"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "target_utility_requirements":[{"id":"utility.target-ready","consumer":"meter"}],
+  "worker_utility_requirements":[{"id":"utility.worker-ready","consumer":"meter"}],
+  "work_requirement_groups":[
+    {"id":"utility.both","mode":"all","entries":[{"id":"target","requirement":"utility.target-ready"},{"id":"worker","requirement":"utility.worker-ready"}]},
+    {"id":"utility.either","mode":"any","entries":[{"id":"a.target","requirement":"utility.target-ready"},{"id":"z.worker","requirement":"utility.worker-ready"}]}
+  ],
+  "activities":[
+    {"id":"utility.timer","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.timed","id":"work","duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"utility.target-ready"}]},
+    {"id":"utility.machine","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"work","roles":["crane"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"utility.both"}]},
+    {"id":"utility.alternative","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"work","roles":["crane"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"utility.either"}]}
+  ],
+  "entities":[{"id":"utility.worker","kind":"vehicle","components":{
+    "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":true},
+    "mover":{"classes": ["land"], "class":"land","speed":20,"states":{"moving":"moving","stopped":"stopped"}},
+    "worker":{"work_rate":1,"roles":["crane"],"states":{"working":"working","loading":"loading","stopped":"stopped"}},
+    "storage":{"capacity_policy":"recovery.mixed","public":false,"initial_stock":{"steel":2}},
+    "proof_utility_consumer":{"id":"meter","inputs":{"steel":2}}
+  }}]
+}

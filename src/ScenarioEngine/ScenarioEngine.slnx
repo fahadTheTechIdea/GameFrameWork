@@ -1,0 +1,11 @@
+<Solution>
+  <Project Path="src/ScenarioEngine.Contracts/ScenarioEngine.Contracts.csproj" />
+  <Project Path="src/ScenarioEngine.Core/ScenarioEngine.Core.csproj" />
+  <Project Path="src/ScenarioEngine.Content/ScenarioEngine.Content.csproj" />
+  <Project Path="src/ScenarioEngine.Persistence/ScenarioEngine.Persistence.csproj" />
+  <Project Path="src/ScenarioEngine.Diagnostics/ScenarioEngine.Diagnostics.csproj" />
+  <Project Path="src/ScenarioEngine.Replay/ScenarioEngine.Replay.csproj" />
+  <Project Path="samples/Counter.GameLayer/Counter.GameLayer.csproj" />
+  <Project Path="tools/ScenarioSimulator/ScenarioSimulator.csproj" />
+  <Project Path="tests/ScenarioEngine.Tests/ScenarioEngine.Tests.csproj" />
+</Solution>

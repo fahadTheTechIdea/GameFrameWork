@@ -1,0 +1,252 @@
+{
+  "entities": [
+    {
+      "id": "dock.target",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "pool_port": [
+          {
+            "id": "alias",
+            "pool": "source.first",
+            "alternatives": [
+              "source.second"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "current_only"
+          }
+        ],
+        "tile_work_dock": {
+          "work_roles": [],
+          "resources": [
+            "steel"
+          ],
+          "slots": [
+            {
+              "id": "bay",
+              "kind": "service",
+              "x": -1,
+              "y": 0
+            },
+            {
+              "id": "wait",
+              "kind": "waiting",
+              "x": -2,
+              "y": 2
+            },
+            {
+              "id": "exit",
+              "kind": "departure",
+              "x": -8,
+              "y": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "dock.machine",
+      "kind": "vehicle",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "mover": {
+          "classes": [
+            "haul.route"
+          ],
+          "class": "haul.route",
+          "speed": 30,
+          "states": {
+            "moving": "haul.moving",
+            "stopped": "haul.stopped"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "haul.working",
+            "loading": "haul.loading",
+            "stopped": "haul.stopped"
+          }
+        },
+        "storage": {
+          "capacity_policy": "haul.cargo",
+          "public": false,
+          "initial_stock": {}
+        },
+        "transporter": {
+          "handling": "haul.handling"
+        },
+        "work_policy": {
+          "profile": "dock.worker"
+        }
+      }
+    },
+    {
+      "id": "dock.queue",
+      "kind": "vehicle",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "mover": {
+          "classes": [
+            "haul.route"
+          ],
+          "class": "haul.route",
+          "speed": 30,
+          "states": {
+            "moving": "haul.moving",
+            "stopped": "haul.stopped"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "haul.working",
+            "loading": "haul.loading",
+            "stopped": "haul.stopped"
+          }
+        },
+        "storage": {
+          "capacity_policy": "haul.cargo",
+          "public": false,
+          "initial_stock": {}
+        },
+        "transporter": {
+          "handling": "haul.handling"
+        },
+        "work_policy": {
+          "profile": "dock.worker"
+        }
+      }
+    }
+  ],
+  "world_setup_profiles": [{"id":"dock.start","entries":["dock.warehouse-entry","dock.target-entry","dock.sink-entry","dock.far-entry","dock.machine-entry","dock.queue-entry"],"includes":[]}],
+  "entity_setups": [
+    {
+      "id": "dock.warehouse-entry",
+      "after": [],
+      "entity": "source.warehouse",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 8,
+        "y": 6
+      },
+      "home": null
+    },
+    {
+      "id": "dock.target-entry",
+      "after": [],
+      "entity": "dock.target",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 22,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "dock.sink-entry",
+      "after": [],
+      "entity": "source.sink",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 28,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "dock.far-entry",
+      "after": [],
+      "entity": "recovery.far",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 35,
+        "y": 20
+      },
+      "home": null
+    },
+    {
+      "id": "dock.machine-entry",
+      "after": [
+        "dock.warehouse-entry"
+      ],
+      "entity": "dock.machine",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 2,
+        "y": 10
+      },
+      "home": "dock.warehouse-entry"
+    },
+    {
+      "id": "dock.queue-entry",
+      "after": [
+        "dock.warehouse-entry"
+      ],
+      "entity": "dock.queue",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 2,
+        "y": 16
+      },
+      "home": "dock.warehouse-entry"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "scoped-dock-original-loss",
+      "game_mode": "haul.resource-only",
+      "mode_overrides": {},
+      "time": "haul.minute",
+      "space": "haul.tiles",
+      "seats": 2,
+      "default_seats": 2,
+      "modules": [
+        "proof.output-ports",
+        "sim.logistics",
+        "sim.tile-navigation",
+        "sim.logistics-recovery"
+      ],
+      "settings": {
+        "sim.world-setup": {
+          "profile": "dock.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.logistics-recovery": {
+          "profile": "binding.recovery"
+        }
+      }
+    }
+  ]
+}

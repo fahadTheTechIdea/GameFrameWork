@@ -1,0 +1,11 @@
+{
+  "independent_fleet_policies":[{
+    "id":"contract.fleet",
+    "allowed_roles":["haul"],
+    "navigation_classes":["survey.route","terrain.route"]
+  }],
+  "independent_facility_policies":[
+    {"id":"contract.facility.nearest","node":"service","prefer_home":false},
+    {"id":"contract.facility.home","node":"service","prefer_home":true}
+  ]
+}

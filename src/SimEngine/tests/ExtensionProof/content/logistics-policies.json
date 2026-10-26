@@ -1,0 +1,20 @@
+{
+  "logistics_policies": [
+    {
+      "id": "policy.source", "stock": {},
+      "outlet": { "enabled": true, "reserve": { "supply": 4 }, "reserve_access": "protected", "export_priority": 3, "allowed_destinations": ["destination"] },
+      "states": { "disabled": "blocked" }
+    },
+    {
+      "id": "policy.destination",
+      "stock": { "supply": { "enabled": true, "minimum": 2, "reserve_access": "protected", "desired": 12, "maximum": 12, "priority": 65 } },
+      "outlet": { "enabled": true, "reserve": {}, "reserve_access": "protected", "export_priority": 0, "allowed_destinations": null },
+      "states": { "disabled": "blocked" }
+    },
+    {
+      "id": "policy.preferred", "stock": {},
+      "outlet": { "enabled": true, "reserve": { "supply": 2 }, "reserve_access": "protected", "export_priority": 9, "allowed_destinations": ["destination"] },
+      "states": { "disabled": "blocked" }
+    }
+  ]
+}

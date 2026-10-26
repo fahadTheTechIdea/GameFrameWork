@@ -1,0 +1,658 @@
+{
+  "capacity_policies": [
+    {
+      "id": "queue.receive",
+      "limits": {
+        "process.count": 24
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "queue.source",
+      "kind": "structure",
+      "components": {
+        "storage": {
+          "capacity_policy": "process.store",
+          "public": true,
+          "initial_stock": {
+            "process.input": 32
+          }
+        },
+        "tile_presence": {
+          "space": "queue.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "tile_work_dock": {
+          "work_roles": [],
+          "resources": [
+            "process.input"
+          ],
+          "slots": [
+            {
+              "id": "queue.load.bay",
+              "kind": "service",
+              "x": -1,
+              "y": 0
+            },
+            {
+              "id": "queue.load.wait.a",
+              "kind": "waiting",
+              "x": -1,
+              "y": 2
+            },
+            {
+              "id": "queue.load.wait.b",
+              "kind": "waiting",
+              "x": -1,
+              "y": 4
+            },
+            {
+              "id": "queue.load.exit.0",
+              "kind": "departure",
+              "x": -3,
+              "y": 6
+            },
+            {
+              "id": "queue.load.exit.1",
+              "kind": "departure",
+              "x": -3,
+              "y": 8
+            },
+            {
+              "id": "queue.load.exit.2",
+              "kind": "departure",
+              "x": -3,
+              "y": 10
+            },
+            {
+              "id": "queue.load.exit.3",
+              "kind": "departure",
+              "x": -3,
+              "y": 12
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "queue.destination",
+      "kind": "structure",
+      "components": {
+        "storage": {
+          "capacity_policy": "queue.receive",
+          "public": true,
+          "initial_stock": {}
+        },
+        "tile_presence": {
+          "space": "queue.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "tile_work_dock": {
+          "work_roles": [],
+          "resources": [
+            "process.input"
+          ],
+          "slots": [
+            {
+              "id": "queue.unload.bay",
+              "kind": "service",
+              "x": -1,
+              "y": 0
+            },
+            {
+              "id": "queue.unload.wait.a",
+              "kind": "waiting",
+              "x": -1,
+              "y": 2
+            },
+            {
+              "id": "queue.unload.wait.b",
+              "kind": "waiting",
+              "x": -1,
+              "y": 4
+            },
+            {
+              "id": "queue.unload.exit.0",
+              "kind": "departure",
+              "x": -3,
+              "y": 6
+            },
+            {
+              "id": "queue.unload.exit.1",
+              "kind": "departure",
+              "x": -3,
+              "y": 8
+            },
+            {
+              "id": "queue.unload.exit.2",
+              "kind": "departure",
+              "x": -3,
+              "y": 10
+            },
+            {
+              "id": "queue.unload.exit.3",
+              "kind": "departure",
+              "x": -3,
+              "y": 12
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "queue.machine.a",
+      "kind": "vehicle",
+      "components": {
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "process.working",
+            "loading": "process.loading",
+            "stopped": "process.stopped"
+          }
+        },
+        "work_policy": {
+          "profile": "process.worker"
+        },
+        "storage": {
+          "capacity_policy": "process.cargo",
+          "public": false,
+          "initial_stock": {}
+        },
+        "transporter": {
+          "handling": "process.handling"
+        },
+        "tile_presence": {
+          "space": "queue.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "mover": {
+          "classes": [
+            "queue.route"
+          ],
+          "class": "queue.route",
+          "speed": 60,
+          "states": {
+            "moving": "process.moving",
+            "stopped": "process.stopped"
+          }
+        }
+      }
+    },
+    {
+      "id": "queue.machine.b",
+      "kind": "vehicle",
+      "components": {
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "process.working",
+            "loading": "process.loading",
+            "stopped": "process.stopped"
+          }
+        },
+        "work_policy": {
+          "profile": "process.worker"
+        },
+        "storage": {
+          "capacity_policy": "process.cargo",
+          "public": false,
+          "initial_stock": {}
+        },
+        "transporter": {
+          "handling": "process.handling"
+        },
+        "tile_presence": {
+          "space": "queue.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "mover": {
+          "classes": [
+            "queue.route"
+          ],
+          "class": "queue.route",
+          "speed": 60,
+          "states": {
+            "moving": "process.moving",
+            "stopped": "process.stopped"
+          }
+        }
+      }
+    },
+    {
+      "id": "queue.machine.c",
+      "kind": "vehicle",
+      "components": {
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "process.working",
+            "loading": "process.loading",
+            "stopped": "process.stopped"
+          }
+        },
+        "work_policy": {
+          "profile": "process.worker"
+        },
+        "storage": {
+          "capacity_policy": "process.cargo",
+          "public": false,
+          "initial_stock": {}
+        },
+        "transporter": {
+          "handling": "process.handling"
+        },
+        "tile_presence": {
+          "space": "queue.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "mover": {
+          "classes": [
+            "queue.route"
+          ],
+          "class": "queue.route",
+          "speed": 60,
+          "states": {
+            "moving": "process.moving",
+            "stopped": "process.stopped"
+          }
+        }
+      }
+    },
+    {
+      "id": "queue.machine.d",
+      "kind": "vehicle",
+      "components": {
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "process.working",
+            "loading": "process.loading",
+            "stopped": "process.stopped"
+          }
+        },
+        "work_policy": {
+          "profile": "process.worker"
+        },
+        "storage": {
+          "capacity_policy": "process.cargo",
+          "public": false,
+          "initial_stock": {}
+        },
+        "transporter": {
+          "handling": "process.handling"
+        },
+        "tile_presence": {
+          "space": "queue.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "mover": {
+          "classes": [
+            "queue.route"
+          ],
+          "class": "queue.route",
+          "speed": 60,
+          "states": {
+            "moving": "process.moving",
+            "stopped": "process.stopped"
+          }
+        }
+      }
+    },
+    {
+      "id": "queue.source.scarce",
+      "kind": "structure",
+      "components": {
+        "storage": {
+          "capacity_policy": "process.store",
+          "public": true,
+          "initial_stock": {
+            "process.input": 12
+          }
+        },
+        "tile_presence": {
+          "space": "queue.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "tile_work_dock": {
+          "work_roles": [],
+          "resources": [
+            "process.input"
+          ],
+          "slots": [
+            {
+              "id": "queue.load.bay",
+              "kind": "service",
+              "x": -1,
+              "y": 0
+            },
+            {
+              "id": "queue.load.wait.a",
+              "kind": "waiting",
+              "x": -1,
+              "y": 2
+            },
+            {
+              "id": "queue.load.wait.b",
+              "kind": "waiting",
+              "x": -1,
+              "y": 4
+            },
+            {
+              "id": "queue.load.exit.0",
+              "kind": "departure",
+              "x": -3,
+              "y": 6
+            },
+            {
+              "id": "queue.load.exit.1",
+              "kind": "departure",
+              "x": -3,
+              "y": 8
+            },
+            {
+              "id": "queue.load.exit.2",
+              "kind": "departure",
+              "x": -3,
+              "y": 10
+            },
+            {
+              "id": "queue.load.exit.3",
+              "kind": "departure",
+              "x": -3,
+              "y": 12
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "queue.destination.scarce",
+      "kind": "structure",
+      "components": {
+        "storage": {
+          "capacity_policy": "process.store",
+          "public": true,
+          "initial_stock": {}
+        },
+        "tile_presence": {
+          "space": "queue.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "tile_work_dock": {
+          "work_roles": [],
+          "resources": [
+            "process.input"
+          ],
+          "slots": [
+            {
+              "id": "queue.unload.bay",
+              "kind": "service",
+              "x": -1,
+              "y": 0
+            },
+            {
+              "id": "queue.unload.wait.a",
+              "kind": "waiting",
+              "x": -1,
+              "y": 2
+            },
+            {
+              "id": "queue.unload.wait.b",
+              "kind": "waiting",
+              "x": -1,
+              "y": 4
+            },
+            {
+              "id": "queue.unload.exit.0",
+              "kind": "departure",
+              "x": -3,
+              "y": 6
+            },
+            {
+              "id": "queue.unload.exit.1",
+              "kind": "departure",
+              "x": -3,
+              "y": 8
+            },
+            {
+              "id": "queue.unload.exit.2",
+              "kind": "departure",
+              "x": -3,
+              "y": 10
+            },
+            {
+              "id": "queue.unload.exit.3",
+              "kind": "departure",
+              "x": -3,
+              "y": 12
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "queue.source",
+      "after": [],
+      "entity": "queue.source",
+      "company": 0,
+      "placement": {
+        "space": "queue.tiles",
+        "x": 8,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "queue.destination",
+      "after": [],
+      "entity": "queue.destination",
+      "company": 0,
+      "placement": {
+        "space": "queue.tiles",
+        "x": 26,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "queue.machine.a",
+      "after": [],
+      "entity": "queue.machine.a",
+      "company": 0,
+      "placement": {
+        "space": "queue.tiles",
+        "x": 2,
+        "y": 8
+      },
+      "home": null
+    },
+    {
+      "id": "queue.machine.b",
+      "after": [],
+      "entity": "queue.machine.b",
+      "company": 0,
+      "placement": {
+        "space": "queue.tiles",
+        "x": 2,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "queue.machine.c",
+      "after": [],
+      "entity": "queue.machine.c",
+      "company": 0,
+      "placement": {
+        "space": "queue.tiles",
+        "x": 2,
+        "y": 12
+      },
+      "home": null
+    },
+    {
+      "id": "queue.machine.d",
+      "after": [],
+      "entity": "queue.machine.d",
+      "company": 0,
+      "placement": {
+        "space": "queue.tiles",
+        "x": 2,
+        "y": 14
+      },
+      "home": null
+    },
+    {
+      "id": "queue.source.scarce",
+      "after": [],
+      "entity": "queue.source.scarce",
+      "company": 0,
+      "placement": {
+        "space": "queue.tiles",
+        "x": 8,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "queue.destination.scarce",
+      "after": [],
+      "entity": "queue.destination.scarce",
+      "company": 0,
+      "placement": {
+        "space": "queue.tiles",
+        "x": 26,
+        "y": 10
+      },
+      "home": null
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "queue.start",
+      "entries": [
+        "queue.source",
+        "queue.destination",
+        "queue.machine.a",
+        "queue.machine.b",
+        "queue.machine.c",
+        "queue.machine.d"
+      ],
+      "includes": []
+    },
+    {
+      "id": "queue.scarce",
+      "entries": [
+        "queue.source.scarce",
+        "queue.destination.scarce",
+        "queue.machine.a",
+        "queue.machine.b",
+        "queue.machine.c",
+        "queue.machine.d"
+      ],
+      "includes": []
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "shared-haul",
+      "game_mode": "process.survival",
+      "mode_overrides": {},
+      "time": "process.minute",
+      "space": "queue.tiles",
+      "modules": [
+        "sim.world-setup",
+        "sim.logistics",
+        "points",
+        "sim.tile-navigation"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "queue.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        }
+      }
+    },
+    {
+      "id": "shared-haul-scarce",
+      "game_mode": "process.survival",
+      "mode_overrides": {},
+      "time": "process.minute",
+      "space": "queue.tiles",
+      "modules": [
+        "sim.world-setup",
+        "sim.logistics",
+        "points",
+        "sim.tile-navigation"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "queue.scarce"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        }
+      }
+    }
+  ],
+  "tile_spaces": [
+    {
+      "id": "queue.tiles",
+      "width": 48,
+      "height": 32
+    }
+  ],
+  "uniform_tile_navigation": [
+    {
+      "id": "queue.route",
+      "space": "queue.tiles",
+      "cost": 10
+    }
+  ]
+}

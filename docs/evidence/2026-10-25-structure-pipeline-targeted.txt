@@ -1,0 +1,1 @@
+PASS: structures-first Town/City scope coverage, master-before-concept jobs, exact C# instance assembly, persistence/CLI/audit, external approvals/native bundle/ground calibration, negative inputs and cancellation (synthetic production art).

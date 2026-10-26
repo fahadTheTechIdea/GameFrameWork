@@ -1,0 +1,16 @@
+{
+  "plan_templates":[
+    {"id":"infrastructure.field","space":"recovery.tiles","entries":[
+      {"id":"road","definition":"line:segment.road","arguments":{"space":"recovery.tiles","path":[{"space":"recovery.tiles","dx":0,"dy":0},{"space":"recovery.tiles","dx":1,"dy":0},{"space":"recovery.tiles","dx":2,"dy":0},{"space":"recovery.tiles","dx":3,"dy":0}]},"priority":60,"paused":true,"after":[]},
+      {"id":"tower","definition":"build:tower","arguments":{"placement":{"space":"recovery.tiles","dx":0,"dy":-4}},"priority":50,"paused":true,"after":[]}
+    ]},
+    {"id":"infrastructure.repeat","space":"recovery.tiles","entries":[
+      {"id":"first","definition":"line:segment.road","arguments":{"space":"recovery.tiles","path":[{"space":"recovery.tiles","dx":0,"dy":0},{"space":"recovery.tiles","dx":1,"dy":0},{"space":"recovery.tiles","dx":2,"dy":0},{"space":"recovery.tiles","dx":3,"dy":0}]},"priority":20,"paused":false,"after":[]},
+      {"id":"second","definition":"line:segment.road","arguments":{"space":"recovery.tiles","path":[{"space":"recovery.tiles","dx":0,"dy":4},{"space":"recovery.tiles","dx":1,"dy":4},{"space":"recovery.tiles","dx":2,"dy":4},{"space":"recovery.tiles","dx":3,"dy":4}]},"priority":10,"paused":true,"after":[]}
+    ]}
+  ],
+  "entities":[{"id":"infrastructure.controller","kind":"entity","components":{
+    "recurring_activity":{"id":"native.corridor","plan":null,"template":"infrastructure.repeat","target":"template","arguments":{"space":"recovery.tiles","x":20,"y":20},"worker_nodes":[],"reserve_use":"none","cadence":"submission","trigger":"schedule","dispatch_mode":"compete","facility_policy":null,"enabled":false,"priority":60,"group":"field.corridor","operation_policy":null,"interval":{"numerator":1,"denominator":1,"unit":"minute"},"conditions":[]},
+    "proof_recurring_activity":{"id":"public.corridor","plan":null,"template":"infrastructure.repeat","target":"template","arguments":{"space":"recovery.tiles","x":20,"y":20},"worker_nodes":[],"reserve_use":"none","cadence":"submission","trigger":"schedule","dispatch_mode":"compete","facility_policy":null,"enabled":false,"priority":40,"group":"field.corridor","interval":{"numerator":1,"denominator":1,"unit":"minute"},"operation_policy":null,"fault":0,"idle_only":false}
+  }}]
+}

@@ -1,0 +1,13 @@
+{
+  "game_modes": [
+    { "id": "business-defaults", "name": "Values and money", "properties": {
+      "business.values.enabled": true, "business.money.enabled": true
+    } },
+    { "id": "business-values", "name": "Values only", "properties": {
+      "business.values.enabled": true
+    } },
+    { "id": "business-money", "name": "Money only", "properties": {
+      "business.money.enabled": true
+    } }
+  ]
+}

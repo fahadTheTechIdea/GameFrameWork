@@ -1,0 +1,44 @@
+{
+  "operation_control_actions":[{"id":"proof.network-signals.operation","command":"sim.configure-operation","owner":"sim.operations"}],
+  "control_input_recovery_policies":[{"id":"proof.network-signals.suspend","retry_blockers":[]}],
+  "units": [{"id":"network.steel-pair","dimension":"count","scale":{"numerator":2,"denominator":1},"discrete":false}],
+  "resource_signals": [
+    {"id":"pool.stored","kind":"number","metric":"network.stored","resource":"steel","unit":"unit.steel","providers":[{"component":"network_signal","schema":2}]},
+    {"id":"pool.available","kind":"number","metric":"network.available","resource":"steel","unit":"unit.steel","providers":[{"component":"network_signal","schema":2}]},
+    {"id":"pool.inbound","kind":"number","metric":"network.inbound","resource":"steel","unit":"unit.steel","providers":[{"component":"network_signal","schema":2}]},
+    {"id":"pool.outbound","kind":"number","metric":"network.outbound","resource":"steel","unit":"unit.steel","providers":[{"component":"network_signal","schema":2}]},
+    {"id":"pool.pairs","kind":"number","metric":"network.stored","resource":"steel","unit":"network.steel-pair","providers":[{"component":"network_signal","schema":2}]},
+    {"id":"pool.water","kind":"number","metric":"network.stored","resource":"water","unit":"unit.water","providers":[{"component":"network_signal","schema":2}]},
+    {"id":"pool.room","kind":"number","metric":"network.receiving-room","resource":"steel","unit":"unit.steel","providers":[{"component":"network_signal","schema":2}]},
+    {"id":"pool.room-pairs","kind":"number","metric":"network.receiving-room","resource":"steel","unit":"network.steel-pair","providers":[{"component":"network_signal","schema":2}]}
+  ],
+  "entities": [
+    {"id":"pool.source","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"recovery.mixed","public":false,"initial_stock":{"steel":30}},
+      "ports":{"list":[{"network":"arbitration.main","push":["steel"]}]},
+      "network_signal":{"id":"pool","network":"arbitration.main"},
+      "network_sensor":{"operation":{"id":"valve","enabled":true,"target":1,"minimum":1,"maximum":1,"unit":"unit.boolean"},"level":0},
+      "signal_network_gate":{"id":"safety","networks":["arbitration.main"],"conditions":[{"id":"open","source":"valve","signal":"arbitration.open","expected":true,"blocker":"arbitration.closed"}]}
+    }},
+    {"id":"pool.watcher","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"recovery.mixed","public":false},
+      "ports":{"list":[{"network":"arbitration.main","pull":[]}]},
+      "network_signal":{"id":"pool","network":"arbitration.main"}
+    }},
+    {"id":"pool.independent","kind":"structure","components":{
+      "tile_presence":{"space":"recovery.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"recovery.mixed","public":false},
+      "proof_network_ports":{"list":[{"network":"arbitration.main","pull":[]}]},
+      "network_signal":{"id":"pool","network":"arbitration.main"}
+    }}
+  ],
+  "control_rules": [
+    {"id":"pool.fill","input_recovery":"proof.network-signals.suspend","action_policy":"proof.network-signals.operation","arbitration":"exclusive","initial_latch":false,
+      "inputs":[{"id":"stock","signal":"pool.stored"}],
+      "conditions":[{"id":"high","kind":"above","input":"stock","unit":"unit.steel","on":7,"off":4,"initial":false}],"root":"high",
+      "dwell":{"numerator":0,"denominator":1,"unit":"minute"},"cooldown":{"numerator":0,"denominator":1,"unit":"minute"},
+      "when_true":{"enabled":false,"target":1,"unit":"unit.boolean"},"when_false":{"enabled":true,"target":1,"unit":"unit.boolean"}}
+  ]
+}

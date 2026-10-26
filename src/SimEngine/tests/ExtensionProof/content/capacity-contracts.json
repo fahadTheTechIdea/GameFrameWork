@@ -1,0 +1,92 @@
+{
+  "resources": [
+    {"id":"contract.bulk","unit":"unit.capacity.mass","category":"material","phase":"solid","traits":["contract.bulk"],"capacity":{"unit.capacity.mass":1,"unit.capacity.volume":0.5}},
+    {"id":"contract.fluid","unit":"unit.capacity.volume","category":"fluid","phase":"liquid","traits":[],"capacity":{"unit.capacity.mass":0.5,"unit.capacity.volume":1}},
+    {"id":"contract.heavy","unit":"unit.supply","category":"material","phase":"solid","traits":[],"capacity":{"unit.capacity.count":1,"unit.capacity.mass":2,"unit.capacity.volume":1}},
+    {"id":"contract.fractional","unit":"unit.capacity.mass","category":"material","phase":"solid","traits":[],"capacity":{"unit.capacity.count":0.5}}
+  ],
+  "capacity_policies": [
+    {"id":"contract.native-combined","limits":{"unit.capacity.mass":10,"unit.capacity.volume":4}}
+  ],
+  "trait_capacity_policies": [
+    {"id":"contract.native-bulk","limits":{"unit.capacity.mass":10,"unit.capacity.volume":4},"required_trait":"contract.bulk"}
+  ],
+  "independent_capacity_policies": [
+    {"id":"contract.source","limits":{"unit.capacity.count":40},"required_trait":null},
+    {"id":"contract.destination","limits":{"unit.capacity.count":10},"required_trait":null},
+    {"id":"contract.carrier","limits":{"unit.capacity.count":8},"required_trait":null},
+    {"id":"contract.wip","limits":{"unit.capacity.count":4},"required_trait":null},
+    {"id":"contract.combined","limits":{"unit.capacity.mass":10,"unit.capacity.volume":4},"required_trait":null},
+    {"id":"contract.bulk-only","limits":{"unit.capacity.mass":10,"unit.capacity.volume":4},"required_trait":"contract.bulk"},
+    {"id":"contract.slots","limits":{"unit.capacity.count":4},"required_trait":null},
+    {"id":"contract.closed","limits":{"unit.capacity.count":0},"required_trait":null},
+    {"id":"contract.unused","limits":{"unit.capacity.count":1},"required_trait":null}
+  ],
+  "transformations": [
+    {"id":"contract.make","mode":"batch","cancel_policy":"return_inputs","tool_consumption":{},"operating_ports":{},"tool_ports":{"supply":"tool.input"},"input_ports":{"supply":"material.input"},"output_ports":{},"operating_inputs":[],"tools":{"supply":1},"inputs":{"supply":3},"outputs":{},"entity_output":"contract.result", "output_home": "unassigned","duration":{"numerator":30,"denominator":1,"unit":"minute"}}
+  ],
+  "entities": [
+  {
+    "id": "contract.result",
+    "kind": "entity",
+    "components": {}
+  },
+  {
+    "id": "contract.factory",
+    "kind": "entity",
+    "components": {
+      "inventory_port": [
+        {
+          "id": "material.output"
+        },
+        {
+          "id": "material.input"
+        },
+        {
+          "id": "tool.input"
+        },
+        {
+          "id": "operating.input"
+        },
+        {
+          "id": "disposition.input"
+        }
+      ],
+      "point_presence": {
+        "space": "field.points",
+        "position": 60
+      },
+      "storage": {
+        "capacity_policy": "contract.source",
+        "initial_stock": {},
+        "public": false
+      },
+      "transformer": {
+        "automatic_supply": true,
+        "wip_capacity": "contract.wip",
+        "transformations": [
+          "contract.make"
+        ],
+        "states": {
+          "working": "processing",
+          "stopped": "blocked"
+        },
+        "operation": {
+          "id": "contract.process",
+          "enabled": true,
+          "target": 1,
+          "minimum": 1,
+          "maximum": 1,
+          "unit": "unit.work-rate"
+        }
+      }
+    }
+  }
+],
+  "entity_setups": [
+    {"id":"contract.factory","after":[],"entity":"contract.factory","company":0,"placement":{"space":"field.points","position":60},"home":null}
+  ],
+  "world_setup_profiles": [
+    {"id":"contract.capacity-start","entries":["contract.factory"],"includes":[]}
+  ]
+}

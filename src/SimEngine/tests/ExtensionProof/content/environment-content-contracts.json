@@ -1,0 +1,40 @@
+{
+  "independent_environment_metrics": [
+    {"id":"contract.environment-cleaned","unit":"unit.supply","rate_unit":"hour","window":null,"resources":["supply"],"kinds":["destroyed"],"causes":["environment.cleanup"],"fault":"none"},
+    {"id":"contract.environment-spilled","unit":"unit.supply","rate_unit":"hour","window":null,"resources":["supply"],"kinds":["lost"],"causes":["environment.spill"],"fault":"none"},
+    {"id":"contract.environment-coverage","unit":"unit.supply","rate_unit":"minute","window":{"numerator":100,"denominator":1,"unit":"minute"},"resources":["supply"],"kinds":["lost"],"causes":["environment.spill"],"fault":"none"},
+    {"id":"contract.environment-recent","unit":"unit.supply","rate_unit":"minute","window":{"numerator":1,"denominator":1,"unit":"minute"},"resources":["supply"],"kinds":["lost"],"causes":["environment.spill"],"fault":"none"}
+  ],
+  "environmental_metrics": [
+    {"id":"environment.native-cleaned","unit":"unit.supply","rate_unit":"hour","window":null,"resources":["supply"],"kinds":["destroyed"],"causes":["environment.cleanup"]},
+    {"id":"environment.native-spilled","unit":"unit.supply","rate_unit":"hour","window":null,"resources":["supply"],"kinds":["lost"],"causes":["environment.spill"]}
+  ],
+  "environmental_objective_predicates": [
+    {"id":"environment.cleanup-target","metric":"contract.environment-cleaned","unit":"unit.supply","relation":"at_least","amount":3}
+  ],
+  "objectives": [
+    {"id":"environment.cleanup-goal","prerequisites":[],"predicate":"environment.cleanup-target","deadline":null,"on_complete":null,"on_failure":null}
+  ],
+  "inventory_effects": [
+  {
+    "id": "environment.spill",
+    "kind": "lost",
+    "quantities": {
+      "supply": 2
+    },
+    "ports": {
+      "supply": "disposition.input"
+    }
+  },
+  {
+    "id": "environment.cleanup",
+    "kind": "destroyed",
+    "quantities": {
+      "supply": 3
+    },
+    "ports": {
+      "supply": "disposition.input"
+    }
+  }
+]
+}

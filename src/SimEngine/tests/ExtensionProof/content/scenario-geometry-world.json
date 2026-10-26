@@ -1,0 +1,239 @@
+{
+  "game_modes": [
+    {
+      "id": "public-test.mode",
+      "name": "Resource-only visibility",
+      "properties": {}
+    }
+  ],
+  "time_definitions": [
+    {
+      "id": "public-test.time",
+      "quantum": {
+        "numerator": 60,
+        "denominator": 1,
+        "unit": "second"
+      },
+      "frame_ticks": 1,
+      "ticks_per_second": 30,
+      "horizon": null
+    }
+  ],
+  "entity_states": [
+    {
+      "id": "public-test.idle",
+      "state": "idle",
+      "priority": 0,
+      "default": true
+    }
+  ],
+  "tile_spaces": [
+    {
+      "id": "public-test.tiles",
+      "scenarios": [
+        {
+          "scenario": "geometry.small",
+          "width": 16,
+          "height": 16
+        },
+        {
+          "scenario": "geometry.large",
+          "width": 1048576,
+          "height": 131072
+        },
+        {
+          "scenario": "geometry.max",
+          "width": 2147483647,
+          "height": 64
+        }
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "id": "public-test.town",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "public-test.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        }
+      }
+    },
+    {
+      "id": "public-test.hidden",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "public-test.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        }
+      }
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "public-test.start",
+      "entries": [
+        "start.town",
+        "start.hidden",
+        "start.terrain"
+      ],
+      "includes": []
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "start.town",
+      "after": [],
+      "entity": "public-test.town",
+      "company": 1,
+      "placement": {
+        "space": "public-test.tiles",
+        "x": 12,
+        "y": 12
+      },
+      "home": null
+    },
+    {
+      "id": "start.hidden",
+      "after": [],
+      "entity": "public-test.hidden",
+      "company": 1,
+      "placement": {
+        "space": "public-test.tiles",
+        "x": 12,
+        "y": 10
+      },
+      "home": null
+    }
+  ],
+  "entity_public_visibility": [
+    {
+      "id": "public-test.town-rule",
+      "definition": "public-test.town"
+    }
+  ],
+  "knowledge_visibility_policies": [
+    {
+      "id": "public-test.sight",
+      "own_entities": true,
+      "unlisted_entities": false,
+      "unlisted_content": true,
+      "rules": [
+        "public-test.town-rule"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "geometry.small",
+      "game_mode": "public-test.mode",
+      "mode_overrides": {},
+      "time": "public-test.time",
+      "space": "public-test.tiles",
+      "modules": [
+        "sim.world-setup",
+        "sim.knowledge",
+        "sim.knowledge-visibility",
+        "proof.scenario-geometry"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "public-test.start"
+        },
+        "sim.knowledge-visibility": {
+          "policy": "public-test.sight"
+        }
+      }
+    },
+    {
+      "id": "geometry.large",
+      "game_mode": "public-test.mode",
+      "mode_overrides": {},
+      "time": "public-test.time",
+      "space": "public-test.tiles",
+      "modules": [
+        "sim.world-setup",
+        "sim.knowledge",
+        "sim.knowledge-visibility",
+        "proof.scenario-geometry"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "public-test.start"
+        },
+        "sim.knowledge-visibility": {
+          "policy": "public-test.sight"
+        }
+      }
+    },
+    {
+      "id": "geometry.max",
+      "game_mode": "public-test.mode",
+      "mode_overrides": {},
+      "time": "public-test.time",
+      "space": "public-test.tiles",
+      "modules": [
+        "sim.world-setup",
+        "sim.knowledge",
+        "sim.knowledge-visibility",
+        "proof.scenario-geometry"
+      ],
+      "seats": 2,
+      "default_seats": 2,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "public-test.start"
+        },
+        "sim.knowledge-visibility": {
+          "policy": "public-test.sight"
+        }
+      }
+    }
+  ],
+  "units": [
+    {
+      "id": "geometry.count",
+      "dimension": "count",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    }
+  ],
+  "spatial_layers": [
+    {
+      "id": "geometry.terrain",
+      "space": "public-test.tiles",
+      "type": "terrain.classification",
+      "value_type": "byte",
+      "visibility": "public",
+      "unit": "geometry.count"
+    }
+  ],
+  "tile_layer_setups": [
+    {
+      "id": "start.terrain",
+      "after": [],
+      "layer": "geometry.terrain",
+      "x": 12,
+      "y": 12,
+      "width": 1,
+      "height": 1,
+      "value": 42,
+      "owner": -1
+    }
+  ]
+}

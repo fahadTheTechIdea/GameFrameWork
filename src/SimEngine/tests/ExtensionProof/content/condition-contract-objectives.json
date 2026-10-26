@@ -1,0 +1,4 @@
+{
+  "condition_objective_predicates":[{"id":"contract.plan-predicate","condition":"contract.completed"}],
+  "objectives":[{"id":"contract.built","prerequisites":[],"predicate":"contract.plan-predicate","deadline":null,"on_complete":null,"on_failure":null}]
+}

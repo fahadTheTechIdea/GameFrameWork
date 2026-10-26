@@ -1,0 +1,120 @@
+{
+  "entities": [
+    {
+      "id": "binding.target",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "pool_port": [
+          {
+            "id": "alias",
+            "pool": "source.first",
+            "alternatives": [
+              "source.second"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "current_only"
+          }
+        ]
+      }
+    }
+  ],
+  "world_setup_profiles": [{"id":"binding.start","entries":["binding.warehouse-entry","binding.target-entry","binding.sink-entry","binding.far-entry","binding.machine-entry"],"includes":[]}],
+  "entity_setups": [
+    {
+      "id": "binding.warehouse-entry",
+      "after": [],
+      "entity": "source.warehouse",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 8,
+        "y": 6
+      },
+      "home": null
+    },
+    {
+      "id": "binding.target-entry",
+      "after": [],
+      "entity": "binding.target",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 22,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "binding.sink-entry",
+      "after": [],
+      "entity": "source.sink",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 28,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "binding.far-entry",
+      "after": [],
+      "entity": "recovery.far",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 35,
+        "y": 20
+      },
+      "home": null
+    },
+    {
+      "id": "binding.machine-entry",
+      "after": [
+        "binding.warehouse-entry"
+      ],
+      "entity": "haul.machine",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 2,
+        "y": 10
+      },
+      "home": "binding.warehouse-entry"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "scoped-original-port-loss",
+      "game_mode": "haul.resource-only",
+      "mode_overrides": {},
+      "time": "haul.minute",
+      "space": "haul.tiles",
+      "seats": 2,
+      "default_seats": 2,
+      "modules": [
+        "proof.output-ports",
+        "sim.logistics",
+        "sim.tile-navigation",
+        "sim.logistics-recovery"
+      ],
+      "settings": {
+        "sim.world-setup": {
+          "profile": "binding.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.logistics-recovery": {
+          "profile": "binding.recovery"
+        }
+      }
+    }
+  ]
+}

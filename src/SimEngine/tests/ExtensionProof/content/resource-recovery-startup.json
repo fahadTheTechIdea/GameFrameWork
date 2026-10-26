@@ -1,0 +1,7 @@
+{
+  "world_setup_profiles": [{"id":"recovery.physical","entries":["recovery.factory","recovery.carrier"],"includes":["disposition.start"]}],
+  "entity_setups": [
+    {"id":"recovery.factory","after":[],"entity":"factory","company":0,"placement":{"space":"recovery.tiles","x":24,"y":20},"home":null},
+    {"id":"recovery.carrier","after":["disposition.depot-0"],"entity":"truck","company":0,"placement":{"space":"recovery.tiles","x":8,"y":7},"home":"disposition.depot-0"}
+  ]
+}

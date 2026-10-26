@@ -1,0 +1,14 @@
+{
+  "units":[{"id":"unit.condition","dimension":"equipment-integrity","scale":{"numerator":1,"denominator":1},"discrete":false}],
+  "worker_condition_requirements":[{"id":"service.damaged","source":"integrity","unit":"unit.condition","minimum":0,"maximum":4,"blocker":"service.healthy-worker"}],
+  "worker_condition_effects":[{"id":"service.repair","source":"integrity","kind":"repair","unit":"unit.condition","amount":6}],
+  "target_resource_requirements":[
+    {"port":null,"id":"service.spares","use":"consume","quantities":{"supply":3}},
+    {"port":null,"id":"service.tools","use":"hold","quantities":{"supply":2}}
+  ],
+  "work_requirement_groups":[{"id":"service.ready","mode":"all","entries":[
+    {"id":"damaged-machine","requirement":"service.damaged"},
+    {"id":"spares","requirement":"service.spares"},
+    {"id":"tools","requirement":"service.tools"}
+  ]}]
+}

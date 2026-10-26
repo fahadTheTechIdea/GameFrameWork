@@ -1,0 +1,43 @@
+{
+  "plan_templates":[
+    {"id":"repeat.removal","space":"field.points","entries":[
+      {"id":"remove","definition":"demolish:point.tower","arguments":{"placement":{"space":"field.points","offset":0}},"priority":20,"paused":false,"after":[]},
+      {"id":"expand","definition":"build:point.tower","arguments":{"placement":{"space":"field.points","offset":4}},"priority":10,"paused":true,"after":["remove"]}
+    ]}
+  ],
+  "entities":[
+    {"id":"template.controller","kind":"entity","components":{
+      "recurring_activity":{
+        "id":"native.template","plan":null,"template":"repeat.removal","target":"template",
+        "arguments":{"space":"field.points","position":12},
+        "worker_nodes":[],"reserve_use":"none","cadence":"submission","trigger":"schedule","dispatch_mode":"compete","facility_policy":null,
+        "enabled":false,"priority":60,"group":"field.repeat","operation_policy":null,
+        "interval":{"numerator":1,"denominator":1,"unit":"minute"},"conditions":[]},
+      "proof_plan_recurring":{
+        "id":"public.template","plan":null,"template":"repeat.removal","target":"template",
+        "arguments":{"space":"field.points","position":12},
+        "worker_nodes":[],"reserve_use":"none","cadence":"submission","trigger":"schedule","dispatch_mode":"compete","facility_policy":null,
+        "enabled":false,"priority":40,"group":"field.repeat","operation_policy":null,
+        "interval":{"numerator":1,"denominator":1,"unit":"minute"},"fault":0,"idle_only":false}
+    }}
+  ],
+  "entity_setups": [
+  {
+    "id": "template.controller",
+    "after": [],
+    "entity": "template.controller",
+    "company": 0,
+    "placement": null,
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "removal-recurring-templates.start",
+    "entries": [
+      "template.controller"
+    ],
+    "includes": []
+  }
+]
+}

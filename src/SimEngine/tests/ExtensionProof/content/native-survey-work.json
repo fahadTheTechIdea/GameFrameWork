@@ -1,0 +1,11 @@
+{
+  "worker_roles":[{"id":"survey"}],
+  "work_policies":[{"id":"survey.enabled","enabled":true,"priority":1,"allowed_roles":["survey"],"area":null,"interruptible":true,"emergency_eligible":false,"assignment_mode":"all","states":{"disabled":"survey.stopped","standby":"survey.stopped"}}],
+  "target_resource_requirements":[{"port":null,"id":"survey.inputs","use":"consume","quantities":{"steel":8}}],
+  "activities":[
+    {"id":"survey.sample","priority":60,"player_orderable":true,"automatic_supply":false,"on_complete":"survey.observe",
+      "nodes":[{"executor":"work.staffed","id":"sample","roles":["survey"],"duration":{"numerator":1,"denominator":2,"unit":"hour"},"requirement":"survey.inputs"}]},
+    {"id":"survey.reobserve","priority":60,"player_orderable":true,"automatic_supply":false,"on_complete":"survey.observe",
+      "nodes":[{"executor":"work.staffed","id":"sample","roles":["survey"],"duration":{"numerator":1,"denominator":5,"unit":"hour"}}]}
+  ]
+}

@@ -1,0 +1,1256 @@
+{
+  "SchemaVersion": 1,
+  "Id": "modern-city.layout",
+  "CatalogId": "modern",
+  "SourceRuleId": "modern-city.capture-layout",
+  "Structures": [
+    {
+      "Id": "detached-house",
+      "Function": "Housing",
+      "ServiceCapacity": 4,
+      "AllowedClasses": [
+        "Village",
+        "Town",
+        "City"
+      ],
+      "FavoredRoles": [],
+      "SizeVariants": [
+        {
+          "Id": "small",
+          "WidthMeters": 8,
+          "DepthMeters": 10,
+          "HeightMeters": 5,
+          "ServiceCapacity": 4,
+          "SiteClearanceMeters": 1,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 3
+        },
+        {
+          "Id": "medium",
+          "WidthMeters": 12,
+          "DepthMeters": 16,
+          "HeightMeters": 8,
+          "ServiceCapacity": 7,
+          "SiteClearanceMeters": 1,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 3
+        },
+        {
+          "Id": "large",
+          "WidthMeters": 18,
+          "DepthMeters": 24,
+          "HeightMeters": 10,
+          "ServiceCapacity": 12,
+          "SiteClearanceMeters": 1,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 3
+        }
+      ],
+      "ScaleDemandPerResident": 0,
+      "SiteRules": [
+        {
+          "Id": "garden",
+          "Kind": "Garden",
+          "Band": "Rear",
+          "MinimumDepthMeters": 2,
+          "InsetMeters": 2.1,
+          "Required": true,
+          "SpeciesAssetId": null,
+          "PlantSpacingMeters": 0,
+          "PlantMarginMeters": 0,
+          "MaximumDepthMeters": 20
+        }
+      ],
+      "AccessWidthMeters": 1.5,
+      "MinimumRoadWidthMeters": 3,
+      "AllowedRoles": null,
+      "Category": "Residential",
+      "CapacityUnit": "residents",
+      "AutomaticDemand": false,
+      "PlacementKind": "FrontageSite",
+      "SitingProfile": {
+        "Id": "siting:detached-house",
+        "Revision": 1,
+        "ResearchRuleIds": [
+          "S01",
+          "S41"
+        ],
+        "SourceIds": [
+          "R22"
+        ],
+        "AllowedDistricts": [
+          "MixedUse",
+          "Residential"
+        ],
+        "AllowedTechnologies": [
+          "Standard"
+        ],
+        "Tags": [
+          "sensitive"
+        ],
+        "Requirements": [
+          {
+            "Id": "neighborhood-access",
+            "Kind": "PedestrianCatchment",
+            "Mode": "Pedestrian",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "potable-water",
+            "Kind": "PotableWater",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": [
+              "potable",
+              "reliable"
+            ],
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "power",
+            "Kind": "Electricity",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "wastewater",
+            "Kind": "Wastewater",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          }
+        ],
+        "RequiredSurroundings": [
+          "AccessWalkway",
+          "Garden"
+        ],
+        "Provides": [
+          "ParentFacility"
+        ],
+        "OutputUnit": "game-service-units",
+        "OutputUnitsPerCapacity": 1
+      },
+      "Composition": {
+        "Representation": "SingleStructure",
+        "GeometryScope": "one dwelling shell; detached structures require an authored program",
+        "ReviewBasis": "Authored game inventory review; requested scope/parts determine the reusable program. No universal component count or completed artwork is implied.",
+        "PartRoles": [
+          {
+            "Role": "living-interior",
+            "Kind": "Interior",
+            "CandidateDefinitionIds": []
+          },
+          {
+            "Role": "outbuilding",
+            "Kind": "Structure",
+            "CandidateDefinitionIds": [
+              "agricultural-equipment-shed"
+            ]
+          },
+          {
+            "Role": "garden",
+            "Kind": "GroundArea",
+            "CandidateDefinitionIds": []
+          }
+        ]
+      }
+    },
+    {
+      "Id": "factory",
+      "Function": "Employment",
+      "ServiceCapacity": 200,
+      "AllowedClasses": [
+        "Town",
+        "City"
+      ],
+      "FavoredRoles": [
+        "Industrial"
+      ],
+      "SizeVariants": [
+        {
+          "Id": "small",
+          "WidthMeters": 24,
+          "DepthMeters": 18,
+          "HeightMeters": 10,
+          "ServiceCapacity": 200,
+          "SiteClearanceMeters": 3,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 0
+        },
+        {
+          "Id": "medium",
+          "WidthMeters": 60,
+          "DepthMeters": 40,
+          "HeightMeters": 16,
+          "ServiceCapacity": 800,
+          "SiteClearanceMeters": 6,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 0
+        },
+        {
+          "Id": "large",
+          "WidthMeters": 140,
+          "DepthMeters": 90,
+          "HeightMeters": 24,
+          "ServiceCapacity": 3000,
+          "SiteClearanceMeters": 10,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 0
+        }
+      ],
+      "ScaleDemandPerResident": 0.002,
+      "SiteRules": [
+        {
+          "Id": "service-yard",
+          "Kind": "LoadingYard",
+          "Band": "Rear",
+          "MinimumDepthMeters": 4,
+          "InsetMeters": 2.1,
+          "Required": true,
+          "SpeciesAssetId": null,
+          "PlantSpacingMeters": 0,
+          "PlantMarginMeters": 0,
+          "MaximumDepthMeters": 60
+        },
+        {
+          "Id": "landscape-buffer",
+          "Kind": "GreenBuffer",
+          "Band": "Left",
+          "MinimumDepthMeters": 2,
+          "InsetMeters": 2.1,
+          "Required": true,
+          "SpeciesAssetId": null,
+          "PlantSpacingMeters": 0,
+          "PlantMarginMeters": 0,
+          "MaximumDepthMeters": 8
+        }
+      ],
+      "AccessWidthMeters": 4,
+      "MinimumRoadWidthMeters": 8,
+      "AllowedRoles": [
+        "Agricultural",
+        "Industrial",
+        "Mixed"
+      ],
+      "Category": "IndustryExtraction",
+      "CapacityUnit": "workers",
+      "AutomaticDemand": true,
+      "PlacementKind": "FrontageSite",
+      "SitingProfile": {
+        "Id": "siting:factory",
+        "Revision": 1,
+        "ResearchRuleIds": [
+          "S01",
+          "S02"
+        ],
+        "SourceIds": [
+          "R05",
+          "R22"
+        ],
+        "AllowedDistricts": [
+          "HeavyIndustry"
+        ],
+        "AllowedTechnologies": [
+          "CleanLight",
+          "HeavyProcess"
+        ],
+        "Tags": [
+          "heavy-impact"
+        ],
+        "Requirements": [
+          {
+            "Id": "freight",
+            "Kind": "Freight",
+            "Mode": "Road",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 8,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "potable-water",
+            "Kind": "PotableWater",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": [
+              "potable",
+              "reliable"
+            ],
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "power",
+            "Kind": "Electricity",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "wastewater",
+            "Kind": "Wastewater",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          }
+        ],
+        "RequiredSurroundings": [
+          "AccessWalkway",
+          "LoadingYard",
+          "GreenBuffer"
+        ],
+        "Provides": [
+          "ParentFacility"
+        ],
+        "OutputUnit": "game-service-units",
+        "OutputUnitsPerCapacity": 1
+      },
+      "Composition": {
+        "Representation": "CompoundSite",
+        "GeometryScope": "aggregate production site or primary hall profile; process/storage/support need a program",
+        "ReviewBasis": "Authored game inventory review; requested scope/parts determine the reusable program. No universal component count or completed artwork is implied.",
+        "PartRoles": [
+          {
+            "Role": "production-building",
+            "Kind": "Structure",
+            "CandidateDefinitionIds": [
+              "factory",
+              "workshop"
+            ]
+          },
+          {
+            "Role": "storage",
+            "Kind": "Structure",
+            "CandidateDefinitionIds": [
+              "warehouse"
+            ]
+          },
+          {
+            "Role": "process-equipment",
+            "Kind": "Equipment",
+            "CandidateDefinitionIds": []
+          },
+          {
+            "Role": "administration",
+            "Kind": "Structure",
+            "CandidateDefinitionIds": [
+              "office-building"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "Id": "football-stadium",
+      "Function": "Sports",
+      "ServiceCapacity": 250,
+      "AllowedClasses": [
+        "Village",
+        "Town",
+        "City"
+      ],
+      "FavoredRoles": [],
+      "SizeVariants": [
+        {
+          "Id": "local-ground",
+          "WidthMeters": 130,
+          "DepthMeters": 90,
+          "HeightMeters": 10,
+          "ServiceCapacity": 500,
+          "SiteClearanceMeters": 5,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 4
+        },
+        {
+          "Id": "town-ground",
+          "WidthMeters": 150,
+          "DepthMeters": 110,
+          "HeightMeters": 16,
+          "ServiceCapacity": 3000,
+          "SiteClearanceMeters": 8,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 6
+        },
+        {
+          "Id": "regional",
+          "WidthMeters": 180,
+          "DepthMeters": 140,
+          "HeightMeters": 30,
+          "ServiceCapacity": 12000,
+          "SiteClearanceMeters": 15,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 8
+        },
+        {
+          "Id": "major-city",
+          "WidthMeters": 260,
+          "DepthMeters": 220,
+          "HeightMeters": 55,
+          "ServiceCapacity": 60000,
+          "SiteClearanceMeters": 25,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 12
+        }
+      ],
+      "ScaleDemandPerResident": 0.15,
+      "SiteRules": [
+        {
+          "Id": "entrance-plaza",
+          "Kind": "Forecourt",
+          "Band": "Front",
+          "MinimumDepthMeters": 10,
+          "InsetMeters": 2.1,
+          "Required": true,
+          "SpeciesAssetId": null,
+          "PlantSpacingMeters": 0,
+          "PlantMarginMeters": 0,
+          "MaximumDepthMeters": 60
+        },
+        {
+          "Id": "parking",
+          "Kind": "Parking",
+          "Band": "Left",
+          "MinimumDepthMeters": 10,
+          "InsetMeters": 2.1,
+          "Required": true,
+          "SpeciesAssetId": null,
+          "PlantSpacingMeters": 0,
+          "PlantMarginMeters": 0,
+          "MaximumDepthMeters": 50
+        },
+        {
+          "Id": "rear-green-belt",
+          "Kind": "GreenBuffer",
+          "Band": "Rear",
+          "MinimumDepthMeters": 5,
+          "InsetMeters": 2.1,
+          "Required": true,
+          "SpeciesAssetId": null,
+          "PlantSpacingMeters": 0,
+          "PlantMarginMeters": 0,
+          "MaximumDepthMeters": 20
+        }
+      ],
+      "AccessWidthMeters": 8,
+      "MinimumRoadWidthMeters": 4,
+      "AllowedRoles": null,
+      "Category": "SportRecreation",
+      "CapacityUnit": "seats",
+      "AutomaticDemand": true,
+      "PlacementKind": "FrontageSite",
+      "SitingProfile": {
+        "Id": "siting:football-stadium",
+        "Revision": 1,
+        "ResearchRuleIds": [
+          "S01",
+          "S24"
+        ],
+        "SourceIds": [
+          "R18",
+          "R22"
+        ],
+        "AllowedDistricts": [
+          "CommercialCenter",
+          "MixedUse",
+          "Recreation"
+        ],
+        "AllowedTechnologies": [
+          "Standard"
+        ],
+        "Tags": [
+          "crowd"
+        ],
+        "Requirements": [
+          {
+            "Id": "emergency",
+            "Kind": "EmergencyAccess",
+            "Mode": "Road",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "potable-water",
+            "Kind": "PotableWater",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": [
+              "potable",
+              "reliable"
+            ],
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "power",
+            "Kind": "Electricity",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "spectators",
+            "Kind": "PedestrianCatchment",
+            "Mode": "Pedestrian",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "transit",
+            "Kind": "Transit",
+            "Mode": "Road",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "wastewater",
+            "Kind": "Wastewater",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          }
+        ],
+        "RequiredSurroundings": [
+          "AccessWalkway",
+          "Forecourt",
+          "Parking",
+          "GreenBuffer"
+        ],
+        "Provides": [
+          "ParentFacility"
+        ],
+        "OutputUnit": "game-service-units",
+        "OutputUnitsPerCapacity": 1
+      },
+      "Composition": {
+        "Representation": "CompoundSite",
+        "GeometryScope": "aggregate sport site profile; playing surface, stands and support need a program",
+        "ReviewBasis": "Authored game inventory review; requested scope/parts determine the reusable program. No universal component count or completed artwork is implied.",
+        "PartRoles": [
+          {
+            "Role": "playing-or-training-ground",
+            "Kind": "GroundArea",
+            "CandidateDefinitionIds": []
+          },
+          {
+            "Role": "spectator-and-support",
+            "Kind": "Structure",
+            "CandidateDefinitionIds": [
+              "sports-hall",
+              "gym"
+            ]
+          },
+          {
+            "Role": "changing-and-services",
+            "Kind": "Interior",
+            "CandidateDefinitionIds": []
+          }
+        ]
+      }
+    },
+    {
+      "Id": "office-building",
+      "Function": "Employment",
+      "ServiceCapacity": 60,
+      "AllowedClasses": [
+        "Village",
+        "Town",
+        "City"
+      ],
+      "FavoredRoles": [],
+      "SizeVariants": [
+        {
+          "Id": "small",
+          "WidthMeters": 15,
+          "DepthMeters": 20,
+          "HeightMeters": 12,
+          "ServiceCapacity": 60,
+          "SiteClearanceMeters": 1,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 3
+        },
+        {
+          "Id": "medium",
+          "WidthMeters": 30,
+          "DepthMeters": 45,
+          "HeightMeters": 25,
+          "ServiceCapacity": 250,
+          "SiteClearanceMeters": 1,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 3
+        },
+        {
+          "Id": "large",
+          "WidthMeters": 60,
+          "DepthMeters": 80,
+          "HeightMeters": 45,
+          "ServiceCapacity": 900,
+          "SiteClearanceMeters": 1,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 3
+        }
+      ],
+      "ScaleDemandPerResident": 0,
+      "SiteRules": [
+        {
+          "Id": "entrance-court",
+          "Kind": "Forecourt",
+          "Band": "Front",
+          "MinimumDepthMeters": 3,
+          "InsetMeters": 2.1,
+          "Required": true,
+          "SpeciesAssetId": null,
+          "PlantSpacingMeters": 0,
+          "PlantMarginMeters": 0,
+          "MaximumDepthMeters": 20
+        },
+        {
+          "Id": "staff-green",
+          "Kind": "Garden",
+          "Band": "Rear",
+          "MinimumDepthMeters": 3,
+          "InsetMeters": 2.1,
+          "Required": true,
+          "SpeciesAssetId": null,
+          "PlantSpacingMeters": 0,
+          "PlantMarginMeters": 0,
+          "MaximumDepthMeters": 20
+        }
+      ],
+      "AccessWidthMeters": 1.5,
+      "MinimumRoadWidthMeters": 3,
+      "AllowedRoles": null,
+      "Category": "OfficeFinance",
+      "CapacityUnit": "workers",
+      "AutomaticDemand": false,
+      "PlacementKind": "FrontageSite",
+      "SitingProfile": {
+        "Id": "siting:office-building",
+        "Revision": 1,
+        "ResearchRuleIds": [
+          "S01",
+          "S42"
+        ],
+        "SourceIds": [
+          "R22"
+        ],
+        "AllowedDistricts": [
+          "CommercialCenter",
+          "MixedUse",
+          "Research"
+        ],
+        "AllowedTechnologies": [
+          "Standard"
+        ],
+        "Tags": [],
+        "Requirements": [
+          {
+            "Id": "customers",
+            "Kind": "PedestrianCatchment",
+            "Mode": "Pedestrian",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "potable-water",
+            "Kind": "PotableWater",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": [
+              "potable",
+              "reliable"
+            ],
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "power",
+            "Kind": "Electricity",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "wastewater",
+            "Kind": "Wastewater",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          }
+        ],
+        "RequiredSurroundings": [
+          "AccessWalkway",
+          "Forecourt",
+          "Garden"
+        ],
+        "Provides": [
+          "ParentFacility"
+        ],
+        "OutputUnit": "game-service-units",
+        "OutputUnitsPerCapacity": 1
+      },
+      "Composition": {
+        "Representation": "SingleStructure",
+        "GeometryScope": "one workplace/service building shell",
+        "ReviewBasis": "Authored game inventory review; requested scope/parts determine the reusable program. No universal component count or completed artwork is implied.",
+        "PartRoles": [
+          {
+            "Role": "workplace-interior",
+            "Kind": "Interior",
+            "CandidateDefinitionIds": []
+          },
+          {
+            "Role": "public-or-staff-services",
+            "Kind": "Interior",
+            "CandidateDefinitionIds": []
+          },
+          {
+            "Role": "arrival-ground",
+            "Kind": "GroundArea",
+            "CandidateDefinitionIds": []
+          }
+        ]
+      }
+    },
+    {
+      "Id": "primary-school",
+      "Function": "Education",
+      "ServiceCapacity": 120,
+      "AllowedClasses": [
+        "Village",
+        "Town",
+        "City"
+      ],
+      "FavoredRoles": [],
+      "SizeVariants": [
+        {
+          "Id": "small",
+          "WidthMeters": 30,
+          "DepthMeters": 40,
+          "HeightMeters": 8,
+          "ServiceCapacity": 120,
+          "SiteClearanceMeters": 3,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 3
+        },
+        {
+          "Id": "medium",
+          "WidthMeters": 55,
+          "DepthMeters": 75,
+          "HeightMeters": 12,
+          "ServiceCapacity": 400,
+          "SiteClearanceMeters": 3,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 3
+        },
+        {
+          "Id": "large",
+          "WidthMeters": 90,
+          "DepthMeters": 130,
+          "HeightMeters": 18,
+          "ServiceCapacity": 1000,
+          "SiteClearanceMeters": 3,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 3
+        }
+      ],
+      "ScaleDemandPerResident": 0,
+      "SiteRules": [
+        {
+          "Id": "arrival-court",
+          "Kind": "Forecourt",
+          "Band": "Front",
+          "MinimumDepthMeters": 4,
+          "InsetMeters": 2.1,
+          "Required": true,
+          "SpeciesAssetId": null,
+          "PlantSpacingMeters": 0,
+          "PlantMarginMeters": 0,
+          "MaximumDepthMeters": 30
+        },
+        {
+          "Id": "campus-green",
+          "Kind": "Lawn",
+          "Band": "Rear",
+          "MinimumDepthMeters": 5,
+          "InsetMeters": 2.1,
+          "Required": true,
+          "SpeciesAssetId": null,
+          "PlantSpacingMeters": 0,
+          "PlantMarginMeters": 0,
+          "MaximumDepthMeters": 60
+        }
+      ],
+      "AccessWidthMeters": 1.5,
+      "MinimumRoadWidthMeters": 3,
+      "AllowedRoles": null,
+      "Category": "EducationResearch",
+      "CapacityUnit": "pupils",
+      "AutomaticDemand": false,
+      "PlacementKind": "FrontageSite",
+      "SitingProfile": {
+        "Id": "siting:primary-school",
+        "Revision": 1,
+        "ResearchRuleIds": [
+          "S01",
+          "S18"
+        ],
+        "SourceIds": [
+          "R06",
+          "R07",
+          "R22"
+        ],
+        "AllowedDistricts": [
+          "Education",
+          "MixedUse",
+          "Residential"
+        ],
+        "AllowedTechnologies": [
+          "Standard"
+        ],
+        "Tags": [
+          "sensitive"
+        ],
+        "Requirements": [
+          {
+            "Id": "potable-water",
+            "Kind": "PotableWater",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": [
+              "potable",
+              "reliable"
+            ],
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "power",
+            "Kind": "Electricity",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "pupil-access",
+            "Kind": "PedestrianCatchment",
+            "Mode": "Pedestrian",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "wastewater",
+            "Kind": "Wastewater",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          }
+        ],
+        "RequiredSurroundings": [
+          "AccessWalkway",
+          "Forecourt",
+          "Lawn"
+        ],
+        "Provides": [
+          "ParentFacility"
+        ],
+        "OutputUnit": "game-service-units",
+        "OutputUnitsPerCapacity": 1
+      },
+      "Composition": {
+        "Representation": "ContextDependentSite",
+        "GeometryScope": "one teaching building or a school site with distinct grounds/blocks",
+        "ReviewBasis": "Authored game inventory review; requested scope/parts determine the reusable program. No universal component count or completed artwork is implied.",
+        "PartRoles": [
+          {
+            "Role": "teaching-blocks",
+            "Kind": "Structure",
+            "CandidateDefinitionIds": [
+              "school",
+              "university-building"
+            ]
+          },
+          {
+            "Role": "specialist-rooms",
+            "Kind": "Interior",
+            "CandidateDefinitionIds": []
+          },
+          {
+            "Role": "activity-ground",
+            "Kind": "GroundArea",
+            "CandidateDefinitionIds": []
+          }
+        ]
+      }
+    },
+    {
+      "Id": "warehouse",
+      "Function": "Storage",
+      "ServiceCapacity": 10,
+      "AllowedClasses": [
+        "Village",
+        "Town",
+        "City"
+      ],
+      "FavoredRoles": [],
+      "SizeVariants": [
+        {
+          "Id": "small",
+          "WidthMeters": 12,
+          "DepthMeters": 10,
+          "HeightMeters": 8,
+          "ServiceCapacity": 10,
+          "SiteClearanceMeters": 2,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 0
+        },
+        {
+          "Id": "medium",
+          "WidthMeters": 30,
+          "DepthMeters": 20,
+          "HeightMeters": 12,
+          "ServiceCapacity": 50,
+          "SiteClearanceMeters": 4,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 0
+        },
+        {
+          "Id": "large",
+          "WidthMeters": 60,
+          "DepthMeters": 40,
+          "HeightMeters": 18,
+          "ServiceCapacity": 200,
+          "SiteClearanceMeters": 6,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 0
+        },
+        {
+          "Id": "distribution-hub",
+          "WidthMeters": 120,
+          "DepthMeters": 80,
+          "HeightMeters": 24,
+          "ServiceCapacity": 1000,
+          "SiteClearanceMeters": 10,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 0
+        }
+      ],
+      "ScaleDemandPerResident": 0.001,
+      "SiteRules": [
+        {
+          "Id": "service-yard",
+          "Kind": "LoadingYard",
+          "Band": "Rear",
+          "MinimumDepthMeters": 4,
+          "InsetMeters": 2.1,
+          "Required": true,
+          "SpeciesAssetId": null,
+          "PlantSpacingMeters": 0,
+          "PlantMarginMeters": 0,
+          "MaximumDepthMeters": 60
+        },
+        {
+          "Id": "landscape-buffer",
+          "Kind": "GreenBuffer",
+          "Band": "Left",
+          "MinimumDepthMeters": 2,
+          "InsetMeters": 2.1,
+          "Required": true,
+          "SpeciesAssetId": null,
+          "PlantSpacingMeters": 0,
+          "PlantMarginMeters": 0,
+          "MaximumDepthMeters": 8
+        }
+      ],
+      "AccessWidthMeters": 4,
+      "MinimumRoadWidthMeters": 6,
+      "AllowedRoles": [
+        "Agricultural",
+        "Industrial",
+        "Mixed"
+      ],
+      "Category": "IndustryExtraction",
+      "CapacityUnit": "storage-units",
+      "AutomaticDemand": true,
+      "PlacementKind": "FrontageSite",
+      "SitingProfile": {
+        "Id": "siting:warehouse",
+        "Revision": 1,
+        "ResearchRuleIds": [
+          "S01",
+          "S04"
+        ],
+        "SourceIds": [
+          "R04",
+          "R22"
+        ],
+        "AllowedDistricts": [
+          "Agriculture",
+          "HeavyIndustry",
+          "LightIndustry",
+          "Logistics",
+          "Port"
+        ],
+        "AllowedTechnologies": [
+          "AgriculturalStorage",
+          "GeneralStorage",
+          "HazardousStorage"
+        ],
+        "Tags": [
+          "freight-intensive"
+        ],
+        "Requirements": [
+          {
+            "Id": "freight",
+            "Kind": "Freight",
+            "Mode": "Road",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 6,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "potable-water",
+            "Kind": "PotableWater",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": [
+              "potable",
+              "reliable"
+            ],
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "power",
+            "Kind": "Electricity",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "wastewater",
+            "Kind": "Wastewater",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          }
+        ],
+        "RequiredSurroundings": [
+          "AccessWalkway",
+          "LoadingYard",
+          "GreenBuffer"
+        ],
+        "Provides": [
+          "Freight",
+          "ParentFacility"
+        ],
+        "OutputUnit": "game-service-units",
+        "OutputUnitsPerCapacity": 1
+      },
+      "Composition": {
+        "Representation": "SingleStructure",
+        "GeometryScope": "one storage/maintenance building; yards/support may be separately authored",
+        "ReviewBasis": "Authored game inventory review; requested scope/parts determine the reusable program. No universal component count or completed artwork is implied.",
+        "PartRoles": [
+          {
+            "Role": "storage-or-work-interior",
+            "Kind": "Interior",
+            "CandidateDefinitionIds": []
+          },
+          {
+            "Role": "handling-ground",
+            "Kind": "GroundArea",
+            "CandidateDefinitionIds": []
+          },
+          {
+            "Role": "support-building",
+            "Kind": "Structure",
+            "CandidateDefinitionIds": [
+              "office-building"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "Programs": [],
+  "Facilities": [],
+  "ReplaceStructureIds": [
+    "detached-house",
+    "factory",
+    "football-stadium",
+    "office-building",
+    "primary-school",
+    "warehouse"
+  ],
+  "ReplaceFacilityIds": []
+}

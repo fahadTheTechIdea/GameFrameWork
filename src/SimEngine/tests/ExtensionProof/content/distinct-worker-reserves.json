@@ -1,0 +1,10 @@
+{
+  "companies": [
+    { "company": 0, "profile": "alerts.neutral", "level": "normal",
+      "worker_reserves": [
+        { "role": "haul", "minimum_ready": 1 },
+        { "role": "inspect", "minimum_ready": 1 }
+      ] },
+    { "company": 1, "profile": "alerts.neutral", "level": "normal", "worker_reserves": [] }
+  ]
+}

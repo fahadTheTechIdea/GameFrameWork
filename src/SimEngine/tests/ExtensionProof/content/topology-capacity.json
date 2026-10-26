@@ -1,0 +1,5 @@
+{
+  "topology_capacity_policies": [
+    {"id":"topology.capacity.point","limits":{"unit.capacity.count":8},"fault":"none"}
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "work_policies": [
+    {
+      "id": "dispatch.machine",
+      "enabled": false,
+      "priority": 0,
+      "allowed_roles": ["haul", "inspect"],
+      "area": null,
+      "interruptible": true,
+      "emergency_eligible": true,"assignment_mode":"all",
+      "states": { "disabled": "blocked","standby":"blocked" }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "game_modes": [{"id":"budget-recovery","name":"Authored upkeep and production-funded work",
+    "properties":{"business.money.enabled":true,"business.trading.enabled":true,
+      "business.construction_costs.enabled":true,"business.manufacturing_costs.enabled":true,
+      "business.running_costs.enabled":true,"business.values.enabled":true,
+      "business.production_income.enabled":true}}]
+}

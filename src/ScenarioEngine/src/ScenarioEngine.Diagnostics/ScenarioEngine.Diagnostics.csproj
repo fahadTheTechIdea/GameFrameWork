@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk"><ItemGroup>
+<ProjectReference Include="../ScenarioEngine.Contracts/ScenarioEngine.Contracts.csproj" />
+<PackageReference Include="Microsoft.Extensions.Logging.Console" />
+</ItemGroup></Project>

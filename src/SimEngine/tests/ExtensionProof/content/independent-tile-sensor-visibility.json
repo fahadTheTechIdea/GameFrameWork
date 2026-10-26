@@ -1,0 +1,4 @@
+{
+  "knowledge_visibility_policies": [{"id":"sensor.visibility","own_entities":true,"unlisted_entities":false,"unlisted_content":true,"rules":["sensor.target-sight"]}],
+  "entity_sensor_visibility": [{"id":"sensor.target-sight","definition":"sensor.target","sensors":["sensor.sight"]}]
+}

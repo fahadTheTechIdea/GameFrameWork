@@ -1,0 +1,108 @@
+{
+  "SchemaVersion": 1,
+  "Id": "space-catalog",
+  "Archetypes": [
+    {
+      "Id": "root",
+      "Kind": "universe",
+      "Purpose": "Game-authored universe program",
+      "Properties": {},
+      "Parts": [
+        {
+          "Id": "systems",
+          "ArchetypeId": "system",
+          "Count": 0,
+          "Purpose": "Named systems",
+          "CountParameter": "systems",
+          "Layout": {
+            "Origin": [
+              100,
+              0,
+              0
+            ],
+            "Step": [
+              1000,
+              0,
+              100
+            ]
+          }
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "lanes",
+          "Kind": "hyperspace-lane",
+          "Pattern": "Chain",
+          "FromPart": "systems",
+          "ToPart": null,
+          "Bidirectional": true,
+          "Properties": null
+        }
+      ],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "system",
+      "Kind": "star-system",
+      "Purpose": "Game-authored star-system program",
+      "Properties": {},
+      "Parts": [
+        {
+          "Id": "planets",
+          "ArchetypeId": "planet",
+          "Count": 0,
+          "Purpose": "System destinations",
+          "CountParameter": "planets",
+          "Layout": {
+            "Origin": [
+              50,
+              0,
+              0
+            ],
+            "Step": [
+              50,
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "routes",
+          "Kind": "system-travel",
+          "Pattern": "Hub",
+          "FromPart": "self",
+          "ToPart": "planets",
+          "Bidirectional": true,
+          "Properties": null
+        }
+      ],
+      "ChildRequirements": [
+        {
+          "Kind": "planet",
+          "Minimum": 1,
+          "Maximum": 12
+        }
+      ],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "planet",
+      "Kind": "planet",
+      "Purpose": "Game-authored planet program",
+      "Properties": {
+        "exploration": "unvisited",
+        "orbital_simulation": "consumer-defined"
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    }
+  ]
+}

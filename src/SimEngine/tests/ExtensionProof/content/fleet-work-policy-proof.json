@@ -1,0 +1,17 @@
+{
+  "entities": [
+    {"id":"fleet.public-carrier","kind":"vehicle","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":true},
+      "mover":{"classes":["survey.route","terrain.route"],"class":"survey.route","speed":30,"states":{"moving":"survey.moving","stopped":"survey.stopped"}},
+      "worker":{"work_rate":1,"roles":["haul"],"states":{"working":"survey.working","loading":"survey.loading","stopped":"survey.stopped"}},
+      "proof_fleet_work_policy":{"profile":"fleet.enabled","fault":0},
+      "storage":{"capacity_policy":"fleet.cargo","public":false,"initial_stock":{}},
+      "transporter":{"handling":"fleet.handling"}
+    }},
+    {"id":"fleet.no-policy","kind":"vehicle","components":{
+      "tile_presence":{"space":"survey.tiles","width":1,"height":1,"blocks":true,"movable":true},
+      "mover":{"classes":["survey.route"],"class":"survey.route","speed":30,"states":{"moving":"survey.moving","stopped":"survey.stopped"}},
+      "worker":{"work_rate":1,"roles":["haul"],"states":{"working":"survey.working","loading":"survey.loading","stopped":"survey.stopped"}}
+    }}
+  ]
+}

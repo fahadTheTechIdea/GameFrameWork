@@ -1,0 +1,55 @@
+{
+  "world_setup_profiles": [
+    { "id": "traffic.start", "entries": ["traffic.start.west", "traffic.start.north", "traffic.start.corner", "traffic.start.south", "traffic.a", "traffic.b"], "includes": [] },
+    { "id": "traffic.choke", "entries": ["traffic.choke.left", "traffic.choke.right", "traffic.choke.a", "traffic.choke.b"], "includes": [] },
+    { "id": "traffic.crossing", "entries": ["traffic.crossing.west", "traffic.crossing.east", "traffic.crossing.a", "traffic.crossing.b"], "includes": [] },
+    { "id": "traffic.home", "entries": ["traffic.home.base", "traffic.home.yard", "traffic.home.depot", "traffic.home.grid", "traffic.home.parked.west", "traffic.home.parked.middle", "traffic.home.parked.east", "traffic.home.a", "traffic.home.b"], "includes": [] }
+  ],
+  "entities": [
+    { "id": "traffic.west", "kind": "structure", "components": { "tile_presence": { "space": "survey.tiles", "width": 5, "height": 4, "blocks": true, "movable": false } } },
+    { "id": "traffic.north", "kind": "structure", "components": { "tile_presence": { "space": "survey.tiles", "width": 3, "height": 3, "blocks": true, "movable": false } } },
+    { "id": "traffic.corner", "kind": "structure", "components": { "tile_presence": { "space": "survey.tiles", "width": 2, "height": 2, "blocks": true, "movable": false } } },
+    { "id": "traffic.south", "kind": "structure", "components": { "tile_presence": { "space": "survey.tiles", "width": 4, "height": 4, "blocks": true, "movable": false } } },
+    { "id": "traffic.wall.left", "kind": "structure", "components": { "tile_presence": { "space": "survey.tiles", "width": 8, "height": 1, "blocks": true, "movable": false } } },
+    { "id": "traffic.wall.right", "kind": "structure", "components": { "tile_presence": { "space": "survey.tiles", "width": 15, "height": 1, "blocks": true, "movable": false } } },
+    { "id": "traffic.plug", "kind": "structure", "components": { "tile_presence": { "space": "survey.tiles", "width": 1, "height": 1, "blocks": true, "movable": false } } },
+    { "id": "traffic.home.base", "kind": "structure", "components": {
+      "tile_presence": { "space": "survey.tiles", "width": 4, "height": 4, "blocks": true, "movable": false },
+      "tile_work_dock": { "work_roles": [], "resources": [], "slots": [
+        {"id":"p.0","kind":"parking","x":-2,"y":-2}, {"id":"p.1","kind":"parking","x":-1,"y":-2},
+        {"id":"p.2","kind":"parking","x":2,"y":-2}, {"id":"p.3","kind":"parking","x":3,"y":-2},
+        {"id":"p.4","kind":"parking","x":4,"y":-2}, {"id":"p.5","kind":"parking","x":5,"y":-2},
+        {"id":"p.6","kind":"parking","x":5,"y":5}, {"id":"p.7","kind":"parking","x":4,"y":5},
+        {"id":"p.8","kind":"parking","x":3,"y":5}, {"id":"p.9","kind":"parking","x":2,"y":5},
+        {"id":"p.10","kind":"parking","x":-1,"y":5}, {"id":"p.11","kind":"parking","x":-2,"y":5}
+      ]}
+    }},
+    { "id": "traffic.home.yard", "kind": "structure", "components": {"tile_presence":{"space":"survey.tiles","width":5,"height":4,"blocks":true,"movable":false}}},
+    { "id": "traffic.home.depot", "kind": "structure", "components": {"tile_presence":{"space":"survey.tiles","width":3,"height":3,"blocks":true,"movable":false}}}
+  ],
+  "entity_setups": [
+    { "id": "traffic.start.west", "after": [], "entity": "traffic.west", "company": 0, "placement": { "space": "survey.tiles", "x": 3, "y": 6 }, "home": null },
+    { "id": "traffic.start.north", "after": [], "entity": "traffic.north", "company": 0, "placement": { "space": "survey.tiles", "x": 3, "y": 1 }, "home": null },
+    { "id": "traffic.start.corner", "after": [], "entity": "traffic.corner", "company": 0, "placement": { "space": "survey.tiles", "x": 7, "y": 3 }, "home": null },
+    { "id": "traffic.start.south", "after": [], "entity": "traffic.south", "company": 0, "placement": { "space": "survey.tiles", "x": 9, "y": 12 }, "home": null },
+    { "id": "traffic.a", "after": ["traffic.start.west", "traffic.start.north", "traffic.start.corner", "traffic.start.south"], "entity": "survey.machine", "company": 0, "placement": { "space": "survey.tiles", "x": 8, "y": 8 }, "home": null },
+    { "id": "traffic.b", "after": ["traffic.a"], "entity": "survey.machine", "company": 0, "placement": { "space": "survey.tiles", "x": 8, "y": 7 }, "home": null },
+    { "id": "traffic.choke.left", "after": [], "entity": "traffic.wall.left", "company": 0, "placement": { "space": "survey.tiles", "x": 0, "y": 6 }, "home": null },
+    { "id": "traffic.choke.right", "after": [], "entity": "traffic.wall.right", "company": 0, "placement": { "space": "survey.tiles", "x": 9, "y": 6 }, "home": null },
+    { "id": "traffic.choke.a", "after": ["traffic.choke.left", "traffic.choke.right"], "entity": "survey.machine", "company": 0, "placement": { "space": "survey.tiles", "x": 8, "y": 9 }, "home": null },
+    { "id": "traffic.choke.b", "after": ["traffic.choke.a"], "entity": "survey.machine", "company": 0, "placement": { "space": "survey.tiles", "x": 9, "y": 7 }, "home": null },
+    { "id": "traffic.crossing.west", "after": [], "entity": "traffic.plug", "company": 0, "placement": {"space":"survey.tiles","x":5,"y":8}, "home":null },
+    { "id": "traffic.crossing.east", "after": [], "entity": "traffic.plug", "company": 0, "placement": {"space":"survey.tiles","x":9,"y":8}, "home":null },
+    { "id": "traffic.crossing.a", "after": ["traffic.crossing.west","traffic.crossing.east"], "entity": "survey.machine", "company": 0, "placement": {"space":"survey.tiles","x":8,"y":7}, "home":null },
+    { "id": "traffic.crossing.b", "after": ["traffic.crossing.a"], "entity": "survey.machine", "company": 0, "placement": {"space":"survey.tiles","x":8,"y":8}, "home":null },
+    { "id": "traffic.home.base", "after": [], "entity": "traffic.home.base", "company": 0, "placement": {"space":"survey.tiles","x":7,"y":20}, "home":null },
+    { "id": "traffic.home.yard", "after": [], "entity": "traffic.home.yard", "company": 0, "placement": {"space":"survey.tiles","x":1,"y":13}, "home":null },
+    { "id": "traffic.home.depot", "after": [], "entity": "traffic.home.depot", "company": 0, "placement": {"space":"survey.tiles","x":0,"y":8}, "home":null },
+    { "id": "traffic.home.grid", "after": [], "entity": "traffic.corner", "company": 0, "placement": {"space":"survey.tiles","x":5,"y":9}, "home":null },
+    { "id": "traffic.home.parked.west", "after": [], "entity": "traffic.plug", "company": 0, "placement": {"space":"survey.tiles","x":5,"y":18}, "home":null },
+    { "id": "traffic.home.parked.middle", "after": [], "entity": "traffic.plug", "company": 0, "placement": {"space":"survey.tiles","x":9,"y":18}, "home":null },
+    { "id": "traffic.home.parked.east", "after": [], "entity": "traffic.plug", "company": 0, "placement": {"space":"survey.tiles","x":11,"y":18}, "home":null },
+    { "id": "traffic.home.a", "after": ["traffic.home.base","traffic.home.yard","traffic.home.depot","traffic.home.grid","traffic.home.parked.west","traffic.home.parked.middle","traffic.home.parked.east"], "entity": "survey.machine", "company": 0, "placement": {"space":"survey.tiles","x":8,"y":18}, "home":null },
+    { "id": "traffic.home.b", "after": ["traffic.home.a","traffic.home.base"], "entity": "survey.machine", "company": 0, "placement": {"space":"survey.tiles","x":8,"y":17}, "home":"traffic.home.base" }
+  ]
+}

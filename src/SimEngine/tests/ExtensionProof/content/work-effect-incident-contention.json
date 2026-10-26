@@ -1,0 +1,9 @@
+{
+  "waves": 2,
+  "sources": [
+    {"id":"damage","workflow":"disposition.incident","states":{"active":"blocked"}},
+    {"id":"alarm","workflow":"disposition.incident","states":{"active":"blocked"}},
+    {"id":"release","workflow":"disposition.incident","states":{"active":"blocked"}},
+    {"id":"contamination","workflow":"disposition.incident","states":{"active":"blocked"}}
+  ]
+}

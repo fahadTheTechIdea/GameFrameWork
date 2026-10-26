@@ -1,0 +1,21 @@
+{
+  "activities": [
+    {"id":"plan.supplied","player_orderable":true,"priority":40,"automatic_supply":true,
+     "nodes":[{"executor":"work.staffed","id":"work","roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"preempt.materials"}]}
+  ],
+  "planned_inspections": [
+    {
+      "id": "plan.inspection",
+      "admission_target": "source",
+      "player_orderable": true,
+      "priority": 40,
+      "automatic_supply": false,
+      "nodes": [
+        {"executor":"work.timed","id":"finish","after":["inspect","fluid"],"duration":{"numerator":1,"denominator":20,"unit":"hour"}},
+        {"executor":"work.staffed","id":"inspect","after":["prepare"],"roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"}},
+        {"executor":"work.timed","id":"prepare","duration":{"numerator":1,"denominator":20,"unit":"hour"}},
+        {"executor":"work.timed","id":"fluid","duration":{"numerator":2,"denominator":25,"unit":"hour"}}
+      ]
+    }
+  ]
+}

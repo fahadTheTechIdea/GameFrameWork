@@ -1,0 +1,83 @@
+{
+  "SchemaVersion": 1,
+  "Id": "game-city-catalog",
+  "Structures": [
+    {
+      "Id": "house",
+      "Kind": "house",
+      "Purpose": "Residential home",
+      "Footprint": {
+        "X": 0,
+        "Y": 0,
+        "Width": 14,
+        "Height": 12
+      },
+      "Parts": [],
+      "IsOpenSpace": false,
+      "CatalogReference": null
+    },
+    {
+      "Id": "shop",
+      "Kind": "shop",
+      "Purpose": "Neighborhood trade",
+      "Footprint": {
+        "X": 0,
+        "Y": 0,
+        "Width": 18,
+        "Height": 14
+      },
+      "Parts": [],
+      "IsOpenSpace": false,
+      "CatalogReference": null
+    },
+    {
+      "Id": "civic",
+      "Kind": "civic-building",
+      "Purpose": "Public services",
+      "Footprint": {
+        "X": 0,
+        "Y": 0,
+        "Width": 24,
+        "Height": 18
+      },
+      "Parts": [],
+      "IsOpenSpace": false,
+      "CatalogReference": null
+    },
+    {
+      "Id": "workshop",
+      "Kind": "workshop",
+      "Purpose": "Production building",
+      "Footprint": {
+        "X": 0,
+        "Y": 0,
+        "Width": 20,
+        "Height": 18
+      },
+      "Parts": [],
+      "IsOpenSpace": false,
+      "CatalogReference": null
+    },
+    {
+      "Id": "compound",
+      "Kind": "facility",
+      "Purpose": "Reusable compound site",
+      "Footprint": {
+        "X": 0,
+        "Y": 0,
+        "Width": 52,
+        "Height": 36
+      },
+      "Parts": [
+        {
+          "Id": "workspaces",
+          "StructureId": "workshop",
+          "Count": 2,
+          "Purpose": "Separate production structures"
+        }
+      ],
+      "IsOpenSpace": false,
+      "CatalogReference": null
+    }
+  ]
+}

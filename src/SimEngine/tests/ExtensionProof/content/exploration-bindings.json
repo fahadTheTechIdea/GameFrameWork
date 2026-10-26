@@ -1,0 +1,17 @@
+{
+  "entity_states":[{"id":"binding.sampling","state":"binding.exploring","priority":25}],
+  "point_interval_regions":[{"id":"binding.region","space":"field.points","minimum":9,"maximum":11}],
+  "knowledge_facts":[
+    {"id":"binding.reset-known","fresh_for":null,"value":{"region":"binding.region","branch":"reset"}},
+    {"id":"binding.retain-known","fresh_for":null,"value":{"region":"binding.region","branch":"retain"}}
+  ],
+  "contact_exploration_requirements":[{"id":"exploration.contact"}],
+  "independent_contact_profiles":[{"id":"binding.profile","states":{"sampling":"binding.sampling"},"entries":[
+    {"id":"b.retain","requirement":"exploration.contact","region":"binding.region","subject":"binding.retain-known","duration":{"numerator":15,"denominator":1,"unit":"minute"},"interruption":"retain"},
+    {"id":"a.reset","requirement":"exploration.contact","region":"binding.region","subject":"binding.reset-known","duration":{"numerator":12,"denominator":1,"unit":"minute"},"interruption":"reset"}
+  ]}],
+  "knowledge_sharing_policies":[{"id":"binding.share","subjects":[{"provider":"sim.knowledge.facts","subject":"binding.reset-known"},{"provider":"sim.knowledge.facts","subject":"binding.retain-known"}],"directions":[{"sender":0,"recipient":1}]}],
+  "knowledge_forgetting_policies":[{"id":"binding.forget","subjects":[{"provider":"sim.knowledge.facts","subject":"binding.reset-known"},{"provider":"sim.knowledge.facts","subject":"binding.retain-known"}],"companies":[0]}],
+  "activities":[{"id":"binding.travel","player_orderable":true,"priority":70,"automatic_supply":false,
+    "nodes":[{"id":"arrive","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":1,"unit":"minute"}}]}]
+}

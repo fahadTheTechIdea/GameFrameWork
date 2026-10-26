@@ -1,0 +1,10 @@
+{
+  "worker_roles": [{"id":"band.inspect"}],
+  "target_resource_requirements": [
+    {"port":null,"id":"band.inputs","use":"consume","quantities":{"supply":12}}
+  ],
+  "activities": [
+    {"id":"band.waiting-work","player_orderable":true,"priority":80,"automatic_supply":true,
+     "nodes":[{"executor":"work.staffed","id":"work","roles":["band.inspect"],"duration":{"numerator":1,"denominator":1,"unit":"hour"},"requirement":"band.inputs"}]}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "resource_recovery_effects": [{"id":"point.recover-stock"}],
+  "activities": [{"id":"point.recover","player_orderable":true,"automatic_supply":false,
+    "nodes":[{"executor":"work.staffed","id":"recover","roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"effect":"point.recover-stock"}]}],
+  "target_resource_requirements": [{"port":null,"id":"point.retained-tools","use":"hold","quantities":{"supply":4}}],
+  "work_requirement_groups": [{"id":"point.surplus-inputs","mode":"all","entries":[
+    {"id":"consume","requirement":"point.build-inputs"},{"id":"tools","requirement":"point.retained-tools"}]}]
+}

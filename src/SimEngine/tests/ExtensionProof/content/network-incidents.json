@@ -1,0 +1,26 @@
+{
+  "network_incident_propagation_rules": [{
+    "id":"network.fire-spread","network":"binding.main",
+    "interval":{"numerator":1,"denominator":1,"unit":"minute"},
+    "delay":{"numerator":4,"denominator":1,"unit":"minute"},
+    "target_source":"leak","target_kind":"network.fire","companies":"same",
+    "source_conditions":[],"target_conditions":[]
+  }],
+  "response_effects":[{"id":"network.incident.resolve","bound_response":true}],
+  "activities":[
+    {"id":"network.fire-response","player_orderable":false,"priority":90,"automatic_supply":false,
+      "nodes":[{"id":"repair","executor":"work.staffed","roles":["crane"],
+        "duration":{"numerator":8,"denominator":1,"unit":"minute"}}],"on_complete":"network.incident.resolve"},
+    {"id":"network.valve-response","player_orderable":false,"priority":90,"automatic_supply":false,
+      "nodes":[{"id":"release","executor":"work.staffed","roles":["crane"],
+        "duration":{"numerator":8,"denominator":1,"unit":"minute"}}],"on_complete":"network.incident.resolve"}
+  ],
+  "incident_workflows":[
+    {"id":"network.fire","kind":"network.fire","response":"network.fire-response","phases":[{"id":"repair","nodes":["repair"]}]},
+    {"id":"network.valve","kind":"network.valve","response":"network.valve-response","phases":[{"id":"hold","nodes":["release"]}]}
+  ],
+  "signals":[
+    {"id":"network.valve-active","kind":"boolean","metric":"incident.active","unit":"unit.boolean",
+      "providers":[{"component":"incident_signal","schema":1}]}
+  ]
+}

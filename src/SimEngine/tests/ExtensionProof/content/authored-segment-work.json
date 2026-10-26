@@ -1,0 +1,13 @@
+{
+  "worker_resource_requirements":[
+    {"port":null,"id":"segment.tool","use":"hold","quantities":{"steel":1}},
+    {"port":null,"id":"segment.material","use":"consume","quantities":{"steel":2}}
+  ],
+  "activities":[
+    {"id":"segment.shared","player_orderable":false,"automatic_supply":false,"nodes":[
+      {"id":"install","executor":"work.staffed","roles":["survey"],"duration":{"numerator":4,"denominator":1,"unit":"minute"},"after":["prepare","inspect"],"requirement":"segment.material","effect":"segment.stamp"},
+      {"id":"prepare","executor":"work.staffed","roles":["survey"],"duration":{"numerator":3,"denominator":1,"unit":"minute"},"requirement":"segment.tool"},
+      {"id":"inspect","executor":"work.staffed","roles":["survey"],"duration":{"numerator":6,"denominator":1,"unit":"minute"}}
+    ]}
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "modules": [
+    {"id":"sim.world-setup","version":"1.0.0","documents":[]},
+    { "id": "sim.access", "version": "1.0.0", "documents": ["framework/access.json"] },
+    { "id": "sim.inventory", "version": "1.0.0", "documents": [] },
+    { "id": "sim.operations", "version": "1.0.0", "documents": [] },
+    { "id": "sim.transformations", "version": "1.0.0", "requires": [
+      { "id": "sim.access", "version": "1.0.0" }, { "id": "sim.inventory", "version": "1.0.0" }, { "id": "sim.operations", "version": "1.0.0" }
+    ], "documents": [] },
+    { "id": "proof.process", "version": "1.0.0", "requires": [{ "id": "sim.transformations", "version": "1.0.0" }], "documents": ["production-income.json"] },
+    { "id": "proof.modes", "version": "1.0.0", "documents": ["game-mode-properties.json", "production-income-modes.json"] },
+    { "id": "sim.tycoon", "version": "1.0.0", "documents": ["production-income-economics.json"] }
+  ]
+}

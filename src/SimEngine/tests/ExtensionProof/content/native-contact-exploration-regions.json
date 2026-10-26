@@ -1,0 +1,5 @@
+{
+  "entity_states": [{"id":"contact.sampling","state":"exploring","priority":70}],
+  "rectangular_tile_regions": [{"id":"contact.north","space":"survey.tiles","x":7,"y":9,"width":3,"height":3}],
+  "painted_tile_regions": [{"id":"contact.east","space":"survey.tiles","tiles":[{"x":14,"y":10},{"x":14,"y":11}]}]
+}

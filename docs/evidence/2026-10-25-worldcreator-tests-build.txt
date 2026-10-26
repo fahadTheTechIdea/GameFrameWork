@@ -1,0 +1,16 @@
+  Determining projects to restore...
+  Restored H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\WorldCreator.Tests.csproj (in 164 ms).
+  Restored H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.TestCatalog\WorldCreator.TestCatalog.csproj (in 163 ms).
+  4 of 6 projects are up-to-date for restore.
+  WorldCreator.Core -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator.Core\bin\Release\net10.0\WorldCreator.Core.dll
+  WorldCreator.Worlds -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator.Worlds\bin\Release\net10.0\WorldCreator.Worlds.dll
+  WorldCreator.Godot -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator.Godot\bin\Release\net10.0\WorldCreator.Godot.dll
+  WorldCreator.Catalogs.Modern -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator.Catalogs.Modern\bin\Release\net10.0\WorldCreator.Catalogs.Modern.dll
+  WorldCreator.TestCatalog -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.TestCatalog\bin\Release\net10.0\WorldCreator.TestCatalog.dll
+  WorldCreator.Tests -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\tests\WorldCreator.Tests\bin\Release\net10.0\WorldCreator.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:08.35

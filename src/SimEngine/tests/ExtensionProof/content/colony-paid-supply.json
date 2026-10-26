@@ -1,0 +1,7 @@
+{
+  "units": [{"id":"unit.money","dimension":"currency","scale":{"numerator":1,"denominator":1},"discrete":false}],
+  "game_modes": [{"id":"colony.paid-supply","name":"Explicit finite purchase contract proof","properties":{
+    "business.money.enabled":true,"business.trading.enabled":true
+  }}],
+  "business_accounts": [{"id":"colony.paid.accounts","currency":"unit.money","opening_cash":500000}]
+}

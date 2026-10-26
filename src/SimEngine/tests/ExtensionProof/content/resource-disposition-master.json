@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "modules": [
+    {"id":"sim.access","version":"1.0.0","documents":["framework/access.json"]},
+    {"id":"sim.inventory","version":"1.0.0","documents":[]},
+    {"id":"sim.resource-flows","version":"1.0.0","requires":[{"id":"sim.inventory","version":"1.0.0"}],"documents":["flows.json"]},
+    {"id":"sim.operations","version":"1.0.0","documents":[]},
+    {"id":"sim.transformations","version":"1.0.0","requires":[{"id":"sim.access","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"},{"id":"sim.operations","version":"1.0.0"}],"documents":[]},
+    {"id":"sim.motion","version":"1.0.0","documents":[]},
+    {"id":"sim.tile-navigation","version":"1.0.0","requires":[{"id":"sim.motion","version":"1.0.0"}],"documents":["resource-disposition-navigation.json"]},
+    {"id":"sim.work","version":"1.0.0","requires":[{"id":"sim.access","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"},{"id":"sim.motion","version":"1.0.0"}],"documents":["work-retry.json"]},
+    {"id":"sim.logistics","version":"1.0.0","requires":[{"id":"sim.work","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"}],"documents":[]},
+    {"id":"sim.construction","version":"1.0.0","requires":[{"id":"sim.work","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"}],"documents":[]},
+    {"id":"sim.infrastructure","version":"1.0.0","requires":[{"id":"sim.work","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"}],"documents":[]},
+    {"id":"sim.incidents","version":"1.0.0","requires":[{"id":"sim.work","version":"1.0.0"}],"documents":[]},
+    {"id":"sim.incident-propagation","version":"1.0.0","requires":[{"id":"sim.incidents","version":"1.0.0"}],"documents":[]},
+    {"id":"sim.environment-metrics","version":"1.0.0","requires":[{"id":"sim.resource-flows","version":"1.0.0"}],"documents":[]},
+    {"id":"sim.objectives","version":"1.0.0","documents":[]},
+    {"id":"sim.equipment-condition","version":"1.0.0","documents":[]},
+    {"id":"sim.tycoon","version":"1.0.0","documents":[]},
+    {"id":"sim.world-setup","version":"1.0.0","documents":["resource-disposition-startup.json"]},
+    {"id":"sim.tile-construction-rules","version":"1.0.0","requires":[{"id":"sim.construction","version":"1.0.0"}],"documents":[]},
+    {"id":"sim.tile-conditions","version":"1.0.0","documents":[]},
+    {"id":"colony","version":"1.0.0","requires":[{"id":"sim.work","version":"1.0.0"},{"id":"sim.transformations","version":"1.0.0"},{"id":"sim.tile-navigation","version":"1.0.0"},{"id":"sim.logistics","version":"1.0.0"},{"id":"sim.construction","version":"1.0.0"},{"id":"sim.infrastructure","version":"1.0.0"},{"id":"sim.incidents","version":"1.0.0"}],"documents":["colony.json"]}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "knowledge_visibility_policies": [{"id":"contact.sight","own_entities":true,"unlisted_entities":false,"unlisted_content":true,"rules":["contact.terrain.known","contact.deposit.survey"]}],
+  "layer_region_knowledge_visibility": [{"id":"contact.terrain.known","definition":"survey.terrain","regions":[
+    {"region":"contact.north","mode":"all","facts":["contact.north.known"]},
+    {"region":"contact.east","mode":"all","facts":["contact.east.known"]}
+  ]}],
+  "layer_fresh_knowledge_visibility": [{"id":"contact.deposit.survey","definition":"survey.deposit","readings":["survey.reading"]}]
+}

@@ -1,0 +1,240 @@
+{
+  "schema": 1,
+  "modules": [
+    {
+      "id": "sim.access",
+      "version": "1.0.0",
+      "documents": [
+        "framework/access.json"
+      ]
+    },
+    {
+      "id": "sim.inventory",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.resource-flows",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "sim.operations",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.transformations",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.access",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.operations",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "sim.motion",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.work",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.access",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.motion",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "work-retry.json"
+      ]
+    },
+    {
+      "id": "sim.logistics",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.work",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "sim.construction",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.work",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.inventory",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "points",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.work",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.transformations",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.logistics",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "sim.world-setup",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.spatial-resources",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.work",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "planet-x",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.world-setup",
+          "version": "1.0.0"
+        },
+        {
+          "id": "points",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.spatial-resources",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "planet-x.json"
+      ]
+    },
+    {
+      "id": "sim.knowledge",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "sim.technology",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.work",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.knowledge",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "sim.automation",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.operations",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "sim.incidents",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "sim.work",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": []
+    },
+    {
+      "id": "sim.scenario-pressure",
+      "version": "1.0.0",
+      "documents": []
+    },
+    {
+      "id": "planet-x-control",
+      "version": "1.0.0",
+      "requires": [
+        {
+          "id": "planet-x",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.technology",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.automation",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.incidents",
+          "version": "1.0.0"
+        },
+        {
+          "id": "sim.scenario-pressure",
+          "version": "1.0.0"
+        }
+      ],
+      "documents": [
+        "planet-x-control.json"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+"work_requirement_groups": [
+  {"id":"expression.root","mode":"all","entries":[{"id":"b.availability","requirement":"expression.any"},{"id":"a.reserve","requirement":"expression.reserve"}]},
+  {"id":"expression.any","mode":"any","entries":[{"id":"z.cash","requirement":"expression.high-reserve"},{"id":"a.site","requirement":"expression.permit"}]},
+  {"id":"proof.requirement-expressions.expression.machine.work.requirements","mode":"all","entries":[{"id":"guard","requirement":"expression.root"},{"id":"inputs","requirement":"proof.requirement-expressions.expression.machine.work.inputs"},{"id":"cost","requirement":"proof.requirement-expressions.expression.machine.work.cost"}]}
+],
+"work_permits": [
+  {"id":"expression.permit","blocker":"expression.disabled","missing":"expression.missing-permit"}
+],
+"work_reserves": [
+  {"id":"expression.reserve","minimum":100,"blocker":"expression.reserve-low","unit":"unit.cash"},
+  {"id":"expression.high-reserve","minimum":20000,"blocker":"expression.high-reserve-low","unit":"unit.cash"}
+],
+"activities": [
+  {"id":"expression.machine","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"work","roles":["crane"],"duration":{"numerator":1,"denominator":2,"unit":"hour"},"requirement":"proof.requirement-expressions.expression.machine.work.requirements"}]},
+  {"id":"expression.timer","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.timed","id":"wait","duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"expression.any"}]}
+],
+"entities": [
+  {"id":"expression.target","kind":"structure","components":{"tile_presence":{"space":"recovery.tiles","width":2,"height":2,"blocks":true,"movable":false},"storage":{"capacity_policy":"recovery.site","public":false,"initial_stock":{"steel":10,"water":2}},"work_permit":{"enabled":false},"activity_record":{}}}
+],
+"target_resource_requirements": [
+  {"port":null,"id":"proof.requirement-expressions.expression.machine.work.inputs","use":"consume","quantities":{"steel":2}}
+],
+"work_cost_requirements": [
+  {"id":"proof.requirement-expressions.expression.machine.work.cost","amount":5,"credit":false, "category": "construction"}
+]
+}

@@ -1,0 +1,6 @@
+{
+  "company_alert_profiles": [
+    {"id":"alerts.response","normal":[],"urgent":[],"emergency":[{"scope":"sim.work","emergency":true,"priority_adjustment":500}]},
+    {"id":"alerts.other","normal":[],"urgent":[],"emergency":[]}
+  ]
+}

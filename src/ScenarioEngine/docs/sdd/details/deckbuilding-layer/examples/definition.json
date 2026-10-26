@@ -1,0 +1,15 @@
+{
+  "id": "deckbuilding_layer",
+  "definitionVersion": "1.0.0",
+  "cardIds": [
+    "strike",
+    "guard",
+    "supply"
+  ],
+  "startingDeck": [
+    "starter_strike",
+    "starter_guard"
+  ],
+  "handLimit": 10,
+  "maxEffectDepth": 16
+}

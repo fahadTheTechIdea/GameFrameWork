@@ -1,0 +1,22 @@
+{
+  "game_modes":[{"id":"topology.resource-only","name":"Resource-only topology protocol","properties":{}}],
+  "time_definitions":[{"id":"recovery.minute","quantum":{"numerator":60,"denominator":1,"unit":"second"},"frame_ticks":1,"ticks_per_second":30,"horizon":null}],
+  "tile_spaces":[{"id":"recovery.tiles","width":48,"height":32}],
+  "entity_states":[{"id":"idle","state":"state.idle","priority":0,"default":true}],
+  "units":[
+    {"id":"unit.classification","dimension":"classification","scale":{"numerator":1,"denominator":1},"discrete":true},
+    {"id":"unit.storage","dimension":"mass","scale":{"numerator":1,"denominator":1},"discrete":false},
+    {"id":"unit.steel","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true},
+    {"id":"unit.water","dimension":"volume","scale":{"numerator":1,"denominator":1},"discrete":false}
+  ],
+  "resources":[
+    {"id":"steel","unit":"unit.steel","category":"material","phase":"solid","traits":[],"capacity":{"unit.storage":1}},
+    {"id":"water","unit":"unit.water","category":"fluid","phase":"liquid","traits":[],"capacity":{"unit.storage":1}}
+  ],
+  "worker_roles":[{"id":"crane"}],
+  "capacity_policies":[{"id":"recovery.site","limits":{"unit.storage":100}}],
+  "line_effects":[{"id":"sim.line.segment","operation":"segment"},{"id":"sim.line.finish","operation":"finish"}],
+  "scenarios":[{"id":"colony","game_mode":"topology.resource-only","mode_overrides":{},"time":"recovery.minute","space":"recovery.tiles",
+    "modules":["sim.access","sim.inventory","sim.motion","sim.tile-navigation","sim.work","sim.infrastructure"],"seats":2,"default_seats":2,
+    "settings":{"sim.work":{"retry":"proof.retry"}}}]
+}

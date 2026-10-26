@@ -1,0 +1,24 @@
+{
+  "time_definitions": [
+    { "id": "business.second", "quantum": { "numerator": 1, "denominator": 1, "unit": "second" }, "frame_ticks": 1, "ticks_per_second": 30, "horizon": null }
+  ],
+  "units": [
+    { "id": "unit.gold", "dimension": "count", "scale": { "numerator": 1, "denominator": 1 }, "discrete": true },
+    { "id": "unit.water", "dimension": "volume", "scale": { "numerator": 1, "denominator": 1 }, "discrete": false },
+    { "id": "unit.money", "dimension": "currency", "scale": { "numerator": 1, "denominator": 1 }, "discrete": false }
+  ],
+  "resources": [
+    { "id": "gold", "unit": "unit.gold", "category": "mineral", "phase": "solid", "traits": [], "capacity": { "unit.gold": 1 } },
+    { "id": "water", "unit": "unit.water", "category": "fluid", "phase": "liquid", "traits": [], "capacity": { "unit.water": 1 } }
+  ],
+  "scenarios": [
+    { "id": "survival", "mode_overrides": {}, "game_mode": "survival", "time": "business.second", "modules": ["proof.business"], "seats": 2, "default_seats": 2 },
+    { "id": "default-business", "mode_overrides": {}, "game_mode": "business-defaults", "time": "business.second", "modules": ["proof.business", "sim.tycoon", "proof.business-values"], "seats": 2, "default_seats": 2,
+      "settings": { "sim.tycoon": { "valuation_policy": "default-values", "account_policy": "colony.accounts", "income_policy": null } } },
+    { "id": "dormant-business", "mode_overrides": {}, "game_mode": "survival", "time": "business.second", "modules": ["proof.business", "sim.tycoon"], "seats": 2, "default_seats": 2 },
+    { "id": "values-only", "mode_overrides": {}, "game_mode": "business-values", "time": "business.second", "modules": ["proof.business", "sim.tycoon", "proof.business-values"], "seats": 2, "default_seats": 2,
+      "settings": { "sim.tycoon": { "valuation_policy": "default-values" } } },
+    { "id": "accounts-only", "mode_overrides": {}, "game_mode": "business-money", "time": "business.second", "modules": ["proof.business", "sim.tycoon"], "seats": 2, "default_seats": 2,
+      "settings": { "sim.tycoon": { "account_policy": "colony.accounts" } } }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "game_modes": [{"id":"sensor.resource-only","name":"Independent tile sensor","properties":{}}],
+  "time_definitions": [{"id":"sensor.minute","quantum":{"numerator":60,"denominator":1,"unit":"second"},"frame_ticks":1,"ticks_per_second":30,"horizon":null}],
+  "entity_states": [
+    {"id":"sensor.idle","state":"idle","priority":0,"default":true},
+    {"id":"sensor.stopped","state":"stopped","priority":60}
+  ],
+  "units": [{"id":"sensor.count","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true}],
+  "sensor_tile_spaces": [{"id":"sensor.tiles","width":32,"height":32}],
+  "spatial_layers": [{"id":"sensor.screen","space":"sensor.tiles","type":"optical.density","value_type":"byte","visibility":"public","unit":"sensor.count"}],
+  "entities": [
+    {"id":"sensor.source","kind":"structure","components":{
+      "tile_presence":{"space":"sensor.tiles","width":1,"height":1,"blocks":true,"movable":true},
+      "tile_sensor":{"space":"sensor.tiles","occlusion":[{"layer":"sensor.screen","threshold":2}],
+        "operation":{"id":"sensor.sight","enabled":true,"target":32,"minimum":0,"maximum":32,"unit":"unit.tile-distance"},
+        "conditions":[],"states":{"disabled":"sensor.stopped"}}
+    }},
+    {"id":"sensor.target","kind":"structure","components":{
+      "tile_presence":{"space":"sensor.tiles","width":1,"height":1,"blocks":true,"movable":false}
+    }}
+  ],
+  "scenarios": [{"id":"independent-sensor","game_mode":"sensor.resource-only","mode_overrides":{},"time":"sensor.minute","space":"sensor.tiles",
+    "modules":["proof.tile-sensor-space","sim.world-setup","sim.operations","sim.knowledge","sim.knowledge-visibility"],"seats":2,"default_seats":2,
+    "settings":{"sim.world-setup":{"profile":"sensor.start"},"sim.knowledge-visibility":{"policy":"sensor.visibility"}}}]
+}

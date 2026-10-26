@@ -1,0 +1,17 @@
+{
+  "entities":[{"id":"dock.alternate","kind":"structure","components":{
+    "tile_presence":{"space":"haul.tiles","width":1,"height":1,"blocks":true,"movable":false},
+    "pool_port":[
+      {"id":"alias","pool":"source.first","alternatives":[],"endpoint_scope":"proof.pools","original_access":"retained"},
+      {"id":"queue","pool":"source.second","alternatives":[],"endpoint_scope":"proof.pools","original_access":"retained"}
+    ],
+    "tile_work_dock":{"work_roles":[],"resources":["steel"],"slots":[
+      {"id":"bay","kind":"service","x":-1,"y":0},
+      {"id":"wait","kind":"waiting","x":-2,"y":2},
+      {"id":"exit","kind":"departure","x":-8,"y":0}
+    ]}
+  }}],
+  "world_setup_profiles":[{"id":"alternate.start","entries":["alternate.facility"],"includes":["restore.start"]}],
+  "entity_setups":[{"id":"alternate.facility","after":[],"entity":"dock.alternate","company":0,
+    "placement":{"space":"haul.tiles","x":36,"y":24},"home":null}]
+}

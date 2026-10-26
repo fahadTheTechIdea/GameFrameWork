@@ -1,0 +1,14 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  WorldCreator.Core -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Core\bin\Release\net10.0\WorldCreator.Core.dll
+  WorldCreator.Godot -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Godot\bin\Release\net10.0\WorldCreator.Godot.dll
+  WorldCreator.Worlds -> H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Worlds\bin\Release\net10.0\WorldCreator.Worlds.dll
+H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Catalogs.Modern\ModernFacilities.cs(53,68): error CS0103: The name 'RoadClass' does not exist in the current context [H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Catalogs.Modern\WorldCreator.Catalogs.Modern.csproj]
+
+Build FAILED.
+
+H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Catalogs.Modern\ModernFacilities.cs(53,68): error CS0103: The name 'RoadClass' does not exist in the current context [H:\Source\Repos\fahadTheTechIdea\GameFrameWork\src\WorldCreator\WorldCreator.Catalogs.Modern\WorldCreator.Catalogs.Modern.csproj]
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:02.38

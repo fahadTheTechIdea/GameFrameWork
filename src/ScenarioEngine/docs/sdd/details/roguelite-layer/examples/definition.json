@@ -1,0 +1,18 @@
+{
+  "id": "roguelite_layer",
+  "definitionVersion": "1.0.0",
+  "encounterIds": [
+    "ruins",
+    "crossroads",
+    "sanctum"
+  ],
+  "runResourceIds": [
+    "run_gold",
+    "charges"
+  ],
+  "profileUnlockIds": [
+    "scout_path",
+    "healer_start"
+  ],
+  "deathPolicy": "end_run"
+}

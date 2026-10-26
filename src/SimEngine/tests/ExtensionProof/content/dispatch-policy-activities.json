@@ -1,0 +1,8 @@
+{
+  "activities": [
+    {"id":"policy.work-supply","priority":100,"player_orderable":true,"automatic_supply":true,"nodes":[{"id":"work","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"shared.input"}]},
+    {"id":"policy.local-work","priority":100,"player_orderable":true,"automatic_supply":false,"nodes":[{"id":"work","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"shared.input"}]},
+    {"id":"policy.local-response","priority":100,"player_orderable":false,"automatic_supply":false,"on_complete":"shared.restart","nodes":[{"id":"repair","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"shared.input"}]},
+    {"id":"policy.supplied-response","priority":100,"player_orderable":false,"automatic_supply":true,"on_complete":"shared.restart","nodes":[{"id":"repair","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"requirement":"shared.input"}]}
+  ]
+}

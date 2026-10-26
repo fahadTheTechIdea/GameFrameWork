@@ -1,0 +1,6 @@
+{
+  "world_setup_profiles": [{"id":"quick.start","entries":["quick.marker.start"],"includes":[]}],
+  "entity_setups": [
+    { "id": "quick.marker.start", "after": [], "entity": "quick.marker", "company": 0, "placement": null, "home": null }
+  ]
+}

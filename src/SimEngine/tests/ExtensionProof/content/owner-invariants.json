@@ -1,0 +1,12 @@
+{
+  "units":[{"id":"unit.condition","dimension":"equipment-integrity","scale":{"numerator":1,"denominator":1},"discrete":false}],
+  "condition_effects":[
+    {"id":"owner.damage","source":"integrity","kind":"damage","unit":"unit.condition","amount":6},
+    {"id":"owner.repair","source":"integrity","kind":"repair","unit":"unit.condition","amount":6}
+  ],
+  "target_resource_requirements":[{"id":"owner.water","port":"owner.first","use":"consume","quantities":{"water":1}}],
+  "activities":[{"id":"owner.damage-work","player_orderable":true,"priority":100,"automatic_supply":false,"nodes":[
+    {"id":"stress","executor":"work.staffed","roles":["crane"],"duration":{"numerator":12,"denominator":1,"unit":"minute"},"effect":"owner.damage"}
+  ]}],
+  "signals":[{"id":"owner.integrity","kind":"number","metric":"condition.value","unit":"unit.condition","providers":[{"component":"equipment_condition","schema":1},{"component":"independent_condition","schema":1}]}]
+}

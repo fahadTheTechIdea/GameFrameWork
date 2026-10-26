@@ -1,0 +1,59 @@
+{
+  "layered_tile_navigation": [
+    {
+      "id": "terrain.route",
+      "space": "survey.tiles",
+      "base_cost": 50,
+      "rules": [
+        {
+          "id": "route.road-z",
+          "priority": 10,
+          "cost": 7,
+          "conditions": [
+            "route.condition.road"
+          ]
+        },
+        {
+          "id": "route.flood",
+          "priority": 100,
+          "cost": 0,
+          "conditions": [
+            "route.condition.flood"
+          ]
+        },
+        {
+          "id": "route.block",
+          "priority": 100,
+          "cost": 0,
+          "conditions": [
+            "route.condition.block"
+          ]
+        },
+        {
+          "id": "route.road-a",
+          "priority": 10,
+          "cost": 1,
+          "conditions": [
+            "route.condition.road",
+            "route.condition.shallow"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "terrain.vessel",
+      "space": "survey.tiles",
+      "base_cost": 0,
+      "rules": [
+        {
+          "id": "route.wet",
+          "priority": 0,
+          "cost": 10,
+          "conditions": [
+            "route.condition.flood"
+          ]
+        }
+      ]
+    }
+  ]
+}

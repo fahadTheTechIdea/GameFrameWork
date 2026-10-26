@@ -1,0 +1,338 @@
+{
+  "SchemaVersion": 1,
+  "Id": "user.requested-compounds",
+  "CatalogId": "modern",
+  "SourceRuleId": "test.requested-parent-parts",
+  "Structures": [
+    {
+      "Id": "user.garden-office",
+      "Function": "Employment",
+      "ServiceCapacity": 1,
+      "AllowedClasses": [
+        "Village",
+        "Town",
+        "City"
+      ],
+      "FavoredRoles": [],
+      "SizeVariants": [
+        {
+          "Id": "compact",
+          "WidthMeters": 6,
+          "DepthMeters": 8,
+          "HeightMeters": 4,
+          "ServiceCapacity": 1,
+          "SiteClearanceMeters": 1,
+          "AllowedClasses": null,
+          "MinimumRoadWidthMeters": 0
+        }
+      ],
+      "ScaleDemandPerResident": 0,
+      "SiteRules": [
+        {
+          "Id": "entrance-court",
+          "Kind": "Forecourt",
+          "Band": "Front",
+          "MinimumDepthMeters": 3,
+          "InsetMeters": 0,
+          "Required": true,
+          "SpeciesAssetId": null,
+          "PlantSpacingMeters": 0,
+          "PlantMarginMeters": 0,
+          "MaximumDepthMeters": 20
+        },
+        {
+          "Id": "staff-green",
+          "Kind": "Garden",
+          "Band": "Rear",
+          "MinimumDepthMeters": 3,
+          "InsetMeters": 0,
+          "Required": true,
+          "SpeciesAssetId": null,
+          "PlantSpacingMeters": 0,
+          "PlantMarginMeters": 0,
+          "MaximumDepthMeters": 20
+        }
+      ],
+      "AccessWidthMeters": 1.5,
+      "MinimumRoadWidthMeters": 3,
+      "AllowedRoles": null,
+      "Category": "OfficeFinance",
+      "CapacityUnit": "workers",
+      "AutomaticDemand": false,
+      "PlacementKind": "FrontageSite",
+      "SitingProfile": {
+        "Id": "siting:office-building",
+        "Revision": 1,
+        "ResearchRuleIds": [
+          "S01",
+          "S42"
+        ],
+        "SourceIds": [
+          "R22"
+        ],
+        "AllowedDistricts": [
+          "CommercialCenter",
+          "MixedUse",
+          "Research"
+        ],
+        "AllowedTechnologies": [
+          "Standard"
+        ],
+        "Tags": [],
+        "Requirements": [
+          {
+            "Id": "customers",
+            "Kind": "PedestrianCatchment",
+            "Mode": "Pedestrian",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "potable-water",
+            "Kind": "PotableWater",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": [
+              "potable",
+              "reliable"
+            ],
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "power",
+            "Kind": "Electricity",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          },
+          {
+            "Id": "wastewater",
+            "Kind": "Wastewater",
+            "Mode": "Utility",
+            "Unit": "game-service-units",
+            "BaseQuantity": 1,
+            "QuantityPerCapacity": 0.1,
+            "RequiredQualities": null,
+            "RequiredOrigin": null,
+            "WhenTechnologies": null,
+            "SourceContainsSite": false,
+            "MinimumRouteWidthMeters": 0,
+            "MaximumRouteLengthMeters": null
+          }
+        ],
+        "RequiredSurroundings": [
+          "AccessWalkway",
+          "Forecourt",
+          "Garden"
+        ],
+        "Provides": [
+          "ParentFacility"
+        ],
+        "OutputUnit": "game-service-units",
+        "OutputUnitsPerCapacity": 1
+      },
+      "Composition": {
+        "Representation": "SingleStructure",
+        "GeometryScope": "one small garden office building",
+        "ReviewBasis": "synthetic user-request authoring fixture",
+        "PartRoles": [
+          {
+            "Role": "workspace",
+            "Kind": "Interior",
+            "CandidateDefinitionIds": []
+          }
+        ]
+      }
+    }
+  ],
+  "Programs": [
+    {
+      "Id": "user.learning-and-care",
+      "Name": "Learning and care site",
+      "SourceRuleId": "test.combined-program",
+      "Layout": {
+        "RoadProfile": {
+          "LaneWidthMeters": 4,
+          "LaneCount": 2,
+          "SidewalkLeftMeters": 0,
+          "SidewalkRightMeters": 0,
+          "CurbLeftMeters": 0,
+          "CurbRightMeters": 0,
+          "MedianMeters": 0,
+          "TotalWidthMeters": 8
+        },
+        "RoadOffsetMeters": 8,
+        "FrontSetbackMeters": 8,
+        "RearSetbackMeters": 8,
+        "SideSetbackMeters": 4,
+        "InterSiteGapMeters": 8,
+        "OuterMarginMeters": 8,
+        "RoadClass": "Local"
+      },
+      "Parts": [],
+      "Children": [
+        {
+          "Id": "learning",
+          "DefinitionId": "user.school-program",
+          "Purpose": "teaching precinct",
+          "Count": 1
+        },
+        {
+          "Id": "care",
+          "DefinitionId": "user.care-program",
+          "Purpose": "care precinct",
+          "Count": 1
+        }
+      ]
+    },
+    {
+      "Id": "user.school-program",
+      "Name": "Requested school and library",
+      "SourceRuleId": "test.school-request",
+      "Layout": {
+        "RoadProfile": {
+          "LaneWidthMeters": 4,
+          "LaneCount": 2,
+          "SidewalkLeftMeters": 0,
+          "SidewalkRightMeters": 0,
+          "CurbLeftMeters": 0,
+          "CurbRightMeters": 0,
+          "MedianMeters": 0,
+          "TotalWidthMeters": 8
+        },
+        "RoadOffsetMeters": 8,
+        "FrontSetbackMeters": 8,
+        "RearSetbackMeters": 8,
+        "SideSetbackMeters": 4,
+        "InterSiteGapMeters": 8,
+        "OuterMarginMeters": 8,
+        "RoadClass": "Local"
+      },
+      "Parts": [
+        {
+          "Id": "teaching",
+          "DefinitionId": "primary-school",
+          "SizeVariantId": "small",
+          "Purpose": "user-authored teaching",
+          "Count": 1,
+          "Kind": "Structure",
+          "Components": null
+        },
+        {
+          "Id": "library",
+          "DefinitionId": "library",
+          "SizeVariantId": "small",
+          "Purpose": "user-authored library",
+          "Count": 1,
+          "Kind": "Structure",
+          "Components": null
+        }
+      ],
+      "Children": []
+    },
+    {
+      "Id": "user.care-program",
+      "Name": "Requested care site",
+      "SourceRuleId": "test.care-request",
+      "Layout": {
+        "RoadProfile": {
+          "LaneWidthMeters": 4,
+          "LaneCount": 2,
+          "SidewalkLeftMeters": 0,
+          "SidewalkRightMeters": 0,
+          "CurbLeftMeters": 0,
+          "CurbRightMeters": 0,
+          "MedianMeters": 0,
+          "TotalWidthMeters": 8
+        },
+        "RoadOffsetMeters": 8,
+        "FrontSetbackMeters": 8,
+        "RearSetbackMeters": 8,
+        "SideSetbackMeters": 4,
+        "InterSiteGapMeters": 8,
+        "OuterMarginMeters": 8,
+        "RoadClass": "Local"
+      },
+      "Parts": [
+        {
+          "Id": "care",
+          "DefinitionId": "clinic",
+          "SizeVariantId": "local",
+          "Purpose": "user-authored care",
+          "Count": 2,
+          "Kind": "Structure",
+          "Components": null
+        }
+      ],
+      "Children": []
+    },
+    {
+      "Id": "user.home-program",
+      "Name": "Requested home with two garden offices",
+      "SourceRuleId": "test.home-request",
+      "Layout": {
+        "RoadProfile": {
+          "LaneWidthMeters": 4,
+          "LaneCount": 2,
+          "SidewalkLeftMeters": 0,
+          "SidewalkRightMeters": 0,
+          "CurbLeftMeters": 0,
+          "CurbRightMeters": 0,
+          "MedianMeters": 0,
+          "TotalWidthMeters": 8
+        },
+        "RoadOffsetMeters": 8,
+        "FrontSetbackMeters": 8,
+        "RearSetbackMeters": 8,
+        "SideSetbackMeters": 4,
+        "InterSiteGapMeters": 8,
+        "OuterMarginMeters": 8,
+        "RoadClass": "Local"
+      },
+      "Parts": [
+        {
+          "Id": "home",
+          "DefinitionId": "bungalow",
+          "SizeVariantId": "small",
+          "Purpose": "user-authored home",
+          "Count": 1,
+          "Kind": "Structure",
+          "Components": null
+        },
+        {
+          "Id": "garden-office",
+          "DefinitionId": "user.garden-office",
+          "SizeVariantId": "compact",
+          "Purpose": "requested detached garden office",
+          "Count": 2,
+          "Kind": "Structure",
+          "Components": null
+        }
+      ],
+      "Children": []
+    }
+  ],
+  "Facilities": [],
+  "ReplaceStructureIds": null,
+  "ReplaceFacilityIds": null
+}

@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <AssemblyName>Beep.SimEngine.Tests</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="../../src/SimEngine/tests/Beep.SimEngine.Tests/testdata/random-observation-profile.json" LogicalName="tests.random-observation-profile.json" />
+    <EmbeddedResource Include="../../src/SimEngine/tests/Beep.SimEngine.Tests/testdata/current-engine-protocol.json" LogicalName="tests.current-engine-protocol.json" />
+    <EmbeddedResource Include="../../src/SimEngine/tests/Beep.SimEngine.Tests/testdata/state-hash-vectors.json" LogicalName="tests.state-hash-vectors.json" />
+    <EmbeddedResource Include="../../src/SimEngine/tests/Beep.SimEngine.Tests/testdata/diagonal-route-costs.json" LogicalName="tests.diagonal-route-costs.json" />
+    <EmbeddedResource Include="../../src/SimEngine/tests/Beep.SimEngine.Tests/testdata/navigation-goal-ties.json" LogicalName="tests.navigation-goal-ties.json" />
+    <EmbeddedResource Include="../../src/SimEngine/tests/Beep.SimEngine.Tests/testdata/navigation-entry-read-profile.json" LogicalName="tests.navigation-entry-read-profile.json" />
+    <EmbeddedResource Include="../../src/SimEngine/tests/Beep.SimEngine.Tests/testdata/capacity-logistics-stress-profile.json" LogicalName="tests.capacity-logistics-stress-profile.json" />
+    <EmbeddedResource Include="../../src/SimEngine/tests/Beep.SimEngine.Tests/testdata/watchdog-profile.json" LogicalName="tests.watchdog-profile.json" />
+    <EmbeddedResource Include="../../src/SimEngine/tests/Beep.SimEngine.Tests/testdata/wait-boundary-profile.json" LogicalName="tests.wait-boundary-profile.json" />
+    <EmbeddedResource Include="../../src/SimEngine/tests/Beep.SimEngine.Tests/testdata/physical-failure-profile.json" LogicalName="tests.physical-failure-profile.json" />
+    <ProjectReference Include="../../src/SimEngine/src/Beep.SimEngine/Beep.SimEngine.csproj" />
+    <ProjectReference Include="../../src/SimEngine/tests/Beep.SimEngine.Testing/Beep.SimEngine.Testing.csproj" />
+    <ProjectReference Include="../../src/SimEngine/tests/ExtensionProof/ExtensionProof.csproj" />
+    <ProjectReference Include="../../src/SimEngine/help/quickstart/Game.Module/QuickGame.Module.csproj" />
+    <None Include="../../src/SimEngine/help/quickstart/Content/**/*.json" Link="QuickstartContent/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="../../src/SimEngine/tests/Beep.SimEngine.Tests/**/*.cs" Exclude="../../src/SimEngine/tests/Beep.SimEngine.Tests/**/bin/**;../../src/SimEngine/tests/Beep.SimEngine.Tests/**/obj/**" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/vehicle-handling.json" LogicalName="proof.oil-vehicle-handling.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/construction.json" LogicalName="proof.oil-construction.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/construction-sites.json" LogicalName="proof.oil-construction-sites.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/sim/effects.json" LogicalName="proof.oil-construction-effects.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/inventory.json" LogicalName="proof.oil-inventory.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/structures.json" LogicalName="proof.oil-structures.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/vehicles.json" LogicalName="proof.oil-vehicles.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/work.json" LogicalName="proof.oil-work.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/production.json" LogicalName="proof.oil-production.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/business-transformation-costs.json" LogicalName="proof.oil-business-transformation-costs.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/business-operating-costs.json" LogicalName="proof.oil-business-operating-costs.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/game-modes.json" LogicalName="proof.oil-game-modes.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/scenarios.json" LogicalName="proof.oil-scenarios.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/manifest.json" LogicalName="proof.oil-manifest.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/business-accounts.json" LogicalName="proof.oil-business-accounts.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/business-costs.json" LogicalName="proof.oil-business-costs.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/items.json" LogicalName="proof.oil-items.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/networks.json" LogicalName="proof.oil-networks.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/worker-roles.json" LogicalName="proof.oil-worker-roles.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/states.json" LogicalName="proof.oil-states.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/spatial-world.json" LogicalName="proof.oil-spatial-world.json" />
+    <EmbeddedResource Include="$(OilFieldDaysContentRoot)/oil/navigation.json" LogicalName="proof.oil-navigation.json" />
+  </ItemGroup>
+  <Target Name="RequireOilFieldDaysInputs" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(OilFieldDaysContentRoot)' == ''" Text="Consumer integration requires -p:OilFieldDaysContentRoot pointing to authentic OilFieldDays content. SimEngine builds independently without this suite." />
+  </Target>
+</Project>

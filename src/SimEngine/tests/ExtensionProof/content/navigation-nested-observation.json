@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "module": {
+    "id": "proof.navigation-observation",
+    "version": "1.0.0",
+    "requires": [{"id":"sim.tile-navigation","version":"1.0.0"}],
+    "documents": ["navigation-nested-observation.json"]
+  },
+  "content": {
+    "navigation_observation_probes": [{
+      "id":"probe.navigation.cost",
+      "space":"stress.tiles",
+      "minimum":10,
+      "fault":"nested-route",
+      "raw":false,
+      "layer":"probe.navigation.layer",
+      "nested_query": {
+        "navigation":"probe.navigation.inner",
+        "from_x":2,"from_y":2,"goal_x":4,"goal_y":4,
+        "maximum_expanded":64
+      }
+    }],
+    "uniform_tile_navigation": [{"id":"probe.navigation.inner","space":"stress.tiles","cost":1}],
+    "spatial_layers": [{
+      "id":"probe.navigation.layer","space":"stress.tiles",
+      "type":"terrain.observation-probe","value_type":"int",
+      "visibility":"public","unit":"unit.supply"
+    }]
+  }
+}

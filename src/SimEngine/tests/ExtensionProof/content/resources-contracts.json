@@ -1,0 +1,9 @@
+{
+ "contract_resources":[
+  {"id":"supply","unit":"unit.supply","category":"general","phase":"solid","traits":["proof.direct"],"capacity":{"unit.supply":1},"fault":"none"},
+  {"id":"direct.unused","unit":"unit.supply","category":"general","phase":"solid","traits":["proof.direct"],"capacity":{"unit.supply":0.5},"fault":"none"}
+ ],
+ "transformations":[
+  {"id":"direct.batch","mode":"batch","cancel_policy":"return_inputs","inputs":{"supply":2},"tools":{"supply":1},"tool_consumption":{},"input_ports":{"supply":"stock"},"tool_ports":{"supply":"stock"},"operating_inputs":[],"operating_ports":{},"outputs":{"supply":1},"output_ports":{"supply":"stock"},"duration":{"numerator":6,"denominator":1,"unit":"minute"}}
+ ]
+}

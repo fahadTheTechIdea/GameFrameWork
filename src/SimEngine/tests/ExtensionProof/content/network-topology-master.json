@@ -1,0 +1,11 @@
+{
+  "schema":1,
+  "modules":[
+    {"id":"sim.access","version":"1.0.0","documents":["open-access.json"]},
+    {"id":"sim.inventory","version":"1.0.0","documents":[]},
+    {"id":"sim.motion","version":"1.0.0","documents":[]},
+    {"id":"sim.tile-navigation","version":"1.0.0","requires":[{"id":"sim.motion","version":"1.0.0"}],"documents":["network-topology-navigation.json"]},
+    {"id":"sim.work","version":"1.0.0","requires":[{"id":"sim.access","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"},{"id":"sim.motion","version":"1.0.0"}],"documents":["network-topology-world.json","work-retry.json"]},
+    {"id":"sim.infrastructure","version":"1.0.0","requires":[{"id":"sim.work","version":"1.0.0"},{"id":"sim.inventory","version":"1.0.0"}],"documents":["network-topology.json"]}
+  ]
+}

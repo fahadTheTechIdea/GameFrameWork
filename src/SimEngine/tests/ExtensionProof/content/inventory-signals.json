@@ -1,0 +1,67 @@
+{
+  "operation_control_actions":[{"id":"proof.inventory-signals.operation","command":"sim.configure-operation","owner":"sim.operations"}],
+  "control_input_recovery_policies":[{"id":"proof.inventory-signals.suspend","retry_blockers":[]}],
+  "units": [
+    {"id":"unit.fluid","dimension":"volume","scale":{"numerator":1,"denominator":1},"discrete":false},
+    {"id":"unit.fluid.pair","dimension":"volume","scale":{"numerator":2,"denominator":1},"discrete":false},
+    {"id":"unit.fluid.third","dimension":"volume","scale":{"numerator":3,"denominator":1},"discrete":false},
+    {"id":"unit.fluid.nano","dimension":"volume","scale":{"numerator":1,"denominator":1000000000},"discrete":false},
+    {"id":"unit.kit.pair","dimension":"count","scale":{"numerator":2,"denominator":1},"discrete":true}
+  ],
+  "resources": [{"id":"fluid","unit":"unit.fluid","category":"utility","phase":"liquid","traits":[],"capacity":{"unit.fluid":1,"unit.capacity.mass":1}}],
+  "capacity_policies": [{"id":"signal.capacity","limits":{"unit.capacity.mass":40}}],
+  "signals": [
+    {"id":"stock.ready","kind":"boolean","metric":"inventory.stock-ready","unit":"unit.boolean","providers":[{"component":"inventory_signal","schema":3}]},
+    {"id":"available.ready","kind":"boolean","metric":"inventory.available-ready","unit":"unit.boolean","providers":[{"component":"inventory_signal","schema":3}]},
+    {"id":"incoming.ready","kind":"boolean","metric":"inventory.incoming-ready","unit":"unit.boolean","providers":[{"component":"inventory_signal","schema":3}]},
+    {"id":"process.backlog","kind":"number","metric":"transformation.backlog","unit":"unit.count","providers":[{"component":"transformer","schema":1}]}
+  ],
+  "resource_signals": [
+    {"id":"stock.amount","kind":"number","metric":"inventory.stored","resource":"supply","unit":"unit.kit","providers":[{"component":"inventory_signal","schema":3}]},
+    {"id":"available.amount","kind":"number","metric":"inventory.available","resource":"supply","unit":"unit.kit","providers":[{"component":"inventory_signal","schema":3}]},
+    {"id":"inbound.amount","kind":"number","metric":"inventory.inbound","resource":"supply","unit":"unit.kit","providers":[{"component":"inventory_signal","schema":3}]},
+    {"id":"outbound.amount","kind":"number","metric":"inventory.outbound","resource":"supply","unit":"unit.kit","providers":[{"component":"inventory_signal","schema":3}]},
+    {"id":"pair.amount","kind":"number","metric":"inventory.stored","resource":"supply","unit":"unit.kit.pair","providers":[{"component":"inventory_signal","schema":3}]},
+    {"id":"fluid.amount","kind":"number","metric":"inventory.stored","resource":"fluid","unit":"unit.fluid","providers":[{"component":"inventory_signal","schema":3}]},
+    {"id":"fluid.pair","kind":"number","metric":"inventory.stored","resource":"fluid","unit":"unit.fluid.pair","providers":[{"component":"inventory_signal","schema":3}]},
+    {"id":"fluid.third","kind":"number","metric":"inventory.stored","resource":"fluid","unit":"unit.fluid.third","providers":[{"component":"inventory_signal","schema":3}]},
+    {"id":"fluid.nano","kind":"number","metric":"inventory.stored","resource":"fluid","unit":"unit.fluid.nano","providers":[{"component":"inventory_signal","schema":3}]},
+    {"id":"receiving.room","kind":"number","metric":"inventory.receiving-room","resource":"supply","unit":"unit.kit","providers":[{"component":"inventory_signal","schema":3}]},
+    {"id":"receiving.pairs","kind":"number","metric":"inventory.receiving-room","resource":"supply","unit":"unit.kit.pair","providers":[{"component":"inventory_signal","schema":3}]},
+    {"id":"receiving.fluid","kind":"number","metric":"inventory.receiving-room","resource":"fluid","unit":"unit.fluid","providers":[{"component":"inventory_signal","schema":3}]}
+  ],
+  "entities": [
+    {"id":"stock.assembler","kind":"entity","components":{"inventory_port":[{"id":"material.output"},{"id":"material.input"},{"id":"tool.input"},{"id":"operating.input"}],
+      "storage":{"capacity_policy":"signal.capacity","initial_stock":{"supply":20,"fluid":3},"public":false,"evacuate":false,"phases":[],"accepts":["supply","fluid"]},
+      "inventory_signal":{"id":"feed","inventory":"storage","quantities":{"supply":8,"fluid":2}},
+      "transformer":{"automatic_supply":false,"wip_capacity":"fixture.count.40","transformations":["build"],"states":{"working":"working","stopped":"blocked"},
+        "operation":{"id":"transformation","enabled":true,"target":1,"minimum":1,"maximum":1,"unit":"unit.work-rate"}},
+      "signal_transformation_gate":{"id":"incoming","transformations":["build"],"conditions":[{"id":"room","source":"feed","signal":"incoming.ready","expected":true,"blocker":"process.promised-capacity"}]}
+    }},
+    {"id":"stock.independent","kind":"entity","components":{"inventory_port":[{"id":"material.output"},{"id":"material.input"},{"id":"tool.input"},{"id":"operating.input"}],
+      "process_stock":{"resource":"supply","capacity_policy":"fixture.count.40","initial":20},
+      "inventory_signal":{"id":"feed","inventory":"process_stock","quantities":{"supply":8}},
+      "transformer":{"automatic_supply":false,"wip_capacity":"fixture.count.40","transformations":["build"],"states":{"working":"working","stopped":"blocked"},
+        "operation":{"id":"transformation","enabled":true,"target":1,"minimum":1,"maximum":1,"unit":"unit.work-rate"}}
+    }}
+  ],
+  "world_setup_profiles": [{"id":"inventory-signals.start","entries":["start","stock.native.0","stock.native.1","stock.independent.0"],"includes":[]}],
+  "entity_setups": [{"id":"stock.native.0","after":[],"entity":"stock.assembler","company":0,"placement":null,"home":null},{"id":"stock.native.1","after":[],"entity":"stock.assembler","company":1,"placement":null,"home":null},{"id":"stock.independent.0","after":[],"entity":"stock.independent","company":0,"placement":null,"home":null}],
+  "control_rules":[
+    {"id":"stock.run","input_recovery":"proof.inventory-signals.suspend","action_policy":"proof.inventory-signals.operation","arbitration":"exclusive","initial_latch":false,
+      "inputs":[{"id":"ready","signal":"available.ready"}],
+      "conditions":[{"id":"sufficient","kind":"boolean","input":"ready","expected":true,"initial":false}],"root":"sufficient",
+      "dwell":{"numerator":0,"denominator":1,"unit":"minute"},"cooldown":{"numerator":0,"denominator":1,"unit":"minute"},
+      "when_true":{"enabled":true,"target":1,"unit":"unit.work-rate"},"when_false":{"enabled":false,"target":1,"unit":"unit.work-rate"}},
+    {"id":"stock.numeric","input_recovery":"proof.inventory-signals.suspend","action_policy":"proof.inventory-signals.operation","arbitration":"exclusive","initial_latch":false,
+      "inputs":[{"id":"stock","signal":"available.amount"}],
+      "conditions":[{"id":"sufficient","kind":"above","input":"stock","unit":"unit.kit","on":12,"off":8,"initial":false}],"root":"sufficient",
+      "dwell":{"numerator":1,"denominator":1,"unit":"minute"},"cooldown":{"numerator":2,"denominator":1,"unit":"minute"},
+      "when_true":{"enabled":true,"target":1,"unit":"unit.work-rate"},"when_false":{"enabled":false,"target":1,"unit":"unit.work-rate"}},
+    {"id":"stock.restart","input_recovery":"proof.inventory-signals.suspend","action_policy":"proof.inventory-signals.operation","arbitration":"exclusive","initial_latch":false,
+      "inputs":[{"id":"stock","signal":"available.amount"}],
+      "conditions":[{"id":"sufficient","kind":"above","input":"stock","unit":"unit.kit","on":9,"off":6,"initial":false}],"root":"sufficient",
+      "dwell":{"numerator":0,"denominator":1,"unit":"minute"},"cooldown":{"numerator":0,"denominator":1,"unit":"minute"},
+      "when_true":{"enabled":true,"target":1,"unit":"unit.work-rate"},"when_false":{"enabled":false,"target":1,"unit":"unit.work-rate"}}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "target_resource_requirements": [
+    {"id":"trip.service.spares","port":null,"use":"consume","quantities":{"supply":3}},
+    {"id":"trip.service.tools","port":null,"use":"hold","quantities":{"supply":2}}
+  ],
+  "work_requirement_groups": [
+    {"id":"trip.service.ready","mode":"all","entries":[
+      {"id":"spares","requirement":"trip.service.spares"},
+      {"id":"tools","requirement":"trip.service.tools"}
+    ]}
+  ],
+  "activities": [
+    {"id":"trip.physical-service","automatic_supply":false,"player_orderable":true,"target_tags":[],"nodes":[
+      {"id":"service","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":12,"denominator":1,"unit":"minute"},"requirement":"trip.service.ready"},
+      {"id":"settle","executor":"work.timed","roles":[],"duration":{"numerator":6,"denominator":1,"unit":"minute"},"after":["service"]}
+    ]}
+  ]
+}

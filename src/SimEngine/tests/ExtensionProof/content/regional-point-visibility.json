@@ -1,0 +1,17 @@
+{
+  "knowledge_visibility_policies": [
+    {"id":"discovery.policy","own_entities":true,"unlisted_entities":false,"unlisted_content":true,
+     "rules":["visibility.regional-terrain","visibility.regional-deposit","visibility.water"]}
+  ],
+  "layer_knowledge_visibility": [
+    {"id":"visibility.water","definition":"point.water","mode":"all","facts":["field.unobserved"]}
+  ],
+  "layer_region_knowledge_visibility": [
+    {"id":"visibility.regional-terrain","definition":"point.terrain","regions":[
+      {"region":"discover.first","mode":"all","facts":["field.observed"]},
+      {"region":"discover.second","mode":"any","facts":["field.second"]}]},
+    {"id":"visibility.regional-deposit","definition":"point.deposit","regions":[
+      {"region":"discover.first","mode":"all","facts":["field.observed"]},
+      {"region":"discover.second","mode":"all","facts":["field.observed","field.second"]}]}
+  ]
+}

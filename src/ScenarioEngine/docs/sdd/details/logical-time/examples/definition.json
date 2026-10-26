@@ -1,0 +1,8 @@
+{
+  "id": "logical_time",
+  "definitionVersion": "1.0.0",
+  "policy": "action",
+  "unit": "millisecond",
+  "fixedDelta": 0,
+  "maximumAdvance": 1
+}

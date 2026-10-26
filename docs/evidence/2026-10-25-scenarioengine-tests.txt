@@ -1,0 +1,8 @@
+xUnit.net v3 In-Process Runner v4.0.2+0c7aa4991f (64-bit .NET 10.0.13)
+  Discovering: ScenarioEngine.Tests
+  Discovered:  ScenarioEngine.Tests
+  Starting:    ScenarioEngine.Tests
+Notification delivery failed; consult local diagnostics.
+  Finished:    ScenarioEngine.Tests (ID = 'aee31436cb4580d95b5e9df097da08000d617ad63034765c3870f44fcab2a2b4')
+=== TEST EXECUTION SUMMARY ===
+   ScenarioEngine.Tests  Total: 91, Errors: 0, Failed: 0, Skipped: 0, Not Run: 0, Time: 1.780s

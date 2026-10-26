@@ -1,0 +1,18 @@
+{
+  "tile_construction_rules": [
+    {
+      "id": "colony.placement",
+      "space": "colony.tiles",
+      "rules": [
+        {
+          "id": "placement.water",
+          "priority": 100,
+          "refusal": "colony.on-water",
+          "conditions": [
+            "colony.condition.wet"
+          ]
+        }
+      ]
+    }
+  ]
+}

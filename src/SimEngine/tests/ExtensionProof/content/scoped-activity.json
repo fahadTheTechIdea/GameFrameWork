@@ -1,0 +1,342 @@
+{
+  "target_resource_requirements": [
+    {
+      "id": "dag.scoped.a",
+      "port": "feed",
+      "use": "consume",
+      "quantities": {
+        "steel": 2
+      }
+    },
+    {
+      "id": "dag.scoped.b",
+      "port": "feed-alias",
+      "use": "consume",
+      "quantities": {
+        "steel": 3
+      }
+    },
+    {
+      "id": "dag.scoped.flow",
+      "port": "fluid",
+      "use": "continuous",
+      "quantities": {
+        "steel": 3
+      }
+    },
+    {
+      "id": "dag.scoped.assembly",
+      "port": "feed",
+      "use": "consume",
+      "quantities": {
+        "steel": 2
+      }
+    },
+    {
+      "id": "dag.scoped.target-tool",
+      "port": "tools",
+      "use": "hold",
+      "quantities": {
+        "steel": 1
+      }
+    }
+  ],
+  "worker_resource_requirements": [
+    {
+      "id": "dag.scoped.worker-tool",
+      "port": "toolbox",
+      "use": "hold",
+      "quantities": {
+        "steel": 1
+      }
+    }
+  ],
+  "work_requirement_groups": [
+    {
+      "id": "dag.scoped.assemble-inputs",
+      "mode": "all",
+      "entries": [
+        {
+          "id": "material",
+          "requirement": "dag.scoped.assembly"
+        },
+        {
+          "id": "target-tool",
+          "requirement": "dag.scoped.target-tool"
+        },
+        {
+          "id": "worker-tool",
+          "requirement": "dag.scoped.worker-tool"
+        }
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "id": "dag.scoped",
+      "player_orderable": true,
+      "automatic_supply": true,
+      "priority": 70,
+      "nodes": [
+        {
+          "executor": "work.timed",
+          "id": "material-a",
+          "roles": [],
+          "after": [],
+          "duration": {
+            "numerator": 30,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "dag.scoped.a"
+        },
+        {
+          "executor": "work.timed",
+          "id": "material-b",
+          "roles": [],
+          "after": [],
+          "duration": {
+            "numerator": 30,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "dag.scoped.b"
+        },
+        {
+          "executor": "work.timed",
+          "id": "fluid",
+          "roles": [],
+          "after": [],
+          "duration": {
+            "numerator": 30,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "dag.scoped.flow"
+        },
+        {
+          "executor": "work.staffed",
+          "id": "assembly",
+          "roles": [
+            "dag.builder"
+          ],
+          "after": [
+            "material-a",
+            "material-b",
+            "fluid"
+          ],
+          "duration": {
+            "numerator": 40,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "requirement": "dag.scoped.assemble-inputs"
+        }
+      ]
+    }
+  ],
+  "worker_roles": [
+    {
+      "id": "dag.builder"
+    }
+  ],
+  "entities": [
+    {
+      "id": "dag.warehouse",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "haul.store",
+          "public": true,
+          "initial_stock": {
+            "steel": 30
+          }
+        },
+        "inventory_port": {
+          "id": "stock"
+        }
+      }
+    },
+    {
+      "id": "dag.facility",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "pool_port": [
+          {
+            "id": "feed",
+            "pool": "haul.first",
+            "alternatives": [
+              "haul.second",
+              "haul.third"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "feed-alias",
+            "pool": "haul.first",
+            "alternatives": [
+              "haul.second",
+              "haul.third"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "fluid",
+            "pool": "haul.second",
+            "alternatives": [
+              "haul.first",
+              "haul.third"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "tools",
+            "pool": "haul.third",
+            "alternatives": [
+              "haul.first",
+              "haul.second"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dag.builder",
+      "kind": "vehicle",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "mover": {
+          "classes": [
+            "haul.route"
+          ],
+          "class": "haul.route",
+          "speed": 30,
+          "states": {
+            "moving": "haul.moving",
+            "stopped": "haul.stopped"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "dag.builder"
+          ],
+          "states": {
+            "working": "haul.working",
+            "loading": "haul.loading",
+            "stopped": "haul.stopped"
+          }
+        },
+        "pool_port": {
+          "id": "toolbox",
+          "pool": "haul.third",
+          "alternatives": [
+            "haul.first",
+            "haul.second"
+          ],
+          "endpoint_scope":"proof.pools","original_access": "retained"
+        }
+      }
+    }
+  ],
+  "world_setup_profiles": [{"id":"dag.scoped.start","entries":["dag.warehouse.start","dag.facility.start","dag.hauler.start","dag.builder.start"],"includes":[]}],
+  "entity_setups": [
+    {
+      "id": "dag.warehouse.start",
+      "after": [],
+      "entity": "dag.warehouse",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 8,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "dag.facility.start",
+      "after": [],
+      "entity": "dag.facility",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 22,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "dag.hauler.start",
+      "after": [
+        "dag.warehouse.start"
+      ],
+      "entity": "haul.machine",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 2,
+        "y": 10
+      },
+      "home": "dag.warehouse.start"
+    },
+    {
+      "id": "dag.builder.start",
+      "after": [
+        "dag.warehouse.start"
+      ],
+      "entity": "dag.builder",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 4,
+        "y": 14
+      },
+      "home": "dag.warehouse.start"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "scoped-activity",
+      "game_mode": "haul.resource-only",
+      "mode_overrides": {},
+      "time": "haul.minute",
+      "space": "haul.tiles",
+      "seats": 2,
+      "default_seats": 2,
+      "modules": [
+        "proof.output-ports",
+        "sim.logistics",
+        "sim.tile-navigation"
+      ],
+      "settings": {
+        "sim.world-setup": {
+          "profile": "dag.scoped.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        }
+      }
+    }
+  ]
+}

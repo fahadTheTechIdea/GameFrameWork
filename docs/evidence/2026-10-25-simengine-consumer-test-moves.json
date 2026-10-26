@@ -1,0 +1,133 @@
+{
+  "movedTestFiles": [
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/OilActivityAuthoringTests.cs",
+      "to": "tests/SimEngine.OilFieldDays/OilActivityAuthoringTests.cs",
+      "originalSha256": "7d2c6c2e2a170b435927754909ae193aa318d3367099020a7fcaac19a8416f70"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/OilAuthoredInfrastructureTests.cs",
+      "to": "tests/SimEngine.OilFieldDays/OilAuthoredInfrastructureTests.cs",
+      "originalSha256": "fb77018fda0f89411b5b02eb3e5b47ff1af22d69b477281ef1b9814a36647e17"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/OilAuthoredNavigationTests.cs",
+      "to": "tests/SimEngine.OilFieldDays/OilAuthoredNavigationTests.cs",
+      "originalSha256": "cf91e446280fb4d54ff4aa0ee1f5557dcf58ee0b592d01514800bea3cf110934"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/OilCanonicalManufacturingLockstepTests.cs",
+      "to": "tests/SimEngine.OilFieldDays/OilCanonicalManufacturingLockstepTests.cs",
+      "originalSha256": "5fb68a03b77466c5baf8b863508cef7c22adb4d5beb8e366b6923302643de3f9"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/OilCanonicalManufacturingTests.cs",
+      "to": "tests/SimEngine.OilFieldDays/OilCanonicalManufacturingTests.cs",
+      "originalSha256": "4f169f196022c91b124f43c8d2ccb97cb6b940c072996d14d30d37fe2936e581"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/OilConstructionAuthoringTests.cs",
+      "to": "tests/SimEngine.OilFieldDays/OilConstructionAuthoringTests.cs",
+      "originalSha256": "d89ed7a5654dab75e6f0a8428d4ee94048c418323d7bc4cff4282c02681b6d79"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/OilFinancialOwnershipTests.cs",
+      "to": "tests/SimEngine.OilFieldDays/OilFinancialOwnershipTests.cs",
+      "originalSha256": "1ea033bf38a4a20639a1875b7df4027fe2fd49202e31165301dd27f84c8e3905"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/OilManifestContentTests.cs",
+      "to": "tests/SimEngine.OilFieldDays/OilManifestContentTests.cs",
+      "originalSha256": "0df5ca44f2f7e46f683bf7afa3c9d3c0814d5f1aead7f31acdf8a3e8dab70e68"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/OilManifestContentTests.Docking.cs",
+      "to": "tests/SimEngine.OilFieldDays/OilManifestContentTests.Docking.cs",
+      "originalSha256": "32453c19b524a93fd57236a4dc5e32f071439c81a90136b09bc64bd82ec436fc"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/OilManifestContentTests.Financial.cs",
+      "to": "tests/SimEngine.OilFieldDays/OilManifestContentTests.Financial.cs",
+      "originalSha256": "29ed0377f43a0624ddccde58a613585b6e69146e1d5bfdc5e71cf52df7f85646"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/OilManifestContentTests.Timing.cs",
+      "to": "tests/SimEngine.OilFieldDays/OilManifestContentTests.Timing.cs",
+      "originalSha256": "0f5e809b71820ebf35860ef0cebc6706373a7c53b8b1db5c0a05360e816a99f2"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/OilProductionAuthoringTests.cs",
+      "to": "tests/SimEngine.OilFieldDays/OilProductionAuthoringTests.cs",
+      "originalSha256": "31957b87ebaa4445cf546ed86be7dd1cde92ab78098ca499d646997d5feed54b"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/OilSessionTimeTests.cs",
+      "to": "tests/SimEngine.OilFieldDays/OilSessionTimeTests.cs",
+      "originalSha256": "21844113e2ae9e0d60ebab6ffa5dfb9285a29e25dfa877699bc38738db10aaae"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/OilStorageAuthoringTests.cs",
+      "to": "tests/SimEngine.OilFieldDays/OilStorageAuthoringTests.cs",
+      "originalSha256": "e250c5b7d2232144e2fec0663f005cb7cd5281e90da18b45e3cd641e68a27bd1"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/OilVehicleAuthoringTests.cs",
+      "to": "tests/SimEngine.OilFieldDays/OilVehicleAuthoringTests.cs",
+      "originalSha256": "431e203c88ad037926c737fe1e4e479537853604ab0d9c612d1db7a14cd204b3"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/TycoonOperatingCostTests.cs",
+      "to": "tests/SimEngine.OilFieldDays/TycoonOperatingCostTests.cs",
+      "originalSha256": "61617faa8b906e84cba51805d9e359ef9f2f04ef2da7a9f25a3578bbcedfed13"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/ConditionalOperatingCostTests.cs",
+      "to": "tests/SimEngine.OilFieldDays/ConditionalOperatingCostTests.cs",
+      "originalSha256": "c99e9f982509f6a81610246f7d72da4e5cbe5e3d836555232d52dea41cfafe8f"
+    },
+    {
+      "from": "src/SimEngine/tests/Beep.SimEngine.Tests/NetworkedModDurabilityTests.OptionalMoney.cs",
+      "to": "tests/SimEngine.OilFieldDays/NetworkedModDurabilityTests.OptionalMoney.cs",
+      "originalSha256": "e7f2775c93729481007f1e23dad5215e811f5aa799bcac1d08eeb3d472f128b5"
+    }
+  ],
+  "preservedExternalResources": [
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/vehicle-handling.json\" LogicalName=\"proof.oil-vehicle-handling.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/construction.json\" LogicalName=\"proof.oil-construction.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/construction-sites.json\" LogicalName=\"proof.oil-construction-sites.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/sim/effects.json\" LogicalName=\"proof.oil-construction-effects.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/inventory.json\" LogicalName=\"proof.oil-inventory.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/structures.json\" LogicalName=\"proof.oil-structures.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/vehicles.json\" LogicalName=\"proof.oil-vehicles.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/work.json\" LogicalName=\"proof.oil-work.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/production.json\" LogicalName=\"proof.oil-production.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/business-transformation-costs.json\" LogicalName=\"proof.oil-business-transformation-costs.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/business-operating-costs.json\" LogicalName=\"proof.oil-business-operating-costs.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/game-modes.json\" LogicalName=\"proof.oil-game-modes.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/scenarios.json\" LogicalName=\"proof.oil-scenarios.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/manifest.json\" LogicalName=\"proof.oil-manifest.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/business-accounts.json\" LogicalName=\"proof.oil-business-accounts.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/business-costs.json\" LogicalName=\"proof.oil-business-costs.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/items.json\" LogicalName=\"proof.oil-items.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/networks.json\" LogicalName=\"proof.oil-networks.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/worker-roles.json\" LogicalName=\"proof.oil-worker-roles.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/states.json\" LogicalName=\"proof.oil-states.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/spatial-world.json\" LogicalName=\"proof.oil-spatial-world.json\" />\n",
+    "    <EmbeddedResource Include=\"../../../Beep.OilFieldDays/src/oilCo-engine/src/SimEngine/content/oil/navigation.json\" LogicalName=\"proof.oil-navigation.json\" />\n"
+  ],
+  "consumerRegistrations": [
+    "ConditionalOperatingCostTests.Register();",
+    "OilActivityAuthoringTests.Register();",
+    "OilAuthoredInfrastructureTests.Register();",
+    "OilAuthoredNavigationTests.Register();",
+    "OilCanonicalManufacturingTests.Register();",
+    "OilConstructionAuthoringTests.Register();",
+    "OilFinancialOwnershipTests.Register();",
+    "OilManifestContentTests.Register();",
+    "OilProductionAuthoringTests.Register();",
+    "OilSessionTimeTests.Register();",
+    "OilStorageAuthoringTests.Register();",
+    "OilVehicleAuthoringTests.Register();",
+    "TycoonOperatingCostTests.Register();"
+  ]
+}

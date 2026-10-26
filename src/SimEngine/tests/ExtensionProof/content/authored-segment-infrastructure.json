@@ -1,0 +1,150 @@
+{
+  "tile_line_placement_policies": [{"id":"segment.placement","space":"survey.tiles","blocker":"line.placement-blocked","footprint":{"match":"all","conditions":[]}}],
+  "line_effects": [
+    {
+      "id": "segment.stamp",
+      "operation": "segment"
+    },
+    {
+      "id": "segment.finish",
+      "operation": "finish"
+    }
+  ],
+  "spatial_layers": [
+    {
+      "id": "segment.road",
+      "space": "survey.tiles",
+      "type": "network.topology",
+      "value_type": "byte",
+      "visibility": "public",
+      "unit": "survey.count"
+    },
+    {
+      "id": "segment.pipe",
+      "space": "survey.tiles",
+      "type": "network.topology",
+      "value_type": "byte",
+      "visibility": "public",
+      "unit": "survey.count"
+    }
+  ],
+  "lines": [
+    {"value":1,
+      "id": "segment.road-line",
+      "activity": "segment.shared",
+      "segment_node": "install",
+      "layer": "segment.road",
+      "owned": false,
+      "placement_policy": "segment.placement",
+      "finish_effect": "segment.finish",
+      "work_marker": "sim.line-work.segment.road-line"
+    },
+    {"value":1,
+      "id": "segment.pipe-line",
+      "activity": "segment.shared",
+      "segment_node": "install",
+      "layer": "segment.pipe",
+      "owned": false,
+      "placement_policy": "segment.placement",
+      "finish_effect": "segment.finish",
+      "work_marker": "sim.line-work.segment.pipe-line"
+    }
+  ],
+  "entities": [
+    {
+      "id": "segment.machine",
+      "kind": "vehicle",
+      "components": {
+        "tile_presence": {
+          "space": "survey.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "storage": {
+          "capacity_policy": "survey.storage",
+          "public": false,
+          "initial_stock": {
+            "steel": 20
+          }
+        },
+        "mover": {
+          "classes": [
+            "survey.route"
+          ],
+          "class": "survey.route",
+          "speed": 30,
+          "states": {
+            "moving": "survey.moving",
+            "stopped": "survey.stopped"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "survey"
+          ],
+          "states": {
+            "working": "survey.working",
+            "loading": "survey.loading",
+            "stopped": "survey.stopped"
+          }
+        },
+        "work_policy": {
+          "profile": "survey.enabled"
+        }
+      }
+    },
+    {
+      "id": "sim.line-work.segment.road-line",
+      "kind": "marker",
+      "tags": [
+        "line-work"
+      ],
+      "components": {
+        "tile_presence": {
+          "space": "survey.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": false,
+          "movable": true
+        },
+        "storage": {
+          "capacity_policy": "survey.storage",
+          "public": false,
+          "evacuate": false,
+          "accepts": [],
+          "phases": [],
+          "initial_stock": {}
+        },
+        "line_work": {}
+      }
+    },
+    {
+      "id": "sim.line-work.segment.pipe-line",
+      "kind": "marker",
+      "tags": [
+        "line-work"
+      ],
+      "components": {
+        "tile_presence": {
+          "space": "survey.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": false,
+          "movable": true
+        },
+        "storage": {
+          "capacity_policy": "survey.storage",
+          "public": false,
+          "evacuate": false,
+          "accepts": [],
+          "phases": [],
+          "initial_stock": {}
+        },
+        "line_work": {}
+      }
+    }
+  ]
+}

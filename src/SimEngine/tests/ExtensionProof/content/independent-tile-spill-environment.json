@@ -1,0 +1,19 @@
+{
+  "spatial_environmental_metrics":[
+    {"id":"sensor.spill-backlog","unit":"sensor.count","cells":["sensor.spill-cell"]}
+  ],
+  "environmental_metrics":[
+    {"id":"sensor.treated-total","unit":"sensor.count","rate_unit":"minute","window":null,
+      "resources":["treated-oil"],"kinds":["produced"],"causes":["sensor.treat-oil"]}
+  ],
+  "environmental_objective_predicates":[
+    {"id":"sensor.spill-detected-predicate","metric":"sensor.spill-backlog","unit":"sensor.count","relation":"at_least","amount":3},
+    {"id":"sensor.spill-recovered-predicate","metric":"sensor.spill-backlog","unit":"sensor.count","relation":"at_most","amount":0},
+    {"id":"sensor.spill-treated-predicate","metric":"sensor.treated-total","unit":"sensor.count","relation":"at_least","amount":3}
+  ],
+  "objectives":[
+    {"id":"sensor.spill-detected","prerequisites":[],"predicate":"sensor.spill-detected-predicate","deadline":null,"on_complete":null,"on_failure":null},
+    {"id":"sensor.spill-recovered","prerequisites":["sensor.spill-detected"],"predicate":"sensor.spill-recovered-predicate","deadline":null,"on_complete":null,"on_failure":null},
+    {"id":"sensor.spill-treated","prerequisites":["sensor.spill-recovered"],"predicate":"sensor.spill-treated-predicate","deadline":null,"on_complete":null,"on_failure":null}
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "activities":[
+    {"id":"point.tower.build-work","player_orderable":false,"priority":50,"automatic_supply":true,"nodes":[{"executor":"work.staffed","id":"prepare","roles":["inspect"],"duration":{"numerator":1,"denominator":20,"unit":"hour"}},{"executor":"work.staffed","id":"build","after":["prepare"],"roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"},"requirement":"point.build-inputs"}]},
+    {"id":"point.tower.removal-work","player_orderable":false,"priority":40,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"demolish","roles":["inspect"],"duration":{"numerator":1,"denominator":10,"unit":"hour"}}]}
+  ],
+  "entity_states": [{"id":"point.site","state":"point.building","priority":80}],
+  "construction_effects": [
+    {"id":"sim.construction.finish","operation":"finish"},
+    {"id":"sim.construction.demolish","operation":"demolish"}
+  ],
+  "target_resource_requirements": [{"port":null,"id":"point.build-inputs","use":"consume","quantities":{"supply":8}}],
+  "entities": [
+    {"id":"point.tower","kind":"structure","components":{
+      "point_presence":{"space":"field.points","position":0},
+      "storage":{"capacity_policy":"fixture.count.40","public":false,"initial_stock":{}},
+      "construction":{"site":"point.tower-site","activity":"point.tower.build-work","demolish":{"activity":"point.tower.removal-work","salvage":{}},"states":{"site":"point.site"}}}},
+    {"id":"point.tower-site","kind":"structure","tags":["site"],"components":{
+      "point_presence":{"space":"field.points","position":0},
+      "storage":{"capacity_policy":"fixture.count.40","public":false,"initial_stock":{}},
+      "site":{"target":"point.tower"}}},
+    {"id":"point.recovery-container","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":0},
+      "storage":{"capacity_policy":"fixture.count.4","public":true,"evacuate":true,"initial_stock":{}}}}
+  ],
+  "resource_recovery_profiles": [{"id":"point.recovery","space":"field.points","container":"point.recovery-container"}]
+}

@@ -1,0 +1,26 @@
+{
+  "point_interval_regions": [
+    {"id":"service.evacuation-area","space":"field.points","minimum":12,"maximum":100}
+  ],
+  "logistics_policies": [
+    {"id":"service.evacuation-policy","stock":{},"outlet":{"enabled":false,"reserve":{},"reserve_access":"protected","export_priority":0,"allowed_destinations":["destination","service.receiver.far"]},"states":{"disabled":"blocked"}}
+  ],
+  "entities": [
+    {"id":"service.evacuation-origin","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":12},
+      "storage":{"capacity_policy":"fixture.count.40","public":true,"evacuate":true,"initial_stock":{"supply":2}},
+      "logistics_policy":{"profiles":[{"port":null,"profile":"service.evacuation-policy"}]}
+    }},
+    {"id":"service.receiver.far","kind":"entity","components":{
+      "point_presence":{"space":"field.points","position":60},
+      "storage":{"capacity_policy":"fixture.count.40","public":true,"initial_stock":{}}
+    }}
+  ],
+  "entity_setups": [
+    {"id":"service.evacuation-origin","after":[],"entity":"service.evacuation-origin","company":0,"placement":{"space":"field.points","position":12},"home":null},
+    {"id":"service.receiver.far","after":[],"entity":"service.receiver.far","company":0,"placement":{"space":"field.points","position":60},"home":null}
+  ],
+  "world_setup_profiles": [
+    {"id":"service.evacuation-start","entries":["service.evacuation-origin","service.receiver.far"],"includes":[]}
+  ]
+}

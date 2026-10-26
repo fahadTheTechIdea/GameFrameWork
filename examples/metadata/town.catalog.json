@@ -1,0 +1,92 @@
+{
+  "SchemaVersion": 1,
+  "Id": "town-catalog",
+  "Archetypes": [
+    {
+      "Id": "root",
+      "Kind": "settlement",
+      "Purpose": "Game-authored settlement program",
+      "Properties": {},
+      "Parts": [
+        {
+          "Id": "districts",
+          "ArchetypeId": "district",
+          "Count": 0,
+          "Purpose": "Distinct town districts",
+          "CountParameter": "districts",
+          "Layout": null
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "streets",
+          "Kind": "street-network",
+          "Pattern": "Chain",
+          "FromPart": "districts",
+          "ToPart": null,
+          "Bidirectional": true,
+          "Properties": null
+        }
+      ],
+      "ChildRequirements": [
+        {
+          "Kind": "district",
+          "Minimum": 1,
+          "Maximum": 12
+        }
+      ],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "district",
+      "Kind": "district",
+      "Purpose": "Game-authored district program",
+      "Properties": {},
+      "Parts": [
+        {
+          "Id": "sites",
+          "ArchetypeId": "site",
+          "Count": 0,
+          "Purpose": "Planned neighborhood sites",
+          "CountParameter": "sites",
+          "Layout": null
+        }
+      ],
+      "Connections": [
+        {
+          "Id": "access",
+          "Kind": "local-access",
+          "Pattern": "Chain",
+          "FromPart": "sites",
+          "ToPart": null,
+          "Bidirectional": true,
+          "Properties": null
+        }
+      ],
+      "ChildRequirements": [
+        {
+          "Kind": "location",
+          "Minimum": 1,
+          "Maximum": 100
+        }
+      ],
+      "RequireWeaklyConnectedChildren": true,
+      "Structure": null
+    },
+    {
+      "Id": "site",
+      "Kind": "location",
+      "Purpose": "Game-authored location program",
+      "Properties": {
+        "gameplay_role": "configurable-site",
+        "enabled": true
+      },
+      "Parts": [],
+      "Connections": [],
+      "ChildRequirements": [],
+      "RequireWeaklyConnectedChildren": false,
+      "Structure": null
+    }
+  ]
+}

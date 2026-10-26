@@ -1,0 +1,15 @@
+{
+  "independent_worker_roles":[{"id":"contract.inspect"}],
+  "independent_staffed_executors":[{"id":"contract.staffed","travel":"sim.work.travel","work":"sim.work.productive","departure":"sim.work.departure"}],
+  "independent_worker_guards":[{"id":"contract.role","role":"contract.inspect","blocker":"work.contract-role"}],
+  "independent_target_resources":[
+    {"id":"contract.materials","port":null,"use":"consume","quantities":{"supply":2}},
+    {"id":"contract.tools","port":null,"use":"hold","quantities":{"supply":2}},
+    {"id":"contract.expensive","port":null,"use":"consume","quantities":{"supply":30}}
+  ],
+  "independent_requirement_groups":[
+    {"id":"contract.any","mode":"any","entries":[{"id":"a.unavailable","requirement":"contract.expensive"},{"id":"b.compatible","requirement":"contract.materials"}]},
+    {"id":"contract.inputs","mode":"all","entries":[{"id":"guard","requirement":"contract.role"},{"id":"materials","requirement":"contract.any"},{"id":"tools","requirement":"contract.tools"}]}
+  ],
+  "work_requirement_groups":[{"id":"contract.native-root","mode":"all","entries":[{"id":"external","requirement":"contract.inputs"}]}]
+}

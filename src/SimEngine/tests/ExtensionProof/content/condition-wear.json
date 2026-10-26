@@ -1,0 +1,21 @@
+{
+  "units": [
+    { "id": "unit.boolean", "dimension": "boolean", "scale": { "numerator": 1, "denominator": 1 }, "discrete": true },
+    { "id": "unit.level", "dimension": "probe-level", "scale": { "numerator": 1, "denominator": 1 }, "discrete": false }
+  ],
+  "signals": [
+    { "id": "equipment.wear-enabled", "kind": "boolean", "metric": "operation.enabled", "unit": "unit.boolean", "providers": [{ "component": "network_sensor", "schema": 1 }] }
+  ],
+  "condition_wear_profiles": [
+    { "id": "wear.rational", "unit": "unit.condition", "quantity": 1, "period": { "numerator": 3, "denominator": 1, "unit": "minute" }, "conditions": [] },
+    { "id": "wear.operating", "unit": "unit.condition", "quantity": 1, "period": { "numerator": 1, "denominator": 1, "unit": "minute" }, "conditions": [
+      { "id": "operation", "source": "sensor", "signal": "equipment.wear-enabled", "expected": true, "blocker": "equipment.wear-disabled" }
+    ] },
+    { "id": "wear.dependent", "unit": "unit.condition", "quantity": 1, "period": { "numerator": 1, "denominator": 1, "unit": "minute" }, "conditions": [
+      { "id": "integrity", "source": "integrity", "signal": "equipment.integrity", "unit": "unit.condition", "minimum": 1, "maximum": 10, "blocker": "equipment.primary-exhausted" }
+    ] }
+  ],
+  "proof_condition_wear_profiles": [
+    { "id": "wear.custom", "unit": "unit.condition", "quantity": 2, "fault": 0 }
+  ]
+}

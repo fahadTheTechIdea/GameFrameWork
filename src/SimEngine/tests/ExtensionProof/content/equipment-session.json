@@ -1,0 +1,29 @@
+{
+  "scenarios": [{
+    "id":"equipment-session","game_mode":"colony.survival","mode_overrides":{},"time":"test.minute","space":"colony.tiles",
+    "modules":["sim.work","sim.transformations","colony","sim.world-setup","sim.tile-construction-rules","sim.tile-conditions","sim.equipment-condition","sim.resource-flows"],
+    "seats":2,"default_seats":2,
+    "settings":{"sim.work":{"retry":"proof.retry"},"sim.construction":{"recovery":"colony.recovery"},
+      "sim.world-setup":{"profile":"equipment.session-start"},"sim.tile-construction-rules":{"profile":"colony.placement"}}
+  }],
+  "entities": [{"id":"equipment.session-machine","kind":"structure","components":{
+    "tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":true,"movable":false},
+    "storage":{"capacity_policy":"fixture.count.40","public":false,"initial_stock":{"steel":30}},
+    "inventory_port":[{"id":"material.output"},{"id":"material.input"},{"id":"tool.input"},{"id":"operating.input"}],
+    "work_permit":{"enabled":true},
+    "equipment_condition":{"id":"integrity","unit":"unit.condition","maximum":10,"initial":10,"wear":"wear.operating",
+      "states":{"damaged":"stopped","failed":"stopped"}},
+    "network_sensor":{"level":1,"operation":{"id":"sensor","enabled":false,"target":1,"minimum":0,"maximum":10,"unit":"unit.level"}},
+    "transformer":{"automatic_supply":false,"wip_capacity":"fixture.count.40","transformations":["equipment.batch"],
+      "states":{"working":"working","stopped":"stopped"},
+      "operation":{"id":"process","enabled":true,"target":1,"minimum":1,"maximum":2,"unit":"unit.work-rate"}},
+    "signal_transformation_gate":{"id":"safe-equipment","transformations":["equipment.batch"],"conditions":[
+      {"id":"integrity","source":"integrity","signal":"equipment.integrity","unit":"unit.condition","minimum":6,"maximum":10,"blocker":"equipment.unsafe"}]}
+  }}],
+  "world_setup_profiles":[{"id":"equipment.session-start","entries":["equipment.session-owner","equipment.session-foreign","equipment.session-crane"],"includes":[]}],
+  "entity_setups":[
+    {"id":"equipment.session-owner","after":[],"entity":"equipment.session-machine","company":0,"placement":{"space":"colony.tiles","x":12,"y":28},"home":null},
+    {"id":"equipment.session-foreign","after":[],"entity":"equipment.session-machine","company":1,"placement":{"space":"colony.tiles","x":20,"y":28},"home":null},
+    {"id":"equipment.session-crane","after":["equipment.session-owner"],"entity":"crane","company":0,"placement":{"space":"colony.tiles","x":8,"y":26},"home":null}
+  ]
+}

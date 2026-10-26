@@ -1,0 +1,258 @@
+{
+  "SchemaVersion": 1,
+  "Id": "modern-city.structures-first",
+  "WorldSha256": "935105deb12e5146fcffc818b20ff02bf649029940d1ad1c586c6966d86cbbc9",
+  "ArtStyleId": "pixel_art_provisional",
+  "CameraProfile": "Provisional elevated near-overhead orthographic city view, warm upper-left lighting, cream/blue/terracotta palette; source drafts are not approved and native sprite scale/pivots remain unqualified.",
+  "MaximumStructuresPerMockup": 64,
+  "Scopes": [
+    {
+      "Id": "world",
+      "ParentId": null,
+      "Kind": "World",
+      "SettlementId": null,
+      "SettlementClass": null,
+      "RegionIds": [],
+      "IsSample": false
+    },
+    {
+      "Id": "settlement-0",
+      "ParentId": "world",
+      "Kind": "Settlement",
+      "SettlementId": "modern-city",
+      "SettlementClass": "City",
+      "RegionIds": [],
+      "IsSample": true
+    },
+    {
+      "Id": "settlement-0-district-0",
+      "ParentId": "settlement-0",
+      "Kind": "District",
+      "SettlementId": "modern-city",
+      "SettlementClass": null,
+      "RegionIds": [
+        "site-civic-offices"
+      ],
+      "IsSample": false
+    },
+    {
+      "Id": "settlement-0-district-1",
+      "ParentId": "settlement-0",
+      "Kind": "District",
+      "SettlementId": "modern-city",
+      "SettlementClass": null,
+      "RegionIds": [
+        "site-east-offices"
+      ],
+      "IsSample": false
+    },
+    {
+      "Id": "settlement-0-district-2",
+      "ParentId": "settlement-0",
+      "Kind": "District",
+      "SettlementId": "modern-city",
+      "SettlementClass": null,
+      "RegionIds": [
+        "site-factory"
+      ],
+      "IsSample": false
+    },
+    {
+      "Id": "settlement-0-district-3",
+      "ParentId": "settlement-0",
+      "Kind": "District",
+      "SettlementId": "modern-city",
+      "SettlementClass": null,
+      "RegionIds": [
+        "site-homes-central-middle"
+      ],
+      "IsSample": false
+    },
+    {
+      "Id": "settlement-0-district-4",
+      "ParentId": "settlement-0",
+      "Kind": "District",
+      "SettlementId": "modern-city",
+      "SettlementClass": null,
+      "RegionIds": [
+        "site-homes-central-north"
+      ],
+      "IsSample": false
+    },
+    {
+      "Id": "settlement-0-district-5",
+      "ParentId": "settlement-0",
+      "Kind": "District",
+      "SettlementId": "modern-city",
+      "SettlementClass": null,
+      "RegionIds": [
+        "site-homes-central-south"
+      ],
+      "IsSample": false
+    },
+    {
+      "Id": "settlement-0-district-6",
+      "ParentId": "settlement-0",
+      "Kind": "District",
+      "SettlementId": "modern-city",
+      "SettlementClass": null,
+      "RegionIds": [
+        "site-homes-lower"
+      ],
+      "IsSample": false
+    },
+    {
+      "Id": "settlement-0-district-7",
+      "ParentId": "settlement-0",
+      "Kind": "District",
+      "SettlementId": "modern-city",
+      "SettlementClass": null,
+      "RegionIds": [
+        "site-homes-park-south"
+      ],
+      "IsSample": false
+    },
+    {
+      "Id": "settlement-0-district-8",
+      "ParentId": "settlement-0",
+      "Kind": "District",
+      "SettlementId": "modern-city",
+      "SettlementClass": null,
+      "RegionIds": [
+        "site-homes-west-middle"
+      ],
+      "IsSample": false
+    },
+    {
+      "Id": "settlement-0-district-9",
+      "ParentId": "settlement-0",
+      "Kind": "District",
+      "SettlementId": "modern-city",
+      "SettlementClass": null,
+      "RegionIds": [
+        "site-homes-west-north"
+      ],
+      "IsSample": false
+    },
+    {
+      "Id": "settlement-0-district-10",
+      "ParentId": "settlement-0",
+      "Kind": "District",
+      "SettlementId": "modern-city",
+      "SettlementClass": null,
+      "RegionIds": [
+        "site-homes-west-south"
+      ],
+      "IsSample": false
+    },
+    {
+      "Id": "settlement-0-district-11",
+      "ParentId": "settlement-0",
+      "Kind": "District",
+      "SettlementId": "modern-city",
+      "SettlementClass": null,
+      "RegionIds": [
+        "site-school"
+      ],
+      "IsSample": false
+    },
+    {
+      "Id": "settlement-0-district-12",
+      "ParentId": "settlement-0",
+      "Kind": "District",
+      "SettlementId": "modern-city",
+      "SettlementClass": null,
+      "RegionIds": [
+        "site-stadium"
+      ],
+      "IsSample": false
+    },
+    {
+      "Id": "settlement-0-district-13",
+      "ParentId": "settlement-0",
+      "Kind": "District",
+      "SettlementId": "modern-city",
+      "SettlementClass": null,
+      "RegionIds": [
+        "site-warehouse"
+      ],
+      "IsSample": false
+    }
+  ],
+  "Art": [
+    {
+      "DefinitionId": "detached-house",
+      "VariantId": "medium",
+      "Master": {
+        "File": ".gamearts/experiments/structures-first/structures/house.png",
+        "Sha256": "62ebac984264280d4fc27e2baa5fca7dce9d841ee13f6f9f682f87bfaf7fe846"
+      },
+      "Production": null
+    },
+    {
+      "DefinitionId": "factory",
+      "VariantId": "large",
+      "Master": {
+        "File": ".gamearts/experiments/structures-first/structures/factory.png",
+        "Sha256": "a31482b8de84a216a67b741ede8b918ddabb91ab89d11a2d6d627164376a2c77"
+      },
+      "Production": null
+    },
+    {
+      "DefinitionId": "football-stadium",
+      "VariantId": "regional",
+      "Master": {
+        "File": ".gamearts/experiments/structures-first/structures/stadium.png",
+        "Sha256": "5d5d53100a89f8584b853f409e439f3798bf74e3b70fb3af42f9c3512258df12"
+      },
+      "Production": null
+    },
+    {
+      "DefinitionId": "office-building",
+      "VariantId": "medium",
+      "Master": {
+        "File": ".gamearts/experiments/structures-first/structures/office.png",
+        "Sha256": "f5c265889871e4725b5ddd6a9237906a9d5e62606430f93ae54429aabed58711"
+      },
+      "Production": null
+    },
+    {
+      "DefinitionId": "office-building",
+      "VariantId": "small",
+      "Master": {
+        "File": ".gamearts/experiments/structures-first/structures/office.png",
+        "Sha256": "f5c265889871e4725b5ddd6a9237906a9d5e62606430f93ae54429aabed58711"
+      },
+      "Production": null
+    },
+    {
+      "DefinitionId": "primary-school",
+      "VariantId": "medium",
+      "Master": {
+        "File": ".gamearts/experiments/structures-first/structures/school.png",
+        "Sha256": "29c4c95efb2cab039ce387067735329b09d0b4bd89be4018221c5f5a7fb5ec2c"
+      },
+      "Production": null
+    },
+    {
+      "DefinitionId": "warehouse",
+      "VariantId": "large",
+      "Master": {
+        "File": ".gamearts/experiments/structures-first/structures/warehouse.png",
+        "Sha256": "7caca8c5f178a91309529c381d1ea54843a9a36176eb31eef5599dce217e4e49"
+      },
+      "Production": null
+    }
+  ],
+  "Concepts": [
+    {
+      "ScopeId": "world",
+      "MockupId": "structures-first-city-draft",
+      "Revision": "draft-generated-01",
+      "Image": {
+        "File": ".gamearts/experiments/structures-first/city-from-structures.png",
+        "Sha256": "d30ebc331a6169f2b51771c2f02f2e82ea495c8b8394b8bf49a8f42a120ca8b6"
+      }
+    }
+  ]
+}

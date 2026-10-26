@@ -1,0 +1,7 @@
+{
+  "compatibility_visibility": [{ "id": "compat.visibility", "hidden_resource": null }],
+  "entities": [
+    { "id": "compat.named-only", "kind": "entity", "components": { "compatibility_port": [{ "id": "probe", "pool": "ports.product-pool" }] } }
+  ],
+  "entity_setups": [{ "id": "compat.named-only-start", "after": [], "entity": "compat.named-only", "company": 0, "placement": null, "home": null }]
+}

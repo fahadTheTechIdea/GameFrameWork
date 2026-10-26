@@ -1,0 +1,9 @@
+{
+  "world_setup_profiles": [
+    {"id":"disposition.mixed-start","entries":["disposition.loaded-truck","disposition.water-store"],"includes":[]}
+  ],
+  "entity_setups": [
+    {"id":"disposition.loaded-truck","after":[],"entity":"loaded_truck","company":0,"placement":{"space":"recovery.tiles","x":20,"y":20},"home":null},
+    {"id":"disposition.water-store","after":[],"entity":"water_store","company":0,"placement":{"space":"recovery.tiles","x":30,"y":20},"home":null}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "proof_retry_profiles": [
+    {"id":"retry.constant","delay":{"numerator":3,"denominator":1,"unit":"minute"},"fault_at_two":false},
+    {"id":"retry.fault","delay":{"numerator":3,"denominator":1,"unit":"minute"},"fault_at_two":true}
+  ],
+  "work_policies": [{"id":"retry.worker","enabled":true,"priority":0,"allowed_roles":["haul","inspect"],"area":null,"interruptible":true,"emergency_eligible":true,"assignment_mode":"all","states":{"disabled":"blocked","standby":"blocked"}}],
+  "entity_states": [
+    {"id":"working","state":"retry.available","priority":10},
+    {"id":"stopped","state":"retry.unavailable","priority":80}
+  ]
+}

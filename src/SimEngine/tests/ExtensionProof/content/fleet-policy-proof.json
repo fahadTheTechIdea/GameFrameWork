@@ -1,0 +1,5 @@
+{
+  "required_navigation_fleet_policies": [
+    {"id":"fleet.proof","required_navigation":"terrain.route","navigation_classes":["survey.route","terrain.route"]}
+  ]
+}

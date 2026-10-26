@@ -1,0 +1,57 @@
+{
+  "signals": [
+    {
+      "id": "binding.utility-ready",
+      "kind": "boolean",
+      "metric": "utility.ready",
+      "unit": "unit.boolean",
+      "providers": [
+        {
+          "component": "independent_utility_signal",
+          "schema": 1
+        }
+      ]
+    }
+  ],
+  "resource_signals": [
+    {
+      "id": "binding.utility-requested",
+      "kind": "number",
+      "metric": "utility.requested",
+      "resource": "supply",
+      "unit": "unit.supply",
+      "providers": [
+        {
+          "component": "independent_utility_signal",
+          "schema": 1
+        }
+      ]
+    },
+    {
+      "id": "binding.utility-available",
+      "kind": "number",
+      "metric": "utility.available",
+      "resource": "supply",
+      "unit": "unit.supply",
+      "providers": [
+        {
+          "component": "independent_utility_signal",
+          "schema": 1
+        }
+      ]
+    },
+    {
+      "id": "binding.utility-consumed",
+      "kind": "number",
+      "metric": "utility.consumed",
+      "resource": "supply",
+      "unit": "unit.supply",
+      "providers": [
+        {
+          "component": "independent_utility_signal",
+          "schema": 1
+        }
+      ]
+    }
+  ]
+}

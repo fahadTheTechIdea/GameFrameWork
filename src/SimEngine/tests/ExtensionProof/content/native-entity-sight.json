@@ -1,0 +1,11 @@
+{
+  "knowledge_visibility_policies": [{"id":"survey.entity-sight","own_entities":true,"unlisted_entities":false,"unlisted_content":true,
+    "rules":["survey.deposit.sight","survey.terrain.sight","survey.class.sight","sight.foreign","sight.machine"]},
+    {"id":"survey.locked-sight","own_entities":true,"unlisted_entities":false,"unlisted_content":true,
+    "rules":["survey.deposit.sight","survey.terrain.sight","survey.class.sight","sight.foreign","sight.machine","sight.permission"]}],
+  "entity_knowledge_visibility":[{"id":"sight.permission","definition":"survey.foreign-sensor","mode":"all","facts":["sight.permit"]}],
+  "entity_sensor_visibility": [
+    {"id":"sight.foreign","definition":"survey.foreign-sensor","sensors":["survey.sensor"]},
+    {"id":"sight.machine","definition":"survey.machine","sensors":["survey.sensor"]}
+  ]
+}

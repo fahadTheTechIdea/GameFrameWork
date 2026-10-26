@@ -1,0 +1,43 @@
+{
+  "work_policies": [
+    {
+      "id": "colony.crane.policy",
+      "enabled": true,
+      "priority": 0,
+      "allowed_roles": ["crane"],
+      "area": null,
+      "interruptible": true,
+      "emergency_eligible": true,
+      "assignment_mode": "all",
+      "states": {"disabled": "stopped", "standby": "stopped"}
+    }
+  ],
+  "target_resource_requirements": [
+    {"port":null,
+      "id": "colony.tower.erect.inputs",
+      "use": "consume",
+      "quantities": {
+        "steel": 30
+      }
+    },
+    {"port":null,
+      "id": "colony.road.inputs",
+      "use": "consume",
+      "quantities": {
+        "steel": 1
+      }
+    }
+  ],
+  "work_requirement_groups": [
+    {
+      "id": "colony.tower.erect.requirements",
+      "mode": "all",
+      "entries": [
+        {
+          "id": "inputs",
+          "requirement": "colony.tower.erect.inputs"
+        }
+      ]
+    }
+  ]
+}

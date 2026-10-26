@@ -1,0 +1,6 @@
+{
+  "units": [{"id":"corridor.company-unit","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true}],
+  "spatial_layers": [
+    {"id":"corridor.company","space":"field.points","type":"constructed.corridor.company","value_type":"int","visibility":"public","unit":"corridor.company-unit"}
+  ]
+}

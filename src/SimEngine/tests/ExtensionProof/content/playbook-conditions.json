@@ -1,0 +1,44 @@
+{
+  "signal_conditions": [
+    {
+      "id": "strategy.risk",
+      "entity": "strategy.beacon",
+      "mode": "any",
+      "conditions": [
+        {
+          "id": "enabled",
+          "source": "risk-dial",
+          "signal": "strategy.enabled",
+          "expected": true,
+          "blocker": "controller.risk-disabled"
+        }
+      ]
+    },
+    {
+      "id": "strategy.reserve",
+      "entity": "strategy.beacon",
+      "mode": "all",
+      "conditions": [
+        {
+          "id": "reserve",
+          "source": "feed",
+          "signal": "strategy.stock",
+          "minimum": 8,
+          "maximum": 40,
+          "unit": "unit.supply",
+          "blocker": "controller.reserve"
+        }
+      ]
+    }
+  ],
+  "elapsed_conditions": [
+    {
+      "id": "strategy.wait",
+      "after": {
+        "numerator": 5,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    }
+  ]
+}

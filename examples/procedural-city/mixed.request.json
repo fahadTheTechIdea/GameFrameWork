@@ -1,0 +1,62 @@
+{
+  "SchemaVersion": 1,
+  "Id": "procedural-city",
+  "WidthMeters": 1200,
+  "HeightMeters": 800,
+  "StreetProfile": {
+    "LaneWidthMeters": 3,
+    "LaneCount": 2,
+    "SidewalkLeftMeters": 1.5,
+    "SidewalkRightMeters": 1.5,
+    "CurbLeftMeters": 0.25,
+    "CurbRightMeters": 0.25,
+    "MedianMeters": 0,
+    "TotalWidthMeters": 9.5
+  },
+  "TargetBlockWidthMeters": 180,
+  "TargetBlockDepthMeters": 170,
+  "MinimumBlockSpanMeters": 120,
+  "TargetParcelFrontageMeters": 26,
+  "SetbackMeters": 3,
+  "Districts": [
+    {
+      "Id": "residential",
+      "Purpose": "Residential neighborhoods",
+      "AreaWeight": 2,
+      "LayoutId": "recursive-neighborhoods",
+      "StructureCycle": [
+        "house",
+        "shop"
+      ],
+      "OpenSpaceEveryBlocks": 4
+    },
+    {
+      "Id": "center",
+      "Purpose": "Formal civic center",
+      "AreaWeight": 1,
+      "LayoutId": "rectilinear-grid",
+      "StructureCycle": [
+        "civic",
+        "shop"
+      ],
+      "OpenSpaceEveryBlocks": 3
+    },
+    {
+      "Id": "production",
+      "Purpose": "Compound employment sites",
+      "AreaWeight": 1,
+      "LayoutId": "recursive-neighborhoods",
+      "StructureCycle": [
+        "compound",
+        "workshop"
+      ],
+      "OpenSpaceEveryBlocks": 4
+    }
+  ],
+  "Variation": 1,
+  "MaximumBlocks": 256,
+  "MaximumParcels": 3000,
+  "MaximumStructures": 5000,
+  "Coverage": "CompleteDeclaredScope",
+  "RemainingScopes": null
+}

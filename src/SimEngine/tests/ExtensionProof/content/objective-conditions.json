@@ -1,0 +1,204 @@
+{
+  "signal_conditions": [
+    {
+      "id": "field.detected",
+      "entity": "field.plant",
+      "mode": "any",
+      "conditions": [
+        {
+          "id": "active",
+          "source": "incident-state",
+          "signal": "field.incident-active",
+          "expected": true,
+          "blocker": "field.incident-state"
+        }
+      ]
+    },
+    {
+      "id": "field.recovered",
+      "entity": "field.plant",
+      "mode": "any",
+      "conditions": [
+        {
+          "id": "active",
+          "source": "incident-state",
+          "signal": "field.incident-active",
+          "expected": false,
+          "blocker": "field.incident-state"
+        },
+        {
+          "id": "stock",
+          "source": "feed",
+          "signal": "field.stock",
+          "minimum": 12,
+          "maximum": 12,
+          "unit": "unit.supply",
+          "blocker": "field.reserve-accounting"
+        }
+      ]
+    }
+  ],
+  "elapsed_conditions": [
+    {
+      "id": "field.elapsed",
+      "after": {
+        "numerator": 5,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    }
+  ],
+  "signals": [
+    {
+      "id": "field.incident-active",
+      "kind": "boolean",
+      "metric": "incident.active",
+      "unit": "unit.boolean",
+      "providers": [
+        {
+          "component": "incident_signal",
+          "schema": 1
+        }
+      ]
+    },
+    {
+      "id": "field.stock-ready",
+      "kind": "boolean",
+      "metric": "inventory.available-ready",
+      "unit": "unit.boolean",
+      "providers": [
+        {
+          "component": "inventory_signal",
+          "schema": 3
+        }
+      ]
+    }
+  ],
+  "resource_signals": [
+    {
+      "id": "field.stock",
+      "kind": "number",
+      "metric": "inventory.available",
+      "resource": "supply",
+      "unit": "unit.supply",
+      "providers": [
+        {
+          "component": "inventory_signal",
+          "schema": 3
+        }
+      ]
+    }
+  ],
+  "entities": [
+  {
+    "id": "field.plant",
+    "kind": "structure",
+    "components": {
+      "point_presence": {
+        "space": "field.points",
+        "position": 20
+      },
+      "storage": {
+        "capacity_policy": "fixture.count.40",
+        "public": false,
+        "initial_stock": {
+          "supply": 20
+        }
+      },
+      "inventory_signal": {
+        "id": "feed",
+        "inventory": "storage",
+        "quantities": null
+      },
+      "incident": {
+        "id": "pressure.leak",
+        "workflow": "pressure.leak",
+        "states": {
+          "active": "blocked"
+        }
+      },
+      "incident_signal": {
+        "id": "incident-state",
+        "source": "pressure.leak",
+        "workflow": "pressure.leak",
+        "phase": "repair"
+      },
+      "inventory_port": {
+        "id": "disposition.input"
+      }
+    }
+  },
+  {
+    "id": "field.foreign-plant",
+    "kind": "structure",
+    "components": {
+      "point_presence": {
+        "space": "field.points",
+        "position": 50
+      },
+      "storage": {
+        "capacity_policy": "fixture.count.40",
+        "public": false,
+        "initial_stock": {
+          "supply": 20
+        }
+      },
+      "inventory_signal": {
+        "id": "feed",
+        "inventory": "storage",
+        "quantities": null
+      },
+      "incident": {
+        "id": "pressure.leak",
+        "workflow": "pressure.leak",
+        "states": {
+          "active": "blocked"
+        }
+      },
+      "incident_signal": {
+        "id": "incident-state",
+        "source": "pressure.leak",
+        "workflow": "pressure.leak",
+        "phase": "repair"
+      },
+      "inventory_port": {
+        "id": "disposition.input"
+      }
+    }
+  }
+],
+  "entity_setups": [
+  {
+    "id": "field.plant-own",
+    "after": [],
+    "entity": "field.plant",
+    "company": 0,
+    "placement": {
+      "space": "field.points",
+      "position": 20
+    },
+    "home": null
+  },
+  {
+    "id": "field.plant-foreign",
+    "after": [],
+    "entity": "field.foreign-plant",
+    "company": 1,
+    "placement": {
+      "space": "field.points",
+      "position": 50
+    },
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "objective-conditions.start",
+    "entries": [
+      "field.plant-own",
+      "field.plant-foreign"
+    ],
+    "includes": []
+  }
+]
+}

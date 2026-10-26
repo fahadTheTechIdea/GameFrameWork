@@ -1,0 +1,17 @@
+{
+  "units": [
+    { "id": "unit.kg", "dimension": "mass", "scale": { "numerator": 1, "denominator": 1 }, "discrete": false }
+  ],
+  "resources": [
+    {
+      "id": "space.planetx.ore",
+      "category": "raw",
+      "unit": "unit.kg",
+      "phase": "solid",
+      "capacity": { "unit.kg": 1 },
+      "traits": [
+        "space.mineral"
+      ]
+    }
+  ]
+}

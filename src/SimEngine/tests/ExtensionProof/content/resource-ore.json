@@ -1,0 +1,8 @@
+{
+  "planet_ores": [{
+    "id": "planetx.ore", "unit": "unit.kg", "phase": "solid", "category": "mineral",
+    "traits": ["space.mineral", "handling.bulk"],
+    "capacity": { "unit.kg": 1, "unit.litre": 0.5 },
+    "composition": "planetx.synthetic-mineral"
+  }]
+}

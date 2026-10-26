@@ -1,0 +1,22 @@
+{
+  "planet_ores": [
+    {
+      "id": "declaration.ore",
+      "unit": "unit.capacity.mass",
+      "category": "mineral",
+      "phase": "solid",
+      "traits": ["mineral", "dense"],
+      "capacity": {"unit.capacity.volume": 0.5, "unit.capacity.mass": 1},
+      "composition": "authored.synthetic-mineral"
+    },
+    {
+      "id": "declaration.unused",
+      "unit": "unit.supply",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {"unit.supply": 0.5},
+      "composition": "authored.unused"
+    }
+  ]
+}

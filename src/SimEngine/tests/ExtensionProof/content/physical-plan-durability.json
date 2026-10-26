@@ -1,0 +1,8 @@
+{
+  "time_definitions": [{"id":"durability.half-minute","quantum":{"numerator":30,"denominator":1,"unit":"second"},"frame_ticks":1,"ticks_per_second":30,"calendar":"test.calendar","horizon":null}],
+  "entities": [{"id":"durability.receiver","kind":"structure","components":{
+    "tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":true,"movable":false},
+    "storage":{"capacity_policy":"fixture.count.40","public":false,"initial_stock":{}},
+    "tile_work_dock":{"work_roles":["haul"],"resources":["steel","recovery.fuel"],"slots":[{"id":"bay","kind":"service","x":-1,"y":1},{"id":"wait","kind":"waiting","x":0,"y":2},{"id":"exit","kind":"departure","x":0,"y":1},{"id":"land-exit","kind":"departure","x":1,"y":2}]}
+  }}]
+}

@@ -1,0 +1,11 @@
+{
+  "units": [
+    { "id": "unit.kg", "dimension": "mass", "scale": { "numerator": 1, "denominator": 1 }, "discrete": false },
+    { "id": "unit.g", "dimension": "mass", "scale": { "numerator": 1, "denominator": 1000 }, "discrete": false },
+    { "id": "unit.litre", "dimension": "volume", "scale": { "numerator": 1, "denominator": 1 }, "discrete": false },
+    { "id": "unit.count", "dimension": "count", "scale": { "numerator": 1, "denominator": 1 }, "discrete": true },
+    { "id": "unit.pair", "dimension": "count", "scale": { "numerator": 2, "denominator": 1 }, "discrete": true },
+    { "id": "unit.third", "dimension": "mass", "scale": { "numerator": 3, "denominator": 1 }, "discrete": false },
+    { "id": "unit.huge", "dimension": "mass", "scale": { "numerator": 9223372036854775807, "denominator": 1 }, "discrete": false }
+  ]
+}

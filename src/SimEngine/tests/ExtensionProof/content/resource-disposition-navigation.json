@@ -1,0 +1,5 @@
+{
+  "layered_tile_navigation": [
+    {"id":"land","space":"recovery.tiles","base_cost":10,"rules":[]}
+  ]
+}

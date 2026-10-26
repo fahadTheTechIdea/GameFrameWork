@@ -1,0 +1,15 @@
+{
+  "inventory_sale_eligibilities": [{"id":"purchase.inventory-sale"}],
+  "resource_sales": [{
+    "id":"purchase.delivered-sale", "target":"destination", "eligibility":"purchase.inventory-sale",
+    "prices":{"supply":5}, "reason":"ledger.sales",
+    "period":{"numerator":240,"denominator":1,"unit":"minute"},
+    "offset":{"numerator":120,"denominator":1,"unit":"minute"}
+  }],
+  "business_sales_reports": [{
+    "id":"purchase.sales-report",
+    "period":{"numerator":240,"denominator":1,"unit":"minute"},
+    "offset":{"numerator":120,"denominator":1,"unit":"minute"}
+  }],
+  "resource_flow_journals": [{"id":"purchase.resource-journal","retained_records_per_company":128}]
+}

@@ -1,0 +1,10 @@
+{
+  "startup_lifecycle_profiles": [
+    { "id": "startup.lifecycle", "phase": null, "failure": "none", "entity": "startup.broken" }
+  ],
+  "entities": [
+    { "id": "startup.broken", "kind": "entity", "components": {
+      "startup_creation_probe": { "mode": "throw-create", "participant": "source" }
+    } }
+  ]
+}

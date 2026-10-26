@@ -1,0 +1,5 @@
+{
+  "independent_lockstep_policies": [
+    { "id": "net.independent", "maximum_ahead": 2048, "maximum_commands_per_frame": 400 }
+  ]
+}

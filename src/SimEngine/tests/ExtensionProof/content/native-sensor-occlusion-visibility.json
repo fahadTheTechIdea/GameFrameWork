@@ -1,0 +1,9 @@
+{
+  "knowledge_visibility_policies": [{"id":"occlusion.sight","own_entities":true,"unlisted_entities":false,"unlisted_content":true,
+    "rules":["survey.deposit.sight","survey.terrain.sight","survey.class.sight","occlusion.screen","occlusion.foreign","occlusion.machine"]}],
+  "layer_sensor_visibility": [{"id":"occlusion.screen","definition":"survey.screen","sensors":["survey.sensor"]}],
+  "entity_sensor_visibility": [
+    {"id":"occlusion.foreign","definition":"survey.foreign-sensor","sensors":["survey.sensor"]},
+    {"id":"occlusion.machine","definition":"survey.machine","sensors":["survey.sensor"]}
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "operation_control_actions":[{"id":"proof.automation-rules.operation","command":"sim.configure-operation","owner":"sim.operations"}],
+  "control_input_recovery_policies":[{"id":"proof.automation-rules.suspend","retry_blockers":[]}],
+  "signals": [
+    {"id":"probe.level","kind":"number","metric":"probe.level","unit":"unit.level","providers":[{"component":"automation_probe","schema":1}]},
+    {"id":"probe.enabled","kind":"boolean","metric":"operation.enabled","unit":"unit.boolean","providers":[{"component":"automation_probe","schema":1}]},
+    {"id":"process.backlog","kind":"number","metric":"transformation.backlog","unit":"unit.count","providers":[{"component":"transformer","schema":1}]}
+  ],
+  "control_rules": [
+    {"id":"high-level","input_recovery":"proof.automation-rules.suspend","action_policy":"proof.automation-rules.operation","arbitration":"exclusive","initial_latch":false,
+     "inputs":[{"id":"level","signal":"probe.level"}],
+     "conditions":[{"id":"high","kind":"above","input":"level","unit":"unit.level","on":5,"off":3,"initial":false}],"root":"high",
+     "dwell":{"numerator":2,"denominator":1,"unit":"minute"},"cooldown":{"numerator":4,"denominator":1,"unit":"minute"},
+     "when_true":{"enabled":false,"target":1,"unit":"unit.work-rate"},"when_false":{"enabled":true,"target":1,"unit":"unit.work-rate"}},
+    {"id":"feedback","input_recovery":"proof.automation-rules.suspend","action_policy":"proof.automation-rules.operation","arbitration":"exclusive","initial_latch":false,
+     "inputs":[{"id":"enabled","signal":"probe.enabled"}],
+     "conditions":[{"id":"on","kind":"boolean","input":"enabled","expected":true,"initial":false}],"root":"on",
+     "dwell":{"numerator":0,"denominator":1,"unit":"minute"},"cooldown":{"numerator":0,"denominator":1,"unit":"minute"},
+     "when_true":{"enabled":false,"target":1,"unit":"unit.work-rate"},"when_false":{"enabled":true,"target":1,"unit":"unit.work-rate"}},
+    {"id":"backlog","input_recovery":"proof.automation-rules.suspend","action_policy":"proof.automation-rules.operation","arbitration":"exclusive","initial_latch":false,
+     "inputs":[{"id":"jobs","signal":"process.backlog"}],
+     "conditions":[{"id":"has-work","kind":"above","input":"jobs","unit":"unit.count","on":0,"off":0,"initial":false}],"root":"has-work",
+     "dwell":{"numerator":0,"denominator":1,"unit":"minute"},"cooldown":{"numerator":0,"denominator":1,"unit":"minute"},
+     "when_true":{"enabled":true,"target":1,"unit":"unit.work-rate"},"when_false":{"enabled":false,"target":1,"unit":"unit.work-rate"}}
+  ]
+}

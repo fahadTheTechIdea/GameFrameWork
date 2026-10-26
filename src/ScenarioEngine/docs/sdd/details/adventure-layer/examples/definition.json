@@ -1,0 +1,15 @@
+{
+  "id": "adventure_layer",
+  "definitionVersion": "1.0.0",
+  "locationIds": [
+    "village",
+    "river",
+    "friendly_lines"
+  ],
+  "startLocation": "village",
+  "interactionIds": [
+    "contact_ferryman",
+    "recover_radio"
+  ],
+  "completionScope": "operation"
+}

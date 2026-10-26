@@ -1,0 +1,16 @@
+{
+  "layer_access_probes": [
+    {
+      "id": "layer.access",
+      "stage": "none",
+      "fault": "none",
+      "hidden_resource": "point.water",
+      "hidden_unit": null,
+      "hidden_unit_viewer": 1,
+      "first_start": 0,
+      "first_end": 4,
+      "second_start": 6,
+      "second_end": 12
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "SchemaVersion": 1,
+  "Id": "space",
+  "GameProfile": "space-game",
+  "CatalogId": "space-catalog",
+  "RootArchetypeId": "root",
+  "Scale": "space",
+  "Coverage": "CompleteDeclaredScope",
+  "RemainingScopes": [],
+  "Parameters": {
+    "systems": 2,
+    "planets": 3
+  },
+  "Space": {
+    "Axes": [
+      "x",
+      "y",
+      "z"
+    ],
+    "Unit": "game-units"
+  },
+  "Origin": [
+    0,
+    0,
+    0
+  ],
+  "RequireAllPositions": true,
+  "MaximumNodes": 10000,
+  "MaximumConnections": 50000,
+  "AdditionalConnections": []
+}

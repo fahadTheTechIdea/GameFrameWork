@@ -1,0 +1,1 @@
+Generated 35 metadata nodes and 33 connections; scope: PartialScope.

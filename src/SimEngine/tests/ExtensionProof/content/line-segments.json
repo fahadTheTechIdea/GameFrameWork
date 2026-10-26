@@ -1,0 +1,172 @@
+{
+  "tile_line_placement_policies": [{"id":"segment.default-placement","space":"recovery.tiles","blocker":"line.placement-blocked","footprint":{"match":"all","conditions":[]}}],
+  "activities": [
+    {
+      "id": "segment.road.segment-work",
+      "player_orderable": false,
+      "automatic_supply": true,
+      "nodes": [
+        {
+          "id": "install",
+          "executor": "work.staffed",
+          "roles": [
+            "crane"
+          ],
+          "duration": {
+            "numerator": 90,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "effect": "sim.line.segment",
+          "requirement": "segment.inputs"
+        }
+      ]
+    },
+    {
+      "id": "segment.owned.segment-work",
+      "player_orderable": false,
+      "automatic_supply": true,
+      "nodes": [
+        {
+          "id": "install",
+          "executor": "work.staffed",
+          "roles": [
+            "crane"
+          ],
+          "duration": {
+            "numerator": 90,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "effect": "sim.line.segment",
+          "requirement": "segment.inputs"
+        }
+      ]
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "segment.buffer",
+      "limits": {
+        "unit.storage": 1
+      }
+    }
+  ],
+  "work_cost_requirements": [
+    {
+      "id": "segment.cost",
+      "amount": 5,
+      "credit": false,
+      "category": "construction"
+    }
+  ],
+  "work_requirement_groups": [
+    {
+      "id": "segment.inputs",
+      "mode": "all",
+      "entries": [
+        {
+          "id": "material",
+          "requirement": "proof.resource-recovery.road.inputs"
+        },
+        {
+          "id": "cost",
+          "requirement": "segment.cost"
+        }
+      ]
+    }
+  ],
+  "spatial_layers": [
+    {
+      "id": "segment.line",
+      "space": "recovery.tiles",
+      "type": "network.topology",
+      "value_type": "byte",
+      "visibility": "public",
+      "unit": "unit.classification"
+    },
+    {
+      "id": "segment.owner",
+      "space": "recovery.tiles",
+      "type": "network.ownership",
+      "value_type": "int",
+      "visibility": "public",
+      "unit": "unit.classification"
+    }
+  ],
+  "lines": [
+    {"value":1,
+      "id": "segment.road",
+      "layer": "road",
+      "placement_policy": "segment.default-placement",
+      "owned": false,
+      "finish_effect": "sim.line.finish",
+      "activity": "segment.road.segment-work",
+      "segment_node": "install",
+      "work_marker": "sim.line-work.segment.road"
+    },
+    {"value":1,
+      "id": "segment.owned",
+      "layer": "segment.line",
+      "owner_layer": "segment.owner",
+      "owned": true,
+      "placement_policy": "segment.default-placement",
+      "finish_effect": "sim.line.finish",
+      "activity": "segment.owned.segment-work",
+      "segment_node": "install",
+      "work_marker": "sim.line-work.segment.owned"
+    }
+  ],
+  "entities": [
+    {
+      "id": "sim.line-work.segment.road",
+      "kind": "marker",
+      "tags": [
+        "line-work"
+      ],
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": false,
+          "movable": true
+        },
+        "storage": {
+          "capacity_policy": "segment.buffer",
+          "public": false,
+          "evacuate": false,
+          "accepts": [],
+          "phases": [],
+          "initial_stock": {}
+        },
+        "line_work": {}
+      }
+    },
+    {
+      "id": "sim.line-work.segment.owned",
+      "kind": "marker",
+      "tags": [
+        "line-work"
+      ],
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": false,
+          "movable": true
+        },
+        "storage": {
+          "capacity_policy": "segment.buffer",
+          "public": false,
+          "evacuate": false,
+          "accepts": [],
+          "phases": [],
+          "initial_stock": {}
+        },
+        "line_work": {}
+      }
+    }
+  ]
+}

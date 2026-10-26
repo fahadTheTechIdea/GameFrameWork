@@ -1,0 +1,24 @@
+{
+  "work_policies": [{"id":"facility.workers","enabled":true,"priority":100,"allowed_roles":["crane","haul"],"area":null,"interruptible":true,"emergency_eligible":true,"assignment_mode":"all","states":{"disabled":"stopped","standby":"stopped"}}],
+  "activities": [{"id":"facility.inspect","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"a","roles":["crane"],"duration":{"numerator":1,"denominator":5,"unit":"hour"}},{"executor":"work.staffed","id":"b","roles":["crane"],"duration":{"numerator":1,"denominator":5,"unit":"hour"}}]}],
+  "entities": [
+    {"id":"facility.source","kind":"structure","components":{
+      "tile_work_dock":{"work_roles":["crane"],"resources":["steel"],"slots":[{"id":"bay","kind":"service","x":-1,"y":0},{"id":"wait.a","kind":"waiting","x":-1,"y":2},{"id":"wait.b","kind":"waiting","x":-1,"y":4},{"id":"exit.a","kind":"departure","x":-1,"y":6},{"id":"exit.b","kind":"departure","x":-1,"y":8}]},
+      "tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"fixture.count.40","public":false,"initial_stock":{"steel":32}}
+    }},
+    {"id":"facility.destination","kind":"structure","components":{
+      "tile_work_dock":{"work_roles":["crane"],"resources":["steel"],"slots":[{"id":"bay","kind":"service","x":-1,"y":0},{"id":"wait.a","kind":"waiting","x":-1,"y":2},{"id":"wait.b","kind":"waiting","x":-1,"y":4},{"id":"exit.a","kind":"departure","x":-1,"y":6},{"id":"exit.b","kind":"departure","x":-1,"y":8}]},
+      "tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":true,"movable":false},
+      "storage":{"capacity_policy":"fixture.count.40","public":false,"initial_stock":{}}
+    }},
+    {"id":"facility.worker","kind":"vehicle","components":{
+      "tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":true,"movable":true},
+      "mover":{"classes": ["land"], "class":"land","speed":60,"states":{"moving":"moving","stopped":"stopped"}},
+      "worker":{"work_rate":1,"roles":["crane","haul"],"states":{"working":"working","loading":"loading","stopped":"stopped"}},
+      "work_policy":{"profile":"facility.workers"},
+      "storage":{"capacity_policy":"fixture.count.8","public":false},
+      "transporter":{"handling":"colony.handling"}
+    }}
+  ]
+}

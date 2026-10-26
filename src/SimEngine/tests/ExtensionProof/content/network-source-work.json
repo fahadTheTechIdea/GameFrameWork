@@ -1,0 +1,9 @@
+{
+  "target_network_resource_requirements":[{"id":"source.tool","network":"point.network","use":"hold","quantities":{"supply":2}}],
+  "worker_network_resource_requirements":[{"id":"source.worker-tool","network":"point.network","use":"hold","quantities":{"supply":2}}],
+  "activities":[
+    {"id":"source.hold","player_orderable":true,"automatic_supply":false,"nodes":[{"id":"hold","executor":"work.timed","duration":{"numerator":100,"denominator":1,"unit":"minute"},"requirement":"source.tool"}]},
+    {"id":"source.worker-hold","player_orderable":true,"automatic_supply":false,"nodes":[{"id":"work","executor":"work.staffed","roles":["inspect"],"duration":{"numerator":10,"denominator":1,"unit":"minute"},"requirement":"source.worker-tool"}]}
+  ],
+  "resource_signals":[{"id":"source.pool-stock","kind":"number","metric":"network.stored","resource":"supply","unit":"unit.supply","providers":[{"component":"network_signal","schema":2}]}]
+}

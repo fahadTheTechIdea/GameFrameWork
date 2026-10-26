@@ -1,0 +1,14 @@
+{
+  "units": [
+    {"id":"point.metre","dimension":"length","scale":{"numerator":1,"denominator":1},"discrete":false},
+    {"id":"point.litre","dimension":"volume","scale":{"numerator":1,"denominator":1},"discrete":false}
+  ],
+  "resources": [
+    {"id":"point.water","unit":"point.litre","category":"fluid","phase":"liquid","traits":[],"capacity":{"point.litre":1}}
+  ],
+  "spatial_layers": [
+    {"id":"point.terrain","space":"field.points","type":"terrain.elevation","value_type":"fixed","visibility":"public","unit":"point.metre","vertical_domain":"point.surface","vertical_unit":"point.metre","vertical_reference":"point.datum","metadata":{"generator":{"id":"point.authored"}}},
+    {"id":"point.deposit","space":"field.points","type":"resource.deposit","value_type":"fixed","visibility":"company_private","unit":"unit.supply","resource":"supply","resource_measure":"quantity","vertical_domain":"point.subsurface","vertical_unit":"point.metre","vertical_reference":"point.surface","vertical_offset":-5},
+    {"id":"point.water","space":"field.points","type":"water.level","value_type":"fixed","visibility":"public","unit":"point.metre","resource":"point.water","resource_measure":"associated","vertical_domain":"point.water_surface","vertical_unit":"point.metre","vertical_reference":"point.datum"}
+  ]
+}

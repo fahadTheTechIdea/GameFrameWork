@@ -1,0 +1,11 @@
+{
+  "units":[{"id":"extract.half","dimension":"count","scale":{"numerator":1,"denominator":2},"discrete":false},{"id":"extract.metre","dimension":"length","scale":{"numerator":1,"denominator":1},"discrete":false}],
+  "spatial_layers":[{"id":"extract.deposit","space":"colony.tiles","type":"deposit.material","value_type":"byte","visibility":"company_private","unit":"extract.half","resource":"steel","resource_measure":"quantity","vertical_domain":"underground","vertical_unit":"extract.metre","vertical_reference":"surface","vertical_offset":-5}],
+  "tile_resource_cells":[{"id":"extract.cell","identity":1,"layer":"extract.deposit","x":20,"y":20,"capacity_policy":"fixture.count.40","public":false}],
+  "spatial_resource_transfer_effects":[{"id":"extract.material","operation":"withdraw","cell":"extract.cell","quantities":{"steel":2}}],
+  "activities":[{"id":"extract.activity","player_orderable":true,"automatic_supply":false,"nodes":[{"executor":"work.staffed","id":"operate","roles":["crane"],"duration":{"numerator":1,"denominator":5,"unit":"hour"},"effect":"extract.material"}]}],
+  "entities":[
+    {"id":"extract.site","kind":"structure","components":{"tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":true,"movable":false},"storage":{"capacity_policy":"fixture.count.8","public":false,"initial_stock":{}}}},
+    {"id":"extract.worker","kind":"vehicle","components":{"tile_presence":{"space":"colony.tiles","width":1,"height":1,"blocks":true,"movable":true},"mover":{"classes": ["land"], "class":"land","speed":60,"states":{"moving":"moving","stopped":"stopped"}},"worker":{"work_rate":1,"roles":["crane","haul"],"states":{"working":"working","loading":"loading","stopped":"stopped"}},"storage":{"capacity_policy":"fixture.count.8","public":false},"transporter":{"handling":"colony.handling"}}}
+  ]
+}

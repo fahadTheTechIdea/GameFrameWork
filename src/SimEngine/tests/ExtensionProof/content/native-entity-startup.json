@@ -1,0 +1,4 @@
+{
+  "world_setup_profiles": [{"id":"sight.start","entries":["start.deposit","start.terrain","start.class","start.site","start.machine","start.foreign","sight.far"],"includes":[]}],
+  "entity_setups": [{"id":"sight.far","after":[],"entity":"survey.foreign-sensor","company":1,"placement":{"space":"survey.tiles","x":45,"y":10},"home":null}]
+}

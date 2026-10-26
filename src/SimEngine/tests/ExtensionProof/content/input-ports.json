@@ -1,0 +1,834 @@
+{
+  "resource_pools": [
+    {
+      "evacuate": false,
+      "id": "ports.product-pool",
+      "identity": 1,
+      "public": false,
+      "owner": 0,
+      "capacity_policy": "ports.product",
+      "resources": [
+        "ports.alloy"
+      ]
+    },
+    {
+      "evacuate": false,
+      "id": "ports.waste-pool",
+      "identity": 2,
+      "public": false,
+      "owner": 0,
+      "capacity_policy": "ports.waste",
+      "resources": [
+        "ports.water"
+      ]
+    },
+    {
+      "evacuate": false,
+      "id": "ports.shared-pool",
+      "identity": 3,
+      "public": false,
+      "owner": 0,
+      "capacity_policy": "ports.shared",
+      "resources": [
+        "ports.alloy",
+        "ports.water"
+      ]
+    },
+    {
+      "evacuate": false,
+      "id": "ports.raw-pool",
+      "identity": 4,
+      "public": false,
+      "owner": 0,
+      "capacity_policy": "ports.raw-vessel",
+      "resources": [
+        "ports.ore"
+      ]
+    },
+    {
+      "evacuate": false,
+      "id": "ports.water-pool",
+      "identity": 5,
+      "public": false,
+      "owner": 0,
+      "capacity_policy": "ports.water-vessel",
+      "resources": [
+        "ports.water"
+      ]
+    },
+    {
+      "evacuate": false,
+      "id": "ports.alternate-raw-pool",
+      "identity": 6,
+      "public": false,
+      "owner": 0,
+      "capacity_policy": "ports.raw-vessel",
+      "resources": [
+        "ports.ore"
+      ]
+    },
+    {
+      "evacuate": false,
+      "id": "ports.tool-pool",
+      "identity": 7,
+      "public": false,
+      "owner": 0,
+      "capacity_policy": "ports.shared",
+      "resources": [
+        "ports.jig"
+      ]
+    },
+    {
+      "evacuate": false,
+      "id": "ports.alternate-tool-pool",
+      "identity": 8,
+      "public": false,
+      "owner": 0,
+      "capacity_policy": "ports.shared",
+      "resources": [
+        "ports.jig"
+      ]
+    },
+    {
+      "evacuate": false,
+      "id": "ports.utility-water-pool",
+      "identity": 9,
+      "public": false,
+      "owner": 0,
+      "capacity_policy": "ports.water-vessel",
+      "resources": [
+        "ports.water"
+      ]
+    }
+  ],
+  "transformations": [
+    {
+      "tool_consumption": {},
+      "operating_ports": {},
+      "tool_ports": {
+        "ports.jig": "tool.input"
+      },
+      "input_ports": {
+        "ports.ore": "raw",
+        "ports.water": "feed-water"
+      },
+      "id": "ports.batch",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "inputs": {
+        "ports.ore": 4,
+        "ports.water": 1
+      },
+      "tools": {
+        "ports.jig": 1
+      },
+      "operating_inputs": [],
+      "outputs": {
+        "ports.alloy": 2,
+        "ports.water": 1
+      },
+      "output_ports": {
+        "ports.alloy": "product",
+        "ports.water": "waste"
+      },
+      "duration": {
+        "numerator": 3,
+        "denominator": 1,
+        "unit": "second"
+      }
+    },
+    {
+      "tool_consumption": [],
+      "operating_ports": {},
+      "tool_ports": {
+        "ports.jig": "tool.input"
+      },
+      "input_ports": {
+        "ports.ore": "raw",
+        "ports.water": "feed-water"
+      },
+      "id": "ports.flow",
+      "mode": "continuous",
+      "cancel_policy": "stop",
+      "duration": null,
+      "tools": {
+        "ports.jig": 1
+      },
+      "operating_inputs": [],
+      "inputs": [
+        {
+          "resource": "ports.ore",
+          "quantity": 2,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "ports.water",
+          "quantity": 0.5,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "ports.alloy",
+          "quantity": 1,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "ports.water",
+          "quantity": 0.5,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ],
+      "output_ports": {
+        "ports.alloy": "product",
+        "ports.water": "waste"
+      }
+    },
+    {
+      "tool_consumption": {},
+      "operating_ports": {},
+      "tool_ports": {
+        "ports.ore": "raw",
+        "ports.jig": "tool"
+      },
+      "input_ports": {
+        "ports.ore": "raw",
+        "ports.water": "feed-water"
+      },
+      "id": "ports.tool-batch",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "inputs": {
+        "ports.ore": 2,
+        "ports.water": 1
+      },
+      "tools": {
+        "ports.ore": 2,
+        "ports.jig": 1
+      },
+      "operating_inputs": [],
+      "outputs": {
+        "ports.alloy": 2,
+        "ports.water": 1
+      },
+      "output_ports": {
+        "ports.alloy": "product",
+        "ports.water": "waste"
+      },
+      "duration": {
+        "numerator": 3,
+        "denominator": 1,
+        "unit": "second"
+      }
+    },
+    {
+      "tool_consumption": [],
+      "operating_ports": {},
+      "tool_ports": {
+        "ports.ore": "raw",
+        "ports.jig": "tool"
+      },
+      "input_ports": {
+        "ports.ore": "raw",
+        "ports.water": "feed-water"
+      },
+      "id": "ports.tool-flow",
+      "mode": "continuous",
+      "cancel_policy": "stop",
+      "duration": null,
+      "tools": {
+        "ports.ore": 1,
+        "ports.jig": 1
+      },
+      "operating_inputs": [],
+      "inputs": [
+        {
+          "resource": "ports.ore",
+          "quantity": 1,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "ports.water",
+          "quantity": 0.5,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "ports.alloy",
+          "quantity": 1,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "ports.water",
+          "quantity": 0.5,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ],
+      "output_ports": {
+        "ports.alloy": "product",
+        "ports.water": "waste"
+      }
+    },
+    {
+      "tool_consumption": {},
+      "operating_ports": {
+        "ports.ore": "raw",
+        "ports.water": "utility-water"
+      },
+      "tool_ports": {
+        "ports.ore": "raw",
+        "ports.jig": "tool"
+      },
+      "input_ports": {
+        "ports.ore": "raw",
+        "ports.water": "feed-water"
+      },
+      "id": "ports.operating-batch",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "inputs": {
+        "ports.ore": 1,
+        "ports.water": 0.5
+      },
+      "tools": {
+        "ports.ore": 1,
+        "ports.jig": 1
+      },
+      "operating_inputs": [
+        {
+          "resource": "ports.ore",
+          "quantity": 1,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "ports.water",
+          "quantity": 0.25,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ],
+      "outputs": {
+        "ports.alloy": 2,
+        "ports.water": 1
+      },
+      "output_ports": {
+        "ports.alloy": "product",
+        "ports.water": "waste"
+      },
+      "duration": {
+        "numerator": 3,
+        "denominator": 1,
+        "unit": "second"
+      }
+    },
+    {
+      "tool_consumption": [],
+      "operating_ports": {
+        "ports.ore": "raw",
+        "ports.water": "utility-water"
+      },
+      "tool_ports": {
+        "ports.ore": "raw",
+        "ports.jig": "tool"
+      },
+      "input_ports": {
+        "ports.ore": "raw",
+        "ports.water": "feed-water"
+      },
+      "id": "ports.operating-flow",
+      "mode": "continuous",
+      "cancel_policy": "stop",
+      "duration": null,
+      "tools": {
+        "ports.ore": 1,
+        "ports.jig": 1
+      },
+      "operating_inputs": [
+        {
+          "resource": "ports.ore",
+          "quantity": 1,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "ports.water",
+          "quantity": 0.25,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ],
+      "inputs": [
+        {
+          "resource": "ports.ore",
+          "quantity": 1,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "ports.water",
+          "quantity": 0.5,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "ports.alloy",
+          "quantity": 1,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "ports.water",
+          "quantity": 0.5,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ],
+      "output_ports": {
+        "ports.alloy": "product",
+        "ports.water": "waste"
+      }
+    },
+    {
+      "id": "ports.catalyst-batch",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "duration": {
+        "numerator": 3,
+        "denominator": 1,
+        "unit": "second"
+      },
+      "inputs": {
+        "ports.ore": 1,
+        "ports.water": 0.5
+      },
+      "tools": {
+        "ports.ore": 2,
+        "ports.jig": 1
+      },
+      "tool_consumption": {
+        "ports.ore": 0.5
+      },
+      "operating_inputs": [],
+      "operating_ports": {},
+      "input_ports": {
+        "ports.ore": "raw",
+        "ports.water": "feed-water"
+      },
+      "tool_ports": {
+        "ports.ore": "raw",
+        "ports.jig": "tool"
+      },
+      "outputs": {
+        "ports.alloy": 2,
+        "ports.water": 1
+      },
+      "output_ports": {
+        "ports.alloy": "product",
+        "ports.water": "waste"
+      }
+    },
+    {
+      "id": "ports.catalyst-flow",
+      "mode": "continuous",
+      "cancel_policy": "stop",
+      "duration": null,
+      "inputs": [
+        {
+          "resource": "ports.ore",
+          "quantity": 0.5,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "ports.water",
+          "quantity": 0.25,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ],
+      "tools": {
+        "ports.ore": 2,
+        "ports.jig": 1
+      },
+      "tool_consumption": [
+        {
+          "resource": "ports.ore",
+          "quantity": 0.5,
+          "period": {
+            "numerator": 2,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ],
+      "operating_inputs": [
+        {
+          "resource": "ports.water",
+          "quantity": 0.25,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ],
+      "operating_ports": {
+        "ports.water": "utility-water"
+      },
+      "input_ports": {
+        "ports.ore": "raw",
+        "ports.water": "feed-water"
+      },
+      "tool_ports": {
+        "ports.ore": "raw",
+        "ports.jig": "tool"
+      },
+      "outputs": [
+        {
+          "resource": "ports.alloy",
+          "quantity": 0.5,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        },
+        {
+          "resource": "ports.water",
+          "quantity": 0.25,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "second"
+          }
+        }
+      ],
+      "output_ports": {
+        "ports.alloy": "product",
+        "ports.water": "waste"
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "ports.factory",
+      "kind": "entity",
+      "components": {
+        "inventory_port": [
+          {
+            "id": "material.input"
+          },
+          {
+            "id": "tool.input"
+          },
+          {
+            "id": "operating.input"
+          }
+        ],
+        "storage": {
+          "capacity_policy": "ports.feed",
+          "public": false,
+          "accepts": [
+            "ports.ore",
+            "ports.jig"
+          ],
+          "phases": [
+            "solid"
+          ],
+          "initial_stock": {
+            "ports.ore": 20,
+            "ports.jig": 1
+          }
+        },
+        "pool_port": [
+          {
+            "id": "product",
+            "pool": "ports.product-pool",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "waste",
+            "pool": "ports.waste-pool",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "raw",
+            "pool": "ports.raw-pool",
+            "alternatives": [
+              "ports.alternate-raw-pool"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "feed-water",
+            "pool": "ports.water-pool",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "tool",
+            "pool": "ports.tool-pool",
+            "alternatives": [
+              "ports.alternate-tool-pool"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          }
+        ],
+        "transformer": {
+          "automatic_supply": false,
+          "wip_capacity": "ports.feed",
+          "transformations": [
+            "ports.batch",
+            "ports.flow",
+            "ports.tool-batch",
+            "ports.tool-flow"
+          ],
+          "states": {
+            "working": "ports.working",
+            "stopped": "ports.stopped"
+          },
+          "operation": {
+            "id": "process",
+            "enabled": true,
+            "target": 1,
+            "minimum": 0.5,
+            "maximum": 2,
+            "unit": "unit.work-rate"
+          }
+        }
+      }
+    },
+    {
+      "id": "ports.sink-entity",
+      "kind": "entity",
+      "components": {
+        "storage": {
+          "capacity_policy": "ports.sink",
+          "public": false,
+          "initial_stock": {}
+        }
+      }
+    },
+    {
+      "id": "ports.source",
+      "kind": "entity",
+      "components": {
+        "storage": {
+          "capacity_policy": "ports.sink",
+          "public": false,
+          "initial_stock": {
+            "ports.ore": 24,
+            "ports.water": 6,
+            "ports.jig": 4
+          }
+        }
+      }
+    },
+    {
+      "id": "ports.external-factory",
+      "kind": "entity",
+      "components": {
+        "pool_port": [
+          {
+            "id": "product",
+            "pool": "ports.product-pool",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "waste",
+            "pool": "ports.waste-pool",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "raw",
+            "pool": "ports.raw-pool",
+            "alternatives": [
+              "ports.alternate-raw-pool"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "feed-water",
+            "pool": "ports.water-pool",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "tool",
+            "pool": "ports.tool-pool",
+            "alternatives": [
+              "ports.alternate-tool-pool"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "utility-water",
+            "pool": "ports.utility-water-pool",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          }
+        ],
+        "transformer": {
+          "automatic_supply": false,
+          "wip_capacity": "ports.feed",
+          "transformations": [
+            "ports.operating-batch",
+            "ports.operating-flow",
+            "ports.catalyst-batch",
+            "ports.catalyst-flow"
+          ],
+          "states": {
+            "working": "ports.working",
+            "stopped": "ports.stopped"
+          },
+          "operation": {
+            "id": "process",
+            "enabled": true,
+            "target": 1,
+            "minimum": 0.5,
+            "maximum": 2,
+            "unit": "unit.work-rate"
+          }
+        }
+      }
+    }
+  ],
+  "world_setup_profiles": [{"id":"ports.start","entries":["ports.factory-start","ports.sink-start","ports.source-start","ports.external-factory-start"],"includes":[]}],
+  "entity_setups": [
+    {
+      "id": "ports.factory-start",
+      "after": [],
+      "entity": "ports.factory",
+      "company": 0,
+      "placement": null,
+      "home": null
+    },
+    {
+      "id": "ports.sink-start",
+      "after": [],
+      "entity": "ports.sink-entity",
+      "company": 0,
+      "placement": null,
+      "home": null
+    },
+    {
+      "id": "ports.source-start",
+      "after": [],
+      "entity": "ports.source",
+      "company": 0,
+      "placement": null,
+      "home": null
+    },
+    {
+      "id": "ports.external-factory-start",
+      "after": [],
+      "entity": "ports.external-factory",
+      "company": 0,
+      "placement": null,
+      "home": null
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "ports",
+      "game_mode": "ports.resource-only",
+      "mode_overrides": {},
+      "space": null,
+      "time": "ports.second",
+      "seats": 2,
+      "default_seats": 2,
+      "modules": [
+        "proof.output-ports"
+      ],
+      "settings": {
+        "sim.world-setup": {
+          "profile": "ports.start"
+        }
+      }
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "ports.raw-vessel",
+      "limits": {
+        "ports.kg": 4
+      }
+    },
+    {
+      "id": "ports.water-vessel",
+      "limits": {
+        "ports.litre": 1
+      }
+    }
+  ]
+}

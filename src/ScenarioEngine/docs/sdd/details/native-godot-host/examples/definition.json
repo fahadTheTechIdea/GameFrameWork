@@ -1,0 +1,11 @@
+{
+  "id": "native_godot_host",
+  "definitionVersion": "1.0.0",
+  "dimension": "2d",
+  "sceneRoles": [
+    "world.village",
+    "world.forest"
+  ],
+  "ruleStepMilliseconds": 50,
+  "readinessPolicy": "bindings_and_navigation"
+}

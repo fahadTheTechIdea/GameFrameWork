@@ -1,0 +1,22 @@
+{
+  "game_modes": [
+    {"id":"recovery.funded","name":"Optional construction budget and primary generation",
+      "properties":{"business.money.enabled":true,"business.construction_costs.enabled":true,
+        "business.values.enabled":true,"business.production_income.enabled":true}}
+  ],
+  "units": [
+    {"id":"unit.money","dimension":"currency","scale":{"numerator":1,"denominator":1},"discrete":false}
+  ],
+  "business_accounts": [{"id":"recovery.accounts","currency":"unit.money","opening_cash":0}],
+  "fixed_resource_values": [{"id":"recovery.values","catalog":"recovery","currency":"unit.money"}],
+  "resource_values": [
+    {"id":"recovery.supply-value","catalog":"recovery","resource":"supply","unit":"unit.supply","currency":"unit.money","value":5}
+  ],
+  "primary_production_income": [{"id":"recovery.income","input_rule":"primary_only","causes":["recovery.fund"]}],
+  "work_cost_requirements": [{"id":"recovery.construction-budget","amount":80,"credit":false,"category":"construction"}],
+  "work_requirement_groups": [
+    {"id":"recovery.build-ready","mode":"all","entries":[
+      {"id":"materials","requirement":"point.build-inputs"},
+      {"id":"money","requirement":"recovery.construction-budget"}]}
+  ]
+}

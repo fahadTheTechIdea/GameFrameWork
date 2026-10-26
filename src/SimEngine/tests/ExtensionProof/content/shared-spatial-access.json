@@ -1,0 +1,4 @@
+{
+  "restricted_access":[{"id":"guard.open","company":0,"denied_entities":[]}],
+  "proof_access_rules":[{"id":"proof.access.b","entity":"point.tower","enabled":false},{"id":"proof.access.a","entity":"point.tower","enabled":false}]
+}

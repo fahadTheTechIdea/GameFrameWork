@@ -1,0 +1,11 @@
+{
+  "id": "world_requests",
+  "definitionVersion": "1.0.0",
+  "requestKinds": [
+    "region.enter",
+    "actor.spawn"
+  ],
+  "maxPending": 64,
+  "deadlineUnits": 200,
+  "freezeScope": "context"
+}

@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "modules": [
+    { "id": "sim.motion", "version": "1.0.0", "documents": [] },
+    { "id": "sim.tile-navigation", "version": "1.0.0", "requires": [ { "id": "sim.motion", "version": "1.0.0" } ], "documents": [] },
+    { "id": "proof.navigation", "version": "1.0.0", "requires": [ { "id": "sim.tile-navigation", "version": "1.0.0" } ], "documents": ["navigation.json"] }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "world_setup_profiles":[{"id":"survey.start","entries":["boundary.factory","dispatch.factory","dispatch.first","dispatch.second"],"includes":[]}],
+  "entity_setups":[
+    {"id":"boundary.factory","after":[],"entity":"boundary.factory","company":0,"placement":{"space":"survey.tiles","x":16,"y":10},"home":null},
+    {"id":"dispatch.factory","after":[],"entity":"dispatch.factory","company":0,"placement":{"space":"survey.tiles","x":18,"y":10},"home":null},
+    {"id":"dispatch.first","after":["boundary.factory"],"entity":"segment.machine","company":0,"placement":{"space":"survey.tiles","x":2,"y":10},"home":"boundary.factory"},
+    {"id":"dispatch.second","after":["boundary.factory"],"entity":"segment.machine","company":0,"placement":{"space":"survey.tiles","x":3,"y":12},"home":"boundary.factory"}
+  ]
+}

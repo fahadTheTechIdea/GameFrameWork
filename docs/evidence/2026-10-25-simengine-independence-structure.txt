@@ -1,0 +1,4 @@
+PASS: all 18 moved test files preserve original assertions (only resource-reader routing changed).
+PASS: 22 consumer resource LogicalNames preserved.
+PASS: no OilFieldDays path/binary lookup in standalone engine source/build files; every engine ProjectReference stays inside src/SimEngine and exists.
+2026-10-25T16:07:31.370570+03:00 Windows-11-10.0.26200-SP0

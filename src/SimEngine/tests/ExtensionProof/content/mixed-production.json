@@ -1,0 +1,622 @@
+{
+  "units": [
+    {
+      "id": "mix.kg",
+      "dimension": "mass",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": false
+    },
+    {
+      "id": "mix.litre",
+      "dimension": "volume",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": false
+    },
+    {
+      "id": "unit.work-rate",
+      "dimension": "work-rate",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": false
+    }
+  ],
+  "resources": [
+    {
+      "id": "mix.ore",
+      "unit": "mix.kg",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "mix.kg": 1,
+        "mix.litre": 0.25
+      }
+    },
+    {
+      "id": "mix.feed",
+      "unit": "mix.litre",
+      "category": "material",
+      "phase": "liquid",
+      "traits": [],
+      "capacity": {
+        "mix.kg": 1,
+        "mix.litre": 1
+      }
+    },
+    {
+      "id": "mix.fuel",
+      "unit": "mix.litre",
+      "category": "material",
+      "phase": "liquid",
+      "traits": [],
+      "capacity": {
+        "mix.kg": 1,
+        "mix.litre": 1
+      }
+    },
+    {
+      "id": "mix.flux",
+      "unit": "mix.kg",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "mix.kg": 1,
+        "mix.litre": 1
+      }
+    },
+    {
+      "id": "mix.product",
+      "unit": "mix.kg",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "mix.kg": 1,
+        "mix.litre": 0.25
+      }
+    },
+    {
+      "id": "mix.waste",
+      "unit": "mix.litre",
+      "category": "material",
+      "phase": "liquid",
+      "traits": [],
+      "capacity": {
+        "mix.kg": 1,
+        "mix.litre": 1
+      }
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "mix.source",
+      "limits": {
+        "mix.kg": 50,
+        "mix.litre": 50
+      }
+    },
+    {
+      "id": "mix.buffer",
+      "limits": {
+        "mix.kg": 10,
+        "mix.litre": 10
+      }
+    },
+    {
+      "id": "mix.cargo",
+      "limits": {
+        "mix.kg": 8,
+        "mix.litre": 8
+      }
+    },
+    {
+      "id": "mix.tool",
+      "limits": {
+        "mix.kg": 1,
+        "mix.litre": 1
+      }
+    },
+    {
+      "id": "mix.product",
+      "limits": {
+        "mix.kg": 1,
+        "mix.litre": 1
+      }
+    },
+    {
+      "id": "mix.waste",
+      "limits": {
+        "mix.kg": 2,
+        "mix.litre": 2
+      }
+    },
+    {
+      "id": "mix.fuel",
+      "limits": {
+        "mix.kg": 6,
+        "mix.litre": 6
+      }
+    }
+  ],
+  "worker_roles": [
+    {
+      "id": "mix.operator"
+    }
+  ],
+  "handling_profiles": [
+    {
+      "id": "mix.handling",
+      "resources": [
+        {
+          "resource": "mix.ore",
+          "quantity": 1,
+          "loading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "unloading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        },
+        {
+          "resource": "mix.feed",
+          "quantity": 1,
+          "loading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "unloading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        },
+        {
+          "resource": "mix.fuel",
+          "quantity": 1,
+          "loading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "unloading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        },
+        {
+          "resource": "mix.flux",
+          "quantity": 0.25,
+          "loading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "unloading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        },
+        {
+          "resource": "mix.product",
+          "quantity": 1,
+          "loading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "unloading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        },
+        {
+          "resource": "mix.waste",
+          "quantity": 1,
+          "loading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "unloading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "id": "mix.support",
+      "player_orderable": true,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "operate",
+          "executor": "work.staffed",
+          "roles": [
+            "mix.operator"
+          ],
+          "duration": {
+            "numerator": 120,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    }
+  ],
+  "transformations": [
+    {
+      "id": "mix.batch",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "inputs": {
+        "mix.ore": 2,
+        "mix.feed": 4
+      },
+      "tools": {
+        "mix.flux": 0.5
+      },
+      "tool_consumption": {
+        "mix.flux": 0.25
+      },
+      "input_ports": {
+        "mix.ore": "raw",
+        "mix.feed": "raw"
+      },
+      "tool_ports": {
+        "mix.flux": "tool"
+      },
+      "operating_inputs": [
+        {
+          "resource": "mix.fuel",
+          "quantity": 1,
+          "period": {
+            "numerator": 2,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ],
+      "operating_ports": {
+        "mix.fuel": "fuel"
+      },
+      "outputs": {
+        "mix.product": 1,
+        "mix.waste": 2
+      },
+      "output_ports": {
+        "mix.product": "product",
+        "mix.waste": "waste"
+      },
+      "entity_output": "mix.result", "output_home": "unassigned",
+      "duration": {
+        "numerator": 6,
+        "denominator": 1,
+        "unit": "minute"
+      },
+      "category": "manufacturing"
+    }
+  ],
+  "entities": [
+    {
+      "id": "mix.source",
+      "kind": "structure",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 5
+        },
+        "storage": {
+          "capacity_policy": "mix.source",
+          "public": false,
+          "evacuate": false,
+          "initial_stock": {
+            "mix.ore": 4,
+            "mix.feed": 8,
+            "mix.fuel": 8,
+            "mix.flux": 1
+          }
+        },
+        "inventory_port": {
+          "id": "stock"
+        }
+      }
+    },
+    {
+      "id": "mix.receiver",
+      "kind": "structure",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 2
+        },
+        "storage": {
+          "capacity_policy": "mix.source",
+          "public": false,
+          "evacuate": false,
+          "initial_stock": {}
+        },
+        "inventory_port": {
+          "id": "stock"
+        }
+      }
+    },
+    {
+      "id": "mix.factory",
+      "kind": "structure",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 10
+        },
+        "storage": {
+          "capacity_policy": "mix.buffer",
+          "public": false,
+          "evacuate": false,
+          "initial_stock": {}
+        },
+        "inventory_port": {
+          "id": "raw"
+        },
+        "pool_port": [
+          {
+            "id": "tool",
+            "pool": "mix.tool",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "product",
+            "pool": "mix.product",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "waste",
+            "pool": "mix.waste",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "fuel",
+            "pool": "mix.fuel",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          }
+        ],
+        "transformer": {
+          "automatic_supply": false,
+          "wip_capacity": "mix.buffer",
+          "transformations": [
+            "mix.batch"
+          ],
+          "states": {
+            "working": "processing",
+            "stopped": "blocked"
+          },
+          "operation": {
+            "id": "process",
+            "enabled": false,
+            "target": 1,
+            "minimum": 1,
+            "maximum": 1,
+            "unit": "unit.work-rate"
+          }
+        },
+        "staffed_transformation_gate": {
+          "id": "staffing",
+          "mode": "facility",
+          "transformations": [
+            "mix.batch"
+          ],
+          "requirements": [
+            {
+              "id": "operator",
+              "activity": "mix.support",
+              "node": "operate",
+              "roles": [
+                "mix.operator"
+              ],
+              "count": 1
+            }
+          ]
+        },
+        "point_dock": {
+          "work_roles": [
+            "mix.operator"
+          ],
+          "resources": [
+            "mix.ore",
+            "mix.feed",
+            "mix.fuel",
+            "mix.flux",
+            "mix.product",
+            "mix.waste"
+          ],
+          "slots": [
+            {
+              "id": "mix.bay",
+              "kind": "service",
+              "offset": -1
+            },
+            {
+              "id": "mix.operator-bay",
+              "kind": "service",
+              "offset": 1
+            },
+            {
+              "id": "mix.wait",
+              "kind": "waiting",
+              "offset": -2
+            },
+            {
+              "id": "mix.exit",
+              "kind": "departure",
+              "offset": -3
+            },
+            {
+              "id": "mix.operator-exit",
+              "kind": "departure",
+              "offset": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "mix.operator",
+      "kind": "vehicle",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 20
+        },
+        "point_motion": {
+          "rate": 60,
+          "states": {
+            "moving": "travel",
+            "stopped": "blocked"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "mix.operator"
+          ],
+          "states": {
+            "working": "processing",
+            "loading": "transfer",
+            "stopped": "blocked"
+          }
+        },
+        "work_policy": {
+          "profile": "mix.operator-policy"
+        }
+      }
+    },
+    {
+      "id": "mix.result",
+      "kind": "entity",
+      "components": {
+        "point_presence": {
+          "space": "field.points",
+          "position": 0
+        }
+      }
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "mix.source-start",
+      "after": [],
+      "entity": "mix.source",
+      "company": 0,
+      "placement": {
+        "space": "field.points",
+        "position": 5
+      },
+      "home": null
+    },
+    {
+      "id": "mix.receiver-start",
+      "after": [],
+      "entity": "mix.receiver",
+      "company": 0,
+      "placement": {
+        "space": "field.points",
+        "position": 2
+      },
+      "home": null
+    },
+    {
+      "id": "mix.factory-start",
+      "after": [],
+      "entity": "mix.factory",
+      "company": 0,
+      "placement": {
+        "space": "field.points",
+        "position": 10
+      },
+      "home": null
+    },
+    {
+      "id": "mix.operator-start",
+      "after": [],
+      "entity": "mix.operator",
+      "company": 0,
+      "placement": {
+        "space": "field.points",
+        "position": 20
+      },
+      "home": null
+    }
+  ],
+  "point_interval_regions": [
+    {
+      "id": "mix.cargo-area",
+      "space": "field.points",
+      "minimum": 0,
+      "maximum": 10
+    },
+    {
+      "id": "mix.operator-area",
+      "space": "field.points",
+      "minimum": 10,
+      "maximum": 20
+    }
+  ],
+  "work_policies": [
+    {
+      "id": "mix.cargo-policy",
+      "enabled": true,
+      "priority": 10,
+      "allowed_roles": [
+        "haul"
+      ],
+      "area": "mix.cargo-area",
+      "interruptible": true,
+      "emergency_eligible": false,
+      "assignment_mode": "all",
+      "states": {
+        "disabled": "blocked",
+        "standby": "blocked"
+      }
+    },
+    {
+      "id": "mix.operator-policy",
+      "enabled": true,
+      "priority": 10,
+      "allowed_roles": [
+        "mix.operator"
+      ],
+      "area": "mix.operator-area",
+      "interruptible": true,
+      "emergency_eligible": false,
+      "assignment_mode": "all",
+      "states": {
+        "disabled": "blocked",
+        "standby": "blocked"
+      }
+    }
+  ]
+}

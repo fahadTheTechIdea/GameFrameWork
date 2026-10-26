@@ -1,0 +1,6 @@
+== Framework independence: compiled external modules use public engine contracts only
+  compiled module audit: Beep.SimEngine.ExtensionProof, bodies=6560, member-references=34387, engine-types=1288, violations=0
+  compiled module audit: QuickGame.Module, bodies=5, member-references=15, engine-types=6, violations=0
+   10 passed, 0 failed (425 ms)
+=== 10 passed, 0 failed in 1 suites (0.4 s) ===
+bounded case: Exited, pid=31608, exit=0, elapsed-ms=648, stdout-truncated=False, stderr-truncated=False, observer=

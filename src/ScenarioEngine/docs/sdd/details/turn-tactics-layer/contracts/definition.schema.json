@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Turn-based tactics layer proposed definition",
+  "description": "Standalone design contract; current ScenarioEngine loading support is not implemented.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "definitionVersion",
+    "turnPolicy",
+    "actionPoints",
+    "gridRole",
+    "missionIds"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+      "maxLength": 64
+    },
+    "definitionVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "turnPolicy": {
+      "type": "string",
+      "enum": [
+        "alternating_factions",
+        "initiative"
+      ],
+      "description": "Registered ordering/tie rules."
+    },
+    "actionPoints": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 12,
+      "description": "Authored per-turn budget; ability costs can differ."
+    },
+    "gridRole": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+      "maxLength": 64,
+      "description": "Approved native grid/geometry adapter."
+    },
+    "missionIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_.-]{0,63}$",
+        "maxLength": 64
+      },
+      "description": "Validated bounded objective/ending definitions."
+    }
+  }
+}

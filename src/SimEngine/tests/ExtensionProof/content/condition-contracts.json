@@ -1,0 +1,16 @@
+{
+  "forward_game_conditions":[
+    {"id":"contract.risk","conditions":["strategy.risk"]},
+    {"id":"contract.reserve","conditions":["strategy.reserve"]},
+    {"id":"contract.wait","conditions":["strategy.wait"]}
+  ],
+  "completed_plan_conditions":[{"id":"contract.completed","group":"choice.expand"}],
+  "composite_conditions":[
+    {"id":"contract.allowed","mode":"all","conditions":["contract.risk","contract.reserve"]},
+    {"id":"contract.either","mode":"any","conditions":["contract.risk","contract.wait"]}
+  ],
+  "condition_call_probes":[
+    {"id":"contract.alias","target":"contract.risk","mode":"alias"},
+    {"id":"contract.repeat","target":"contract.reserve","mode":"repeat"}
+  ]
+}

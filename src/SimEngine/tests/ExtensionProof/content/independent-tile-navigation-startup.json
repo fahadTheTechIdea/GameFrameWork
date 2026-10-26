@@ -1,0 +1,14 @@
+{
+  "entity_states":[{"id":"sensor.moving","state":"moving","priority":40}],
+  "entities":[{"id":"sensor.cart","kind":"vehicle","components":{
+    "tile_presence":{"space":"sensor.tiles","width":1,"height":1,"blocks":true,"movable":true},
+    "mover":{"classes":["sensor.route"],"class":"sensor.route","speed":30,"states":{"moving":"sensor.moving","stopped":"sensor.stopped"}},
+    "tile_sensor":{"space":"sensor.tiles","occlusion":[{"layer":"sensor.screen","threshold":2}],
+      "operation":{"id":"sensor.sight","enabled":true,"target":32,"minimum":0,"maximum":32,"unit":"unit.tile-distance"},
+      "conditions":[],"states":{"disabled":"sensor.stopped"}}
+  }}],
+  "world_setup_profiles":[{"id":"sensor.navigation-start","entries":["sensor.start-screen","sensor.start-cart"],"includes":["sensor.start"]}],
+  "tile_layer_setups":[{"id":"sensor.start-screen","after":[],"layer":"sensor.screen","x":8,"y":8,"width":1,"height":5,"value":2,"owner":-1}],
+  "entity_setups":[{"id":"sensor.start-cart","after":["sensor.start-screen"],"entity":"sensor.cart","company":0,
+    "placement":{"space":"sensor.tiles","x":2,"y":11},"home":null}]
+}

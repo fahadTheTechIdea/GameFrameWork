@@ -1,0 +1,276 @@
+{
+  "transformations": [
+    {
+      "id": "supply.batch",
+      "mode": "batch",
+      "cancel_policy": "return_inputs",
+      "inputs": {
+        "steel": 8
+      },
+      "tools": {
+        "steel": 1
+      },
+      "tool_consumption": {},
+      "operating_inputs": [
+        {
+          "resource": "steel",
+          "quantity": 1,
+          "period": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "hour"
+          }
+        }
+      ],
+      "outputs": {
+        "steel": 8
+      },
+      "input_ports": {
+        "steel": "feed"
+      },
+      "tool_ports": {
+        "steel": "tools"
+      },
+      "operating_ports": {
+        "steel": "power"
+      },
+      "output_ports": {
+        "steel": "local"
+      },
+      "duration": {
+        "numerator": 8,
+        "denominator": 1,
+        "unit": "minute"
+      }
+    },
+    {
+      "id": "supply.flow",
+      "mode": "continuous",
+      "cancel_policy": "stop",
+      "inputs": [
+        {
+          "resource": "steel",
+          "quantity": 1,
+          "period": {
+            "numerator": 3,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ],
+      "tools": {
+        "steel": 1
+      },
+      "tool_consumption": [
+        {
+          "resource": "steel",
+          "quantity": 1,
+          "period": {
+            "numerator": 3,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ],
+      "operating_inputs": [
+        {
+          "resource": "steel",
+          "quantity": 1,
+          "period": {
+            "numerator": 5,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "resource": "steel",
+          "quantity": 1,
+          "period": {
+            "numerator": 4,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ],
+      "input_ports": {
+        "steel": "feed"
+      },
+      "tool_ports": {
+        "steel": "tools"
+      },
+      "operating_ports": {
+        "steel": "power"
+      },
+      "output_ports": {
+        "steel": "local"
+      },
+      "duration": null
+    }
+  ],
+  "entities": [
+    {
+      "id": "supply.warehouse",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "haul.store",
+          "public": true,
+          "initial_stock": {
+            "steel": 30
+          }
+        },
+        "inventory_port": {
+          "id": "stock"
+        }
+      }
+    },
+    {
+      "id": "supply.factory",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "haul.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "haul.store",
+          "public": false,
+          "initial_stock": {}
+        },
+        "inventory_port": {
+          "id": "local"
+        },
+        "pool_port": [
+          {
+            "id": "feed",
+            "pool": "haul.first",
+            "alternatives": [
+              "haul.second",
+              "haul.third"
+            ],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "tools",
+            "pool": "haul.second",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          },
+          {
+            "id": "power",
+            "pool": "haul.third",
+            "alternatives": [],
+            "endpoint_scope":"proof.pools","original_access": "retained"
+          }
+        ],
+        "transformer": {
+          "transformations": [
+            "supply.batch",
+            "supply.flow"
+          ],
+          "automatic_supply": true,
+          "wip_capacity": "haul.store",
+          "operation": {
+            "id": "process",
+            "enabled": true,
+            "target": 1,
+            "minimum": 0.5,
+            "maximum": 2,
+            "unit": "unit.work-rate"
+          },
+          "states": {
+            "working": "haul.working",
+            "stopped": "haul.stopped"
+          }
+        }
+      }
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "supply.start",
+      "entries": [
+        "supply.warehouse-start",
+        "supply.factory-start",
+        "supply.machine-start"
+      ],
+      "includes": []
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "supply.warehouse-start",
+      "after": [],
+      "entity": "supply.warehouse",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 8,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "supply.factory-start",
+      "after": [],
+      "entity": "supply.factory",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 22,
+        "y": 10
+      },
+      "home": null
+    },
+    {
+      "id": "supply.machine-start",
+      "after": [
+        "supply.warehouse-start"
+      ],
+      "entity": "haul.machine",
+      "company": 0,
+      "placement": {
+        "space": "haul.tiles",
+        "x": 2,
+        "y": 10
+      },
+      "home": "supply.warehouse-start"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "scoped-supply",
+      "game_mode": "haul.resource-only",
+      "mode_overrides": {},
+      "time": "haul.minute",
+      "space": "haul.tiles",
+      "seats": 2,
+      "default_seats": 2,
+      "modules": [
+        "proof.output-ports",
+        "sim.logistics",
+        "sim.tile-navigation"
+      ],
+      "settings": {
+        "sim.world-setup": {
+          "profile": "supply.start"
+        },
+        "sim.work": {
+          "retry": "proof.retry"
+        }
+      }
+    }
+  ]
+}

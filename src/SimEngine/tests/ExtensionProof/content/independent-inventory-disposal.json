@@ -1,0 +1,14 @@
+{
+  "independent_inventory_effects":[
+  {
+    "id": "sensor.dispose-oil-independent",
+    "kind": "destroyed",
+    "quantities": {
+      "oil": 3
+    },
+    "ports": {
+      "oil": "disposition.input"
+    }
+  }
+]
+}

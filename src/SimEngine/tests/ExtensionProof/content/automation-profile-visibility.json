@@ -1,0 +1,7 @@
+{
+  "knowledge_visibility_policies": [{"id":"automation.profile.visibility","own_entities":true,"unlisted_entities":false,"unlisted_content":true,"rules":["automation.profile.visibility.rule"]}],
+  "control_rule_knowledge_visibility": [{"id":"automation.profile.visibility.rule","definition":"high-level","mode":"all","facts":["automation.profile.observed"]}],
+  "signal_knowledge_visibility": [{"id":"automation.profile.visibility.signal","definition":"probe.level","mode":"all","facts":["automation.profile.observed"]}],
+  "input_recovery_knowledge_visibility": [{"id":"automation.profile.visibility.recovery","definition":"proof.automation-rules.suspend","mode":"all","facts":["automation.profile.observed"]}],
+  "action_policy_knowledge_visibility": [{"id":"automation.profile.visibility.action","definition":"proof.automation-rules.operation","mode":"all","facts":["automation.profile.observed"]}]
+}

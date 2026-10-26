@@ -1,0 +1,29 @@
+{
+  "signals":[
+    {"id":"utility.on","kind":"boolean","metric":"operation.enabled","unit":"unit.boolean","providers":[{"component":"gate_probe","schema":1}]},
+    {"id":"utility.level","kind":"number","metric":"probe.level","unit":"unit.level","providers":[{"component":"gate_probe","schema":1}]}
+  ],
+  "entities":[
+    {"id":"gated.assembler","kind":"entity","components":{"inventory_port":[{"id":"material.output"},{"id":"material.input"},{"id":"tool.input"},{"id":"operating.input"}],
+      "process_stock":{"resource":"supply","capacity_policy":"fixture.count.40","initial":20},
+      "transformer":{"automatic_supply":false,"wip_capacity":"fixture.count.40","transformations":["build"],
+        "states":{"working":"working","stopped":"blocked"},
+        "operation":{"id":"transformation","enabled":true,"target":1,"minimum":1,"maximum":1,"unit":"unit.work-rate"}},
+      "gate_probe":{"level":2,"operation":{"id":"utility","enabled":true,"target":1,"minimum":0,"maximum":4,"unit":"unit.level"}},
+      "signal_transformation_gate":{"id":"safe-operation","transformations":["build"],"conditions":[
+        {"id":"b-pressure","source":"utility","signal":"utility.level","minimum":1,"maximum":4,"unit":"unit.level","blocker":"process.unsafe-pressure"},
+        {"id":"a-power","source":"utility","signal":"utility.on","expected":true,"blocker":"process.no-power"}
+      ]}
+    }},
+    {"id":"gated.emitter","kind":"entity","components":{
+      "pulse_transformer":{"transformations":["pulse"],"states":{"working":"working","stopped":"blocked"},
+        "operation":{"id":"pulse","enabled":true,"target":1,"minimum":1,"maximum":2,"unit":"unit.work-rate"}},
+      "gate_probe":{"level":2,"operation":{"id":"utility","enabled":true,"target":1,"minimum":0,"maximum":4,"unit":"unit.level"}},
+      "signal_transformation_gate":{"id":"safe-operation","transformations":["pulse"],"conditions":[
+        {"id":"power","source":"utility","signal":"utility.on","expected":true,"blocker":"process.no-power"}
+      ]}
+    }}
+  ],
+  "world_setup_profiles": [{"id":"transformation-gates.start","entries":["start","emitter-start","gated.assembler.start","gated.emitter.start"],"includes":[]}],
+  "entity_setups": [{"id":"gated.assembler.start","after":[],"entity":"gated.assembler","company":0,"placement":null,"home":null},{"id":"gated.emitter.start","after":[],"entity":"gated.emitter","company":0,"placement":null,"home":null}]
+}

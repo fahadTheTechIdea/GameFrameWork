@@ -1,0 +1,7 @@
+{
+  "independent_transformations": [
+    {"id":"contract.make","mode":"batch","cancel_policy":"return_inputs","tool_consumption":{},"operating_ports":{},"tool_ports":{"supply":"tool.input"},"input_ports":{"supply":"material.input"},"output_ports":{},"operating_inputs":[],"tools":{"supply":1},"inputs":{"supply":3},"outputs":{},"entity_output":"contract.result", "output_home": "unassigned","duration":{"numerator":30,"denominator":1,"unit":"minute"},"category":"assembly"},
+    {"id":"contract.unused-recipe","mode":"batch","cancel_policy":"return_inputs","tool_consumption":{},"operating_ports":{},"tool_ports":{},"input_ports":{},"output_ports":{},"operating_inputs":[],"tools":{},"inputs":{},"outputs":{},"entity_output":"contract.result", "output_home": "unassigned","duration":{"numerator":2,"denominator":1,"unit":"minute"},"category":"unused"}
+  ],
+  "invalid_transformations": []
+}

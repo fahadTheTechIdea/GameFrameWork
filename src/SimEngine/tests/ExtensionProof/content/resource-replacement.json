@@ -1,0 +1,82 @@
+{
+  "game_modes": [{ "id": "resource-replacement.resource-only", "name": "Resource-only physical simulation", "properties": {} }],
+  "time_definitions": [{"id":"replacement.minute","quantum":{"numerator":60,"denominator":1,"unit":"second"},"frame_ticks":1,"ticks_per_second":30,"horizon":null}],
+  "entity_states": [{"id":"idle","state":"replacement.idle","priority":0,"default":true}],
+  "worker_roles": [{"id":"haul"}],
+  "units": [
+    {"id":"unit.storage","dimension":"mass","scale":{"numerator":1,"denominator":1},"discrete":false},
+    {"id":"unit.case","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true},
+    {"id":"unit.alpha","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true},
+    {"id":"unit.beta","dimension":"mass","scale":{"numerator":1,"denominator":1},"discrete":false}
+  ],
+  "resources": [
+    {"id":"alpha","unit":"unit.alpha","category":"kit","phase":"solid","traits":[],"capacity":{"unit.storage":1,"unit.case":0.5}},
+    {"id":"beta","unit":"unit.beta","category":"material","phase":"solid","traits":[],"capacity":{"unit.storage":1}}
+  ],
+  "capacity_policies": [
+    {"id":"replacement.capacity","limits":{"unit.storage":40}},
+    {"id":"replacement.tiny","limits":{"unit.storage":29}},
+    {"id":"replacement.cases","limits":{"unit.case":20}}
+  ],
+  "entities": [
+    {"id":"bin","kind":"entity","components":{"storage":{"capacity_policy":"replacement.capacity","initial_stock":{"alpha":10,"beta":20.25}}}},
+    {"id":"replacement","kind":"entity","components":{"storage":{"capacity_policy":"replacement.capacity","initial_stock":{"alpha":1,"beta":1}}}},
+    {"id":"tiny","kind":"entity","components":{"storage":{"capacity_policy":"replacement.tiny"}}},
+    {"id":"filtered","kind":"entity","components":{"storage":{"capacity_policy":"replacement.capacity","accepts":["beta"]}}},
+    {"id":"cases","kind":"entity","components":{"storage":{"capacity_policy":"replacement.cases","accepts":["alpha"]}}},
+    {"id":"plain","kind":"entity","components":{}},
+    {"id":"empty","kind":"entity","components":{"storage":{"capacity_policy":"replacement.capacity"}}},
+    {"id":"external","kind":"entity","components":{"point_stock":{"resource":"alpha","capacity_policy":"replacement.capacity","initial":7}}},
+    {"id":"external.next","kind":"entity","components":{"point_stock":{"resource":"alpha","capacity_policy":"replacement.capacity","initial":1}}},
+    {"id":"faulty","kind":"entity","components":{"storage":{"capacity_policy":"replacement.capacity"},"replacement_probe":{"allowed_targets":[],"fail_initialization":true}}}
+  ],
+  "entity_setups": [
+  {
+    "id": "a.start",
+    "after": [],
+    "entity": "bin",
+    "company": 0,
+    "placement": null,
+    "home": null
+  },
+  {
+    "id": "b.start",
+    "after": [],
+    "entity": "bin",
+    "company": 1,
+    "placement": null,
+    "home": null
+  }
+],
+  "world_setup_profiles": [
+  {
+    "id": "resource-replacement.start",
+    "entries": [
+      "a.start",
+      "b.start"
+    ],
+    "includes": []
+  }
+],
+  "scenarios": [
+  {
+    "id": "points",
+    "game_mode": "resource-replacement.resource-only",
+    "mode_overrides": {},
+    "time": "replacement.minute",
+    "modules": [
+      "points",
+      "sim.world-setup"
+    ],
+    "seats": 2,
+    "settings": {
+      "sim.work": {
+        "retry": "proof.retry"
+      },
+      "sim.world-setup": {
+        "profile": "resource-replacement.start"
+      }
+    }
+  }
+]
+}

@@ -1,0 +1,1 @@
+{"id":"proof.knowledge-ledger-durability","version":"1.0.0","requires":[{"id":"sim.knowledge","version":"1.0.0"}],"documents":["knowledge-ledger-durability.json"]}

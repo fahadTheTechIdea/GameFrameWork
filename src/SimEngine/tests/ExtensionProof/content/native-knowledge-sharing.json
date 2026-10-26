@@ -1,0 +1,7 @@
+{
+  "knowledge_sharing_policies": [
+    {"id":"share.region","subjects":[{"provider":"sim.knowledge.facts","subject":"contact.north.known"}],"directions":[{"sender":0,"recipient":1}]},
+    {"id":"share.reading","subjects":[{"provider":"sim.knowledge.facts","subject":"survey.reading"}],"directions":[{"sender":1,"recipient":0},{"sender":0,"recipient":1}]},
+    {"id":"share.whole","subjects":[{"provider":"sim.knowledge.facts","subject":"survey.reading"},{"provider":"sim.knowledge.facts","subject":"contact.north.known"}],"directions":[{"sender":0,"recipient":1}]}
+  ]
+}

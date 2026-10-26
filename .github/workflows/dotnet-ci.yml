@@ -16,18 +16,22 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 10.0.x
-      - name: Build core
-        run: dotnet build src/GameFrameWork.Core/GameFrameWork.Core.csproj --configuration Release --warnaserror
+      - name: Build all GameFrameWork components
+        run: dotnet build GameFrameWork.slnx --configuration Release --warnaserror
       - name: Build generator CLI
-        run: dotnet build src/GameFrameWork.Cli/GameFrameWork.Cli.csproj --configuration Release --warnaserror
+        run: dotnet build src/WorldCreator/WorldCreator.Cli/WorldCreator.Cli.csproj --configuration Release --warnaserror
       - name: Build test harness
-        run: dotnet build tests/GameFrameWork.Tests/GameFrameWork.Tests.csproj --configuration Release --warnaserror
+        run: dotnet build tests/WorldCreator.Tests/WorldCreator.Tests.csproj --configuration Release --warnaserror
+      - name: Verify general catalog authoring and full inventory review
+        run: dotnet run --project tests/WorldCreator.Tests/WorldCreator.Tests.csproj --configuration Release --no-build -- --catalog-authoring src/WorldCreator/WorldCreator.Cli/bin/Release/net10.0/WorldCreator.Cli.dll
+      - name: Verify catalog and compound facility composition
+        run: dotnet run --project tests/WorldCreator.Tests/WorldCreator.Tests.csproj --configuration Release --no-build -- --composition src/WorldCreator/WorldCreator.Cli/bin/Release/net10.0/WorldCreator.Cli.dll
       - name: Run test harness
-        run: dotnet run --project tests/GameFrameWork.Tests/GameFrameWork.Tests.csproj --configuration Release --no-build -- --cli src/GameFrameWork.Cli/bin/Release/net10.0/GameFrameWork.Cli.dll
+        run: dotnet run --project tests/WorldCreator.Tests/WorldCreator.Tests.csproj --configuration Release --no-build -- --cli src/WorldCreator/WorldCreator.Cli/bin/Release/net10.0/WorldCreator.Cli.dll
       - name: Smoke test CLI
-        run: dotnet run --project src/GameFrameWork.Cli/GameFrameWork.Cli.csproj --configuration Release --no-build -- generate-world tests/fixtures/synthetic-desert-world.json generated/ci-desert
+        run: dotnet run --project src/WorldCreator/WorldCreator.Cli/WorldCreator.Cli.csproj --configuration Release --no-build -- generate-world tests/fixtures/synthetic-desert-world.json generated/ci-desert
       - name: Discover Modern catalog
-        run: dotnet run --project src/GameFrameWork.Cli/GameFrameWork.Cli.csproj --configuration Release --no-build -- list-buildings modern
+        run: dotnet run --project src/WorldCreator/WorldCreator.Cli/WorldCreator.Cli.csproj --configuration Release --no-build -- list-buildings modern
       - name: Verify exported data
         shell: bash
         run: |
@@ -35,7 +39,7 @@ jobs:
           test -s generated/ci-desert/GeneratedWorld.tscn
           test -s generated/ci-desert/EXPORT_STATUS.md
       - name: Smoke test infrastructure CLI
-        run: dotnet run --project src/GameFrameWork.Cli/GameFrameWork.Cli.csproj --configuration Release --no-build -- generate-world tests/fixtures/synthetic-infrastructure-world.json generated/ci-infrastructure
+        run: dotnet run --project src/WorldCreator/WorldCreator.Cli/WorldCreator.Cli.csproj --configuration Release --no-build -- generate-world tests/fixtures/synthetic-infrastructure-world.json generated/ci-infrastructure
       - name: Verify infrastructure export data
         shell: bash
         run: |
@@ -44,7 +48,7 @@ jobs:
           test -s generated/ci-infrastructure/EXPORT_STATUS.md
 
       - name: Smoke test contextual siting CLI
-        run: dotnet run --project src/GameFrameWork.Cli/GameFrameWork.Cli.csproj --configuration Release --no-build -- generate-world tests/fixtures/synthetic-siting-world.json generated/ci-siting
+        run: dotnet run --project src/WorldCreator/WorldCreator.Cli/WorldCreator.Cli.csproj --configuration Release --no-build -- generate-world tests/fixtures/synthetic-siting-world.json generated/ci-siting
       - name: Verify siting export data
         shell: bash
         run: |
@@ -53,7 +57,7 @@ jobs:
           test -s generated/ci-siting/EXPORT_STATUS.md
 
       - name: Assemble dummy pixel village
-        run: dotnet run --project src/GameFrameWork.Cli/GameFrameWork.Cli.csproj --configuration Release --no-build -- dummy-village generated/dummy-village
+        run: dotnet run --project src/WorldCreator/WorldCreator.Cli/WorldCreator.Cli.csproj --configuration Release --no-build -- dummy-village generated/dummy-village
       - name: Inspect dummy Godot project
         shell: bash
         run: |

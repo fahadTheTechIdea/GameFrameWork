@@ -1,0 +1,722 @@
+{
+  "tile_line_placement_policies": [{"id":"recovery.placement","space":"recovery.tiles","blocker":"line.placement-blocked","footprint":{"match":"all","conditions":[]}}],
+  "game_modes": [
+    {
+      "id": "resource-recovery.resource-only",
+      "name": "Resource-only physical simulation",
+      "properties": {}
+    }
+  ],
+  "activities": [
+    {
+      "id": "road.segment-work",
+      "player_orderable": false,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "id": "install",
+          "executor": "work.staffed",
+          "roles": [
+            "crane"
+          ],
+          "duration": {
+            "numerator": 360,
+            "denominator": 1,
+            "unit": "second"
+          },
+          "effect": "sim.line.segment",
+          "requirement": "proof.resource-recovery.road.inputs"
+        }
+      ]
+    },
+    {
+      "id": "tower.build-work",
+      "player_orderable": false,
+      "priority": 50,
+      "automatic_supply": true,
+      "nodes": [
+        {
+          "executor": "work.staffed",
+          "id": "prep",
+          "roles": [
+            "crane"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 10,
+            "unit": "hour"
+          }
+        },
+        {
+          "executor": "work.staffed",
+          "id": "erect",
+          "roles": [
+            "crane"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 5,
+            "unit": "hour"
+          },
+          "after": [
+            "prep"
+          ],
+          "requirement": "proof.resource-recovery.tower.erect.inputs"
+        }
+      ]
+    },
+    {
+      "id": "tower.removal-work",
+      "player_orderable": false,
+      "priority": 40,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "executor": "work.staffed",
+          "id": "demolish",
+          "roles": [
+            "crane"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 10,
+            "unit": "hour"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fluid_unit.build-work",
+      "player_orderable": false,
+      "priority": 50,
+      "automatic_supply": true,
+      "nodes": [
+        {
+          "executor": "work.staffed",
+          "id": "erect",
+          "roles": [
+            "crane"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 10,
+            "unit": "hour"
+          },
+          "requirement": "proof.resource-recovery.fluid_unit.erect.inputs"
+        }
+      ]
+    },
+    {
+      "id": "fluid_unit.removal-work",
+      "player_orderable": false,
+      "priority": 40,
+      "automatic_supply": false,
+      "nodes": [
+        {
+          "executor": "work.staffed",
+          "id": "demolish",
+          "roles": [
+            "crane"
+          ],
+          "duration": {
+            "numerator": 1,
+            "denominator": 10,
+            "unit": "hour"
+          }
+        }
+      ]
+    }
+  ],
+  "time_definitions": [
+    {
+      "id": "recovery.minute",
+      "quantum": {
+        "numerator": 60,
+        "denominator": 1,
+        "unit": "second"
+      },
+      "frame_ticks": 1,
+      "ticks_per_second": 30,
+      "horizon": null
+    }
+  ],
+  "entity_states": [
+    {
+      "id": "idle",
+      "state": "state.idle",
+      "priority": 0,
+      "default": true
+    },
+    {
+      "id": "working",
+      "state": "state.working",
+      "priority": 20
+    },
+    {
+      "id": "loading",
+      "state": "state.loading",
+      "priority": 30
+    },
+    {
+      "id": "moving",
+      "state": "state.moving",
+      "priority": 40
+    },
+    {
+      "id": "stopped",
+      "state": "state.stopped",
+      "priority": 60
+    },
+    {
+      "id": "building",
+      "state": "state.building",
+      "priority": 80
+    }
+  ],
+  "worker_roles": [
+    {
+      "id": "crane"
+    },
+    {
+      "id": "haul"
+    }
+  ],
+  "units": [
+    {
+      "id": "unit.classification",
+      "dimension": "classification",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    },
+    {
+      "id": "unit.storage",
+      "dimension": "mass",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": false
+    },
+    {
+      "id": "unit.steel",
+      "dimension": "count",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    },
+    {
+      "id": "unit.water",
+      "dimension": "volume",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": false
+    }
+  ],
+  "resources": [
+    {
+      "id": "steel",
+      "unit": "unit.steel",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "unit.storage": 1
+      }
+    },
+    {
+      "id": "water",
+      "unit": "unit.water",
+      "category": "fluid",
+      "phase": "liquid",
+      "traits": [],
+      "capacity": {
+        "unit.storage": 1
+      }
+    }
+  ],
+  "handling_profiles": [
+    {
+      "id": "recovery.handling",
+      "resources": [
+        {
+          "resource": "steel",
+          "quantity": 1,
+          "loading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "unloading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        },
+        {
+          "resource": "water",
+          "quantity": 1,
+          "loading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          },
+          "unloading": {
+            "numerator": 1,
+            "denominator": 1,
+            "unit": "minute"
+          }
+        }
+      ]
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "recovery.mixed",
+      "limits": {
+        "unit.storage": 1000
+      }
+    },
+    {
+      "id": "recovery.site",
+      "limits": {
+        "unit.storage": 100
+      }
+    },
+    {
+      "id": "recovery.cargo",
+      "limits": {
+        "unit.storage": 20
+      }
+    },
+    {
+      "id": "recovery.pile",
+      "limits": {
+        "unit.storage": 10
+      }
+    }
+  ],
+  "resource_recovery_profiles": [
+    {
+      "id": "recovery.profile",
+      "space": "recovery.tiles",
+      "container": "recovery.container"
+    }
+  ],
+  "construction_effects": [
+    {
+      "id": "sim.construction.finish",
+      "operation": "finish"
+    },
+    {
+      "id": "sim.construction.demolish",
+      "operation": "demolish"
+    }
+  ],
+  "line_effects": [
+    {
+      "id": "sim.line.segment",
+      "operation": "segment"
+    },
+    {
+      "id": "sim.line.finish",
+      "operation": "finish"
+    }
+  ],
+  "entities": [
+    {
+      "id": "depot",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 3,
+          "height": 3,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "recovery.mixed",
+          "initial_stock": {
+            "steel": 50,
+            "water": 10
+          }
+        }
+      }
+    },
+    {
+      "id": "market",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 2,
+          "height": 2,
+          "blocks": true,
+          "movable": false
+        },
+        "supplier": {
+          "sells": {
+            "steel": 10,
+            "water": 1
+          }
+        }
+      }
+    },
+    {
+      "id": "factory",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 3,
+          "height": 3,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "recovery.mixed",
+          "public": false
+        }
+      }
+    },
+    {
+      "id": "tower",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 2,
+          "height": 2,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "recovery.mixed",
+          "public": false
+        },
+        "construction": {
+          "site": "site:tower",
+          "activity": "tower.build-work",
+          "demolish": {
+            "activity": "tower.removal-work",
+            "salvage": {
+              "steel": 15
+            }
+          },
+          "states": {
+            "site": "building"
+          }
+        }
+      }
+    },
+    {
+      "id": "fluid_unit",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 2,
+          "height": 2,
+          "blocks": true,
+          "movable": false
+        },
+        "construction": {
+          "site": "site:fluid_unit",
+          "activity": "fluid_unit.build-work",
+          "demolish": {
+            "activity": "fluid_unit.removal-work",
+            "salvage": {
+              "water": 2.5
+            }
+          },
+          "states": {
+            "site": "building"
+          }
+        }
+      }
+    },
+    {
+      "id": "crane",
+      "kind": "vehicle",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "mover": {
+          "classes": [
+            "land"
+          ],
+          "class": "land",
+          "speed": 20,
+          "states": {
+            "moving": "moving",
+            "stopped": "stopped"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "crane"
+          ],
+          "states": {
+            "working": "working",
+            "loading": "loading",
+            "stopped": "stopped"
+          }
+        }
+      }
+    },
+    {
+      "id": "truck",
+      "kind": "vehicle",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": true
+        },
+        "mover": {
+          "classes": [
+            "land"
+          ],
+          "class": "land",
+          "speed": 30,
+          "states": {
+            "moving": "moving",
+            "stopped": "stopped"
+          }
+        },
+        "worker": {
+          "work_rate": 1,
+          "roles": [
+            "haul"
+          ],
+          "states": {
+            "working": "working",
+            "loading": "loading",
+            "stopped": "stopped"
+          }
+        },
+        "storage": {
+          "capacity_policy": "recovery.cargo",
+          "public": false
+        },
+        "transporter": {
+          "handling": "recovery.handling"
+        }
+      }
+    },
+    {
+      "id": "external",
+      "kind": "structure",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": true,
+          "movable": false
+        },
+        "single_resource_port": {
+          "resource": "steel",
+          "capacity_policy": "recovery.mixed",
+          "initial": 25
+        }
+      }
+    },
+    {
+      "id": "site:tower",
+      "kind": "structure",
+      "category": "site",
+      "tags": [
+        "site"
+      ],
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 2,
+          "height": 2,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "recovery.site",
+          "public": false,
+          "initial_stock": {}
+        },
+        "site": {
+          "target": "tower"
+        }
+      }
+    },
+    {
+      "id": "site:fluid_unit",
+      "kind": "structure",
+      "category": "site",
+      "tags": [
+        "site"
+      ],
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 2,
+          "height": 2,
+          "blocks": true,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "recovery.site",
+          "public": false,
+          "initial_stock": {}
+        },
+        "site": {
+          "target": "fluid_unit"
+        }
+      }
+    },
+    {
+      "id": "recovery.container",
+      "kind": "marker",
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": false,
+          "movable": false
+        },
+        "storage": {
+          "capacity_policy": "recovery.pile",
+          "public": true,
+          "evacuate": true,
+          "initial_stock": {}
+        }
+      }
+    },
+    {
+      "id": "sim.line-work.road",
+      "kind": "marker",
+      "tags": [
+        "line-work"
+      ],
+      "components": {
+        "tile_presence": {
+          "space": "recovery.tiles",
+          "width": 1,
+          "height": 1,
+          "blocks": false,
+          "movable": true
+        },
+        "storage": {
+          "capacity_policy": "recovery.site",
+          "public": false,
+          "evacuate": false,
+          "accepts": [],
+          "phases": [],
+          "initial_stock": {}
+        },
+        "line_work": {}
+      }
+    }
+  ],
+  "lines": [
+    {"value":1,
+      "id": "road",
+      "layer": "road",
+      "placement_policy": "recovery.placement",
+      "owned": false,
+      "finish_effect": "sim.line.finish",
+      "activity": "road.segment-work",
+      "segment_node": "install",
+      "work_marker": "sim.line-work.road"
+    }
+  ],
+  "tile_spaces": [
+    {
+      "id": "recovery.tiles",
+      "width": 48,
+      "height": 32
+    }
+  ],
+  "spatial_layers": [
+    {
+      "id": "water",
+      "space": "recovery.tiles",
+      "type": "water.coverage",
+      "value_type": "byte",
+      "visibility": "public",
+      "unit": "unit.classification",
+      "resource": "water",
+      "resource_measure": "associated"
+    },
+    {
+      "id": "road",
+      "space": "recovery.tiles",
+      "type": "network.topology",
+      "value_type": "byte",
+      "visibility": "public",
+      "unit": "unit.classification"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "colony",
+      "game_mode": "resource-recovery.resource-only",
+      "mode_overrides": {},
+      "time": "recovery.minute",
+      "space": "recovery.tiles",
+      "modules": [
+        "colony"
+      ],
+      "seats": 2,
+      "default_seats": 1,
+      "settings": {
+        "sim.work": {
+          "retry": "proof.retry"
+        },
+        "sim.construction": {
+          "recovery": "recovery.profile"
+        }
+      }
+    }
+  ],
+  "target_resource_requirements": [
+    {
+      "port": null,
+      "id": "proof.resource-recovery.tower.erect.inputs",
+      "use": "consume",
+      "quantities": {
+        "steel": 30
+      }
+    },
+    {
+      "port": null,
+      "id": "proof.resource-recovery.fluid_unit.erect.inputs",
+      "use": "consume",
+      "quantities": {
+        "water": 5
+      }
+    },
+    {
+      "port": null,
+      "id": "proof.resource-recovery.road.inputs",
+      "use": "consume",
+      "quantities": {
+        "steel": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "id":"sim.plan-history",
+  "version":"1.0.0",
+  "requires":[{"id":"sim.work","version":"1.0.0"}],
+  "documents":["plan-history.json"]
+}

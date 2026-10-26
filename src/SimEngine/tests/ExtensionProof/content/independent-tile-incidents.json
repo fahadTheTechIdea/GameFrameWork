@@ -1,0 +1,28 @@
+{
+  "work_policies":[{"id":"sensor.response-worker-policy","enabled":true,"priority":1,"allowed_roles":["sensor.inspect","haul"],"area":null,
+    "interruptible":true,"emergency_eligible":true,"assignment_mode":"all","states":{"disabled":"sensor.stopped","standby":"sensor.stopped"}}],
+  "spatial_layers":[{"id":"sensor.incident-mask","space":"sensor.tiles","type":"terrain.exposure","value_type":"byte","visibility":"public","unit":"sensor.count"}],
+  "tile_layer_band_conditions":[{"id":"sensor.exposed","space":"sensor.tiles","layer":"sensor.incident-mask","minimum":1,"maximum":2}],
+  "tile_incident_propagation_rules":[{"id":"sensor.spread","space":"sensor.tiles","radius":3,
+    "interval":{"numerator":1,"denominator":1,"unit":"minute"},"delay":{"numerator":4,"denominator":1,"unit":"minute"},
+    "target_source":"leak","target_kind":"sensor.fire","companies":"same","source_conditions":[],"target_conditions":[],
+    "source_tiles":{"match":"all","conditions":["sensor.exposed"]},"target_tiles":{"match":"any","conditions":["sensor.exposed"]}}],
+  "response_effects":[{"id":"sensor.response-finish","bound_response":true}],
+  "target_resource_requirements":[{"id":"sensor.response-material","port":null,"use":"consume","quantities":{"steel":1}}],
+  "activities":[{"id":"sensor.fire-response","priority":90,"player_orderable":false,"automatic_supply":false,
+    "nodes":[{"executor":"work.staffed","id":"repair","roles":["sensor.inspect"],"duration":{"numerator":6,"denominator":1,"unit":"minute"},"requirement":"sensor.response-material"}],
+    "on_complete":"sensor.response-finish"}],
+  "incident_workflows":[{"id":"sensor.fire","kind":"sensor.fire","response":"sensor.fire-response","phases":[{"id":"repair","nodes":["repair"]}]}],
+  "entities":[{"id":"sensor.incident-source","kind":"structure","components":{
+    "tile_presence":{"space":"sensor.tiles","width":2,"height":1,"blocks":true,"movable":false},
+    "storage":{"capacity_policy":"sensor.stock","public":false,"initial_stock":{}},
+    "incident":{"id":"leak","workflow":"sensor.fire","states":{"active":"sensor.stopped"}},
+    "incident_propagation":{"id":"spread","source":"leak","rule":"sensor.spread"}
+  }}],
+  "world_setup_profiles":[{"id":"sensor.incident-start","entries":["sensor.start-incident-source","sensor.source-mask","sensor.target-mask"],"includes":["sensor.construction-start"]}],
+  "entity_setups":[{"id":"sensor.start-incident-source","after":[],"entity":"sensor.incident-source","company":0,"placement":{"space":"sensor.tiles","x":14,"y":18},"home":null}],
+  "tile_layer_setups":[
+    {"id":"sensor.source-mask","after":[],"layer":"sensor.incident-mask","x":14,"y":18,"width":2,"height":1,"value":1,"owner":-1},
+    {"id":"sensor.target-mask","after":[],"layer":"sensor.incident-mask","x":15,"y":20,"width":1,"height":1,"value":1,"owner":-1}
+  ]
+}

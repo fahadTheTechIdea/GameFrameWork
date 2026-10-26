@@ -1,0 +1,29 @@
+{
+  "game_modes": [{ "id": "spatial-resource-values.resource-only", "name": "Resource-only physical simulation", "properties": {} }],
+  "time_definitions":[{"id":"quantity.minute","quantum":{"numerator":60,"denominator":1,"unit":"second"},"frame_ticks":1,"ticks_per_second":30,"calendar":null,"horizon":null}],
+  "tile_spaces":[{"id":"quantity.tiles","width":18,"height":17}],
+  "units":[
+    {"id":"quantity.count","dimension":"count","scale":{"numerator":1,"denominator":1},"discrete":true},
+    {"id":"quantity.half","dimension":"count","scale":{"numerator":1,"denominator":2},"discrete":false},
+    {"id":"quantity.pair","dimension":"count","scale":{"numerator":2,"denominator":1},"discrete":true},
+    {"id":"quantity.kg","dimension":"mass","scale":{"numerator":1,"denominator":1},"discrete":false},
+    {"id":"quantity.tonne","dimension":"mass","scale":{"numerator":1000,"denominator":1},"discrete":false},
+    {"id":"quantity.third","dimension":"mass","scale":{"numerator":1,"denominator":3},"discrete":false},
+    {"id":"quantity.metre","dimension":"length","scale":{"numerator":1,"denominator":1},"discrete":false}
+  ],
+  "resources":[
+    {"id":"quantity.parts","unit":"quantity.count","category":"material","phase":"solid","traits":[],"capacity":{"quantity.count":1}},
+    {"id":"quantity.ore","unit":"quantity.kg","category":"mineral","phase":"solid","traits":[],"capacity":{"quantity.kg":1}}
+  ],
+  "spatial_layers":[
+    {"id":"quantity.byte","space":"quantity.tiles","type":"deposit.parts","value_type":"byte","visibility":"public","unit":"quantity.half","resource":"quantity.parts","resource_measure":"quantity"},
+    {"id":"quantity.int","space":"quantity.tiles","type":"deposit.parts","value_type":"int","visibility":"company_private","unit":"quantity.half","resource":"quantity.parts","resource_measure":"quantity"},
+    {"id":"quantity.fixed","space":"quantity.tiles","type":"deposit.parts","value_type":"fixed","visibility":"public","unit":"quantity.count","resource":"quantity.parts","resource_measure":"quantity"},
+    {"id":"quantity.pairs","space":"quantity.tiles","type":"deposit.parts","value_type":"fixed","visibility":"public","unit":"quantity.pair","resource":"quantity.parts","resource_measure":"quantity"},
+    {"id":"quantity.mass","space":"quantity.tiles","type":"deposit.ore","value_type":"fixed","visibility":"public","unit":"quantity.tonne","resource":"quantity.ore","resource_measure":"quantity"},
+    {"id":"quantity.thirds","space":"quantity.tiles","type":"deposit.ore","value_type":"fixed","visibility":"public","unit":"quantity.third","resource":"quantity.ore","resource_measure":"quantity"},
+    {"id":"quantity.associated","space":"quantity.tiles","type":"surface.elevation","value_type":"fixed","visibility":"public","unit":"quantity.metre","resource":"quantity.ore","resource_measure":"associated","vertical_domain":"subsurface","vertical_unit":"quantity.metre","vertical_reference":"surface","vertical_offset":-1200},
+    {"id":"quantity.signed","space":"quantity.tiles","type":"signed.custom","value_type":"int","visibility":"public","unit":"quantity.count"}
+  ],
+  "scenarios":[{"id":"quantities", "game_mode": "spatial-resource-values.resource-only", "mode_overrides": {},"time":"quantity.minute","space":"quantity.tiles","modules":["quantity.proof"],"seats":2,"default_seats":2}]
+}

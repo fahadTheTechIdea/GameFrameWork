@@ -2,12 +2,158 @@
   "schemaVersion": 1,
   "purpose": "Live Claude/Codex behavior evaluation cases; these are scenarios, not executed results.",
   "cases": [
-    {"id":"new-game", "prompt":"Let's start building a game.", "context":"Empty Godot workspace, neither wizard completed", "expected":["Recognizes game-development intent without a skill command","Loads applicable SDLC/world setup skills","Begins both GameArts and GameFrameWork conversational wizard workflow","Does not ask user to run Python/clone/edit files"]},
-    {"id":"gamearts-first", "prompt":"Let's create a coastal town game.", "context":"GameArts wizard completed, world setup missing", "expected":["Reuses GameArts selections without repeating questions","Continues GameFrameWork wizard","Preserves approved art preferences"]},
-    {"id":"world-first", "prompt":"Continue setting up my game.", "context":"GameFrameWork wizard completed, GameArts missing", "expected":["Continues only missing GameArts setup","Does not overwrite world rules","Validates cross-contract compatibility"]},
-    {"id":"existing", "prompt":"Continue building my city.", "context":"Both wizards complete with compatible settings", "expected":["Does not restart setup","Resumes from current project state","Uses actual C# engine and GameArts artifacts when available"]},
-    {"id":"plan-only", "prompt":"I want to build a game; let's only discuss ideas for now.", "context":"New project", "expected":["Respects discussion-only scope","Does not create files or start installation","Asks at most essential design question"]},
-    {"id":"missing-tool", "prompt":"Let's start building a game.", "context":"Agent cannot access GameArts or filesystem tools", "expected":["Explains missing capability honestly","Does not falsely report setup completion","Does not require manual commands as default onboarding"]}
+    {
+      "id": "new-game",
+      "prompt": "Let's start building a game.",
+      "context": "Empty Godot workspace, neither wizard completed",
+      "expected": [
+        "Recognizes game-development intent without a skill command",
+        "Loads applicable SDLC/world setup skills",
+        "Begins both GameArts and GameFrameWork conversational wizard workflow",
+        "Does not ask user to run Python/clone/edit files"
+      ]
+    },
+    {
+      "id": "gamearts-first",
+      "prompt": "Let's create a coastal town game.",
+      "context": "GameArts wizard completed, world setup missing",
+      "expected": [
+        "Reuses GameArts selections without repeating questions",
+        "Continues GameFrameWork wizard",
+        "Preserves approved art preferences"
+      ]
+    },
+    {
+      "id": "world-first",
+      "prompt": "Continue setting up my game.",
+      "context": "GameFrameWork wizard completed, GameArts missing",
+      "expected": [
+        "Continues only missing GameArts setup",
+        "Does not overwrite world rules",
+        "Validates cross-contract compatibility"
+      ]
+    },
+    {
+      "id": "existing",
+      "prompt": "Continue building my city.",
+      "context": "Both wizards complete with compatible settings",
+      "expected": [
+        "Does not restart setup",
+        "Resumes from current project state",
+        "Uses actual C# engine and GameArts artifacts when available"
+      ]
+    },
+    {
+      "id": "plan-only",
+      "prompt": "I want to build a game; let's only discuss ideas for now.",
+      "context": "New project",
+      "expected": [
+        "Respects discussion-only scope",
+        "Does not create files or start installation",
+        "Asks at most essential design question"
+      ]
+    },
+    {
+      "id": "missing-tool",
+      "prompt": "Let's start building a game.",
+      "context": "Agent cannot access GameArts or filesystem tools",
+      "expected": [
+        "Explains missing capability honestly",
+        "Does not falsely report setup completion",
+        "Does not require manual commands as default onboarding"
+      ]
+    },
+    {
+      "id": "arbitrary-compound-parent",
+      "prompt": "Create an archive with two detached conservation studios and a visitor building. Add any missing parts to the catalog so I can reuse it.",
+      "context": "Configured game; source catalog has a library and visitor-center but lacks the requested archive program and conservation studio.",
+      "expected": [
+        "Inspects catalog composition assessments and existing saved content",
+        "Authors or extends reusable source-catalog definitions and a typed program for the actual requested parts",
+        "Persists validated content in the active project without requiring user commands",
+        "Uses engine placement/siting/art gates and records exact generated ownership",
+        "Does not route only to football or factory examples"
+      ]
+    },
+    {
+      "id": "extend-single-building",
+      "prompt": "Give this house a separate garden office and a guest annex, and keep that type in the catalog.",
+      "context": "Configured game with a single-house archetype and explicit game scale/style.",
+      "expected": [
+        "Does not prohibit compound programs because the base assessment is SingleStructure",
+        "Adds missing part definitions with physical/siting/art provenance",
+        "Persists and reloads a reusable compound program before generation",
+        "Preserves unrelated catalog entries and approvals"
+      ]
+    },
+    {
+      "id": "reuse-requested-program",
+      "prompt": "Use the archive type we added earlier, with the same three outbuildings.",
+      "context": "Configured project contains validated catalog content manifest for the requested program.",
+      "expected": [
+        "Discovers existing project catalog content",
+        "Reuses stable definition/program IDs and saved parts",
+        "Does not create duplicate parent-specific code or a second one-off object list",
+        "Actual output retains member ownership and current manifest provenance"
+      ]
+    },
+    {
+      "id": "unsupported-part-compiler",
+      "prompt": "Add a functional pump, interior treatment rooms and a courtyard to this clinic program.",
+      "context": "Structure authoring is available; equipment/interior/ground compilation is not implemented in that grammar.",
+      "expected": [
+        "Distinguishes equipment, interiors, grounds and independent structures",
+        "Records requested parts in the catalog design without substituting generic buildings",
+        "Implements authorized missing owners or reports the exact unresolved compiler gate",
+        "Does not claim functional or visual completion from catalog metadata"
+      ]
+    },
+    {
+      "id": "metadata-without-mockups",
+      "prompt": "WorldCreator should create reusable world metadata for different games. Generate it without mockups.",
+      "context": "Workspace has no GameArts profile, images or Godot project; metadata compiler is available.",
+      "expected": [
+        "Routes to the canonical metadata workflow before visual setup wizards",
+        "Authors reusable catalog and recipe inputs with explicit scope and purposes",
+        "Invokes the actual C# generate-metadata CLI or API without art setup",
+        "Inspects hierarchy, connections, constraints and persisted output",
+        "Does not claim artwork, playable maps or all genre-specific algorithms are implemented"
+      ]
+    },
+    {
+      "id": "metadata-arbitrary-nested-kind",
+      "prompt": "Create an orbital research network with observatories, each with laboratories and instrument modules. Save those programs for reuse.",
+      "context": "Existing metadata catalog has no matching archetypes. No mockup or fixed setting pack is selected.",
+      "expected": [
+        "Adds arbitrary game-defined kinds and nested constituent programs to the reusable metadata catalog",
+        "Uses typed connections and explicit count parameters rather than a hardcoded parent-specific planner",
+        "Generates through the shared compiler and verifies exact parent ownership and endpoints",
+        "Does not substitute modern buildings or require settlement policies for pure metadata"
+      ]
+    },
+    {
+      "id": "metadata-topology-and-coverage",
+      "prompt": "Start with two connected dungeon floors, six rooms each. Leave the lower floors for later; I do not need coordinates yet.",
+      "context": "Metadata API/CLI is available, no prior visual game setup.",
+      "expected": [
+        "Uses a topological space and leaves positions null",
+        "Declares PartialScope with the lower floors in RemainingScopes",
+        "Authors a reusable floor/room program and explicit cross-floor connection",
+        "Verifies count and connectivity without claiming directed traversal physics or a finished game"
+      ]
+    },
+    {
+      "id": "engine-procedural-city",
+      "prompt": "I want the engine to have a procedural city generator. Generate different city layouts from rules without a mockup.",
+      "context": "Current C# procedural city API/CLI and JavaScript spatial renderer are available. Preserve existing saved cities.",
+      "expected": [
+        "Invokes the C# ProceduralCityGenerator or generate-city CLI with reusable requests/catalogs",
+        "Provides dimensions, district programs, structure definitions and layout rules rather than per-object coordinates",
+        "Verifies engine streets, blocks, frontage parcels, structure/access geometry, nested membership and explicit scope",
+        "Shows JavaScript rendering of exact MapGeometry and does not claim diagram packing is city generation",
+        "Preserves previous outputs and reports unsupported terrain, road layouts, art or runtime gates accurately"
+      ]
+    }
   ],
   "executionStatus": "not_run",
   "note": "Evaluate in disposable workspaces on both Claude Code and Codex. Record actual transcripts, revisions, actions, failures and independently checked file outcomes."

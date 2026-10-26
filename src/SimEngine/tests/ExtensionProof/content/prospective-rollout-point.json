@@ -1,0 +1,180 @@
+{
+  "game_modes": [
+    {
+      "id": "kit.mode",
+      "name": "Resource-only prospective deployment",
+      "properties": {}
+    }
+  ],
+  "time_definitions": [
+    {
+      "id": "kit.time",
+      "quantum": {
+        "numerator": 60,
+        "denominator": 1,
+        "unit": "second"
+      },
+      "frame_ticks": 1,
+      "ticks_per_second": 30,
+      "horizon": null
+    }
+  ],
+  "entity_states": [
+    {
+      "id": "kit.idle",
+      "state": "idle",
+      "priority": 0,
+      "default": true
+    }
+  ],
+  "units": [
+    {
+      "id": "kit.count",
+      "dimension": "count",
+      "scale": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "discrete": true
+    }
+  ],
+  "resources": [
+    {
+      "id": "kit.ore",
+      "unit": "kit.count",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "kit.count": 1
+      }
+    },
+    {
+      "id": "kit.other",
+      "unit": "kit.count",
+      "category": "material",
+      "phase": "solid",
+      "traits": [],
+      "capacity": {
+        "kit.count": 1
+      }
+    }
+  ],
+  "capacity_policies": [
+    {
+      "id": "kit.capacity",
+      "limits": {
+        "kit.count": 10
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "kit.base",
+      "kind": "structure",
+      "components": {
+        "point_presence": {
+          "space": "kit.points",
+          "position": 0
+        },
+        "storage": {
+          "capacity_policy": "kit.capacity",
+          "initial_stock": {
+            "kit.ore": 3
+          },
+          "accepts": [
+            "kit.ore"
+          ],
+          "phases": [],
+          "public": true,
+          "evacuate": false
+        }
+      }
+    },
+    {
+      "id": "kit.result",
+      "kind": "vehicle",
+      "components": {
+        "point_presence": {
+          "space": "kit.points",
+          "position": 0
+        }
+      }
+    }
+  ],
+  "world_setup_profiles": [
+    {
+      "id": "kit.empty",
+      "entries": [],
+      "includes": []
+    },
+    {
+      "id": "kit.live",
+      "entries": [
+        "kit.spawn-base"
+      ],
+      "includes": []
+    }
+  ],
+  "entity_setups": [
+    {
+      "id": "kit.spawn-base",
+      "after": [],
+      "entity": "kit.base",
+      "company": 0,
+      "home": null,
+      "placement": {
+        "space": "kit.points",
+        "position": 1
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "kit.planned",
+      "game_mode": "kit.mode",
+      "mode_overrides": {},
+      "time": "kit.time",
+      "space": "kit.points",
+      "modules": [
+        "sim.inventory",
+        "sim.world-setup",
+        "proof.prospective-rollout"
+      ],
+      "seats": 1,
+      "default_seats": 1,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "kit.empty"
+        }
+      }
+    },
+    {
+      "id": "kit.live",
+      "game_mode": "kit.mode",
+      "mode_overrides": {},
+      "time": "kit.time",
+      "space": "kit.points",
+      "modules": [
+        "sim.inventory",
+        "sim.world-setup",
+        "proof.prospective-rollout"
+      ],
+      "seats": 1,
+      "default_seats": 1,
+      "settings": {
+        "sim.world-setup": {
+          "profile": "kit.live"
+        }
+      }
+    }
+  ],
+  "point_spaces": [
+    {
+      "id": "kit.points",
+      "extent": 5,
+      "access_open": true,
+      "rollout_offset": 1
+    }
+  ]
+}
